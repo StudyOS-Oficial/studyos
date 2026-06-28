@@ -3,407 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-gumroad-field="name">Nutrición Según Tu Ciclo Menstrual</title>
+    <title>Nutrición Según Tu Ciclo Menstrual | StudyOS</title>
+    <!-- Tailwind CSS para diseño moderno y adaptabilidad móvil instantánea -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        .serif-title {
-            font-family: 'Instrument Serif', serif;
-        }
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100 transition-colors duration-300">
+<body class="bg-stone-50 text-stone-800 antialiased selection:bg-rose-100">
 
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-stone-50/80 dark:bg-stone-950/80 border-b border-stone-200 dark:border-stone-800 transition-colors">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-rose-400 animate-pulse"></span>
-                <span class="font-semibold tracking-tight text-sm uppercase text-stone-600 dark:text-stone-400">Equilibrio Femenino</span>
-            </div>
-            
-            <div class="flex items-center gap-4">
-                <button id="theme-toggle" class="p-2 rounded-full hover:bg-stone-200 dark:hover:bg-stone-800 text-stone-600 dark:text-stone-400 transition" aria-label="Cambiar modo de luz">
-                    <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                    <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 14.121l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zm2.12-10.607A1 1 0 017.05 4.93l-.707-.707a1 1 0 011.414-1.414l.707.707a1 1 0 010 1.414zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z"></path></svg>
-                </button>
-                
-                <button data-gumroad-action="buy" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-rose-600 hover:bg-rose-700 dark:bg-rose-500 dark:hover:bg-rose-600 rounded-full shadow-sm transition transform active:scale-95">
-                    Obtener Ebook
-                </button>
-            </div>
+    <!-- Navbar / Encabezado -->
+    <header class="border-b border-stone-200 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+            <span class="font-bold tracking-wider text-stone-900">StudyOS</span>
+            <a href="TU_LINK_DE_GUMROAD_AQUÍ" class="bg-rose-500 hover:bg-rose-600 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all shadow-sm">
+                Comprar Ahora
+            </a>
         </div>
     </header>
 
-    <section class="relative overflow-hidden py-20 lg:py-32 border-b border-stone-200 dark:border-stone-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-                
-                <div class="lg:col-span-7 text-center lg:text-left">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-rose-100 dark:bg-rose-950/50 text-rose-800 dark:text-rose-300 mb-6">
-                        Método de Nutrición Inteligente
-                    </span>
-                    <h1 class="serif-title text-5xl sm:text-6xl lg:text-7xl font-normal leading-[1.1] text-stone-900 dark:text-stone-50 tracking-tight" data-gumroad-field="name">
-                        Nutrición Según Tu Ciclo Menstrual
-                    </h1>
-                    <p class="mt-4 text-2xl serif-title italic text-rose-600 dark:text-rose-400" data-gumroad-field="description">
-                        Aliméntate con inteligencia y transforma tu cuerpo y tu energía.
-                    </p>
-                    <p class="mt-6 text-base sm:text-lg text-stone-600 dark:text-stone-400 max-w-xl mx-auto lg:mx-0">
-                        Imagina poder perder grasa, mantener músculo y sentirte fuerte y llena de energía sin tener que luchar contra tu cuerpo cada mes. Tu ciclo no es tu enemigo; es tu mayor herramienta[cite: 16, 19].
-                    </p>
-                    
-                    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                        <button data-gumroad-action="buy" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-rose-600 hover:bg-rose-700 dark:bg-rose-500 dark:hover:bg-rose-600 rounded-xl shadow-lg shadow-rose-600/10 dark:shadow-none transition transform hover:-translate-y-0.5 active:translate-y-0">
-                            ¡Quiero el método ahora!
-                        </button>
-                        <div class="flex flex-col items-center sm:items-start px-4">
-                            <span class="text-xs text-stone-500 dark:text-stone-400 uppercase tracking-widest font-semibold">Precio actual</span>
-                            <span class="text-2xl font-bold text-stone-900 dark:text-stone-50" data-gumroad-field="price">--,--€</span>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-12 grid grid-cols-2 gap-4 max-w-md mx-auto lg:mx-0 border-t border-stone-200 dark:border-stone-800 pt-8">
-                        <div class="flex items-start gap-2 text-left">
-                            <span class="text-rose-500 text-lg">✔</span>
-                            <span class="text-sm text-stone-600 dark:text-stone-400">Pérdida de grasa sostenible [cite: 25]</span>
-                        </div>
-                        <div class="flex items-start gap-2 text-left">
-                            <span class="text-rose-500 text-lg">✔</span>
-                            <span class="text-sm text-stone-600 dark:text-stone-400">Menos hinchazón y antojos [cite: 25]</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-5 flex justify-center relative">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-rose-200 to-amber-100 dark:from-rose-950/30 dark:to-stone-900 rounded-3xl blur-3xl opacity-50 -z-10"></div>
-                    <div class="w-72 h-96 sm:w-80 sm:h-[420px] bg-gradient-to-b from-stone-900 to-stone-950 text-white rounded-2xl shadow-2xl overflow-hidden border border-stone-800 flex flex-col p-8 justify-between relative transform rotate-2 hover:rotate-0 transition duration-500">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-rose-500/10 rounded-full blur-xl"></div>
-                        <div>
-                            <p class="text-xs font-semibold tracking-widest text-rose-400 uppercase">Ebook Digital</p>
-                            <h2 class="serif-title text-4xl mt-4 leading-tight">Nutrición<br>Según Tu<br><span class="text-rose-400">Ciclo Menstrual</span></h2>
-                        </div>
-                        <div>
-                            <p class="text-xs text-stone-400 border-t border-stone-800 pt-4">Aliméntate con inteligencia y transforma tu cuerpo.</p>
-                            <div class="mt-2 flex items-center justify-between">
-                                <span class="text-[10px] uppercase tracking-wider bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded">Plan 90 días</span>
-                                <span class="text-xs text-stone-500">v1.0</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+    <!-- Hero Section (Optimizado para móvil) -->
+    <section class="max-w-4xl mx-auto px-4 py-12 md:py-20 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+        <div class="w-full md:w-1/2 order-2 md:order-1 text-center md:text-left">
+            <span class="inline-block bg-rose-100 text-rose-700 text-xs font-bold tracking-wide uppercase px-3 py-1 rounded-full mb-4">
+                Método de 90 Días
+            </span>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight leading-tight mb-6">
+                Nutrición Según Tu Ciclo Menstrual
+            </h1>
+            <p class="text-base md:text-lg text-stone-600 mb-8 leading-relaxed">
+                Aliméntate con inteligencia, optimiza tus hormonas y transforma tu cuerpo sin dietas restrictivas ni batallas constantes.
+            </p>
+            <div class="space-y-3">
+                <a href="TU_LINK_DE_GUMROAD_AQUÍ" class="block w-full sm:inline-block bg-stone-900 hover:bg-stone-800 text-white text-center px-8 py-4 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl">
+                    Consigue el Ebook por solo 4,99€
+                </a>
+                <p class="text-xs text-stone-400">Pago único seguro vía Gumroad. Descarga inmediata.</p>
             </div>
         </div>
-    </section>
-
-    <section class="py-20 bg-stone-100 dark:bg-stone-900/40">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="serif-title text-4xl sm:text-5xl font-normal text-stone-900 dark:text-stone-50">¿Cansada de luchar contra ti misma cada mes?</h2>
-                <p class="mt-4 text-stone-600 dark:text-stone-400">Durante años nos han hecho creer que los antojos, la fatiga y los bajones son obstáculos insalvables[cite: 18]. No es tu culpa, son tus hormonas[cite: 173].</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white dark:bg-stone-900 p-8 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-sm">
-                    <h3 class="text-lg font-bold text-red-600 dark:text-red-400 flex items-center gap-2 mb-4">
-                        <span>✕</span> El Enfoque Tradicional Erróneo
-                    </h3>
-                    <ul class="space-y-3 text-sm text-stone-600 dark:text-stone-400">
-                        <li class="flex items-start gap-2">• Comer lo mismo todos los días del mes sin variación[cite: 182].</li>
-                        <li class="flex items-start gap-2">• Restringir calorías drásticamente cuando tienes más hambre (fase lútea), provocando atracones[cite: 183].</li>
-                        <li class="flex items-start gap-2">• Entrenar siempre al máximo sin respetar tus descansos naturales[cite: 184].</li>
-                    </ul>
-                </div>
-
-                <div class="bg-rose-50/50 dark:bg-rose-950/10 p-8 rounded-2xl border border-rose-200/60 dark:border-rose-900/30 shadow-sm">
-                    <h3 class="text-lg font-bold text-rose-700 dark:text-rose-400 flex items-center gap-2 mb-4">
-                        <span>✔</span> Con Este Método Inteligente
-                    </h3>
-                    <ul class="space-y-3 text-sm text-stone-600 dark:text-stone-400">
-                        <li class="flex items-start gap-2">• Adaptas tu plato a lo que tu cuerpo necesita en cada momento exacto[cite: 182].</li>
-                        <li class="flex items-start gap-2">• Aumentas ligeramente las calorías limpias cuando tu metabolismo lo pide[cite: 64].</li>
-                        <li class="flex items-start gap-2">• Entrenas pesado cuando tienes fuerza y descansas de forma regenerativa con tu regla[cite: 155, 157].</li>
-                    </ul>
+        
+        <!-- Portada del Libro (Muestra la imagen limpia) -->
+        <div class="w-full sm:w-2/3 md:w-1/2 order-1 md:order-2 flex justify-center">
+            <div class="relative bg-white p-3 rounded-2xl shadow-xl max-w-[320px]">
+                <!-- Aquí Gumroad o tú podéis enlazar la portada, temporalmente dejamos un marcador visual premium -->
+                <div class="aspect-[3/4] bg-stone-100 rounded-lg flex flex-col justify-center items-center p-6 border border-stone-200 text-center">
+                    <span class="text-rose-400 text-4xl mb-3">🌸</span>
+                    <p class="font-bold text-stone-800 text-lg">Nutrición Según Tu Ciclo Menstrual</p>
+                    <p class="text-xs text-stone-500 mt-2">Guía Práctica & Plan de 90 días</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-12">
-            <h2 class="serif-title text-4xl sm:text-5xl font-normal text-stone-900 dark:text-stone-50">Las 4 fases de tu ciclo bajo control</h2>
-            <p class="mt-4 text-stone-600 dark:text-stone-400">Haz clic en cada pestaña para descubrir cómo cambia tu cuerpo, tu apetito y cómo debes alimentarte y entrenar según tu momento del mes[cite: 29, 46, 153].</p>
-        </div>
-
-        <div class="flex flex-wrap justify-center gap-2 mb-8 border-b border-stone-200 dark:border-stone-800 pb-4">
-            <button onclick="switchPhase('menstrual')" id="btn-menstrual" class="phase-btn px-4 py-2 text-sm font-medium rounded-full bg-rose-600 text-white transition">1. Menstrual (Días 1-5)</button>
-            <button onclick="switchPhase('folicular')" id="btn-folicular" class="phase-btn px-4 py-2 text-sm font-medium rounded-full bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-300 transition">2. Folicular (Días 6-13)</button>
-            <button onclick="switchPhase('ovulatoria')" id="btn-ovulatoria" class="phase-btn px-4 py-2 text-sm font-medium rounded-full bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-300 transition">3. Ovulatoria (Días 14-17)</button>
-            <button onclick="switchPhase('lutea')" id="btn-lutea" class="phase-btn px-4 py-2 text-sm font-medium rounded-full bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-300 transition">4. Lútea (Días 18-28)</button>
-        </div>
-
-        <div class="bg-white dark:bg-stone-900 rounded-3xl p-6 sm:p-10 border border-stone-200 dark:border-stone-800 shadow-xl min-h-[350px]">
-            <div id="content-menstrual" class="phase-content grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="serif-title text-3xl font-normal text-stone-900 dark:text-stone-50 mb-4">Fase de Renovación y Reset</h3>
-                    <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed mb-4">Los niveles de estrógeno y progesterona están al mínimo. Es normal sentir fatiga o sensibilidad[cite: 33, 50]. Tu enfoque principal debe ser la **recuperación y la antiinflamación**[cite: 70].</p>
-                    <div class="space-y-2 text-xs font-medium text-stone-700 dark:text-stone-300">
-                        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> Priorizar: Hierro, Omega-3 y Magnesio[cite: 71, 72].</div>
-                        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> Evitar: Cafeína, alcohol y exceso de sal[cite: 73, 104].</div>
-                    </div>
+    <!-- Sección de Beneficios -->
+    <section class="bg-white border-y border-stone-200 py-12 md:py-16">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-2xl font-bold text-stone-900 text-center mb-10">¿Qué vas a conseguir con este método?</h2>
+            <div class="grid gap-6 sm:grid-cols-2">
+                <div class="p-6 bg-stone-50 rounded-xl border border-stone-100">
+                    <div class="text-rose-500 text-xl mb-2">🔥</div>
+                    <h3 class="font-semibold text-stone-900 mb-1">Pérdida de grasa inteligente</h3>
+                    <p class="text-sm text-stone-600">Aprende cuándo tu cuerpo está predispuesto genéticamente a quemar grasa de forma más eficiente.</p>
                 </div>
-                <div class="bg-stone-50 dark:bg-stone-950 p-6 rounded-2xl flex flex-col justify-between">
-                    <div>
-                        <span class="text-[10px] uppercase font-bold tracking-wider text-rose-500">Entrenamiento recomendado</span>
-                        <p class="text-sm font-semibold mt-1 text-stone-900 dark:text-stone-50">Movilidad, Yoga, Pilates y caminatas suaves[cite: 155].</p>
-                    </div>
-                    <div class="mt-4 border-t border-stone-200 dark:border-stone-800 pt-4">
-                        <span class="text-[10px] uppercase font-bold tracking-wider text-stone-500">Receta Estrella</span>
-                        <p class="text-sm font-semibold mt-1 italic text-stone-700 dark:text-stone-300">"Avena nocturna de chocolate y plátano" [cite: 161]</p>
-                    </div>
+                <div class="p-6 bg-stone-50 rounded-xl border border-stone-100">
+                    <div class="text-rose-500 text-xl mb-2">💪</div>
+                    <h3 class="font-semibold text-stone-900 mb-1">Máxima fuerza y músculo</h3>
+                    <p class="text-sm text-stone-600">Saca partido a tus picos de estrógenos para entrenar pesado y construir masa muscular en glúteos y abdomen.</p>
                 </div>
-            </div>
-
-            <div id="content-folicular" class="phase-content hidden grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="serif-title text-3xl font-normal text-stone-900 dark:text-stone-50 mb-4">Fase Power y Vitalidad</h3>
-                    <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed mb-4">Los estrógenos suben, dándote máxima motivación y energía. Tu metabolismo es muy eficiente y toleras excelentemente los carbohidratos complejos[cite: 36, 55].</p>
-                    <div class="space-y-2 text-xs font-medium text-stone-700 dark:text-stone-300">
-                        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Priorizar: Altas proteínas y carbohidratos de calidad (arroz, patata)[cite: 77, 116].</div>
-                        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Consejo: Vegetales sin límite y ensaladas voluminosas[cite: 56, 79].</div>
-                    </div>
+                <div class="p-6 bg-stone-50 rounded-xl border border-stone-100">
+                    <div class="text-rose-500 text-xl mb-2">🍃</div>
+                    <h3 class="font-semibold text-stone-900 mb-1">Adiós a la inflamación</h3>
+                    <p class="text-sm text-stone-600">Alimentos estratégicos para reducir la retención de líquidos y los dolores en la fase menstrual.</p>
                 </div>
-                <div class="bg-stone-50 dark:bg-stone-950 p-6 rounded-2xl flex flex-col justify-between">
-                    <div>
-                        <span class="text-[10px] uppercase font-bold tracking-wider text-emerald-500">Entrenamiento recomendado</span>
-                        <p class="text-sm font-semibold mt-1 text-stone-900 dark:text-stone-50">Fuerza pesada, hipertrofia y series de progresión en el gym[cite: 37, 157].</p>
-                    </div>
-                    <div class="mt-4 border-t border-stone-200 dark:border-stone-800 pt-4">
-                        <span class="text-[10px] uppercase font-bold tracking-wider text-stone-500">Plato ideal</span>
-                        <p class="text-sm font-semibold mt-1 italic text-stone-700 dark:text-stone-300">Bowl de arroz integral, pechuga de pollo, aguacate y verduras[cite: 122].</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="content-ovulatoria" class="phase-content hidden grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="serif-title text-3xl font-normal text-stone-900 dark:text-stone-50 mb-4">Pico Máximo de Potencia</h3>
-                    <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed mb-4">Pico de estrógeno y testosterona. Te sientes segura, con confianza y en tu punto físico más alto[cite: 40, 41]. Tu cuerpo quema calorías de forma muy eficiente[cite: 59].</p>
-                    <div class="space-y-2 text-xs font-medium text-stone-700 dark:text-stone-300">
-                        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Priorizar: Proteínas magras y grasas saludables[cite: 84, 128, 129].</div>
-                        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Aliados: Verduras crucíferas (brócoli, coliflor) para el equilibrio hormonal[cite: 130].</div>
-                    </div>
-                </div>
-                <div class="bg-stone-50 dark:bg-stone-950 p-6 rounded-2xl flex flex-col justify-between">
-                    <div>
-                        <span class="text-[10px] uppercase font-bold tracking-wider text-amber-500">Entrenamiento recomendado</span>
-                        <p class="text-sm font-semibold mt-1 text-stone-900 dark:text-stone-50">Entrenamientos muy intensos, circuitos metabólicos o HIIT[cite: 41, 159].</p>
-                    </div>
-                    <div class="mt-4 border-t border-stone-200 dark:border-stone-800 pt-4">
-                        <span class="text-[10px] uppercase font-bold tracking-wider text-stone-500">Receta Recomendada</span>
-                        <p class="text-sm font-semibold mt-1 italic text-stone-700 dark:text-stone-300">Bowl de salmón fresco, arroz integral y medio aguacate[cite: 167].</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="content-lutea" class="phase-content hidden grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="serif-title text-3xl font-normal text-stone-900 dark:text-stone-50 mb-4">Saciedad y Gestión Hormonal</h3>
-                    <p class="text-stone-600 dark:text-stone-400 text-sm leading-relaxed mb-4">La progesterona sube. Tu cuerpo necesita de unas **200 a 300 kcal extra** porque almacena más energía[cite: 62, 64]. No luches contra el hambre, dale nutrientes saciantes[cite: 92].</p>
-                    <div class="space-y-2 text-xs font-medium text-stone-700 dark:text-stone-300">
-                        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> Priorizar: Grasas saludables, proteínas saciantes y triptófano[cite: 139, 140].</div>
-                        <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> Reducir: Azúcares simples y ultraprocesados (evita picos de antojos)[cite: 141, 142].</div>
-                    </div>
-                </div>
-                <div class="bg-stone-50 dark:bg-stone-950 p-6 rounded-2xl flex flex-col justify-between">
-                    <div>
-                        <span class="text-[10px] uppercase font-bold tracking-wider text-indigo-500">Entrenamiento recomendado</span>
-                        <p class="text-sm font-semibold mt-1 text-stone-900 dark:text-stone-50">Fuerza moderada, más volumen (más series, menos peso)[cite: 160].</p>
-                    </div>
-                    <div class="mt-4 border-t border-stone-200 dark:border-stone-800 pt-4">
-                        <span class="text-[10px] uppercase font-bold tracking-wider text-stone-500">Truco Antojos</span>
-                        <p class="text-sm font-semibold mt-1 italic text-stone-700 dark:text-stone-300">Combina Proteína + Grasa + Carbohidrato (Yogur griego + crema de cacahuete + plátano)[cite: 149].</p>
-                    </div>
+                <div class="p-6 bg-stone-50 rounded-xl border border-stone-100">
+                    <div class="text-rose-500 text-xl mb-2">🍫</div>
+                    <h3 class="font-semibold text-stone-900 mb-1">Control de antojos</h3>
+                    <p class="text-sm text-stone-600">Aporta los micronutrientes exactos que tu cerebro te pide en la fase lútea sin romper tus objetivos.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-stone-100 dark:bg-stone-900/40 border-y border-stone-200 dark:border-stone-900">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="serif-title text-4xl sm:text-5xl text-center font-normal text-stone-900 dark:text-stone-50 mb-16">Todo lo que vas a conseguir dentro del Ebook</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-sm">
-                    <div class="w-10 h-10 bg-rose-100 dark:bg-rose-950/40 rounded-xl flex items-center justify-center text-rose-600 dark:text-rose-400 font-bold mb-4">01</div>
-                    <h4 class="font-bold text-base text-stone-900 dark:text-stone-50">Plan Completo de 90 días</h4>
-                    <p class="mt-2 text-sm text-stone-600 dark:text-stone-400">Una guía paso a paso dividida en 3 ciclos mensuales para asentar las bases, ver progresos reales y consolidar hábitos[cite: 192, 193, 200, 203].</p>
-                </div>
-                <div class="bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-sm">
-                    <div class="w-10 h-10 bg-rose-100 dark:bg-rose-950/40 rounded-xl flex items-center justify-center text-rose-600 dark:text-rose-400 font-bold mb-4">02</div>
-                    <h4 class="font-bold text-base text-stone-900 dark:text-stone-50">12 Recetas Estrella</h4>
-                    <p class="mt-2 text-sm text-stone-600 dark:text-stone-400">Platos deliciosos y equilibrados con macros calculados como la avena nocturna o el bowl de salmón y aguacate[cite: 161, 167].</p>
-                </div>
-                <div class="bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-sm">
-                    <div class="w-10 h-10 bg-rose-100 dark:bg-rose-950/40 rounded-xl flex items-center justify-center text-rose-600 dark:text-rose-400 font-bold mb-4">03</div>
-                    <h4 class="font-bold text-base text-stone-900 dark:text-stone-50">Listas de la Compra</h4>
-                    <p class="mt-2 text-sm text-stone-600 dark:text-stone-400">Organizadas por macronutrientes esenciales (grasas saludables, proteínas magras y carbohidratos complejos)[cite: 152].</p>
-                </div>
-                <div class="bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-sm">
-                    <div class="w-10 h-10 bg-rose-100 dark:bg-rose-950/40 rounded-xl flex items-center justify-center text-rose-600 dark:text-rose-400 font-bold mb-4">04</div>
-                    <h4 class="font-bold text-base text-stone-900 dark:text-stone-50">Estrategias Anti-Hinchazón</h4>
-                    <p class="mt-2 text-sm text-stone-600 dark:text-stone-400">Consejos prácticos para mitigar la retención de líquidos utilizando alimentos ricos en potasio y diuréticos naturales[cite: 176, 178].</p>
-                </div>
-                <div class="bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-sm">
-                    <div class="w-10 h-10 bg-rose-100 dark:bg-rose-950/40 rounded-xl flex items-center justify-center text-rose-600 dark:text-rose-400 font-bold mb-4">05</div>
-                    <h4 class="font-bold text-base text-stone-900 dark:text-stone-50">Guía de Entrenamiento</h4>
-                    <p class="mt-2 text-sm text-stone-600 dark:text-stone-400">Sabrás con precisión cuándo empujar fuerte en el gimnasio y cuándo tu cuerpo requiere un descanso regenerativo[cite: 184].</p>
-                </div>
-                <div class="bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-sm">
-                    <div class="w-10 h-10 bg-rose-100 dark:bg-rose-950/40 rounded-xl flex items-center justify-center text-rose-600 dark:text-rose-400 font-bold mb-4">06</div>
-                    <h4 class="font-bold text-base text-stone-900 dark:text-stone-50">No Más Cuentas Obsesivas</h4>
-                    <p class="mt-2 text-sm text-stone-600 dark:text-stone-400">Este no es un libro restrictivo. Olvídate de pasar hambre; se trata de comer de forma inteligente para optimizar tus hormonas[cite: 21, 22, 23].</p>
-                </div>
+    <!-- Regalo Extra / Bonus Destacado -->
+    <section class="max-w-3xl mx-auto px-4 py-16 text-center">
+        <div class="bg-rose-50 border border-rose-200 rounded-2xl p-6 md:p-10 inline-block w-full">
+            <span class="bg-rose-200 text-rose-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                🎁 Regalo Exclusivo Incluido
+            </span>
+            <h3 class="text-xl md:text-2xl font-bold text-stone-900 mt-4 mb-2">Dossier de 10 Recetas Hormonales Paso a Paso</h3>
+            <p class="text-stone-600 max-w-xl mx-auto text-sm md:text-base mb-6">
+                Para que no tengas que pensar qué cocinar. Recetas totalmente diferentes al libro principal, organizadas por fases (tortitas, bowls energéticos, snacks antiantojos) y calculadas al milímetro.
+            </p>
+            <div class="inline-flex gap-2 items-center text-xs font-semibold text-rose-700 bg-white border border-rose-100 px-4 py-2 rounded-full shadow-sm">
+                <span>✓ PDF Extra descargable gratis con tu compra</span>
             </div>
         </div>
     </section>
 
-    <section class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="serif-title text-4xl text-center font-normal text-stone-900 dark:text-stone-50 mb-12">Lo que dicen las mujeres que ya lo han probado</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-stone-50 dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800">
-                <p class="text-sm italic text-stone-600 dark:text-stone-400">"Dejar de comer lo mismo todos los días del mes cambió por completo mis niveles de energía. La fase lútea solía ser mi peor enemigo con los atracones de dulce, pero aumentando las grasas saludables y porciones como explica el ebook, los antojos han desaparecido."</p>
-                <p class="mt-4 text-xs font-bold text-rose-600 dark:text-rose-400">— Elena R., 29 años[cite: 62, 139, 182].</p>
-            </div>
-            <div class="bg-stone-50 dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800">
-                <p class="text-sm italic text-stone-600 dark:text-stone-400">"¡El truco de no forzar los entrenamientos pesados durante mi periodo me quitó una culpa tremenda! Ahora aprovecho la fase folicular para darlo todo y mi composición corporal en glúteos y abdomen ha mejorado un montón de forma sostenible."</p>
-                <p class="mt-4 text-xs font-bold text-rose-600 dark:text-rose-400">— Claudia M., 34 años[cite: 25, 37, 52].</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-stone-100 dark:bg-stone-900/40 border-t border-stone-200 dark:border-stone-900">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="serif-title text-4xl text-center font-normal text-stone-900 dark:text-stone-50 mb-12">Preguntas Frecuentes</h2>
-            
-            <div class="space-y-4">
-                <details class="group bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800" open>
-                    <summary class="font-semibold text-sm sm:text-base cursor-pointer list-none flex justify-between items-center text-stone-900 dark:text-stone-50">
-                        ¿Tengo que contar calorías obsesivamente en este plan?
-                        <span class="text-rose-500 transition group-open:rotate-180">▼</span>
-                    </summary>
-                    <p class="mt-4 text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
-                        No. Este no es un libro de dieta restrictiva tradicional[cite: 21]. Aprenderás a estructurar tus platos y escuchar las señales metabólicas de tu cuerpo según cada fase para saciarte de forma inteligente[cite: 23, 88].
-                    </p>
-                </details>
-
-                <details class="group bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800">
-                    <summary class="font-semibold text-sm sm:text-base cursor-pointer list-none flex justify-between items-center text-stone-900 dark:text-stone-50">
-                        ¿Mi ciclo menstrual puede durar más o menos de 28 días?
-                        <span class="text-rose-500 transition group-open:rotate-180">▼</span>
-                    </summary>
-                    <p class="mt-4 text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
-                        Sí, completamente normal. Aunque la media estimada es de 28 días, el libro detalla que los ciclos perfectamente saludables pueden variar de forma segura entre los 21 y los 35 días[cite: 30].
-                    </p>
-                </details>
-
-                <details class="group bg-white dark:bg-stone-900 p-6 rounded-2xl border border-stone-200 dark:border-stone-800">
-                    <summary class="font-semibold text-sm sm:text-base cursor-pointer list-none flex justify-between items-center text-stone-900 dark:text-stone-50">
-                        ¿Qué formato tiene el producto?
-                        <span class="text-rose-500 transition group-open:rotate-180">▼</span>
-                    </summary>
-                    <p class="mt-4 text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
-                        Es un archivo digital e-book totalmente optimizado que puedes leer desde cualquier dispositivo móvil, tablet o computadora inmediatamente tras tu compra[cite: 17].
-                    </p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 text-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-stone-50 to-rose-50/40 dark:from-stone-950 dark:to-rose-950/10 -z-10"></div>
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="serif-title text-5xl sm:text-6xl font-normal text-stone-900 dark:text-stone-50">Empieza tu transformación hoy</h2>
-            <p class="mt-4 text-lg text-stone-600 dark:text-stone-400 max-w-lg mx-auto">Tu cuerpo no es tu enemigo. Deja de luchar contra él y empieza a trabajar a su favor[cite: 208, 209]. Estás a solo 90 días de conseguirlo[cite: 211].</p>
-            
-            <div class="mt-12 inline-block bg-white dark:bg-stone-900 p-8 sm:p-12 rounded-3xl border border-stone-200 dark:border-stone-800 shadow-xl max-w-md w-full">
-                <span class="text-xs font-bold uppercase tracking-widest text-stone-400 dark:text-stone-500">Acceso Inmediato Completo</span>
-                <div class="mt-4 flex justify-center items-baseline gap-1">
-                    <span class="text-5xl font-extrabold tracking-tight text-stone-900 dark:text-stone-50" data-gumroad-field="price">--,--€</span>
-                </div>
-                <p class="mt-2 text-xs text-stone-500 dark:text-stone-400">Pago único seguro a través de Gumroad</p>
-                
-                <button data-gumroad-action="buy" class="mt-8 w-full inline-flex items-center justify-center px-6 py-4 text-base font-semibold text-white bg-rose-600 hover:bg-rose-700 dark:bg-rose-500 dark:hover:bg-rose-600 rounded-xl shadow-md transition transform hover:-translate-y-0.5">
-                    Comprar e-book ahora
-                </button>
-                
-                <div class="mt-6 flex flex-col gap-2 text-xs text-stone-500 dark:text-stone-400 text-left border-t border-stone-100 dark:border-stone-800 pt-6">
-                    <div class="flex items-center gap-2"><span>✓</span> Plan de nutrición y listas semanales [cite: 150, 195]</div>
-                    <div class="flex items-center gap-2"><span>✓</span> Bloques de entrenamiento optimizados [cite: 196]</div>
-                    <div class="flex items-center gap-2"><span>✓</span> Actualizaciones gratuitas de por vida</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-stone-900 text-stone-400 text-xs py-8 border-t border-stone-800 text-center">
-        <p>© 2026 Equilibrio Femenino. Todos los derechos reservados.</p>
-        <p class="mt-2">Desarrollado con inteligencia para el bienestar integral de la mujer.</p>
+    <!-- Footer -->
+    <footer class="border-t border-stone-200 bg-stone-100 py-8 text-center text-xs text-stone-500">
+        <p>&copy; 2026 StudyOS. Todos los derechos reservados.</p>
     </footer>
 
-    <script>
-        // Lógica interactiva para cambiar entre las pestañas de las fases del ciclo
-        function switchPhase(phaseId) {
-            // Ocultar todos los bloques de contenido
-            document.querySelectorAll('.phase-content').forEach(el => el.classList.add('hidden'));
-            // Mostrar el bloque seleccionado
-            document.getElementById('content-' + phaseId).classList.remove('hidden');
-
-            // Resetear estilos de todos los botones
-            document.querySelectorAll('.phase-btn').forEach(btn => {
-                btn.className = "phase-btn px-4 py-2 text-sm font-medium rounded-full bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-300 transition";
-            });
-
-            // Dar estilo activo al botón seleccionado
-            const activeBtn = document.getElementById('btn-' + phaseId);
-            if (phaseId === 'menstrual') activeBtn.className = "phase-btn px-4 py-2 text-sm font-medium rounded-full bg-rose-600 text-white transition";
-            if (phaseId === 'folicular') activeBtn.className = "phase-btn px-4 py-2 text-sm font-medium rounded-full bg-emerald-600 text-white transition";
-            if (phaseId === 'ovulatoria') activeBtn.className = "phase-btn px-4 py-2 text-sm font-medium rounded-full bg-amber-600 text-white transition";
-            if (phaseId === 'lutea') activeBtn.className = "phase-btn px-4 py-2 text-sm font-medium rounded-full bg-indigo-600 text-white transition";
-        }
-
-        // Lógica de cambio de modo oscuro/claro
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const darkIcon = document.getElementById('theme-toggle-dark-icon');
-        const lightIcon = document.getElementById('theme-toggle-light-icon');
-
-        // Comprobar preferencias previas o del sistema
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-            lightIcon.classList.remove('hidden');
-        } else {
-            document.documentElement.classList.remove('dark');
-            darkIcon.classList.remove('hidden');
-        }
-
-        themeToggleBtn.addEventListener('click', function() {
-            lightIcon.classList.toggle('hidden');
-            darkIcon.classList.toggle('hidden');
-
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('color-theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('color-theme', 'dark');
-            }
-        });
-    </script>
 </body>
 </html>
