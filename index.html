@@ -1,154 +1,170 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StudyOS - Nutrición Según Tu Ciclo Menstrual</title>
-  <style>
-    :root {
-      --pink: #f8d7e0;
-      --beige: #f5e8d3;
-      --gold: #d4a017;
-    }
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: linear-gradient(to bottom, #fffaf0, #fdf4f0);
-    }
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200') center/cover no-repeat;
-      color: white;
-      text-align: center;
-      padding: 120px 20px 80px;
-    }
-    .hero h1 {
-      font-size: 3.2rem;
-      margin-bottom: 20px;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-    .hero p {
-      font-size: 1.4rem;
-      max-width: 700px;
-      margin: 0 auto 30px;
-    }
-    .btn {
-      display: inline-block;
-      background: #d4a017;
-      color: white;
-      padding: 16px 40px;
-      font-size: 1.3rem;
-      font-weight: bold;
-      border-radius: 50px;
-      text-decoration: none;
-      margin-top: 20px;
-      box-shadow: 0 8px 20px rgba(212,160,23,0.3);
-      transition: all 0.3s;
-    }
-    .btn:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(212,160,23,0.4);
-    }
-    section {
-      padding: 80px 20px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    h2 {
-      text-align: center;
-      font-size: 2.4rem;
-      margin-bottom: 50px;
-      color: #333;
-    }
-    .benefits {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      text-align: center;
-    }
-    .price {
-      text-align: center;
-      background: white;
-      padding: 60px 20px;
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(212,160,23,0.15);
-    }
-    .price del {
-      color: #999;
-      font-size: 1.4rem;
-    }
-    footer {
-      text-align: center;
-      padding: 40px;
-      background: #f8f1e9;
-      font-size: 0.9rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyOS | Desarrollo Personal y Bienestar Integral Femenino</title>
+    <!-- Tailwind CSS para diseño fluido, premium y 100% móvil -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .serif { font-family: 'Playfair Display', serif; }
+    </style>
 </head>
-<body>
+<body class="bg-[#FBFBFA] text-[#2D2C2A] antialiased selection:bg-rose-100">
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Aliméntate según tu ciclo menstrual</h1>
-    <p>y transforma tu cuerpo: pierde grasa, gana fuerza y recupera tu energía</p>
-    <a href="https://studyosoficial.gumroad.com/l/tkydx" class="btn">Obtener el ebook por solo 4,99€</a>
-    <p style="margin-top: 30px; font-size: 1.1rem;">Más de 60 mujeres ya están cambiando su cuerpo</p>
-  </section>
+    <!-- Header Elegante -->
+    <header class="border-b border-stone-200/60 bg-[#FBFBFA]/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
+            <span class="font-bold tracking-widest text-xl text-stone-900 uppercase text-sm">StudyOS</span>
+            <nav class="hidden md:flex space-x-8 text-xs font-semibold tracking-wider uppercase text-stone-600">
+                <a href="#filosofia" class="hover:text-stone-900 transition-colors">El Método</a>
+                <a href="#pilares" class="hover:text-stone-900 transition-colors">Crecimiento</a>
+                <a href="#recursos" class="hover:text-stone-900 transition-colors">Recursos Digitales</a>
+            </nav>
+            <a href="#recursos" class="bg-stone-950 hover:bg-stone-800 text-white px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-sm">
+                Explorar Guías
+            </a>
+        </div>
+    </header>
 
-  <!-- BENEFICIOS -->
-  <section>
-    <h2>Lo que conseguirás</h2>
-    <div class="benefits">
-      <div class="card">
-        <h3>🔥 Perder grasa de forma inteligente</h3>
-        <p>Sin dietas extremas ni pasar hambre</p>
-      </div>
-      <div class="card">
-        <h3>💪 Mantener y ganar músculo</h3>
-        <p>Especialmente glúteos y abdomen</p>
-      </div>
-      <div class="card">
-        <h3>🌸 Reducir hinchazón y antojos</h3>
-        <p>Entiende qué pasa en cada fase de tu ciclo</p>
-      </div>
-      <div class="card">
-        <h3>⚡ Más energía y mejor humor</h3>
-        <p>Adiós al cansancio hormonal</p>
-      </div>
-    </div>
-  </section>
+    <!-- Hero de Alto Impacto (Enfoque Desarrollo Personal) -->
+    <section id="filosofia" class="max-w-4xl mx-auto px-6 py-20 md:py-32 text-center">
+        <span class="text-rose-700/80 text-xs font-bold tracking-widest uppercase px-4 py-1.5 bg-rose-50 border border-rose-100 rounded-full">
+            Tu espacio de evolución, claridad y transformación
+        </span>
+        <h1 class="serif text-4xl md:text-6xl font-medium text-stone-950 tracking-tight leading-tight mt-8 mb-6 max-w-3xl mx-auto">
+            Diseña la vida, la mentalidad y el cuerpo que <span class="italic text-rose-700/90">mereces habitar</span>.
+        </h1>
+        <p class="text-base md:text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed mb-10 font-light">
+            Creamos recursos digitales de alto valor diseñados exclusivamente para mujeres que buscan el desarrollo personal integral. Olvida las fórmulas lineales y restrictivas. Aprende a potenciar tus hábitos, tu enfoque y tu energía respetando tu naturaleza biológica y mental. Sostenible, real y alineado con tu éxito.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <a href="#recursos" class="w-full sm:w-auto bg-stone-950 hover:bg-stone-900 text-white px-8 py-4 rounded-full font-semibold text-sm tracking-wide transition-all shadow-md">
+                Comenzar Mi Transformación
+            </a>
+            <a href="#pilares" class="w-full sm:w-auto text-stone-600 hover:text-stone-900 text-sm font-semibold py-4 flex items-center justify-center gap-2 transition-all">
+                Conocer los pilares ➔
+            </a>
+        </div>
+    </section>
 
-  <!-- SOBRE EL EBOOK -->
-  <section style="background:#fffaf0;">
-    <h2>¿Qué incluye el ebook?</h2>
-    <ul style="max-width: 700px; margin: 0 auto; font-size: 1.2rem; line-height: 2;">
-      <li>✓ Las 4 fases del ciclo explicadas de forma clara</li>
-      <li>✓ Qué comer y qué evitar en cada fase</li>
-      <li>✓ Ejemplos reales de menús diarios</li>
-      <li>✓ 12 recetas fáciles y deliciosas</li>
-      <li>✓ Recomendaciones de entrenamiento según tu fase</li>
-      <li>✓ Plan práctico de 90 días</li>
-    </ul>
-  </section>
+    <!-- Sección Pilares / Estilo Blog de Contenido -->
+    <section id="pilares" class="bg-white border-y border-stone-200/80 py-20">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="max-w-2xl mx-auto text-center mb-16">
+                <h2 class="serif text-2xl md:text-4xl text-stone-950 font-medium">El Enfoque 360° de StudyOS</h2>
+                <p class="text-stone-500 text-sm mt-3 font-light">El verdadero desarrollo personal no es una meta aislada, es la sincronía de tus tres motores principales.</p>
+            </div>
 
-  <!-- PRECIO -->
-  <section class="price">
-    <h2>Precio de lanzamiento</h2>
-    <h1 style="font-size: 4rem; margin: 10px 0; color:#d4a017;">4,99€</h1>
-    <p><del>19,99€</del> — Precio subirá pronto</p>
-    <a href="https://studyosoficial.gumroad.com/l/tkydx" class="btn" style="font-size: 1.5rem; padding: 20px 50px;">Comprar ahora</a>
-  </section>
+            <!-- Artículos Cortos / Pilares -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Pilar 1 -->
+                <article class="p-8 bg-[#FBFBFA] border border-stone-200/60 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-rose-50 border border-rose-100 rounded-xl flex items-center justify-center mb-6 text-lg">✨</div>
+                        <h3 class="font-bold text-stone-900 text-lg mb-3">1. Mentalidad & Hábitos</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed font-light">
+                            Rompe con las creencias limitantes y el autosabotaje. Te proporcionamos las herramientas necesarias para construir una autodisciplina inquebrantable basada en el amor propio y la claridad mental.
+                        </p>
+                    </div>
+                </article>
 
-  <footer>
-    <p>StudyOS © 2026 | Guía de Nutrición Hormonal para Mujeres</p>
-  </footer>
+                <!-- Pilar 2 -->
+                <article class="p-8 bg-[#FBFBFA] border border-stone-200/60 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-rose-50 border border-rose-100 rounded-xl flex items-center justify-center mb-6 text-lg">🌸</div>
+                        <h3 class="font-bold text-stone-900 text-lg mb-3">2. Biología & Energía</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed font-light">
+                            Tu cuerpo es cíclico, no una máquina constante. Aprender a sincronizar tu nutrición, tu descanso y tus niveles de fuerza con tu ciclo biológico te dará una ventaja injusta para rendir al máximo.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Pilar 3 -->
+                <article class="p-8 bg-[#FBFBFA] border border-stone-200/60 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-rose-50 border border-rose-100 rounded-xl flex items-center justify-center mb-6 text-lg">📈</div>
+                        <h3 class="font-bold text-stone-900 text-lg mb-3">3. Enfoque & Crecimiento</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed font-light">
+                            Aprende a gestionar tu tiempo sin quemarte. Herramientas diseñadas para mujeres ambiciosas que buscan compaginar sus objetivos profesionales con un bienestar emocional profundo y real.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Catálogo de Ebooks Propios (Integrado con Gumroad) -->
+    <section id="recursos" class="max-w-5xl mx-auto px-6 py-20">
+        <div class="text-center mb-16">
+            <h2 class="serif text-2xl md:text-4xl text-stone-950 font-medium">Tus Herramientas de Evolución</h2>
+            <p class="text-stone-500 text-sm mt-3 font-light">Guías prácticas en formato digital diseñadas para aplicarse desde el primer día.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+            
+            <!-- GUÍA 1: Nutrición y Ciclo Menstrual -->
+            <div class="bg-white border border-stone-200 rounded-3xl overflow-hidden flex flex-col justify-between p-6 shadow-xs hover:shadow-md transition-all">
+                <div>
+                    <!-- Contenedor Premium de Imagen -->
+                    <div class="aspect-[4/3] bg-stone-100 rounded-2xl mb-6 flex flex-col items-center justify-center border border-stone-200/60 relative overflow-hidden p-6 text-center">
+                        <span class="text-rose-400 text-3xl mb-2">🌸</span>
+                        <p class="font-bold text-stone-900 text-base">Nutrición Según Tu Ciclo Menstrual</p>
+                        <p class="text-xs text-stone-400 mt-1">Guía Práctica & Plan de 90 días</p>
+                        <!-- Intento de cargar portada.png de fondo si existe -->
+                        <img src="portada.png" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'">
+                    </div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="bg-rose-50 text-rose-700 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md">Biológico</span>
+                        <span class="bg-stone-100 text-stone-600 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md">Packs Incluidos</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-900 mb-2">Nutrición Según Tu Ciclo Menstrual</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed font-light mb-6">
+                        El método definitivo para dejar de luchar contra tus hormonas. Aprende a sincronizar tu alimentación para optimizar tu energía, eliminar la inflamación y perder grasa de forma inteligente. Incluye de regalo el Dossier Exclusivo con 10 Recetas Hormonales Paso a Paso.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                        <div>
+                            <span class="text-xs text-stone-400 line-through block">14,99€</span>
+                            <span class="text-2xl font-bold text-stone-900">4,99€</span>
+                        </div>
+                        <a href="https://studyosoficial.gumroad.com/" target="_blank" class="bg-stone-950 hover:bg-stone-800 text-white text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-xl transition-all shadow-xs">
+                            Adquirir Guía
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GUÍA 2: Marcador de posición para desarrollo personal de marca -->
+            <div class="bg-stone-50/60 border border-stone-200/40 border-dashed rounded-3xl p-6 flex flex-col justify-between opacity-70">
+                <div class="h-full flex flex-col justify-center items-center text-center py-12 px-4">
+                    <div class="w-12 h-12 bg-stone-100 border border-stone-200 rounded-full flex items-center justify-center text-xl mb-4 text-stone-400">📖</div>
+                    <h3 class="font-bold text-stone-800 text-lg mb-2">Mentalidad y Diseño de Hábitos</h3>
+                    <p class="text-xs text-stone-500 max-w-xs font-light leading-relaxed">
+                        Estamos diseñando la guía maestra de organización, diario de mañanas y enfoque cognitivo para complementar tu evolución. Disponible muy pronto.
+                    </p>
+                    <span class="mt-4 inline-block text-[10px] font-bold tracking-widest uppercase bg-stone-200/60 text-stone-600 px-2.5 py-1 rounded-md">Próximo Lanzamiento</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer Corporativo e Inspiracional -->
+    <footer class="border-t border-stone-200/60 bg-white py-16 text-center text-xs text-stone-500">
+        <p class="font-bold text-stone-900 tracking-widest uppercase text-sm mb-3">StudyOS</p>
+        <p class="max-w-md mx-auto mb-8 font-light leading-relaxed px-6">
+            Un ecosistema digital creado para transformar el potencial femenino mediante la ciencia de los hábitos, la mentalidad y la sintonía biológica.
+        </p>
+        <div class="border-t border-stone-100 max-w-xs mx-auto pt-6 text-stone-400 font-light">
+            &copy; 2026 StudyOS. Todos los derechos reservados.
+        </div>
+    </footer>
 
 </body>
 </html>
