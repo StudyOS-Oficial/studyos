@@ -99,13 +99,14 @@
     </section>
 
     <!-- Sección Catálogo de Ebooks Propios (Integrado con Gumroad) -->
-    <section id="recursos" class="max-w-5xl mx-auto px-6 py-20">
+    <section id="recursos" class="max-w-6xl mx-auto px-6 py-20">
         <div class="text-center mb-16">
             <h2 class="serif text-2xl md:text-4xl text-stone-950 font-medium">Tus Herramientas de Evolución</h2>
             <p class="text-stone-500 text-sm mt-3 font-light">Guías prácticas en formato digital diseñadas para aplicarse desde el primer día. ¡Tu compra nos sirve para seguir creando recursos para todas!</p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+        <!-- Grid optimizado a 3 columnas para pantallas grandes -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
             
             <!-- GUÍA 1: Nutrición y Ciclo Menstrual -->
             <div class="bg-white border border-stone-200 rounded-3xl overflow-hidden flex flex-col justify-between p-6 shadow-sm hover:shadow-md transition-all">
@@ -171,11 +172,44 @@
                 </div>
             </div>
 
+            <!-- INICIO NUEVO BLOQUE: GUÍA 3 - PRE-DAILY OS -->
+            <div class="bg-white border border-stone-200 rounded-3xl overflow-hidden flex flex-col justify-between p-6 shadow-sm hover:shadow-md transition-all">
+                <div>
+                    <!-- Contenedor Premium de Imagen -->
+                    <div class="aspect-[4/3] bg-stone-100 rounded-2xl mb-6 flex flex-col items-center justify-center border border-stone-200/60 relative overflow-hidden p-6 text-center">
+                        <span class="text-emerald-500 text-3xl mb-2">🧬</span>
+                        <p class="font-bold text-stone-900 text-base">PRE-DAILY OS: Suplementación Inteligente</p>
+                        <p class="text-xs text-stone-400 mt-1">Hormonas, Enfoque y Ciencia en la Premenopausia</p>
+                        <img src="Ebook3.png" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'">
+                    </div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="bg-emerald-50 text-emerald-700 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md">Bioendocrinología</span>
+                        <span class="bg-stone-100 text-stone-600 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md">Audio-Capítulos Incluidos</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-900 mb-2">PRE-DAILY OS: Suplementación Inteligente</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed font-light mb-6">
+                        El manual definitivo de ingeniería inversa para la premenopausia a partir de los 40 años. Aprende a disolver la niebla mental, mitigar el insomnio de las 3 AM y regular el cortisol mediante protocolos moleculares basados en rigor científico, dosis terapéuticas exactas y sinergias de suplementación inteligente sin rigideces absurdas. Incluye el eBook completo y la versión audiolibro de los mejores capítulos prácticos.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                        <div>
+                            <span class="text-xs text-stone-400 line-through block">14,99€</span>
+                            <span class="text-2xl font-bold text-stone-900">6,99€</span>
+                        </div>
+                        <a href="https://studyosoficial.gumroad.com/l/tu-enlace-aqui" target="_blank" class="bg-stone-950 hover:bg-stone-800 text-white text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-xl transition-all shadow-sm">
+                            Adquirir Guía
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN NUEVO BLOQUE -->
+
         </div>
     </section>
 
     <!-- Sección Suscripción / Promoción Modificada para dirigir a Gumroad -->
-    <section id="recursos" class="bg-[#F6F5F2] border-t border-stone-200/60 py-20">
+    <section class="bg-[#F6F5F2] border-t border-stone-200/60 py-20">
         <div class="max-w-md mx-auto px-6 text-center">
             <span class="text-2xl mb-3 block">¡Empieza hoy!</span>
             <h2 class="serif text-2xl md:text-3xl text-stone-950 font-medium mb-3">Únete a la Comunidad StudyOS</h2>
