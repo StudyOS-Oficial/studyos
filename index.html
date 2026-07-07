@@ -1,279 +1,128 @@
-<!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyOS | Desarrollo Personal y Bienestar Integral Femenino</title>
-    <!-- Tailwind CSS para diseño fluido, premium y 100% móvil -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .serif { font-family: 'Playfair Display', serif; }
-    </style>
-</head>
-<body class="bg-[#FBFBFA] text-[#2D2C2A] antialiased selection:bg-rose-100">
+<!-- ==========================================
+         SECCIÓN RECURSO GRATUITO (MODIFICADA CON DESPLEGABLE)
+         ========================================== -->
+    <section id="gratis" class="max-w-4xl mx-auto px-6 py-20 border-t border-stone-200/60">
+        <div class="bg-stone-50 border border-stone-200/80 rounded-2xl p-8 md:p-10 text-center relative overflow-hidden">
+            <span class="bg-rose-100 text-rose-800 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full inline-block mb-4">Acceso Gratuito</span>
+            <h2 class="serif text-3xl text-stone-950 font-medium">Matriz Científica de Suplementación Inteligente</h2>
+            <p class="text-stone-500 text-sm mt-3 font-light max-w-xl mx-auto">Deja de consumir a ciegas. Descubre cómo la comodidad comercial atropella tu biología con nuestro ebook guía + audio máster.</p>
+            
+            <!-- Desplegable Acordeón de Información Extra -->
+            <details class="group max-w-xl mx-auto mt-6 text-left border-t border-b border-stone-200/60 py-3">
+                <summary class="list-none flex items-center justify-between cursor-pointer select-none text-xs font-bold text-stone-700 uppercase tracking-wider group-open:text-rose-700 transition-colors">
+                    <span>🎧 ¿Qué incluye el Audio-Podcast de regalo? (22 min)</span>
+                    <span class="text-stone-400 group-open:rotate-180 transition-transform duration-200">▼</span>
+                </summary>
+                <div class="mt-3 text-xs text-stone-600 font-light leading-relaxed space-y-2 pt-1 animate-fadeIn">
+                    <p>• <strong>El Desagüe del Magnesio:</strong> Por qué el 90% del magnesio barato (óxido) actúa como un residuo laxante que te deshidrata en lugar de aportarte energía real a nivel celular.</p>
+                    <p>• <strong>El Peaje Intestinal:</strong> La norma biológica estricta para evitar que los multivitamínicos estándar bloqueen por completo la absorción del hierro, el calcio y el zinc.</p>
+                </div>
+            </details>
 
-    <!-- Header Elegante -->
-    <header class="border-b border-stone-200/60 bg-[#FBFBFA]/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
-            <span class="font-bold tracking-widest text-stone-900 uppercase text-sm">StudyOS</span>
-            <nav class="hidden md:flex space-x-8 text-xs font-semibold tracking-wider uppercase text-stone-600">
-                <a href="#filosofia" class="hover:text-stone-900 transition-colors">El Método</a>
-                <a href="#pilares" class="hover:text-stone-900 transition-colors">Crecimiento</a>
-                <a href="#gratis" class="hover:text-stone-900 transition-colors text-rose-700 font-bold">Recurso Gratis</a>
-                <a href="#recursos" class="hover:text-stone-900 transition-colors">Guías Premium</a>
-            </nav>
-            <a href="#gratis" class="bg-stone-950 hover:bg-stone-800 text-white px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-sm">
-                Descargar Gratis
-            </a>
-        </div>
-    </header>
+            <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://studyosoficial.gumroad.com/l/iovbr" target="_blank" class="w-full sm:w-auto bg-stone-950 hover:bg-stone-800 text-white text-xs font-bold uppercase tracking-widest px-8 py-4 rounded-xl transition-all shadow-sm">
+                    Descargar Gratis Ahora ➔
+                </a>
+            </div>
+        </div>
+    </section>
 
-    <!-- Hero de Alto Impacto (Enfoque Desarrollo Personal) -->
-    <section id="filosofia" class="max-w-4xl mx-auto px-6 py-20 md:py-32 text-center">
-        <span class="text-rose-700/80 text-xs font-bold tracking-widest uppercase px-4 py-1.5 bg-rose-50 border border-rose-100 rounded-full">
-            Tu espacio de evolución, claridad y transformación
-        </span>
-        <h1 class="serif text-4xl md:text-6xl font-medium text-stone-950 tracking-tight leading-tight mt-8 mb-6 max-w-3xl mx-auto">
-            Diseña la vida, la mentalidad y el cuerpo que <span class="italic text-rose-700/90">mereces habitar</span>.
-        </h1>
-        <p class="text-base md:text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed mb-10 font-light">
-            Creamos recursos digitales de alto valor diseñados exclusivamente para mujeres que buscan el desarrollo personal integral. Olvida las fórmulas lineales y restrictivas. Aprende a potenciar tus hábitos, tu enfoque y tu energía respetando tu naturaleza biológica y mental. Sostenible, real y alineado con tu éxito personal.
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <a href="#gratis" class="w-full sm:w-auto bg-stone-950 hover:bg-stone-900 text-white px-8 py-4 rounded-full font-semibold text-sm tracking-wide transition-all shadow-md">
-                Obtener Matriz Gratuita 🧬
-            </a>
-            <a href="#recursos" class="w-full sm:w-auto text-stone-600 hover:text-stone-900 text-sm font-semibold py-4 flex items-center justify-center gap-2 transition-all">
-                Explorar guías premium ➔
-            </a>
-        </div>
-    </section>
 
-    <!-- Sección Pilares / Estilo Blog de Contenido -->
-    <section id="pilares" class="bg-white border-t border-stone-200/80 py-20">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="max-w-2xl mx-auto text-center mb-16">
-                <h2 class="serif text-2xl md:text-4xl text-stone-950 font-medium">El Enfoque 360° de StudyOS</h2>
-                <p class="text-stone-500 text-sm mt-3 font-light">El verdadero desarrollo personal no es una meta aislada, es la sincronía de tus tres motores principales.</p>
-            </div>
+    <!-- ==========================================
+         SECCIÓN CATÁLOGO DE EBOOKS PREMIUM (MODIFICADA CON DESPLEGABLES)
+         ========================================== -->
+    <section id="recursos" class="max-w-6xl mx-auto px-6 py-20 border-t border-stone-200/60">
+        <div class="text-center mb-16">
+            <h2 class="serif text-3xl md:text-4xl text-stone-950 font-medium">Herramientas de Evolución Premium</h2>
+            <p class="text-stone-500 text-sm mt-2 font-light max-w-md mx-auto">Estrategias elásticas y dosis terapéuticas exactas diseñadas para cuando el cuerpo ya no perdona los errores.</p>
+        </div>
 
-            <!-- Artículos Cortos / Pilares -->
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Pilar 1 -->
-                <article class="p-8 bg-[#FBFBFA] border border-stone-200/60 rounded-3xl flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 bg-rose-50 border border-rose-100 rounded-xl flex items-center justify-center mb-6 text-lg">✨</div>
-                        <h3 class="font-bold text-stone-900 text-lg mb-3">1. Mentalidad & Hábitos</h3>
-                        <p class="text-stone-600 text-justify text-sm leading-relaxed font-light">
-                            Rompe con las creencias limitantes y el autosabotaje. Te damos las herramientas necesarias para construir una autodisciplina inquebrantable basada en el amor propio y la claridad mental.
-                        </p>
-                    </div>
-                </article>
+        <!-- Grid de 3 Columnas -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            
+            <!-- GUÍA 1: Sincronización Hormonal -->
+            <div class="bg-white border border-stone-200 rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:border-stone-300 transition-all">
+                <div>
+                    <span class="bg-rose-50 text-rose-700 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">Plan 90 Días</span>
+                    <h3 class="serif text-xl font-medium text-stone-950 mt-2 mb-1">Sincronización Hormonal</h3>
+                    <p class="text-stone-500 text-xs font-light mb-4">Nutrición de precisión según tu ciclo menstrual.</p>
+                    
+                    <!-- Desplegable Info Extra -->
+                    <details class="group border-t border-stone-100 py-3 mb-4">
+                        <summary class="list-none flex items-center justify-between cursor-pointer text-[11px] font-bold text-stone-600 uppercase tracking-wider group-open:text-rose-700 transition-colors">
+                            <span>Ver temario detallado</span>
+                            <span class="text-stone-400 group-open:rotate-180 transition-transform duration-100">▼</span>
+                        </summary>
+                        <div class="mt-2.5 text-xs text-stone-600 font-light space-y-1.5 pt-1">
+                            <p>• Optimización y control estricto de picos de energía.</p>
+                            <p>• Estrategias clínicas para mitigar la inflamación.</p>
+                            <p>• <strong>Regalo:</strong> Dossier con 10 recetas paso a paso.</p>
+                        </div>
+                    </details>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                    <span class="text-xl font-bold text-stone-900 tracking-tight">4,99€</span>
+                    <a href="https://studyosoficial.gumroad.com/l/tkydx" target="_blank" class="bg-stone-950 hover:bg-stone-800 text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-lg transition-all">
+                        Comprar ➔
+                    </a>
+                </div>
+            </div>
 
-                <!-- Pilar 2 -->
-                <article class="p-8 bg-[#FBFBFA] border border-stone-200/60 rounded-3xl flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 bg-rose-50 border border-rose-100 rounded-xl flex items-center justify-center mb-6 text-lg">🌸</div>
-                        <h3 class="font-bold text-stone-900 text-lg mb-3">2. Biología & Energía</h3>
-                        <p class="text-stone-600 text-justify text-sm leading-relaxed font-light">
-                            Tu cuerpo es cíclico, no una máquina constante. Aprender a sincronizar tu nutrición, tu descanso y tus niveles de fuerza con tu ciclo biológico te dará una ventaja injusta para rendir al máximo.
-                        </p>
-                    </div>
-                </article>
+            <!-- GUÍA 2: Daily OS -->
+            <div class="bg-white border border-stone-200 rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:border-stone-300 transition-all">
+                <div>
+                    <span class="bg-purple-50 text-purple-700 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">Enfoque Real</span>
+                    <h3 class="serif text-xl font-medium text-stone-950 mt-2 mb-1">Rediseño del Descanso</h3>
+                    <p class="text-stone-500 text-xs font-light mb-4">Daily OS: Tu nueva versión sin niebla mental.</p>
+                    
+                    <!-- Desplegable Info Extra -->
+                    <details class="group border-t border-stone-100 py-3 mb-4">
+                        <summary class="list-none flex items-center justify-between cursor-pointer text-[11px] font-bold text-stone-600 uppercase tracking-wider group-open:text-purple-700 transition-colors">
+                            <span>Ver temario detallado</span>
+                            <span class="text-stone-400 group-open:rotate-180 transition-transform duration-100">▼</span>
+                        </summary>
+                        <div class="mt-2.5 text-xs text-stone-600 font-light space-y-1.5 pt-1">
+                            <p>• Estrategias elásticas para corregir el insomnio.</p>
+                            <p>• Herramientas metabólicas contra la fatiga matutina.</p>
+                            <p>• <strong>Incluye:</strong> Audiobook oficial del ecosistema.</p>
+                        </div>
+                    </details>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                    <span class="text-xl font-bold text-stone-900 tracking-tight">5,99€</span>
+                    <a href="https://studyosoficial.gumroad.com/l/fnlugn?layout=profile" target="_blank" class="bg-stone-950 hover:bg-stone-800 text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-lg transition-all">
+                        Comprar ➔
+                    </a>
+                </div>
+            </div>
 
-                <!-- Pilar 3 -->
-                <article class="p-8 bg-[#FBFBFA] border border-stone-200/60 rounded-3xl flex flex-col justify-between">
-                    <div>
-                        <div class="w-10 h-10 bg-rose-50 border border-rose-100 rounded-xl flex items-center justify-center mb-6 text-lg">📈</div>
-                        <h3 class="font-bold text-stone-900 text-lg mb-3">3. Enfoque & Crecimiento</h3>
-                        <p class="text-stone-600 text-justify text-sm leading-relaxed font-light">
-                            Aprende a gestionar tu tiempo sin quemarte. Herramientas diseñadas para mujeres ambiciosas que buscan compaginar sus objetivos profesionales con un bienestar emotional profundo y real.
-                        </p>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
+            <!-- GUÍA 3: PRE-DAILY OS -->
+            <div class="bg-white border border-stone-200 rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:border-stone-300 transition-all">
+                <div>
+                    <span class="bg-emerald-50 text-emerald-700 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">Ciencia Clínica</span>
+                    <h3 class="serif text-xl font-medium text-stone-950 mt-2 mb-1">Precisión a los 40</h3>
+                    <p class="text-stone-500 text-xs font-light mb-4">PRE-DAILY OS: Suplementación y hormonas.</p>
+                    
+                    <!-- Desplegable Info Extra -->
+                    <details class="group border-t border-stone-100 py-3 mb-4">
+                        <summary class="list-none flex items-center justify-between cursor-pointer text-[11px] font-bold text-stone-600 uppercase tracking-wider group-open:text-emerald-700 transition-colors">
+                            <span>Ver temario detallado</span>
+                            <span class="text-stone-400 group-open:rotate-180 transition-transform duration-100">▼</span>
+                        </summary>
+                        <div class="mt-2.5 text-xs text-stone-600 font-light space-y-1.5 pt-1">
+                            <p>• Protocolos limpios libres de disruptores endocrinos.</p>
+                            <p>• Dosificación exacta de formas minerales queladas.</p>
+                            <p>• <strong>Novedad:</strong> Podcast Oficial Comentado.</p>
+                        </div>
+                    </details>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                    <span class="text-xl font-bold text-stone-900 tracking-tight">5,99€</span>
+                    <a href="https://studyosoficial.gumroad.com/l/gvrmkv" target="_blank" class="bg-stone-950 hover:bg-stone-800 text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-lg transition-all">
+                        Comprar ➔
+                    </a>
+                </div>
+            </div>
 
-    <!-- SECCIÓN NUEVA: RECURSO GRATUITO (LEAD MAGNET) -->
-    <section id="gratis" class="bg-stone-100/70 border-y border-stone-200/60 py-20">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="bg-white border border-stone-200 rounded-3xl p-8 md:p-12 shadow-sm flex flex-col md:flex-row items-center gap-8 md:gap-12">
-                
-                <!-- Vista previa visual premium -->
-                <div class="w-full md:w-2/5 aspect-[4/3] md:aspect-square bg-rose-50 border border-rose-100 rounded-2xl flex flex-col items-center justify-center text-center p-6 relative overflow-hidden shadow-inner">
-                    <span class="text-rose-600 text-4xl mb-3">🧬</span>
-                    <p class="font-bold text-stone-900 text-base leading-tight">Matriz Científica de Suplementación Inteligente</p>
-                    <p class="text-[10px] text-rose-700 font-bold uppercase tracking-widest mt-2 bg-rose-100/60 px-2 py-0.5 rounded">Acceso Gratuito</p>
-                    <img src="Ebook0.png" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'">
-                </div>
-
-                <!-- Detalles y Acción -->
-                <div class="w-full md:w-3/5 flex flex-col justify-between">
-                    <div>
-                        <span class="bg-rose-100 text-rose-800 text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md inline-block mb-3">Descarga Exclusiva</span>
-                        <h2 class="serif text-2xl md:text-3xl text-stone-950 font-medium mb-3">Matriz Científica de Suplementación Inteligente</h2>
-                        <p class="text-sm text-stone-600 leading-relaxed font-light mb-6 text-justify">
-                            Evita los 3 errores críticos de absorción, optimiza tu energía y regula tu cortisol. Un mapa detallado de ingeniería biológica diseñado para estructurar tus tomas diarias con precisión clínica y potenciar tus niveles hormonales sin malgastar tu dinero.
-                        </p>
-                        
-                        <!-- Mini lista de lo que incluye -->
-                        <ul class="space-y-2 mb-8 text-xs text-stone-600 font-light">
-                            <li class="flex items-center gap-2">✔ Cronograma diario optimizado (Mañana, Tarde y Noche).</li>
-                            <li class="flex items-center gap-2">✔ Los 3 errores de absorción que neutralizan tus suplementos.</li>
-                            <li class="flex items-center gap-2">✔ Guía de formas químicas correctas (queladas vs óxidos).</li>
-                        </ul>
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-stone-100">
-                        <div>
-                            <span class="text-xs text-stone-400 block">Valorado en 4,99€</span>
-                            <span class="text-xl font-bold text-rose-700">100% GRATIS</span>
-                        </div>
-                        <a href="https://studyosoficial.gumroad.com/l/iovbr" target="_blank" class="w-full sm:w-auto text-center bg-stone-950 hover:bg-stone-800 text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all shadow-md">
-                            Descargar Ahora Gratis ➔
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Catálogo de Ebooks Propios (Integrado con Gumroad) -->
-    <section id="recursos" class="max-w-6xl mx-auto px-6 py-20">
-        <div class="text-center mb-16">
-            <h2 class="serif text-2xl md:text-4xl text-stone-950 font-medium">Tus Herramientas de Evolución Premium</h2>
-            <p class="text-stone-500 text-sm mt-3 font-light">Guías prácticas en formato digital diseñadas para aplicarse desde el primer día. ¡Tu compra nos sirve para seguir creando recursos para todas!</p>
-        </div>
-
-        <!-- Grid optimizado a 3 columnas para pantallas grandes -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            
-            <!-- GUÍA 1: Nutrición y Ciclo Menstrual -->
-            <div class="bg-white border border-stone-200 rounded-3xl overflow-hidden flex flex-col justify-between p-6 shadow-sm hover:shadow-md transition-all">
-                <div>
-                    <!-- Contenedor Premium de Imagen -->
-                    <div class="aspect-[4/3] bg-stone-100 rounded-2xl mb-6 flex flex-col items-center justify-center border border-stone-200/60 relative overflow-hidden p-6 text-center">
-                        <span class="text-rose-400 text-3xl mb-2">🌸</span>
-                        <p class="font-bold text-stone-900 text-base">Nutrición Según Tu Ciclo Menstrual</p>
-                        <p class="text-xs text-stone-400 mt-1">Guía Práctica & Plan de 90 días</p>
-                        <img src="Ebook 1.png" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'">
-                    </div>
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-rose-50 text-rose-700 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md">Biológico</span>
-                        <span class="bg-stone-100 text-stone-600 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md">Menstruación</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-stone-900 mb-2">Nutrición Según Tu Ciclo Menstrual</h3>
-                    <p class="text-sm text-justify text-stone-600 leading-relaxed font-light mb-6">
-                        El método definitivo para dejar de luchar contra tus hormonas. Aprende a sincronizar tu alimentación para optimizar tu energía, eliminar la inflamación y perder grasa de forma inteligente. Incluye de regalo el Dossier Exclusivo con 10 Recetas Hormonales Paso a Paso.
-                    </p>
-                </div>
-                <div>
-                    <div class="flex items-center justify-between pt-4 border-t border-stone-100">
-                        <div>
-                            <span class="text-2xl font-bold text-stone-900">4,99€</span>
-                        </div>
-                        <a href="https://studyosoficial.gumroad.com/l/tkydx" target="_blank" class="bg-stone-950 hover:bg-stone-800 text-white text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-xl transition-all shadow-sm">
-                            Adquirir Guía
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- GUÍA 2: Daily OS: Tu Nueva Versión -->
-            <div class="bg-white border border-stone-200 rounded-3xl overflow-hidden flex flex-col justify-between p-6 shadow-sm hover:shadow-md transition-all">
-                <div>
-                    <!-- Contenedor Premium de Imagen -->
-                    <div class="aspect-[4/3] bg-stone-100 rounded-2xl mb-6 flex flex-col items-center justify-center border border-stone-200/60 relative overflow-hidden p-6 text-center">
-                        <span class="text-purple-400 text-3xl mb-2">🟣</span>
-                        <p class="font-bold text-stone-900 text-base">Daily OS: Tu Nueva Versión</p>
-                        <p class="text-xs text-stone-400 mt-1">Hábitos, Mente y Energía en la Menopausia</p>
-                        <img src="Ebook2.png" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'">
-                    </div>
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-purple-50 text-purple-700 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md">Evolución</span>
-                        <span class="bg-stone-100 text-stone-600 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md">Premenopausia</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-stone-900 mb-2">Rediseño de hábitos durante la menopausia</h3>
-                    <p class="text-sm text-justify text-stone-600 leading-relaxed font-light mb-6">
-                        Rediseña tus hábitos con un enfoque elástico y compasivo adaptado a tu madurez biológica. Despeja la niebla mental, optimiza tu descanso frente al insomnio y recupera tu enfoque real sin rigidez absurda. Incluye el Ebook completo, Audiobook con los capítulos más destacados y el Plan de Acción de 90 días.
-                    </p>
-                </div>
-                <div> 
-                    <div class="flex items-center justify-between pt-4 border-t border-stone-100">
-                        <div>
-                            <span class="text-2xl font-bold text-stone-900">5,99€</span>
-                        </div>
-                        <a href="https://studyosoficial.gumroad.com/l/fnlugn?layout=profile" target="_blank" class="bg-stone-950 hover:bg-stone-800 text-white text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-xl transition-all shadow-sm">
-                            Adquirir Guía
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- GUÍA 3 - PRE-DAILY OS (¡Con aviso del Podcast!) -->
-            <div class="bg-white border border-stone-200 rounded-3xl overflow-hidden flex flex-col justify-between p-6 shadow-sm hover:shadow-md transition-all">
-                <div>
-                    <!-- Contenedor Premium de Imagen -->
-                    <div class="aspect-[4/3] bg-stone-100 rounded-2xl mb-6 flex flex-col items-center justify-center border border-stone-200/60 relative overflow-hidden p-6 text-center">
-                        <span class="text-emerald-500 text-3xl mb-2">🧬</span>
-                        <p class="font-bold text-stone-900 text-base">PRE-DAILY OS: Suplementación Inteligente</p>
-                        <p class="text-xs text-stone-400 mt-1">Hormonas, Enfoque y Ciencia en la Premenopausia</p>
-                        <img src="Ebook3.png" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'">
-                    </div>
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-emerald-50 text-emerald-700 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md">Bioendocrinología</span>
-                        <span class="bg-stone-100 text-stone-600 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md">Podcast Incluido</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-stone-900 mb-2">Suplementación Inteligente</h3>
-                    <p class="text-sm text-justify text-stone-600 leading-relaxed font-light mb-6">
-                        El manual definitivo de ingeniería inversa para la premenopausia a partir de los 40 años. Aprende a regularte mediante suplementación natural basada en la ciencia, con dosis exactas. <strong>¡Novedad!</strong> Incluye el eBook completo y el nuevo <strong>Podcast Oficial Comentado</strong> de regalo.
-                    </p>
-                </div>
-                <div>
-                    <div class="flex items-center justify-between pt-4 border-t border-stone-100">
-                        <div>
-                            <span class="text-2xl font-bold text-stone-900">5,99€</span>
-                        </div>
-                        <a href="https://studyosoficial.gumroad.com/l/gvrmkv" target="_blank" class="bg-stone-950 hover:bg-stone-800 text-white text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-xl transition-all shadow-sm">
-                            Adquirir Guía
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Sección Suscripción / Promoción Modificada para dirigir a Gumroad -->
-    <section class="bg-[#F6F5F2] border-t border-stone-200/60 py-20">
-        <div class="max-w-md mx-auto px-6 text-center">
-            <span class="text-2xl mb-3 block">¡Empieza hoy!</span>
-            <h2 class="serif text-2xl md:text-3xl text-stone-950 font-medium mb-3">Únete a la Comunidad StudyOS</h2>
-            <p class="text-stone-600 text-sm leading-relaxed font-light mb-4">
-                Al adquirir cualquiera de nuestras guías digitales o descargar el recurso gratuito, entrarás de forma automática en nuestra newsletter semanal de hábitos, enfoque y crecimiento integral.
-            </p>
-            <p class="text-stone-950 text-sm font-semibold leading-relaxed mb-0">
-                Además, recibirás directamente en tu correo de Gumroad la guía exclusiva de regalo con las <span class="italic text-rose-700">6 recetas saludables y equilibradas</span> para potenciar tu energía.
-            </p>
-        </div>
-    </section>
-
-    <!-- Footer Corporate e Inspiracional -->
-    <footer class="border-t border-stone-200/60 bg-white py-16 text-center text-xs text-stone-500">
-        <p class="font-bold text-stone-900 tracking-widest uppercase text-sm mb-3">StudyOS</p>
-        <p class="max-w-md mx-auto mb-8 font-light leading-relaxed px-6">
-            Un ecosistema digital creado para transformar el potencial femenino mediante la ciencia de los hábitos, la mentalidad y la sintonía biológica.
-        </p>
-        <div class="border-t border-stone-100 max-w-xs mx-auto pt-6 text-stone-400 font-light">
-            &copy; 2026 StudyOS. Todos los derechos reservados.
-        </div>
-    </footer>
-
-</body>
-</html>
+        </div>
+    </section>
