@@ -51,10 +51,11 @@
     text-transform:uppercase;
     color:var(--rose-deep);
   }
-  h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;letter-spacing:-0.01em;color:var(--ink);}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;letter-spacing:-0.01em;color:var(--ink);text-wrap:balance;}
   h2{font-size:clamp(28px,4vw,38px);}
   h3{font-size:22px;font-weight:600;}
-  p{margin:0;}
+  p{margin:0;text-align:justify;text-wrap:pretty;hyphens:auto;}
+  p.quote{text-align:left;}
   .btn{
     display:inline-flex;align-items:center;gap:8px;
     font-family:var(--sans);font-weight:600;font-size:15px;
@@ -80,8 +81,24 @@
   nav.links{display:flex;gap:30px;font-size:14.5px;font-weight:500;}
   nav.links a{text-decoration:none;opacity:.75;}
   nav.links a:hover{opacity:1;}
-  .nav-cta{font-size:14px;padding:11px 22px;background:var(--rose-deep);color:#fff;border-radius:999px;text-decoration:none;font-weight:600;}
-  @media (max-width:860px){ nav.links{display:none;} }
+  .nav-cta{font-size:14px;padding:11px 22px;background:var(--rose-deep);color:#fff;border-radius:999px;text-decoration:none;font-weight:600;flex-shrink:0;}
+  .menu-toggle{display:none;background:none;border:0;cursor:pointer;padding:6px;flex-direction:column;gap:5px;}
+  .menu-toggle span{width:22px;height:2px;background:var(--ink);border-radius:2px;}
+  .mobile-panel{display:none;flex-direction:column;gap:2px;padding:8px 24px 18px;border-top:1px solid var(--line);}
+  .mobile-panel a{padding:12px 4px;text-decoration:none;color:var(--ink);font-weight:500;border-bottom:1px solid var(--line);}
+  .mobile-panel.open{display:flex;}
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .menu-toggle{display:flex;}
+    .hero-inner{grid-template-columns:1fr;text-align:center;}
+    .hero-inner .bloom{order:-1;max-width:280px;}
+    .hero-inner p.lead{margin-left:auto;margin-right:auto;text-align:center;}
+    .hero-ctas{justify-content:center;}
+    .hero-note{margin-left:auto;margin-right:auto;text-align:center;}
+    section{padding:60px 0;}
+    .free-copy, .free-visual{padding:32px 26px;}
+    .community{padding:44px 26px;}
+  }
 
   /* HERO */
   .hero{padding:76px 0 40px;overflow:hidden;position:relative;}
@@ -101,7 +118,7 @@
   section{padding:84px 0;}
   .section-head{max-width:620px;margin:0 auto 48px;text-align:center;}
   .section-head .eyebrow{display:block;margin-bottom:10px;}
-  .section-head p{margin-top:14px;color:var(--ink-soft);font-size:16px;}
+  .section-head p{margin-top:14px;color:var(--ink-soft);font-size:16px;text-align:center;}
 
   /* pillars */
   .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
@@ -114,27 +131,41 @@
   .pillar:nth-child(2) .ic{background:#E7EEDF;}
   .pillar:nth-child(3) .ic{background:var(--blush-2);}
   .pillar h3{margin-bottom:10px;font-size:19px;}
-  .pillar p{color:var(--ink-soft);font-size:15px;}
+  .pillar p{color:var(--ink-soft);font-size:15px;text-align:center;}
   @media (max-width:860px){ .pillars{grid-template-columns:1fr;} }
 
   /* free resource */
   .free{
     background:linear-gradient(135deg,#F6E4DC,#EFDCE7);
     border-radius:32px; border:1px solid var(--line);
-    display:grid;grid-template-columns:.85fr 1.15fr;gap:0;overflow:hidden;
+    display:grid;grid-template-columns:1fr 1.25fr;gap:0;overflow:hidden;
   }
-  .free-visual{padding:48px;display:flex;align-items:center;justify-content:center;}
-  .free-visual img{border-radius:16px;box-shadow:0 20px 50px rgba(74,59,61,.18);max-height:400px;}
+  .free-visual{padding:44px;display:flex;align-items:center;justify-content:center;position:relative;}
+  .free-visual::before{
+    content:"";position:absolute;width:78%;height:78%;border-radius:50%;
+    background:radial-gradient(circle, rgba(255,255,255,.55), rgba(255,255,255,0) 70%);
+  }
+  .free-visual .frame{
+    position:relative;background:#fff;padding:14px;border-radius:20px;
+    box-shadow:0 24px 48px rgba(74,59,61,.22);transform:rotate(-2deg);width:100%;max-width:290px;
+  }
+  .free-visual .frame img{border-radius:12px;width:100%;}
   .free-copy{padding:52px 48px;}
   .free h3{font-size:28px;margin:14px 0 16px;}
   .free p.desc{color:var(--ink-soft);font-size:15.5px;margin-bottom:24px;}
   .price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:26px;}
   .price-old{text-decoration:line-through;color:var(--ink-soft);font-size:14px;}
   .price-new{font-family:var(--serif);font-size:24px;color:var(--rose-deep);font-weight:600;}
-  .free-grid{display:grid;gap:16px;margin-top:28px;}
-  .free-grid .fi h4{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--rose-deep);margin-bottom:6px;font-weight:600;}
-  .free-grid .fi p{font-size:14.5px;color:var(--ink-soft);}
+  .free-grid{display:grid;gap:12px;margin-top:28px;}
   @media (max-width:860px){ .free{grid-template-columns:1fr;} }
+
+  /* info boxes: tema / incluye / aprenderás */
+  .info-box{
+    background:var(--blush);border:1px solid var(--line);border-radius:14px;
+    padding:14px 16px;
+  }
+  .info-box .lbl{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--rose-deep);margin-bottom:5px;font-weight:600;}
+  .info-box p{font-size:14.5px;color:var(--ink-soft);text-align:left;}
 
   /* bundle */
   .bundle{
@@ -153,14 +184,16 @@
   .card-top{padding:26px 26px 0;display:flex;align-items:center;gap:10px;}
   .card-icon{font-size:20px;}
   .card-tags{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--sage-deep);}
-  .card-img{padding:18px 26px;}
-  .card-img img{border-radius:14px;border:1px solid var(--line);}
+  .card-img{padding:20px 26px 6px;display:flex;justify-content:center;}
+  .card-img .frame{
+    background:var(--blush);border-radius:16px;padding:16px;width:100%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .card-img img{border-radius:10px;box-shadow:0 12px 26px rgba(74,59,61,.16);max-height:220px;width:auto;max-width:78%;}
   .card-body{padding:6px 26px 28px;display:flex;flex-direction:column;flex:1;}
   .card h3{margin-bottom:4px;}
   .card .sub{font-size:13.5px;color:var(--ink-soft);margin-bottom:18px;}
-  .card dl{margin:0 0 20px;}
-  .card dt{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--rose-deep);margin-top:14px;font-weight:600;}
-  .card dd{margin:6px 0 0;font-size:14px;color:var(--ink-soft);}
+  .card .info-stack{display:grid;gap:10px;margin-bottom:20px;}
   .card .podcast{
     display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink-soft);
     background:var(--blush);border-radius:12px;padding:10px 14px;margin-bottom:20px;
@@ -202,7 +235,7 @@
     background:linear-gradient(135deg,var(--sage-deep),#7c9268);color:#fff;border-radius:32px;padding:64px 48px;text-align:center;
   }
   .community h2{color:#fff;}
-  .community p{color:#eaf0e2;max-width:560px;margin:16px auto 0;font-size:15.5px;}
+  .community p{color:#eaf0e2;max-width:560px;margin:16px auto 0;font-size:15.5px;text-align:center;}
 
   /* legal */
   .legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:820px;margin:0 auto;}
@@ -235,6 +268,14 @@
       <a href="#faq">Preguntas</a>
     </nav>
     <a class="nav-cta" href="#gratis">Descargar gratis</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#metodo">El Método</a>
+    <a href="#pilares">Enfoque</a>
+    <a href="#gratis">Recurso Gratis</a>
+    <a href="#premium">Guías Premium</a>
+    <a href="#faq">Preguntas</a>
   </div>
 </header>
 
@@ -299,7 +340,9 @@
   <div class="wrap">
     <div class="free">
       <div class="free-visual">
-        <img src="https://studyos-oficial.github.io/studyos/Ebook0.png" alt="Portada: Matriz Científica de Suplementación Inteligente">
+        <div class="frame">
+          <img src="https://studyos-oficial.github.io/studyos/Ebook0.png" alt="Portada: Matriz Científica de Suplementación Inteligente">
+        </div>
       </div>
       <div class="free-copy">
         <span class="eyebrow">Acceso gratuito · Descarga exclusiva</span>
@@ -311,16 +354,16 @@
         </div>
         <a class="btn btn-primary" href="https://studyosoficial.gumroad.com/l/iovbr">Descargar ahora gratis →</a>
         <div class="free-grid">
-          <div class="fi">
-            <h4>¿Cuál es el tema?</h4>
+          <div class="info-box">
+            <span class="lbl">¿Cuál es el tema?</span>
             <p>Cómo combinar tus suplementos para que no compitan entre sí y tu cuerpo los aproveche de verdad.</p>
           </div>
-          <div class="fi">
-            <h4>¿Qué incluye?</h4>
+          <div class="info-box">
+            <span class="lbl">¿Qué incluye?</span>
             <p>Cronograma diario de tomas, guía de formas químicas a priorizar y un podcast complementario de 22 min.</p>
           </div>
-          <div class="fi">
-            <h4>¿Qué aprenderás?</h4>
+          <div class="info-box">
+            <span class="lbl">¿Qué aprenderás?</span>
             <p>A estructurar tus tomas para cuidar tu descanso nocturno y sostener tu energía durante el día.</p>
           </div>
         </div>
@@ -342,27 +385,25 @@
         <strong>¿Te las llevas todas? Pack completo StudyOS</strong>
         <span>Las 4 guías premium + el recurso gratis, en un único pago — ahorras frente a comprarlas por separado.</span>
       </div>
-      <a class="btn btn-sage" href="https://studyosoficial.gumroad.com/l/dedsza" title="https://studyosoficial.gumroad.com/l/dedsza">Ver el pack completo →</a>
+      <a class="btn btn-sage" href="#" title="Crea este producto en Gumroad y sustituye este enlace">Ver el pack completo →</a>
     </div>
 
     <div class="cards">
 
       <article class="card">
         <div class="card-top">
+          <span class="card-icon">🌸</span>
           <span class="card-tags">Ciclo menstrual</span>
         </div>
-        <div class="card-img"><img src="https://studyos-oficial.github.io/studyos/Ebook%201.png" alt="Portada: Nutrición Según Tu Ciclo Menstrual"></div>
+        <div class="card-img"><div class="frame"><img src="https://studyos-oficial.github.io/studyos/Ebook%201.png" alt="Portada: Nutrición Según Tu Ciclo Menstrual"></div></div>
         <div class="card-body">
           <h3>Nutrición Según Tu Ciclo Menstrual</h3>
           <p class="sub">Guía práctica &amp; plan de 90 días</p>
-          <dl>
-            <dt>Tema</dt>
-            <dd>Cómo comer y entrenar en sintonía con las 4 fases de tu ciclo, sin restricciones lineales.</dd>
-            <dt>Incluye</dt>
-            <dd>Listas de la compra semanales, entrenamiento por fase, 4 recetas y plan de 90 días.</dd>
-            <dt>Aprenderás</dt>
-            <dd>A calmar los antojos en la fase lútea, reducir la hinchazón y aprovechar tus días de más energía.</dd>
-          </dl>
+          <div class="info-stack">
+            <div class="info-box"><span class="lbl">Tema</span><p>Cómo comer y entrenar en sintonía con las 4 fases de tu ciclo, sin restricciones lineales.</p></div>
+            <div class="info-box"><span class="lbl">Incluye</span><p>Listas de la compra semanales, entrenamiento por fase, 4 recetas y plan de 90 días.</p></div>
+            <div class="info-box"><span class="lbl">Aprenderás</span><p>A calmar los antojos en la fase lútea, reducir la hinchazón y aprovechar tus días de más energía.</p></div>
+          </div>
           <div class="podcast">🎧 Podcast incluido — 27 min de acompañamiento</div>
           <div class="card-footer">
             <span class="card-price">4,99€</span>
@@ -373,20 +414,18 @@
 
       <article class="card">
         <div class="card-top">
+          <span class="card-icon">🟣</span>
           <span class="card-tags">Menopausia</span>
         </div>
-        <div class="card-img"><img src="https://studyos-oficial.github.io/studyos/Ebook2.png" alt="Portada: Daily OS, Tu Nueva Versión"></div>
+        <div class="card-img"><div class="frame"><img src="https://studyos-oficial.github.io/studyos/Ebook2.png" alt="Portada: Daily OS, Tu Nueva Versión"></div></div>
         <div class="card-body">
           <h3>Daily OS: Tu Nueva Versión</h3>
           <p class="sub">Hábitos, mente y energía en la menopausia</p>
-          <dl>
-            <dt>Tema</dt>
-            <dd>Rediseña tus hábitos frente a los cambios de estrógenos, sueño y ánimo propios de esta etapa.</dd>
-            <dt>Incluye</dt>
-            <dd>Menú de mañanas flexibles, método de los 3 anclajes y protocolo para dormir mejor.</dd>
-            <dt>Aprenderás</dt>
-            <dd>A aclarar la niebla mental, calmar los sofocos nocturnos y moverte sin agotarte.</dd>
-          </dl>
+          <div class="info-stack">
+            <div class="info-box"><span class="lbl">Tema</span><p>Rediseña tus hábitos frente a los cambios de estrógenos, sueño y ánimo propios de esta etapa.</p></div>
+            <div class="info-box"><span class="lbl">Incluye</span><p>Menú de mañanas flexibles, método de los 3 anclajes y protocolo para dormir mejor.</p></div>
+            <div class="info-box"><span class="lbl">Aprenderás</span><p>A aclarar la niebla mental, calmar los sofocos nocturnos y moverte sin agotarte.</p></div>
+          </div>
           <div class="podcast">🎧 Podcast incluido — 24 min de acompañamiento</div>
           <div class="card-footer">
             <span class="card-price">4,99€</span>
@@ -397,20 +436,18 @@
 
       <article class="card">
         <div class="card-top">
+          <span class="card-icon">🧴</span>
           <span class="card-tags">Premenopausia</span>
         </div>
-        <div class="card-img"><img src="https://studyos-oficial.github.io/studyos/Ebook3.png" alt="Portada: PRE-DAILY OS, Suplementación Inteligente"></div>
+        <div class="card-img"><div class="frame"><img src="https://studyos-oficial.github.io/studyos/Ebook3.png" alt="Portada: PRE-DAILY OS, Suplementación Inteligente"></div></div>
         <div class="card-body">
           <h3>PRE-DAILY OS: Suplementación Inteligente</h3>
           <p class="sub">Hormonas, enfoque y calma en la premenopausia</p>
-          <dl>
-            <dt>Tema</dt>
-            <dd>Suplementación de apoyo durante la etapa de mayor cambio hormonal.</dd>
-            <dt>Incluye</dt>
-            <dd>Fichas de Vitex, Ashwagandha, magnesio y omega-3, y qué analíticas pedir a tu médico.</dd>
-            <dt>Aprenderás</dt>
-            <dd>A organizar tus tomas por horario y a entender qué le pasa a tu cuerpo, sin miedo.</dd>
-          </dl>
+          <div class="info-stack">
+            <div class="info-box"><span class="lbl">Tema</span><p>Suplementación de apoyo durante la etapa de mayor cambio hormonal.</p></div>
+            <div class="info-box"><span class="lbl">Incluye</span><p>Fichas de Vitex, Ashwagandha, magnesio y omega-3, y qué analíticas pedir a tu médico.</p></div>
+            <div class="info-box"><span class="lbl">Aprenderás</span><p>A organizar tus tomas por horario y a entender qué le pasa a tu cuerpo, sin miedo.</p></div>
+          </div>
           <div class="podcast">🎧 Podcast incluido — 15 min de acompañamiento</div>
           <div class="card-footer">
             <span class="card-price">4,99€</span>
@@ -421,20 +458,18 @@
 
       <article class="card">
         <div class="card-top">
+          <span class="card-icon">🍵</span>
           <span class="card-tags">Ayuno flexible</span>
         </div>
-        <div class="card-img"><img src="https://studyos-oficial.github.io/studyos/Ebook4.png" alt="Portada: Ayuno OS, Ayuno Intermitente Flexible"></div>
+        <div class="card-img"><div class="frame"><img src="https://studyos-oficial.github.io/studyos/Ebook4.png" alt="Portada: Ayuno OS, Ayuno Intermitente Flexible"></div></div>
         <div class="card-body">
           <h3>Ayuno OS</h3>
           <p class="sub">Ayuno intermitente flexible para mujeres</p>
-          <dl>
-            <dt>Tema</dt>
-            <dd>Un ayuno que se adapta a tu ciclo y a tu momento hormonal, no al revés.</dd>
-            <dt>Incluye</dt>
-            <dd>Protocolo de "ventana elástica", cronograma por fase y guía para romper el ayuno con calma.</dd>
-            <dt>Aprenderás</dt>
-            <dd>A ajustar tus horas de ayuno según tu energía y a cuidar tu tiroides en el proceso.</dd>
-          </dl>
+          <div class="info-stack">
+            <div class="info-box"><span class="lbl">Tema</span><p>Un ayuno que se adapta a tu ciclo y a tu momento hormonal, no al revés.</p></div>
+            <div class="info-box"><span class="lbl">Incluye</span><p>Protocolo de "ventana elástica", cronograma por fase y guía para romper el ayuno con calma.</p></div>
+            <div class="info-box"><span class="lbl">Aprenderás</span><p>A ajustar tus horas de ayuno según tu energía y a cuidar tu tiroides en el proceso.</p></div>
+          </div>
           <div class="podcast">🎧 Podcast incluido — 20 min de acompañamiento</div>
           <div class="card-footer">
             <span class="card-price">4,99€</span>
@@ -568,6 +603,13 @@
 </footer>
 
 <script>
+  document.getElementById('menuToggle').addEventListener('click', function(){
+    document.getElementById('mobilePanel').classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-panel a').forEach(function(a){
+    a.addEventListener('click', function(){ document.getElementById('mobilePanel').classList.remove('open'); });
+  });
+
   document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){
       var item = btn.closest('.faq-item');
