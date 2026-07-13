@@ -69,6 +69,11 @@
   .btn-outline:hover{border-color:var(--rose-deep);}
   .btn-sage{background:var(--sage-deep);color:#fff;}
 
+  /* announcement bar */
+  .announce{background:var(--rose-deep);color:#fff;text-align:center;font-size:13.5px;padding:11px 20px;}
+  .announce strong{font-weight:700;}
+  @media (max-width:860px){ .announce{font-size:12.5px;padding:10px 16px;} }
+
   /* NAV */
   header.nav{
     position:sticky;top:0;z-index:50;
@@ -100,11 +105,15 @@
     body{padding-bottom:74px;}
     .sticky-cta{display:block;}
 
-    .hero{padding:36px 0 30px;}
-    .hero-inner{grid-template-columns:1fr;text-align:center;gap:28px;}
+    .hero{padding:44px 0 34px;position:relative;}
+    .hero-inner{grid-template-columns:1fr;text-align:center;gap:0;position:relative;}
+    .hero-copy{position:relative;z-index:1;}
     .hero .eyebrow{font-size:12px;}
     .hero h1{font-size:28px;line-height:1.22;margin:14px 0 14px;}
-    .hero-inner .bloom{order:2;max-width:180px;opacity:.9;}
+    .hero-inner .bloom{
+      position:absolute;top:-30px;left:50%;transform:translateX(-50%);
+      width:260px;max-width:78vw;opacity:.4;z-index:0;pointer-events:none;margin:0;
+    }
     .hero-inner p.lead{margin:0 auto 24px;text-align:center;font-size:16px;max-width:420px;}
     .hero-ctas{flex-direction:column;align-items:stretch;justify-content:center;gap:10px;margin-bottom:16px;}
     .hero-ctas .btn{width:100%;justify-content:center;}
@@ -274,6 +283,11 @@
 </head>
 <body>
 
+<div class="announce">
+  <div class="wrap">🎁 Compra cualquier guía y consigue un <strong>50% de descuento</strong> en otra guía a tu elección — el código llega junto a tu compra.</div>
+</div>
+
+
 <header class="nav">
   <div class="nav-inner">
     <div class="logo">Study<span>OS</span></div>
@@ -299,7 +313,7 @@
 
 <section class="hero" id="metodo">
   <div class="wrap hero-inner">
-    <div>
+    <div class="hero-copy">
       <span class="eyebrow">Ciclo menstrual · Premenopausia · Menopausia</span>
       <h1>Un espacio pensado <em>para tu cuerpo</em>, en cada etapa que atraviesa.</h1>
       <p class="lead">Guías digitales de nutrición, ayuno, suplementación y hábitos, escritas con calma y base científica, para acompañarte —no exigirte— en cada fase hormonal.</p>
@@ -311,10 +325,10 @@
     </div>
     <div class="bloom">
       <svg viewBox="0 0 420 420">
-        <circle cx="210" cy="150" r="120" fill="var(--rose)" opacity="0.35"/>
-        <circle cx="290" cy="240" r="110" fill="var(--sage)" opacity="0.35"/>
-        <circle cx="150" cy="260" r="100" fill="var(--lavender)" opacity="0.45"/>
-        <circle cx="230" cy="210" r="70" fill="var(--gold)" opacity="0.4"/>
+        <circle cx="210" cy="150" r="120" fill="#E3A79D" opacity="0.35"/>
+        <circle cx="290" cy="240" r="110" fill="#A9B79A" opacity="0.35"/>
+        <circle cx="150" cy="260" r="100" fill="#D6C6DE" opacity="0.45"/>
+        <circle cx="230" cy="210" r="70" fill="#DDBC7E" opacity="0.4"/>
         <circle cx="215" cy="210" r="30" fill="#fff" opacity="0.9"/>
       </svg>
     </div>
@@ -403,13 +417,14 @@
         <strong>¿Te las llevas todas? Pack completo StudyOS</strong>
         <span>Las 4 guías premium + el recurso gratis, en un único pago — ahorras frente a comprarlas por separado.</span>
       </div>
-      <a class="btn btn-sage" href="https://studyosoficial.gumroad.com/l/dedsza" title="Crea este producto en Gumroad y sustituye este enlace">Ver el pack completo →</a>
+      <a class="btn btn-sage" href="https://studyosoficial.gumroad.com/l/dedsza">Ver el pack completo →</a>
     </div>
 
     <div class="cards">
 
       <article class="card">
         <div class="card-top">
+          <span class="card-icon">🌸</span>
           <span class="card-tags">Ciclo menstrual</span>
         </div>
         <div class="card-img"><div class="frame"><img src="https://studyos-oficial.github.io/studyos/Ebook%201.png" alt="Portada: Nutrición Según Tu Ciclo Menstrual"></div></div>
@@ -431,6 +446,7 @@
 
       <article class="card">
         <div class="card-top">
+          <span class="card-icon">🟣</span>
           <span class="card-tags">Menopausia</span>
         </div>
         <div class="card-img"><div class="frame"><img src="https://studyos-oficial.github.io/studyos/Ebook2.png" alt="Portada: Daily OS, Tu Nueva Versión"></div></div>
@@ -452,6 +468,7 @@
 
       <article class="card">
         <div class="card-top">
+          <span class="card-icon">🧴</span>
           <span class="card-tags">Premenopausia</span>
         </div>
         <div class="card-img"><div class="frame"><img src="https://studyos-oficial.github.io/studyos/Ebook3.png" alt="Portada: PRE-DAILY OS, Suplementación Inteligente"></div></div>
@@ -473,6 +490,7 @@
 
       <article class="card">
         <div class="card-top">
+          <span class="card-icon">🍵</span>
           <span class="card-tags">Ayuno flexible</span>
         </div>
         <div class="card-img"><div class="frame"><img src="https://studyos-oficial.github.io/studyos/Ebook4.png" alt="Portada: Ayuno OS, Ayuno Intermitente Flexible"></div></div>
@@ -549,6 +567,10 @@
       <h2>Preguntas frecuentes</h2>
     </div>
     <div class="faq">
+      <div class="faq-item">
+        <button class="faq-q">¿Cómo funciona el descuento del 50%? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Al comprar cualquiera de nuestras guías, recibirás un código para conseguir un 50% de descuento en otra guía a tu elección, junto con la confirmación de tu compra.</p></div>
+      </div>
       <div class="faq-item">
         <button class="faq-q">¿Esto sustituye a mi médico o nutricionista? <span class="plus">+</span></button>
         <div class="faq-a"><p>No. Nuestras guías son contenido educativo sobre hábitos, nutrición y bienestar general. No diagnostican ni tratan ninguna condición. Si tienes un problema de salud, tomas medicación o vas a empezar a suplementarte o ayunar, consúltalo antes con un profesional sanitario.</p></div>
