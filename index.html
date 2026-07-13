@@ -75,29 +75,46 @@
     background:rgba(251,241,236,.88);backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
   }
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:1100px;margin:0 auto;}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1100px;margin:0 auto;gap:12px;}
   .logo{font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:-.01em;}
   .logo span{color:var(--rose-deep);}
   nav.links{display:flex;gap:30px;font-size:14.5px;font-weight:500;}
   nav.links a{text-decoration:none;opacity:.75;}
   nav.links a:hover{opacity:1;}
   .nav-cta{font-size:14px;padding:11px 22px;background:var(--rose-deep);color:#fff;border-radius:999px;text-decoration:none;font-weight:600;flex-shrink:0;}
-  .menu-toggle{display:none;background:none;border:0;cursor:pointer;padding:6px;flex-direction:column;gap:5px;}
+  .menu-toggle{display:none;background:none;border:0;cursor:pointer;padding:10px;flex-direction:column;gap:5px;flex-shrink:0;}
   .menu-toggle span{width:22px;height:2px;background:var(--ink);border-radius:2px;}
-  .mobile-panel{display:none;flex-direction:column;gap:2px;padding:8px 24px 18px;border-top:1px solid var(--line);}
-  .mobile-panel a{padding:12px 4px;text-decoration:none;color:var(--ink);font-weight:500;border-bottom:1px solid var(--line);}
+  .mobile-panel{display:none;flex-direction:column;gap:2px;padding:10px 24px 20px;border-top:1px solid var(--line);}
+  .mobile-panel a{padding:14px 4px;text-decoration:none;color:var(--ink);font-weight:500;border-bottom:1px solid var(--line);font-size:15px;}
+  .mobile-panel .btn{margin-top:14px;justify-content:center;}
   .mobile-panel.open{display:flex;}
+
+  /* mobile bottom sticky CTA */
+  .sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:55;background:rgba(251,241,236,.95);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:12px 20px;}
+  .sticky-cta .btn{width:100%;justify-content:center;}
+
   @media (max-width:860px){
+    .nav-cta{display:none;}
     nav.links{display:none;}
     .menu-toggle{display:flex;}
-    .hero-inner{grid-template-columns:1fr;text-align:center;}
-    .hero-inner .bloom{order:-1;max-width:280px;}
-    .hero-inner p.lead{margin-left:auto;margin-right:auto;text-align:center;}
-    .hero-ctas{justify-content:center;}
-    .hero-note{margin-left:auto;margin-right:auto;text-align:center;}
-    section{padding:60px 0;}
-    .free-copy, .free-visual{padding:32px 26px;}
-    .community{padding:44px 26px;}
+    body{padding-bottom:74px;}
+    .sticky-cta{display:block;}
+
+    .hero{padding:36px 0 30px;}
+    .hero-inner{grid-template-columns:1fr;text-align:center;gap:28px;}
+    .hero .eyebrow{font-size:12px;}
+    .hero h1{font-size:28px;line-height:1.22;margin:14px 0 14px;}
+    .hero-inner .bloom{order:2;max-width:180px;opacity:.9;}
+    .hero-inner p.lead{margin:0 auto 24px;text-align:center;font-size:16px;max-width:420px;}
+    .hero-ctas{flex-direction:column;align-items:stretch;justify-content:center;gap:10px;margin-bottom:16px;}
+    .hero-ctas .btn{width:100%;justify-content:center;}
+    .hero-note{margin:0 auto;text-align:center;max-width:340px;}
+
+    section{padding:56px 0;}
+    .free-copy, .free-visual{padding:30px 24px;}
+    .community{padding:40px 24px;}
+    .bundle{flex-direction:column;align-items:stretch;text-align:center;padding:24px;}
+    .bundle .btn{width:100%;justify-content:center;}
   }
 
   /* HERO */
@@ -276,6 +293,7 @@
     <a href="#gratis">Recurso Gratis</a>
     <a href="#premium">Guías Premium</a>
     <a href="#faq">Preguntas</a>
+    <a class="btn btn-primary" href="#gratis">Descargar gratis 🌸</a>
   </div>
 </header>
 
@@ -385,14 +403,15 @@
         <strong>¿Te las llevas todas? Pack completo StudyOS</strong>
         <span>Las 4 guías premium + el recurso gratis, en un único pago — ahorras frente a comprarlas por separado.</span>
       </div>
-      <a class="btn btn-sage" href="https://studyosoficial.gumroad.com/l/dedsza" title="Crea este producto en Gumroad y sustituye este enlace">Ver el pack completo →</a>
+      <a class="btn btn-sage" href="#" title="Crea este producto en Gumroad y sustituye este enlace">Ver el pack completo →</a>
     </div>
 
     <div class="cards">
 
       <article class="card">
         <div class="card-top">
-          <strong class="card-tags">Ciclo menstrual</strong>
+          <span class="card-icon">🌸</span>
+          <span class="card-tags">Ciclo menstrual</span>
         </div>
         <div class="card-img"><div class="frame"><img src="https://studyos-oficial.github.io/studyos/Ebook%201.png" alt="Portada: Nutrición Según Tu Ciclo Menstrual"></div></div>
         <div class="card-body">
@@ -413,7 +432,8 @@
 
       <article class="card">
         <div class="card-top">
-          <strong class="card-tags">Menopausia</strong>
+          <span class="card-icon">🟣</span>
+          <span class="card-tags">Menopausia</span>
         </div>
         <div class="card-img"><div class="frame"><img src="https://studyos-oficial.github.io/studyos/Ebook2.png" alt="Portada: Daily OS, Tu Nueva Versión"></div></div>
         <div class="card-body">
@@ -434,7 +454,8 @@
 
       <article class="card">
         <div class="card-top">
-          <strong class="card-tags">Premenopausia</strong>
+          <span class="card-icon">🧴</span>
+          <span class="card-tags">Premenopausia</span>
         </div>
         <div class="card-img"><div class="frame"><img src="https://studyos-oficial.github.io/studyos/Ebook3.png" alt="Portada: PRE-DAILY OS, Suplementación Inteligente"></div></div>
         <div class="card-body">
@@ -455,7 +476,8 @@
 
       <article class="card">
         <div class="card-top">
-          <strong class="card-tags">Ayuno flexible</strong>
+          <span class="card-icon">🍵</span>
+          <span class="card-tags">Ayuno flexible</span>
         </div>
         <div class="card-img"><div class="frame"><img src="https://studyos-oficial.github.io/studyos/Ebook4.png" alt="Portada: Ayuno OS, Ayuno Intermitente Flexible"></div></div>
         <div class="card-body">
@@ -597,6 +619,10 @@
   </div>
   <div class="foot-bottom">© 2026 StudyOS. Todos los derechos reservados.</div>
 </footer>
+
+<div class="sticky-cta">
+  <a class="btn btn-primary" href="#gratis">Descargar guía gratis 🌸</a>
+</div>
 
 <script>
   document.getElementById('menuToggle').addEventListener('click', function(){
