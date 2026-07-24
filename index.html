@@ -72,7 +72,7 @@
   /* announcement bar */
   .announce{background:var(--rose-deep);color:#fff;text-align:center;font-size:13.5px;padding:11px 20px;}
   .announce strong{font-weight:700;}
-  @media (max-width:860px){ .announce{font-size:12.5px;padding:10px 16px;} }
+  @media (max-width:860px){ .announce{font-size:11.5px;padding:8px 16px;} }
 
   /* NAV */
   header.nav{
@@ -105,19 +105,23 @@
     body{padding-bottom:74px;}
     .sticky-cta{display:block;}
 
-    .hero{padding:36px 0 30px;position:relative;background:linear-gradient(180deg,#FBEAE3,var(--blush) 65%);}
+    .hero{padding:0;position:relative;}
     .hero-inner{grid-template-columns:1fr;text-align:center;gap:0;position:relative;}
-    .hero-copy{position:relative;z-index:1;}
-    .hero .eyebrow{font-size:11.5px;}
-    .hero h1{font-size:23px;line-height:1.32;margin:14px 0 14px;}
-    .hero-inner .bloom{
-      position:absolute;top:-46px;right:-50px;left:auto;transform:none;
-      width:150px;max-width:42vw;opacity:.3;z-index:0;pointer-events:none;margin:0;
+    .hero-copy{
+      position:relative;z-index:1;
+      background:linear-gradient(160deg,#EFAFA0,#E9C2C8 55%,#F6E4DC 100%);
+      padding:50px 26px 38px;border-radius:0 0 36px 36px;
     }
-    .hero-inner p.lead{margin:0 auto 24px;text-align:center;font-size:16px;max-width:420px;}
+    .hero .eyebrow{font-size:11.5px;color:#7A3B32;font-weight:700;}
+    .hero h1{font-size:25px;line-height:1.3;margin:14px 0 16px;color:#3F2624;}
+    .hero h1 em{color:#8C3B2F;}
+    .hero-inner .bloom{display:none;}
+    .hero-inner p.lead{margin:0 auto 24px;text-align:center;font-size:15.5px;max-width:400px;color:#5C3B36;}
     .hero-ctas{flex-direction:column;align-items:stretch;justify-content:center;gap:10px;margin-bottom:16px;}
     .hero-ctas .btn{width:100%;justify-content:center;}
-    .hero-note{margin:0 auto;text-align:center;max-width:340px;}
+    .hero-ctas .btn-primary{background:#3F2624;box-shadow:0 8px 20px rgba(63,38,36,.25);}
+    .hero-ctas .btn-outline{background:rgba(255,255,255,.55);border-color:rgba(63,38,36,.25);color:#3F2624;}
+    .hero-note{margin:0 auto;text-align:center;max-width:340px;color:#6B4842;}
 
     section{padding:56px 0;}
     .free-copy, .free-visual{padding:30px 24px;}
