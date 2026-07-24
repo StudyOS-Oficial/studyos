@@ -98,38 +98,6 @@
   .sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:55;background:rgba(251,241,236,.95);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:12px 20px;}
   .sticky-cta .btn{width:100%;justify-content:center;}
 
-  @media (max-width:860px){
-    .nav-cta{display:none;}
-    nav.links{display:none;}
-    .menu-toggle{display:flex;}
-    body{padding-bottom:74px;}
-    .sticky-cta{display:block;}
-
-    .hero{padding:0;position:relative;}
-    .hero-inner{grid-template-columns:1fr;text-align:center;gap:0;position:relative;}
-    .hero-copy{
-      position:relative;z-index:1;
-      background:linear-gradient(160deg,#EFAFA0,#E9C2C8 55%,#F6E4DC 100%);
-      padding:50px 26px 38px;border-radius:0 0 36px 36px;
-    }
-    .hero .eyebrow{font-size:11.5px;color:#7A3B32;font-weight:700;}
-    .hero h1{font-size:25px;line-height:1.3;margin:14px 0 16px;color:#3F2624;}
-    .hero h1 em{color:#8C3B2F;}
-    .hero-inner .bloom{display:none;}
-    .hero-inner p.lead{margin:0 auto 24px;text-align:center;font-size:15.5px;max-width:400px;color:#5C3B36;}
-    .hero-ctas{flex-direction:column;align-items:stretch;justify-content:center;gap:10px;margin-bottom:16px;}
-    .hero-ctas .btn{width:100%;justify-content:center;}
-    .hero-ctas .btn-primary{background:#3F2624;box-shadow:0 8px 20px rgba(63,38,36,.25);}
-    .hero-ctas .btn-outline{background:rgba(255,255,255,.55);border-color:rgba(63,38,36,.25);color:#3F2624;}
-    .hero-note{margin:0 auto;text-align:center;max-width:340px;color:#6B4842;}
-
-    section{padding:56px 0;}
-    .free-copy, .free-visual{padding:30px 24px;}
-    .community{padding:40px 24px;}
-    .bundle{flex-direction:column;align-items:stretch;text-align:center;padding:24px;}
-    .bundle .btn{width:100%;justify-content:center;}
-  }
-
   /* HERO */
   .hero{padding:76px 0 40px;overflow:hidden;position:relative;}
   .hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;}
@@ -283,6 +251,44 @@
   .foot-links a{text-decoration:none;opacity:.8;}
   .foot-links a:hover{opacity:1;}
   .foot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:32px;padding-top:20px;text-align:center;color:#a3969a;}
+
+  /* ===== MOBILE OVERRIDES (colocadas al final para que ganen siempre en la cascada) ===== */
+  @media (max-width:860px){
+    .nav-cta{display:none;}
+    nav.links{display:none;}
+    .menu-toggle{display:flex;}
+    body{padding-bottom:74px;}
+    .sticky-cta{display:block;}
+
+    .hero{padding:0;position:relative;}
+    .hero-inner{display:block;text-align:center;position:relative;}
+    .hero-copy{
+      position:relative;z-index:1;width:100%;
+      background:linear-gradient(160deg,#EFAFA0,#E9C2C8 55%,#F6E4DC 100%);
+      padding:50px 26px 38px;border-radius:0 0 36px 36px;
+    }
+    .hero .eyebrow{font-size:11.5px;color:#7A3B32;font-weight:700;}
+    .hero h1{font-size:25px;line-height:1.3;margin:14px 0 16px;color:#3F2624;text-wrap:balance;}
+    .hero h1 em{color:#8C3B2F;}
+    .hero-inner .bloom{display:none;}
+    .hero-inner p.lead{margin:0 auto 24px;text-align:center;font-size:15.5px;max-width:400px;color:#5C3B36;}
+    .hero-ctas{flex-direction:column;align-items:stretch;justify-content:center;gap:10px;margin-bottom:16px;}
+    .hero-ctas .btn{width:100%;justify-content:center;}
+    .hero-ctas .btn-primary{background:#3F2624;box-shadow:0 8px 20px rgba(63,38,36,.25);}
+    .hero-ctas .btn-outline{background:rgba(255,255,255,.55);border-color:rgba(63,38,36,.25);color:#3F2624;}
+    .hero-note{margin:0 auto;text-align:center;max-width:340px;color:#6B4842;}
+
+    section{padding:56px 0;}
+    .free-copy, .free-visual{padding:30px 24px;}
+    .community{padding:40px 24px;}
+    .bundle{flex-direction:column;align-items:stretch;text-align:center;padding:24px;}
+    .bundle .btn{width:100%;justify-content:center;}
+    .pillars{grid-template-columns:1fr;}
+    .free{grid-template-columns:1fr;}
+    .cards{grid-template-columns:1fr;}
+    .testi-grid{grid-template-columns:1fr;}
+    .legal-grid{grid-template-columns:1fr;}
+  }
 </style>
 </head>
 <body>
