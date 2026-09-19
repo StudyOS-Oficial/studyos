@@ -281,7 +281,7 @@
       </div>
 
       <div class="hero-art">
-        <img src="portada.jpg" width="1024" height="1024" fetchpriority="high"
+        <img src="100Recetas" width="1024" height="1024" fetchpriority="high"
              alt="Portada del recetario StudyOS: 100 recetas antiinflamatorias adaptadas a tu ciclo, con un bowl de arándanos y aguacate. Bonus: 6 menús semanales.">
       </div>
     </div>
