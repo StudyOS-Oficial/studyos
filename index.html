@@ -12,16 +12,19 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='24' cy='32' r='20' fill='%233B4A25'/%3E%3Ccircle cx='40' cy='32' r='20' fill='%23F2C230' fill-opacity='.8'/%3E%3C/svg%3E">
 
 <script>document.documentElement.classList.add("js");</script>
+<script src="tracking.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <!--
-  ARCHIVOS: sube index.html y portada.jpg a la misma carpeta.
+  ARCHIVOS: sube a la misma carpeta index.html, gracias.html, tracking.js, la portada
+  y el PDF gratuito ("10 Recetas Antiinflamatorias OFICIAL_compressed.pdf").
   ENLACES QUE PUEDES CAMBIAR (usa buscar y reemplazar en este archivo):
   - Recetario de pago (Stripe):  https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00
-  - PDF gratuito (Drive):        https://drive.google.com/uc?export=download&id=1AL3vQ4FFICc0CBD6k_3o-xlOSgo0DF14
+  - PDF gratuito:                10 Recetas Antiinflamatorias OFICIAL_compressed.pdf
   - Instagram:                   https://www.instagram.com/studyos_oficial/
+  Meta Pixel: se configura en tracking.js (solo se activa si aceptan las cookies).
 -->
 
 <style>
@@ -96,7 +99,7 @@
   @media (min-width: 620px) { .top .hide-sm { display: inline-flex; } }
 
   /* ---------- Hero ---------- */
-  .hero { padding-block: clamp(24px, 5vw, 64px) clamp(56px, 8vw, 96px); }
+  .hero { padding-block: clamp(24px, 5vw, 64px) clamp(56px, 8vw, 96px); overflow-x: clip; }
   .hero-grid { display: grid; gap: 44px; align-items: center; }
   @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.05fr .95fr; gap: 64px; } }
   h1 { font-size: clamp(2.3rem, 6vw, 3.9rem); line-height: 1.06; color: var(--olive-900); }
@@ -245,6 +248,11 @@
   footer .tagline { font-family: var(--serif); font-size: 1.1rem; color: var(--olive-800); }
   footer .legal { max-width: 46rem; font-size: .85rem; }
 
+  .legal-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  .legal-links a { color: inherit; }
+  .linkbtn { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; }
+  .linkbtn:hover { color: var(--olive-800); }
+
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .bloom.play .petal { animation: none; }
@@ -260,7 +268,7 @@
     <a class="mark" href="#" aria-label="StudyOS, inicio">Study<span>OS</span></a>
     <nav aria-label="Principal">
       <a href="https://www.instagram.com/studyos_oficial/" rel="noopener" target="_blank">@studyos_oficial</a>
-      <a class="btn btn-yellow hide-sm" href="10 Recetas Antiinflamatorias OFICIAL_compressed.pdf" target="_blank">Descargar gratis</a>
+      <a class="btn btn-yellow hide-sm" href="10 Recetas Antiinflamatorias OFICIAL_compressed.pdf" target="_blank" rel="noopener" data-track="lead">Descargar gratis</a>
     </nav>
   </div>
 </header>
@@ -274,8 +282,8 @@
         <h1>Come a favor de tus hormonas en cada etapa de tu ciclo</h1>
         <p class="lede">Recetas antiinflamatorias, sencillas y explicadas con ciencia real, para tu ciclo, la perimenopausia y la menopausia.</p>
         <div class="cta-stack">
-          <a class="btn btn-yellow btn-lg" href="10 Recetas Antiinflamatorias OFICIAL_compressed.pdf" target="_blank">Descargar 10 recetas gratis</a>
-          <a class="btn btn-outline" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Comprar el recetario completo por 5 €</a>
+          <a class="btn btn-yellow btn-lg" href="10 Recetas Antiinflamatorias OFICIAL_compressed.pdf" target="_blank" rel="noopener" data-track="lead">Descargar 10 recetas gratis</a>
+          <a class="btn btn-outline" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Comprar el recetario completo por 5 €</a>
         </div>
         <p class="hero-note">Empieza por las 10 recetas gratuitas para probar el método. Si te gustan, el recetario completo de 100 recetas cuesta 5 € en pago único.</p>
       </div>
@@ -298,7 +306,7 @@
           <span class="pill">Gratis</span>
           <h3>10 Recetas Antiinflamatorias</h3>
           <p>Una muestra para probar el método antes de comprar el recetario completo: recetas sencillas, con ingredientes reales y pensadas para una alimentación antiinflamatoria.</p>
-          <a class="btn btn-yellow btn-lg" href="10 Recetas Antiinflamatorias OFICIAL_compressed.pdf" target="_blank">Descargar gratis</a>
+          <a class="btn btn-yellow btn-lg" href="10 Recetas Antiinflamatorias OFICIAL_compressed.pdf" target="_blank" rel="noopener" data-track="lead">Descargar gratis</a>
           <p class="fine">PDF de descarga inmediata, sin pagar nada.</p>
         </article>
 
@@ -316,7 +324,7 @@
           <p class="more"><a href="#incluye">Ver todo lo que incluye</a></p>
           <div class="buy">
             <div class="price">5 €<small>pago único</small></div>
-            <a class="btn btn-light" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Comprar por 5 €</a>
+            <a class="btn btn-light" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Comprar por 5 €</a>
           </div>
           <p class="fine">Pago seguro con Stripe. Al terminar te llevamos a la descarga y recibirás el enlace por correo.</p>
         </article>
@@ -544,8 +552,8 @@
       <h2>Empieza hoy con lo que necesita tu cuerpo</h2>
       <p>Descarga las 10 recetas gratuitas para probar, o consigue el recetario completo con menús y listas de la compra.</p>
       <div class="cta-row">
-        <a class="btn btn-yellow btn-lg" href="10 Recetas Antiinflamatorias OFICIAL_compressed.pdf" target="_blank">Descargar gratis</a>
-        <a class="btn btn-light btn-lg" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Comprar por 5 €</a>
+        <a class="btn btn-yellow btn-lg" href="10 Recetas Antiinflamatorias OFICIAL_compressed.pdf" target="_blank" rel="noopener" data-track="lead">Descargar gratis</a>
+        <a class="btn btn-light btn-lg" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Comprar por 5 €</a>
       </div>
     </div>
   </section>
@@ -557,6 +565,12 @@
     <div class="tagline">Ciencia real para tu ciclo, ayuno y hormonas</div>
     <div><a href="https://www.instagram.com/studyos_oficial/" rel="noopener" target="_blank">Instagram: @studyos_oficial</a></div>
     <p class="legal">Los contenidos de StudyOS son educativos y no sustituyen el consejo de una profesional sanitaria.</p>
+    <nav class="legal-links" aria-label="Información legal">
+      <a href="aviso-legal.html">Aviso legal</a>
+      <a href="terminos.html">Términos y condiciones</a>
+      <a href="privacidad.html">Privacidad y cookies</a>
+    </nav>
+    <div><button type="button" class="linkbtn" id="cookie-settings">Configurar cookies</button></div>
   </div>
 </footer>
 
@@ -619,6 +633,16 @@
   } else {
     bloom.classList.add("play");
   }
+  // Eventos del Pixel de Meta: solo se envían si la persona ha aceptado las cookies.
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a[data-track]");
+    if (!a || !window.studyosTrack) return;
+    if (a.dataset.track === "lead") {
+      window.studyosTrack("Lead", { content_name: "10 Recetas Antiinflamatorias (gratis)", content_category: "recetario gratuito" });
+    } else if (a.dataset.track === "checkout") {
+      window.studyosTrack("InitiateCheckout", { content_name: "100 Recetas Antiinflamatorias", content_type: "product", value: 5, currency: "EUR", num_items: 1 });
+    }
+  });
 </script>
 
 </body>
