@@ -19,10 +19,10 @@
 
 <!--
   ARCHIVOS: sube a la misma carpeta index.html, gracias.html, tracking.js, la portada
-  y el PDF gratuito ("10 Recetas Antiinflamatorias OFICIAL_compressed.pdf").
+  y las imágenes dentro-*.
   ENLACES QUE PUEDES CAMBIAR (usa buscar y reemplazar en este archivo):
   - Recetario de pago (Stripe):  https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00
-  - PDF gratuito:                10 Recetas Antiinflamatorias OFICIAL_compressed.pdf
+  - Descarga gratuita:           gratis.html (ahí están el PDF, la comunidad de WhatsApp y la oferta)
   - Instagram:                   https://www.instagram.com/studyos_oficial/
   Meta Pixel: se configura en tracking.js (solo se activa si aceptan las cookies).
 -->
@@ -248,6 +248,57 @@
   footer .tagline { font-family: var(--serif); font-size: 1.1rem; color: var(--olive-800); }
   footer .legal { max-width: 46rem; font-size: .85rem; }
 
+  /* ---------- Mira dentro ---------- */
+  .samplebg { background: var(--paper); }
+  .peek-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+  .peek-tabs button {
+    min-height: 42px; padding: .45rem 1.1rem; border-radius: 999px;
+    border: 1.5px solid var(--olive-700); background: transparent; color: var(--olive-800);
+    font: 500 .95rem/1 var(--sans); cursor: pointer; transition: background-color .2s, color .2s;
+  }
+  .peek-tabs button:hover { background: rgba(74, 90, 42, .12); }
+  .peek-tabs button[aria-pressed="true"] { background: var(--olive-700); color: #fff; }
+  .peek { display: grid; gap: 28px; margin-top: 28px; align-items: start; }
+  @media (min-width: 860px) { .peek { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; } }
+  .peek-pagelink { display: block; max-width: 440px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: #fff; box-shadow: 0 14px 36px rgba(31, 39, 21, .22); }
+  .peek-pagelink img { display: block; width: 100%; height: auto; }
+  .peek-side img { display: block; width: 100%; height: auto; border-radius: 16px; }
+  @media (max-width: 859px) { .peek-side { order: -1; } }
+  .peek-cap { margin-top: 8px; font-size: .85rem; color: var(--muted); }
+  .peek-side h3 { margin-top: 18px; font-size: 1.5rem; color: var(--olive-900); }
+  .peek-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; margin: 16px 0 0; }
+  .peek-meta dt { font-size: .85rem; color: var(--muted); }
+  .peek-meta dd { margin: 0; font-weight: 500; }
+
+  .peek-src { display: inline-block; margin-top: 14px; padding: .2rem .8rem; border-radius: 999px; font-size: .85rem; font-weight: 600; }
+  .peek-src-free { background: var(--yellow); color: var(--olive-950); }
+  .peek-src-paid { background: var(--olive-700); color: #fff; }
+  .peek-src + h3 { margin-top: 10px; }
+
+  /* ---------- Opiniones ---------- */
+  .rev-grid { display: grid; gap: 18px; margin-top: 32px; }
+  @media (min-width: 700px) { .rev-grid { grid-template-columns: 1fr 1fr; } }
+  .rev { margin: 0; background: var(--paper); border: 1.5px solid var(--line); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+  .rev .stars { color: var(--olive-500); letter-spacing: .15em; font-size: 1.05rem; }
+  .rev blockquote { margin: 0; }
+  .rev blockquote p + p { margin-top: .8rem; }
+  .rev figcaption { margin-top: auto; font-weight: 600; color: var(--olive-800); font-size: .95rem; }
+  .cta-inline { margin-top: 32px; }
+
+  /* ---------- Botón fijo en móvil ---------- */
+  .sticky-cta { display: none; }
+  @media (max-width: 859px) {
+    .sticky-cta {
+      display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+      background: rgba(242, 244, 230, .96); border-top: 1px solid var(--line);
+      transform: translateY(110%); visibility: hidden; transition: transform .3s, visibility .3s;
+    }
+    .sticky-cta.on { transform: none; visibility: visible; }
+    .sticky-cta .btn { width: 100%; }
+    footer { padding-bottom: 104px; }
+  }
+
   .legal-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
   .legal-links a { color: inherit; }
   .linkbtn { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; }
@@ -256,7 +307,7 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .bloom.play .petal { animation: none; }
-    .btn, .phase-tabs button { transition: none; }
+    .btn, .phase-tabs button, .peek-tabs button, .sticky-cta { transition: none; }
   }
 </style>
 </head>
@@ -268,7 +319,7 @@
     <a class="mark" href="#" aria-label="StudyOS, inicio">Study<span>OS</span></a>
     <nav aria-label="Principal">
       <a href="https://www.instagram.com/studyos_oficial/" rel="noopener" target="_blank">@studyos_oficial</a>
-      <a class="btn btn-yellow hide-sm" href="10 Recetas Antiinflamatorias VO.pdf" target="_blank" rel="noopener" data-track="lead">Descargar gratis</a>
+      <a class="btn btn-yellow hide-sm" href="gratis.html">Descargar gratis</a>
     </nav>
   </div>
 </header>
@@ -282,7 +333,7 @@
         <h1>Come a favor de tus hormonas en cada etapa de tu ciclo</h1>
         <p class="lede">Recetas antiinflamatorias, sencillas y explicadas con ciencia real, para tu ciclo, la perimenopausia y la menopausia.</p>
         <div class="cta-stack">
-          <a class="btn btn-yellow btn-lg" href="10 Recetas Antiinflamatorias VO.pdf" target="_blank" rel="noopener" data-track="lead">Descargar 10 recetas gratis</a>
+          <a class="btn btn-yellow btn-lg" href="gratis.html">Descargar 10 recetas gratis</a>
           <a class="btn btn-outline" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Comprar el recetario completo por 5 €</a>
         </div>
         <p class="hero-note">Empieza por las 10 recetas gratuitas para probar el método. Si te gustan, el recetario completo de 100 recetas cuesta 5 € en pago único.</p>
@@ -306,8 +357,8 @@
           <span class="pill">Gratis</span>
           <h3>10 Recetas Antiinflamatorias</h3>
           <p>Una muestra para probar el método antes de comprar el recetario completo: recetas sencillas, con ingredientes reales y pensadas para una alimentación antiinflamatoria.</p>
-          <a class="btn btn-yellow btn-lg" href="10 Recetas Antiinflamatorias VO.pdf" target="_blank" rel="noopener" data-track="lead">Descargar gratis</a>
-          <p class="fine">PDF de descarga inmediata, sin pagar nada.</p>
+          <a class="btn btn-yellow btn-lg" href="gratis.html">Descargar gratis</a>
+          <p class="fine">Descarga inmediata, sin pagar nada. Además, te invitamos a la comunidad de WhatsApp de StudyOS.</p>
         </article>
 
         <article class="paid">
@@ -329,6 +380,72 @@
           <p class="fine">Pago seguro con Stripe. Al terminar te llevamos a la descarga y recibirás el enlace por correo.</p>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== Mira dentro ===== -->
+  <section class="section samplebg" id="dentro">
+    <div class="wrap">
+      <h2>Mira dentro de los recetarios</h2>
+      <p class="lede" style="margin-top:14px">Así es cada receta: ingredientes claros, pasos sencillos y, al final, El Porqué Biológico, que te explica qué aporta cada ingrediente a tu cuerpo. Aquí ves una del recetario completo y tres del gratuito, que tienen el mismo formato.</p>
+
+      <div class="peek-tabs" role="group" aria-label="Elige una receta de muestra">
+        <button type="button" data-i="0" aria-pressed="true">Ensalada de lentejas</button>
+        <button type="button" data-i="1" aria-pressed="false">Bowl matutino</button>
+        <button type="button" data-i="2" aria-pressed="false">Ensalada de salmón</button>
+        <button type="button" data-i="3" aria-pressed="false">Wok de pollo</button>
+      </div>
+
+      <div class="peek" aria-live="polite">
+        <a class="peek-pagelink" id="peek-link" href="dentro-lentejas-pagina.png" target="_blank" rel="noopener" aria-label="Ampliar la página de la receta">
+          <img id="peek-page" src="dentro-lentejas-pagina.png" width="510" height="575" loading="lazy"
+               alt="Página del recetario con la receta Ensalada templada de lentejas, pimiento asado y ventresca: ingredientes, preparación y El Porqué Biológico.">
+        </a>
+        <div class="peek-side">
+          <img id="peek-photo" src="dentro-lentejas-foto.jpg" width="1000" height="545" loading="lazy"
+               alt="Ensalada templada de lentejas con tiras de pimiento asado y ventresca de atún, con albahaca, en una fuente.">
+          <p class="peek-cap">Sugerencia de presentación</p>
+          <p class="peek-src peek-src-paid" id="peek-src">Del recetario completo</p>
+          <h3 id="peek-title">Ensalada templada de lentejas, pimiento asado y ventresca</h3>
+          <dl class="peek-meta">
+            <div><dt>Fase</dt><dd id="peek-fase">Menstrual</dd></div>
+            <div><dt>Tiempo</dt><dd id="peek-tiempo">10 minutos</dd></div>
+            <div><dt>Dificultad</dt><dd id="peek-dif">Fácil</dd></div>
+            <div><dt>Alérgenos</dt><dd id="peek-alerg">Pescado</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Opiniones ===== -->
+  <section class="section" id="opiniones">
+    <div class="wrap">
+      <h2>Lo que dicen las lectoras</h2>
+      <p class="lede" style="margin-top:14px">Opiniones de mujeres que ya han usado los recetarios de StudyOS.</p>
+      <div class="rev-grid">
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+          <blockquote><p>Me encantó el diseño y los menús semanales.</p><p>Las recetas me quedaron espectaculares y me sentaron genial!!!</p></blockquote>
+          <figcaption>Verónica Santos</figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+          <blockquote><p>…el apartado de “El Porqué Biológico” en cada una. Descubrí por qué ciertos ingredientes me daban pesadez y cómo combinarlos para mantener la glucosa estable.</p></blockquote>
+          <figcaption>Carolina M.</figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+          <blockquote><p>Estaba harta de las típicas dietas estrictas de pollo a la plancha y lechuga. Este libro me demostró que comer antiinflamatorio puede ser variado, sabroso y súper saciante.</p></blockquote>
+          <figcaption>Sonia G.</figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+          <blockquote><p>He probado ya diferentes productos de esta marca y no puedo estar más agradecida.</p><p>De verdad, recomendado al 100%, trato de 10 y productos super útiles.</p></blockquote>
+          <figcaption>Ana V.</figcaption>
+        </figure>
+      </div>
+      <p class="cta-inline"><a class="btn btn-yellow btn-lg" href="gratis.html">Probar con 10 recetas gratis</a></p>
     </div>
   </section>
 
@@ -474,26 +591,8 @@
     </div>
   </section>
 
-  <!-- ===== Una receta por dentro ===== -->
-  <section class="section samplebg" id="receta">
-    <div class="wrap sample-grid">
-      <div>
-        <h2>Cada receta te explica el porqué</h2>
-        <p class="lede" style="margin-top:14px">Sabrás qué estás comiendo y qué aporta a tu cuerpo, sin tecnicismos innecesarios.</p>
-      </div>
-      <article class="sample-card">
-        <h3>Ensalada templada de lentejas, pimiento asado y ventresca</h3>
-        <div class="meta"><span>Fase menstrual</span><span>10 minutos</span><span>Fácil</span></div>
-        <div class="why">
-          <b>El Porqué Biológico</b>
-          <p>Con la regla se pierde hierro. Las lentejas son una buena fuente vegetal, y la vitamina C del pimiento asado ayuda a absorberlo.</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
   <!-- ===== Según cómo te sientes ===== -->
-  <section class="section" id="segun-te-sientes">
+  <section class="section contents" id="segun-te-sientes">
     <div class="wrap">
       <h2>Busca las recetas según cómo te sientes hoy</h2>
       <p class="lede" style="margin-top:14px">El recetario incluye un índice por necesidad, para que no tengas que planificar de más.</p>
@@ -510,7 +609,7 @@
   </section>
 
   <!-- ===== Preguntas ===== -->
-  <section class="section contents" id="preguntas">
+  <section class="section" id="preguntas">
     <div class="wrap">
       <h2>Preguntas frecuentes</h2>
       <div class="faq-list">
@@ -552,7 +651,7 @@
       <h2>Empieza hoy con lo que necesita tu cuerpo</h2>
       <p>Descarga las 10 recetas gratuitas para probar, o consigue el recetario completo con menús y listas de la compra.</p>
       <div class="cta-row">
-        <a class="btn btn-yellow btn-lg" href="10 Recetas Antiinflamatorias VO.pdf" target="_blank" rel="noopener" data-track="lead">Descargar gratis</a>
+        <a class="btn btn-yellow btn-lg" href="gratis.html">Descargar gratis</a>
         <a class="btn btn-light btn-lg" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Comprar por 5 €</a>
       </div>
     </div>
@@ -573,6 +672,10 @@
     <div><button type="button" class="linkbtn" id="cookie-settings">Configurar cookies</button></div>
   </div>
 </footer>
+
+<div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+  <a class="btn btn-yellow" href="gratis.html">Descargar 10 recetas gratis</a>
+</div>
 
 <script>
   // Fases del ciclo: textos que se muestran al elegir cada círculo.
@@ -633,13 +736,76 @@
   } else {
     bloom.classList.add("play");
   }
+  // Vista previa del recetario: cambia de receta.
+  const peeks = [
+    { slug: "lentejas", free: false, pw: 510, ph: 575, title: "Ensalada templada de lentejas, pimiento asado y ventresca", fase: "Menstrual", tiempo: "10 minutos", dif: "Fácil", alerg: "Pescado",
+      pageAlt: "Página del recetario con la receta Ensalada templada de lentejas, pimiento asado y ventresca: ingredientes, preparación y El Porqué Biológico.",
+      photoAlt: "Ensalada templada de lentejas con tiras de pimiento asado y ventresca de atún, con albahaca, en una fuente." },
+    { slug: "bowl", free: true, pw: 551, ph: 777, title: "Bowl matutino de grasas saludables", fase: "Menstrual / Menopausia", tiempo: "5 minutos", dif: "Muy baja", alerg: "Lácteos, frutos secos",
+      pageAlt: "Página del recetario con la receta Bowl matutino de grasas saludables: ingredientes, preparación y El Porqué Biológico.",
+      photoAlt: "Bowl de yogur con arándanos, aguacate, semillas y nueces sobre una mesa de madera." },
+    { slug: "salmon", free: true, pw: 551, ph: 777, title: "Ensalada de salmón, cítricos y nueces", fase: "Ovulatoria / Perimenopausia / Menopausia", tiempo: "10 minutos", dif: "Baja", alerg: "Pescado, frutos secos",
+      pageAlt: "Página del recetario con la receta Ensalada de salmón, cítricos y nueces: ingredientes, preparación y El Porqué Biológico.",
+      photoAlt: "Ensalada de rúcula con salmón ahumado, gajos de naranja, pepino y nueces." },
+    { slug: "wok", free: true, pw: 550, ph: 776, title: "Wok de pollo con brócoli, sésamo y jengibre", fase: "Folicular / Perimenopausia / Menopausia", tiempo: "15 minutos", dif: "Baja", alerg: "Sésamo, soja",
+      pageAlt: "Página del recetario con la receta Wok de pollo con brócoli, sésamo y jengibre: ingredientes, preparación y El Porqué Biológico.",
+      photoAlt: "Wok de pollo con brócoli, tiras de pimiento rojo y semillas de sésamo." }
+  ];
+  const peekBtns = document.querySelectorAll(".peek-tabs button");
+  function selectPeek(i) {
+    const p = peeks[i];
+    const page = document.getElementById("peek-page");
+    const photo = document.getElementById("peek-photo");
+    page.src = "dentro-" + p.slug + "-pagina.png"; page.alt = p.pageAlt;
+    page.width = p.pw; page.height = p.ph;
+    const srcEl = document.getElementById("peek-src");
+    srcEl.textContent = p.free ? "Del recetario gratuito" : "Del recetario completo";
+    srcEl.className = "peek-src " + (p.free ? "peek-src-free" : "peek-src-paid");
+    photo.src = "dentro-" + p.slug + "-foto.jpg"; photo.alt = p.photoAlt;
+    document.getElementById("peek-link").href = "dentro-" + p.slug + "-pagina.png";
+    document.getElementById("peek-title").textContent = p.title;
+    document.getElementById("peek-fase").textContent = p.fase;
+    document.getElementById("peek-tiempo").textContent = p.tiempo;
+    document.getElementById("peek-dif").textContent = p.dif;
+    document.getElementById("peek-alerg").textContent = p.alerg;
+    peekBtns.forEach((el, n) => el.setAttribute("aria-pressed", String(n === i)));
+  }
+  peekBtns.forEach(el => el.addEventListener("click", () => selectPeek(Number(el.dataset.i))));
+
+  // Botón fijo de descarga gratis en móvil: aparece al pasar el primer botón y se oculta en el cierre.
+  const sticky = document.getElementById("sticky-cta");
+  const heroCta = document.querySelector(".cta-stack");
+  const closingEl = document.querySelector(".closing");
+  let passedHero = false, closingVisible = false;
+  function updateSticky() {
+    const on = passedHero && !closingVisible;
+    sticky.classList.toggle("on", on);
+    sticky.setAttribute("aria-hidden", String(!on));
+  }
+  if ("IntersectionObserver" in window && sticky && heroCta && closingEl) {
+    new IntersectionObserver(es => { passedHero = !es[0].isIntersecting && es[0].boundingClientRect.top < 0; updateSticky(); }).observe(heroCta);
+    new IntersectionObserver(es => { closingVisible = es[0].isIntersecting; updateSticky(); }).observe(closingEl);
+  }
+
+  // ViewContent: cuando la persona llega a ver las dos opciones (solo con cookies aceptadas).
+  window.addEventListener("load", function () {
+    const offer = document.getElementById("empezar");
+    if (!("IntersectionObserver" in window) || !offer) return;
+    const io2 = new IntersectionObserver(es => {
+      if (!es[0].isIntersecting) return;
+      io2.disconnect();
+      if (window.studyosWhenConsented) {
+        window.studyosWhenConsented(() => window.studyosTrack("ViewContent", { content_name: "StudyOS recetarios", content_type: "product" }));
+      }
+    }, { threshold: 0.3 });
+    io2.observe(offer);
+  });
+
   // Eventos del Pixel de Meta: solo se envían si la persona ha aceptado las cookies.
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest("a[data-track]");
     if (!a || !window.studyosTrack) return;
-    if (a.dataset.track === "lead") {
-      window.studyosTrack("Lead", { content_name: "10 Recetas Antiinflamatorias (gratis)", content_category: "recetario gratuito" });
-    } else if (a.dataset.track === "checkout") {
+    if (a.dataset.track === "checkout") {
       window.studyosTrack("InitiateCheckout", { content_name: "100 Recetas Antiinflamatorias", content_type: "product", value: 5, currency: "EUR", num_items: 1 });
     }
   });

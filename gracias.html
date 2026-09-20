@@ -60,6 +60,12 @@
   .alt { margin-top: 16px; font-size: .95rem; color: var(--muted); }
   .alt a { color: var(--olive-700); }
 
+  .community { background: var(--olive-800); color: #fff; border-radius: 22px; padding: clamp(24px, 4vw, 34px); }
+  .community h2 { font-size: clamp(1.4rem, 4vw, 1.8rem); color: #fff; }
+  .community p { margin-top: 10px; color: rgba(255, 255, 255, .88); max-width: 34rem; }
+  .community .btn { background: var(--page); color: var(--olive-900); box-shadow: none; margin-top: 20px; }
+  .community .btn:hover { background: #fff; }
+  .comm-wrap { padding-block: 8px 8px; }
   .start { padding-block: 24px 64px; }
   .start h2 { font-size: 1.6rem; color: var(--olive-900); }
   .start ul { list-style: none; margin: 18px 0 0; padding: 0; }
@@ -92,6 +98,16 @@
       <a class="btn" id="descarga" href="recetario-100-recetas.pdf" target="_blank" rel="noopener">Descargar mi recetario</a>
 
       <p class="alt">¿No se abre? Prueba con este <a href="https://drive.google.com/uc?export=download&id=1e583JbB4HLGh6uhwiVe2qSzQ2qLwWC5E" target="_blank" rel="noopener">enlace alternativo</a>.</p>
+    </div>
+  </section>
+
+  <section class="comm-wrap">
+    <div class="wrap">
+      <div class="community">
+        <h2>Únete a la comunidad de StudyOS en WhatsApp</h2>
+        <p>Cada día compartimos consejos y recetas. Unirte es voluntario y puedes salir cuando quieras.</p>
+        <a class="btn" id="whatsapp" href="https://chat.whatsapp.com/KZn3BneaAfKGsTAgORsOLn" target="_blank" rel="noopener">Unirme a la comunidad</a>
+      </div>
     </div>
   </section>
 
@@ -169,6 +185,16 @@
           })
         }).catch(function () {});
       }
+    });
+  });
+</script>
+
+<script>
+  // Clic en la comunidad de WhatsApp (solo se registra si aceptó las cookies).
+  document.addEventListener("DOMContentLoaded", function () {
+    var w = document.getElementById("whatsapp");
+    if (w) w.addEventListener("click", function () {
+      if (window.studyosTrack) window.studyosTrack("Contact", { content_name: "Comunidad WhatsApp" });
     });
   });
 </script>
