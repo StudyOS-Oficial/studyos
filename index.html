@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NJCNBN9C');</script>
-<!-- End Google Tag Manager -->
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JL08TE3FSM"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -264,6 +255,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   footer .tagline { font-family: var(--serif); font-size: 1.1rem; color: var(--olive-800); }
   footer .legal { max-width: 46rem; font-size: .85rem; }
 
+  .pill-offer { background: var(--yellow); color: var(--olive-950); margin-bottom: 14px; }
+  .was { font-size: 1.25rem; font-weight: 400; color: rgba(255, 255, 255, .72); text-decoration-thickness: 2px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
   /* ---------- Mira dentro ---------- */
   .samplebg { background: var(--paper); }
   .peek-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
@@ -275,21 +270,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .peek-tabs button:hover { background: rgba(74, 90, 42, .12); }
   .peek-tabs button[aria-pressed="true"] { background: var(--olive-700); color: #fff; }
   .peek { display: grid; gap: 28px; margin-top: 28px; align-items: start; }
-  @media (min-width: 860px) { .peek { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; } }
-  .peek-pagelink { display: block; max-width: 440px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: #fff; box-shadow: 0 14px 36px rgba(31, 39, 21, .22); }
-  .peek-pagelink img { display: block; width: 100%; height: auto; }
+  @media (min-width: 900px) {
+    .peek { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 48px; }
+    .peek-side { position: sticky; top: 24px; }
+  }
+  @media (max-width: 899px) { .peek-side { order: -1; } }
   .peek-side img { display: block; width: 100%; height: auto; border-radius: 16px; }
-  @media (max-width: 859px) { .peek-side { order: -1; } }
   .peek-cap { margin-top: 8px; font-size: .85rem; color: var(--muted); }
-  .peek-side h3 { margin-top: 18px; font-size: 1.5rem; color: var(--olive-900); }
-  .peek-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; margin: 16px 0 0; }
-  .peek-meta dt { font-size: .85rem; color: var(--muted); }
-  .peek-meta dd { margin: 0; font-weight: 500; }
-
   .peek-src { display: inline-block; margin-top: 14px; padding: .2rem .8rem; border-radius: 999px; font-size: .85rem; font-weight: 600; }
   .peek-src-free { background: var(--yellow); color: var(--olive-950); }
   .peek-src-paid { background: var(--olive-700); color: #fff; }
-  .peek-src + h3 { margin-top: 10px; }
+
+  /* Ficha de receta (texto real, siempre nítido) */
+  .rcard { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: clamp(18px, 3vw, 28px); box-shadow: 0 14px 36px rgba(31, 39, 21, .14); }
+  .rcard[hidden] { display: none; }
+  .rc-head { background: var(--page); border-radius: 12px; padding: 16px 18px; text-align: center; }
+  .rc-head h3 { font-size: clamp(1.2rem, 2.8vw, 1.5rem); line-height: 1.22; color: var(--olive-800); }
+  .rc-fase { margin-top: 6px; font-family: var(--serif); font-weight: 600; color: var(--olive-700); }
+  .rc-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px 20px; margin-top: 8px; font-size: .9rem; color: var(--muted); }
+  .rc-stats b { color: var(--ink); font-weight: 600; }
+  .rc-h { display: inline-block; margin: 22px 0 10px; padding: .1rem .7rem; border-radius: 6px; font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--olive-900); }
+  .rc-h-ing { background: rgba(242, 194, 48, .38); }
+  .rc-h-prep { background: rgba(183, 196, 139, .55); }
+  .rcard ul { margin: 0; padding-left: 1.15rem; font-size: .96rem; }
+  .rcard li { margin-bottom: 7px; }
+  .rc-why { margin-top: 22px; background: var(--page); border-radius: 12px; padding: 16px 18px; }
+  .rc-why h4 { margin: 0 0 8px; font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--olive-700); }
+  .rc-why p { font-size: .94rem; }
+  .rc-why p + p { margin-top: .7rem; }
 
   /* ---------- Opiniones ---------- */
   .rev-grid { display: grid; gap: 18px; margin-top: 32px; }
@@ -329,10 +337,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </head>
 
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NJCNBN9C"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 <header class="top">
   <div class="wrap">
     <a class="mark" href="#" aria-label="StudyOS, inicio">Study<span>OS</span></a>
@@ -355,7 +359,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a class="btn btn-yellow btn-lg" href="gratis.html">Descargar 10 recetas gratis</a>
           <a class="btn btn-outline" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Comprar el recetario completo por 5 €</a>
         </div>
-        <p class="hero-note">Empieza por las 10 recetas gratuitas para probar el método. Si te gustan, el recetario completo de 100 recetas cuesta 5 € en pago único.</p>
+        <p class="hero-note">Empieza por las 10 recetas gratuitas para probar el método. Si te gustan, el recetario completo de 100 recetas cuesta 5 € (unos 5,8 US$) en pago único: precio de lanzamiento por tiempo limitado, antes 10 €.</p>
       </div>
 
       <div class="hero-art">
@@ -381,6 +385,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </article>
 
         <article class="paid">
+          <span class="pill pill-offer">Oferta de lanzamiento, por tiempo limitado</span>
           <h3>100 Recetas Antiinflamatorias</h3>
           <p class="sub">El recetario completo, adaptado a tu ciclo, a la perimenopausia y a la menopausia.</p>
           <ul>
@@ -393,10 +398,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </ul>
           <p class="more"><a href="#incluye">Ver todo lo que incluye</a></p>
           <div class="buy">
-            <div class="price">5 €<small>pago único</small></div>
+            <div class="price"><s class="was"><span class="sr">Precio anterior: </span>10 €</s> 5 €<small>pago único, unos 5,8 US$</small></div>
             <a class="btn btn-light" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Comprar por 5 €</a>
           </div>
-          <p class="fine">Pago seguro con Stripe. Al terminar te llevamos a la descarga y recibirás el enlace por correo.</p>
+          <p class="fine">Pago seguro con Stripe con tarjetas de crédito o débito de cualquier país. Al terminar te llevamos a la página de descarga. El cobro es en euros: según tu país, Stripe puede mostrarte el precio en tu moneda y, si no, tu banco convierte el importe automáticamente al cambio del día.</p>
         </article>
       </div>
     </div>
@@ -416,22 +421,126 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="peek" aria-live="polite">
-        <a class="peek-pagelink" id="peek-link" href="lentejas.pagina2" target="_blank" rel="noopener" aria-label="Ampliar la página de la receta">
-          <img id="peek-page" src="lentejas.pagina2" width="510" height="575" loading="lazy"
-               alt="Página del recetario con la receta Ensalada templada de lentejas, pimiento asado y ventresca: ingredientes, preparación y El Porqué Biológico.">
-        </a>
+        <article class="rcard" id="rc-0">
+          <header class="rc-head">
+            <h3>Ensalada templada de lentejas, pimiento asado y ventresca</h3>
+            <p class="rc-fase">Fase menstrual</p>
+            <p class="rc-stats"><span>Tiempo de preparación: <b>10 minutos</b></span><span>Calorías aproximadas: <b>380 kcal</b></span></p>
+            <p class="rc-stats"><span>Dificultad: <b>Fácil</b></span><span>Alérgenos: <b>Pescado</b></span></p>
+          </header>
+          <h4 class="rc-h rc-h-ing">Ingredientes</h4>
+          <ul>
+            <li>120 g de lentejas cocidas en conserva (bien lavadas y escurridas)</li>
+            <li>70 g de pimiento rojo asado en tiras (en su jugo)</li>
+            <li>60 g de ventresca de atún en aceite de oliva (escurrida)</li>
+            <li>¼ de cebolla morada picada en dados finos (brunoise)</li>
+            <li>1 cucharadita de AOVE + 1 cucharadita de vinagre de sidra de manzana</li>
+            <li>Sal marina y perejil fresco picado</li>
+          </ul>
+          <h4 class="rc-h rc-h-prep">Preparación</h4>
+          <ul>
+            <li><strong>Aclarado de la legumbre:</strong> Coloca las lentejas en un colador bajo un hilo de agua fría. Aclara hasta eliminar la saponina (espuma) y escurre dándole unos golpecitos al colador.</li>
+            <li><strong>Templado de la base:</strong> Vierte las lentejas en una sartén limpia a fuego medio sin necesidad de añadir aceite. Remueve durante 2 minutos hasta que adquieran una temperatura tibia homogénea. Retira del fuego.</li>
+            <li><strong>Ensamblado de ingredientes:</strong> Pasa las lentejas templadas a un bowl. Añade las tiras de pimiento rojo asado, la cebolla morada picada en dados pequeños y la ventresca de atún separada en lascas gruesas.</li>
+            <li><strong>Emulsión del aliño:</strong> En un vaso aparte, bate con un tenedor la cucharadita de AOVE, el vinagre de manzana, una pizca de sal y el perejil fresco picado durante 20 segundos hasta que la mezcla blanquee ligeramente.</li>
+            <li><strong>Integración:</strong> Vierte la emulsión sobre el bowl y mezcla con delicadeza usando una cuchara de madera para no deshacer la ventresca ni las lentejas. Servir templado.</li>
+          </ul>
+          <div class="rc-why">
+            <h4>El Porqué Biológico</h4>
+          <p>Perder entre 30 y 80 ml de sangre durante la regla provoca caídas notables de hierro sérico, y las lentejas son una de las mejores fuentes vegetales para reponerlo. Su absorción se multiplica al combinarse con la abundante vitamina C del pimiento rojo asado, un detalle nutricional que marca la diferencia. El vinagre de manzana cierra el plato mejorando el vaciado gástrico y reduciendo la inflamación abdominal.</p>
+          </div>
+        </article>
+        <article class="rcard" id="rc-1" hidden>
+          <header class="rc-head">
+            <h3>Bowl matutino de grasas saludables</h3>
+            <p class="rc-fase">Fase menstrual / Menopausia</p>
+            <p class="rc-stats"><span>Tiempo de preparación: <b>5 minutos</b></span><span>Calorías aproximadas: <b>330 kcal</b></span></p>
+            <p class="rc-stats"><span>Dificultad: <b>Muy baja</b></span><span>Alérgenos: <b>Lácteos, frutos secos</b></span></p>
+          </header>
+          <h4 class="rc-h rc-h-ing">Ingredientes</h4>
+          <ul>
+            <li>150 g de yogur griego entero no azucarado (o yogur de coco alto en grasa)</li>
+            <li>½ aguacate maduro en su punto</li>
+            <li>1 puñado generoso (40 g) de arándanos frescos o congelados</li>
+            <li>1 cucharada sopera (10-15 g) de semillas de lino o chía recién molidas</li>
+            <li>1 pizca de canela de Ceilán en polvo</li>
+            <li>Opcional: 1 cucharadita de nueces o semillas de calabaza picadas</li>
+          </ul>
+          <h4 class="rc-h rc-h-prep">Preparación</h4>
+          <ul>
+            <li><strong>Base proteico-lipídica:</strong> Vierte el yogur griego o de coco en la base de un cuenco amplio. Asegúrate de remover el suero natural del yogur para integrarlo.</li>
+            <li><strong>Corte y presentación:</strong> Corta el medio aguacate en abanico o láminas finas e incorpóralo en un lateral del bol. Coloca los arándanos frescos en el lateral opuesto.</li>
+            <li><strong>Activación de la fibra:</strong> Muele las semillas de lino o chía en el momento (para evitar la oxidación de sus ácidos grasos) e incorpóralas sobre la fruta y el yogur.</li>
+            <li><strong>Toque térmico y glucémico:</strong> Espolvorea la canela de Ceilán por la superficie. Sirve a temperatura ambiente para no ralentizar la digestión matutina.</li>
+          </ul>
+          <div class="rc-why">
+            <h4>El Porqué Biológico</h4>
+          <p>Iniciar la mañana sin carbohidratos de alto índice glucémico frena drásticamente el pico de glucosa e insulina. El aguacate y el yogur aportan ácidos grasos monoinsaturados y de cadena media que promueven la síntesis de hormonas esteroideas (como la progesterona).</p>
+          <p>Las semillas molidas aportan lignanos, unos fitoestrógenos clave para modular la sobrecarga estrogénica o suavizar la caída hormonal en la menopausia. La canela, mimética de la insulina, actúa optimizando los receptores celulares de glucosa, evitando los bajones de energía y los picos de cortisol a media mañana.</p>
+          </div>
+        </article>
+        <article class="rcard" id="rc-2" hidden>
+          <header class="rc-head">
+            <h3>Ensalada de salmón, cítricos y nueces</h3>
+            <p class="rc-fase">Fase ovulatoria / Perimenopausia / Menopausia</p>
+            <p class="rc-stats"><span>Tiempo de preparación: <b>10 minutos</b></span><span>Calorías aproximadas: <b>415 kcal</b></span></p>
+            <p class="rc-stats"><span>Dificultad: <b>Baja</b></span><span>Alérgenos: <b>Pescado, frutos secos</b></span></p>
+          </header>
+          <h4 class="rc-h rc-h-ing">Ingredientes</h4>
+          <ul>
+            <li>120 g de salmón ahumado de calidad (o lomo de salmón fresco cocinado a la plancha)</li>
+            <li>2 puñados generosos de hoja verde variada (rúcula, canónigos y espinacas baby)</li>
+            <li>½ naranja dulce cortada en gajos limpios</li>
+            <li>4-5 mitades de nueces de California troceadas</li>
+            <li>½ pepino mediano cortado en rodajas finas (aporta hidratación extra)</li>
+            <li>Emulsión del aliño: 1 cda. de aceite de oliva virgen extra (AOVE), zumo de ¼ de limón fresco, una pizca de sal marina no refinada y pimienta negra</li>
+          </ul>
+          <h4 class="rc-h rc-h-prep">Preparación</h4>
+          <ul>
+            <li><strong>Montaje de hoja fresca:</strong> Crea una cama voluminosa en un plato hondo mezclando la rúcula, los canónigos y las espinacas baby previamente lavadas y secas.</li>
+            <li><strong>Corte e integración:</strong> Distribuye las rodajas de pepino, los gajos de naranja limpios de piel blanca y las tiras o trozos de salmón por encima.</li>
+            <li><strong>Crujiente:</strong> Trocea las nueces con las manos y espolvoréalas por toda la ensalada.</li>
+            <li><strong>Emulsión activadora:</strong> En un vaso pequeño, bate con un tenedor el AOVE, el zumo de limón, la sal y la pimienta hasta obtener una mezcla turbia homogénea. Aliña justo en el momento de comer para no marchitar las hojas.</li>
+          </ul>
+          <div class="rc-why">
+            <h4>El Porqué Biológico</h4>
+          <p>Durante la fase ovulatoria o en momentos de declive hormonal, los picos de inflamación pueden alterar el tejido reproductivo y vascular. El salmón y las nueces aportan una altísima densidad de ácidos grasos omega-3 (EPA y DHA), que reducen la síntesis de prostaglandinas proinflamatorias.</p>
+          <p>La vitamina C de la naranja y el limón no solo actúa como un antioxidante directo en el folículo, sino que multiplica la biodisponibilidad del hierro no hemo de las hojas verdes. Además, la amargura de la rúcula estimula la segregación de bilis, facilitando la correcta eliminación metabólica de estrógenos en el hígado.</p>
+          </div>
+        </article>
+        <article class="rcard" id="rc-3" hidden>
+          <header class="rc-head">
+            <h3>Wok de pollo con brócoli, sésamo y jengibre</h3>
+            <p class="rc-fase">Fase folicular / Perimenopausia / Menopausia</p>
+            <p class="rc-stats"><span>Tiempo de preparación: <b>15 minutos</b></span><span>Calorías aproximadas: <b>370 kcal</b></span></p>
+            <p class="rc-stats"><span>Dificultad: <b>Baja</b></span><span>Alérgenos: <b>Sésamo, soja</b></span></p>
+          </header>
+          <h4 class="rc-h rc-h-ing">Ingredientes</h4>
+          <ul>
+            <li>150 g de pechuga o contramuslo de pollo campero en dados</li>
+            <li>1,5 tazas de floretes de brócoli cortados pequeños</li>
+            <li>½ pimiento rojo cortado en tiras finas</li>
+            <li>1 cucharada de semillas de sésamo blanco o negro</li>
+            <li>1 cucharada de tamari (salsa de soja sin gluten) o aminos de coco</li>
+            <li>1 trozo de jengibre fresco (1 cm) rallado</li>
+            <li>1 cucharada de AOVE o aceite de sésamo para saltear</li>
+          </ul>
+          <h4 class="rc-h rc-h-prep">Preparación</h4>
+          <ul>
+            <li><strong>Sellar la proteína:</strong> En un wok o sartén grande con la cucharada de aceite bien caliente, añade los dados de pollo. Cocina a fuego vivo durante 4-5 minutos hasta que estén dorados por fuera.</li>
+            <li><strong>Incorporar vegetales e infusión:</strong> Agrega el pimiento rojo, los floretes de brócoli y el jengibre recién rallado. Cocina a fuego medio-alto salteando constantemente durante 5-6 minutos (el brócoli debe quedar crujiente y «al dente» para conservar sus sulforafanos).</li>
+            <li><strong>Glaseado:</strong> Añade el tamari o los aminos de coco por los bordes de la sartén y remueve vigorosamente durante 1 minuto adicional para que los ingredientes absorban el sabor.</li>
+            <li><strong>Emplatado:</strong> Sirve en un bol y decora espolvoreando la cucharada de semillas de sésamo tostadas por encima.</li>
+          </ul>
+          <div class="rc-why">
+            <h4>El Porqué Biológico</h4>
+          <p>En la fase folicular, el cuerpo necesita nutrientes de apoyo para construir tejido y metabolizar el aumento de estrógenos. El brócoli es rico en indol-3-carbinol y sulforafano, compuestos azufrados indispensables para activar la detoxificación hepática de fase II (fase de eliminación de estrógenos usados). El pollo proporciona proteínas magras ricas en tirosina para respaldar la producción de dopamina y la motivación. Las semillas de sésamo aportan zinc y calcio, necesarios para la maduración folicular y la densidad ósea en la mujer.</p>
+          </div>
+        </article>
         <div class="peek-side">
-          <img id="peek-photo" src="dentro-lentejas-foto.jpg" width="1000" height="545" loading="lazy"
-               alt="Ensalada templada de lentejas con tiras de pimiento asado y ventresca de atún, con albahaca, en una fuente.">
+          <img id="peek-photo" src="dentro-lentejas-foto.jpg" width="1000" height="545" loading="lazy" alt="Ensalada templada de lentejas con tiras de pimiento asado y ventresca de atún, con albahaca, en una fuente.">
           <p class="peek-cap">Sugerencia de presentación</p>
           <p class="peek-src peek-src-paid" id="peek-src">Del recetario completo</p>
-          <h3 id="peek-title">Ensalada templada de lentejas, pimiento asado y ventresca</h3>
-          <dl class="peek-meta">
-            <div><dt>Fase</dt><dd id="peek-fase">Menstrual</dd></div>
-            <div><dt>Tiempo</dt><dd id="peek-tiempo">10 minutos</dd></div>
-            <div><dt>Dificultad</dt><dd id="peek-dif">Fácil</dd></div>
-            <div><dt>Alérgenos</dt><dd id="peek-alerg">Pescado</dd></div>
-          </dl>
         </div>
       </div>
     </div>
@@ -634,7 +743,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="faq-list">
         <details>
           <summary>¿Cómo recibo el recetario?</summary>
-          <p>Al completar el pago te llevamos directamente a la descarga del PDF, y también recibirás un correo con el enlace por si lo necesitas más tarde.</p>
+          <p>Al completar el pago te llevamos a una página con el botón de descarga inmediata y un enlace alternativo para verlo online si no se abre. Guarda el PDF en tu dispositivo para tenerlo siempre a mano.</p>
+        </details>
+        <details>
+          <summary>¿Puedo pagar desde otro país o en otra moneda?</summary>
+          <p>Sí. El precio es de 5 € (unos 5,8 US$ al cambio actual, que es aproximado). El pago es seguro y lo gestiona Stripe con tarjetas de crédito o débito. Según tu país, Stripe puede mostrarte el precio en tu moneda; si no, tu banco convierte el importe automáticamente al cambio del día.</p>
         </details>
         <details>
           <summary>¿Es una dieta?</summary>
@@ -755,38 +868,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   } else {
     bloom.classList.add("play");
   }
-  // Vista previa del recetario: cambia de receta.
+  // Vista previa de los recetarios: cambia de receta.
   const peeks = [
-    { slug: "lentejas", free: false, pw: 510, ph: 575, title: "Ensalada templada de lentejas, pimiento asado y ventresca", fase: "Menstrual", tiempo: "10 minutos", dif: "Fácil", alerg: "Pescado",
-      pageAlt: "Página del recetario con la receta Ensalada templada de lentejas, pimiento asado y ventresca: ingredientes, preparación y El Porqué Biológico.",
-      photoAlt: "Ensalada templada de lentejas con tiras de pimiento asado y ventresca de atún, con albahaca, en una fuente." },
-    { slug: "bowl", free: true, pw: 551, ph: 777, title: "Bowl matutino de grasas saludables", fase: "Menstrual / Menopausia", tiempo: "5 minutos", dif: "Muy baja", alerg: "Lácteos, frutos secos",
-      pageAlt: "Página del recetario con la receta Bowl matutino de grasas saludables: ingredientes, preparación y El Porqué Biológico.",
-      photoAlt: "Bowl de yogur con arándanos, aguacate, semillas y nueces sobre una mesa de madera." },
-    { slug: "salmon", free: true, pw: 551, ph: 777, title: "Ensalada de salmón, cítricos y nueces", fase: "Ovulatoria / Perimenopausia / Menopausia", tiempo: "10 minutos", dif: "Baja", alerg: "Pescado, frutos secos",
-      pageAlt: "Página del recetario con la receta Ensalada de salmón, cítricos y nueces: ingredientes, preparación y El Porqué Biológico.",
-      photoAlt: "Ensalada de rúcula con salmón ahumado, gajos de naranja, pepino y nueces." },
-    { slug: "wok", free: true, pw: 550, ph: 776, title: "Wok de pollo con brócoli, sésamo y jengibre", fase: "Folicular / Perimenopausia / Menopausia", tiempo: "15 minutos", dif: "Baja", alerg: "Sésamo, soja",
-      pageAlt: "Página del recetario con la receta Wok de pollo con brócoli, sésamo y jengibre: ingredientes, preparación y El Porqué Biológico.",
-      photoAlt: "Wok de pollo con brócoli, tiras de pimiento rojo y semillas de sésamo." }
+    { free: false, photo: "dentro-lentejas-foto.jpg", alt: "Ensalada templada de lentejas con tiras de pimiento asado y ventresca de atún, con albahaca, en una fuente." },
+    { free: true,  photo: "dentro-bowl-foto.jpg",     alt: "Bowl de yogur con arándanos, aguacate, semillas y nueces sobre una mesa de madera." },
+    { free: true,  photo: "dentro-salmon-foto.jpg",   alt: "Ensalada de rúcula con salmón ahumado, gajos de naranja, pepino y nueces." },
+    { free: true,  photo: "dentro-wok-foto.jpg",      alt: "Wok de pollo con brócoli, tiras de pimiento rojo y semillas de sésamo." }
   ];
   const peekBtns = document.querySelectorAll(".peek-tabs button");
+  const peekCards = document.querySelectorAll(".rcard");
   function selectPeek(i) {
     const p = peeks[i];
-    const page = document.getElementById("peek-page");
+    peekCards.forEach((c, n) => { c.hidden = n !== i; });
     const photo = document.getElementById("peek-photo");
-    page.src = "dentro-" + p.slug + "-pagina.png"; page.alt = p.pageAlt;
-    page.width = p.pw; page.height = p.ph;
+    photo.src = p.photo; photo.alt = p.alt;
     const srcEl = document.getElementById("peek-src");
     srcEl.textContent = p.free ? "Del recetario gratuito" : "Del recetario completo";
     srcEl.className = "peek-src " + (p.free ? "peek-src-free" : "peek-src-paid");
-    photo.src = "dentro-" + p.slug + "-foto.jpg"; photo.alt = p.photoAlt;
-    document.getElementById("peek-link").href = "dentro-" + p.slug + "-pagina.png";
-    document.getElementById("peek-title").textContent = p.title;
-    document.getElementById("peek-fase").textContent = p.fase;
-    document.getElementById("peek-tiempo").textContent = p.tiempo;
-    document.getElementById("peek-dif").textContent = p.dif;
-    document.getElementById("peek-alerg").textContent = p.alerg;
     peekBtns.forEach((el, n) => el.setAttribute("aria-pressed", String(n === i)));
   }
   peekBtns.forEach(el => el.addEventListener("click", () => selectPeek(Number(el.dataset.i))));

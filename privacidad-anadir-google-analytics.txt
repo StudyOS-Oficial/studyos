@@ -1,0 +1,24 @@
+AÑADIR A privacidad.html (Google Analytics y Google Tag Manager)
+===================================================================
+Abre privacidad.html en GitHub (icono del lápiz) y añade estos tres trozos.
+
+1) En la tabla del apartado "2. Qué datos tratamos...", justo antes de </tbody>, añade esta fila:
+
+    <tr>
+      <td>Analítica web: saber cuántas personas visitan la web y cómo la usan (Google Analytics y Google Tag Manager)</td>
+      <td>Páginas visitadas, clics, tipo de dispositivo y navegador, país aproximado, identificadores de cookie y dirección IP</td>
+      <td>Tu consentimiento, que puedes retirar en cualquier momento</td>
+      <td>Las cookies de Google Analytics duran hasta 2 años</td>
+    </tr>
+
+2) En el apartado "3. Quién más recibe tus datos", añade esta línea a la lista:
+
+  <li><strong>Google Ireland Limited (Google Analytics y Google Tag Manager)</strong>, solo si aceptas las cookies de medición.</li>
+
+3) En la tabla de cookies del apartado 6, justo antes de </tbody>, añade estas dos filas:
+
+    <tr><td>_ga</td><td>Google</td><td>Distingue a las personas que visitan la web para las estadísticas</td><td>2 años</td><td>Analítica (con tu consentimiento)</td></tr>
+    <tr><td>_ga_JL08TE3FSM</td><td>Google</td><td>Mantiene el estado de la sesión en Google Analytics</td><td>2 años</td><td>Analítica (con tu consentimiento)</td></tr>
+
+Además, en el apartado 2, donde dice "Solo activamos el Meta Pixel y el envío de datos a Meta si aceptas las cookies", cámbialo por:
+"Solo activamos el Meta Pixel, Google Analytics y el envío de datos a Meta y a Google si aceptas las cookies."

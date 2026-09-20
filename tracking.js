@@ -1,8 +1,9 @@
 /*
-  StudyOS | Meta Pixel con consentimiento de cookies
+  StudyOS | Meta Pixel y Google Analytics con consentimiento de cookies
 
-  - El Pixel (ID 1420061570074591) SOLO se carga si la persona pulsa "Aceptar".
-    Si pulsa "Rechazar" (o no elige), no se carga nada de Meta.
+  - El Pixel de Meta (ID 1420061570074591) y Google (Tag Manager GTM-NJCNBN9C y Analytics G-JL08TE3FSM)
+    SOLO se cargan si la persona pulsa "Aceptar".
+    Si pulsa "Rechazar" (o no elige), no se carga nada de Meta ni de Google.
   - Desde las páginas puedes usar:
       studyosTrack("Lead", { ... })            lanza un evento si hay consentimiento
       studyosWhenConsented(function () { ... }) ejecuta código cuando hay consentimiento
@@ -12,10 +13,13 @@
   "use strict";
 
   var PIXEL_ID = "1420061570074591";
+  var GTM_ID = "GTM-NJCNBN9C";
+  var GA_ID = "G-JL08TE3FSM";
   var KEY = "studyos_cookies"; // "granted" (acepta) o "denied" (rechaza)
 
   var waiting = [];
   var pixelLoaded = false;
+  var googleLoaded = false;
 
   function readConsent() {
     try { return localStorage.getItem(KEY); } catch (e) { return null; }
@@ -42,9 +46,39 @@
     window.fbq("track", "PageView");
   }
 
+  /* ---------- Google Tag Manager y Google Analytics (mismo código que tenías, pero con consentimiento) ---------- */
+  function loadGoogle() {
+    if (googleLoaded) return;
+    googleLoaded = true;
+    window["ga-disable-" + GA_ID] = false;
+    window.dataLayer = window.dataLayer || [];
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true; j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", GTM_ID);
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    var g = document.createElement("script");
+    g.async = true;
+    g.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+    document.head.appendChild(g);
+    window.gtag("js", new Date());
+    window.gtag("config", GA_ID);
+  }
+
+  function deleteCookie(name) {
+    var host = location.hostname;
+    document.cookie = name + "=; Max-Age=0; path=/";
+    document.cookie = name + "=; Max-Age=0; path=/; domain=" + host;
+    document.cookie = name + "=; Max-Age=0; path=/; domain=." + host;
+  }
+
   function grant() {
     saveConsent("granted");
     loadPixel();
+    loadGoogle();
     if (window.fbq) window.fbq("consent", "grant");
     var callbacks = waiting.splice(0);
     callbacks.forEach(function (cb) { try { cb(); } catch (e) {} });
@@ -53,13 +87,13 @@
   function deny() {
     saveConsent("denied");
     waiting = [];
+    window["ga-disable-" + GA_ID] = true;
     if (window.fbq) window.fbq("consent", "revoke");
-    // Borra las cookies del Pixel si ya existían
-    var host = location.hostname;
-    ["_fbp", "_fbc"].forEach(function (name) {
-      document.cookie = name + "=; Max-Age=0; path=/";
-      document.cookie = name + "=; Max-Age=0; path=/; domain=" + host;
-      document.cookie = name + "=; Max-Age=0; path=/; domain=." + host;
+    // Borra las cookies de medición si ya existían
+    ["_fbp", "_fbc", "_gid"].forEach(deleteCookie);
+    document.cookie.split(";").forEach(function (c) {
+      var name = c.split("=")[0].trim();
+      if (name.indexOf("_ga") === 0 || name.indexOf("_gat") === 0) deleteCookie(name);
     });
   }
 
@@ -67,6 +101,12 @@
   window.studyosTrack = function (name, params, options) {
     if (readConsent() === "granted" && window.fbq) {
       window.fbq("track", name, params || {}, options || {});
+    }
+  };
+
+  window.studyosTrackCustom = function (name, params) {
+    if (readConsent() === "granted" && window.fbq) {
+      window.fbq("trackCustom", name, params || {});
     }
   };
 
@@ -106,7 +146,7 @@
     box.setAttribute("role", "dialog");
     box.setAttribute("aria-label", "Aviso de cookies");
     box.innerHTML =
-      "<p>Usamos cookies de medición de Meta (Facebook e Instagram) para saber qué anuncios funcionan. " +
+      "<p>Usamos cookies de medición de Meta (Facebook e Instagram) y de Google Analytics para saber qué anuncios funcionan y cómo se usa la web. " +
       "Solo se activan si las aceptas. <a href=\"privacidad.html#cookies\">Más información</a></p>" +
       '<div class="sc-btns">' +
       '<button type="button" data-a="deny">Rechazar</button>' +
