@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-JL08TE3FSM');
-</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>StudyOS | Recetas antiinflamatorias para tu ciclo y la menopausia</title>
@@ -20,6 +13,7 @@
 
 <script>document.documentElement.classList.add("js");</script>
 <script src="tracking.js" defer></script>
+<script src="test-receta.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -323,6 +317,97 @@
     footer { padding-bottom: 104px; }
   }
 
+  .bg-paper { background: var(--paper); }
+  .bg-page { background: var(--page); }
+
+  /* ---------- Test: encuentra tu receta de hoy ---------- */
+  .quiz-sec { background: var(--olive-800); color: #fff; }
+  .quiz-sec h2 { color: #fff; max-width: 36rem; }
+  .quiz-sec .lede { color: rgba(255, 255, 255, .86); margin-top: 14px; }
+  .quiz { background: var(--paper); color: var(--ink); border-radius: 24px; padding: clamp(20px, 4vw, 36px); margin-top: 32px; box-shadow: 0 24px 60px rgba(0, 0, 0, .28); }
+  .quiz-top { display: flex; align-items: center; gap: 14px; font-size: .9rem; color: var(--muted); }
+  .quiz-bar { flex: 1; height: 8px; border-radius: 99px; background: rgba(74, 90, 42, .16); overflow: hidden; }
+  .quiz-bar i { display: block; height: 100%; width: 33%; background: var(--olive-500); border-radius: 99px; transition: width .35s; }
+  .qstep h3 { font-size: clamp(1.4rem, 3.8vw, 1.9rem); color: var(--olive-900); margin: 22px 0 16px; outline: none; }
+  .qopts { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+  .qopts button {
+    text-align: left; min-height: 58px; padding: .8rem 1rem; border: 2px solid var(--line); border-radius: 14px;
+    background: #fff; color: var(--ink); font: 600 1rem/1.25 var(--sans); cursor: pointer;
+    transition: border-color .2s, background-color .2s;
+  }
+  .qopts button small { display: block; margin-top: 3px; font-weight: 400; font-size: .82rem; color: var(--muted); }
+  .qopts button:hover { border-color: var(--olive-500); }
+  .qopts button[aria-pressed="true"] { border-color: var(--olive-700); background: rgba(183, 196, 139, .38); }
+  .qhelp { margin-top: 16px; font-size: .92rem; color: var(--muted); }
+  .qhelp a { color: var(--olive-700); }
+  .quiz-nav { margin-top: 18px; }
+  .quiz-nav .linkbtn, .res-again .linkbtn { color: var(--olive-700); }
+  .quiz-note { margin-top: 16px; font-size: .88rem; color: rgba(255, 255, 255, .8); }
+  .res-main { background: #fff; border: 1.5px solid var(--olive-700); border-radius: 18px; padding: clamp(18px, 3vw, 26px); margin-top: 18px; animation: rise .5s both; }
+  .res-kicker { font-size: .85rem; font-weight: 600; color: var(--olive-700); }
+  .res-title { font-size: clamp(1.45rem, 3.6vw, 2rem); line-height: 1.15; color: var(--olive-900); margin: 6px 0 10px; outline: none; }
+  .res-meta { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: .9rem; color: var(--muted); }
+  .res-why { margin-top: 14px; }
+  .res-sub { margin-top: 16px; font-family: var(--serif); font-weight: 600; color: var(--olive-800); }
+  .res-ing { margin: 6px 0 0; padding-left: 1.15rem; font-size: .96rem; }
+  .res-more { margin-top: 8px; font-size: .9rem; color: var(--muted); }
+  .res-quote { margin: 16px 0 0; padding-left: 14px; border-left: 3px solid var(--sage); color: var(--muted); font-size: .94rem; }
+  .res-quote b { color: var(--olive-700); }
+  .res-cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  .res-alt-title { margin-top: 22px; }
+  .res-alt { display: grid; gap: 10px; margin-top: 10px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+  .res-alt div { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+  .res-alt b { display: block; font-family: var(--serif); color: var(--olive-800); line-height: 1.25; }
+  .res-alt span { font-size: .85rem; color: var(--muted); }
+  .res-again { margin-top: 16px; }
+  @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+  /* ---------- Menú semanal ---------- */
+  .menu-grid { display: grid; gap: 28px; margin-top: 32px; }
+  @media (min-width: 900px) { .menu-grid { grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: start; } }
+  .menu-name { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; color: var(--olive-800); margin-bottom: 12px; }
+  .days { display: flex; flex-wrap: wrap; gap: 8px; }
+  .days button { min-width: 56px; min-height: 46px; padding: .4rem .8rem; border-radius: 12px; border: 1.5px solid var(--olive-700); background: transparent; color: var(--olive-800); font: 600 .95rem/1 var(--sans); cursor: pointer; transition: background-color .2s, color .2s; }
+  .days button:hover { background: rgba(74, 90, 42, .12); }
+  .days button[aria-pressed="true"] { background: var(--olive-700); color: #fff; }
+  .day { margin-top: 14px; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 6px 18px; }
+  .day[hidden] { display: none; }
+  .day dl { margin: 0; }
+  .meal { display: grid; gap: 2px; padding: 13px 0; border-top: 1px solid var(--line); }
+  .meal:first-child { border-top: 0; }
+  @media (min-width: 560px) { .meal { grid-template-columns: 96px 1fr; gap: 14px; align-items: baseline; } }
+  .meal dt { font-size: .85rem; font-weight: 600; color: var(--olive-700); }
+  .meal dd { margin: 0; font-weight: 500; }
+  .mt { margin-left: .4rem; font-size: .82rem; font-weight: 400; color: var(--muted); white-space: nowrap; }
+  .menu-grid > div > .fine { margin-top: 12px; font-size: .88rem; color: var(--muted); }
+  .shop { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; }
+  .shop h3 { font-size: 1.3rem; color: var(--olive-900); }
+  .shop-count { margin-top: 4px; font-size: .9rem; color: var(--muted); }
+  .shop h4 { margin: 16px 0 6px; font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--olive-700); }
+  .shop label { display: flex; gap: 10px; align-items: flex-start; padding: 5px 0; font-size: .95rem; cursor: pointer; }
+  .shop input { flex: none; margin-top: .22rem; width: 18px; height: 18px; accent-color: var(--olive-700); }
+  .shop input:checked + span { text-decoration: line-through; color: var(--muted); }
+  @media (min-width: 900px) { .shop { max-height: 660px; overflow-y: auto; position: sticky; top: 16px; } }
+  .shop-clear { margin-top: 14px; }
+  .shop-clear .linkbtn { color: var(--olive-700); font-size: .9rem; }
+  .others-title { margin-top: 44px; font-size: 1.35rem; color: var(--olive-900); }
+  .others { display: grid; gap: 12px; margin-top: 14px; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); }
+  .others article { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+  .others b { font-family: var(--serif); color: var(--olive-800); }
+  .others p { margin-top: 4px; font-size: .92rem; color: var(--muted); }
+
+  /* ---------- Calculadora de fase ---------- */
+  .calc { margin-top: 26px; background: var(--paper); border: 1.5px solid var(--line); border-radius: 18px; padding: 20px 22px; max-width: 30rem; }
+  .calc h3 { font-size: 1.25rem; color: var(--olive-900); }
+  .calc-row { display: grid; gap: 4px; margin-top: 14px; }
+  .calc-row label { font-size: .9rem; font-weight: 600; color: var(--olive-800); }
+  .calc input, .calc select { min-height: 46px; padding: .5rem .8rem; border: 1.5px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); font: 400 1rem/1.2 var(--sans); }
+  .calc .btn { margin-top: 18px; }
+  #calc-out { margin-top: 14px; }
+  .calc-res { margin-bottom: 10px; }
+  .calc-warn { margin: 6px 0 10px; font-size: .92rem; color: var(--muted); }
+  .calc .fine { margin-top: 14px; font-size: .85rem; color: var(--muted); }
+
   .legal-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
   .legal-links a { color: inherit; }
   .linkbtn { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; }
@@ -331,7 +416,8 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .bloom.play .petal { animation: none; }
-    .btn, .phase-tabs button, .peek-tabs button, .sticky-cta { transition: none; }
+    .btn, .phase-tabs button, .peek-tabs button, .sticky-cta, .qopts button, .quiz-bar i, .days button { transition: none; }
+    .res-main { animation: none; }
   }
 </style>
 </head>
@@ -404,6 +490,58 @@
           <p class="fine">Pago seguro con Stripe con tarjetas de crédito o débito de cualquier país. Al terminar te llevamos a la página de descarga. El cobro es en euros: según tu país, Stripe puede mostrarte el precio en tu moneda y, si no, tu banco convierte el importe automáticamente al cambio del día.</p>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== Test: encuentra tu receta de hoy ===== -->
+  <section class="section quiz-sec" id="test">
+    <div class="wrap">
+      <h2>Encuentra tu receta de hoy en 30 segundos</h2>
+      <p class="lede">Tres preguntas y te enseñamos una receta del recetario que encaja con cómo estás hoy. Tus respuestas se quedan en tu dispositivo: no las guardamos.</p>
+
+      <div class="quiz" id="quiz">
+        <div class="quiz-top"><span id="quiz-step">Pregunta 1 de 3</span><div class="quiz-bar" aria-hidden="true"><i id="quiz-bar-i"></i></div></div>
+
+        <div class="qstep" data-q="1">
+          <h3 tabindex="-1">¿En qué momento estás?</h3>
+          <div class="qopts">
+            <button type="button" data-v="menstrual" aria-pressed="false">Fase menstrual<small>días 1 a 5 del ciclo</small></button>
+            <button type="button" data-v="folicular" aria-pressed="false">Fase folicular<small>días 6 a 12</small></button>
+            <button type="button" data-v="ovulatoria" aria-pressed="false">Fase ovulatoria<small>días 13 a 16</small></button>
+            <button type="button" data-v="lutea" aria-pressed="false">Fase lútea<small>días 17 a 28</small></button>
+            <button type="button" data-v="perimenopausia" aria-pressed="false">Perimenopausia<small>ciclos irregulares</small></button>
+            <button type="button" data-v="menopausia" aria-pressed="false">Menopausia<small>sin regla desde hace un año o más</small></button>
+            <button type="button" data-v="ninguna" aria-pressed="false">No lo sé<small>sin filtrar por fase</small></button>
+          </div>
+          <p class="qhelp">¿No sabes en qué fase estás? <a href="#calcula">Calcúlala en 10 segundos</a>.</p>
+        </div>
+
+        <div class="qstep" data-q="2" hidden>
+          <h3 tabindex="-1">¿Qué necesitas hoy?</h3>
+          <div class="qopts">
+            <button type="button" data-v="en" aria-pressed="false">Más energía</button>
+            <button type="button" data-v="hi" aria-pressed="false">Bajar la hinchazón</button>
+            <button type="button" data-v="an" aria-pressed="false">Calmar los antojos</button>
+            <button type="button" data-v="sa" aria-pressed="false">Saciarme de verdad</button>
+            <button type="button" data-v="ra" aria-pressed="false">Algo rápido</button>
+            <button type="button" data-v="ai" aria-pressed="false">Priorizar lo antiinflamatorio</button>
+          </div>
+        </div>
+
+        <div class="qstep" data-q="3" hidden>
+          <h3 tabindex="-1">¿Para qué momento del día?</h3>
+          <div class="qopts">
+            <button type="button" data-v="D" aria-pressed="false">Desayuno</button>
+            <button type="button" data-v="C" aria-pressed="false">Comida</button>
+            <button type="button" data-v="N" aria-pressed="false">Cena</button>
+            <button type="button" data-v="S" aria-pressed="false">Un snack o algo dulce</button>
+          </div>
+        </div>
+
+        <div class="qresult" id="quiz-result" aria-live="polite" hidden></div>
+        <div class="quiz-nav"><button type="button" class="linkbtn" id="quiz-back" hidden>Volver a la pregunta anterior</button></div>
+      </div>
+      <p class="quiz-note">Es una orientación para inspirarte, no un diagnóstico ni un consejo médico personalizado.</p>
     </div>
   </section>
 
@@ -546,8 +684,162 @@
     </div>
   </section>
 
+  <!-- ===== Menú semanal ===== -->
+  <section class="section" id="menu">
+    <div class="wrap">
+      <h2>Un menú semanal, listo para usar</h2>
+      <p class="lede" style="margin-top:14px">El recetario incluye 6 menús semanales, cada uno con su lista de la compra. Aquí tienes uno completo de ejemplo: elige un día y marca en la lista lo que ya tienes en casa.</p>
+
+      <div class="menu-grid">
+        <div>
+          <p class="menu-name">Menú 1: energía y saciedad</p>
+          <div class="days" role="group" aria-label="Elige un día de la semana">
+          <button type="button" data-d="0" aria-pressed="true" aria-label="Lunes">Lun</button>
+          <button type="button" data-d="1" aria-pressed="false" aria-label="Martes">Mar</button>
+          <button type="button" data-d="2" aria-pressed="false" aria-label="Miércoles">Mié</button>
+          <button type="button" data-d="3" aria-pressed="false" aria-label="Jueves">Jue</button>
+          <button type="button" data-d="4" aria-pressed="false" aria-label="Viernes">Vie</button>
+          <button type="button" data-d="5" aria-pressed="false" aria-label="Sábado">Sáb</button>
+          <button type="button" data-d="6" aria-pressed="false" aria-label="Domingo">Dom</button>
+          </div>
+        <article class="day" data-d="0">
+          <h3 class="sr">Lunes</h3>
+          <dl>
+            <div class="meal"><dt>Desayuno</dt><dd>Tostada de Aguacate, Huevo Poché y Semillas de Girasol <span class="mt">10 min</span></dd></div>
+            <div class="meal"><dt>Comida</dt><dd>Ensalada de Garbanzos, Espinacas y Bacalao <span class="mt">12 min</span></dd></div>
+            <div class="meal"><dt>Cena</dt><dd>Crema de Calabacín y Jengibre con Dados de Pavo <span class="mt">20 min</span></dd></div>
+            <div class="meal"><dt>Snack</dt><dd>Pudding de Chía y Cacao &quot;Antiantojos&quot; <span class="mt">5 min</span></dd></div>
+          </dl>
+        </article>
+        <article class="day" data-d="1" hidden>
+          <h3 class="sr">Martes</h3>
+          <dl>
+            <div class="meal"><dt>Desayuno</dt><dd>Revuelto de Tofu, Cúrcuma y Espinacas <span class="mt">10 min</span></dd></div>
+            <div class="meal"><dt>Comida</dt><dd>Salteado de Ternera Magra con Espárragos Trigueros y Semillas de Sésamo <span class="mt">14 min</span></dd></div>
+            <div class="meal"><dt>Cena</dt><dd>Crema Antioxidante de Lombarda, Manzana y Jengibre <span class="mt">22 min</span></dd></div>
+            <div class="meal"><dt>Snack</dt><dd>Mousse Exprés de Yogur Griego, Cacao y Crema de Cacahuete <span class="mt">5 min</span></dd></div>
+          </dl>
+        </article>
+        <article class="day" data-d="2" hidden>
+          <h3 class="sr">Miércoles</h3>
+          <dl>
+            <div class="meal"><dt>Desayuno</dt><dd>Tostada de Aguacate, Huevo Poché y Semillas de Girasol <span class="mt">10 min</span></dd></div>
+            <div class="meal"><dt>Comida</dt><dd>Ensalada Templada de Lentejas, Pimiento Asado y Ventresca <span class="mt">10 min</span></dd></div>
+            <div class="meal"><dt>Cena</dt><dd>Crema de Brócoli, Espinacas y Queso de Cabra <span class="mt">18 min</span></dd></div>
+            <div class="meal"><dt>Snack</dt><dd>Pudding de Chía y Cacao &quot;Antiantojos&quot; <span class="mt">5 min</span></dd></div>
+          </dl>
+        </article>
+        <article class="day" data-d="3" hidden>
+          <h3 class="sr">Jueves</h3>
+          <dl>
+            <div class="meal"><dt>Desayuno</dt><dd>Revuelto de Bacalao, Puerro y Calabacín al Eneldo <span class="mt">15 min</span></dd></div>
+            <div class="meal"><dt>Comida</dt><dd>Salteado de Ternera Magra con Espárragos Trigueros y Semillas de Sésamo <span class="mt">14 min</span></dd></div>
+            <div class="meal"><dt>Cena</dt><dd>Crema de Calabacín, Puerro y Semillas de Chía <span class="mt">18 min</span></dd></div>
+            <div class="meal"><dt>Snack</dt><dd>Tartar de Remolacha, Aguacate y Nueces <span class="mt">10 min</span></dd></div>
+          </dl>
+        </article>
+        <article class="day" data-d="4" hidden>
+          <h3 class="sr">Viernes</h3>
+          <dl>
+            <div class="meal"><dt>Desayuno</dt><dd>Tortitas de avena y calabaza <span class="mt">12 min</span></dd></div>
+            <div class="meal"><dt>Comida</dt><dd>Ensalada de Garbanzos, Espinacas y Bacalao <span class="mt">12 min</span></dd></div>
+            <div class="meal"><dt>Cena</dt><dd>Crema de Calabacín y Jengibre con Dados de Pavo <span class="mt">20 min</span></dd></div>
+            <div class="meal"><dt>Snack</dt><dd>Mousse Exprés de Yogur Griego, Cacao y Crema de Cacahuete <span class="mt">5 min</span></dd></div>
+          </dl>
+        </article>
+        <article class="day" data-d="5" hidden>
+          <h3 class="sr">Sábado</h3>
+          <dl>
+            <div class="meal"><dt>Desayuno</dt><dd>Tostada de Aguacate, Huevo Poché y Semillas de Girasol <span class="mt">10 min</span></dd></div>
+            <div class="meal"><dt>Comida</dt><dd>Ensalada Templada de Lentejas, Pimiento Asado y Ventresca <span class="mt">10 min</span></dd></div>
+            <div class="meal"><dt>Cena</dt><dd>Crema Antioxidante de Lombarda, Manzana y Jengibre <span class="mt">22 min</span></dd></div>
+            <div class="meal"><dt>Snack</dt><dd>Pudding de Chía y Cacao &quot;Antiantojos&quot; <span class="mt">5 min</span></dd></div>
+          </dl>
+        </article>
+        <article class="day" data-d="6" hidden>
+          <h3 class="sr">Domingo</h3>
+          <dl>
+            <div class="meal"><dt>Desayuno</dt><dd>Revuelto de Tofu, Cúrcuma y Espinacas <span class="mt">10 min</span></dd></div>
+            <div class="meal"><dt>Comida</dt><dd>Revuelto de Bacalao, Puerro y Calabacín al Eneldo <span class="mt">15 min</span></dd></div>
+            <div class="meal"><dt>Cena</dt><dd>Crema de Brócoli, Espinacas y Queso de Cabra <span class="mt">18 min</span></dd></div>
+            <div class="meal"><dt>Snack</dt><dd>Tartar de Remolacha, Aguacate y Nueces <span class="mt">10 min</span></dd></div>
+          </dl>
+        </article>
+          <p class="fine">Cada plato está en el recetario completo, con sus pasos y su Porqué Biológico.</p>
+        </div>
+
+        <aside class="shop" aria-label="Lista de la compra de la semana 1">
+          <h3>Lista de la compra, semana 1</h3>
+          <p class="shop-count" id="shop-count" aria-live="polite">0 de 45 marcados</p>
+          <h4>Proteínas</h4>
+            <label><input type="checkbox"><span>Pechuga de pavo</span></label>
+            <label><input type="checkbox"><span>Huevos</span></label>
+            <label><input type="checkbox"><span>Claras de huevo</span></label>
+            <label><input type="checkbox"><span>Tofu firme</span></label>
+            <label><input type="checkbox"><span>Bacalao desalado (migas)</span></label>
+            <label><input type="checkbox"><span>Ventresca de atún en aceite de oliva</span></label>
+            <label><input type="checkbox"><span>Contra o babilla de ternera magra</span></label>
+          <h4>Legumbres y cereales</h4>
+            <label><input type="checkbox"><span>Garbanzos cocidos en conserva</span></label>
+            <label><input type="checkbox"><span>Lentejas cocidas en conserva</span></label>
+            <label><input type="checkbox"><span>Harina de avena integral</span></label>
+            <label><input type="checkbox"><span>Pan integral de masa madre o centeno</span></label>
+          <h4>Verduras y hortalizas</h4>
+            <label><input type="checkbox"><span>Calabacín</span></label>
+            <label><input type="checkbox"><span>Puerro</span></label>
+            <label><input type="checkbox"><span>Jengibre fresco</span></label>
+            <label><input type="checkbox"><span>Espinacas frescas</span></label>
+            <label><input type="checkbox"><span>Col lombarda</span></label>
+            <label><input type="checkbox"><span>Manzana roja</span></label>
+            <label><input type="checkbox"><span>Remolacha cocida</span></label>
+            <label><input type="checkbox"><span>Pimiento rojo asado</span></label>
+            <label><input type="checkbox"><span>Pimiento rojo fresco</span></label>
+            <label><input type="checkbox"><span>Espárragos trigueros</span></label>
+            <label><input type="checkbox"><span>Brócoli</span></label>
+            <label><input type="checkbox"><span>Ajo</span></label>
+            <label><input type="checkbox"><span>Cebolla morada</span></label>
+          <h4>Lácteos y alternativas</h4>
+            <label><input type="checkbox"><span>Queso de rulo de cabra o queso fresco de oveja</span></label>
+            <label><input type="checkbox"><span>Yogur griego natural</span></label>
+            <label><input type="checkbox"><span>Leche vegetal</span></label>
+          <h4>Grasas, semillas y frutos secos</h4>
+            <label><input type="checkbox"><span>Aguacate</span></label>
+            <label><input type="checkbox"><span>Semillas de girasol</span></label>
+            <label><input type="checkbox"><span>Semillas de chía</span></label>
+            <label><input type="checkbox"><span>Semillas de calabaza</span></label>
+            <label><input type="checkbox"><span>Semillas de sésamo</span></label>
+            <label><input type="checkbox"><span>Nueces</span></label>
+            <label><input type="checkbox"><span>Crema de cacahuete 100 %</span></label>
+          <h4>Condimentos y básicos</h4>
+            <label><input type="checkbox"><span>AOVE</span></label>
+            <label><input type="checkbox"><span>Limón</span></label>
+            <label><input type="checkbox"><span>Canela en polvo</span></label>
+            <label><input type="checkbox"><span>Cúrcuma</span></label>
+            <label><input type="checkbox"><span>Comino</span></label>
+            <label><input type="checkbox"><span>Pimentón de la Vera</span></label>
+            <label><input type="checkbox"><span>Mostaza antigua</span></label>
+            <label><input type="checkbox"><span>Vinagre de manzana</span></label>
+            <label><input type="checkbox"><span>Sal</span></label>
+            <label><input type="checkbox"><span>Pimienta negra</span></label>
+            <label><input type="checkbox"><span>Cacao puro desgrasado en polvo</span></label>
+          <p class="shop-clear"><button type="button" class="linkbtn" id="shop-clear">Limpiar marcas</button></p>
+        </aside>
+      </div>
+
+      <h3 class="others-title">Y otros 5 menús dentro del recetario</h3>
+      <div class="others">
+        <article><b>Menú 2: digestión ligera</b><p>Para días de pesadez, hinchazón abdominal o retención de líquidos.</p></article>
+        <article><b>Menú 3: antiinflamatorio</b><p>Con omega-3, antioxidantes, hojas verdes y especias como la cúrcuma y el jengibre.</p></article>
+        <article><b>Menú 4: semana exprés</b><p>Pensado para semanas con poco tiempo, con preparaciones rápidas y sencillas.</p></article>
+        <article><b>Menú 5: equilibrio fitoestrogénico</b><p>Con lignanos y fitoestrógenos suaves, para semanas de mayor fluctuación hormonal.</p></article>
+        <article><b>Menú 6: densidad nutricional</b><p>Con ingredientes de alta densidad nutricional para apoyar al hígado y reponer minerales.</p></article>
+      </div>
+      <p class="cta-inline"><a class="btn btn-yellow btn-lg" href="gratis.html">Probar con 10 recetas gratis</a></p>
+    </div>
+  </section>
+
   <!-- ===== Opiniones ===== -->
-  <section class="section" id="opiniones">
+  <section class="section bg-paper" id="opiniones">
     <div class="wrap">
       <h2>Lo que dicen las lectoras</h2>
       <p class="lede" style="margin-top:14px">Opiniones de mujeres que ya han usado los recetarios de StudyOS.</p>
@@ -578,7 +870,7 @@
   </section>
 
   <!-- ===== Qué incluye ===== -->
-  <section class="section contents" id="incluye">
+  <section class="section contents bg-page" id="incluye">
     <div class="wrap contents-grid">
       <div>
         <h2>Qué encuentras dentro del recetario</h2>
@@ -686,6 +978,34 @@
       <div>
         <h2>Recetas para cada fase de tu ciclo</h2>
         <p class="lede" style="margin-top:14px">Tu cuerpo no necesita lo mismo todos los días. Elige una fase y mira qué prioriza el recetario en ese momento.</p>
+
+        <form class="calc" id="calc" novalidate>
+          <h3 id="calcula">¿En qué fase estás hoy?</h3>
+          <div class="calc-row">
+            <label for="calc-date">Primer día de tu última regla</label>
+            <input type="date" id="calc-date">
+          </div>
+          <div class="calc-row">
+            <label for="calc-len">Duración habitual de tu ciclo</label>
+            <select id="calc-len">
+              <option value="24">24 días</option>
+              <option value="25">25 días</option>
+              <option value="26">26 días</option>
+              <option value="27">27 días</option>
+              <option value="28" selected>28 días (lo más habitual)</option>
+              <option value="29">29 días</option>
+              <option value="30">30 días</option>
+              <option value="31">31 días</option>
+              <option value="32">32 días</option>
+              <option value="33">33 días</option>
+              <option value="34">34 días</option>
+              <option value="35">35 días</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-olive">Calcular mi fase</button>
+          <div id="calc-out" aria-live="polite"></div>
+          <p class="fine">Es una estimación orientativa: cada ciclo es distinto. No sirve como método anticonceptivo ni para buscar embarazo. La fecha se queda en tu dispositivo.</p>
+        </form>
       </div>
 
       <div class="cycle">
@@ -719,25 +1039,8 @@
     </div>
   </section>
 
-  <!-- ===== Según cómo te sientes ===== -->
-  <section class="section contents" id="segun-te-sientes">
-    <div class="wrap">
-      <h2>Busca las recetas según cómo te sientes hoy</h2>
-      <p class="lede" style="margin-top:14px">El recetario incluye un índice por necesidad, para que no tengas que planificar de más.</p>
-      <ul class="chips">
-        <li>Tengo poca energía</li>
-        <li>Estoy hinchada</li>
-        <li>Tengo muchos antojos</li>
-        <li>Quiero una comida muy saciante</li>
-        <li>Tengo poco tiempo</li>
-        <li>Quiero una cena ligera y reparadora</li>
-        <li>Quiero priorizar alimentos antiinflamatorios</li>
-      </ul>
-    </div>
-  </section>
-
   <!-- ===== Preguntas ===== -->
-  <section class="section" id="preguntas">
+  <section class="section bg-paper" id="preguntas">
     <div class="wrap">
       <h2>Preguntas frecuentes</h2>
       <div class="faq-list">
@@ -748,6 +1051,10 @@
         <details>
           <summary>¿Puedo pagar desde otro país o en otra moneda?</summary>
           <p>Sí. El precio es de 5 € (unos 5,8 US$ al cambio actual, que es aproximado). El pago es seguro y lo gestiona Stripe con tarjetas de crédito o débito. Según tu país, Stripe puede mostrarte el precio en tu moneda; si no, tu banco convierte el importe automáticamente al cambio del día.</p>
+        </details>
+        <details>
+          <summary>¿El test y la calculadora guardan mis respuestas o mi fecha?</summary>
+          <p>No. Funcionan en tu dispositivo: no guardamos ni enviamos tus respuestas ni la fecha de tu regla. Solo, si aceptaste las cookies de medición, se cuenta que alguien completó el test, sin ningún dato personal.</p>
         </details>
         <details>
           <summary>¿Es una dieta?</summary>
@@ -917,6 +1224,23 @@
     }, { threshold: 0.3 });
     io2.observe(offer);
   });
+
+  // Menú semanal: elegir un día y marcar la lista de la compra (no se guarda nada).
+  const dayBtns = document.querySelectorAll(".days button");
+  const dayPanels = document.querySelectorAll(".day");
+  dayBtns.forEach(b => b.addEventListener("click", () => {
+    const d = b.dataset.d;
+    dayBtns.forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    dayPanels.forEach(p => { p.hidden = p.dataset.d !== d; });
+  }));
+  const shopBoxes = document.querySelectorAll(".shop input[type=checkbox]");
+  const shopCount = document.getElementById("shop-count");
+  function updateShop() {
+    const n = Array.from(shopBoxes).filter(c => c.checked).length;
+    shopCount.textContent = n + " de " + shopBoxes.length + " marcados";
+  }
+  shopBoxes.forEach(c => c.addEventListener("change", updateShop));
+  document.getElementById("shop-clear").addEventListener("click", () => { shopBoxes.forEach(c => { c.checked = false; }); updateShop(); });
 
   // Eventos del Pixel de Meta: solo se envían si la persona ha aceptado las cookies.
   document.addEventListener("click", function (e) {
