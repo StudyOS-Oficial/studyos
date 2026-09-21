@@ -18,9 +18,7 @@
   EN STRIPE (Payment Link > Después del pago > Redirigir a tu sitio web), pon:
      https://TU-DOMINIO/gracias.html?session_id={CHECKOUT_SESSION_ID}
   AJUSTES EN ESTE ARCHIVO:
-  - Botón principal: apunta al PDF del recetario alojado en tu web (nombre del archivo en el href).
-    Usa un nombre difícil de adivinar, por ejemplo recetario-100-k7x2m9qp.pdf
-  - Enlace alternativo: el PDF en Drive (por si el principal falla).
+  - Descarga: enlace directo del PDF mejorado en Drive. Ver online: el mismo archivo en el visor de Drive.
   - CAPI_ENDPOINT (al final): la dirección de tu función del servidor, cuando la tengas.
 -->
 
@@ -57,7 +55,9 @@
     box-shadow: 0 6px 18px rgba(242, 194, 48, .38); transition: background-color .2s;
   }
   .btn:hover { background: var(--yellow-hover); }
-  .alt { margin-top: 16px; font-size: .95rem; color: var(--muted); }
+  .alt { margin-top: 16px; font-size: .95rem; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+  .btn-line { display: inline-flex; align-items: center; min-height: 44px; padding: .5rem 1.2rem; border: 2px solid var(--olive-700); border-radius: 999px; font-weight: 600; color: var(--olive-800); text-decoration: none; }
+  .btn-line:hover { background: var(--olive-700); color: #fff; }
   .alt a { color: var(--olive-700); }
 
   .community { background: var(--olive-800); color: #fff; border-radius: 22px; padding: clamp(24px, 4vw, 34px); }
@@ -92,12 +92,11 @@
   <section class="thanks">
     <div class="wrap">
       <h1>¡Gracias por tu compra!</h1>
-      <p class="lede">Tu recetario ya está listo. Descárgalo ahora y, por si acaso, también tienes un segundo link de descarga. Si sigues en el navegador de instagram prueba a hacer click en los tres puntos de la parte superior derecha de la pantalla y abrirlo des del navegador (chrome, safari..).</p>
+      <p class="lede">Tu recetario ya está listo. Descárgalo ahora y guárdalo en tu móvil u ordenador. Si no se abre, puedes verlo online.</p>
 
-      <!-- Botón principal: PDF alojado en tu web. Cambia el nombre del archivo si usas otro. -->
+      <!-- Descarga inmediata (nuevo PDF mejorado) y enlace para verlo online por si el primero no se abre -->
       <a class="btn" id="descarga" href="https://drive.google.com/uc?export=download&id=1Mlh_PRqzMHp_i74IATbxQjes9911D-Uo" target="_blank" rel="noopener">Descargar mi recetario</a>
-
-      <p class="alt">¿No se abre? Prueba con este <a href="100RecetasAntiinflamatoriasVO.pdf" target="_blank" rel="noopener">enlace alternativo</a>.</p>
+      <p class="alt"><a class="btn-line" id="ver-online" href="https://drive.google.com/file/d/1Mlh_PRqzMHp_i74IATbxQjes9911D-Uo/view" target="_blank" rel="noopener">Verlo online</a> Si la descarga no empieza en tu móvil, usa este enlace.</p>
     </div>
   </section>
 
@@ -162,14 +161,8 @@
         localStorage.setItem(flag, "1");
       } catch (e) {}
 
-      // 1) Pixel en el navegador. La misma eventID en el servidor evita que Meta cuente la compra dos veces.
-      window.studyosTrack("Purchase", {
-        value: VALOR,
-        currency: MONEDA,
-        content_name: "100 Recetas Antiinflamatorias",
-        content_type: "product",
-        content_ids: ["recetario-100-recetas"]
-      }, { eventID: sid });
+      // 1) GA4 (purchase) y Pixel de Meta (Purchase). La misma eventID en el servidor evita que Meta cuente la compra dos veces.
+      window.studyosFunnel("purchase", { transaction_id: sid });
 
       // 2) API de Conversiones (servidor), opcional.
       if (CAPI_ENDPOINT) {

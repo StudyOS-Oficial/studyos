@@ -22,3 +22,15 @@ Abre privacidad.html en GitHub (icono del lápiz) y añade estos tres trozos.
 
 Además, en el apartado 2, donde dice "Solo activamos el Meta Pixel y el envío de datos a Meta si aceptas las cookies", cámbialo por:
 "Solo activamos el Meta Pixel, Google Analytics y el envío de datos a Meta y a Google si aceptas las cookies."
+
+
+===================================================================
+CAMBIOS NUEVOS (embudo del test y atribución de anuncios)
+===================================================================
+4) En la tabla de cookies del apartado 6, justo antes de </tbody>, añade estas dos filas:
+
+    <tr><td>studyos_attribution (almacenamiento local)</td><td>StudyOS</td><td>Recuerda de qué anuncio llegaste (sin datos personales) para saber qué anuncio genera descargas o compras</td><td>30 días</td><td>Analítica (con tu consentimiento)</td></tr>
+    <tr><td>studyos_quiz (almacenamiento local)</td><td>StudyOS</td><td>Recuerda que ya hiciste el test de recetas (no guarda tus respuestas)</td><td>Hasta que la borres</td><td>Funcional (con tu consentimiento)</td></tr>
+
+5) En el apartado 2 (tabla de finalidades), en la fila de analítica web, añade al final de la columna "Datos":
+   ", y el anuncio del que llegaste (por ejemplo, el tema del anuncio y los parámetros de campaña)".

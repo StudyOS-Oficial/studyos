@@ -4,6 +4,9 @@
   - El Pixel de Meta (ID 1420061570074591) y Google (Tag Manager GTM-NJCNBN9C y Analytics G-JL08TE3FSM)
     SOLO se cargan si la persona pulsa "Aceptar".
     Si pulsa "Rechazar" (o no elige), no se carga nada de Meta ni de Google.
+  - Atribución de anuncios: ?dolor= y utm_* se conservan (solo con consentimiento) en localStorage ("studyos_attribution", 30 días).
+  - Analítica del embudo: studyosFunnel("view_item" | "begin_checkout" | "generate_lead" | "purchase" | ...) envía a GA4 (y a Meta cuando existe
+    un evento estándar equivalente). Nunca se envían las respuestas del test ni datos personales.
   - Desde las páginas puedes usar:
       studyosTrack("Lead", { ... })            lanza un evento si hay consentimiento
       studyosWhenConsented(function () { ... }) ejecuta código cuando hay consentimiento
@@ -16,6 +19,14 @@
   var GTM_ID = "GTM-NJCNBN9C";
   var GA_ID = "G-JL08TE3FSM";
   var KEY = "studyos_cookies"; // "granted" (acepta) o "denied" (rechaza)
+
+  // Producto de pago (se usa en los eventos de GA4 y de Meta)
+  var PRODUCT = { id: "recetario-100-recetas", name: "100 Recetas Antiinflamatorias", price: 5, currency: "EUR" };
+  var ATTR_KEY = "studyos_attribution";
+  var ATTR_TTL = 30 * 24 * 3600 * 1000; // 30 días
+  var UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+  var QUIZ_KEY = "studyos_quiz";
+  var META_QUIZ_EVENTS = false; // pon true para enviar QuizStart / QuizComplete a Meta (sin respuestas). Ver nota en la entrega.
 
   var waiting = [];
   var pixelLoaded = false;
@@ -65,7 +76,7 @@
     g.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
     document.head.appendChild(g);
     window.gtag("js", new Date());
-    window.gtag("config", GA_ID);
+    window.gtag("config", GA_ID, gaConfigParams());
   }
 
   function deleteCookie(name) {
@@ -75,8 +86,121 @@
     document.cookie = name + "=; Max-Age=0; path=/; domain=." + host;
   }
 
+
+  /* ---------- Atribución del anuncio (?dolor= y utm_*) ---------- */
+  function cleanVal(v) { return typeof v === "string" && /^[A-Za-z0-9_\-\.]{1,64}$/.test(v) ? v : ""; }
+  function attributionFromUrl() {
+    var a = {};
+    try {
+      var p = new URLSearchParams(location.search);
+      var key = window.studyosPainKey ? window.studyosPainKey() : "";
+      if (key) a.pain_point = key;
+      UTM_KEYS.forEach(function (k) { var v = cleanVal(p.get(k)); if (v) a[k] = v; });
+    } catch (e) {}
+    return a;
+  }
+  var attr = attributionFromUrl(); // en memoria durante la página
+
+  function storedAttribution() {
+    try {
+      var raw = localStorage.getItem(ATTR_KEY);
+      if (!raw) return null;
+      var o = JSON.parse(raw);
+      if (!o || !o.ts || Date.now() - o.ts > ATTR_TTL) { localStorage.removeItem(ATTR_KEY); return null; }
+      var clean = {};
+      Object.keys(o).forEach(function (k) { if (k === "pain_point" || UTM_KEYS.indexOf(k) > -1) clean[k] = cleanVal(o[k]); });
+      return clean;
+    } catch (e) { return null; }
+  }
+  // Con consentimiento: si llegan parámetros nuevos se guardan; si no, se recupera lo guardado (así llega hasta la compra)
+  function hydrateAttribution() {
+    if (Object.keys(attr).length) {
+      try { var o = {}; Object.keys(attr).forEach(function (k) { o[k] = attr[k]; }); o.ts = Date.now(); localStorage.setItem(ATTR_KEY, JSON.stringify(o)); } catch (e) {}
+    } else {
+      var s = storedAttribution();
+      if (s) attr = s;
+    }
+  }
+  function gaParams() {
+    var out = {
+      landing_variant: attr.pain_point ? "dolor_" + attr.pain_point : "default",
+      ad_angle: attr.utm_content || attr.pain_point || "none"
+    };
+    if (attr.pain_point) out.pain_point = attr.pain_point;
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content"].forEach(function (k) { if (attr[k]) out[k] = attr[k]; });
+    return out;
+  }
+  function gaConfigParams() {
+    var g = gaParams();
+    var c = { landing_variant: g.landing_variant, ad_angle: g.ad_angle };
+    if (g.pain_point) c.pain_point = g.pain_point;
+    return c;
+  }
+  window.studyosAttribution = function () { return gaParams(); };
+  // Referencia sin datos personales para el pago de Stripe (aparece en el pago como client_reference_id)
+  window.studyosCheckoutRef = function () {
+    if (readConsent() !== "granted") return "";
+    var g = gaParams();
+    return g.ad_angle && g.ad_angle !== "none" ? ("ad-" + g.ad_angle).slice(0, 60) : "";
+  };
+
+  /* ---------- Almacén con consentimiento (avisos como "ya hiciste el test") ---------- */
+  var memStore = {};
+  window.studyosStore = {
+    get: function (k) {
+      if (readConsent() === "granted") { try { var v = localStorage.getItem(k); if (v !== null) return v; } catch (e) {} }
+      return memStore[k] || null;
+    },
+    set: function (k, v) {
+      memStore[k] = v;
+      if (readConsent() === "granted") { try { localStorage.setItem(k, v); } catch (e) {} }
+    }
+  };
+
+  /* ---------- Eventos de GA4 y del embudo ---------- */
+  function items() { return [{ item_id: PRODUCT.id, item_name: PRODUCT.name, item_category: "ebook", price: PRODUCT.price, quantity: 1 }]; }
+  window.studyosGA = function (name, params) {
+    if (readConsent() !== "granted" || !window.gtag) return;
+    var p = gaParams();
+    if (params) Object.keys(params).forEach(function (k) { p[k] = params[k]; });
+    window.gtag("event", name, p);
+  };
+  window.studyosFunnel = function (name, extra) {
+    extra = extra || {};
+    var eco = { currency: PRODUCT.currency, value: PRODUCT.price, items: items() };
+    switch (name) {
+      case "view_item": // producto de pago a la vista
+        window.studyosGA("view_item", eco);
+        window.studyosTrack("ViewContent", { content_name: PRODUCT.name, content_type: "product", value: PRODUCT.price, currency: PRODUCT.currency });
+        break;
+      case "begin_checkout":
+        window.studyosGA("begin_checkout", Object.assign({}, eco, extra));
+        window.studyosTrack("InitiateCheckout", { content_name: PRODUCT.name, content_type: "product", value: PRODUCT.price, currency: PRODUCT.currency, num_items: 1 });
+        break;
+      case "generate_lead": // llega a la página de las 10 recetas gratis
+        window.studyosGA("generate_lead", extra);
+        window.studyosTrack("Lead", { content_name: "10 Recetas Antiinflamatorias (gratis)", content_category: "recetario gratuito" });
+        break;
+      case "purchase": {
+        var id = extra.transaction_id;
+        window.studyosGA("purchase", Object.assign({}, eco, { transaction_id: id }));
+        window.studyosTrack("Purchase", { value: PRODUCT.price, currency: PRODUCT.currency, content_name: PRODUCT.name, content_type: "product", content_ids: [PRODUCT.id] }, { eventID: id });
+        break;
+      }
+      case "quiz_start":
+      case "quiz_complete":
+        window.studyosGA(name, extra);
+        if (META_QUIZ_EVENTS) window.studyosTrackCustom(name === "quiz_start" ? "QuizStart" : "QuizComplete", {});
+        break;
+      default: // quiz_question_N, recipe_result_view, free_download_click...
+        window.studyosGA(name, extra);
+    }
+  };
+  window.studyosProduct = PRODUCT;
+
   function grant() {
     saveConsent("granted");
+    hydrateAttribution();
     loadPixel();
     loadGoogle();
     if (window.fbq) window.fbq("consent", "grant");
@@ -86,6 +210,7 @@
 
   function deny() {
     saveConsent("denied");
+    try { localStorage.removeItem(ATTR_KEY); localStorage.removeItem(QUIZ_KEY); } catch (e) {}
     waiting = [];
     window["ga-disable-" + GA_ID] = true;
     if (window.fbq) window.fbq("consent", "revoke");

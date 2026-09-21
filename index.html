@@ -12,6 +12,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='24' cy='32' r='20' fill='%233B4A25'/%3E%3Ccircle cx='40' cy='32' r='20' fill='%23F2C230' fill-opacity='.8'/%3E%3C/svg%3E">
 
 <script>document.documentElement.classList.add("js");</script>
+<script src="funnel-config.js"></script>
 <script src="tracking.js" defer></script>
 <script src="test-receta.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +20,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <!--
-  ARCHIVOS: sube a la misma carpeta index.html, gracias.html, tracking.js, la portada
+  ARCHIVOS: sube a la misma carpeta index.html, gratis.html, gracias.html, tracking.js, funnel-config.js, test-receta.js, la portada
   y las imágenes dentro-*.
   ENLACES QUE PUEDES CAMBIAR (usa buscar y reemplazar en este archivo):
   - Recetario de pago (Stripe):  https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00
@@ -408,6 +409,28 @@
   .calc-warn { margin: 6px 0 10px; font-size: .92rem; color: var(--muted); }
   .calc .fine { margin-top: 14px; font-size: .85rem; color: var(--muted); }
 
+  /* ---------- Embudo: test con anuncio, versión de muestra ---------- */
+  #quiz { scroll-margin-top: 14px; }
+  .qgroup { margin: 18px 0 8px; font-size: .9rem; font-weight: 600; color: var(--olive-700); }
+  .qopts + .qopts { margin-top: 10px; }
+  .qopts-one { grid-template-columns: 1fr; }
+  .qcont { margin: 0 0 18px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+  .qcont[hidden], .qdone[hidden] { display: none; }
+  .qpre { font-size: .92rem; color: var(--muted); }
+  .qdone h3 { font-size: clamp(1.4rem, 3.8vw, 1.9rem); color: var(--olive-900); margin: 22px 0 10px; outline: none; }
+  .qdone p { max-width: 36rem; color: var(--muted); }
+  .res-lock { display: flex; gap: 10px; align-items: flex-start; margin-top: 16px; padding: 12px 14px; border-radius: 12px; background: rgba(183, 196, 139, .3); color: var(--olive-800); font-size: .94rem; }
+  .res-lock p { margin: 0; }
+  .lockico { flex: none; margin-top: 2px; }
+  .locked { background: #fff; border: 1px dashed var(--olive-500); border-radius: 14px; padding: 14px; display: grid; gap: 2px; color: var(--muted); }
+  .locked b { font-family: var(--serif); color: var(--olive-800); }
+  .locked .lockico { color: var(--olive-500); margin-bottom: 4px; }
+  .locked span { font-size: .85rem; }
+  .res-once { margin-top: 16px; font-size: .92rem; color: var(--muted); }
+  .checks { list-style: none; }
+  .paid .checks li::before { content: "✓"; margin-right: .65rem; font-weight: 700; color: var(--sage); }
+  @media (max-width: 899px) { .hero-art { display: none; } }
+
   .legal-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
   .legal-links a { color: inherit; }
   .linkbtn { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; }
@@ -428,7 +451,7 @@
     <a class="mark" href="#" aria-label="StudyOS, inicio">Study<span>OS</span></a>
     <nav aria-label="Principal">
       <a href="https://www.instagram.com/studyos_oficial/" rel="noopener" target="_blank">@studyos_oficial</a>
-      <a class="btn btn-yellow hide-sm" href="gratis.html">Descargar gratis</a>
+      <a class="btn btn-yellow hide-sm" href="gratis.html" data-track="free">10 recetas gratis</a>
     </nav>
   </div>
 </header>
@@ -436,22 +459,91 @@
 <main>
 
   <!-- ===== Hero ===== -->
-  <section class="hero">
+  <section class="hero" id="inicio">
     <div class="wrap hero-grid">
       <div>
-        <h1>Come a favor de tus hormonas en cada etapa de tu ciclo</h1>
-        <p class="lede">Recetas antiinflamatorias, sencillas y explicadas con ciencia real, para tu ciclo, la perimenopausia y la menopausia.</p>
+        <h1 id="hero-title">Come a favor de tus hormonas en cada etapa de tu ciclo</h1>
+        <p class="lede" id="hero-lede">Recetas antiinflamatorias, sencillas y explicadas con ciencia real, para tu ciclo, la perimenopausia y la menopausia.</p>
         <div class="cta-stack">
-          <a class="btn btn-yellow btn-lg" href="gratis.html">Descargar 10 recetas gratis</a>
-          <a class="btn btn-outline" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Comprar el recetario completo por 5 €</a>
+          <a class="btn btn-yellow btn-lg" id="hero-cta" href="#quiz">Encuentra tu receta en 30 segundos</a>
+          <a class="btn btn-outline" href="gratis.html" data-track="free">Quiero 10 recetas gratis</a>
         </div>
-        <p class="hero-note">Empieza por las 10 recetas gratuitas para probar el método. Si te gustan, el recetario completo de 100 recetas cuesta 5 € (unos 5,8 US$) en pago único: precio de lanzamiento por tiempo limitado, antes 10 €.</p>
+        <p class="hero-note">Tres preguntas, sin dar tu correo. Al final puedes descargar 10 recetas gratuitas para probar el método.</p>
       </div>
 
       <div class="hero-art">
         <img src="100Recetas" width="1024" height="1024" fetchpriority="high"
              alt="Portada del recetario StudyOS: 100 recetas antiinflamatorias adaptadas a tu ciclo, con un bowl de arándanos y aguacate. Bonus: 6 menús semanales.">
       </div>
+    </div>
+  </section>
+  <script>if (window.studyosApplyHero) window.studyosApplyHero();</script>
+
+  <!-- ===== Test: encuentra tu receta de hoy ===== -->
+  <section class="section quiz-sec" id="test">
+    <div class="wrap">
+      <h2>Encuentra tu receta de hoy en 30 segundos</h2>
+      <p class="lede">Tres preguntas, sin dar tu correo. Te enseñamos una receta del recetario que encaja con cómo estás hoy. Tus respuestas se quedan en tu dispositivo: no las guardamos.</p>
+
+      <div class="quiz" id="quiz">
+        <div class="quiz-top"><span id="quiz-step">Pregunta 1 de 3</span><div class="quiz-bar" aria-hidden="true"><i id="quiz-bar-i"></i></div></div>
+
+        <div class="qstep" data-q="1">
+          <h3 tabindex="-1">¿En qué etapa estás?</h3>
+          <div class="qcont" hidden><p class="qpre">Ya lo elegimos según tu enlace. Puedes cambiarlo.</p><button type="button" class="btn btn-olive" data-continue>Continuar</button></div>
+          <div class="qopts">
+            <button type="button" data-v="perimenopausia" aria-pressed="false">Perimenopausia<small>ciclos irregulares</small></button>
+            <button type="button" data-v="menopausia" aria-pressed="false">Menopausia<small>sin regla desde hace un año o más</small></button>
+          </div>
+          <p class="qgroup">Si todavía tienes ciclo regular</p>
+          <div class="qopts">
+            <button type="button" data-v="menstrual" aria-pressed="false">Fase menstrual<small>días 1 a 5 del ciclo</small></button>
+            <button type="button" data-v="folicular" aria-pressed="false">Fase folicular<small>días 6 a 12</small></button>
+            <button type="button" data-v="ovulatoria" aria-pressed="false">Fase ovulatoria<small>días 13 a 16</small></button>
+            <button type="button" data-v="lutea" aria-pressed="false">Fase lútea<small>días 17 a 28</small></button>
+          </div>
+          <div class="qopts qopts-one">
+            <button type="button" data-v="ninguna" aria-pressed="false">No lo sé<small>sin filtrar por etapa</small></button>
+          </div>
+          <p class="qhelp">¿No sabes en qué fase estás? <a href="#calcula">Calcúlala en 10 segundos</a>.</p>
+        </div>
+
+        <div class="qstep" data-q="2" hidden>
+          <h3 tabindex="-1">¿Qué necesitas hoy?</h3>
+          <div class="qcont" hidden><p class="qpre">Ya lo elegimos según tu enlace. Puedes cambiarlo.</p><button type="button" class="btn btn-olive" data-continue>Continuar</button></div>
+          <div class="qopts">
+            <button type="button" data-v="en" aria-pressed="false">Más energía</button>
+            <button type="button" data-v="hi" aria-pressed="false">Bajar la hinchazón</button>
+            <button type="button" data-v="an" aria-pressed="false">Calmar los antojos</button>
+            <button type="button" data-v="sa" aria-pressed="false">Saciarme de verdad</button>
+            <button type="button" data-v="ra" aria-pressed="false">Algo rápido</button>
+            <button type="button" data-v="ai" aria-pressed="false">Priorizar lo antiinflamatorio</button>
+          </div>
+        </div>
+
+        <div class="qstep" data-q="3" hidden>
+          <h3 tabindex="-1">¿Para qué momento del día?</h3>
+          <div class="qcont" hidden><p class="qpre">Ya lo elegimos según tu enlace. Puedes cambiarlo.</p><button type="button" class="btn btn-olive" data-continue>Continuar</button></div>
+          <div class="qopts">
+            <button type="button" data-v="D" aria-pressed="false">Desayuno</button>
+            <button type="button" data-v="C" aria-pressed="false">Comida</button>
+            <button type="button" data-v="N" aria-pressed="false">Cena</button>
+            <button type="button" data-v="S" aria-pressed="false">Snack o algo dulce</button>
+          </div>
+        </div>
+
+        <div class="qresult" id="quiz-result" aria-live="polite" hidden></div>
+        <div class="qdone" id="quiz-done" hidden>
+          <h3 tabindex="-1">Ya has visto tu receta de hoy</h3>
+          <p>El test da una receta por persona. Para elegir entre las 100 recetas cuando quieras, con menús semanales y listas de la compra, tienes el recetario completo. Y si quieres probar el método antes, descarga 10 recetas gratis.</p>
+          <div class="res-cta">
+            <a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Quiero 10 recetas gratis</a>
+            <a class="btn btn-outline" href="#empezar">Ver el recetario completo</a>
+          </div>
+        </div>
+        <div class="quiz-nav"><button type="button" class="linkbtn" id="quiz-back" hidden>Volver a la pregunta anterior</button></div>
+      </div>
+      <p class="quiz-note">Es una orientación para inspirarte, no un diagnóstico ni un consejo médico personalizado.</p>
     </div>
   </section>
 
@@ -466,7 +558,7 @@
           <span class="pill">Gratis</span>
           <h3>10 Recetas Antiinflamatorias</h3>
           <p>Una muestra para probar el método antes de comprar el recetario completo: recetas sencillas, con ingredientes reales y pensadas para una alimentación antiinflamatoria.</p>
-          <a class="btn btn-yellow btn-lg" href="gratis.html">Descargar gratis</a>
+          <a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Quiero 10 recetas gratis</a>
           <p class="fine">Descarga inmediata, sin pagar nada. Además, te invitamos a la comunidad de WhatsApp de StudyOS.</p>
         </article>
 
@@ -474,74 +566,23 @@
           <span class="pill pill-offer">Oferta de lanzamiento, por tiempo limitado</span>
           <h3>100 Recetas Antiinflamatorias</h3>
           <p class="sub">El recetario completo, adaptado a tu ciclo, a la perimenopausia y a la menopausia.</p>
-          <ul>
-            <li>100 recetas, cada una con su Porqué Biológico</li>
-            <li>Bonus: 6 menús semanales</li>
-            <li>6 listas de la compra</li>
+          <ul class="checks">
+            <li>100 recetas</li>
+            <li>Adaptadas a tu ciclo, la perimenopausia y la menopausia</li>
+            <li>El Porqué Biológico en cada receta</li>
+            <li>6 menús semanales</li>
+            <li>Listas de la compra</li>
             <li>Guía de batch cooking</li>
-            <li>Guía de alimentos a evitar y tabla de sustituciones</li>
-            <li>Índice para elegir por cómo te sientes hoy</li>
+            <li>Guía de alimentos y sustituciones</li>
           </ul>
           <p class="more"><a href="#incluye">Ver todo lo que incluye</a></p>
           <div class="buy">
             <div class="price"><s class="was"><span class="sr">Precio anterior: </span>10 €</s> 5 €<small>pago único, unos 5,8 US$</small></div>
-            <a class="btn btn-light" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Comprar por 5 €</a>
+            <a class="btn btn-light" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Quiero las 100 recetas</a>
           </div>
           <p class="fine">Pago seguro con Stripe con tarjetas de crédito o débito de cualquier país. Al terminar te llevamos a la página de descarga. El cobro es en euros: según tu país, Stripe puede mostrarte el precio en tu moneda y, si no, tu banco convierte el importe automáticamente al cambio del día.</p>
         </article>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== Test: encuentra tu receta de hoy ===== -->
-  <section class="section quiz-sec" id="test">
-    <div class="wrap">
-      <h2>Encuentra tu receta de hoy en 30 segundos</h2>
-      <p class="lede">Tres preguntas y te enseñamos una receta del recetario que encaja con cómo estás hoy. Tus respuestas se quedan en tu dispositivo: no las guardamos.</p>
-
-      <div class="quiz" id="quiz">
-        <div class="quiz-top"><span id="quiz-step">Pregunta 1 de 3</span><div class="quiz-bar" aria-hidden="true"><i id="quiz-bar-i"></i></div></div>
-
-        <div class="qstep" data-q="1">
-          <h3 tabindex="-1">¿En qué momento estás?</h3>
-          <div class="qopts">
-            <button type="button" data-v="menstrual" aria-pressed="false">Fase menstrual<small>días 1 a 5 del ciclo</small></button>
-            <button type="button" data-v="folicular" aria-pressed="false">Fase folicular<small>días 6 a 12</small></button>
-            <button type="button" data-v="ovulatoria" aria-pressed="false">Fase ovulatoria<small>días 13 a 16</small></button>
-            <button type="button" data-v="lutea" aria-pressed="false">Fase lútea<small>días 17 a 28</small></button>
-            <button type="button" data-v="perimenopausia" aria-pressed="false">Perimenopausia<small>ciclos irregulares</small></button>
-            <button type="button" data-v="menopausia" aria-pressed="false">Menopausia<small>sin regla desde hace un año o más</small></button>
-            <button type="button" data-v="ninguna" aria-pressed="false">No lo sé<small>sin filtrar por fase</small></button>
-          </div>
-          <p class="qhelp">¿No sabes en qué fase estás? <a href="#calcula">Calcúlala en 10 segundos</a>.</p>
-        </div>
-
-        <div class="qstep" data-q="2" hidden>
-          <h3 tabindex="-1">¿Qué necesitas hoy?</h3>
-          <div class="qopts">
-            <button type="button" data-v="en" aria-pressed="false">Más energía</button>
-            <button type="button" data-v="hi" aria-pressed="false">Bajar la hinchazón</button>
-            <button type="button" data-v="an" aria-pressed="false">Calmar los antojos</button>
-            <button type="button" data-v="sa" aria-pressed="false">Saciarme de verdad</button>
-            <button type="button" data-v="ra" aria-pressed="false">Algo rápido</button>
-            <button type="button" data-v="ai" aria-pressed="false">Priorizar lo antiinflamatorio</button>
-          </div>
-        </div>
-
-        <div class="qstep" data-q="3" hidden>
-          <h3 tabindex="-1">¿Para qué momento del día?</h3>
-          <div class="qopts">
-            <button type="button" data-v="D" aria-pressed="false">Desayuno</button>
-            <button type="button" data-v="C" aria-pressed="false">Comida</button>
-            <button type="button" data-v="N" aria-pressed="false">Cena</button>
-            <button type="button" data-v="S" aria-pressed="false">Un snack o algo dulce</button>
-          </div>
-        </div>
-
-        <div class="qresult" id="quiz-result" aria-live="polite" hidden></div>
-        <div class="quiz-nav"><button type="button" class="linkbtn" id="quiz-back" hidden>Volver a la pregunta anterior</button></div>
-      </div>
-      <p class="quiz-note">Es una orientación para inspirarte, no un diagnóstico ni un consejo médico personalizado.</p>
     </div>
   </section>
 
@@ -834,7 +875,7 @@
         <article><b>Menú 5: equilibrio fitoestrogénico</b><p>Con lignanos y fitoestrógenos suaves, para semanas de mayor fluctuación hormonal.</p></article>
         <article><b>Menú 6: densidad nutricional</b><p>Con ingredientes de alta densidad nutricional para apoyar al hígado y reponer minerales.</p></article>
       </div>
-      <p class="cta-inline"><a class="btn btn-yellow btn-lg" href="gratis.html">Probar con 10 recetas gratis</a></p>
+      <p class="cta-inline"><a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Quiero 10 recetas gratis</a></p>
     </div>
   </section>
 
@@ -865,7 +906,7 @@
           <figcaption>Ana V.</figcaption>
         </figure>
       </div>
-      <p class="cta-inline"><a class="btn btn-yellow btn-lg" href="gratis.html">Probar con 10 recetas gratis</a></p>
+      <p class="cta-inline"><a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Quiero 10 recetas gratis</a></p>
     </div>
   </section>
 
@@ -1054,7 +1095,7 @@
         </details>
         <details>
           <summary>¿El test y la calculadora guardan mis respuestas o mi fecha?</summary>
-          <p>No. Funcionan en tu dispositivo: no guardamos ni enviamos tus respuestas ni la fecha de tu regla. Solo, si aceptaste las cookies de medición, se cuenta que alguien completó el test, sin ningún dato personal.</p>
+          <p>No. Funcionan en tu dispositivo: no guardamos ni enviamos tus respuestas ni la fecha de tu regla. Solo, si aceptaste las cookies de medición, se recuerda en tu dispositivo que ya hiciste el test (no lo que respondiste) y se cuenta que alguien lo completó, sin ningún dato personal.</p>
         </details>
         <details>
           <summary>¿Es una dieta?</summary>
@@ -1090,8 +1131,8 @@
       <h2>Empieza hoy con lo que necesita tu cuerpo</h2>
       <p>Descarga las 10 recetas gratuitas para probar, o consigue el recetario completo con menús y listas de la compra.</p>
       <div class="cta-row">
-        <a class="btn btn-yellow btn-lg" href="gratis.html">Descargar gratis</a>
-        <a class="btn btn-light btn-lg" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Comprar por 5 €</a>
+        <a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Quiero 10 recetas gratis</a>
+        <a class="btn btn-light btn-lg" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Quiero las 100 recetas</a>
       </div>
     </div>
   </section>
@@ -1113,7 +1154,7 @@
 </footer>
 
 <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
-  <a class="btn btn-yellow" href="gratis.html">Descargar 10 recetas gratis</a>
+  <a class="btn btn-yellow" href="gratis.html" data-track="free">Quiero 10 recetas gratis</a>
 </div>
 
 <script>
@@ -1200,29 +1241,29 @@
   const sticky = document.getElementById("sticky-cta");
   const heroCta = document.querySelector(".cta-stack");
   const closingEl = document.querySelector(".closing");
-  let passedHero = false, closingVisible = false;
+  const testEl = document.getElementById("test");
+  let passedHero = false, closingVisible = false, testVisible = false;
   function updateSticky() {
-    const on = passedHero && !closingVisible;
+    const on = passedHero && !closingVisible && !testVisible;
     sticky.classList.toggle("on", on);
     sticky.setAttribute("aria-hidden", String(!on));
   }
   if ("IntersectionObserver" in window && sticky && heroCta && closingEl) {
     new IntersectionObserver(es => { passedHero = !es[0].isIntersecting && es[0].boundingClientRect.top < 0; updateSticky(); }).observe(heroCta);
     new IntersectionObserver(es => { closingVisible = es[0].isIntersecting; updateSticky(); }).observe(closingEl);
+    if (testEl) new IntersectionObserver(es => { testVisible = es[0].isIntersecting; updateSticky(); }, { threshold: 0.2 }).observe(testEl);
   }
 
-  // ViewContent: cuando la persona llega a ver las dos opciones (solo con cookies aceptadas).
+  // view_item (GA4) + ViewContent (Meta): cuando la persona ve el recetario de pago (solo con cookies aceptadas).
   window.addEventListener("load", function () {
-    const offer = document.getElementById("empezar");
-    if (!("IntersectionObserver" in window) || !offer) return;
+    const paid = document.querySelector(".paid");
+    if (!("IntersectionObserver" in window) || !paid) return;
     const io2 = new IntersectionObserver(es => {
       if (!es[0].isIntersecting) return;
       io2.disconnect();
-      if (window.studyosWhenConsented) {
-        window.studyosWhenConsented(() => window.studyosTrack("ViewContent", { content_name: "StudyOS recetarios", content_type: "product" }));
-      }
-    }, { threshold: 0.3 });
-    io2.observe(offer);
+      if (window.studyosWhenConsented) window.studyosWhenConsented(() => window.studyosFunnel("view_item"));
+    }, { threshold: 0.4 });
+    io2.observe(paid);
   });
 
   // Menú semanal: elegir un día y marcar la lista de la compra (no se guarda nada).
@@ -1242,12 +1283,18 @@
   shopBoxes.forEach(c => c.addEventListener("change", updateShop));
   document.getElementById("shop-clear").addEventListener("click", () => { shopBoxes.forEach(c => { c.checked = false; }); updateShop(); });
 
-  // Eventos del Pixel de Meta: solo se envían si la persona ha aceptado las cookies.
+  // Embudo (GA4 y Meta): solo se envía si la persona ha aceptado las cookies.
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest("a[data-track]");
-    if (!a || !window.studyosTrack) return;
-    if (a.dataset.track === "checkout") {
-      window.studyosTrack("InitiateCheckout", { content_name: "100 Recetas Antiinflamatorias", content_type: "product", value: 5, currency: "EUR", num_items: 1 });
+    if (!a || !window.studyosFunnel) return;
+    var sec = a.closest("[id]");
+    var where = a.closest("header") ? "cabecera" : a.classList.contains("btn") && a.closest(".sticky-cta") ? "barra_fija" : (sec && sec.id) || "web";
+    if (a.dataset.track === "free") {
+      window.studyosFunnel("free_download_click", { cta_location: where });
+    } else if (a.dataset.track === "checkout") {
+      var ref = window.studyosCheckoutRef && window.studyosCheckoutRef();
+      if (ref) { try { var u = new URL(a.href); u.searchParams.set("client_reference_id", ref); a.href = u.toString(); } catch (err) {} }
+      window.studyosFunnel("begin_checkout", { cta_location: where });
     }
   });
 </script>

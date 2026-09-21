@@ -74,11 +74,15 @@
   @media (min-width: 640px) { .offer { grid-template-columns: 200px 1fr; align-items: center; } }
   .offer img { display: block; width: 100%; max-width: 220px; height: auto; border-radius: 12px; box-shadow: 0 12px 30px rgba(31, 39, 21, .25); }
   .offer h2 { font-size: clamp(1.4rem, 3.6vw, 1.75rem); color: var(--olive-900); }
-  .offer ul { margin: 14px 0 0; padding-left: 1.2rem; color: var(--muted); }
   .offer li { margin-bottom: 4px; }
   .buy { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 20px; }
   .price { font-family: var(--serif); font-size: 2.2rem; font-weight: 600; line-height: 1; color: var(--olive-900); }
   .price small { display: block; margin-top: 4px; font: 400 .85rem/1.2 var(--sans); color: var(--muted); }
+  .offer-sub { margin-top: 6px; color: var(--muted); }
+  .offer-name { margin-top: 18px; font-size: 1.25rem; color: var(--olive-800); }
+  .checks { list-style: none; margin: 10px 0 0; padding: 0; color: var(--ink); }
+  .checks li { padding: 4px 0; }
+  .checks li::before { content: "✓"; margin-right: .6rem; font-weight: 700; color: var(--olive-500); }
   .fine { margin-top: 12px; font-size: .88rem; color: var(--muted); }
   .was { font-size: 1.15rem; font-weight: 400; color: var(--muted); text-decoration-thickness: 2px; }
 
@@ -100,37 +104,43 @@
     <div class="wrap">
       <h1>Aquí tienes tus 10 recetas</h1>
       <p class="lede">Son una muestra del recetario completo, para que pruebes el método con platos sencillos y ingredientes reales.</p>
-      <a class="btn btn-yellow btn-lg" id="descarga-gratis" href="10 Recetas Antiinflamatorias VO.pdf" target="_blank" rel="noopener">Descargar mis 10 recetas</a>
+      <a class="btn btn-yellow btn-lg" id="descarga-gratis" href="10 Recetas Antiinflamatorias OFICIAL_compressed.pdf" target="_blank" rel="noopener">Descargar mis 10 recetas</a>
       <p class="hint">Se abre en una pestaña nueva. Desde ahí puedes guardarlo en tu móvil.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap">
+      <!-- Después de la descarga: el recetario completo como continuación natural -->
+      <div class="card offer" id="oferta">
+        <!-- Portada: mismo archivo que usas en index.html -->
+        <img src="100Recetas" width="220" height="220" loading="lazy" alt="Portada del recetario StudyOS: 100 recetas antiinflamatorias adaptadas a tu ciclo">
+        <div>
+          <h2>¿Te han gustado estas recetas?</h2>
+          <p class="offer-sub">Esto es solo una pequeña muestra.</p>
+          <h3 class="offer-name">100 Recetas Antiinflamatorias</h3>
+          <ul class="checks">
+            <li>100 recetas</li>
+            <li>Adaptadas a tu ciclo, la perimenopausia y la menopausia</li>
+            <li>El Porqué Biológico en cada receta</li>
+            <li>6 menús semanales</li>
+            <li>Listas de la compra</li>
+            <li>Guía de batch cooking</li>
+            <li>Guía de alimentos y sustituciones</li>
+          </ul>
+          <div class="buy">
+            <div class="price"><s class="was">10 €</s> 5 €<small>pago único, unos 5,8 US$</small></div>
+            <a class="btn btn-olive" id="comprar" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Quiero las 100 recetas</a>
+          </div>
+          <p class="fine">Oferta de lanzamiento por tiempo limitado (antes 10 €). Pago seguro con Stripe con tarjetas de cualquier país. El cobro es en euros: según tu país, Stripe puede mostrarte el precio en tu moneda y, si no, tu banco convierte el importe automáticamente.</p>
+        </div>
+      </div>
+
       <!-- Comunidad de WhatsApp -->
       <div class="card community">
         <h2>Únete a la comunidad de StudyOS en WhatsApp</h2>
         <p>Cada día compartimos consejos y recetas. Unirte es voluntario y puedes salir cuando quieras.</p>
         <a class="btn btn-light" id="whatsapp" href="https://chat.whatsapp.com/KZn3BneaAfKGsTAgORsOLn" target="_blank" rel="noopener">Unirme a la comunidad</a>
-      </div>
-
-      <!-- Oferta del recetario completo -->
-      <div class="card offer">
-        <!-- Portada: mismo archivo que usas en index.html -->
-        <img src="100Recetas" width="220" height="220" loading="lazy" alt="Portada del recetario StudyOS: 100 recetas antiinflamatorias adaptadas a tu ciclo">
-        <div>
-          <h2>Si te han gustado, hay un recetario completo</h2>
-          <ul>
-            <li>100 recetas, cada una con su Porqué Biológico</li>
-            <li>Bonus: 6 menús semanales y 6 listas de la compra</li>
-            <li>Guía de batch cooking y guía de alimentos a evitar</li>
-          </ul>
-          <div class="buy">
-            <div class="price"><s class="was">10 €</s> 5 €<small>pago único, unos 5,8 US$</small></div>
-            <a class="btn btn-olive" id="comprar" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Comprar por 5 €</a>
-          </div>
-          <p class="fine">Oferta de lanzamiento por tiempo limitado (antes 10 €). Pago seguro con Stripe con tarjetas de cualquier país. El cobro es en euros: según tu país, Stripe puede mostrarte el precio en tu moneda y, si no, tu banco convierte el importe automáticamente. Descarga inmediata en PDF.</p>
-        </div>
       </div>
     </div>
   </section>
@@ -149,26 +159,39 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // Lead: se envía una vez por sesión cuando entra a esta página (solo si aceptó las cookies).
+    // generate_lead (GA4) + Lead (Meta): una vez por sesión, al llegar aquí (solo si aceptó las cookies).
     if (window.studyosWhenConsented) {
       window.studyosWhenConsented(function () {
         try {
           if (sessionStorage.getItem("studyos_lead_sent")) return;
           sessionStorage.setItem("studyos_lead_sent", "1");
         } catch (e) {}
-        window.studyosTrack("Lead", { content_name: "10 Recetas Antiinflamatorias (gratis)", content_category: "recetario gratuito" });
+        window.studyosFunnel("generate_lead", { lead_source: "recetas_gratis" });
       });
+      // view_item: cuando ve el recetario de pago
+      var offer = document.getElementById("oferta");
+      if (offer && "IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function (es) {
+          if (!es[0].isIntersecting) return;
+          io.disconnect();
+          window.studyosWhenConsented(function () { window.studyosFunnel("view_item"); });
+        }, { threshold: 0.4 });
+        io.observe(offer);
+      }
     }
 
-    // Clics: descarga, WhatsApp y compra.
+    // Clics: descarga (Meta FreeDownload), WhatsApp y compra (begin_checkout / InitiateCheckout).
     document.getElementById("descarga-gratis").addEventListener("click", function () {
       if (window.studyosTrackCustom) window.studyosTrackCustom("FreeDownload", { content_name: "10 Recetas Antiinflamatorias (gratis)" });
     });
     document.getElementById("whatsapp").addEventListener("click", function () {
       if (window.studyosTrack) window.studyosTrack("Contact", { content_name: "Comunidad WhatsApp" });
     });
-    document.getElementById("comprar").addEventListener("click", function () {
-      if (window.studyosTrack) window.studyosTrack("InitiateCheckout", { content_name: "100 Recetas Antiinflamatorias", content_type: "product", value: 5, currency: "EUR", num_items: 1 });
+    var buy = document.getElementById("comprar");
+    buy.addEventListener("click", function () {
+      var ref = window.studyosCheckoutRef && window.studyosCheckoutRef();
+      if (ref) { try { var u = new URL(buy.href); u.searchParams.set("client_reference_id", ref); buy.href = u.toString(); } catch (err) {} }
+      if (window.studyosFunnel) window.studyosFunnel("begin_checkout", { cta_location: "gratis" });
     });
   });
 </script>
