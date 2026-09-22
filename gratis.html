@@ -110,7 +110,7 @@
     <div class="wrap">
       <h1>Aquí tienes tus 10 recetas</h1>
       <p class="lede">Son una muestra del recetario completo, para que pruebes el método con platos sencillos y ingredientes reales.</p>
-      <a class="btn btn-yellow btn-lg" id="descarga-gratis" href="10 Recetas Antiinflamatorias VO.pdf" target="_blank" rel="noopener">Descargar mis 10 recetas</a>
+      <a class="btn btn-yellow btn-lg" id="descarga-gratis" href="10 Recetas Antiinflamatorias OFICIAL_compressed.pdf" target="_blank" rel="noopener">Descargar mis 10 recetas</a>
       <p class="hint">Se abre en una pestaña nueva. Desde ahí puedes guardarlo en tu móvil.</p>
     </div>
   </section>
@@ -223,7 +223,7 @@
       btn.disabled = true; note.textContent = "Enviando...";
       fetch(newsForm.action, { method: "POST", body: new FormData(newsForm), headers: { Accept: "application/json" } })
         .then(function (r) {
-          if (r.ok) { note.textContent = "¡Ya estás dentro! Revisa tu correo."; newsForm.reset(); if (window.studyosFunnel) window.studyosFunnel("newsletter_signup", {}); }
+          if (r.ok) { note.textContent = "¡Listo! Ya estás apuntada a la lista de StudyOS."; newsForm.reset(); if (window.studyosFunnel) window.studyosFunnel("newsletter_signup", {}); }
           else { note.textContent = "No se pudo enviar. Prueba de nuevo en un momento."; btn.disabled = false; }
         })
         .catch(function () { note.textContent = "No se pudo enviar. Prueba de nuevo en un momento."; btn.disabled = false; });

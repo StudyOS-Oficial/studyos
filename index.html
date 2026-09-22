@@ -1351,7 +1351,7 @@
       fetch(newsForm.action, { method: "POST", body: new FormData(newsForm), headers: { Accept: "application/json" } })
         .then(function (r) {
           if (r.ok) {
-            note.textContent = "¡Ya estás dentro! Revisa tu correo.";
+            note.textContent = "¡Listo! Ya estás apuntada a la lista de StudyOS.";
             newsForm.reset();
             if (window.studyosFunnel) window.studyosFunnel("newsletter_signup", {});
           } else { note.textContent = "No se pudo enviar. Prueba de nuevo en un momento."; btn.disabled = false; }
