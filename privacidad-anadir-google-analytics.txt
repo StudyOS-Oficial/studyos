@@ -34,3 +34,24 @@ CAMBIOS NUEVOS (embudo del test y atribución de anuncios)
 
 5) En el apartado 2 (tabla de finalidades), en la fila de analítica web, añade al final de la columna "Datos":
    ", y el anuncio del que llegaste (por ejemplo, el tema del anuncio y los parámetros de campaña)".
+
+===================================================================
+CAMBIOS NUEVOS (boletín por email y test ampliado a 5 preguntas)
+===================================================================
+6) En la tabla de finalidades del apartado 2, añade esta fila nueva (esto SÍ es un dato personal,
+   a diferencia de los anteriores, y se trata al margen de las cookies):
+
+    <tr>
+      <td>Enviarte recetas y novedades por correo si te suscribes al boletín</td>
+      <td>Tu correo electrónico</td>
+      <td>Tu consentimiento (al enviar el formulario)</td>
+      <td>Hasta que te des de baja</td>
+    </tr>
+
+7) En el apartado 3 ("Quién más recibe tus datos"), añade:
+
+  <li><strong>Formspree, Inc.</strong>, que gestiona el envío del formulario del boletín.</li>
+
+8) Recuerda añadir un enlace o instrucciones reales para darse de baja del boletín (Formspree no lo hace
+   automáticamente); si usas Mailchimp, Brevo u otra herramienta de email marketing en vez de Formspree,
+   dímelo y te preparo el formulario para esa herramienta en su lugar.

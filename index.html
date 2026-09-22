@@ -431,6 +431,45 @@
   .paid .checks li::before { content: "✓"; margin-right: .65rem; font-weight: 700; color: var(--sage); }
   @media (max-width: 899px) { .hero-art { display: none; } }
 
+  /* ---------- Portada con el test dentro ---------- */
+  .hero-grid { align-items: start; }
+  @media (min-width: 900px) { .hero-grid { grid-template-columns: 1fr 1.1fr; gap: 48px; } .hero-copy { padding-top: 24px; } }
+  .hero-quiz .quiz { margin-top: 0; box-shadow: 0 18px 44px rgba(31, 39, 21, .16); border: 1px solid var(--line); }
+  .quiz-title { font-size: clamp(1.35rem, 3.6vw, 1.75rem); color: var(--olive-900); margin-bottom: 6px; }
+  .quiz-intro { color: var(--muted); font-size: .98rem; margin-bottom: 14px; }
+  .quiz-note { margin-top: 14px; font-size: .88rem; color: var(--muted); }
+  .quiz-alt { margin-top: 8px; font-size: .95rem; }
+  .quiz-alt a { color: var(--olive-700); font-weight: 600; }
+  .qnote { margin: -6px 0 14px; font-size: .92rem; color: var(--muted); }
+  .qopts { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  .qnext { margin-top: 16px; }
+  @media (max-width: 899px) { .hero-copy .lede { font-size: 1.02rem; margin-top: 12px; } h1 { font-size: clamp(1.9rem, 8vw, 2.4rem); } .hero-note { display: none; } }
+
+  /* ---------- Resultado del test: acompañamiento y comparación honesta ---------- */
+  .res-thanks { margin-top: 18px; font-weight: 600; color: var(--olive-800); }
+  .chips2 { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; padding: 0; list-style: none; }
+  .chips2 li { padding: .3rem .8rem; border-radius: 999px; background: rgba(183, 196, 139, .4); font-size: .88rem; color: var(--olive-900); }
+  .res-check { margin-top: 8px; font-size: .88rem; color: var(--muted); }
+  .week { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .wday { display: inline-flex; align-items: center; gap: 5px; padding: .35rem .7rem; border-radius: 10px; border: 1px dashed var(--olive-500); font-size: .82rem; color: var(--muted); background: #fff; }
+  .wday.on { background: var(--olive-700); border: 1px solid var(--olive-700); color: #fff; font-weight: 600; }
+  .compare { display: grid; gap: 10px; margin-top: 8px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .cmp { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+  .cmp-paid { border: 2px solid var(--olive-700); }
+  .cmp h4 { font-family: var(--serif); font-size: 1.05rem; color: var(--olive-900); margin: 0 0 8px; }
+  .cmp .bar { height: 8px; border-radius: 99px; background: rgba(74, 90, 42, .15); overflow: hidden; margin-bottom: 8px; }
+  .cmp .bar i { display: block; height: 100%; background: var(--olive-500); border-radius: 99px; }
+  .cmp p { font-size: .92rem; }
+  .cmp ul { margin: 8px 0 0; padding-left: 1.1rem; font-size: .88rem; color: var(--muted); }
+  .cmp-note { margin-top: 8px; font-size: .84rem; color: var(--muted); }
+  .res-cta { margin-top: 16px; }
+
+  .news { background: var(--paper); border: 1.5px solid var(--line); border-radius: 22px; padding: clamp(24px, 4vw, 36px); text-align: center; max-width: 42rem; margin: 32px auto 0; }
+  .news h2 { font-size: clamp(1.4rem, 3.6vw, 1.9rem); }
+  .news-form { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 22px; }
+  .news-form input[type=email] { flex: 1 1 240px; min-height: 50px; padding: .6rem 1rem; border: 1.5px solid var(--line); border-radius: 999px; font: 400 1rem/1.2 var(--sans); background: #fff; color: var(--ink); }
+  .news-note { margin-top: 10px; font-size: .9rem; color: var(--olive-700); min-height: 1.2em; }
+
   .legal-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
   .legal-links a { color: inherit; }
   .linkbtn { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; }
@@ -461,89 +500,136 @@
   <!-- ===== Hero ===== -->
   <section class="hero" id="inicio">
     <div class="wrap hero-grid">
-      <div>
+      <div class="hero-copy">
         <h1 id="hero-title">Come a favor de tus hormonas en cada etapa de tu ciclo</h1>
         <p class="lede" id="hero-lede">Recetas antiinflamatorias, sencillas y explicadas con ciencia real, para tu ciclo, la perimenopausia y la menopausia.</p>
-        <div class="cta-stack">
-          <a class="btn btn-yellow btn-lg" id="hero-cta" href="#quiz">Encuentra tu receta en 30 segundos</a>
-          <a class="btn btn-outline" href="gratis.html" data-track="free">Quiero 10 recetas gratis</a>
-        </div>
-        <p class="hero-note">Tres preguntas, sin dar tu correo. Al final puedes descargar 10 recetas gratuitas para probar el método.</p>
+        <p class="hero-note">Cinco preguntas rápidas, sin dar tu correo. Tus respuestas se quedan en tu dispositivo.</p>
       </div>
 
-      <div class="hero-art">
-        <img src="100Recetas" width="1024" height="1024" fetchpriority="high"
-             alt="Portada del recetario StudyOS: 100 recetas antiinflamatorias adaptadas a tu ciclo, con un bowl de arándanos y aguacate. Bonus: 6 menús semanales.">
+      <div class="hero-quiz" id="test">
+        <h2 class="quiz-title">Encuentra tu receta de hoy en 30 segundos</h2>
+        <p class="quiz-intro">Vamos a conocerte un poco para recomendarte algo que encaje contigo. Sin juicios y sin prisa.</p>
+        <div class="quiz" id="quiz">
+          <div class="quiz-top"><span id="quiz-step">Pregunta 1 de 5</span><div class="quiz-bar" aria-hidden="true"><i id="quiz-bar-i"></i></div></div>
+
+          <div class="qstep" data-q="1">
+            <h3 tabindex="-1">¿En qué etapa estás?</h3>
+            <p class="qnote">Cada etapa tiene sus ritmos. Elige la que más se parezca a hoy.</p>
+            <div class="qcont" hidden><p class="qpre">Ya lo elegimos según tu enlace. Puedes cambiarlo.</p><button type="button" class="btn btn-olive" data-continue>Continuar</button></div>
+            <div class="qopts">
+              <button type="button" data-v="perimenopausia" aria-pressed="false">Perimenopausia<small>ciclos irregulares</small></button>
+              <button type="button" data-v="menopausia" aria-pressed="false">Menopausia<small>sin regla desde hace un año o más</small></button>
+            </div>
+            <p class="qgroup">Si todavía tienes ciclo regular</p>
+            <div class="qopts">
+              <button type="button" data-v="menstrual" aria-pressed="false">Fase menstrual<small>días 1 a 5</small></button>
+              <button type="button" data-v="folicular" aria-pressed="false">Fase folicular<small>días 6 a 12</small></button>
+              <button type="button" data-v="ovulatoria" aria-pressed="false">Fase ovulatoria<small>días 13 a 16</small></button>
+              <button type="button" data-v="lutea" aria-pressed="false">Fase lútea<small>días 17 a 28</small></button>
+            </div>
+            <div class="qopts qopts-one">
+              <button type="button" data-v="ninguna" aria-pressed="false">No lo sé<small>sin filtrar por etapa</small></button>
+            </div>
+            <p class="qhelp">¿No sabes en qué fase estás? <a href="#calcula">Calcúlala en 10 segundos</a>.</p>
+          </div>
+
+          <div class="qstep" data-q="2" hidden>
+            <h3 tabindex="-1">¿Qué necesitas hoy?</h3>
+            <p class="qnote">No hay respuestas correctas ni incorrectas. Elige lo que más te importa ahora.</p>
+            <div class="qcont" hidden><p class="qpre">Ya lo elegimos según tu enlace. Puedes cambiarlo.</p><button type="button" class="btn btn-olive" data-continue>Continuar</button></div>
+            <div class="qopts">
+              <button type="button" data-v="en" aria-pressed="false">Más energía</button>
+              <button type="button" data-v="hi" aria-pressed="false">Bajar la hinchazón</button>
+              <button type="button" data-v="an" aria-pressed="false">Calmar los antojos</button>
+              <button type="button" data-v="sa" aria-pressed="false">Saciarme de verdad</button>
+              <button type="button" data-v="ra" aria-pressed="false">Algo rápido</button>
+              <button type="button" data-v="ai" aria-pressed="false">Priorizar lo antiinflamatorio</button>
+            </div>
+          </div>
+
+          <div class="qstep" data-q="3" hidden>
+            <h3 tabindex="-1">¿Para qué momento del día?</h3>
+            <p class="qnote">Empezamos por un momento concreto; el resto viene después.</p>
+            <div class="qcont" hidden><p class="qpre">Ya lo elegimos según tu enlace. Puedes cambiarlo.</p><button type="button" class="btn btn-olive" data-continue>Continuar</button></div>
+            <div class="qopts">
+              <button type="button" data-v="D" aria-pressed="false">Desayuno</button>
+              <button type="button" data-v="C" aria-pressed="false">Comida</button>
+              <button type="button" data-v="N" aria-pressed="false">Cena</button>
+              <button type="button" data-v="S" aria-pressed="false">Snack o algo dulce</button>
+            </div>
+          </div>
+
+          <div class="qstep" data-q="4" hidden>
+            <h3 tabindex="-1">¿Hay algo que prefieras evitar?</h3>
+            <p class="qnote">Así evitamos recomendarte algo que no encaje. Puedes marcar varias opciones.</p>
+            <div class="qopts">
+              <button type="button" data-v="lacteos" aria-pressed="false">Lácteos</button>
+              <button type="button" data-v="gluten" aria-pressed="false">Gluten</button>
+              <button type="button" data-v="huevo" aria-pressed="false">Huevo</button>
+              <button type="button" data-v="frutossecos" aria-pressed="false">Frutos secos</button>
+              <button type="button" data-v="pescado" aria-pressed="false">Pescado y marisco</button>
+              <button type="button" data-v="soja" aria-pressed="false">Soja</button>
+            </div>
+            <div class="qopts qopts-one"><button type="button" data-v="nada" aria-pressed="false">Nada en especial</button></div>
+            <div class="qnext"><button type="button" class="btn btn-olive" data-next>Continuar</button></div>
+          </div>
+
+          <div class="qstep" data-q="5" hidden>
+            <h3 tabindex="-1">¿Cuánto tiempo tienes para cocinar?</h3>
+            <p class="qnote">Lo que sea realista para ti hoy. Sin culpas.</p>
+            <div class="qopts">
+              <button type="button" data-v="15" aria-pressed="false">Hasta 15 minutos</button>
+              <button type="button" data-v="30" aria-pressed="false">Unos 30 minutos</button>
+              <button type="button" data-v="any" aria-pressed="false">Sin prisa</button>
+            </div>
+          </div>
+
+          <div class="qresult" id="quiz-result" aria-live="polite" hidden></div>
+          <div class="qdone" id="quiz-done" hidden>
+            <h3 tabindex="-1">Ya has visto tu receta de hoy</h3>
+            <p>El test da una receta por persona. Para elegir entre las 100 recetas cuando quieras, con menús semanales y listas de la compra, tienes el recetario completo. Y si quieres probar el método antes, descarga 10 recetas gratis.</p>
+            <div class="res-cta">
+              <a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Quiero 10 recetas gratis</a>
+              <a class="btn btn-outline" href="#empezar">Ver el recetario completo</a>
+            </div>
+          </div>
+          <div class="quiz-nav"><button type="button" class="linkbtn" id="quiz-back" hidden>Volver a la pregunta anterior</button></div>
+        </div>
+        <p class="quiz-note">Es una orientación para inspirarte, no un diagnóstico ni un consejo médico personalizado.</p>
+        <p class="quiz-alt"><a href="gratis.html" data-track="free">O descarga directamente 10 recetas gratis</a></p>
       </div>
     </div>
   </section>
   <script>if (window.studyosApplyHero) window.studyosApplyHero();</script>
 
-  <!-- ===== Test: encuentra tu receta de hoy ===== -->
-  <section class="section quiz-sec" id="test">
+  <!-- ===== Opiniones ===== -->
+  <section class="section bg-paper" id="opiniones">
     <div class="wrap">
-      <h2>Encuentra tu receta de hoy en 30 segundos</h2>
-      <p class="lede">Tres preguntas, sin dar tu correo. Te enseñamos una receta del recetario que encaja con cómo estás hoy. Tus respuestas se quedan en tu dispositivo: no las guardamos.</p>
-
-      <div class="quiz" id="quiz">
-        <div class="quiz-top"><span id="quiz-step">Pregunta 1 de 3</span><div class="quiz-bar" aria-hidden="true"><i id="quiz-bar-i"></i></div></div>
-
-        <div class="qstep" data-q="1">
-          <h3 tabindex="-1">¿En qué etapa estás?</h3>
-          <div class="qcont" hidden><p class="qpre">Ya lo elegimos según tu enlace. Puedes cambiarlo.</p><button type="button" class="btn btn-olive" data-continue>Continuar</button></div>
-          <div class="qopts">
-            <button type="button" data-v="perimenopausia" aria-pressed="false">Perimenopausia<small>ciclos irregulares</small></button>
-            <button type="button" data-v="menopausia" aria-pressed="false">Menopausia<small>sin regla desde hace un año o más</small></button>
-          </div>
-          <p class="qgroup">Si todavía tienes ciclo regular</p>
-          <div class="qopts">
-            <button type="button" data-v="menstrual" aria-pressed="false">Fase menstrual<small>días 1 a 5 del ciclo</small></button>
-            <button type="button" data-v="folicular" aria-pressed="false">Fase folicular<small>días 6 a 12</small></button>
-            <button type="button" data-v="ovulatoria" aria-pressed="false">Fase ovulatoria<small>días 13 a 16</small></button>
-            <button type="button" data-v="lutea" aria-pressed="false">Fase lútea<small>días 17 a 28</small></button>
-          </div>
-          <div class="qopts qopts-one">
-            <button type="button" data-v="ninguna" aria-pressed="false">No lo sé<small>sin filtrar por etapa</small></button>
-          </div>
-          <p class="qhelp">¿No sabes en qué fase estás? <a href="#calcula">Calcúlala en 10 segundos</a>.</p>
-        </div>
-
-        <div class="qstep" data-q="2" hidden>
-          <h3 tabindex="-1">¿Qué necesitas hoy?</h3>
-          <div class="qcont" hidden><p class="qpre">Ya lo elegimos según tu enlace. Puedes cambiarlo.</p><button type="button" class="btn btn-olive" data-continue>Continuar</button></div>
-          <div class="qopts">
-            <button type="button" data-v="en" aria-pressed="false">Más energía</button>
-            <button type="button" data-v="hi" aria-pressed="false">Bajar la hinchazón</button>
-            <button type="button" data-v="an" aria-pressed="false">Calmar los antojos</button>
-            <button type="button" data-v="sa" aria-pressed="false">Saciarme de verdad</button>
-            <button type="button" data-v="ra" aria-pressed="false">Algo rápido</button>
-            <button type="button" data-v="ai" aria-pressed="false">Priorizar lo antiinflamatorio</button>
-          </div>
-        </div>
-
-        <div class="qstep" data-q="3" hidden>
-          <h3 tabindex="-1">¿Para qué momento del día?</h3>
-          <div class="qcont" hidden><p class="qpre">Ya lo elegimos según tu enlace. Puedes cambiarlo.</p><button type="button" class="btn btn-olive" data-continue>Continuar</button></div>
-          <div class="qopts">
-            <button type="button" data-v="D" aria-pressed="false">Desayuno</button>
-            <button type="button" data-v="C" aria-pressed="false">Comida</button>
-            <button type="button" data-v="N" aria-pressed="false">Cena</button>
-            <button type="button" data-v="S" aria-pressed="false">Snack o algo dulce</button>
-          </div>
-        </div>
-
-        <div class="qresult" id="quiz-result" aria-live="polite" hidden></div>
-        <div class="qdone" id="quiz-done" hidden>
-          <h3 tabindex="-1">Ya has visto tu receta de hoy</h3>
-          <p>El test da una receta por persona. Para elegir entre las 100 recetas cuando quieras, con menús semanales y listas de la compra, tienes el recetario completo. Y si quieres probar el método antes, descarga 10 recetas gratis.</p>
-          <div class="res-cta">
-            <a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Quiero 10 recetas gratis</a>
-            <a class="btn btn-outline" href="#empezar">Ver el recetario completo</a>
-          </div>
-        </div>
-        <div class="quiz-nav"><button type="button" class="linkbtn" id="quiz-back" hidden>Volver a la pregunta anterior</button></div>
+      <h2>Lo que dicen las lectoras</h2>
+      <p class="lede" style="margin-top:14px">Opiniones de mujeres que ya han usado los recetarios de StudyOS.</p>
+      <div class="rev-grid">
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+          <blockquote><p>Me encantó el diseño y los menús semanales.</p><p>Las recetas me quedaron espectaculares y me sentaron genial!!!</p></blockquote>
+          <figcaption>Verónica Santos</figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+          <blockquote><p>…el apartado de “El Porqué Biológico” en cada una. Descubrí por qué ciertos ingredientes me daban pesadez y cómo combinarlos para mantener la glucosa estable.</p></blockquote>
+          <figcaption>Carolina M.</figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+          <blockquote><p>Estaba harta de las típicas dietas estrictas de pollo a la plancha y lechuga. Este libro me demostró que comer antiinflamatorio puede ser variado, sabroso y súper saciante.</p></blockquote>
+          <figcaption>Sonia G.</figcaption>
+        </figure>
+        <figure class="rev">
+          <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+          <blockquote><p>He probado ya diferentes productos de esta marca y no puedo estar más agradecida.</p><p>De verdad, recomendado al 100%, trato de 10 y productos super útiles.</p></blockquote>
+          <figcaption>Ana V.</figcaption>
+        </figure>
       </div>
-      <p class="quiz-note">Es una orientación para inspirarte, no un diagnóstico ni un consejo médico personalizado.</p>
+      <p class="cta-inline"><a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Quiero 10 recetas gratis</a></p>
     </div>
   </section>
 
@@ -879,39 +965,8 @@
     </div>
   </section>
 
-  <!-- ===== Opiniones ===== -->
-  <section class="section bg-paper" id="opiniones">
-    <div class="wrap">
-      <h2>Lo que dicen las lectoras</h2>
-      <p class="lede" style="margin-top:14px">Opiniones de mujeres que ya han usado los recetarios de StudyOS.</p>
-      <div class="rev-grid">
-        <figure class="rev">
-          <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
-          <blockquote><p>Me encantó el diseño y los menús semanales.</p><p>Las recetas me quedaron espectaculares y me sentaron genial!!!</p></blockquote>
-          <figcaption>Verónica Santos</figcaption>
-        </figure>
-        <figure class="rev">
-          <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
-          <blockquote><p>…el apartado de “El Porqué Biológico” en cada una. Descubrí por qué ciertos ingredientes me daban pesadez y cómo combinarlos para mantener la glucosa estable.</p></blockquote>
-          <figcaption>Carolina M.</figcaption>
-        </figure>
-        <figure class="rev">
-          <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
-          <blockquote><p>Estaba harta de las típicas dietas estrictas de pollo a la plancha y lechuga. Este libro me demostró que comer antiinflamatorio puede ser variado, sabroso y súper saciante.</p></blockquote>
-          <figcaption>Sonia G.</figcaption>
-        </figure>
-        <figure class="rev">
-          <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
-          <blockquote><p>He probado ya diferentes productos de esta marca y no puedo estar más agradecida.</p><p>De verdad, recomendado al 100%, trato de 10 y productos super útiles.</p></blockquote>
-          <figcaption>Ana V.</figcaption>
-        </figure>
-      </div>
-      <p class="cta-inline"><a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Quiero 10 recetas gratis</a></p>
-    </div>
-  </section>
-
   <!-- ===== Qué incluye ===== -->
-  <section class="section contents bg-page" id="incluye">
+  <section class="section contents" id="incluye">
     <div class="wrap contents-grid">
       <div>
         <h2>Qué encuentras dentro del recetario</h2>
@@ -1080,6 +1135,25 @@
     </div>
   </section>
 
+  <!-- ===== Boletín ===== -->
+  <section class="section bg-paper" id="boletin">
+    <div class="wrap">
+      <div class="news">
+        <div>
+          <h2>Una receta nueva en tu correo cada semana</h2>
+          <p class="lede" style="margin-top:10px">Sin spam: solo recetas, avisos de nuevos recetarios y algún consejo de StudyOS. Puedes darte de baja cuando quieras.</p>
+        </div>
+        <form class="news-form" id="news-form" action="https://formspree.io/f/xwlporjy" method="POST">
+          <label for="news-email" class="sr">Tu correo electrónico</label>
+          <input type="email" id="news-email" name="email" placeholder="tucorreo@email.com" required>
+          <input type="hidden" name="_subject" value="Nueva suscriptora StudyOS">
+          <button type="submit" class="btn btn-yellow">Quiero recibirlas</button>
+        </form>
+        <p class="news-note" id="news-note" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== Preguntas ===== -->
   <section class="section bg-paper" id="preguntas">
     <div class="wrap">
@@ -1239,7 +1313,7 @@
 
   // Botón fijo de descarga gratis en móvil: aparece al pasar el primer botón y se oculta en el cierre.
   const sticky = document.getElementById("sticky-cta");
-  const heroCta = document.querySelector(".cta-stack");
+  const heroCta = document.getElementById("inicio");
   const closingEl = document.querySelector(".closing");
   const testEl = document.getElementById("test");
   let passedHero = false, closingVisible = false, testVisible = false;
@@ -1265,6 +1339,26 @@
     }, { threshold: 0.4 });
     io2.observe(paid);
   });
+
+  // Boletín (Formspree): evita recargar la página y avisa a Analytics (sin enviar el correo a GA/Meta).
+  var newsForm = document.getElementById("news-form");
+  if (newsForm) {
+    newsForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var note = document.getElementById("news-note");
+      var btn = newsForm.querySelector("button");
+      btn.disabled = true; note.textContent = "Enviando...";
+      fetch(newsForm.action, { method: "POST", body: new FormData(newsForm), headers: { Accept: "application/json" } })
+        .then(function (r) {
+          if (r.ok) {
+            note.textContent = "¡Ya estás dentro! Revisa tu correo.";
+            newsForm.reset();
+            if (window.studyosFunnel) window.studyosFunnel("newsletter_signup", {});
+          } else { note.textContent = "No se pudo enviar. Prueba de nuevo en un momento."; btn.disabled = false; }
+        })
+        .catch(function () { note.textContent = "No se pudo enviar. Prueba de nuevo en un momento."; btn.disabled = false; });
+    });
+  }
 
   // Menú semanal: elegir un día y marcar la lista de la compra (no se guarda nada).
   const dayBtns = document.querySelectorAll(".days button");

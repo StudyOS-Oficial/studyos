@@ -89,6 +89,12 @@
   footer { padding-block: 32px 48px; font-size: .92rem; color: var(--muted); }
   .legal-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-bottom: 12px; }
   .legal-links a { color: inherit; }
+  .news { background: var(--paper); border: 1.5px solid var(--line); border-radius: 22px; padding: clamp(22px, 4vw, 32px); text-align: center; }
+  .news h2 { font-family: var(--serif); font-size: clamp(1.3rem, 3.4vw, 1.6rem); color: var(--olive-900); }
+  .news p { margin-top: 8px; color: var(--muted); }
+  .news-form { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }
+  .news-form input[type=email] { flex: 1 1 220px; min-height: 48px; padding: .55rem 1rem; border: 1.5px solid var(--line); border-radius: 999px; font: 400 1rem/1.2 var(--sans); background: var(--page); color: var(--ink); }
+  .news-note { margin-top: 10px; font-size: .88rem; color: var(--olive-700); min-height: 1.2em; }
   .linkbtn { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; }
 </style>
 </head>
@@ -104,7 +110,7 @@
     <div class="wrap">
       <h1>Aquí tienes tus 10 recetas</h1>
       <p class="lede">Son una muestra del recetario completo, para que pruebes el método con platos sencillos y ingredientes reales.</p>
-      <a class="btn btn-yellow btn-lg" id="descarga-gratis" href="10 Recetas Antiinflamatorias VO.pdf" target="_blank" rel="noopener">Descargar mis 10 recetas</a>
+      <a class="btn btn-yellow btn-lg" id="descarga-gratis" href="10 Recetas Antiinflamatorias OFICIAL_compressed.pdf" target="_blank" rel="noopener">Descargar mis 10 recetas</a>
       <p class="hint">Se abre en una pestaña nueva. Desde ahí puedes guardarlo en tu móvil.</p>
     </div>
   </section>
@@ -144,6 +150,19 @@
       </div>
     </div>
   </section>
+
+  <section class="comm-wrap"><div class="wrap">      <div class="news">
+        <h2>Una receta nueva en tu correo cada semana</h2>
+        <p>Sin spam: solo recetas, avisos de nuevos recetarios y algún consejo de StudyOS.</p>
+        <form class="news-form" id="news-form" action="https://formspree.io/f/xwlporjy" method="POST">
+          <label for="news-email" class="sr">Tu correo electrónico</label>
+          <input type="email" id="news-email" name="email" placeholder="tucorreo@email.com" required>
+          <input type="hidden" name="_subject" value="Nueva suscriptora StudyOS (gratis.html)">
+          <button type="submit" class="btn btn-light">Quiero recibirlas</button>
+        </form>
+        <p class="news-note" id="news-note" aria-live="polite"></p>
+      </div>
+</div></section>
 </main>
 
 <footer>
@@ -192,6 +211,22 @@
       var ref = window.studyosCheckoutRef && window.studyosCheckoutRef();
       if (ref) { try { var u = new URL(buy.href); u.searchParams.set("client_reference_id", ref); buy.href = u.toString(); } catch (err) {} }
       if (window.studyosFunnel) window.studyosFunnel("begin_checkout", { cta_location: "gratis" });
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var newsForm = document.getElementById("news-form");
+    if (!newsForm) return;
+    newsForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var note = document.getElementById("news-note"); var btn = newsForm.querySelector("button");
+      btn.disabled = true; note.textContent = "Enviando...";
+      fetch(newsForm.action, { method: "POST", body: new FormData(newsForm), headers: { Accept: "application/json" } })
+        .then(function (r) {
+          if (r.ok) { note.textContent = "¡Ya estás dentro! Revisa tu correo."; newsForm.reset(); if (window.studyosFunnel) window.studyosFunnel("newsletter_signup", {}); }
+          else { note.textContent = "No se pudo enviar. Prueba de nuevo en un momento."; btn.disabled = false; }
+        })
+        .catch(function () { note.textContent = "No se pudo enviar. Prueba de nuevo en un momento."; btn.disabled = false; });
     });
   });
 </script>

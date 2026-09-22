@@ -29,33 +29,51 @@
   function funnel(name, extra) { try { if (window.studyosFunnel) window.studyosFunnel(name, extra); } catch (e) {} }
 
   /* ---------------------------------------------------------------- Motor de recomendación */
-  function stageMatch(r, stage) { return !!stage && stage !== "ninguna" && r.p.indexOf(stage) > -1; }
+  var AVOID = { lacteos: /lácteos/i, gluten: /gluten/i, huevo: /huevo/i, frutossecos: /frutos secos/i, pescado: /pescado|crustáceos|moluscos|marisco/i, soja: /soja/i };
+  var AVOIDLABEL = { lacteos: "Sin lácteos", gluten: "Sin gluten", huevo: "Sin huevo", frutossecos: "Sin frutos secos", pescado: "Sin pescado ni marisco", soja: "Sin soja" };
+  var STAGECAP = { menstrual: "Fase menstrual", folicular: "Fase folicular", ovulatoria: "Fase ovulatoria", lutea: "Fase lútea", perimenopausia: "Perimenopausia", menopausia: "Menopausia", ninguna: "Etapa sin filtrar" };
+  var MOMENTCAP = { D: "Desayuno", C: "Comida", N: "Cena", S: "Snack o algo dulce" };
+  var TIMECAP = { "15": "Hasta 15 minutos", "30": "Unos 30 minutos", any: "Sin prisa" };
 
-  function score(r, stage, need, moment) {
+  function stageMatch(r, stage) { return !!stage && stage !== "ninguna" && r.p.indexOf(stage) > -1; }
+  function allowed(r, avoid) { return !avoid.some(function (k) { return AVOID[k] && AVOID[k].test(r.a); }); }
+
+  function score(r, pf) {
     var s = 0;
-    if (r.n.indexOf(need) > -1) s += W.need;
-    if (r.mo.indexOf(moment) > -1) s += W.moment;
-    if (stageMatch(r, stage)) s += W.stage;
-    if (need === "ra" && r.m <= 10) s += 1;   // desempates suaves
-    if (need === "hi" && r.k <= 320) s += 1;
-    if (need === "sa" && r.k >= 380) s += 1;
+    if (r.n.indexOf(pf.need) > -1) s += W.need;
+    if (r.mo.indexOf(pf.moment) > -1) s += W.moment;
+    if (stageMatch(r, pf.stage)) s += W.stage;
+    if (pf.time === "15" && r.m <= 15) s += 3;   // el tiempo disponible suma, pero no es excluyente
+    else if (pf.time === "30" && r.m <= 30) s += 2;
+    if (pf.need === "ra" && r.m <= 10) s += 1;   // desempates suaves
+    if (pf.need === "hi" && r.k <= 320) s += 1;
+    if (pf.need === "sa" && r.k >= 380) s += 1;
     return s;
   }
 
-  // Devuelve siempre una receta: la mejor puntuada, aunque no coincida en todo (match: "exacta" o "parcial")
-  function getRecommendedRecipe(stage, need, moment) {
-    var ranked = R.map(function (r, i) { return { r: r, i: i, s: score(r, stage, need, moment) }; })
+  // Devuelve siempre una receta: la mejor puntuada entre las que respetan lo que la persona quiere evitar
+  // (si esa exclusión dejara muy pocas recetas, se relaja). match: "exacta" o "parcial".
+  function getRecommendedRecipe(stage, need, moment, prefs) {
+    prefs = prefs || {};
+    var avoid = prefs.avoid || [], time = prefs.time || "any";
+    var pool = R.filter(function (r) { return allowed(r, avoid); });
+    var relaxed = pool.length < 3;
+    if (relaxed) pool = R;
+    var pf = { stage: stage, need: need, moment: moment, time: time };
+    var ranked = pool.map(function (r, i) { return { r: r, i: i, s: score(r, pf) }; })
       .sort(function (a, b) { return b.s - a.s || a.i - b.i; });
     var top = ranked[0].r;
-    var full = top.n.indexOf(need) > -1 && top.mo.indexOf(moment) > -1 && (!stage || stage === "ninguna" || stageMatch(top, stage));
-    return { recipe: top, score: ranked[0].s, match: full ? "exacta" : "parcial", stageMatched: stageMatch(top, stage), alternatives: ranked.slice(1, 3).map(function (x) { return x.r; }) };
+    var timeOk = time === "any" || top.m <= Number(time);
+    var full = top.n.indexOf(need) > -1 && top.mo.indexOf(moment) > -1 && (!stage || stage === "ninguna" || stageMatch(top, stage)) && timeOk;
+    return { recipe: top, score: ranked[0].s, match: full ? "exacta" : "parcial", stageMatched: stageMatch(top, stage), relaxed: relaxed && avoid.length > 0, alternatives: ranked.slice(1, 3).map(function (x) { return x.r; }) };
   }
   window.studyosRecipes = { all: R, getRecommendedRecipe: getRecommendedRecipe };
 
-  /* ---------------------------------------------------------------- Test */
+  /* ---------------------------------------------------------------- Test (5 preguntas) */
   var quiz = document.getElementById("quiz");
   var api = {};
   var QUIZ_KEY = "studyos_quiz";
+  var TOTAL = 5;
 
   if (quiz) {
     var steps = quiz.querySelectorAll(".qstep");
@@ -66,12 +84,12 @@
     var bar = document.getElementById("quiz-bar-i");
     var back = document.getElementById("quiz-back");
     var pre = window.studyosPreselect ? window.studyosPreselect() : {};
-    var state = { stage: pre.stage || null, need: pre.need || null, mo: pre.moment || null };
+    var state = { stage: pre.stage || null, need: pre.need || null, mo: pre.moment || null, avoid: [], time: null };
     var fromAd = { 1: !!pre.stage, 2: !!pre.need, 3: !!pre.moment };   // pasos con respuesta que viene del anuncio
     var started = false, current = 1, finished = false;
 
-    function valueOf(q) { return q === 1 ? state.stage : q === 2 ? state.need : state.mo; }
-    function setValue(q, v) { if (q === 1) state.stage = v; else if (q === 2) state.need = v; else state.mo = v; }
+    function valueOf(q) { return q === 1 ? state.stage : q === 2 ? state.need : q === 3 ? state.mo : state.time; }
+    function setValue(q, v) { if (q === 1) state.stage = v; else if (q === 2) state.need = v; else if (q === 3) state.mo = v; else if (q === 5) state.time = v; }
 
     function mark(q, value) {
       quiz.querySelectorAll('.qstep[data-q="' + q + '"] .qopts button').forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-v") === value)); });
@@ -95,8 +113,8 @@
         var cont = st.querySelector(".qcont");
         if (cont) cont.hidden = !(q === n && fromAd[q] && valueOf(q));
       });
-      stepLabel.textContent = "Pregunta " + n + " de 3";
-      bar.style.width = Math.round((n / 3) * 100) + "%";
+      stepLabel.textContent = "Pregunta " + n + " de " + TOTAL;
+      bar.style.width = Math.round((n / TOTAL) * 100) + "%";
       back.hidden = n === 1;
       if (focus) {
         var h = quiz.querySelector('.qstep[data-q="' + n + '"] h3');
@@ -106,37 +124,57 @@
 
     function answered(q, wasPreselected) {
       if (!started) { started = true; funnel("quiz_start"); }
-      funnel("quiz_question_" + q, { step: q, preselected: wasPreselected ? "yes" : "no" });
-      window.setTimeout(function () { if (q < 3) showStep(q + 1, true); else finish(); }, 240);
+      funnel("quiz_question_" + q, { step: q, preselected: wasPreselected ? "yes" : "no" });   // nunca se envía la respuesta
+      window.setTimeout(function () { if (q < TOTAL) showStep(q + 1, true); else finish(); }, 240);
     }
+
+    function cap(t) { return t.charAt(0).toUpperCase() + t.slice(1); }
 
     function finish() {
       finished = true;
-      var rec = getRecommendedRecipe(state.stage, state.need, state.mo);
+      var rec = getRecommendedRecipe(state.stage, state.need, state.mo, { avoid: state.avoid, time: state.time || "any" });
       var r = rec.recipe;
 
       var why = "Elegida porque buscas <b>" + NEED[state.need] + "</b> para <b>" + MOMENT[state.mo] + "</b>";
-      if (rec.stageMatched) why += " y está pensada para <b>" + STAGELABEL[state.stage] + "</b>.";
-      else if (state.stage && state.stage !== "ninguna") why += ". Para esta combinación no hay una receta específica de " + STAGELABEL[state.stage] + "; esta es la que mejor encaja.";
-      else why += ".";
+      if (rec.stageMatched) why += " y está pensada para <b>" + STAGELABEL[state.stage] + "</b>";
+      else if (state.stage && state.stage !== "ninguna") why += ". Para esta combinación no hay una receta específica de " + STAGELABEL[state.stage] + "; esta es la que mejor encaja";
+      if (state.time && state.time !== "any") why += (r.m <= Number(state.time) ? ", y la tienes lista en " + r.m + " minutos" : "");
+      why += ".";
+
+      var chips = [STAGECAP[state.stage || "ninguna"], cap(NEED[state.need]), MOMENTCAP[state.mo]]
+        .concat(state.avoid.map(function (k) { return AVOIDLABEL[k]; }))
+        .concat(state.time ? [TIMECAP[state.time]] : []);
+      var chipHtml = chips.map(function (c) { return "<li>" + esc(c) + "</li>"; }).join("");
 
       var ing = r.g.length ? '<p class="res-ing"><b>Ingredientes principales:</b> ' + esc(r.g.join(", ").replace(/, ([^,]*)$/, " y $1")) + ".</p>" : "";
       var locked = rec.alternatives.map(function (a) {
         return '<div class="locked">' + LOCK + "<b>Receta bloqueada</b><span>" + a.m + " min, " + a.k + " kcal aprox.</span></div>";
       }).join("");
+      var week = '<span class="wday on">Hoy</span>';
+      for (var d = 2; d <= 7; d++) week += '<span class="wday">' + LOCK + "Día " + d + "</span>";
 
       result.innerHTML =
+        '<p class="res-thanks">Gracias por contárnoslo. Esto es lo que entendimos:</p>' +
+        '<ul class="chips2">' + chipHtml + "</ul>" +
         '<div class="res-main">' +
           '<p class="res-kicker">Tu receta de hoy</p>' +
           '<h3 class="res-title" tabindex="-1" id="res-title">' + esc(r.t) + "</h3>" +
           '<p class="res-meta"><span>' + esc(r.ph) + "</span><span>" + r.m + " minutos</span><span>" + r.k + " kcal aprox.</span><span>Alérgenos: " + esc(r.a) + "</span></p>" +
           '<p class="res-why">' + why + "</p>" + ing +
+          '<p class="res-check">Revisa siempre los alérgenos antes de cocinar.</p>' +
           '<div class="res-lock">' + LOCK + "<p>La cantidad exacta, la preparación paso a paso y El Porqué Biológico de esta receta están en el recetario completo.</p></div>" +
-          '<div class="res-cta"><a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Quiero 10 recetas gratis</a></div>' +
-          '<p class="res-more">Son 10 recetas para que pruebes el método, sin dar tu correo. <a href="#incluye">Ver qué incluye el recetario completo</a>.</p>' +
         "</div>" +
-        '<p class="res-sub res-alt-title">Otras 2 recetas también encajan contigo</p><div class="res-alt">' + locked + "</div>" +
-        '<p class="res-once">El test da una receta por persona. Con el recetario completo eliges entre las 100 cada día, con menús semanales y listas de la compra.</p>';
+        '<p class="res-sub">Tu semana de arranque</p><div class="week" aria-label="Tu semana de arranque: hoy desbloqueado y seis días bloqueados">' + week + "</div>" +
+        '<p class="res-once">Un hábito se construye día a día. Tu primera receta ya está elegida; para las demás necesitas más recetas y un plan.</p>' +
+        '<p class="res-sub">Cómo seguir</p>' +
+        '<div class="compare">' +
+          '<div class="cmp"><h4>10 recetas gratis</h4><div class="bar" aria-hidden="true"><i style="width:7%"></i></div><p><b>≈ 3 días</b> de comidas sin repetir</p><ul><li>Para probar el método</li><li>Sin menús ni listas de la compra</li></ul></div>' +
+          '<div class="cmp cmp-paid"><h4>100 recetas completas</h4><div class="bar" aria-hidden="true"><i style="width:100%"></i></div><p><b>6 semanas</b> de menús (42 días) y ≈ 33 días de recetas sin repetir</p><ul><li>Menús semanales y listas de la compra</li><li>Batch cooking y sustituciones</li><li>El Porqué Biológico en cada receta</li></ul></div>' +
+        "</div>" +
+        '<p class="cmp-note">Cálculo con 3 platos al día. Cada cuerpo es distinto y no prometemos resultados: el recetario te da variedad y un plan para mantener el hábito.</p>' +
+        '<div class="res-cta"><a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Quiero 10 recetas gratis</a>' +
+        '<a class="btn btn-olive btn-lg" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Quiero las 100 recetas</a></div>' +
+        '<p class="res-sub res-alt-title">Otras 2 recetas también encajan contigo</p><div class="res-alt">' + locked + "</div>";
 
       steps.forEach(function (st) { st.hidden = true; });
       stepLabel.textContent = "Resultado";
@@ -145,6 +183,7 @@
       result.hidden = false;
       var t = document.getElementById("res-title");
       if (t) t.focus({ preventScroll: true });
+      quiz.scrollIntoView({ behavior: "smooth", block: "start" });
 
       if (window.studyosStore) window.studyosStore.set(QUIZ_KEY, "1");   // el test solo se puede hacer una vez
       funnel("quiz_complete");
@@ -156,13 +195,23 @@
       if (b) {
         var q = Number(b.closest(".qstep").getAttribute("data-q"));
         var v = b.getAttribute("data-v");
+        if (q === 4) {   // varias respuestas posibles; "Nada en especial" es excluyente
+          var group = b.closest(".qstep");
+          if (v === "nada") { state.avoid = []; group.querySelectorAll(".qopts button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); }); b.setAttribute("aria-pressed", "true"); return; }
+          group.querySelector('[data-v="nada"]').setAttribute("aria-pressed", "false");
+          var on = b.getAttribute("aria-pressed") !== "true";
+          b.setAttribute("aria-pressed", String(on));
+          state.avoid = Array.prototype.filter.call(group.querySelectorAll(".qopts button"), function (x) { return x.getAttribute("aria-pressed") === "true" && x.getAttribute("data-v") !== "nada"; }).map(function (x) { return x.getAttribute("data-v"); });
+          return;
+        }
         var same = fromAd[q] && valueOf(q) === v;
         setValue(q, v); mark(q, v); fromAd[q] = false;
         answered(q, same);
         return;
       }
       var c = e.target.closest && e.target.closest("[data-continue]");
-      if (c) { var qc = Number(c.closest(".qstep").getAttribute("data-q")); answered(qc, true); }
+      if (c) { var qc = Number(c.closest(".qstep").getAttribute("data-q")); answered(qc, true); return; }
+      if (e.target.closest && e.target.closest("[data-next]")) answered(4, false);
     });
     back.addEventListener("click", function () { if (current > 1) showStep(current - 1, true); });
 
