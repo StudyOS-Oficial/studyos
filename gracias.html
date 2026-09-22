@@ -60,6 +60,11 @@
   .btn-line:hover { background: var(--olive-700); color: #fff; }
   .alt a { color: var(--olive-700); }
 
+  .plus-card { background: var(--paper); border: 2px solid var(--yellow); border-radius: 22px; padding: clamp(24px, 4vw, 34px); }
+  .plus-card h2 { color: var(--olive-900); font-size: clamp(1.4rem, 4vw, 1.8rem); }
+  .plus-card p { margin-top: 10px; color: var(--muted); max-width: 34rem; }
+  .plus-card .btn { margin-top: 20px; background: var(--olive-700); color: #fff; }
+  .plus-card .btn:hover { background: var(--olive-900); }
   .community { background: var(--olive-800); color: #fff; border-radius: 22px; padding: clamp(24px, 4vw, 34px); }
   .community h2 { font-size: clamp(1.4rem, 4vw, 1.8rem); color: #fff; }
   .community p { margin-top: 10px; color: rgba(255, 255, 255, .88); max-width: 34rem; }
@@ -97,6 +102,16 @@
       <!-- Descarga inmediata (nuevo PDF mejorado) y enlace para verlo online por si el primero no se abre -->
       <a class="btn" id="descarga" href="https://drive.google.com/uc?export=download&id=1Mlh_PRqzMHp_i74IATbxQjes9911D-Uo" target="_blank" rel="noopener">Descargar mi recetario</a>
       <p class="alt"><a class="btn-line" id="ver-online" href="https://drive.google.com/file/d/1Mlh_PRqzMHp_i74IATbxQjes9911D-Uo/view" target="_blank" rel="noopener">Verlo online</a> Si la descarga no empieza en tu móvil, usa este enlace.</p>
+    </div>
+  </section>
+
+  <section class="comm-wrap">
+    <div class="wrap">
+      <div class="plus-card">
+        <h2>StudyOS+: encuentra tu receta de hoy</h2>
+        <p>Responde unas preguntas rápidas sobre tu etapa, lo que necesitas y el momento del día, y te decimos al instante cuál de tus 100 recetas te conviene ahora mismo. También puedes explorarlas todas por etapa, necesidad o tiempo de preparación.</p>
+        <a class="btn" id="ver-plus" href="plus.html" target="_blank" rel="noopener">Abrir StudyOS+</a>
+      </div>
     </div>
   </section>
 
@@ -188,6 +203,10 @@
     var w = document.getElementById("whatsapp");
     if (w) w.addEventListener("click", function () {
       if (window.studyosTrack) window.studyosTrack("Contact", { content_name: "Comunidad WhatsApp" });
+    });
+    var plus = document.getElementById("ver-plus");
+    if (plus) plus.addEventListener("click", function () {
+      if (window.studyosTrackCustom) window.studyosTrackCustom("StudyOSPlusOpen", {});
     });
   });
 </script>
