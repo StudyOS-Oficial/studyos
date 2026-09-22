@@ -470,6 +470,13 @@
   .news-form input[type=email] { flex: 1 1 240px; min-height: 50px; padding: .6rem 1rem; border: 1.5px solid var(--line); border-radius: 999px; font: 400 1rem/1.2 var(--sans); background: #fff; color: var(--ink); }
   .news-note { margin-top: 10px; font-size: .9rem; color: var(--olive-700); min-height: 1.2em; }
 
+  .plus-box { display: flex; gap: 12px; align-items: flex-start; margin-top: 16px; padding: 14px 16px; border-radius: 14px; background: rgba(242, 194, 48, .16); border: 1.5px solid var(--yellow); }
+  .plus-ico { flex: none; margin-top: 2px; color: var(--yellow); }
+  .plus-title { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; color: #fff; }
+  .plus-desc { margin-top: 3px; font-size: .92rem; color: rgba(255, 255, 255, .85); }
+  .row-plus { background: rgba(242, 194, 48, .16); border-radius: 12px; padding: 16px 14px; border-top: none !important; margin: 4px 0; }
+  .row-plus dt { color: var(--olive-700); }
+
   .legal-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
   .legal-links a { color: inherit; }
   .linkbtn { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; }
@@ -661,6 +668,13 @@
             <li>Guía de batch cooking</li>
             <li>Guía de alimentos y sustituciones</li>
           </ul>
+          <div class="plus-box">
+            <svg class="plus-ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+            <div>
+              <p class="plus-title">Incluye StudyOS+</p>
+              <p class="plus-desc">La app interactiva del recetario: responde 3 preguntas y te dice al instante qué receta te conviene hoy, o explora las 100 por etapa, necesidad o tiempo.</p>
+            </div>
+          </div>
           <p class="more"><a href="#incluye">Ver todo lo que incluye</a></p>
           <div class="buy">
             <div class="price"><s class="was"><span class="sr">Precio anterior: </span>10 €</s> 5 €<small>pago único, unos 5,8 US$</small></div>
@@ -980,6 +994,10 @@
         <div class="row">
           <dt>El Porqué Biológico</dt>
           <dd>Al final de cada receta, una explicación breve de cómo sus ingredientes trabajan a favor de tus hormonas.</dd>
+        </div>
+        <div class="row row-plus">
+          <dt>StudyOS+, la app del recetario</dt>
+          <dd>Responde 3 preguntas rápidas y te decimos al instante qué receta te conviene ahora. También puedes explorar las 100 por etapa, necesidad, tiempo o alérgenos que quieras evitar. Es lo que nos diferencia: no solo tienes el recetario, tienes quien te ayuda a elegir.</dd>
         </div>
         <div class="row">
           <dt>Bonus: 6 menús semanales</dt>
