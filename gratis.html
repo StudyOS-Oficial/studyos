@@ -78,6 +78,10 @@
   .buy { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 20px; }
   .price { font-family: var(--serif); font-size: 2.2rem; font-weight: 600; line-height: 1; color: var(--olive-900); }
   .price small { display: block; margin-top: 4px; font: 400 .85rem/1.2 var(--sans); color: var(--muted); }
+  .plus-box { display: flex; gap: 10px; align-items: flex-start; margin-top: 14px; padding: 12px 14px; border-radius: 12px; background: rgba(242, 194, 48, .35); }
+  .plus-ico { flex: none; margin-top: 2px; color: var(--olive-800); }
+  .plus-title { font-family: var(--serif); font-weight: 600; font-size: .98rem; color: var(--olive-900); }
+  .plus-desc { margin-top: 2px; font-size: .86rem; color: var(--muted); }
   .offer-sub { margin-top: 6px; color: var(--muted); }
   .offer-name { margin-top: 18px; font-size: 1.25rem; color: var(--olive-800); }
   .checks { list-style: none; margin: 10px 0 0; padding: 0; color: var(--ink); }
@@ -110,7 +114,7 @@
     <div class="wrap">
       <h1>Aquí tienes tus 10 recetas</h1>
       <p class="lede">Son una muestra del recetario completo, para que pruebes el método con platos sencillos y ingredientes reales.</p>
-      <a class="btn btn-yellow btn-lg" id="descarga-gratis" href="10 Recetas Antiinflamatorias VO.pdf" target="_blank" rel="noopener">Descargar mis 10 recetas</a>
+      <a class="btn btn-yellow btn-lg" id="descarga-gratis" href="10 Recetas Antiinflamatorias OFICIAL_compressed.pdf" target="_blank" rel="noopener">Descargar mis 10 recetas</a>
       <p class="hint">Se abre en una pestaña nueva. Desde ahí puedes guardarlo en tu móvil.</p>
     </div>
   </section>
@@ -134,6 +138,13 @@
             <li>Guía de batch cooking</li>
             <li>Guía de alimentos y sustituciones</li>
           </ul>
+          <div class="plus-box">
+            <svg class="plus-ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+            <div>
+              <p class="plus-title">Incluye StudyOS+</p>
+              <p class="plus-desc">La app interactiva del recetario: 3 preguntas y sabes al instante qué receta te conviene hoy.</p>
+            </div>
+          </div>
           <div class="buy">
             <div class="price"><s class="was">10 €</s> 5 €<small>pago único, unos 5,8 US$</small></div>
             <a class="btn btn-olive" id="comprar" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Quiero las 100 recetas</a>
