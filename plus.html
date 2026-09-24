@@ -204,6 +204,35 @@
     * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
   }
 
+
+/* ===== StudyOS+ V2 ===== */
+:root{--nav-h:74px}
+body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:#F5F4EC}
+.top{padding:18px 0 4px}.top .row{flex-wrap:nowrap}.top .tagline,.top .modes{display:none}
+.v2-home{padding:18px 0 8px}.v2-kicker{font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--olive-700)}
+.v2-home h1{font-size:clamp(2rem,8vw,3.25rem);line-height:1.02;margin-top:5px;color:var(--olive-950)}
+.v2-sub{margin-top:9px;color:var(--muted);font-size:.98rem}
+.v2-primary{margin-top:22px;background:var(--olive-900);color:#fff;border-radius:26px;padding:22px;position:relative;overflow:hidden;box-shadow:0 16px 34px rgba(43,53,32,.16)}
+.v2-primary:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:rgba(242,194,48,.16);right:-65px;top:-80px}
+.v2-primary small{display:block;opacity:.72;font-weight:600}.v2-primary h2{font-size:1.65rem;margin:5px 0 8px;color:#fff}
+.v2-primary p{font-size:.93rem;color:rgba(255,255,255,.78);max-width:29rem}.v2-primary .btn{margin-top:18px;position:relative;z-index:1}
+.v2-quick{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.v2-quick button,.v2-shortcut{border:1px solid var(--line);background:var(--paper);border-radius:18px;padding:16px;text-align:left;color:var(--ink);font:600 .94rem/1.25 var(--sans);cursor:pointer;min-height:82px}
+.v2-quick button span,.v2-shortcut span{display:block;font-size:1.25rem;margin-bottom:7px}
+.v2-section-title{font-size:1.25rem;margin:28px 0 12px;color:var(--olive-900)}
+.v2-shortcuts{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.v2-shortcut{text-align:center;padding:13px 7px;min-height:82px;font-size:.78rem}
+.v2-card{border:1px solid var(--line);background:var(--paper);border-radius:20px;padding:17px;margin-top:10px}.v2-card h3{font-size:1.1rem}.v2-card p{font-size:.88rem;color:var(--muted);margin-top:5px}
+.v2-empty{font-size:.9rem;color:var(--muted);padding:8px 0}
+.v2-bottom{position:fixed;z-index:120;left:0;right:0;bottom:0;background:rgba(250,251,244,.96);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:7px 12px calc(7px + env(safe-area-inset-bottom))}
+.v2-bottom-inner{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:5px}.v2-bottom button{border:0;background:transparent;border-radius:14px;min-height:52px;color:var(--muted);font:600 .78rem/1.15 var(--sans);cursor:pointer}
+.v2-bottom button span{display:block;font-size:1.2rem;margin-bottom:2px}.v2-bottom button[aria-current="page"]{background:rgba(183,196,139,.28);color:var(--olive-900)}
+.v2-view[hidden]{display:none!important}.v2-back{margin:8px 0 14px}
+.fav-btn{border:1px solid var(--line);background:#fff;border-radius:999px;min-height:42px;padding:0 14px;font:600 .88rem var(--sans);cursor:pointer;color:var(--olive-800);margin-top:14px}
+.fav-btn.is-fav{background:#FBEAE4;border-color:#D9A08F;color:#8D4937}
+.v2-list{display:grid;gap:9px}.v2-list button{width:100%;text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:15px;padding:14px;color:var(--ink);font:inherit;cursor:pointer}
+.v2-list b{display:block;font-family:var(--serif);color:var(--olive-900)}.v2-list small{color:var(--muted)}
+.v2-note{margin-top:22px;padding:14px 16px;border-radius:14px;background:rgba(183,196,139,.2);font-size:.84rem;color:var(--muted)}
+
 </style>
 </head>
 <body class="locked">
@@ -218,22 +247,40 @@
   <p class="splash-note">Preparando tus 100 recetas…</p>
 </div>
 
-<header class="top">
-  <div class="wrap">
-    <div class="row">
-      <span class="mark">Study<span>OS</span><i>+</i></span>
-      <span class="badge">100 recetas · acceso completo</span>
-    </div>
-    <p class="tagline">Tu recetario, a mano, para el momento exacto que necesitas. Responde unas preguntas y te decimos qué receta te conviene ahora — o explora las 100 cuando quieras.</p>
-    <nav class="modes" role="tablist" aria-label="Elige cómo encontrar tu receta">
-      <button type="button" id="mode-quiz" role="tab" aria-pressed="true" aria-selected="true">Receta de hoy</button>
-      <button type="button" id="mode-browse" role="tab" aria-pressed="false" aria-selected="false">Explorar las 100 recetas</button>
-    </nav>
-  </div>
-</header>
+<header class="top"><div class="wrap"><div class="row">
+<span class="mark">Study<span>OS</span><i>+</i></span>
+<span class="badge">100 recetas · acceso completo</span>
+</div></div></header>
 
-<main>
-  <div class="wrap">
+
+<section id="v2-home" class="v2-view v2-home"><div class="wrap">
+<p class="v2-kicker">StudyOS+ · Hoy</p>
+<h1>¿Qué quieres comer hoy?</h1>
+<p class="v2-sub">Encuentra una receta entre las 100 opciones del recetario sin perder tiempo buscando.</p>
+<div class="v2-primary"><small>RECOMENDADOR</small><h2>Encuentra una receta para ahora</h2>
+<p>Responde unas preguntas y StudyOS+ reducirá las opciones según tus respuestas.</p>
+<button type="button" class="btn btn-yellow" id="v2-recommend">Empezar →</button></div>
+<div class="v2-quick">
+<button type="button" id="v2-fast"><span>⚡</span>Tengo poco tiempo</button>
+<button type="button" id="v2-ingredients"><span>🥕</span>Buscar por ingredientes</button>
+</div>
+<h2 class="v2-section-title">Tus accesos rápidos</h2>
+<div class="v2-shortcuts">
+<button type="button" class="v2-shortcut" id="v2-favs"><span>♡</span>Favoritas</button>
+<button type="button" class="v2-shortcut" id="v2-history"><span>↺</span>Vistas recientes</button>
+<button type="button" class="v2-shortcut" id="v2-all"><span>⌕</span>Las 100 recetas</button>
+</div>
+<div id="v2-last-wrap" hidden><h2 class="v2-section-title">Vuelve a donde estabas</h2><div id="v2-last" class="v2-card"></div></div>
+<p class="v2-note">Favoritas e historial se guardan solo en este navegador. Puedes borrarlos desde StudyOS+.</p>
+</div></section>
+<section id="v2-saved" class="v2-view" hidden><div class="wrap">
+<button type="button" class="linkbtn v2-back" data-v2-home>← Volver a Hoy</button>
+<p class="v2-kicker" id="v2-saved-kicker">TU BIBLIOTECA</p><h2 id="v2-saved-title">Favoritas</h2>
+<div class="v2-list" id="v2-saved-list" style="margin-top:18px"></div>
+<button type="button" class="linkbtn" id="v2-clear-saved" style="margin-top:18px">Borrar esta lista</button>
+</div></section>
+<main id="v2-recipes" class="v2-view" hidden>
+  <div class="wrap"><button type="button" class="linkbtn v2-back" data-v2-home>← Volver a Hoy</button>
 
     <!-- ---------- VISTA: TEST ---------- -->
     <section id="view-quiz" class="view">
@@ -408,6 +455,17 @@
     return String(v).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; });
   }
 
+
+  /* ---------------------------------------------------------------- StudyOS+ V2: estado local */
+  var V2KEY = "studyos_plus_v2";
+  function loadV2(){try{var x=JSON.parse(localStorage.getItem(V2KEY)||"{}");return {favorites:Array.isArray(x.favorites)?x.favorites:[],history:Array.isArray(x.history)?x.history:[]};}catch(e){return {favorites:[],history:[]};}}
+  var v2state=loadV2();
+  function saveV2(){try{localStorage.setItem(V2KEY,JSON.stringify(v2state));}catch(e){}}
+  function isFavorite(id){return v2state.favorites.indexOf(id)>-1;}
+  function toggleFavorite(id){var i=v2state.favorites.indexOf(id);if(i>-1)v2state.favorites.splice(i,1);else v2state.favorites.unshift(id);saveV2();refreshLast();}
+  function addHistory(id){v2state.history=[id].concat(v2state.history.filter(function(x){return x!==id;})).slice(0,12);saveV2();refreshLast();}
+  function byId(id){return R.filter(function(x){return x.id===id;})[0];}
+
   /* ---------------------------------------------------------------- Motor de recomendación */
   var W = { need: 6, moment: 6, stage: 4 };
   function stageMatch(r, stage) { return !!stage && r.p.indexOf(stage) > -1; }
@@ -475,6 +533,7 @@
   /* ---------------------------------------------------------------- Ficha de receta (compartida) */
   function renderDetail(r, opts) {
     opts = opts || {};
+    addHistory(r.id);
     var ing = r.ing.map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("");
     var steps = r.steps.map(function (s) { return "<li>" + esc(s) + "</li>"; }).join("");
     var html = "";
@@ -487,6 +546,7 @@
     html += '<div class="res-quote"><b>El porqué biológico</b><p>' + esc(r.bio) + "</p></div>";
     html += '<p class="res-page">Está en la página ' + r.pg + " de tu recetario en PDF.</p>";
     html += '<p class="res-check">Revisa siempre los alérgenos antes de cocinar.</p>';
+    html += '<button type="button" class="fav-btn' + (isFavorite(r.id) ? ' is-fav' : '') + '" data-fav-id="' + esc(r.id) + '">' + (isFavorite(r.id) ? '♥ Guardada en favoritas' : '♡ Guardar en favoritas') + '</button>';
     return html;
   }
 
@@ -557,7 +617,7 @@
     else if (state.stage && state.stage !== "ninguna") why += ". Para esta combinación no hay una receta específica de " + STAGELABEL[state.stage] + "; esta es la que mejor encaja";
     why += ".";
 
-    var html = renderDetail(r, { kicker: "Tu receta para ahora mismo", why: why });
+    var html = renderDetail(r, { kicker: "Una opción según tus respuestas", why: why });
     var alt = rec.alternatives.map(function (a) {
       return '<button type="button" class="alt-pick" data-id="' + esc(a.id) + '"><b>' + esc(a.t) + "</b><span>" + a.m + " min · " + a.k + " kcal aprox.</span></button>";
     }).join("");
@@ -721,9 +781,39 @@
     renderGrid();
   }
 
+
+  /* ---------------------------------------------------------------- StudyOS+ V2: navegación */
+  var v2Home=document.getElementById("v2-home"),v2Recipes=document.getElementById("v2-recipes"),v2Saved=document.getElementById("v2-saved");
+  function navState(which){["nav-home","nav-explore","nav-saved"].forEach(function(id){document.getElementById(id).removeAttribute("aria-current");});document.getElementById(which).setAttribute("aria-current","page");}
+  function showHome(){v2Home.hidden=false;v2Recipes.hidden=true;v2Saved.hidden=true;navState("nav-home");refreshLast();window.scrollTo({top:0,behavior:"smooth"});}
+  function showQuizV2(){v2Home.hidden=true;v2Recipes.hidden=false;v2Saved.hidden=true;setMode("quiz");navState("nav-home");window.scrollTo({top:0,behavior:"smooth"});}
+  function showBrowseV2(fast){v2Home.hidden=true;v2Recipes.hidden=false;v2Saved.hidden=true;setMode("browse");initBrowseOnce();navState("nav-explore");if(fast){fTime.value="15";renderGrid();}window.scrollTo({top:0,behavior:"smooth"});}
+  function renderSaved(kind){var ids=kind==="history"?v2state.history:v2state.favorites;document.getElementById("v2-saved-kicker").textContent=kind==="history"?"VISTAS RECIENTEMENTE":"TU BIBLIOTECA";document.getElementById("v2-saved-title").textContent=kind==="history"?"Recetas recientes":"Favoritas";var box=document.getElementById("v2-saved-list"),recipes=ids.map(byId).filter(Boolean);box.innerHTML=recipes.length?recipes.map(function(r){return '<button type="button" data-open-saved="'+esc(r.id)+'"><b>'+esc(r.t)+'</b><small>'+r.m+' min · '+esc(r.ph)+'</small></button>';}).join(""):'<p class="v2-empty">Todavía no hay recetas aquí.</p>';document.getElementById("v2-clear-saved").dataset.kind=kind;v2Home.hidden=true;v2Recipes.hidden=true;v2Saved.hidden=false;navState(kind==="history"?"nav-home":"nav-saved");window.scrollTo({top:0,behavior:"smooth"});}
+  function refreshLast(){var wrap=document.getElementById("v2-last-wrap"),box=document.getElementById("v2-last");if(!wrap||!box)return;var r=v2state.history.length?byId(v2state.history[0]):null;if(!r){wrap.hidden=true;return;}wrap.hidden=false;box.innerHTML='<h3>'+esc(r.t)+'</h3><p>'+r.m+' min · '+esc(r.ph)+'</p><button type="button" class="btn btn-outline" data-open-last="'+esc(r.id)+'" style="margin-top:12px">Abrir receta</button>';}
+  document.getElementById("v2-recommend").addEventListener("click",showQuizV2);
+  document.getElementById("v2-fast").addEventListener("click",function(){showBrowseV2(true);});
+  document.getElementById("v2-ingredients").addEventListener("click",function(){showBrowseV2(false);searchInput.focus();});
+  document.getElementById("v2-all").addEventListener("click",function(){showBrowseV2(false);});
+  document.getElementById("v2-favs").addEventListener("click",function(){renderSaved("favorites");});
+  document.getElementById("v2-history").addEventListener("click",function(){renderSaved("history");});
+  document.getElementById("nav-home").addEventListener("click",showHome);
+  document.getElementById("nav-explore").addEventListener("click",function(){showBrowseV2(false);});
+  document.getElementById("nav-saved").addEventListener("click",function(){renderSaved("favorites");});
+  document.querySelectorAll("[data-v2-home]").forEach(function(b){b.addEventListener("click",showHome);});
+  document.getElementById("v2-clear-saved").addEventListener("click",function(){var kind=this.dataset.kind;if(kind==="history")v2state.history=[];else v2state.favorites=[];saveV2();renderSaved(kind);refreshLast();});
+  document.getElementById("v2-saved-list").addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-open-saved]");if(!b)return;var r=byId(b.getAttribute("data-open-saved"));if(r)openModal(r);});
+  document.getElementById("v2-last").addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-open-last]");if(!b)return;var r=byId(b.getAttribute("data-open-last"));if(r)openModal(r);});
+  document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-fav-id]");if(!b)return;var id=b.getAttribute("data-fav-id");toggleFavorite(id);b.classList.toggle("is-fav",isFavorite(id));b.textContent=isFavorite(id)?"♥ Guardada en favoritas":"♡ Guardar en favoritas";});
+  refreshLast();showHome();
+
   hideSplash();
 })();
 </script>
 
+<nav class="v2-bottom" aria-label="Navegación principal de StudyOS+"><div class="v2-bottom-inner">
+<button type="button" id="nav-home" aria-current="page"><span>⌂</span>Hoy</button>
+<button type="button" id="nav-explore"><span>⌕</span>Explorar</button>
+<button type="button" id="nav-saved"><span>♡</span>Favoritas</button>
+</div></nav>
 </body>
 </html>
