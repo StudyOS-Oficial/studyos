@@ -234,6 +234,17 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
 .v2-note{margin-top:22px;padding:14px 16px;border-radius:14px;background:rgba(183,196,139,.2);font-size:.84rem;color:var(--muted)}
 
 </style>
+
+<style id="studyos-plan-plus-css">
+.v2-plan-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}
+.v2-plan-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px;text-align:left;color:var(--ink)}
+.v2-plan-card b{display:block;font-family:var(--serif);color:var(--olive-800);font-size:1.05rem;margin-bottom:5px}
+.v2-plan-card p{margin:0;color:var(--muted);font-size:.86rem;line-height:1.4}
+.v2-tools{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.v2-tool{border:1px solid var(--line);background:var(--paper);border-radius:16px;padding:14px;text-align:left}.v2-tool span{font-size:22px}.v2-tool b{display:block;margin-top:7px;color:var(--olive-800)}
+.v2-plan-note{margin-top:18px;padding:14px 16px;border-radius:14px;background:rgba(183,196,139,.2);color:var(--muted);font-size:.86rem}
+@media(max-width:560px){.v2-plan-grid{grid-template-columns:1fr}.v2-tools{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header class="top"><div class="wrap"><div class="row">
@@ -257,11 +268,32 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
 <div class="v2-shortcuts">
 <button type="button" class="v2-shortcut" id="v2-favs"><span>♡</span>Favoritas</button>
 <button type="button" class="v2-shortcut" id="v2-history"><span>↺</span>Vistas recientes</button>
-<button type="button" class="v2-shortcut" id="v2-all"><span>⌕</span>Las 200 recetas</button>
+<button type="button" class="v2-shortcut" id="v2-all"><span>⌕</span>Las 200 recetas</button><button type="button" class="v2-shortcut" id="v2-plan-open"><span>▦</span>Plan semanal</button>
 </div>
 <div id="v2-last-wrap" hidden><h2 class="v2-section-title">Vuelve a donde estabas</h2><div id="v2-last" class="v2-card"></div></div>
 <p class="v2-note">Favoritas e historial se guardan solo en este navegador. Puedes borrarlos desde StudyOS+.</p>
 </div></section>
+
+<section id="v2-plan" class="v2-view" hidden><div class="wrap">
+<button type="button" class="linkbtn v2-back" data-v2-home>← Volver a Hoy</button>
+<p class="v2-kicker">PLANIFICACIÓN</p><h1>Tu semana, más organizada</h1>
+<p class="v2-sub">Accede desde StudyOS+ a los seis enfoques semanales y a sus herramientas de planificación.</p>
+<div class="v2-plan-grid">
+<div class="v2-plan-card"><b>Menú 1 · Energía y saciedad</b><p>Un enfoque semanal orientado a energía y saciedad.</p></div>
+<div class="v2-plan-card"><b>Menú 2 · Digestión ligera</b><p>Para días de pesadez, hinchazón abdominal o retención de líquidos.</p></div>
+<div class="v2-plan-card"><b>Menú 3 · Antiinflamatorio</b><p>Con omega-3, antioxidantes, hojas verdes y especias como cúrcuma y jengibre.</p></div>
+<div class="v2-plan-card"><b>Menú 4 · Semana exprés</b><p>Pensado para semanas con poco tiempo, con preparaciones rápidas y sencillas.</p></div>
+<div class="v2-plan-card"><b>Menú 5 · Equilibrio fitoestrogénico</b><p>Con lignanos y fitoestrógenos suaves.</p></div>
+<div class="v2-plan-card"><b>Menú 6 · Densidad nutricional</b><p>Un enfoque basado en ingredientes de alta densidad nutricional.</p></div>
+</div>
+<div class="v2-tools">
+<div class="v2-tool"><span>🛒</span><b>Listas de la compra</b><small>Una por cada menú, organizadas por tipo de alimento.</small></div>
+<div class="v2-tool"><span>🥣</span><b>Batch cooking</b><small>Bases, cremas y preparaciones para adelantar trabajo.</small></div>
+<div class="v2-tool"><span>⇄</span><b>Sustituciones</b><small>Equivalencias para cuando no encuentras un ingrediente.</small></div>
+</div>
+<p class="v2-plan-note"><b>Plan integrado.</b> Este espacio reúne la planificación dentro de StudyOS+ para que no quede separada del buscador y del recomendador.</p>
+</div></section>
+
 <section id="v2-saved" class="v2-view" hidden><div class="wrap">
 <button type="button" class="linkbtn v2-back" data-v2-home>← Volver a Hoy</button>
 <p class="v2-kicker" id="v2-saved-kicker">TU BIBLIOTECA</p><h2 id="v2-saved-title">Favoritas</h2>
@@ -797,6 +829,18 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
 })();
 </script>
 
+
+
+<script id="studyos-plan-plus-js">
+document.addEventListener("DOMContentLoaded",function(){
+  var b=document.getElementById("v2-plan-open"), p=document.getElementById("v2-plan");
+  if(!b||!p)return;
+  b.addEventListener("click",function(){
+    document.querySelectorAll(".v2-view").forEach(function(v){v.hidden=true;});
+    p.hidden=false; window.scrollTo({top:0,behavior:"smooth"});
+  });
+});
+</script>
 
 </body>
 </html>
