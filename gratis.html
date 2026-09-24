@@ -26,6 +26,42 @@ main{padding:22px 18px}.eyebrow{font-size:12px;text-transform:uppercase;letter-s
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style id="studyos-color-fix">
+/* StudyOS Free — remove browser-default blue from interactive UI */
+button, input, select, textarea { font: inherit; }
+button { color: var(--olive); }
+.choice, .chip, .filter, .option, .answer, .quiz-option,
+button.choice, button.chip, button.filter, button.option,
+[data-choice], [data-value] {
+  color: var(--olive) !important;
+  -webkit-text-fill-color: var(--olive);
+}
+.choice:hover, .chip:hover, .filter:hover, .option:hover,
+.choice:focus-visible, .chip:focus-visible, .filter:focus-visible, .option:focus-visible {
+  color: var(--olive) !important;
+}
+.choice.selected, .chip.active, .filter.active, .option.selected,
+button[aria-pressed="true"] {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff;
+}
+input::placeholder { color: #9a9b94; opacity: 1; }
+
+/* Bottom navigation remains proportional */
+.bottom .nav { color: #6d7167 !important; }
+.bottom .nav.active { color: var(--olive) !important; }
+.bottom .navIcon { width: 27px; height: 27px; flex: 0 0 27px; }
+</style>
+
+
+<style id="studyos-button-color-fix">
+.qopt, .filterBtn, .filterLock, .quiz button, .filters button {
+  color:#3B4A25 !important;
+  -webkit-text-fill-color:#3B4A25;
+}
+</style>
+
 </head>
 <body>
 <div class="app">
