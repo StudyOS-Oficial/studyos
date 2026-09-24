@@ -97,20 +97,19 @@
   <section class="thanks">
     <div class="wrap">
       <h1>¡Gracias por tu compra!</h1>
-      <p class="lede">Tu recetario ya está listo. Descárgalo ahora y guárdalo en tu móvil u ordenador. Si no se abre, puedes verlo online.</p>
+      <p class="lede">Tu acceso a StudyOS+ ya está listo. Entra ahora y empieza a encontrar la receta que buscas entre las 200 opciones.</p>
 
-      <!-- Descarga inmediata (nuevo PDF mejorado) y enlace para verlo online por si el primero no se abre -->
-      <a class="btn" id="descarga" href="https://drive.google.com/uc?export=download&id=1zXt4ycUuWuXLDbDsRWfpBN0fTz3fCtU_" target="_blank" rel="noopener">Descargar mi recetario</a>
-      <p class="alt"><a class="btn-line" id="ver-online" href="https://drive.google.com/file/d/1zXt4ycUuWuXLDbDsRWfpBN0fTz3fCtU_/view" target="_blank" rel="noopener">Verlo online</a> Si la descarga no empieza en tu móvil, usa este enlace.</p>
+      <a class="btn" id="ver-plus-main" href="plus.html">Abrir StudyOS+ →</a>
+      <p class="alt">200 recetas · acceso completo · pago único</p>
     </div>
   </section>
 
   <section class="comm-wrap">
     <div class="wrap">
       <div class="plus-card">
-        <h2>StudyOS+: encuentra tu receta de hoy</h2>
-        <p>Responde unas preguntas rápidas sobre tu etapa, lo que necesitas y el momento del día, y te decimos al instante cuál de tus 100 recetas te conviene ahora mismo. También puedes explorarlas todas por etapa, necesidad o tiempo de preparación.</p>
-        <a class="btn" id="ver-plus" href="plus.html" target="_blank" rel="noopener">Abrir StudyOS+</a>
+        <h2>Todo StudyOS+ está desbloqueado 🔓</h2>
+        <p>Explora las 200 recetas, utiliza el recomendador y filtra según tu etapa, necesidad, momento del día o tiempo de preparación.</p>
+        <a class="btn" id="ver-plus" href="plus.html">Entrar a StudyOS+</a>
       </div>
     </div>
   </section>
@@ -129,9 +128,9 @@
     <div class="wrap">
       <h2>Por dónde empezar</h2>
       <ul>
-        <li><b>Elige según cómo te sientes</b>Busca en el índice por necesidad: poca energía, hinchazón, antojos, poco tiempo o una cena ligera.</li>
-        <li><b>Prueba uno de los 6 menús semanales</b>Cada menú trae su lista de la compra, para ir al súper sin darle vueltas.</li>
-        <li><b>Prepara en lote</b>Con la guía de batch cooking puedes dejar hechas las bases y las cremas para toda la semana.</li>
+        <li><b>Empieza por “Hoy”</b>Responde las preguntas de StudyOS+ y recibe una opción según tus respuestas.</li>
+        <li><b>Explora las 200 recetas</b>Usa el buscador y los filtros para encontrar rápidamente lo que te apetece.</li>
+        <li><b>Aprovecha los extras</b>Tienes 6 menús semanales, listas de la compra, batch cooking y guía de alimentos y sustituciones.</li>
       </ul>
       <p class="ig">Cuéntanos qué receta preparas primero en <a href="https://www.instagram.com/studyos_oficial/" target="_blank" rel="noopener">@studyos_oficial</a>.</p>
     </div>
@@ -204,9 +203,11 @@
     if (w) w.addEventListener("click", function () {
       if (window.studyosTrack) window.studyosTrack("Contact", { content_name: "Comunidad WhatsApp" });
     });
-    var plus = document.getElementById("ver-plus");
-    if (plus) plus.addEventListener("click", function () {
-      if (window.studyosTrackCustom) window.studyosTrackCustom("StudyOSPlusOpen", {});
+    ["ver-plus", "ver-plus-main"].forEach(function (id) {
+      var plus = document.getElementById(id);
+      if (plus) plus.addEventListener("click", function () {
+        if (window.studyosTrackCustom) window.studyosTrackCustom("StudyOSPlusOpen", {});
+      });
     });
   });
 </script>
