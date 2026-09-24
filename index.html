@@ -488,6 +488,19 @@
     .btn, .phase-tabs button, .peek-tabs button, .sticky-cta, .qopts button, .quiz-bar i, .days button { transition: none; }
     .res-main { animation: none; }
   }
+
+  /* ===== StudyOS conversion direction 2026 ===== */
+  .eyebrow,.quiz-kicker{font:800 .74rem/1.2 Inter,system-ui,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--olive);margin:0 0 12px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:26px}
+  .hero-link{font-weight:750;text-decoration:underline;text-underline-offset:4px}
+  .hero-copy h1{max-width:12ch}
+  .hero-copy .lede{max-width:36rem}
+  .hero-quiz{position:relative}
+  .hero-quiz:before{content:"DEMO GRATUITA";position:absolute;z-index:3;right:18px;top:-12px;background:var(--yellow);color:#1F2715;border-radius:999px;padding:7px 11px;font:800 .68rem/1 Inter,sans-serif;letter-spacing:.08em}
+  #empezar .paid{transform:translateY(-8px);box-shadow:0 24px 55px rgba(31,39,21,.18)}
+  #empezar .paid .plus-box{border:2px solid rgba(242,194,48,.75);background:rgba(242,194,48,.09)}
+  #dentro{border-top:1px solid var(--line)}
+  @media(max-width:899px){.hero-actions{align-items:stretch}.hero-actions .btn{width:100%;text-align:center}.hero-link{text-align:center;width:100%}.hero-copy h1{max-width:15ch}.hero-quiz:before{right:12px}}
 </style>
 </head>
 
@@ -496,8 +509,8 @@
   <div class="wrap">
     <a class="mark" href="#" aria-label="StudyOS, inicio">Study<span>OS</span></a>
     <nav aria-label="Principal">
-      <a href="https://www.instagram.com/studyos_oficial/" rel="noopener" target="_blank">@studyos_oficial</a>
-      <a class="btn btn-yellow hide-sm" href="gratis.html" data-track="free">10 recetas gratis</a>
+      <a href="#dentro">Ver por dentro</a>
+      <a class="btn btn-yellow hide-sm" href="#empezar">Ver StudyOS</a>
     </nav>
   </div>
 </header>
@@ -508,14 +521,16 @@
   <section class="hero" id="inicio">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <h1 id="hero-title">Come a favor de tus hormonas en cada etapa de tu ciclo</h1>
-        <p class="lede" id="hero-lede">Recetas antiinflamatorias, sencillas y explicadas con ciencia real, para tu ciclo, la perimenopausia y la menopausia.</p>
-        <p class="hero-note">Cinco preguntas rápidas, sin dar tu correo. Tus respuestas se quedan en tu dispositivo.</p>
+        <p class="eyebrow">TU RECETARIO, PERO CON CRITERIO</p>
+        <h1 id="hero-title">Deja de preguntarte qué comer hoy.</h1>
+        <p class="lede" id="hero-lede">StudyOS convierte 100 recetas antiinflamatorias en un sistema práctico para elegir según tu etapa, lo que necesitas y el tiempo que tienes.</p>
+        <div class="hero-actions"><a class="btn btn-yellow btn-lg" href="#test">Encontrar mi receta</a><a class="hero-link" href="#dentro">Ver StudyOS por dentro ↓</a></div>
+        <p class="hero-note"><b>Prueba el recomendador gratis.</b> 5 preguntas · 30 segundos · sin dar tu correo.</p>
       </div>
 
       <div class="hero-quiz" id="test">
-        <h2 class="quiz-title">Encuentra tu receta de hoy en 30 segundos</h2>
-        <p class="quiz-intro">Vamos a conocerte un poco para recomendarte algo que encaje contigo. Sin juicios y sin prisa.</p>
+        <p class="quiz-kicker">PRUEBA STUDYOS</p><h2 class="quiz-title">¿Qué te apetece que resolvamos hoy?</h2>
+        <p class="quiz-intro">Cuéntanos cinco cosas y te enseñamos una receta de las 100 que encaja con tus respuestas.</p>
         <div class="quiz" id="quiz">
           <div class="quiz-top"><span id="quiz-step">Pregunta 1 de 5</span><div class="quiz-bar" aria-hidden="true"><i id="quiz-bar-i"></i></div></div>
 
@@ -612,8 +627,8 @@
   <!-- ===== Opiniones ===== -->
   <section class="section bg-paper" id="opiniones">
     <div class="wrap">
-      <h2>Lo que dicen las lectoras</h2>
-      <p class="lede" style="margin-top:14px">Opiniones de mujeres que ya han usado los recetarios de StudyOS.</p>
+      <p class="eyebrow">YA LO ESTÁN USANDO</p><h2>Recetas que no se quedan guardadas.</h2>
+      <p class="lede" style="margin-top:14px">Experiencias de lectoras que ya han cocinado con StudyOS.</p>
       <div class="rev-grid">
         <figure class="rev">
           <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
@@ -643,22 +658,22 @@
   <!-- ===== Las dos opciones ===== -->
   <section class="section options" id="empezar">
     <div class="wrap">
-      <h2>Elige cómo empezar</h2>
-      <p class="lede" style="margin-top:14px">El gratuito es una muestra del completo: así ves cómo son las recetas antes de decidir.</p>
+      <p class="eyebrow">EL SISTEMA COMPLETO</p><h2>100 recetas. Una forma mucho más fácil de elegir.</h2>
+      <p class="lede" style="margin-top:14px">StudyOS une el recetario, la planificación semanal y StudyOS+ para que pases de “¿qué hago hoy?” a una opción concreta.</p>
 
       <div class="options-grid">
         <article class="free">
-          <span class="pill">Gratis</span>
-          <h3>10 Recetas Antiinflamatorias</h3>
-          <p>Una muestra para probar el método antes de comprar el recetario completo: recetas sencillas, con ingredientes reales y pensadas para una alimentación antiinflamatoria.</p>
+          <span class="pill">Pruébalo primero</span>
+          <h3>10 recetas gratis</h3>
+          <p>Abre una muestra real y comprueba si el formato, las recetas y El Porqué Biológico son para ti antes de pagar.</p>
           <a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Quiero 10 recetas gratis</a>
           <p class="fine">Descarga inmediata, sin pagar nada. Además, te invitamos a la comunidad de WhatsApp de StudyOS.</p>
         </article>
 
         <article class="paid">
-          <span class="pill pill-offer">Oferta de lanzamiento, por tiempo limitado</span>
-          <h3>100 Recetas Antiinflamatorias</h3>
-          <p class="sub">El recetario completo, adaptado a tu ciclo, a la perimenopausia y a la menopausia.</p>
+          <span class="pill pill-offer">StudyOS completo</span>
+          <h3>100 recetas + StudyOS+</h3>
+          <p class="sub">El recetario completo y la herramienta interactiva para encontrar qué cocinar según tu etapa, necesidad y tiempo.</p>
           <ul class="checks">
             <li>100 recetas</li>
             <li>Adaptadas a tu ciclo, la perimenopausia y la menopausia</li>
@@ -671,14 +686,14 @@
           <div class="plus-box">
             <svg class="plus-ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
             <div>
-              <p class="plus-title">Incluye StudyOS+</p>
-              <p class="plus-desc">La app interactiva del recetario: responde 3 preguntas y te dice al instante qué receta te conviene hoy, o explora las 100 por etapa, necesidad o tiempo.</p>
+              <p class="plus-title">StudyOS+ no es un bonus: es el buscador del recetario</p>
+              <p class="plus-desc">Filtra las 100 recetas por etapa, necesidad, momento del día y tiempo. Cuando no sabes qué cocinar, te ayuda a reducir opciones en segundos.</p>
             </div>
           </div>
           <p class="more"><a href="#incluye">Ver todo lo que incluye</a></p>
           <div class="buy">
-            <div class="price"><s class="was"><span class="sr">Precio anterior: </span>10 €</s> 5 €<small>pago único, unos 5,8 US$</small></div>
-            <a class="btn btn-light" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Quiero las 100 recetas</a>
+            <div class="price">5 €<small>pago único · sin suscripción</small></div>
+            <a class="btn btn-light" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Quiero StudyOS por 5 €</a>
           </div>
           <p class="fine">Pago seguro con Stripe con tarjetas de crédito o débito de cualquier país. Al terminar te llevamos a la página de descarga. El cobro es en euros: según tu país, Stripe puede mostrarte el precio en tu moneda y, si no, tu banco convierte el importe automáticamente al cambio del día.</p>
         </article>
@@ -689,8 +704,8 @@
   <!-- ===== Mira dentro ===== -->
   <section class="section samplebg" id="dentro">
     <div class="wrap">
-      <h2>Mira dentro de los recetarios</h2>
-      <p class="lede" style="margin-top:14px">Así es cada receta: ingredientes claros, pasos sencillos y, al final, El Porqué Biológico, que te explica qué aporta cada ingrediente a tu cuerpo. Aquí ves una del recetario completo y tres del gratuito, que tienen el mismo formato.</p>
+      <p class="eyebrow">SIN CAJA NEGRA</p><h2>Mira exactamente lo que vas a recibir.</h2>
+      <p class="lede" style="margin-top:14px">Nada de comprar a ciegas. Explora recetas reales, su estructura, los menús y las herramientas que forman StudyOS.</p>
 
       <div class="peek-tabs" role="group" aria-label="Elige una receta de muestra">
         <button type="button" data-i="0" aria-pressed="true">Ensalada de lentejas</button>
@@ -983,7 +998,7 @@
   <section class="section contents" id="incluye">
     <div class="wrap contents-grid">
       <div>
-        <h2>Qué encuentras dentro del recetario</h2>
+        <p class="eyebrow">TODO EN UN MISMO SITIO</p><h2>No es solo una colección de recetas.</h2>
         <p class="lede" style="margin-top:14px">No es una dieta ni un libro de reglas. Es una herramienta para elegir qué cocinar según cómo estás hoy.</p>
       </div>
       <dl>
@@ -1026,7 +1041,7 @@
   <!-- ===== Lo que dice la investigación ===== -->
   <section class="section science" id="investigacion">
     <div class="wrap">
-      <h2>Lo que dice la investigación sobre alimentarte así</h2>
+      <p class="eyebrow">CONTEXTO CIENTÍFICO</p><h2>La evidencia detrás del patrón alimentario.</h2>
       <p class="lede">Estos son resultados de estudios sobre patrones de alimentación como el mediterráneo, que comparte con el recetario ingredientes clave: verduras, legumbres, pescado, frutos secos y aceite de oliva virgen extra.</p>
 
       <div class="sci-grid">
@@ -1158,8 +1173,8 @@
     <div class="wrap">
       <div class="news">
         <div>
-          <h2>Una receta nueva en tu correo cada semana</h2>
-          <p class="lede" style="margin-top:10px">Sin spam: solo recetas, avisos de nuevos recetarios y algún consejo de StudyOS. Puedes darte de baja cuando quieras.</p>
+          <h2>¿Quieres seguir probando antes de comprar?</h2>
+          <p class="lede" style="margin-top:10px">Recibe una receta nueva y contenidos de StudyOS de forma puntual. Puedes darte de baja cuando quieras.</p>
         </div>
         <form class="news-form" id="news-form" action="https://formspree.io/f/xwlporjy" method="POST">
           <label for="news-email" class="sr">Tu correo electrónico</label>
@@ -1220,11 +1235,11 @@
   <!-- ===== Cierre ===== -->
   <section class="section closing">
     <div class="wrap">
-      <h2>Empieza hoy con lo que necesita tu cuerpo</h2>
-      <p>Descarga las 10 recetas gratuitas para probar, o consigue el recetario completo con menús y listas de la compra.</p>
+      <h2>La próxima vez que pienses “¿qué como hoy?”, abre StudyOS.</h2>
+      <p>100 recetas, 6 semanas de menús, listas de la compra, El Porqué Biológico y StudyOS+ por 5 € en un único pago.</p>
       <div class="cta-row">
         <a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Quiero 10 recetas gratis</a>
-        <a class="btn btn-light btn-lg" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Quiero las 100 recetas</a>
+        <a class="btn btn-light btn-lg" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Quiero StudyOS por 5 €</a>
       </div>
     </div>
   </section>
