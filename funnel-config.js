@@ -1,64 +1,52 @@
 /*
-  StudyOS | Configuración del embudo (un solo sitio para todos los anuncios)
-
-  Cada anuncio lleva a la MISMA landing con un parámetro en la dirección:
-     https://studyos-oficial.github.io/studyos/?dolor=hinchazon
-  La web cambia el titular y el subtítulo y deja preseleccionada la respuesta del test.
-
-  PARA AÑADIR UN ANUNCIO NUEVO: copia un bloque de painPointConfig, cambia su nombre, sus textos y
-  la necesidad (need) o el momento (moment) que quieres preseleccionar. No hay que tocar nada más.
-
-  need   (Q2): en más energía | hi bajar la hinchazón | an calmar los antojos | sa saciarme de verdad | ra algo rápido | ai priorizar lo antiinflamatorio
-  moment (Q3): D desayuno | C comida | N cena | S snack o algo dulce
-  Opcional en la dirección: &etapa=perimenopausia (o menopausia, menstrual, folicular, ovulatoria, lutea) para preseleccionar la Q1.
-
-  Este archivo es pequeño y se carga antes de pintar la página para que no haya "parpadeo" de texto.
+  StudyOS | Configuración del embudo
+  Mantiene una única landing y personaliza el hero con ?dolor= y, opcionalmente, &etapa=.
+  No modifica el funcionamiento del test: solo preselecciona respuestas y cambia el copy del hero.
 */
 (function () {
   "use strict";
 
-  // Mensaje general (sin parámetro): el que ya tenía la portada
   var DEFAULT_HERO = {
-    title: "Come a favor de tus hormonas en cada etapa de tu ciclo",
-    lede: "Recetas antiinflamatorias, sencillas y explicadas con ciencia real, para tu ciclo, la perimenopausia y la menopausia."
+    title: "Hoy no necesitas otra receta. Necesitas saber cuál elegir.",
+    lede: "StudyOS reúne 100 recetas y una herramienta interactiva para ayudarte a encontrar una opción según tu etapa, lo que buscas hoy y el tiempo que tienes."
   };
 
   var painPointConfig = {
     hinchazon: {
       need: "hi",
-      title: "¿Hoy te preocupa la hinchazón?",
-      lede: "Descubre una receta antiinflamatoria que encaja contigo y empieza con 10 recetas gratuitas."
+      title: "¿Hoy buscas una opción más ligera?",
+      lede: "Prueba StudyOS y encuentra una receta del recetario a partir de tu etapa, el momento del día y lo que buscas hoy."
     },
     energia: {
       need: "en",
-      title: "¿Te falta energía últimamente?",
-      lede: "Encuentra una receta para los días de poca energía y empieza con 10 recetas gratuitas."
+      title: "¿Hoy buscas una comida que encaje con un día de poca energía?",
+      lede: "StudyOS te ayuda a reducir opciones entre 100 recetas según tu etapa, el momento del día y el tiempo que tienes."
     },
     antojos: {
       need: "an",
-      title: "¿Los antojos aparecen justo cuando no los necesitas?",
-      lede: "Descubre una receta pensada para los días de antojos y empieza con 10 recetas gratuitas."
+      title: "¿No sabes qué elegir cuando te apetece algo dulce?",
+      lede: "Prueba StudyOS y encuentra una opción del recetario según lo que buscas hoy, tu etapa y el momento del día."
     },
     rapido: {
       need: "ra",
-      title: "¿Quieres comer mejor pero no tienes tiempo para cocinar?",
-      lede: "Encuentra una receta rápida y sencilla y empieza con 10 recetas gratuitas."
+      title: "¿Tienes poco tiempo y no quieres pensar qué cocinar?",
+      lede: "StudyOS te ayuda a encontrar recetas rápidas entre las 100 opciones del recetario."
     },
     saciedad: {
       need: "sa",
-      title: "¿Buscas comidas que te dejen saciada de verdad?",
-      lede: "Encuentra una receta saciante, con proteína y fibra, y empieza con 10 recetas gratuitas."
+      title: "¿Buscas una comida que te resulte más saciante?",
+      lede: "Prueba StudyOS y encuentra una receta del recetario según tu etapa, el momento del día y lo que buscas hoy."
     },
     antiinflamatorio: {
       need: "ai",
-      title: "¿Quieres poner lo antiinflamatorio en tu plato cada día?",
-      lede: "Encuentra una receta antiinflamatoria que encaja contigo y empieza con 10 recetas gratuitas."
+      title: "¿Quieres incorporar más recetas de estilo antiinflamatorio?",
+      lede: "StudyOS reúne 100 recetas y una herramienta para ayudarte a encontrar una opción según tu etapa, el momento del día y el tiempo que tienes."
     },
     noches: {
       need: "hi",
       moment: "N",
-      title: "¿Te gustaría terminar el día con una cena ligera?",
-      lede: "Descubre una cena que encaja contigo y empieza con 10 recetas gratuitas."
+      title: "¿Otra noche sin saber qué cenar?",
+      lede: "Prueba StudyOS y encuentra una cena del recetario según tu etapa, lo que buscas hoy y el tiempo que tienes."
     }
   };
 
@@ -67,7 +55,6 @@
   function param(name) {
     try { return new URLSearchParams(window.location.search).get(name); } catch (e) { return null; }
   }
-  // Solo se aceptan claves que existen en la configuración (evita textos raros o inyectados desde la dirección)
   function painKey() {
     var d = String(param("dolor") || "").toLowerCase();
     return Object.prototype.hasOwnProperty.call(painPointConfig, d) ? d : "";
@@ -81,13 +68,11 @@
   window.studyosDefaultHero = DEFAULT_HERO;
   window.studyosPainKey = painKey;
 
-  // Lo que el test debe dejar preseleccionado según el anuncio
   window.studyosPreselect = function () {
     var k = painKey(), c = k ? painPointConfig[k] : {};
     return { need: c.need || "", moment: c.moment || "", stage: stageParam() };
   };
 
-  // Cambia el titular y el subtítulo de la portada (se llama justo después de pintar la portada)
   window.studyosApplyHero = function () {
     var k = painKey();
     if (!k) return;

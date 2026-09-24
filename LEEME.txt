@@ -1,0 +1,15 @@
+StudyOS V4 — conversión y rigor
+
+Cambios principales:
+- Hero y personalización de anuncios alineados con StudyOS+ y el precio de 5 €.
+- Se mantiene el test real de 5 preguntas y su motor de recomendación.
+- Resultado del test: compra de 5 € pasa a CTA principal; las 10 recetas gratis siguen como alternativa.
+- Se eliminan de la landing las secciones largas de investigación, calculadora de fase y newsletter para reducir distracción.
+- El menú/lista de compra gigante se sustituye por una vista compacta de planificación semanal.
+- Copy de StudyOS+ corregido: no se afirma que sean 3 preguntas ni que sea una app instalada.
+- Copy de privacidad: no se afirma que las respuestas se guarden en el dispositivo.
+- Copy científico/comercial suavizado donde podía implicar efectos biológicos no demostrados.
+
+Archivos que debes sustituir: index.html, funnel-config.js y test-receta.js.
+tracking.js se incluye sin cambios.
+Mantén en el servidor los JPG ya usados por la landing (dentro-salmon-foto.jpg, dentro-lentejas-foto.jpg, dentro-wok-foto.jpg, etc.).

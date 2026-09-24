@@ -172,8 +172,8 @@
           '<div class="cmp cmp-paid"><h4>100 recetas completas</h4><div class="bar" aria-hidden="true"><i style="width:100%"></i></div><p><b>6 semanas</b> de menús (42 días) y ≈ 33 días de recetas sin repetir</p><ul><li>Menús semanales y listas de la compra</li><li>Batch cooking y sustituciones</li><li>El Porqué Biológico en cada receta</li></ul></div>' +
         "</div>" +
         '<p class="cmp-note">Cálculo con 3 platos al día. Cada cuerpo es distinto y no prometemos resultados: el recetario te da variedad y un plan para mantener el hábito.</p>' +
-        '<div class="res-cta"><a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Quiero 10 recetas gratis</a>' +
-        '<a class="btn btn-olive btn-lg" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Quiero las 100 recetas</a></div>' +
+        '<div class="res-cta"><a class="btn btn-yellow btn-lg" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Desbloquear StudyOS · 5 €</a>' +
+        '<a class="btn btn-olive btn-lg" href="gratis.html" data-track="free">Prefiero probar 10 recetas gratis</a></div>' +
         '<p class="res-sub res-alt-title">Otras 2 recetas también encajan contigo</p><div class="res-alt">' + locked + "</div>";
 
       steps.forEach(function (st) { st.hidden = true; });
