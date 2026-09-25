@@ -21,7 +21,7 @@
   var KEY = "studyos_cookies"; // "granted" (acepta) o "denied" (rechaza)
 
   // Producto de pago (se usa en los eventos de GA4 y de Meta)
-  var PRODUCT = { id: "recetario-100-recetas", name: "100 Recetas Antiinflamatorias", price: 5, currency: "EUR" };
+  var PRODUCT = { id: "studyos-plus-200", name: "StudyOS+", price: 5, currency: "EUR" };
   var ATTR_KEY = "studyos_attribution";
   var ATTR_TTL = 30 * 24 * 3600 * 1000; // 30 días
   var UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
@@ -158,7 +158,7 @@
   };
 
   /* ---------- Eventos de GA4 y del embudo ---------- */
-  function items() { return [{ item_id: PRODUCT.id, item_name: PRODUCT.name, item_category: "ebook", price: PRODUCT.price, quantity: 1 }]; }
+  function items() { return [{ item_id: PRODUCT.id, item_name: PRODUCT.name, item_category: "digital_app", price: PRODUCT.price, quantity: 1 }]; }
   window.studyosGA = function (name, params) {
     if (readConsent() !== "granted" || !window.gtag) return;
     var p = gaParams();
@@ -167,7 +167,7 @@
   };
   window.studyosFunnel = function (name, extra) {
     extra = extra || {};
-    var eco = { currency: PRODUCT.currency, value: PRODUCT.price, items: items() };
+    var eco = { currency: PRODUCT.currency, value: PRODUCT.price, items: items(), funnel_version: "v2_app" };
     switch (name) {
       case "view_item": // producto de pago a la vista
         window.studyosGA("view_item", eco);
@@ -187,6 +187,22 @@
         window.studyosTrack("Purchase", { value: PRODUCT.price, currency: PRODUCT.currency, content_name: PRODUCT.name, content_type: "product", content_ids: [PRODUCT.id] }, { eventID: id });
         break;
       }
+      case "free_open":
+        window.studyosGA("studyos_free_open", Object.assign({ funnel_version: "v2_app" }, extra));
+        window.studyosTrackCustom("StudyOSFreeOpen", { funnel_version: "v2_app" });
+        break;
+      case "free_recommendation_complete":
+        window.studyosGA("studyos_free_recommendation_complete", Object.assign({ funnel_version: "v2_app" }, extra));
+        window.studyosTrackCustom("StudyOSFreeRecommendation", { funnel_version: "v2_app" });
+        break;
+      case "plus_interest":
+        window.studyosGA("studyos_plus_interest", Object.assign({ funnel_version: "v2_app" }, extra));
+        window.studyosTrackCustom("StudyOSPlusInterest", { funnel_version: "v2_app" });
+        break;
+      case "plus_open":
+        window.studyosGA("studyos_plus_open", Object.assign({ funnel_version: "v2_app" }, extra));
+        window.studyosTrackCustom("StudyOSPlusOpen", { funnel_version: "v2_app" });
+        break;
       case "quiz_start":
       case "quiz_complete":
         window.studyosGA(name, extra);

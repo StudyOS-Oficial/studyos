@@ -85,6 +85,7 @@ input::placeholder { color: #9a9b94; opacity: 1; }
 @media(max-width:560px){.mealGrid{grid-template-columns:1fr}.lockFeatures{grid-template-columns:1fr}}
 </style>
 
+<script src="tracking.js" defer></script>
 </head>
 <body>
 <div class="app">
@@ -232,6 +233,37 @@ document.addEventListener("DOMContentLoaded",()=>{
  d.addEventListener("click",e=>{const b=e.target.closest("button[data-day]");if(b)render(b.dataset.day)});
  render(days[0]);
 });
+})();
+</script>
+
+<script id="studyos-free-tracking-v2">
+(function(){
+  function once(key, fn){
+    try { if(sessionStorage.getItem(key)) return; sessionStorage.setItem(key,"1"); } catch(e){}
+    fn();
+  }
+  window.addEventListener("load", function(){
+    if(window.studyosWhenConsented) window.studyosWhenConsented(function(){
+      once("studyos_free_open_v2", function(){ window.studyosFunnel && window.studyosFunnel("free_open",{page:"gratis",funnel_version:"v2_app"}); });
+    });
+  });
+  document.addEventListener("click", function(e){
+    var a=e.target.closest && e.target.closest('a[href*="buy.stripe.com"]');
+    if(a && window.studyosFunnel){
+      var ref=window.studyosCheckoutRef && window.studyosCheckoutRef();
+      if(ref){ try{var u=new URL(a.href);u.searchParams.set("client_reference_id",ref);a.href=u.toString();}catch(err){} }
+      window.studyosFunnel("plus_interest",{source:"gratis",cta_text:(a.textContent||"").trim().slice(0,80),funnel_version:"v2_app"});
+      window.studyosFunnel("begin_checkout",{source:"gratis",cta_location:"studyos_free",funnel_version:"v2_app"});
+    }
+  },true);
+  /* Detect the actual recommendation result modal opening, without recording answers. */
+  var obs=new MutationObserver(function(){
+    var d=document.getElementById("detail");
+    if(d && d.textContent && d.textContent.indexOf("UNA OPCIÓN SEGÚN TUS RESPUESTAS")>-1){
+      if(window.studyosFunnel) once("studyos_rec_done_v2",function(){window.studyosFunnel("free_recommendation_complete",{funnel_version:"v2_app"});});
+    }
+  });
+  window.addEventListener("DOMContentLoaded",function(){obs.observe(document.body,{subtree:true,childList:true,characterData:true});});
 })();
 </script>
 </body></html>

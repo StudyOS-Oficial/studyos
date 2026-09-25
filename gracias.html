@@ -176,7 +176,7 @@
       } catch (e) {}
 
       // 1) GA4 (purchase) y Pixel de Meta (Purchase). La misma eventID en el servidor evita que Meta cuente la compra dos veces.
-      window.studyosFunnel("purchase", { transaction_id: sid });
+      window.studyosFunnel("purchase", { transaction_id: sid, funnel_version: "v2_app" });
 
       // 2) API de Conversiones (servidor), opcional.
       if (CAPI_ENDPOINT) {

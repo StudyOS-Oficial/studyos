@@ -1352,7 +1352,7 @@
     var sec = a.closest("[id]");
     var where = a.closest("header") ? "cabecera" : a.classList.contains("btn") && a.closest(".sticky-cta") ? "barra_fija" : (sec && sec.id) || "web";
     if (a.dataset.track === "free") {
-      window.studyosFunnel("free_download_click", { cta_location: where });
+      window.studyosFunnel("free_cta_click", { cta_location: where, funnel_version: "v2_app" });
     } else if (a.dataset.track === "checkout") {
       var ref = window.studyosCheckoutRef && window.studyosCheckoutRef();
       if (ref) { try { var u = new URL(a.href); u.searchParams.set("client_reference_id", ref); a.href = u.toString(); } catch (err) {} }
