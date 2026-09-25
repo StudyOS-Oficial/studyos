@@ -268,7 +268,11 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
   border-color:#AAB58C !important;
 }
 </style>
-</head>
+<style id="menu-recipe-link-style">
+#v2-plan .menuRecipeLink{width:100%;font:inherit;text-align:left;cursor:pointer;color:inherit}
+#v2-plan .menuRecipeLink:hover,#v2-plan .menuRecipeLink:focus-visible{border-color:#3B4A25;box-shadow:0 4px 16px rgba(59,74,37,.12);outline:none}
+#v2-plan .menuRecipeHint{display:block;margin-top:8px;color:#3B4A25;font-size:.78rem;font-weight:800}
+</style></head>
 <body>
 <header class="top"><div class="wrap"><div class="row">
 <span class="mark">Study<span>OS</span><i>+</i></span>
@@ -766,7 +770,7 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
   function closeModal() {
     document.getElementById("modal-backdrop").classList.remove("open");
     document.body.classList.remove("locked");
-  }
+  } window.studyosOpenRecipeByTitle=function(title){var q=String(title||"").trim().toLowerCase();var r=R.filter(function(x){return String(x.t||"").trim().toLowerCase()===q;})[0];if(r){openModal(r);return true;}return false;};
   document.getElementById("modal-close").addEventListener("click", closeModal);
   document.getElementById("modal-backdrop").addEventListener("click", function (e) {
     if (e.target.id === "modal-backdrop") closeModal();
@@ -881,7 +885,7 @@ function render(){
    const m=menus[week], meals=m.days[day]||[];
    box.innerHTML=`<div class="menuIntro"><b>Menú ${week+1} · ${esc(m.name)}</b><p>${esc(m.desc)}</p></div>
    <div class="dayChooser">${days.map(d=>`<button class="dayPick ${d===day?"on":""}" data-pday="${d}">${d.slice(0,3)}</button>`).join("")}</div>
-   <div class="mealGrid">${meals.map((x,i)=>`<div class="mealCard"><small>${["Desayuno","Comida","Cena","Snack / Antojo"][i]}</small><b>${esc(x)}</b></div>`).join("")}</div>`;
+   <div class="mealGrid">${meals.map((x,i)=>`<button type="button" class="mealCard menuRecipeLink" data-menu-title="${esc(x)}"><small>${["Desayuno","Comida","Cena","Snack / Antojo"][i]}</small><b>${esc(x)}</b><span class="menuRecipeHint">Ver receta →</span></button>`).join("")}</div>`;
  } else if(tab==="shop"){
    box.innerHTML=`<div class="menuIntro"><b>Lista de la Compra · Semana ${week+1}</b><p>Marca lo que ya tienes mientras preparas la compra.</p></div>`+
    shops[week].map(c=>`<div class="shopCat"><h3>${esc(c.cat)}</h3>${c.items.map(x=>`<label class="shopItem"><input type="checkbox"><span>${esc(x)}</span></label>`).join("")}</div>`).join("");
@@ -903,6 +907,8 @@ document.addEventListener("DOMContentLoaded",()=>{
  render();
 });
 })();
+
+document.getElementById("plusPlanContent").addEventListener("click",function(e){const b=e.target.closest(".menuRecipeLink");if(!b)return;if(window.studyosOpenRecipeByTitle)window.studyosOpenRecipeByTitle(b.dataset.menuTitle||"");});
 </script>
 
 <script id="studyos-plus-tracking-v2">

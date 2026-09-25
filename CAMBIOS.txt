@@ -1,0 +1,4 @@
+Asignaciones de menú comprobadas: 168
+Títulos sin receta exacta: 15
+Referencias restantes "página N ... PDF": 0
+Menús: cada plato es clicable y abre la ficha de la receta.
