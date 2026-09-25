@@ -1,0 +1,11 @@
+recipes: 200
+unique_ids: 200
+unique_titles: 200
+menu_assignments: 168
+unmatched: 0
+legacy_pdf_refs: 0
+clickable_cards: True
+modal_bridge: True
+click_handler: True
+
+17 menu labels normalized to exact existing recipe titles; no recipes invented.
