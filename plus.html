@@ -250,7 +250,7 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
 .planHero{margin-bottom:18px}.planHero h1{margin-bottom:8px}
 .planTabs,.menuChooser,.dayChooser{display:flex;gap:8px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:none}.planTabs::-webkit-scrollbar,.menuChooser::-webkit-scrollbar,.dayChooser::-webkit-scrollbar{display:none}
 .planTab,.menuPick,.dayPick{flex:0 0 auto;border:1px solid var(--line);background:#fff;color:var(--olive);border-radius:999px;padding:10px 13px;font-weight:800;cursor:pointer}
-.planTab.on,.menuPick.on,.dayPick.on{background:var(--olive);color:#fff;border-color:var(--olive)}
+.planTab.on,.menuPick.on,.dayPick.on{background:#eef1e5;color:var(--olive-900)!important;-webkit-text-fill-color:var(--olive-900);border-color:var(--olive)}
 .menuIntro{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:15px;margin:10px 0 14px}.menuIntro b{display:block;font-family:var(--serif);font-size:1.12rem;color:var(--olive);margin-bottom:5px}.menuIntro p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.45}
 .mealGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.mealCard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}.mealCard small{display:block;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--muted);margin-bottom:6px}.mealCard b{color:var(--olive);line-height:1.25}
 .shopCat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0}.shopCat h3{margin:0 0 9px;font-size:1rem;color:var(--olive)}.shopItem{display:flex;gap:9px;align-items:flex-start;padding:6px 0;font-size:.9rem}.shopItem input{margin-top:2px;width:18px;height:18px;accent-color:var(--olive)}
@@ -260,6 +260,14 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
 </style>
 
 <script src="tracking.js" defer></script>
+<style id="selected-label-olive-fix">
+#v2-plan .planTab.on,#v2-plan .menuPick.on,#v2-plan .dayPick.on{
+  color:#3B4A25 !important;
+  -webkit-text-fill-color:#3B4A25 !important;
+  background:#EEF1E5 !important;
+  border-color:#AAB58C !important;
+}
+</style>
 </head>
 <body>
 <header class="top"><div class="wrap"><div class="row">

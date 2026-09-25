@@ -76,7 +76,7 @@ input::placeholder { color: #9a9b94; opacity: 1; }
 .planHero{margin-bottom:18px}.planHero h1{margin-bottom:8px}
 .planTabs,.menuChooser,.dayChooser{display:flex;gap:8px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:none}.planTabs::-webkit-scrollbar,.menuChooser::-webkit-scrollbar,.dayChooser::-webkit-scrollbar{display:none}
 .planTab,.menuPick,.dayPick{flex:0 0 auto;border:1px solid var(--line);background:#fff;color:var(--olive);border-radius:999px;padding:10px 13px;font-weight:800;cursor:pointer}
-.planTab.on,.menuPick.on,.dayPick.on{background:var(--olive);color:#fff;border-color:var(--olive)}
+.planTab.on,.menuPick.on,.dayPick.on{background:#eef1e5;color:var(--olive)!important;-webkit-text-fill-color:var(--olive);border-color:var(--olive)}
 .menuIntro{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:15px;margin:10px 0 14px}.menuIntro b{display:block;font-family:var(--serif);font-size:1.12rem;color:var(--olive);margin-bottom:5px}.menuIntro p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.45}
 .mealGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.mealCard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}.mealCard small{display:block;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--muted);margin-bottom:6px}.mealCard b{color:var(--olive);line-height:1.25}
 .shopCat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0}.shopCat h3{margin:0 0 9px;font-size:1rem;color:var(--olive)}.shopItem{display:flex;gap:9px;align-items:flex-start;padding:6px 0;font-size:.9rem}.shopItem input{margin-top:2px;width:18px;height:18px;accent-color:var(--olive)}
@@ -86,6 +86,14 @@ input::placeholder { color: #9a9b94; opacity: 1; }
 </style>
 
 <script src="tracking.js" defer></script>
+<style id="selected-label-olive-fix">
+#plan .planTab.on,#plan .menuPick.on,#plan .dayPick.on{
+  color:#3B4A25 !important;
+  -webkit-text-fill-color:#3B4A25 !important;
+  background:#EEF1E5 !important;
+  border-color:#AAB58C !important;
+}
+</style>
 </head>
 <body>
 <div class="app">
@@ -117,7 +125,7 @@ input::placeholder { color: #9a9b94; opacity: 1; }
       <div class="lockedCard"><span class="lock">🔒</span><h3>Favoritas e historial</h3><p>Guarda recetas y vuelve a las que ya has visto.</p></div>
       <div class="lockedCard"><span class="lock">🔒</span><h3>Menús y planificación</h3><p>6 menús semanales y listas de la compra.</p></div>
     </div>
-    <div class="unlock"><span class="eyebrow">ACCESO COMPLETO</span><strong>Desbloquea StudyOS+</strong><p>200 recetas + experiencia completa de StudyOS.</p><div class="price">5 € <span class="small">pago único</span></div><a class="btn btnYellow wide" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ →</a></div>
+    <div class="unlock"><span class="eyebrow">ACCESO COMPLETO</span><strong>Desbloquea StudyOS+</strong><p>200 recetas + experiencia completa de StudyOS.</p><div class="price">5 € <span class="small">≈ US$5.85 · pago único</span></div><a class="btn btnYellow wide" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ →</a></div>
   </div>
 </section>
 
@@ -139,11 +147,11 @@ input::placeholder { color: #9a9b94; opacity: 1; }
     <h2>En StudyOS+ tienes 6 semanas completas</h2>
     <p>Además del menú, desbloqueas las listas de la compra, la guía de batch cooking y las sustituciones.</p>
     <div class="lockFeatures"><div class="lockFeature">🔒 6 menús semanales</div><div class="lockFeature">🔒 6 listas de la compra</div><div class="lockFeature">🔒 Batch cooking</div><div class="lockFeature">🔒 Sustituciones</div></div>
-    <a class="btn btnYellow" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ · 5 €</a>
+    <a class="btn btnYellow" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ · 5 € (≈ US$5.85)</a>
   </div>
 </section>
 <section id="plus" class="view">
-  <div class="lockedOverlay"><div class="big">🔒</div><div class="eyebrow">STUDYOS+</div><h1>Esto es solo el principio</h1><p class="lead" style="margin-inline:auto">La versión completa amplía tu biblioteca de 10 a 200 recetas y desbloquea filtros avanzados, favoritas, historial y planificación.</p><div class="unlock" style="text-align:left;max-width:520px;margin:25px auto"><strong>StudyOS+ completo</strong><p>200 recetas · 6 menús semanales · listas de la compra · batch cooking · guía de alimentos y sustituciones.</p><div class="price">5 € <span class="small">pago único</span></div><a class="btn btnYellow wide" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear ahora →</a></div></div>
+  <div class="lockedOverlay"><div class="big">🔒</div><div class="eyebrow">STUDYOS+</div><h1>Esto es solo el principio</h1><p class="lead" style="margin-inline:auto">La versión completa amplía tu biblioteca de 10 a 200 recetas y desbloquea filtros avanzados, favoritas, historial y planificación.</p><div class="unlock" style="text-align:left;max-width:520px;margin:25px auto"><strong>StudyOS+ completo</strong><p>200 recetas · 6 menús semanales · listas de la compra · batch cooking · guía de alimentos y sustituciones.</p><div class="price">5 € <span class="small">≈ US$5.85 · pago único</span></div><a class="btn btnYellow wide" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear ahora →</a></div></div>
 </section>
 
 <section id="quiz" class="view">
