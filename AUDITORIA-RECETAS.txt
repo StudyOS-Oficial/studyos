@@ -1,0 +1,132 @@
+STUDYOS — CORRECCIONES DE RECETAS IMPLEMENTADAS
+
+Recetas auditadas en StudyOS+: 200
+Cambios de alérgenos: 29
+Recetas con pasos genéricos de desayuno/snack corregidos: 45
+Porqués biológicos con lenguaje causal/terapéutico suavizado: 45
+Recetas con normalización de unidades/ortografía en ingredientes: 93
+
+ALÉRGENOS CORREGIDOS
+- Tortitas de Avena y Calabaza: Huevo, Gluten y Frutos Secos -> Huevo, Gluten, Lácteos, Frutos secos
+- Pudding de Chía y Cacao "Antiantojos": Frutos secos -> Frutos secos, Lácteos
+- Crema de Calabaza, Cúrcuma y Leche de Coco: Ninguno -> Lácteos
+- Pechuga de Pavo al Curry Suave con Calabacín y Arroz Integral: Frutos secos -> Frutos secos, Lácteos
+- Revuelto de Tofu, Cúrcuma y Espinacas: Soja, Gluten -> Soja, Gluten, Huevo
+- Crema de Brócoli, Espinacas y Queso de Cabra: Lácteos -> Lácteos, Frutos secos
+- Crema de Calabacín, Puerro y Semillas de Chía: Ninguno -> Frutos secos
+- Vieiras a la Plancha con Puré de Coliflor y Pipas de Calabaza: Moluscos -> Moluscos, Lácteos
+- Gambas al Ajillo Ligeras con Quinoa y Rúcula: Marisco -> Marisco, Crustáceos
+- Curry de Garbanzos, Espinacas y Leche de Coco: Ninguno -> Lácteos
+- Pollo al Horno con Especias Antiinflamatorias y Puré de Chirivía: Ninguno -> Lácteos
+- Crema Reconfortante de Calabaza, Hinojo y Leche de Coco: Ninguno -> Lácteos, Frutos secos
+- Tortitas de Trigo Sarraceno con Compota de Manzana a la Canela: Huevo -> Huevo, Gluten
+- Porridge Caliente de Trigo Sarraceno, Higos y Almendras: Frutos secos -> Frutos secos, Gluten
+- Tostada de Sarraceno con Tapenade de Olivas Negras y Anchoas: Pescado -> Pescado, Gluten
+- Porridge Frío (Overnight Oats) de Sarraceno con Crema de Almendras: Frutos secos -> Frutos secos, Gluten
+- Curry Rápido de Garbanzos, Espinacas y Leche de Coco: Ninguno -> Lácteos
+- Avena Nocturna con Manzana y Canela: Gluten -> Gluten, Frutos secos
+- Tostada de Ricotta, Higos y Nueces: Lácteos, Gluten -> Lácteos, Gluten, Frutos secos
+- Bowl de Yogur de Soja, Pera y Nueces: Lácteos, Soja -> Lácteos, Soja, Frutos secos
+- Trufas de Dátil, Cacao y Nuez: Ninguno -> Frutos secos
+- Pera Asada con Yogur y Nueces: Lácteos -> Lácteos, Frutos secos
+- Tzatziki con Pepino y Nueces: Lácteos -> Lácteos, Frutos secos
+- Pasta Integral con Sardinas, Tomate y Espinacas: Pescado -> Pescado, Gluten
+- Bowl de Trigo Sarraceno, Huevo y Setas: Huevo -> Huevo, Gluten
+- Pasta de Lenteja Roja con Pesto de Rúcula: Ninguno -> Frutos secos
+- Curry Suave de Tofu, Calabacín y Espinacas: Soja -> Soja, Lácteos
+- Pavo con Col Morada, Manzana y Nueces: Ninguno -> Frutos secos
+- Pesto de Rúcula, Nuez y Limón: Ninguno -> Frutos secos
+
+PASOS CORREGIDOS
+- Porridge de Avena, Pera y Tahini
+- Tostada de Hummus, Tomate y Huevo
+- Yogur con Kiwi, Chía y Pistachos
+- Pudding de Chía, Frambuesas y Almendras
+- Tortilla de Espinacas, Champiñones y Aguacate
+- Avena Nocturna con Manzana y Canela
+- Tostada de Ricotta, Higos y Nueces
+- Bowl de Skyr, Arándanos y Semillas
+- Tortitas de Plátano, Avena y Yogur
+- Revuelto de Tofu, Tomate y Espinacas
+- Tostada de Aguacate, Sardina y Limón
+- Porridge de Quinoa, Cacao y Avellanas
+- Bol de Kéfir, Fresas y Avena
+- Tortilla Dulce de Manzana y Canela
+- Tostada de Crema de Cacahuete y Frutos Rojos
+- Porridge de Mijo, Plátano y Sésamo
+- Huevos al Plato con Tomate y Garbanzos
+- Bowl de Requesón, Melocotón y Almendras
+- Tostada de Salmón, Pepino y Yogur
+- Pudding de Avena y Chía con Mango
+- Arepa Integral con Huevo y Aguacate
+- Bowl de Yogur de Soja, Pera y Nueces
+- Tostada de Tahini, Plátano y Cacao
+- Frittata Rápida de Calabacín y Feta
+- Avena Cremosa con Ciruelas y Linaza
+- Trufas de Dátil, Cacao y Nuez
+- Manzana con Crema de Almendras y Canela
+- Yogur con Cacao, Frambuesas y Chía
+- Hummus de Remolacha con Crudités
+- Garbanzos Crujientes al Pimentón
+- Pera Asada con Yogur y Nueces
+- Vasito de Kéfir, Kiwi y Pistacho
+- Tostada de Chocolate Negro y Tahini
+- Edamame con Limón y Sésamo
+- Bocados de Avena, Plátano y Cacao
+- Melocotón con Ricotta y Canela
+- Pudding de Chía, Café y Cacao
+- Palomitas Caseras con Cúrcuma y Almendras
+- Crema de Cacao, Aguacate y Avellanas
+- Tzatziki con Pepino y Nueces
+- Mini Tostadas de Sardina y Tomate
+- Compota Rápida de Manzana con Chía
+- Bowl de Fresas, Yogur y Chocolate Negro
+- Dátiles Rellenos de Tahini y Pistacho
+- Smoothie Espeso de Frutos Rojos y Kéfir
+
+PORQUÉ BIOLÓGICO REFORMULADO
+- Tartar de Atún, Mango y Aguacate
+- Salmón al Horno con Costra de Sésamo y Brócoli
+- Crema de Lentejas Rojas y Boniato al Comino
+- Tostada de Aguacate, Huevo Poché y Semillas de Girasol
+- Crema de Calabaza, Cúrcuma y Leche de Coco
+- Salmón Salteado con Espárragos Trigueros y Ajo
+- Crema Antioxidante de Lombarda, Manzana y Jengibre
+- Hamburguesa Casera de Lentejas Rojas y Cúrcuma en Pan de Centeno
+- Omelette Roll con Salmón Ahumado y Canónigos
+- Tartar de Remolacha, Aguacate y Nueces
+- Wok de Tofu, Brócoli y Pimiento con Salsa de Soja
+- Pechuga de Pollo Marinada a la Plancha con Salsa Tzatziki de Menta y Limón
+- Crema de Zanahoria, Cúrcuma y Pipas de Girasol
+- Solomillo de Cerdo Glaseado a la Mostaza, Manzana y Salvia
+- Pechuga de Pavo Glaseada con Naranja, Hinojo y Granos de Granada
+- Crema de Batata Tostada, Lentejas Amarillas y Comino
+- Salmón al Horno con Costra de Almendras, Eneldo y Calabacín Asado
+- Chili de Alubias Negras, Boniato y Cacao
+- Guiso Reconfortante de Judías Blancas, Calabaza y Romero
+- Gambas al Ajillo Ligeras con Quinoa y Rúcula
+- Curry de Garbanzos, Espinacas y Leche de Coco
+- Sopa de Miso con Tofu y Alga Wakame
+- Pollo al Horno con Especias Antiinflamatorias y Puré de Chirivía
+- Pudding de Chía con Cacao Puro, Frambuesas y Nueces
+- Batido Dorado de Avena y Especias
+- Lomo de Salmón con Costra de Pistachos y Espárragos
+- Crema Reconfortante de Calabaza, Hinojo y Leche de Coco
+- Bol Tibio de Quinoa, Brócoli Asado y Pipas de Girasol
+- Tortitas de Trigo Sarraceno con Compota de Manzana a la Canela
+- Smoothie Antioxidante de Arándanos, Espinacas y Semillas de Lino
+- Aguacate Relleno de Garbanzos y Cilantro
+- Ensalada Templada de Lentejas Beluga y Granada con Vinagreta de Nueces
+- Kéfir de Cabra con Cerezas y Nibs de Cacao Puro
+- Sopa Fría de Pepino, Aguacate y Menta con Semillas de Cáñamo
+- Alcachofas Salteadas con Jamón Ibérico y Piñones
+- Crema Púrpura de Col Lombarda, Manzana y Comino
+- Tacos de Hojas de Roble con Shiitake, Tofu y Sésamo
+- Sopa de Tomate Asado y Pimiento Rojo con Albahaca Fresca
+- Batido Enzimático de Papaya, Jengibre y Lino
+- Ensalada Cítrica de Quinoa, Pomelo, Hinojo y Pistachos
+- Tartar Rápido de Tomate, Aguacate y Edamames
+- Estofado Exprés de Azukis con Calabaza y Cúrcuma
+- Ensalada Templada de Lentejas Rojas con Vinagreta de Naranja
+- Curry Rápido de Garbanzos, Espinacas y Leche de Coco
+- Carpaccio de Remolacha Cruda con Queso Feta de Oveja
