@@ -98,10 +98,10 @@ input::placeholder { color: #9a9b94; opacity: 1; }
 <style id="conversion-v3-css">
 .cv3-result-offer{margin-top:22px;border:1px solid rgba(59,74,37,.18);background:#f7f4ed}.cv3-result-offer strong{display:block;font-family:Fraunces,serif;font-size:1.25rem;color:#26331a;margin:5px 0 8px}.cv3-benefits{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:13px 0 15px;font-size:.82rem;font-weight:700}.cv3-benefits span{background:#fff;padding:8px 9px;border-radius:10px}.cv3-micro{text-align:center!important;font-size:.75rem!important;opacity:.72;margin:8px 0 0!important}@media(max-width:480px){.cv3-benefits{grid-template-columns:1fr}}
 </style>
-<style id="free-menu-clickable-style">
-#freePlanMeals .freeMenuRecipe{width:100%;font:inherit;text-align:left;cursor:pointer;color:inherit}
-#freePlanMeals .freeMenuRecipe:hover,#freePlanMeals .freeMenuRecipe:focus-visible{border-color:#3B4A25;box-shadow:0 4px 16px rgba(59,74,37,.12);outline:none}
-#freePlanMeals .freeMenuHint{display:block;margin-top:8px;color:#3B4A25;font-size:.78rem;font-weight:800}
+<style id="free-menu-click-style">
+.freeMenuRecipeLink{width:100%;text-align:left;font:inherit;color:inherit;-webkit-text-fill-color:currentColor;cursor:pointer}
+.freeMenuRecipeLink .menuRecipeHint{display:block;margin-top:7px;font-size:.72rem;font-weight:800;color:#3B4A25;-webkit-text-fill-color:#3B4A25}
+.freeMenuRecipeLink:hover,.freeMenuRecipeLink:focus{outline:2px solid rgba(59,74,37,.22);outline-offset:2px}
 </style></head>
 <body>
 <div class="app">
@@ -223,12 +223,12 @@ function recommend(){
  const ranked=base.map(r=>{let s=0;if(state.need&&r.n.includes(state.need))s+=6;if(state.moment&&r.mo.includes(state.moment))s+=6;if(state.stage&&state.stage!=='ninguna'&&r.p.includes(state.stage))s+=4;return {r,s}}).sort((a,b)=>b.s-a.s);
  openRecipe(ranked[0].r.id,true);
 }
+window.studyosFreeOpenRecipe=function(id){openRecipe(id,false)};
 function openRecipe(id,rec){
  const r=R.find(x=>x.id===id); if(!r)return;
- $('#detail').innerHTML=`<div class="eyebrow">${rec?'UNA OPCIÓN SEGÚN TUS RESPUESTAS':'RECETA GRATIS'}</div><h2>${r.t}</h2><div class="facts"><span class="fact">${r.ph}</span><span class="fact">${r.m} min</span><span class="fact">${r.k} kcal aprox.</span><span class="fact">${r.d}</span></div><h3>Ingredientes</h3><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Preparación</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol><h3>El porqué biológico</h3><div class="bio">${r.bio}</div><div class="unlock cv3-result-offer"><span class="eyebrow">HAS PROBADO STUDYOS</span><strong>Hazlo con 200 recetas y toda tu semana.</strong><p>StudyOS+ amplía el recomendador y añade 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><div class="cv3-benefits"><span>✓ 200 recetas</span><span>✓ 6 menús semanales</span><span>✓ 6 listas de la compra</span><span>✓ Batch cooking + sustituciones</span></div><a class="btn btnYellow wide" data-cv3="recommendation" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ · 5 € <span style="font-weight:700">(≈ US$5.85)</span></a><p class="cv3-micro">Pago único · Sin suscripción · Cobro en EUR; tu banco o tarjeta realiza la conversión de divisa automáticamente.</p></div>`;
+ $('#detail').innerHTML=`<div class="eyebrow">${rec?'UNA OPCIÓN SEGÚN TUS RESPUESTAS':'RECETA GRATIS'}</div><h2>${r.t}</h2><div class="facts"><span class="fact">${r.ph}</span><span class="fact">${r.m} min</span><span class="fact">${r.k} kcal aprox.</span><span class="fact">${r.d}</span></div><h3>Ingredientes</h3><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Preparación</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol><h3>El porqué biológico</h3><div class="bio">${r.bio}</div><div class="unlock cv3-result-offer"><span class="eyebrow">HAS PROBADO STUDYOS</span><strong>Hazlo con 200 recetas y toda tu semana.</strong><p>StudyOS+ amplía el recomendador y añade 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><div class="cv3-benefits"><span>✓ 200 recetas</span><span>✓ 6 menús semanales</span><span>✓ 6 listas de la compra</span><span>✓ Batch cooking + sustituciones</span></div><a class="btn btnYellow wide" data-cv3="recommendation" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ · 5 € · ≈ US$5.85</a><p class="cv3-micro">Pago único · Sin suscripción · Cobro en EUR; tu banco o tarjeta realiza la conversión automáticamente.</p></div>`;
  $('#modal').classList.add('open');
 }
-window.studyosOpenFreeRecipe=function(id){openRecipe(id,false);};
 $('#close').onclick=()=>$('#modal').classList.remove('open');
 $('#modal').onclick=e=>{if(e.target===$('#modal'))$('#modal').classList.remove('open')};
 renderHome();renderExplore();
@@ -237,27 +237,25 @@ renderHome();renderExplore();
 
 <script id="studyos-free-real-plan">
 (function(){
-const data={
-"Lunes":[["tostada-de-aguacate-huevo-poche-y-semillas-de-girasol","Tostada de Aguacate, Huevo Poché y Semillas de Girasol"],["bowl-de-quinoa-y-pollo-al-limon-con-curcuma","Bowl de Quinoa y Pollo al Limón con Cúrcuma"],["crema-de-lentejas-rojas-y-boniato-al-comino","Crema de Lentejas Rojas y Boniato al Comino"]],
-"Martes":[["tortitas-de-avena-y-calabaza","Tortitas de Avena y Calabaza"],["salmon-al-horno-con-costra-de-sesamo-y-brocoli","Salmón al Horno con Costra de Sésamo y Brócoli"],["tartar-de-atun-mango-y-aguacate","Tartar de Atún, Mango y Aguacate"]],
-"Miércoles":[["revuelto-de-champinones-y-espinacas","Revuelto de Champiñones y Espinacas"],["crema-de-calabacin-y-jengibre-con-dados-de-pavo","Crema de Calabacín y Jengibre con Dados de Pavo"],["crema-de-lentejas-rojas-y-boniato-al-comino","Crema de Lentejas Rojas y Boniato al Comino"]],
-"Jueves":[["smoothie-bowl-equilibrio-hormonal","Smoothie Bowl "Equilibrio Hormonal""],["tartar-de-atun-mango-y-aguacate","Tartar de Atún, Mango y Aguacate"],["crema-de-calabacin-y-jengibre-con-dados-de-pavo","Crema de Calabacín y Jengibre con Dados de Pavo"]],
-"Viernes":[["pudding-de-chia-y-cacao-antiantojos","Pudding de Chía y Cacao "Antiantojos""],["bowl-de-quinoa-y-pollo-al-limon-con-curcuma","Bowl de Quinoa y Pollo al Limón con Cúrcuma"],["tartar-de-atun-mango-y-aguacate","Tartar de Atún, Mango y Aguacate"]],
-"Sábado":[["tortitas-de-avena-y-calabaza","Tortitas de Avena y Calabaza"],["salmon-al-horno-con-costra-de-sesamo-y-brocoli","Salmón al Horno con Costra de Sésamo y Brócoli"],["crema-de-lentejas-rojas-y-boniato-al-comino","Crema de Lentejas Rojas y Boniato al Comino"]],
-"Domingo":[["tostada-de-aguacate-huevo-poche-y-semillas-de-girasol","Tostada de Aguacate, Huevo Poché y Semillas de Girasol"],["crema-de-calabacin-y-jengibre-con-dados-de-pavo","Crema de Calabacín y Jengibre con Dados de Pavo"],["tartar-de-atun-mango-y-aguacate","Tartar de Atún, Mango y Aguacate"]]
-};
-const days=["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"], labels=["Desayuno","Comida","Cena"];
+const data={"Lunes": ["Bowl Matutino de Grasas Saludables", "Bowl de Quinoa y Pollo al Limón", "Omelette de Champiñones y Orégano"], "Martes": ["Tortitas de Avena y Calabaza", "Ensalada de Salmón, Cítricos", "Crema de verduras + huevo"], "Miércoles": ["Avena + canela + fruta", "Lentejas + verduras", "Wok de Pollo con Brócoli y Sésamo"], "Jueves": ["Pudding de Chía y Cacao Puro", "Tartar de Atún, Mango y Aguacate", "Salteado de Pavo y Calabacín"], "Viernes": ["Bowl Matutino de Grasas Saludables", "Arroz + pollo + verduras", "Ensalada completa"], "Sábado": ["Tortitas de Avena y Calabaza", "Bowl de Quinoa y Pollo al Limón", "Crema Verde Digestiva de Apio"], "Domingo": ["Pudding de Chía y Cacao Puro", "Ensalada de Salmón y Cítricos", "Crema Verde Digestiva de Apio"]};
+const days=["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"], labels=["Desayuno","Comida","Cena"];
 function render(day){
  document.querySelectorAll("#freePlanDays button").forEach(b=>b.classList.toggle("on",b.dataset.day===day));
  const box=document.getElementById("freePlanMeals"); if(!box)return;
- box.innerHTML=data[day].map((x,i)=>`<button type="button" class="mealCard freeMenuRecipe" data-rid="${x[0]}"><small>${labels[i]}</small><b>${x[1]}</b><span class="freeMenuHint">Ver receta →</span></button>`).join("");
+ const links={"Tortitas de Avena y Calabaza": "tortitas-de-avena-y-calabaza", "Bowl de Quinoa y Pollo al Limón": "bowl-de-quinoa-y-pollo-al-limon-con-curcuma", "Tartar de Atún, Mango y Aguacate": "tartar-de-atun-mango-y-aguacate"};
+ box.innerHTML=data[day].map((x,i)=>links[x]
+   ? `<button type="button" class="mealCard freeMenuRecipeLink" data-recipe-id="${links[x]}"><small>${labels[i]}</small><b>${x}</b><span class="menuRecipeHint">Ver receta →</span></button>`
+   : `<div class="mealCard"><small>${labels[i]}</small><b>${x}</b></div>`).join("");
 }
 document.addEventListener("DOMContentLoaded",()=>{
  const d=document.getElementById("freePlanDays"); if(!d)return;
  d.innerHTML=days.map((x,i)=>`<button class="dayPick ${i===0?"on":""}" data-day="${x}">${x.slice(0,3)}</button>`).join("");
  d.addEventListener("click",e=>{const b=e.target.closest("button[data-day]");if(b)render(b.dataset.day)});
  const meals=document.getElementById("freePlanMeals");
- meals.addEventListener("click",e=>{const b=e.target.closest(".freeMenuRecipe");if(b&&window.studyosOpenFreeRecipe)window.studyosOpenFreeRecipe(b.dataset.rid)});
+ meals.addEventListener("click",e=>{
+   const b=e.target.closest("button[data-recipe-id]");
+   if(b && window.studyosFreeOpenRecipe) window.studyosFreeOpenRecipe(b.dataset.recipeId);
+ });
  render(days[0]);
 });
 })();
