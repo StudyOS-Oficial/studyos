@@ -1,0 +1,6 @@
+STUDYOS V3.1 — MINI FIX
+✓ CTA tras recomendación: 5 € + ≈ US$5.85.
+✓ Se aclara que el cobro es en EUR y la conversión la realiza automáticamente el banco/tarjeta.
+✓ Menú gratuito: 21/21 platos enlazan a una de las 10 recetas reales.
+✓ Los nombres del menú son ahora los títulos exactos de las recetas.
+✓ Click en plato → abre la ficha de receta existente.
