@@ -509,22 +509,6 @@
 </style>
 
 
-<style id="studyos-v4-premium">
-.v4-premium{padding:clamp(54px,8vw,92px) 0;background:linear-gradient(180deg,#F7F3E8 0%,#fff 100%)}
-.v4-premium .v4-kicker{font:700 .78rem/1.2 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#C9785F}
-.v4-premium h2{font-family:Fraunces,serif;font-size:clamp(2rem,5vw,3.5rem);line-height:1.02;color:#3B4A25;max-width:780px;margin:12px 0 14px}
-.v4-premium .v4-intro{max-width:700px;color:#5f6557;font-size:1.08rem;line-height:1.65}
-.v4-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:32px}
-.v4-card{background:#fff;border:1px solid rgba(59,74,37,.14);border-radius:24px;padding:24px;box-shadow:0 14px 38px rgba(59,74,37,.07)}
-.v4-card.big{grid-column:span 7;background:#3B4A25;color:#fff}.v4-card.side{grid-column:span 5}
-.v4-card.third{grid-column:span 4}
-.v4-card .ico{font-size:1.65rem}.v4-card h3{font-family:Fraunces,serif;font-size:1.35rem;margin:10px 0 6px}
-.v4-card.big h3{color:#fff}.v4-card p{margin:0;color:#6c7165;line-height:1.55}.v4-card.big p{color:rgba(255,255,255,.82)}
-.v4-price{margin-top:30px;background:#F2C230;border-radius:24px;padding:22px 24px;display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.v4-price strong{font-family:Fraunces,serif;font-size:1.5rem;color:#273018}.v4-price small{display:block;margin-top:4px;color:#4b512f;max-width:700px;line-height:1.45}
-@media(max-width:760px){.v4-card.big,.v4-card.side,.v4-card.third{grid-column:1/-1}.v4-premium{padding:52px 0}}
-</style>
-
 </head>
 
 <body>
@@ -546,12 +530,12 @@
     <div class="hero-copy">
       <div class="eyebrow">TU RECETARIO, AHORA INTERACTIVO</div>
       <h1>De «¿qué como hoy?» a tener tu semana organizada.</h1>
-      <p class="lede">StudyOS+ reúne 500 recetas y te ayuda a decidir qué comer hoy, crear tu semana, cambiar cualquier plato y preparar la lista de la compra desde un solo lugar.</p>
+      <p class="lede">500 recetas para encontrar qué comer hoy y organizar tu semana con StudyOS+.</p>
       <div class="cta-row">
         <a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Probar StudyOS gratis</a>
         <a class="btn btn-light btn-lg" href="#como-funciona">Ver cómo funciona</a>
       </div>
-      <p class="hero-trust">10 recetas gratis · Sin registro · StudyOS+ completo por 5 € · ≈ US$5.70(≈ US$5.85)</p>
+      <p class="hero-trust">10 recetas gratis · Sin registro · StudyOS+ completo por 5 € · ≈ US$5.70</p><p class="hint" style="margin-top:10px">Pago único · Sin suscripción · Pago seguro con Stripe. Precio base: 5 €. ≈ US$5.70 es orientativo; la conversión final puede variar según el tipo de cambio y tu banco o tarjeta.</p>
     </div>
     <div class="studyos-phone" aria-label="Vista previa de StudyOS">
       <div class="studyos-screen">
@@ -573,7 +557,13 @@
       </div>
     </div>
   </div>
-</section>
+</section><div class="wrap" style="padding-top:18px;padding-bottom:10px">
+  <div style="max-width:760px">
+    <p style="font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;color:var(--salmon,#C9785F)">QUÉ ES STUDYOS+</p>
+    <h2 style="margin-top:8px">Un sistema para pasar de «no sé qué comer» a tener una opción clara.</h2>
+    <p class="lede" style="margin-top:12px">StudyOS+ conecta un recetario de 500 recetas con un recomendador interactivo y herramientas de organización. Tú indicas qué buscas; StudyOS+ reduce opciones y te ayuda a elegir.</p>
+  </div>
+</div>
   <script>if (window.studyosApplyHero) window.studyosApplyHero();</script>
 
   <!-- ===== Opiniones ===== -->
@@ -644,7 +634,7 @@
           </div>
           <p class="more"><a href="#incluye">Ver todo lo que incluye</a></p>
           <div class="buy">
-            <div class="price"><s class="was"><span class="sr">Precio anterior: </span>10 €</s> 5 € · ≈ US$5.70<small>≈ US$5.85 · pago único</small></div>
+            <div class="price"><s class="was"><span class="sr">Precio anterior: </span>10 €</s> 5 € · ≈ US$5.70<small>≈ US$5.70 · pago único</small></div>
             <a class="btn btn-light" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Desbloquear StudyOS+</a>
           </div>
           <p class="fine">Pago seguro con Stripe con tarjetas de crédito o débito de cualquier país. Al terminar te llevamos a la página de descarga. El cobro es en euros: según tu país, Stripe puede mostrarte el precio en tu moneda y, si no, tu banco convierte el importe automáticamente al cambio del día.</p>
@@ -947,11 +937,22 @@
   </section>
 
   <!-- ===== Qué incluye ===== -->
-  <section class="section contents" id="incluye">
+  <section class="section" id="como-funciona-v4">
+  <div class="wrap">
+    <div style="max-width:720px"><p style="font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;color:var(--salmon,#C9785F)">CÓMO FUNCIONA</p>
+    <h2 style="margin-top:8px">Tres pasos. Sin perder tiempo buscando.</h2></div>
+    <div class="steps" style="margin-top:26px">
+      <article><b>1 · Dinos qué buscas</b><p>Indica tu etapa, qué necesitas y el momento del día.</p></article>
+      <article><b>2 · StudyOS+ reduce las opciones</b><p>El recomendador busca entre 500 recetas compatibles con tus preferencias.</p></article>
+      <article><b>3 · Elige y cocina</b><p>Abre la receta, consulta ingredientes, preparación y su explicación nutricional divulgativa.</p></article>
+    </div>
+  </div>
+</section>
+<section class="section contents" id="incluye">
     <div class="wrap contents-grid">
       <div>
-        <h2>Qué encuentras dentro del recetario</h2>
-        <p class="lede" style="margin-top:14px">No es una dieta ni un libro de reglas. Es una herramienta para elegir qué cocinar según cómo estás hoy.</p>
+        <h2>Todo lo que incluye StudyOS+</h2>
+        <p class="lede" style="margin-top:14px">No es solo un recetario: StudyOS+ convierte 500 recetas en una herramienta interactiva para ayudarte a decidir qué comer y organizarte mejor.</p>
       </div>
       <dl>
         <div class="row">
@@ -964,7 +965,7 @@
         </div>
         <div class="row row-plus">
           <dt>StudyOS+, la app del recetario</dt>
-          <dd>Responde 3 preguntas rápidas y te decimos al instante qué receta te conviene ahora. También puedes explorar las 500 por etapa, necesidad, tiempo o alérgenos que quieras evitar. Es lo que nos diferencia: no solo tienes el recetario, tienes quien te ayuda a elegir.</dd>
+          <dd>Responde unas preguntas rápidas y StudyOS+ te propone recetas entre 500 opciones según tu etapa, lo que buscas y el momento del día. También puedes explorar, guardar favoritas y organizar tu semana.</dd>
         </div>
         <div class="row">
           <dt>Bonus: 6 menús semanales</dt>
@@ -1150,7 +1151,7 @@
         </details>
         <details>
           <summary>¿Puedo pagar desde otro país o en otra moneda?</summary>
-          <p>Sí. El precio es de 5 € · ≈ US$5.70(aprox. US$5.85; la equivalencia puede variar con el tipo de cambio). El pago es seguro y lo gestiona Stripe con tarjetas de crédito o débito. Según tu país, Stripe puede mostrarte el precio en tu moneda; si no, tu banco convierte el importe automáticamente al cambio del día.</p>
+          <p>Sí. El precio es de 5 € · ≈ US$5.70(aprox. US$5.70; la equivalencia puede variar con el tipo de cambio). El pago es seguro y lo gestiona Stripe con tarjetas de crédito o débito. Según tu país, Stripe puede mostrarte el precio en tu moneda; si no, tu banco convierte el importe automáticamente al cambio del día.</p>
         </details>
         <details>
           <summary>¿El test y la calculadora guardan mis respuestas o mi fecha?</summary>
@@ -1196,25 +1197,6 @@
     </div>
   </section>
 
-
-<section class="v4-premium" id="studyos-v4">
-  <div class="wrap">
-    <div class="v4-kicker">STUDYOS+ V4</div>
-    <h2>500 recetas. Y ahora, una forma mucho más fácil de decidir.</h2>
-    <p class="v4-intro">No es un PDF que acabas olvidando. StudyOS+ convierte las recetas en una herramienta para elegir, organizar y adaptar tus comidas durante la semana.</p>
-    <div class="v4-grid">
-      <article class="v4-card big"><div class="ico">✨</div><h3>Crea mi semana</h3><p>Genera una propuesta de 7 días a partir de lo que buscas y de tus preferencias, usando las recetas de StudyOS+.</p></article>
-      <article class="v4-card side"><div class="ico">🍽️</div><h3>500 recetas</h3><p>Más variedad para desayunos, comidas, cenas y snacks, sin quedarte dando vueltas entre las mismas opciones.</p></article>
-      <article class="v4-card third"><div class="ico">🔄</div><h3>Cambia un plato</h3><p>Si una propuesta no te apetece, sustitúyela sin rehacer toda la semana.</p></article>
-      <article class="v4-card third"><div class="ico">🛒</div><h3>Lista desde tu menú</h3><p>Convierte las recetas de tu semana en una lista de compra práctica.</p></article>
-      <article class="v4-card third"><div class="ico">⚡</div><h3>StudyOS Rescue</h3><p>Para esos momentos en los que solo quieres resolver rápido qué comer.</p></article>
-    </div>
-    <div class="v4-price">
-      <div><strong>StudyOS+ · 5 € · ≈ US$5.70</strong><small>Pago único · Sin suscripción. El precio base es 5 €. El equivalente en USD es orientativo y puede variar según el tipo de cambio y las condiciones de tu banco o tarjeta. Pago seguro procesado mediante Stripe.</small></div>
-      <a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Probar 10 recetas gratis</a>
-    </div>
-  </div>
-</section>
 
 </main>
 
