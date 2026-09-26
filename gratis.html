@@ -94,6 +94,10 @@ input::placeholder { color: #9a9b94; opacity: 1; }
   border-color:#AAB58C !important;
 }
 </style>
+
+<style id="conversion-v3-css">
+.cv3-result-offer{margin-top:22px;border:1px solid rgba(59,74,37,.18);background:#f7f4ed}.cv3-result-offer strong{display:block;font-family:Fraunces,serif;font-size:1.25rem;color:#26331a;margin:5px 0 8px}.cv3-benefits{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:13px 0 15px;font-size:.82rem;font-weight:700}.cv3-benefits span{background:#fff;padding:8px 9px;border-radius:10px}.cv3-micro{text-align:center!important;font-size:.75rem!important;opacity:.72;margin:8px 0 0!important}@media(max-width:480px){.cv3-benefits{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <div class="app">
@@ -125,7 +129,7 @@ input::placeholder { color: #9a9b94; opacity: 1; }
       <div class="lockedCard"><span class="lock">🔒</span><h3>Favoritas e historial</h3><p>Guarda recetas y vuelve a las que ya has visto.</p></div>
       <div class="lockedCard"><span class="lock">🔒</span><h3>Menús y planificación</h3><p>6 menús semanales y listas de la compra.</p></div>
     </div>
-    <div class="unlock"><span class="eyebrow">ACCESO COMPLETO</span><strong>Desbloquea StudyOS+</strong><p>200 recetas + experiencia completa de StudyOS.</p><div class="price">5 € <span class="small">≈ US$5.85 · pago único</span></div><a class="btn btnYellow wide" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ →</a></div>
+    <div class="unlock"><span class="eyebrow">ACCESO COMPLETO</span><strong>Desbloquea StudyOS+</strong><p>200 recetas · 6 menús semanales · 6 listas de la compra · batch cooking · sustituciones.</p><div class="price">5 € <span class="small">≈ US$5.85 · pago único</span></div><a class="btn btnYellow wide" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ →</a></div>
   </div>
 </section>
 
@@ -134,7 +138,7 @@ input::placeholder { color: #9a9b94; opacity: 1; }
   <input id="search" class="search" placeholder="Buscar receta o ingrediente…">
   <div class="chips"><button class="chip active" data-filter="all">Todas</button><button class="chip" data-filter="D">Desayuno</button><button class="chip" data-filter="C">Comida</button><button class="chip" data-filter="N">Cena</button><button class="chip" data-filter="S">Snack</button><button class="chip" id="advancedLock">🔒 Filtros avanzados</button></div>
   <div id="exploreRecipes" class="recipes" style="margin-top:14px"></div>
-  <div class="unlock"><strong>¿Quieres más opciones?</strong><p>Estás viendo 10 recetas. StudyOS+ incluye 200 recetas y herramientas adicionales.</p><a class="btn btnYellow wide" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Ver StudyOS+ completo →</a></div>
+  <div class="unlock"><strong>¿Quieres más opciones?</strong><p>Estás viendo 10 recetas. StudyOS+ desbloquea 200 recetas, 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><a class="btn btnYellow wide" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Ver StudyOS+ completo →</a></div>
 </section>
 
 
@@ -217,7 +221,7 @@ function recommend(){
 }
 function openRecipe(id,rec){
  const r=R.find(x=>x.id===id); if(!r)return;
- $('#detail').innerHTML=`<div class="eyebrow">${rec?'UNA OPCIÓN SEGÚN TUS RESPUESTAS':'RECETA GRATIS'}</div><h2>${r.t}</h2><div class="facts"><span class="fact">${r.ph}</span><span class="fact">${r.m} min</span><span class="fact">${r.k} kcal aprox.</span><span class="fact">${r.d}</span></div><h3>Ingredientes</h3><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Preparación</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol><h3>El porqué biológico</h3><div class="bio">${r.bio}</div><div class="unlock"><strong>¿Te gusta StudyOS?</strong><p>En la versión completa puedes elegir entre 200 recetas.</p><a class="btn btnYellow wide" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ →</a></div>`;
+ $('#detail').innerHTML=`<div class="eyebrow">${rec?'UNA OPCIÓN SEGÚN TUS RESPUESTAS':'RECETA GRATIS'}</div><h2>${r.t}</h2><div class="facts"><span class="fact">${r.ph}</span><span class="fact">${r.m} min</span><span class="fact">${r.k} kcal aprox.</span><span class="fact">${r.d}</span></div><h3>Ingredientes</h3><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Preparación</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol><h3>El porqué biológico</h3><div class="bio">${r.bio}</div><div class="unlock cv3-result-offer"><span class="eyebrow">HAS PROBADO STUDYOS</span><strong>Hazlo con 200 recetas y toda tu semana.</strong><p>StudyOS+ amplía el recomendador y añade 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><div class="cv3-benefits"><span>✓ 200 recetas</span><span>✓ 6 menús semanales</span><span>✓ 6 listas de la compra</span><span>✓ Batch cooking + sustituciones</span></div><a class="btn btnYellow wide" data-cv3="recommendation" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ · 5 €</a><p class="cv3-micro">Pago único · Sin suscripción</p></div>`;
  $('#modal').classList.add('open');
 }
 $('#close').onclick=()=>$('#modal').classList.remove('open');
@@ -273,5 +277,9 @@ document.addEventListener("DOMContentLoaded",()=>{
   });
   window.addEventListener("DOMContentLoaded",function(){obs.observe(document.body,{subtree:true,childList:true,characterData:true});});
 })();
+</script>
+
+<script id="conversion-v3-tracking">
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("[data-cv3]");if(!a)return;try{if(window.gtag)gtag("event","studyos_plus_interest",{placement:a.getAttribute("data-cv3"),funnel_version:"v3_conversion"});if(window.fbq)fbq("trackCustom","StudyOSPlusInterest",{placement:a.getAttribute("data-cv3"),funnel_version:"v3_conversion"});}catch(_){}});
 </script>
 </body></html>

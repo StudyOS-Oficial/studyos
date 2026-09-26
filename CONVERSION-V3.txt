@@ -1,0 +1,13 @@
+STUDYOS V3 — CONVERSION
+
+✓ landing_new_value_prop
+✓ recommendation_offer
+✓ exact_price
+✓ truthful_features
+✓ placement_tracking
+✓ menu_clicks_preserved
+✓ recipe_db_preserved
+✓ pdf_ref_absent
+✓ tracking_version
+
+Principle: make value concrete at the moment of highest intent; no fake urgency, testimonials, discounts, or health promises.

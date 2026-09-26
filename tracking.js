@@ -167,7 +167,7 @@
   };
   window.studyosFunnel = function (name, extra) {
     extra = extra || {};
-    var eco = { currency: PRODUCT.currency, value: PRODUCT.price, items: items(), funnel_version: "v2_app" };
+    var eco = { currency: PRODUCT.currency, value: PRODUCT.price, items: items(), funnel_version: "v3_conversion" };
     switch (name) {
       case "view_item": // producto de pago a la vista
         window.studyosGA("view_item", eco);
@@ -188,20 +188,20 @@
         break;
       }
       case "free_open":
-        window.studyosGA("studyos_free_open", Object.assign({ funnel_version: "v2_app" }, extra));
-        window.studyosTrackCustom("StudyOSFreeOpen", { funnel_version: "v2_app" });
+        window.studyosGA("studyos_free_open", Object.assign({ funnel_version: "v3_conversion" }, extra));
+        window.studyosTrackCustom("StudyOSFreeOpen", { funnel_version: "v3_conversion" });
         break;
       case "free_recommendation_complete":
-        window.studyosGA("studyos_free_recommendation_complete", Object.assign({ funnel_version: "v2_app" }, extra));
-        window.studyosTrackCustom("StudyOSFreeRecommendation", { funnel_version: "v2_app" });
+        window.studyosGA("studyos_free_recommendation_complete", Object.assign({ funnel_version: "v3_conversion" }, extra));
+        window.studyosTrackCustom("StudyOSFreeRecommendation", { funnel_version: "v3_conversion" });
         break;
       case "plus_interest":
-        window.studyosGA("studyos_plus_interest", Object.assign({ funnel_version: "v2_app" }, extra));
-        window.studyosTrackCustom("StudyOSPlusInterest", { funnel_version: "v2_app" });
+        window.studyosGA("studyos_plus_interest", Object.assign({ funnel_version: "v3_conversion" }, extra));
+        window.studyosTrackCustom("StudyOSPlusInterest", { funnel_version: "v3_conversion" });
         break;
       case "plus_open":
-        window.studyosGA("studyos_plus_open", Object.assign({ funnel_version: "v2_app" }, extra));
-        window.studyosTrackCustom("StudyOSPlusOpen", { funnel_version: "v2_app" });
+        window.studyosGA("studyos_plus_open", Object.assign({ funnel_version: "v3_conversion" }, extra));
+        window.studyosTrackCustom("StudyOSPlusOpen", { funnel_version: "v3_conversion" });
         break;
       case "quiz_start":
       case "quiz_complete":
