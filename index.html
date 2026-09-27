@@ -434,6 +434,39 @@ body{
 #plus>.plus-reveal{margin-top:28px}
 .plus-close h3{color:#fff!important;opacity:1!important}
 @media(max-width:680px){.home-plus-list{grid-template-columns:1fr}.home-plus-summary,.studyos-research{border-radius:24px!important}}
+</style><style id="science-and-personal-menu-redesign">
+.science-premium{margin:72px 0 0;padding:clamp(30px,6vw,58px);border-radius:32px;background:#e9e2d2;color:#27311f}
+.science-head{max-width:790px;margin-bottom:30px}
+.science-kicker,.pmp-kicker{font-size:.68rem;font-weight:900;letter-spacing:.14em;color:#6d7a4e}
+.science-head h2{font-family:var(--serif);font-size:clamp(2.4rem,7vw,4.7rem);line-height:.92;letter-spacing:-.06em;margin:10px 0 18px;color:#2d3a20}
+.science-head h2 em{font-style:normal;color:#c9785f}
+.science-head p{font-size:1rem;line-height:1.65;max-width:710px;color:#505947}
+.science-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.science-card{display:flex;flex-direction:column;min-height:300px;padding:24px;border-radius:24px;background:#fffaf1;border:1px solid rgba(59,74,37,.10);box-shadow:0 8px 24px rgba(47,54,34,.04)}
+.science-card-wide{grid-column:1/-1;min-height:250px}
+.science-card h3{font-family:var(--serif);font-size:1.45rem;line-height:1.05;margin:14px 0 9px;color:#34431f}
+.science-card p{font-size:.91rem;line-height:1.55;color:#5b6253;flex:1}
+.science-stat{display:flex;align-items:baseline;gap:8px;color:#c9785f}
+.science-stat strong{font-family:var(--serif);font-size:2.5rem;letter-spacing:-.05em}
+.science-stat span{font-size:2rem;font-weight:900}
+.science-type{font-size:.58rem;font-weight:900;letter-spacing:.09em;color:#76805e;margin:12px 0 8px}
+.science-card a{font-size:.8rem;font-weight:800;color:#3b4a25;text-decoration:none}
+.science-dark{background:#3b4a25;color:white}
+.science-dark h3,.science-dark .science-stat strong{color:white}.science-dark p{color:#e2e6db}.science-dark .science-type{color:#d8ca8c}.science-dark a{color:#f2d773}
+.science-note{font-size:.72rem;line-height:1.5;color:#6c7265;margin:18px 2px 0}
+
+.personal-menu-promo{display:grid;grid-template-columns:1.08fr .92fr;gap:24px;align-items:center;margin:32px 0 48px;padding:clamp(24px,5vw,42px);border-radius:30px;background:linear-gradient(145deg,#3b4a25,#52613a);color:white;overflow:hidden}
+.pmp-copy h2{font-family:var(--serif);font-size:clamp(2rem,5vw,3.3rem);line-height:.98;letter-spacing:-.05em;color:white;margin:9px 0 14px}
+.pmp-copy p{color:#e5e9df;line-height:1.6;max-width:620px}
+.pmp-kicker{color:#f2d773}
+.pmp-points{display:flex;flex-wrap:wrap;gap:7px;margin:20px 0}
+.pmp-points span{padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);font-size:.72rem;font-weight:800}
+.pmp-button{border:0;border-radius:999px;background:#f2d773;color:#2d391f;padding:14px 17px;font-weight:900;cursor:pointer}
+.pmp-week{background:#faf7ef;color:#34431f;border-radius:25px;padding:18px;box-shadow:0 24px 55px rgba(0,0,0,.20);transform:rotate(1.5deg)}
+.pmp-week-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.pmp-week-top b{font-family:var(--serif);font-size:1.2rem}.pmp-week-top span{font-size:.62rem;background:#e8dfbf;padding:5px 8px;border-radius:999px;font-weight:800}
+.pmp-day{display:grid;grid-template-columns:34px repeat(3,1fr);gap:6px;align-items:center;padding:7px 0;border-top:1px solid rgba(59,74,37,.10)}.pmp-day b{font-size:.55rem}.pmp-day i{height:28px;border-radius:8px;background:#e8e1d2}.pmp-day i:nth-of-type(2){background:#d9c7a3}.pmp-day i:nth-of-type(3){background:#d8dfc9}
+.pmp-change{margin-top:12px;padding:9px 10px;border-radius:11px;background:#fff;color:#65704f;font-size:.65rem;font-weight:800;text-align:center}
+@media(max-width:700px){.science-grid{grid-template-columns:1fr}.science-card-wide{grid-column:auto}.science-card{min-height:auto}.science-premium{padding:28px 18px;border-radius:25px}.personal-menu-promo{grid-template-columns:1fr;padding:26px 18px;border-radius:25px}.pmp-week{max-width:390px;margin:6px auto 0;width:100%}}
 </style></head>
 <body>
 <div class="app">
@@ -457,8 +490,6 @@ body{
 <div class="sectionHead"><div><div class="eyebrow">GRATIS</div><h2>Tus recetas</h2></div><span class="small">10 disponibles</span></div>
 <div class="recipes" id="homeRecipes"></div>
 </div>
-
-
 <section class="home-plus-summary">
 <div class="eyebrow">STUDYOS+</div>
 <h2>Si esto te ayuda con 10 recetas, imagina con 500.</h2>
@@ -473,59 +504,50 @@ body{
 </div>
 <button class="home-plus-link" data-go="plus" type="button">Ver todo lo que incluye StudyOS+ →</button>
 </section>
-<section class="section science studyos-research" id="investigacion">
-<div class="wrap">
-<h2>Lo que dice la investigación sobre alimentarte así</h2>
-<p class="lede">Estos son resultados de estudios sobre patrones de alimentación como el mediterráneo, que comparte con el recetario ingredientes clave: verduras, legumbres, pescado, frutos secos y aceite de oliva virgen extra.</p>
-<div class="sci-grid">
-<article class="sci">
-<div aria-hidden="true" class="ico">🔥</div>
-<div class="fig">Menos</div>
-<h3>marcadores de inflamación</h3>
+<section class="science-premium">
+<div class="science-head">
+<span class="science-kicker">LA CIENCIA, SIN PROMESAS MÁGICAS</span>
+<h2>Comer bien importa.<br/><em>Y hay datos detrás.</em></h2>
+<p>Estos resultados proceden de estudios sobre patrones de alimentación como el mediterráneo, que comparte con muchas recetas de StudyOS ingredientes como verduras, legumbres, pescado, frutos secos y aceite de oliva virgen extra.</p>
+</div>
+<div class="science-grid">
+<article class="science-card science-card-wide">
+<div class="science-stat"><span>↓</span><strong>Inflamación</strong></div>
+<h3>Menos marcadores inflamatorios</h3>
 <p>En ensayos aleatorizados, la dieta mediterránea redujo marcadores como la proteína C reactiva ultrasensible y la interleucina-6 frente a otras dietas.</p>
-<span class="tag">Metaanálisis de ensayos aleatorizados</span>
+<span class="science-type">METAANÁLISIS DE ENSAYOS ALEATORIZADOS</span>
+<a href="https://pubmed.ncbi.nlm.nih.gov/41211687/" rel="noopener" target="_blank">Ver estudio ↗</a>
 </article>
-<article class="sci">
-<div aria-hidden="true" class="ico">🧠</div>
-<div class="fig">≈20%</div>
-<h3>menos riesgo de depresión</h3>
+<article class="science-card">
+<div class="science-stat"><strong>≈20%</strong></div>
+<h3>Menor riesgo de depresión</h3>
 <p>Quienes seguían más de cerca la dieta mediterránea tuvieron alrededor de un 19% menos de riesgo de depresión en estudios de seguimiento.</p>
-<span class="tag">Metaanálisis de estudios observacionales</span>
+<span class="science-type">METAANÁLISIS OBSERVACIONAL</span>
+<a href="https://academic.oup.com/nutritionreviews/article/81/7/889/7079098" rel="noopener" target="_blank">Ver estudio ↗</a>
 </article>
-<article class="sci">
-<div aria-hidden="true" class="ico">❤️</div>
-<div class="fig">≈30%</div>
-<h3>menos eventos cardiovasculares mayores</h3>
-<p>En el ensayo PREDIMED, una dieta mediterránea con aceite de oliva virgen extra o frutos secos redujo cerca de un 30% los infartos, ictus y muertes cardiovasculares en personas con alto riesgo.</p>
-<span class="tag">Ensayo aleatorizado</span>
+<article class="science-card science-dark">
+<div class="science-stat"><strong>≈30%</strong></div>
+<h3>Menos eventos cardiovasculares mayores</h3>
+<p>En PREDIMED, una dieta mediterránea con aceite de oliva virgen extra o frutos secos redujo cerca de un 30% los eventos cardiovasculares mayores en personas con alto riesgo.</p>
+<span class="science-type">ENSAYO PREDIMED</span>
+<a href="https://nutritionsource.hsph.harvard.edu/2018/06/22/predimed-retraction-republication/" rel="noopener" target="_blank">Ver resumen ↗</a>
 </article>
-<article class="sci">
-<div aria-hidden="true" class="ico">🌙</div>
-<div class="fig">≈20%</div>
-<h3>menos probabilidad de sofocos y sudores nocturnos</h3>
-<p>En más de 6.000 mujeres australianas seguidas durante 9 años, comer al estilo mediterráneo se asoció con menos sofocos y sudores nocturnos.</p>
-<span class="tag">Estudio observacional</span>
+<article class="science-card">
+<div class="science-stat"><strong>Fibra</strong></div>
+<h3>Más que contar calorías</h3>
+<p>Los patrones ricos en alimentos vegetales aportan fibra y una matriz alimentaria que forman parte de las recomendaciones de alimentación saludable.</p>
+<span class="science-type">PATRÓN ALIMENTARIO</span>
+<a href="https://ajcn.nutrition.org/article/S0002-9165(23)05518-1/fulltext" rel="noopener" target="_blank">Ver estudio ↗</a>
 </article>
-<article class="sci">
-<div aria-hidden="true" class="ico">🦴</div>
-<div class="fig">≈21%</div>
-<h3>menos riesgo de fractura de cadera</h3>
-<p>Una mayor adherencia a la dieta mediterránea se asoció con más densidad ósea y con menos fracturas de cadera.</p>
-<span class="tag">Metaanálisis de estudios observacionales</span>
+<article class="science-card">
+<div class="science-stat"><strong>Calidad</strong></div>
+<h3>El patrón completo importa</h3>
+<p>La evidencia nutricional no depende de un ingrediente aislado: importa el conjunto de alimentos, su frecuencia y el patrón dietético mantenido.</p>
+<span class="science-type">EVIDENCIA NUTRICIONAL</span>
+<a href="https://pubmed.ncbi.nlm.nih.gov/28638994/" rel="noopener" target="_blank">Ver estudio ↗</a>
 </article>
 </div>
-<p class="science-note">Son resultados de investigaciones sobre patrones de alimentación, no del recetario de StudyOS ni de un tratamiento. Los estudios observacionales muestran asociaciones, no prueban causa y efecto, y los resultados varían de una persona a otra. Este contenido es informativo y no sustituye el consejo de tu médica.</p>
-<details class="sources">
-<summary>Ver las fuentes</summary>
-<ul>
-<li>Inflamación: Keshani et al., Nutrition Reviews (2025). <a href="https://pubmed.ncbi.nlm.nih.gov/41211687/" rel="noopener" target="_blank">Ver estudio</a></li>
-<li>Depresión: Shafiei et al., Nutrition Reviews (2023), riesgo relativo 0,81. <a href="https://academic.oup.com/nutritionreviews/article/81/7/889/7079098" rel="noopener" target="_blank">Ver estudio</a></li>
-<li>Corazón: ensayo PREDIMED, resumen de Harvard T.H. Chan. <a href="https://nutritionsource.hsph.harvard.edu/2018/06/22/predimed-retraction-republication/" rel="noopener" target="_blank">Ver resumen</a></li>
-<li>Sofocos: Herber-Gast y Mishra, American Journal of Clinical Nutrition (2013). <a href="https://ajcn.nutrition.org/article/S0002-9165(23)05518-1/fulltext" rel="noopener" target="_blank">Ver estudio</a></li>
-<li>Huesos: Malmir et al., European Journal of Nutrition (2018). <a href="https://pubmed.ncbi.nlm.nih.gov/28638994/" rel="noopener" target="_blank">Ver estudio</a></li>
-</ul>
-</details>
-</div>
+<p class="science-note">Estos datos describen resultados de investigación a nivel de patrones dietéticos y poblaciones estudiadas. No significan que una receta concreta produzca esos efectos ni garantizan resultados individuales.</p>
 </section></section>
 <section class="view" id="explore">
 <div class="eyebrow">Explorar</div><h1>Tus 10 recetas</h1><p class="lead">Busca por nombre o ingrediente. En StudyOS+ tendrás acceso a las 500.</p>
@@ -544,7 +566,26 @@ body{
 <div class="lockFeatures"><div class="lockFeature">🔒 6 menús semanales</div><div class="lockFeature">🔒 6 listas de la compra</div><div class="lockFeature">🔒 Batch cooking</div><div class="lockFeature">🔒 Sustituciones</div></div>
 <a class="btn btnYellow" data-track-action="plus_checkout" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ · 5 €</a>
 </div>
-</section>
+<section class="personal-menu-promo">
+<div class="pmp-copy">
+<span class="pmp-kicker">EN STUDYOS+</span>
+<h2>Tu semana no tiene por qué parecerse a la de nadie.</h2>
+<p>Con <strong>Crea mi semana</strong>, StudyOS+ puede construir una semana de 21 comidas a partir de tus preferencias y después dejarte cambiar platos concretos sin empezar de cero.</p>
+<div class="pmp-points">
+<span>7 días</span><span>21 comidas</span><span>Cambia recetas</span><span>Lista de la compra</span>
+</div>
+<button class="pmp-button" data-go="plus" type="button">Ver Crea mi semana en StudyOS+ →</button>
+</div>
+<div aria-hidden="true" class="pmp-week">
+<div class="pmp-week-top"><b>Tu semana</b><span>Personalizada</span></div>
+<div class="pmp-day"><b>LUN</b><i></i><i></i><i></i></div>
+<div class="pmp-day"><b>MAR</b><i></i><i></i><i></i></div>
+<div class="pmp-day"><b>MIÉ</b><i></i><i></i><i></i></div>
+<div class="pmp-day"><b>JUE</b><i></i><i></i><i></i></div>
+<div class="pmp-day"><b>VIE</b><i></i><i></i><i></i></div>
+<div class="pmp-change">↻ Cambiar solo esta receta</div>
+</div>
+</section></section>
 <section class="view" id="plus"><div class="eyebrow">STUDYOS+</div><h1>Todo StudyOS, desbloqueado.</h1><p class="lead">La versión completa: 500 recetas y las herramientas para elegir, organizar y resolver tus comidas.</p><section class="plus-reveal" id="studyos-plus">
 <div class="plus-orbit plus-orbit-a"></div>
 <div class="plus-orbit plus-orbit-b"></div>
