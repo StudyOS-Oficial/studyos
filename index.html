@@ -603,7 +603,7 @@ body{
 </div>
 </div>
 <div class="pmp-price-row">
-<div><strong>5 €<span>· ≈ US$5.70</span></strong><small>Pago único · sin suscripción</small></div>
+<div><strong>5 € · ≈ US$5.70 <span>· ≈ US$5.70</span></strong><small>Pago único · sin suscripción</small></div>
 <button class="pmp-button" data-go="plus" type="button">Ver StudyOS+ →</button>
 </div>
 <p class="currency-note">El precio base es de 5 €. El importe en dólares es orientativo y puede variar según el tipo de cambio. Tu banco o emisor de la tarjeta puede realizar la conversión y aplicar su propio tipo de cambio o comisiones.</p>
@@ -653,7 +653,7 @@ body{
 <div>
 <span class="plus-close-kicker">TODO ESTO ES STUDYOS+</span>
 <h3>Menos tiempo pensando.<br/>Más fácil decidir.</h3>
-<p>Acceso completo por <strong>5 € ($5.70)</strong> en un único pago.</p>
+<p>Acceso completo por <strong>5 € · ≈ US$5.70</strong> en un único pago.</p>
 </div>
 <a class="plus-cta" data-track-action="plus_checkout" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ <span>→</span></a><p class="currency-note">Precio base: 5 €. ≈ US$5.70 es orientativo; la conversión final puede variar según el tipo de cambio y las condiciones de tu banco o tarjeta.</p>
 </div>
@@ -800,40 +800,4 @@ document.addEventListener("click",function(e){var a=e.target.closest&&e.target.c
 <p>StudyOS ofrece contenido informativo y educativo y no sustituye el consejo médico o nutricional individualizado.</p>
 </div>
 </footer>
-<script id="studyos-funnel-hooks">
-(function(){
-  function funnel(name, extra){
-    if (typeof window.studyosFunnel === "function") window.studyosFunnel(name, extra || {});
-  }
-  function custom(name, extra){
-    if (typeof window.studyosGA === "function") window.studyosGA(name, extra || {});
-    if (typeof window.studyosTrackCustom === "function") window.studyosTrackCustom(name, extra || {});
-  }
-  function initStudyOSFunnel(){
-    /* Counts a direct arrival to StudyOS Free only after consent, because tracking.js gates GA/Meta. */
-    funnel("generate_lead", {funnel_version:"direct_free_v1", page_type:"studyos_free"});
-
-    var quiz=document.getElementById("startQuiz");
-    if(quiz) quiz.addEventListener("click", function(){
-      funnel("quiz_start", {funnel_version:"direct_free_v1"});
-    }, {once:true});
-
-    document.addEventListener("click", function(e){
-      var checkout=e.target.closest('a[href*="buy.stripe.com"]');
-      if(checkout){
-        funnel("begin_checkout", {funnel_version:"direct_free_v1", source:"gratis_html"});
-        return;
-      }
-      var plus=e.target.closest('a[href="#studyos-plus"],[data-go="plus"]');
-      if(plus) custom("studyos_plus_interest",{funnel_version:"direct_free_v1"});
-      var explore=e.target.closest('[data-track-action="free_explore"]');
-      if(explore) custom("studyos_free_explore",{funnel_version:"direct_free_v1"});
-      var random=e.target.closest('[data-track-action="free_random_recipe"]');
-      if(random) custom("studyos_free_random_recipe",{funnel_version:"direct_free_v1"});
-    });
-  }
-  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",initStudyOSFunnel);
-  else initStudyOSFunnel();
-})();
-</script>
 </body></html>
