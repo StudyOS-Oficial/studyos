@@ -96,7 +96,6 @@ input::placeholder { color: #9a9b94; opacity: 1; }
 .freeMenuRecipeLink .menuRecipeHint{display:block;margin-top:7px;font-size:.72rem;font-weight:800;color:#3B4A25;-webkit-text-fill-color:#3B4A25}
 .freeMenuRecipeLink:hover,.freeMenuRecipeLink:focus{outline:2px solid rgba(59,74,37,.22);outline-offset:2px}
 </style>
-
 <style id="studyos-premium-polish">
 :root{
   --sx-cream:#F7F2E8; --sx-paper:#FFFCF7; --sx-ink:#20251C;
@@ -421,6 +420,20 @@ body{
 @media(min-width:721px){
   .plus-close h3{max-width:560px}
 }
+</style><style id="home-plus-and-science-styles">
+.home-plus-summary{margin:64px 0 0;padding:clamp(28px,6vw,48px);border-radius:30px;background:#fffaf1;border:1px solid rgba(59,74,37,.13)}
+.home-plus-summary h2{font-family:var(--serif);font-size:clamp(2rem,6vw,3.25rem);line-height:1;letter-spacing:-.045em;color:var(--olive-900);max-width:760px;margin:8px 0 14px}
+.home-plus-lead{max-width:730px;color:var(--muted);line-height:1.6}
+.home-plus-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px}
+.home-plus-list>div{padding:18px;border-radius:18px;background:rgba(59,74,37,.055)}
+.home-plus-list b,.home-plus-list span{display:block}.home-plus-list b{color:var(--olive-900);font-family:var(--serif);font-size:1.08rem}.home-plus-list span{color:var(--muted);font-size:.86rem;line-height:1.45;margin-top:4px}
+.home-plus-link{margin-top:22px;border:0;background:none;padding:0;color:var(--olive-900);font:800 .92rem var(--sans);text-decoration:underline;cursor:pointer}
+.studyos-research{margin:70px 0 0!important;padding:clamp(30px,6vw,54px)!important;border-radius:30px!important;background:#f0eadc!important}
+.studyos-research h2{font-family:var(--serif)!important;font-size:clamp(2rem,6vw,3.25rem)!important;line-height:1!important;letter-spacing:-.045em!important;color:var(--olive-900)!important}
+.studyos-research a{overflow-wrap:anywhere}
+#plus>.plus-reveal{margin-top:28px}
+.plus-close h3{color:#fff!important;opacity:1!important}
+@media(max-width:680px){.home-plus-list{grid-template-columns:1fr}.home-plus-summary,.studyos-research{border-radius:24px!important}}
 </style></head>
 <body>
 <div class="app">
@@ -444,8 +457,95 @@ body{
 <div class="sectionHead"><div><div class="eyebrow">GRATIS</div><h2>Tus recetas</h2></div><span class="small">10 disponibles</span></div>
 <div class="recipes" id="homeRecipes"></div>
 </div>
-<div class="section plus-home-slot">
-<section class="plus-reveal" id="studyos-plus">
+
+
+<section class="home-plus-summary">
+<div class="eyebrow">STUDYOS+</div>
+<h2>Si esto te ayuda con 10 recetas, imagina con 500.</h2>
+<p class="home-plus-lead">StudyOS+ amplía la experiencia gratuita con el catálogo completo y las herramientas pensadas para que elegir y organizar tus comidas requiera menos esfuerzo.</p>
+<div class="home-plus-list">
+<div><b>500 recetas completas</b><span>Más variedad para desayunos, comidas, cenas y snacks.</span></div>
+<div><b>Crea mi semana</b><span>Organiza 7 días y cambia una receta sin rehacerlo todo.</span></div>
+<div><b>¿Qué tengo en la nevera?</b><span>Busca opciones a partir de los ingredientes que ya tienes.</span></div>
+<div><b>StudyOS Rescue</b><span>Encuentra una opción cuando necesitas resolver una comida rápido.</span></div>
+<div><b>Porqué Biológico</b><span>Una explicación divulgativa del papel nutricional de ingredientes concretos.</span></div>
+<div><b>Planificación completa</b><span>Menús, listas de la compra, batch cooking y sustituciones.</span></div>
+</div>
+<button class="home-plus-link" data-go="plus" type="button">Ver todo lo que incluye StudyOS+ →</button>
+</section>
+<section class="section science studyos-research" id="investigacion">
+<div class="wrap">
+<h2>Lo que dice la investigación sobre alimentarte así</h2>
+<p class="lede">Estos son resultados de estudios sobre patrones de alimentación como el mediterráneo, que comparte con el recetario ingredientes clave: verduras, legumbres, pescado, frutos secos y aceite de oliva virgen extra.</p>
+<div class="sci-grid">
+<article class="sci">
+<div aria-hidden="true" class="ico">🔥</div>
+<div class="fig">Menos</div>
+<h3>marcadores de inflamación</h3>
+<p>En ensayos aleatorizados, la dieta mediterránea redujo marcadores como la proteína C reactiva ultrasensible y la interleucina-6 frente a otras dietas.</p>
+<span class="tag">Metaanálisis de ensayos aleatorizados</span>
+</article>
+<article class="sci">
+<div aria-hidden="true" class="ico">🧠</div>
+<div class="fig">≈20%</div>
+<h3>menos riesgo de depresión</h3>
+<p>Quienes seguían más de cerca la dieta mediterránea tuvieron alrededor de un 19% menos de riesgo de depresión en estudios de seguimiento.</p>
+<span class="tag">Metaanálisis de estudios observacionales</span>
+</article>
+<article class="sci">
+<div aria-hidden="true" class="ico">❤️</div>
+<div class="fig">≈30%</div>
+<h3>menos eventos cardiovasculares mayores</h3>
+<p>En el ensayo PREDIMED, una dieta mediterránea con aceite de oliva virgen extra o frutos secos redujo cerca de un 30% los infartos, ictus y muertes cardiovasculares en personas con alto riesgo.</p>
+<span class="tag">Ensayo aleatorizado</span>
+</article>
+<article class="sci">
+<div aria-hidden="true" class="ico">🌙</div>
+<div class="fig">≈20%</div>
+<h3>menos probabilidad de sofocos y sudores nocturnos</h3>
+<p>En más de 6.000 mujeres australianas seguidas durante 9 años, comer al estilo mediterráneo se asoció con menos sofocos y sudores nocturnos.</p>
+<span class="tag">Estudio observacional</span>
+</article>
+<article class="sci">
+<div aria-hidden="true" class="ico">🦴</div>
+<div class="fig">≈21%</div>
+<h3>menos riesgo de fractura de cadera</h3>
+<p>Una mayor adherencia a la dieta mediterránea se asoció con más densidad ósea y con menos fracturas de cadera.</p>
+<span class="tag">Metaanálisis de estudios observacionales</span>
+</article>
+</div>
+<p class="science-note">Son resultados de investigaciones sobre patrones de alimentación, no del recetario de StudyOS ni de un tratamiento. Los estudios observacionales muestran asociaciones, no prueban causa y efecto, y los resultados varían de una persona a otra. Este contenido es informativo y no sustituye el consejo de tu médica.</p>
+<details class="sources">
+<summary>Ver las fuentes</summary>
+<ul>
+<li>Inflamación: Keshani et al., Nutrition Reviews (2025). <a href="https://pubmed.ncbi.nlm.nih.gov/41211687/" rel="noopener" target="_blank">Ver estudio</a></li>
+<li>Depresión: Shafiei et al., Nutrition Reviews (2023), riesgo relativo 0,81. <a href="https://academic.oup.com/nutritionreviews/article/81/7/889/7079098" rel="noopener" target="_blank">Ver estudio</a></li>
+<li>Corazón: ensayo PREDIMED, resumen de Harvard T.H. Chan. <a href="https://nutritionsource.hsph.harvard.edu/2018/06/22/predimed-retraction-republication/" rel="noopener" target="_blank">Ver resumen</a></li>
+<li>Sofocos: Herber-Gast y Mishra, American Journal of Clinical Nutrition (2013). <a href="https://ajcn.nutrition.org/article/S0002-9165(23)05518-1/fulltext" rel="noopener" target="_blank">Ver estudio</a></li>
+<li>Huesos: Malmir et al., European Journal of Nutrition (2018). <a href="https://pubmed.ncbi.nlm.nih.gov/28638994/" rel="noopener" target="_blank">Ver estudio</a></li>
+</ul>
+</details>
+</div>
+</section></section>
+<section class="view" id="explore">
+<div class="eyebrow">Explorar</div><h1>Tus 10 recetas</h1><p class="lead">Busca por nombre o ingrediente. En StudyOS+ tendrás acceso a las 500.</p>
+<input class="search" id="search" placeholder="Buscar receta o ingrediente…"/>
+<div class="chips"><button class="chip active" data-filter="all">Todas</button><button class="chip" data-filter="D">Desayuno</button><button class="chip" data-filter="C">Comida</button><button class="chip" data-filter="N">Cena</button><button class="chip" data-filter="S">Snack</button><button class="chip" id="advancedLock">🔒 Filtros avanzados</button></div>
+<div class="recipes" id="exploreRecipes" style="margin-top:14px"></div>
+<div class="unlock"><span class="eyebrow">MÁS VARIEDAD</span><strong>De 10 a 500 recetas</strong><p>Cuando necesites más opciones, StudyOS+ amplía el buscador y el catálogo completo.</p><a class="btn btnYellow wide" data-go="plus" href="#" style="display:block;text-align:center;text-decoration:none">Descubrir StudyOS+ →</a></div>
+</section>
+<section class="view" id="plan">
+<div class="planHero"><div class="eyebrow">PLAN SEMANAL · GRATIS</div><h1>Tu menú de 7 días</h1><p class="lead">El menú antiinflamatorio incluido en la versión gratuita. Elige un día para ver desayuno, comida y cena.</p></div>
+<div class="dayChooser" id="freePlanDays"></div>
+<div class="mealGrid" id="freePlanMeals"></div>
+<div class="lockedPlan">
+<h2>Amplía tu planificación en StudyOS+</h2>
+<p>Además del menú, desbloqueas las listas de la compra, la guía de batch cooking y las sustituciones.</p>
+<div class="lockFeatures"><div class="lockFeature">🔒 6 menús semanales</div><div class="lockFeature">🔒 6 listas de la compra</div><div class="lockFeature">🔒 Batch cooking</div><div class="lockFeature">🔒 Sustituciones</div></div>
+<a class="btn btnYellow" data-track-action="plus_checkout" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ · 5 €</a>
+</div>
+</section>
+<section class="view" id="plus"><div class="eyebrow">STUDYOS+</div><h1>Todo StudyOS, desbloqueado.</h1><p class="lead">La versión completa: 500 recetas y las herramientas para elegir, organizar y resolver tus comidas.</p><section class="plus-reveal" id="studyos-plus">
 <div class="plus-orbit plus-orbit-a"></div>
 <div class="plus-orbit plus-orbit-b"></div>
 <div class="plus-reveal-inner">
@@ -485,40 +585,7 @@ body{
 <a class="plus-cta" data-track-action="plus_checkout" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ <span>→</span></a>
 </div>
 </div>
-</section>
-</div>
-</section>
-<section class="view" id="explore">
-<div class="eyebrow">Explorar</div><h1>Tus 10 recetas</h1><p class="lead">Busca por nombre o ingrediente. En StudyOS+ tendrás acceso a las 500.</p>
-<input class="search" id="search" placeholder="Buscar receta o ingrediente…"/>
-<div class="chips"><button class="chip active" data-filter="all">Todas</button><button class="chip" data-filter="D">Desayuno</button><button class="chip" data-filter="C">Comida</button><button class="chip" data-filter="N">Cena</button><button class="chip" data-filter="S">Snack</button><button class="chip" id="advancedLock">🔒 Filtros avanzados</button></div>
-<div class="recipes" id="exploreRecipes" style="margin-top:14px"></div>
-<div class="unlock"><span class="eyebrow">MÁS VARIEDAD</span><strong>De 10 a 500 recetas</strong><p>Cuando necesites más opciones, StudyOS+ amplía el buscador y el catálogo completo.</p><a class="btn btnYellow wide" data-go="plus" href="#" style="display:block;text-align:center;text-decoration:none">Descubrir StudyOS+ →</a></div>
-</section>
-<section class="view" id="plan">
-<div class="planHero"><div class="eyebrow">PLAN SEMANAL · GRATIS</div><h1>Tu menú de 7 días</h1><p class="lead">El menú antiinflamatorio incluido en la versión gratuita. Elige un día para ver desayuno, comida y cena.</p></div>
-<div class="dayChooser" id="freePlanDays"></div>
-<div class="mealGrid" id="freePlanMeals"></div>
-<div class="lockedPlan">
-<h2>Amplía tu planificación en StudyOS+</h2>
-<p>Además del menú, desbloqueas las listas de la compra, la guía de batch cooking y las sustituciones.</p>
-<div class="lockFeatures"><div class="lockFeature">🔒 6 menús semanales</div><div class="lockFeature">🔒 6 listas de la compra</div><div class="lockFeature">🔒 Batch cooking</div><div class="lockFeature">🔒 Sustituciones</div></div>
-<a class="btn btnYellow" data-track-action="plus_checkout" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ · 5 €</a>
-</div>
-</section>
-<section class="view" id="plus">
-<div class="eyebrow">STUDYOS+</div>
-<h1>Todo StudyOS, desbloqueado.</h1>
-<p class="lead">Si la versión gratuita te encaja, aquí tienes el acceso completo.</p>
-<div class="unlock">
-<span class="eyebrow">ACCESO COMPLETO</span>
-<strong>500 recetas y todas las herramientas</strong>
-<p>Recomendador ampliado, planificación, menús, listas de la compra, batch cooking, sustituciones y las funciones completas de StudyOS+.</p>
-<div class="price">5 € <span class="small">≈ US$5.70 · pago único</span></div>
-<a class="btn btnYellow wide" data-track-action="plus_checkout" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" style="display:block;text-align:center;text-decoration:none">Desbloquear StudyOS+ →</a>
-</div>
-<p class="small" style="margin-top:14px">Contenido educativo. StudyOS no sustituye el consejo médico o nutricional individualizado.</p>
-</section>
+</section></section>
 <section class="view" id="quiz">
 <div class="eyebrow">Recomendador gratis</div><h1>Vamos a elegir</h1><div class="progress"><i id="bar"></i></div>
 <div class="quiz">
@@ -528,7 +595,6 @@ body{
 <div class="q" data-q="4"><h3>4. ¿Quieres evitar algo?</h3><div class="opts"><button class="opt" data-key="avoid" data-v="none">Nada en especial</button><button class="opt" data-key="avoid" data-v="gluten">Gluten</button><button class="opt" data-key="avoid" data-v="lacteos">Lácteos</button><button class="opt" data-key="avoid" data-v="huevo">Huevo</button><button class="opt" data-key="avoid" data-v="frutos">Frutos secos</button></div></div>
 </div>
 </section>
-
 </main>
 <nav aria-label="Navegación principal" class="bottom" style="grid-template-columns:repeat(4,1fr)">
 <button class="nav active" data-go="home"><svg class="navIcon" viewbox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8"></path><path d="M5.5 9.5V21h13V9.5"></path><path d="M9.5 21v-6h5v6"></path></svg><span class="navLabel">Hoy</span></button>
