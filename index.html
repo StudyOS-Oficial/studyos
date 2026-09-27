@@ -467,6 +467,25 @@ body{
 .pmp-day{display:grid;grid-template-columns:34px repeat(3,1fr);gap:6px;align-items:center;padding:7px 0;border-top:1px solid rgba(59,74,37,.10)}.pmp-day b{font-size:.55rem}.pmp-day i{height:28px;border-radius:8px;background:#e8e1d2}.pmp-day i:nth-of-type(2){background:#d9c7a3}.pmp-day i:nth-of-type(3){background:#d8dfc9}
 .pmp-change{margin-top:12px;padding:9px 10px;border-radius:11px;background:#fff;color:#65704f;font-size:.65rem;font-weight:800;text-align:center}
 @media(max-width:700px){.science-grid{grid-template-columns:1fr}.science-card-wide{grid-column:auto}.science-card{min-height:auto}.science-premium{padding:28px 18px;border-radius:25px}.personal-menu-promo{grid-template-columns:1fr;padding:26px 18px;border-radius:25px}.pmp-week{max-width:390px;margin:6px auto 0;width:100%}}
+</style><style id="plan-merged-and-currency">
+.personal-menu-promo{grid-template-columns:1.15fr .85fr!important}
+.pmp-intro{max-width:650px!important}
+.pmp-feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:22px 0}
+.pmp-feature{display:flex;gap:10px;align-items:flex-start;padding:13px;border-radius:16px;background:rgba(255,255,255,.075);border:1px solid rgba(255,255,255,.10)}
+.pmp-feature>span{flex:0 0 31px;height:31px;border-radius:9px;display:grid;place-items:center;background:rgba(242,215,115,.14);color:#f2d773;font-weight:900}
+.pmp-feature b,.pmp-feature small{display:block}.pmp-feature b{font-size:.86rem;color:#fff}.pmp-feature small{font-size:.68rem;line-height:1.4;color:#dfe5d7;margin-top:3px}
+.pmp-feature-star{grid-column:1/-1;background:rgba(242,215,115,.12);border-color:rgba(242,215,115,.25)}
+.pmp-price-row{display:flex;justify-content:space-between;gap:14px;align-items:center;margin-top:20px;padding-top:19px;border-top:1px solid rgba(255,255,255,.14)}
+.pmp-price-row>div>strong{display:block;font-family:var(--serif);font-size:1.45rem;color:#fff}.pmp-price-row>div>strong span{font-size:.8rem;color:#f2d773}.pmp-price-row>div>small{display:block;color:#dfe5d7;font-size:.68rem;margin-top:3px}
+.currency-note{font-size:.65rem!important;line-height:1.45!important;opacity:.78;margin:10px 0 0!important;max-width:680px}
+.personal-menu-promo .currency-note{color:#dfe5d7}
+@media(max-width:700px){
+ .personal-menu-promo{grid-template-columns:1fr!important}
+ .pmp-feature-grid{grid-template-columns:1fr}
+ .pmp-feature-star{grid-column:auto}
+ .pmp-price-row{align-items:flex-start;flex-direction:column}
+ .pmp-price-row .pmp-button{width:100%}
+}
 </style></head>
 <body>
 <div class="app">
@@ -560,21 +579,34 @@ body{
 <div class="planHero"><div class="eyebrow">PLAN SEMANAL · GRATIS</div><h1>Tu menú de 7 días</h1><p class="lead">El menú antiinflamatorio incluido en la versión gratuita. Elige un día para ver desayuno, comida y cena.</p></div>
 <div class="dayChooser" id="freePlanDays"></div>
 <div class="mealGrid" id="freePlanMeals"></div>
-<div class="lockedPlan">
-<h2>Amplía tu planificación en StudyOS+</h2>
-<p>Además del menú, desbloqueas las listas de la compra, la guía de batch cooking y las sustituciones.</p>
-<div class="lockFeatures"><div class="lockFeature">🔒 6 menús semanales</div><div class="lockFeature">🔒 6 listas de la compra</div><div class="lockFeature">🔒 Batch cooking</div><div class="lockFeature">🔒 Sustituciones</div></div>
-<a class="btn btnYellow" data-track-action="plus_checkout" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ · 5 €</a>
-</div>
+
 <section class="personal-menu-promo">
 <div class="pmp-copy">
-<span class="pmp-kicker">EN STUDYOS+</span>
-<h2>Tu semana no tiene por qué parecerse a la de nadie.</h2>
-<p>Con <strong>Crea mi semana</strong>, StudyOS+ puede construir una semana de 21 comidas a partir de tus preferencias y después dejarte cambiar platos concretos sin empezar de cero.</p>
-<div class="pmp-points">
-<span>7 días</span><span>21 comidas</span><span>Cambia recetas</span><span>Lista de la compra</span>
+<span class="pmp-kicker">PLANIFICACIÓN EN STUDYOS+</span>
+<h2>Tu semana, a tu manera.</h2>
+<p class="pmp-intro">Puedes partir de nuestros <strong>6 menús semanales</strong> o crear una semana personalizada de <strong>21 comidas</strong> con <strong>Crea mi semana</strong>. Y no acaba ahí: StudyOS+ reúne las herramientas para convertir ese menú en algo realmente útil.</p>
+<div class="pmp-feature-grid">
+<div class="pmp-feature pmp-feature-star">
+<span>✦</span><div><b>Crea mi semana</b><small>7 días · 21 comidas · cambia platos concretos sin empezar de cero.</small></div>
 </div>
-<button class="pmp-button" data-go="plus" type="button">Ver Crea mi semana en StudyOS+ →</button>
+<div class="pmp-feature">
+<span>▦</span><div><b>6 menús semanales</b><small>Semanas ya preparadas para cuando prefieres no construirla tú.</small></div>
+</div>
+<div class="pmp-feature">
+<span>✓</span><div><b>6 listas de la compra</b><small>Todo lo necesario para organizar la compra de cada menú.</small></div>
+</div>
+<div class="pmp-feature">
+<span>◴</span><div><b>Batch cooking</b><small>Adelanta preparaciones y simplifica varios días de una vez.</small></div>
+</div>
+<div class="pmp-feature">
+<span>⇄</span><div><b>Sustituciones</b><small>Alternativas para adaptar ingredientes sin perder la idea del plato.</small></div>
+</div>
+</div>
+<div class="pmp-price-row">
+<div><strong>5 € · ≈ US$5.70 <span>· ≈ US$5.70</span></strong><small>Pago único · sin suscripción</small></div>
+<button class="pmp-button" data-go="plus" type="button">Ver StudyOS+ →</button>
+</div>
+<p class="currency-note">El precio base es de 5 €. El importe en dólares es orientativo y puede variar según el tipo de cambio. Tu banco o emisor de la tarjeta puede realizar la conversión y aplicar su propio tipo de cambio o comisiones.</p>
 </div>
 <div aria-hidden="true" class="pmp-week">
 <div class="pmp-week-top"><b>Tu semana</b><span>Personalizada</span></div>
@@ -621,9 +653,9 @@ body{
 <div>
 <span class="plus-close-kicker">TODO ESTO ES STUDYOS+</span>
 <h3>Menos tiempo pensando.<br/>Más fácil decidir.</h3>
-<p>Acceso completo por <strong>5 €</strong> en un único pago.</p>
+<p>Acceso completo por <strong>5 € · ≈ US$5.70</strong> en un único pago.</p>
 </div>
-<a class="plus-cta" data-track-action="plus_checkout" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ <span>→</span></a>
+<a class="plus-cta" data-track-action="plus_checkout" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ <span>→</span></a><p class="currency-note">Precio base: 5 €. ≈ US$5.70 es orientativo; la conversión final puede variar según el tipo de cambio y las condiciones de tu banco o tarjeta.</p>
 </div>
 </div>
 </section></section>
@@ -690,7 +722,7 @@ function recommend(){
 window.studyosFreeOpenRecipe=function(id){openRecipe(id,false)};
 function openRecipe(id,rec){
  const r=R.find(x=>x.id===id); if(!r)return;
- $('#detail').innerHTML=`<div class="eyebrow">${rec?'UNA OPCIÓN SEGÚN TUS RESPUESTAS':'RECETA GRATIS'}</div><h2>${r.t}</h2><div class="facts"><span class="fact">${r.ph}</span><span class="fact">${r.m} min</span><span class="fact">${r.k} kcal aprox.</span><span class="fact">${r.d}</span></div><h3>Ingredientes</h3><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Preparación</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol><h3>El porqué biológico</h3><div class="bio">${r.bio}</div><div class="unlock cv3-result-offer"><span class="eyebrow">HAS PROBADO STUDYOS</span><strong>Hazlo con 500 recetas y toda tu semana.</strong><p>StudyOS+ amplía el recomendador y añade 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><div class="cv3-benefits"><span>✓ 500 recetas</span><span>✓ 6 menús semanales</span><span>✓ 6 listas de la compra</span><span>✓ Batch cooking + sustituciones</span></div><a class="btn btnYellow wide" data-cv3="recommendation" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track-action="plus_checkout">Desbloquear StudyOS+ · 5 €</a><p class="cv3-micro">Pago único · Sin suscripción.</p></div>`;
+ $('#detail').innerHTML=`<div class="eyebrow">${rec?'UNA OPCIÓN SEGÚN TUS RESPUESTAS':'RECETA GRATIS'}</div><h2>${r.t}</h2><div class="facts"><span class="fact">${r.ph}</span><span class="fact">${r.m} min</span><span class="fact">${r.k} kcal aprox.</span><span class="fact">${r.d}</span></div><h3>Ingredientes</h3><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Preparación</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol><h3>El porqué biológico</h3><div class="bio">${r.bio}</div><div class="unlock cv3-result-offer"><span class="eyebrow">HAS PROBADO STUDYOS</span><strong>Hazlo con 500 recetas y toda tu semana.</strong><p>StudyOS+ amplía el recomendador y añade 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><div class="cv3-benefits"><span>✓ 500 recetas</span><span>✓ 6 menús semanales</span><span>✓ 6 listas de la compra</span><span>✓ Batch cooking + sustituciones</span></div><a class="btn btnYellow wide" data-cv3="recommendation" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track-action="plus_checkout">Desbloquear StudyOS+ · 5 € · ≈ US$5.70</a><p class="cv3-micro">Pago único · Sin suscripción.</p></div>`;
  $('#modal').classList.add('open');
 }
 $('#close').onclick=()=>$('#modal').classList.remove('open');
