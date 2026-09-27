@@ -102,39 +102,428 @@ input::placeholder { color: #9a9b94; opacity: 1; }
 .freeMenuRecipeLink{width:100%;text-align:left;font:inherit;color:inherit;-webkit-text-fill-color:currentColor;cursor:pointer}
 .freeMenuRecipeLink .menuRecipeHint{display:block;margin-top:7px;font-size:.72rem;font-weight:800;color:#3B4A25;-webkit-text-fill-color:#3B4A25}
 .freeMenuRecipeLink:hover,.freeMenuRecipeLink:focus{outline:2px solid rgba(59,74,37,.22);outline-offset:2px}
-</style></head>
+</style>
+<style id="hybrid-info-styles">
+.hybrid-info{max-width:1100px;margin:28px auto 110px;padding:0 18px;color:var(--ink)}
+.hybrid-intro{border-top:1px solid var(--line);padding-top:34px;margin-top:18px}
+.hybrid-intro .eyebrow{margin-bottom:8px}
+.hybrid-intro h2,.hybrid-info h2{font-family:var(--serif);color:var(--olive-900);font-size:clamp(1.7rem,5vw,2.6rem);line-height:1.05;margin:0 0 12px}
+.hybrid-intro p{max-width:720px;color:var(--muted);font-size:1.02rem;line-height:1.6}
+.hybrid-nav{display:flex;gap:8px;overflow:auto;padding:16px 0 4px;scrollbar-width:none}
+.hybrid-nav a{white-space:nowrap;text-decoration:none;color:var(--olive-900);background:var(--paper);border:1px solid var(--line);padding:10px 14px;border-radius:999px;font-weight:700;font-size:.9rem}
+.hybrid-section{padding:42px 0;border-top:1px solid var(--line)}
+.hybrid-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
+.hybrid-card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:18px}
+.hybrid-card h3{font-family:var(--serif);font-size:1.15rem;color:var(--olive-900);margin:0 0 7px}
+.hybrid-card p{margin:0;color:var(--muted);line-height:1.5}
+.hybrid-science{background:#f3efe4;border-radius:24px;padding:22px;margin-top:18px}
+.hybrid-science p{color:var(--muted);line-height:1.6}
+.hybrid-phases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+.hybrid-phase{border-left:4px solid var(--salmon);background:var(--paper);padding:15px;border-radius:0 16px 16px 0}
+.hybrid-phase b{display:block;color:var(--olive-900);margin-bottom:4px}
+.hybrid-phase span{color:var(--muted);font-size:.92rem;line-height:1.4}
+.hybrid-faq details{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:9px 0}
+.hybrid-faq summary{font-weight:800;color:var(--olive-900);cursor:pointer}
+.hybrid-faq p{color:var(--muted);line-height:1.55}
+.hybrid-final{background:var(--olive-900);color:white;border-radius:26px;padding:26px;margin-top:12px}
+.hybrid-final h2{color:white}
+.hybrid-final p{color:#e8ecdf;line-height:1.55}
+.hybrid-final .btn{margin-top:10px}
+@media(max-width:650px){.hybrid-grid,.hybrid-phases{grid-template-columns:1fr}.hybrid-info{padding:0 14px}.hybrid-section{padding:34px 0}}
+</style>
+
+
+<style id="studyos-premium-polish">
+:root{
+  --sx-cream:#F7F2E8; --sx-paper:#FFFCF7; --sx-ink:#20251C;
+  --sx-olive:#3B4A25; --sx-olive2:#66734B; --sx-salmon:#C9785F;
+  --sx-yellow:#F0C95B; --sx-line:rgba(59,74,37,.14);
+}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(circle at 12% 5%,rgba(201,120,95,.10),transparent 26rem),
+    radial-gradient(circle at 92% 18%,rgba(240,201,91,.12),transparent 24rem),
+    var(--sx-cream);
+}
+.top{
+  position:sticky;top:0;z-index:40;
+  background:rgba(247,242,232,.88)!important;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(59,74,37,.10)!important;
+}
+.topin{min-height:66px!important}
+.brand{letter-spacing:-.045em}
+.freepill{
+  background:rgba(255,255,255,.65)!important;
+  border:1px solid rgba(59,74,37,.13)!important;
+  box-shadow:0 5px 18px rgba(42,48,31,.06);
+}
+.view{animation:sxIn .32s ease both}
+@keyframes sxIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+#home{padding-top:clamp(26px,6vw,54px)}
+#home>h1{
+  max-width:760px;font-size:clamp(2.55rem,9vw,5rem)!important;
+  line-height:.91!important;letter-spacing:-.055em!important;
+  text-wrap:balance;margin-bottom:14px!important;
+}
+#home>.lead{max-width:610px;font-size:clamp(1rem,2.5vw,1.18rem);line-height:1.55}
+.heroCard{
+  position:relative;overflow:hidden;
+  border-radius:30px!important;
+  padding:clamp(24px,5vw,38px)!important;
+  box-shadow:0 24px 55px rgba(42,54,28,.18);
+  border:1px solid rgba(255,255,255,.10)!important;
+}
+.heroCard:after{
+  content:"";position:absolute;width:190px;height:190px;border-radius:50%;
+  right:-80px;top:-80px;background:rgba(240,201,91,.14);pointer-events:none
+}
+.heroCard h2{font-size:clamp(1.65rem,5vw,2.35rem)!important;letter-spacing:-.035em}
+.heroCard p{max-width:570px;line-height:1.55}
+.btn{
+  min-height:50px;border-radius:999px!important;font-weight:800!important;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease
+}
+.btn:active{transform:scale(.985)}
+.btnYellow{box-shadow:0 8px 20px rgba(181,139,30,.18)}
+.actions{gap:10px!important}
+.actions .btn{background:rgba(255,252,247,.72)!important;border-color:rgba(59,74,37,.13)!important}
+.section{margin-top:clamp(34px,7vw,62px)!important}
+.sectionHead h2{letter-spacing:-.035em}
+.recipeCard,.card{
+  border-radius:22px!important;border-color:rgba(59,74,37,.12)!important;
+  box-shadow:0 8px 28px rgba(48,54,35,.055);
+}
+.recipeCard{overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}
+.recipeCard:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(48,54,35,.09)}
+.unlock{
+  border-radius:28px!important;padding:clamp(22px,5vw,34px)!important;
+  border:1px solid rgba(59,74,37,.12)!important;
+  background:linear-gradient(145deg,#fffaf1,#f1eadc)!important;
+}
+.unlock strong{font-family:var(--serif);font-size:clamp(1.45rem,4vw,2rem);letter-spacing:-.03em}
+.unlock .price{margin:18px 0 14px}
+.bottomNav{
+  background:rgba(255,252,247,.92)!important;
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-top:1px solid rgba(59,74,37,.10)!important;
+  box-shadow:0 -10px 32px rgba(48,54,35,.06);
+}
+
+/* Editorial transition: product -> explanation */
+.hybrid-info{max-width:1080px!important;margin-top:70px!important}
+.hybrid-intro{
+  position:relative;overflow:hidden;
+  background:var(--sx-olive);color:white;
+  border:0!important;border-radius:34px;padding:clamp(28px,7vw,58px)!important;
+  box-shadow:0 28px 65px rgba(42,54,28,.16)
+}
+.hybrid-intro:after{
+  content:"StudyOS";position:absolute;right:-18px;bottom:-30px;
+  font-family:var(--serif);font-size:clamp(5rem,17vw,11rem);font-weight:700;
+  color:rgba(255,255,255,.045);letter-spacing:-.07em;pointer-events:none
+}
+.hybrid-intro .eyebrow{color:#F4D87B!important}
+.hybrid-intro h2{color:white!important;font-size:clamp(2.15rem,7vw,4rem)!important;max-width:700px}
+.hybrid-intro p{color:#E8ECDD!important;position:relative;z-index:1}
+.hybrid-nav{position:relative;z-index:1;margin-top:18px}
+.hybrid-nav a{
+  color:white!important;background:rgba(255,255,255,.08)!important;
+  border-color:rgba(255,255,255,.15)!important;
+}
+.hybrid-section{
+  padding:clamp(50px,9vw,88px) 0!important;border-top:0!important;
+}
+.hybrid-section+.hybrid-section{border-top:1px solid var(--sx-line)!important}
+.hybrid-section>h2{
+  max-width:790px;font-size:clamp(2rem,6vw,3.65rem)!important;
+  letter-spacing:-.05em!important;line-height:1!important;text-wrap:balance
+}
+.hybrid-section>.lead{max-width:720px;line-height:1.65!important}
+.hybrid-grid{gap:14px!important;margin-top:28px!important}
+.hybrid-card{
+  position:relative;min-height:175px;
+  border-radius:24px!important;padding:24px!important;
+  box-shadow:0 10px 30px rgba(48,54,35,.045);
+  transition:transform .2s ease,box-shadow .2s ease
+}
+.hybrid-card:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(48,54,35,.075)}
+.hybrid-card h3{font-size:1.28rem!important;letter-spacing:-.025em}
+.hybrid-card p{line-height:1.6!important}
+#porque-biologico{
+  position:relative;
+}
+#porque-biologico:before{
+  content:"BIO";display:inline-grid;place-items:center;width:58px;height:58px;
+  border-radius:18px;background:#E5D49A;color:var(--sx-olive);
+  font:800 .78rem/1 var(--sans);letter-spacing:.08em;margin-bottom:18px
+}
+.hybrid-science{
+  position:relative;border:1px solid rgba(59,74,37,.10);
+  background:rgba(255,252,247,.68)!important;
+  border-radius:28px!important;padding:clamp(22px,5vw,34px)!important;
+  box-shadow:0 12px 36px rgba(48,54,35,.05)
+}
+.hybrid-science p{font-size:1.01rem}
+.hybrid-phases{gap:12px!important;margin-top:26px!important}
+.hybrid-phase{
+  min-height:116px;border-left:0!important;border-radius:22px!important;
+  padding:20px!important;background:rgba(255,252,247,.76)!important;
+  border:1px solid rgba(59,74,37,.11)!important;
+  box-shadow:0 8px 24px rgba(48,54,35,.04)
+}
+.hybrid-phase:before{
+  content:"";display:block;width:28px;height:4px;border-radius:999px;
+  background:var(--sx-salmon);margin-bottom:14px
+}
+.hybrid-phase b{font-family:var(--serif);font-size:1.16rem}
+.hybrid-faq details{
+  border-radius:20px!important;padding:17px 19px!important;
+  background:rgba(255,252,247,.72)!important;
+  box-shadow:0 6px 20px rgba(48,54,35,.035)
+}
+.hybrid-faq summary{font-size:1rem}
+.hybrid-final{
+  position:relative;overflow:hidden;
+  border-radius:34px!important;padding:clamp(28px,7vw,56px)!important;
+  background:linear-gradient(145deg,#34431f,#4a5b31)!important;
+  box-shadow:0 26px 60px rgba(42,54,28,.18)
+}
+.hybrid-final:after{
+  content:"500";position:absolute;right:-15px;top:-35px;
+  font-family:var(--serif);font-size:clamp(8rem,28vw,15rem);font-weight:800;
+  line-height:1;color:rgba(255,255,255,.045);pointer-events:none
+}
+.hybrid-final h2{max-width:690px;font-size:clamp(2rem,6vw,3.5rem)!important;letter-spacing:-.05em!important;line-height:1!important}
+.hybrid-final p{max-width:650px;position:relative;z-index:1}
+.hybrid-final .btn{position:relative;z-index:1;display:inline-flex!important;width:auto!important;padding-inline:22px!important;text-decoration:none}
+
+@media(max-width:650px){
+  #home{padding-top:22px}
+  #home>h1{font-size:clamp(2.65rem,14vw,4rem)!important}
+  .heroCard{border-radius:25px!important}
+  .hybrid-info{margin-top:50px!important;padding:0 12px!important}
+  .hybrid-intro{border-radius:27px;padding:28px 22px!important}
+  .hybrid-grid,.hybrid-phases{grid-template-columns:1fr!important}
+  .hybrid-card{min-height:auto}
+  .hybrid-section{padding:48px 4px!important}
+  .hybrid-final{border-radius:27px;padding:30px 22px!important}
+}
+</style>
+
+
+<style id="plus-wow-styles">
+.plus-reveal{
+  position:relative;isolation:isolate;overflow:hidden;
+  margin:20px 0 10px;border-radius:38px;
+  background:
+    radial-gradient(circle at 72% 18%,rgba(240,201,91,.20),transparent 28%),
+    radial-gradient(circle at 12% 62%,rgba(201,120,95,.17),transparent 31%),
+    linear-gradient(145deg,#27351a 0%,#3b4a25 48%,#53613a 100%);
+  color:#fff;box-shadow:0 35px 90px rgba(38,49,24,.25)
+}
+.plus-reveal-inner{position:relative;z-index:2;padding:clamp(34px,7vw,72px)}
+.plus-kicker,.plus-close-kicker{
+  color:#f2d773;font-size:.73rem;font-weight:900;letter-spacing:.14em
+}
+.plus-reveal h2{
+  color:#fff!important;max-width:780px;margin:12px 0 8px!important;
+  font-family:var(--serif);font-size:clamp(2.2rem,7vw,4.6rem)!important;
+  line-height:.96!important;letter-spacing:-.055em!important
+}
+.plus-lead{max-width:650px;color:#e5eadc;font-size:1.08rem;line-height:1.6;margin:12px 0 0}
+.plus-500{
+  display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  margin:24px 0 6px
+}
+.plus-500 span{font-family:var(--serif);font-size:clamp(1.5rem,4vw,2.4rem);font-weight:700}
+.plus-500 strong{
+  font-family:var(--serif);font-size:clamp(5.6rem,20vw,11rem);
+  line-height:.72;letter-spacing:-.085em;color:#f2d773
+}
+.plus-500 em{font-family:var(--serif);font-size:clamp(1.5rem,5vw,3rem);font-style:normal}
+.plus-stage{position:relative;min-height:570px;margin:34px auto 24px;max-width:900px}
+.plus-phone{
+  position:absolute;left:50%;top:20px;transform:translateX(-50%) rotate(-2deg);
+  width:min(290px,62vw);height:535px;padding:10px;border-radius:42px;
+  background:#171b15;border:1px solid rgba(255,255,255,.25);
+  box-shadow:0 34px 70px rgba(0,0,0,.32)
+}
+.plus-phone-top{height:25px;display:grid;place-items:center}
+.plus-phone-top span{width:70px;height:6px;border-radius:999px;background:#343b30}
+.plus-screen{
+  height:calc(100% - 25px);border-radius:31px;padding:24px 18px;
+  background:#f7f2e8;color:#25301d;overflow:hidden
+}
+.mini-brand{font-family:var(--serif);font-size:1.45rem;font-weight:800}
+.mini-brand span{color:#c9785f}
+.mini-label{font-size:.57rem;letter-spacing:.12em;font-weight:900;color:#7d846f;margin-top:28px}
+.mini-title{font-family:var(--serif);font-size:1.65rem;font-weight:700;line-height:1;margin:6px 0 16px}
+.mini-search{background:#fff;border:1px solid rgba(59,74,37,.12);border-radius:999px;padding:11px 12px;color:#858a7b;font-size:.67rem}
+.mini-card{margin-top:18px;padding:17px;border-radius:18px;background:#3b4a25;color:white}
+.mini-card b,.mini-card span{display:block}.mini-card span{font-size:.68rem;color:#dfe5d7;margin-top:5px}
+.mini-row{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+.mini-row i{display:block;height:100px;border-radius:16px;background:linear-gradient(145deg,#e3d5b9,#c9b99d)}
+.float-card{
+  position:absolute;display:flex;align-items:center;gap:11px;max-width:270px;
+  padding:14px 16px;border:1px solid rgba(255,255,255,.17);
+  border-radius:18px;background:rgba(255,255,255,.10);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 18px 42px rgba(0,0,0,.13)
+}
+.float-card b,.float-card small{display:block}.float-card b{font-size:.93rem}.float-card small{color:#dfe5d7;font-size:.72rem;line-height:1.3;margin-top:2px}
+.float-icon{
+  flex:0 0 39px;height:39px;border-radius:12px;display:grid;place-items:center;
+  background:#f2d773;color:#34431f;font-weight:900;font-size:.72rem
+}
+.fc-week{left:2%;top:70px;transform:rotate(-2deg)}
+.fc-fridge{right:0;top:155px;transform:rotate(2deg)}
+.fc-rescue{left:0;top:355px;transform:rotate(1deg)}
+.fc-bio{right:2%;top:415px;transform:rotate(-2deg)}
+.plus-capabilities{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:30px}
+.cap{
+  min-height:180px;padding:24px;border-radius:24px;
+  background:rgba(255,255,255,.085);border:1px solid rgba(255,255,255,.12)
+}
+.cap-big{background:#f2d773;color:#2e391f}
+.cap-num{display:block;font-family:var(--serif);font-size:4rem;line-height:.8;font-weight:800;letter-spacing:-.07em}
+.cap b{display:block;font-family:var(--serif);font-size:1.35rem;line-height:1.05;margin:10px 0 7px}
+.cap p{margin:0;color:#dfe5d7;line-height:1.45;font-size:.9rem}
+.cap-big p{color:#4e583e}.cap-tag{color:#f2d773;font-size:.65rem;font-weight:900;letter-spacing:.12em}
+.plus-close{
+  display:flex;justify-content:space-between;align-items:end;gap:30px;
+  margin-top:46px;padding-top:36px;border-top:1px solid rgba(255,255,255,.16)
+}
+.plus-close h3{
+  font-family:var(--serif);font-size:clamp(2rem,5vw,3.6rem);line-height:.98;
+  letter-spacing:-.05em;margin:9px 0 12px
+}
+.plus-close p{color:#e2e7da;margin:0}.plus-close p strong{color:#fff}
+.plus-cta{
+  flex:0 0 auto;display:inline-flex;align-items:center;gap:22px;
+  text-decoration:none;background:#f2d773;color:#2e391f;
+  padding:17px 20px;border-radius:999px;font-weight:900;
+  box-shadow:0 16px 36px rgba(0,0,0,.17)
+}
+.plus-cta span{font-size:1.35rem}
+.plus-orbit{position:absolute;border:1px solid rgba(255,255,255,.07);border-radius:50%;z-index:0}
+.plus-orbit-a{width:520px;height:520px;right:-250px;top:-210px}
+.plus-orbit-b{width:380px;height:380px;left:-240px;bottom:120px}
+@media(max-width:720px){
+ .plus-reveal{border-radius:29px}
+ .plus-reveal-inner{padding:30px 18px 32px}
+ .plus-stage{min-height:650px;margin-top:24px}
+ .plus-phone{top:52px;width:235px;height:445px;border-radius:35px}
+ .plus-screen{border-radius:26px;padding:20px 14px}
+ .mini-title{font-size:1.35rem}
+ .float-card{max-width:190px;padding:11px 12px}
+ .float-card b{font-size:.78rem}.float-card small{font-size:.64rem}
+ .float-icon{flex-basis:32px;height:32px;border-radius:10px}
+ .fc-week{left:-5px;top:8px}
+ .fc-fridge{right:-5px;top:182px}
+ .fc-rescue{left:-5px;top:400px}
+ .fc-bio{right:-5px;top:525px}
+ .plus-capabilities{grid-template-columns:1fr}
+ .cap{min-height:auto}
+ .plus-close{display:block}
+ .plus-cta{margin-top:24px;width:100%;justify-content:space-between;box-sizing:border-box}
+}
+</style>
+
+
+<style id="plus-home-slot-styles">
+.plus-home-slot{margin-top:46px!important}
+.plus-home-slot .plus-reveal{margin:0}
+.plus-home-slot .plus-reveal-inner{padding:clamp(28px,6vw,58px)}
+@media(max-width:720px){
+  .plus-home-slot{margin-top:34px!important}
+  .plus-home-slot .plus-reveal{border-radius:26px}
+  .plus-home-slot .plus-reveal-inner{padding:27px 16px 30px}
+}
+</style>
+
+
+<style id="legal-footer-styles">
+.studyos-legal-footer{max-width:1080px;margin:54px auto 0;padding:34px 18px 120px;border-top:1px solid rgba(59,74,37,.14);color:#68705f}
+.studyos-legal-inner{display:grid;gap:16px}
+.studyos-legal-brand{font-family:var(--serif);font-size:1.35rem;font-weight:800;color:var(--olive-900)}
+.studyos-legal-brand span{color:var(--salmon)}
+.studyos-legal-footer nav{display:flex;flex-wrap:wrap;gap:9px 18px}
+.studyos-legal-footer a,.studyos-legal-footer button{font:inherit;font-size:.83rem;color:inherit;text-decoration:underline;background:none;border:0;padding:0;cursor:pointer}
+.studyos-legal-footer p{max-width:720px;font-size:.78rem;line-height:1.55;margin:0}
+</style>
+
+</head>
 <body>
 <div class="app">
-<header class="top"><div class="topin"><div class="brand">Study<span>OS</span></div><div class="freepill">VERSIÓN GRATIS · 10 RECETAS</div></div></header>
+<header class="top"><div class="topin"><div class="brand">Study<span>OS</span></div><div class="freepill">GRATIS · 10 RECETAS</div></div></header>
 <main>
 <section id="home" class="view active">
-  <div class="eyebrow">StudyOS · Hoy</div>
+  <div class="eyebrow">TU STUDYOS GRATIS</div>
   <h1>¿Qué quieres comer hoy?</h1>
-  <p class="lead">Prueba la experiencia StudyOS con 10 recetas. Te ayudamos a elegir según tu etapa, lo que buscas y el momento del día.</p>
+  <p class="lead">Ya estás dentro. Encuentra una receta para hoy o explora las 10 disponibles gratis.</p>
   <div class="heroCard">
     <div class="eyebrow" style="color:#dce5ce">RECOMENDADOR</div>
-    <h2>Encuentra una receta para ahora</h2>
-    <p>Responde 4 preguntas rápidas y buscaremos la mejor opción dentro de tus 10 recetas gratuitas.</p>
-    <button class="btn btnYellow" id="startQuiz">Empezar →</button>
+    <h2>Te ayudamos a elegir</h2>
+    <p>Responde 4 preguntas rápidas y encuentra una opción entre tus 10 recetas gratuitas.</p>
+    <button class="btn btnYellow" id="startQuiz" data-track-action="free_recommendation_start">Encontrar mi receta →</button>
   </div>
   <div class="actions">
-    <button class="btn btnGhost" data-go="explore">🔎 Explorar las 10 recetas</button>
-    <button class="btn btnGhost" id="randomBtn">✨ Sorpréndeme</button>
+    <button class="btn btnGhost" data-go="explore" data-track-action="free_explore">🔎 Ver las 10 recetas</button>
+    <button class="btn btnGhost" id="randomBtn" data-track-action="free_random_recipe">✨ Sorpréndeme</button>
   </div>
   <div class="section">
-    <div class="sectionHead"><div><div class="eyebrow">PRUEBA GRATIS</div><h2>Tu biblioteca</h2></div><span class="small">10 de 500</span></div>
+    <div class="sectionHead"><div><div class="eyebrow">GRATIS</div><h2>Tus recetas</h2></div><span class="small">10 disponibles</span></div>
     <div id="homeRecipes" class="recipes"></div>
   </div>
-  <div class="section">
-    <div class="sectionHead"><div><div class="eyebrow">STUDYOS+</div><h2>Lo que desbloqueas</h2></div></div>
-    <div class="lockgrid">
-      <div class="lockedCard"><span class="lock">🔒</span><h3>500 recetas</h3><p>Acceso al catálogo completo y mucha más variedad.</p></div>
-      <div class="lockedCard"><span class="lock">🔒</span><h3>Filtros avanzados</h3><p>Tiempo, necesidades, etapa y preferencias.</p></div>
-      <div class="lockedCard"><span class="lock">🔒</span><h3>Favoritas e historial</h3><p>Guarda recetas y vuelve a las que ya has visto.</p></div>
-      <div class="lockedCard"><span class="lock">🔒</span><h3>Menús y planificación</h3><p>6 menús semanales y listas de la compra.</p></div>
+  <div class="section plus-home-slot">
+<section class="plus-reveal" id="studyos-plus">
+    <div class="plus-orbit plus-orbit-a"></div>
+    <div class="plus-orbit plus-orbit-b"></div>
+    <div class="plus-reveal-inner">
+      <div class="plus-kicker">ESTO ES SOLO EL PRINCIPIO</div>
+      <h2>Has probado StudyOS con 10 recetas.</h2>
+      <div class="plus-500"><span>StudyOS+</span><strong>500</strong><em>recetas</em></div>
+      <p class="plus-lead">Pero StudyOS+ no es simplemente una biblioteca más grande. Es el sistema completo.</p>
+
+      <div class="plus-stage">
+        <div class="plus-phone" aria-hidden="true">
+          <div class="plus-phone-top"><span></span></div>
+          <div class="plus-screen">
+            <div class="mini-brand">Study<span>OS+</span></div>
+            <div class="mini-label">HOY</div>
+            <div class="mini-title">¿Qué quieres comer?</div>
+            <div class="mini-search">Buscar entre 500 recetas…</div>
+            <div class="mini-card"><b>Tu recomendación</b><span>Lista en 15 min</span></div>
+            <div class="mini-row"><i></i><i></i></div>
+          </div>
+        </div>
+
+        <article class="float-card fc-week"><span class="float-icon">✦</span><div><b>Crea mi semana</b><small>21 comidas organizadas</small></div></article>
+        <article class="float-card fc-fridge"><span class="float-icon">⌁</span><div><b>¿Qué tengo en la nevera?</b><small>Encuentra recetas con lo que tienes</small></div></article>
+        <article class="float-card fc-rescue"><span class="float-icon">↗</span><div><b>StudyOS Rescue</b><small>Resuelve una comida cuando vas con prisa</small></div></article>
+        <article class="float-card fc-bio"><span class="float-icon">BIO</span><div><b>Porqué Biológico</b><small>Entiende qué aporta cada receta</small></div></article>
+      </div>
+
+      <div class="plus-capabilities">
+        <div class="cap cap-big"><span class="cap-num">500</span><b>recetas completas</b><p>Más variedad para que elegir no signifique repetir siempre lo mismo.</p></div>
+        <div class="cap"><span class="cap-tag">RECOMENDADOR</span><b>Encuentra antes lo que buscas.</b><p>Etapa, objetivo, momento y preferencias para acotar opciones.</p></div>
+        <div class="cap"><span class="cap-tag">PLANIFICA</span><b>De una receta a toda la semana.</b><p>Menús, lista de la compra, batch cooking y sustituciones reunidos en el mismo lugar.</p></div>
+        <div class="cap"><span class="cap-tag">CAMBIA</span><b>No te convence un plato.</b><p>Cámbialo sin tener que rehacer toda tu semana.</p></div>
+      </div>
+
+      <div class="plus-close">
+        <div>
+          <span class="plus-close-kicker">TODO ESTO ES STUDYOS+</span>
+          <h3>Menos tiempo pensando.<br>Más fácil decidir.</h3>
+          <p>Acceso completo por <strong>5 €</strong> en un único pago.</p>
+        </div>
+        <a class="plus-cta" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track-action="plus_checkout">Desbloquear StudyOS+ <span>→</span></a>
+      </div>
     </div>
-    <div class="unlock"><span class="eyebrow">ACCESO COMPLETO</span><strong>Desbloquea StudyOS+</strong><p>500 recetas · 6 menús semanales · 6 listas de la compra · batch cooking · sustituciones.</p><div class="price">5 € <span class="small">≈ US$5.70 · pago único</span></div><a class="btn btnYellow wide" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ →</a></div>
-  </div>
+  </section>
+</div>
 </section>
 
 <section id="explore" class="view">
@@ -142,7 +531,7 @@ input::placeholder { color: #9a9b94; opacity: 1; }
   <input id="search" class="search" placeholder="Buscar receta o ingrediente…">
   <div class="chips"><button class="chip active" data-filter="all">Todas</button><button class="chip" data-filter="D">Desayuno</button><button class="chip" data-filter="C">Comida</button><button class="chip" data-filter="N">Cena</button><button class="chip" data-filter="S">Snack</button><button class="chip" id="advancedLock">🔒 Filtros avanzados</button></div>
   <div id="exploreRecipes" class="recipes" style="margin-top:14px"></div>
-  <div class="unlock"><strong>¿Quieres más opciones?</strong><p>Estás viendo 10 recetas. StudyOS+ desbloquea 500 recetas, 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><a class="btn btnYellow wide" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Ver StudyOS+ completo →</a></div>
+  <div class="unlock"><strong>¿Quieres más opciones?</strong><p>Estás viendo 10 recetas. StudyOS+ desbloquea 500 recetas, 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><a class="btn btnYellow wide" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track-action="plus_checkout">Ver StudyOS+ completo →</a></div>
 </section>
 
 
@@ -155,11 +544,11 @@ input::placeholder { color: #9a9b94; opacity: 1; }
     <h2>En StudyOS+ tienes 6 semanas completas</h2>
     <p>Además del menú, desbloqueas las listas de la compra, la guía de batch cooking y las sustituciones.</p>
     <div class="lockFeatures"><div class="lockFeature">🔒 6 menús semanales</div><div class="lockFeature">🔒 6 listas de la compra</div><div class="lockFeature">🔒 Batch cooking</div><div class="lockFeature">🔒 Sustituciones</div></div>
-    <a class="btn btnYellow" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ 5 € ≈ $5.70</a>
+    <a class="btn btnYellow" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track-action="plus_checkout">Desbloquear StudyOS+ · 5 €</a>
   </div>
 </section>
 <section id="plus" class="view">
-  <div class="lockedOverlay"><div class="big">🔒</div><div class="eyebrow">STUDYOS+</div><h1>Esto es solo el principio</h1><p class="lead" style="margin-inline:auto">La versión completa amplía tu biblioteca de 10 a 500 recetas y desbloquea filtros avanzados, favoritas, historial y planificación.</p><div class="unlock" style="text-align:left;max-width:520px;margin:25px auto"><strong>StudyOS+ completo</strong><p>500 recetas · 6 menús semanales · listas de la compra · batch cooking · guía de alimentos y sustituciones.</p><div class="price">5 € <span class="small">≈ US$5.70 · pago único</span></div><a class="btn btnYellow wide" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear ahora →</a></div></div>
+  <div class="lockedOverlay"><div class="big">🔒</div><div class="eyebrow">STUDYOS+</div><h1>Esto es solo el principio</h1><p class="lead" style="margin-inline:auto">La versión completa amplía tu biblioteca de 10 a 500 recetas y desbloquea filtros avanzados, favoritas, historial y planificación.</p><div class="unlock" style="text-align:left;max-width:520px;margin:25px auto"><strong>StudyOS+ completo</strong><p>500 recetas · 6 menús semanales · listas de la compra · batch cooking · guía de alimentos y sustituciones.</p><div class="price">5 € <span class="small">≈ US$5.70 · pago único</span></div><a class="btn btnYellow wide" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track-action="plus_checkout">Desbloquear ahora →</a></div></div>
 </section>
 
 <section id="quiz" class="view">
@@ -171,6 +560,68 @@ input::placeholder { color: #9a9b94; opacity: 1; }
   <div class="q" data-q="4"><h3>4. ¿Quieres evitar algo?</h3><div class="opts"><button class="opt" data-key="avoid" data-v="none">Nada en especial</button><button class="opt" data-key="avoid" data-v="gluten">Gluten</button><button class="opt" data-key="avoid" data-v="lacteos">Lácteos</button><button class="opt" data-key="avoid" data-v="huevo">Huevo</button><button class="opt" data-key="avoid" data-v="frutos">Frutos secos</button></div></div>
  </div>
 </section>
+
+<div class="hybrid-info" id="sobre-studyos">
+  <section class="hybrid-intro">
+    <div class="eyebrow">YA LO ESTÁS PROBANDO</div>
+    <h2>¿Qué es StudyOS?</h2>
+    <p>StudyOS es una herramienta para hacer más fácil una decisión que se repite cada día: qué comer. La versión gratuita te deja probar el sistema con 10 recetas; StudyOS+ amplía la biblioteca a 500 recetas y añade más posibilidades para encontrar, organizar y adaptar tus comidas.</p>
+    <nav class="hybrid-nav" aria-label="Más sobre StudyOS">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#porque-biologico">Porqué Biológico</a>
+      <a href="#etapas">Ciclo y etapas</a>
+      <a href="#faq-studyos">Preguntas</a>
+    </nav>
+  </section>
+
+  <section class="hybrid-section" id="como-funciona">
+    <div class="eyebrow">CÓMO FUNCIONA</div>
+    <h2>No necesitas revisar cientos de recetas.</h2>
+    <p class="lead">Puedes explorar directamente o utilizar el recomendador para acotar opciones según lo que buscas. La idea no es darte más decisiones, sino ayudarte a llegar antes a una receta.</p>
+    <div class="hybrid-grid">
+      <article class="hybrid-card"><h3>1. Dinos qué buscas</h3><p>Etapa, necesidad y momento del día ayudan a reducir las opciones disponibles.</p></article>
+      <article class="hybrid-card"><h3>2. StudyOS filtra</h3><p>El recomendador compara tus respuestas con las etiquetas de las recetas y propone opciones compatibles.</p></article>
+      <article class="hybrid-card"><h3>3. Abre la receta</h3><p>Ingredientes, preparación, tiempo y alérgenos principales están reunidos en la misma ficha.</p></article>
+      <article class="hybrid-card"><h3>4. Entiende el plato</h3><p>Cada receta incorpora un Porqué Biológico que explica de forma divulgativa qué aportan ingredientes concretos.</p></article>
+    </div>
+  </section>
+
+  <section class="hybrid-section" id="porque-biologico">
+    <div class="eyebrow">EL PORQUÉ BIOLÓGICO</div>
+    <h2>No solo qué cocinar. También por qué esos ingredientes.</h2>
+    <div class="hybrid-science">
+      <p>Las recetas combinan alimentos y nutrientes con interés dentro de un patrón de alimentación variado. El Porqué Biológico traduce esa composición a una explicación breve y comprensible: por ejemplo, fibra soluble de la avena, omega‑3 de determinados pescados, grasas insaturadas de frutos secos o compuestos presentes en frutas y verduras.</p>
+      <p><strong>Importante:</strong> StudyOS es contenido educativo. Una receta no trata síntomas ni garantiza cambios hormonales, metabólicos o inflamatorios; la respuesta depende del conjunto de la dieta y de cada persona.</p>
+    </div>
+  </section>
+
+  <section class="hybrid-section" id="etapas">
+    <div class="eyebrow">UNA MISMA PERSONA NO COME SIEMPRE IGUAL</div>
+    <h2>Ciclo menstrual, perimenopausia y menopausia.</h2>
+    <p class="lead">StudyOS permite utilizar estas etapas como contexto para explorar el recetario, sin convertirlas en reglas rígidas ni sustituir recomendaciones sanitarias individualizadas.</p>
+    <div class="hybrid-phases">
+      <div class="hybrid-phase"><b>Fase menstrual</b><span>Opciones del recetario etiquetadas para esos días del ciclo.</span></div>
+      <div class="hybrid-phase"><b>Fase folicular</b><span>Una forma de explorar recetas dentro del contexto de esta fase.</span></div>
+      <div class="hybrid-phase"><b>Fase ovulatoria</b><span>Recetas etiquetadas para facilitar la búsqueda durante esta etapa.</span></div>
+      <div class="hybrid-phase"><b>Fase lútea</b><span>Otra vía para filtrar y variar las opciones del recetario.</span></div>
+      <div class="hybrid-phase"><b>Perimenopausia</b><span>Opciones pensadas para ampliar variedad y facilitar la planificación.</span></div>
+      <div class="hybrid-phase"><b>Menopausia</b><span>Recetas que pueden integrarse en una alimentación variada durante esta etapa.</span></div>
+    </div>
+  </section>
+
+  <section class="hybrid-section hybrid-faq" id="faq-studyos">
+    <div class="eyebrow">ANTES DE SEGUIR</div>
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿StudyOS Free es realmente gratis?</summary><p>Sí. Puedes utilizar las 10 recetas disponibles en esta versión sin comprar StudyOS+.</p></details>
+    <details><summary>¿Qué cambia en StudyOS+?</summary><p>StudyOS+ amplía el catálogo hasta 500 recetas y desbloquea la experiencia completa del producto.</p></details>
+    <details><summary>¿Es una dieta?</summary><p>No. StudyOS es una herramienta educativa y de organización de recetas; no prescribe una dieta individualizada.</p></details>
+    <details><summary>¿Sustituye a una médica o dietista-nutricionista?</summary><p>No. Si tienes una enfermedad, alergia importante, estás embarazada o en lactancia, o tomas medicación, consulta con una profesional sanitaria antes de realizar cambios relevantes en tu alimentación.</p></details>
+  </section>
+
+  
+  
+</div>
+
 </main>
 <nav class="bottom" aria-label="Navegación principal" style="grid-template-columns:repeat(4,1fr)">
 <button class="nav active" data-go="home"><svg class="navIcon" viewBox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8"/><path d="M5.5 9.5V21h13V9.5"/><path d="M9.5 21v-6h5v6"/></svg><span class="navLabel">Hoy</span></button>
@@ -226,7 +677,7 @@ function recommend(){
 window.studyosFreeOpenRecipe=function(id){openRecipe(id,false)};
 function openRecipe(id,rec){
  const r=R.find(x=>x.id===id); if(!r)return;
- $('#detail').innerHTML=`<div class="eyebrow">${rec?'UNA OPCIÓN SEGÚN TUS RESPUESTAS':'RECETA GRATIS'}</div><h2>${r.t}</h2><div class="facts"><span class="fact">${r.ph}</span><span class="fact">${r.m} min</span><span class="fact">${r.k} kcal aprox.</span><span class="fact">${r.d}</span></div><h3>Ingredientes</h3><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Preparación</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol><h3>El porqué biológico</h3><div class="bio">${r.bio}</div><div class="unlock cv3-result-offer"><span class="eyebrow">HAS PROBADO STUDYOS</span><strong>Hazlo con 500 recetas y toda tu semana.</strong><p>StudyOS+ amplía el recomendador y añade 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><div class="cv3-benefits"><span>✓ 500 recetas</span><span>✓ 6 menús semanales</span><span>✓ 6 listas de la compra</span><span>✓ Batch cooking + sustituciones</span></div><a class="btn btnYellow wide" data-cv3="recommendation" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ · 5 € · ≈ US$5.70</a><p class="cv3-micro">Pago único · Sin suscripción · Precio base 5 €. ≈ US$5.70 orientativo. Pago seguro con Stripe; la conversión final puede variar según tu banco o tarjeta.</p></div>`;
+ $('#detail').innerHTML=`<div class="eyebrow">${rec?'UNA OPCIÓN SEGÚN TUS RESPUESTAS':'RECETA GRATIS'}</div><h2>${r.t}</h2><div class="facts"><span class="fact">${r.ph}</span><span class="fact">${r.m} min</span><span class="fact">${r.k} kcal aprox.</span><span class="fact">${r.d}</span></div><h3>Ingredientes</h3><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Preparación</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol><h3>El porqué biológico</h3><div class="bio">${r.bio}</div><div class="unlock cv3-result-offer"><span class="eyebrow">HAS PROBADO STUDYOS</span><strong>Hazlo con 500 recetas y toda tu semana.</strong><p>StudyOS+ amplía el recomendador y añade 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><div class="cv3-benefits"><span>✓ 500 recetas</span><span>✓ 6 menús semanales</span><span>✓ 6 listas de la compra</span><span>✓ Batch cooking + sustituciones</span></div><a class="btn btnYellow wide" data-cv3="recommendation" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track-action="plus_checkout">Desbloquear StudyOS+ · 5 €</a><p class="cv3-micro">Pago único · Sin suscripción.</p></div>`;
  $('#modal').classList.add('open');
 }
 $('#close').onclick=()=>$('#modal').classList.remove('open');
@@ -295,4 +746,59 @@ document.addEventListener("DOMContentLoaded",()=>{
 <script id="conversion-v3-tracking">
 document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("[data-cv3]");if(!a)return;try{if(window.gtag)gtag("event","studyos_plus_interest",{placement:a.getAttribute("data-cv3"),funnel_version:"v3_conversion"});if(window.fbq)fbq("trackCustom","StudyOSPlusInterest",{placement:a.getAttribute("data-cv3"),funnel_version:"v3_conversion"});}catch(_){}});
 </script>
+
+<footer class="studyos-legal-footer">
+  <div class="studyos-legal-inner">
+    <div class="studyos-legal-brand">Study<span>OS</span></div>
+    <nav aria-label="Información legal">
+      <a href="aviso-legal.html">Aviso legal</a>
+      <a href="terminos.html">Términos y condiciones</a>
+      <a href="privacidad.html">Privacidad y cookies</a>
+      <button type="button" id="cookie-settings">Configurar cookies</button>
+    </nav>
+    <p>StudyOS ofrece contenido informativo y educativo y no sustituye el consejo médico o nutricional individualizado.</p>
+  </div>
+</footer>
+
+
+
+
+
+<script id="studyos-funnel-hooks">
+(function(){
+  function funnel(name, extra){
+    if (typeof window.studyosFunnel === "function") window.studyosFunnel(name, extra || {});
+  }
+  function custom(name, extra){
+    if (typeof window.studyosGA === "function") window.studyosGA(name, extra || {});
+    if (typeof window.studyosTrackCustom === "function") window.studyosTrackCustom(name, extra || {});
+  }
+  function initStudyOSFunnel(){
+    /* Counts a direct arrival to StudyOS Free only after consent, because tracking.js gates GA/Meta. */
+    funnel("generate_lead", {funnel_version:"direct_free_v1", page_type:"studyos_free"});
+
+    var quiz=document.getElementById("startQuiz");
+    if(quiz) quiz.addEventListener("click", function(){
+      funnel("quiz_start", {funnel_version:"direct_free_v1"});
+    }, {once:true});
+
+    document.addEventListener("click", function(e){
+      var checkout=e.target.closest('a[href*="buy.stripe.com"]');
+      if(checkout){
+        funnel("begin_checkout", {funnel_version:"direct_free_v1", source:"gratis_html"});
+        return;
+      }
+      var plus=e.target.closest('a[href="#studyos-plus"],[data-go="plus"]');
+      if(plus) custom("studyos_plus_interest",{funnel_version:"direct_free_v1"});
+      var explore=e.target.closest('[data-track-action="free_explore"]');
+      if(explore) custom("studyos_free_explore",{funnel_version:"direct_free_v1"});
+      var random=e.target.closest('[data-track-action="free_random_recipe"]');
+      if(random) custom("studyos_free_random_recipe",{funnel_version:"direct_free_v1"});
+    });
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",initStudyOSFunnel);
+  else initStudyOSFunnel();
+})();
+</script>
+
 </body></html>
