@@ -1,55 +1,700 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>StudyOS | Recetas antiinflamatorias para tu ciclo y la menopausia</title>
-<meta name="description" content="Prueba gratis StudyOS con 10 recetas antiinflamatorias o consigue el StudyOS+ completo de 500 recetas adaptadas a tu ciclo, la perimenopausia y la menopausia, con 6 menús semanales.">
-<meta name="theme-color" content="#3B4A25">
-<meta property="og:type" content="website">
-<meta property="og:title" content="StudyOS | Recetas antiinflamatorias para tu ciclo y la menopausia">
-<meta property="og:description" content="Prueba StudyOS gratis con 10 recetas y accede a la experiencia completa con 500 recetas.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='24' cy='32' r='20' fill='%233B4A25'/%3E%3Ccircle cx='40' cy='32' r='20' fill='%23F2C230' fill-opacity='.8'/%3E%3C/svg%3E"> <script>document.documentElement.classList.add("js");</script>
-<script src="funnel-config.js"></script>
-<script src="tracking.js" defer></script>
-<script src="test-receta.js" defer></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"> <!-- ARCHIVOS: sube a la misma carpeta index.html, gratis.html, gracias.html, tracking.js, funnel-config.js, test-receta.js, la portada y las imágenes dentro-*. ENLACES QUE PUEDES CAMBIAR (usa buscar y reemplazar en este archivo): - Recetario de pago (Stripe): https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00 - Descarga gratuita: gratis.html (ahí están el PDF, la comunidad de WhatsApp y la oferta) - Instagram: https://www.instagram.com/studyos_oficial/ Meta Pixel: se configura en tracking.js (solo se activa si aceptan las cookies).
---> <style> :root { --olive-950: #1F2715; --olive-900: #2B3520; --olive-800: #3B4A25; --olive-700: #4A5A2A; --olive-500: #6E8036; --sage: #B7C48B; --page: #F2F4E6; --paper: #FAFBF4; --yellow: #F2C230; --yellow-hover: #FFD24D; --salmon: #C9785F; --ink: #26301F; --muted: #56613F; --line: rgba(74, 90, 42, .24); --serif: "Fraunces", Georgia, "Times New Roman", serif; --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; --wrap: 1120px; } *, *::before, *::after { box-sizing: border-box; } html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; } body { margin: 0; background: var(--page); color: var(--ink); font-family: var(--sans); font-size: 1.0625rem; line-height: 1.6; } img, svg { max-width: 100%; } a { color: inherit; } h1, h2, h3 { font-family: var(--serif); font-weight: 600; margin: 0; letter-spacing: -.01em; } p { margin: 0; } :focus-visible { outline: 3px solid var(--olive-500); outline-offset: 3px; border-radius: 4px; } .wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: clamp(20px, 5vw, 40px); } .section { padding-block: clamp(56px, 9vw, 104px); } .lede { max-width: 34rem; color: var(--muted); } /* ---------- Botones ---------- */ .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: .75rem 1.5rem; border: 2px solid transparent; border-radius: 999px; font: 600 1rem/1.2 var(--sans); text-decoration: none; text-align: center; transition: background-color .2s, color .2s, border-color .2s; } .btn-yellow { background: var(--yellow); color: var(--olive-950); font-weight: 700; box-shadow: 0 6px 18px rgba(242, 194, 48, .38); } .btn-yellow:hover { background: var(--yellow-hover); } .btn-lg { min-height: 58px; padding: .9rem 1.9rem; font-size: 1.1rem; } .btn-olive { background: var(--olive-700); color: #fff; } .btn-olive:hover { background: var(--olive-900); } .btn-outline { border-color: var(--olive-700); color: var(--olive-800); } .btn-outline:hover { background: var(--olive-700); color: #fff; } .btn-light { background: var(--page); color: var(--olive-900); } .btn-light:hover { background: #fff; } /* ---------- Cabecera ---------- */ .top { padding-block: 18px; } .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; } .mark { font-family: var(--serif); font-size: 1.6rem; font-weight: 600; color: var(--olive-800); text-decoration: none; letter-spacing: -.02em; } .mark span { color: var(--salmon); } .top nav { display: flex; align-items: center; gap: 18px; font-size: .95rem; } .top nav a:not(.btn) { color: var(--muted); text-decoration: none; } .top nav a:not(.btn):hover { color: var(--olive-800); text-decoration: underline; } .top .btn { min-height: 42px; padding: .5rem 1.15rem; font-size: .95rem; } .top .hide-sm { display: none; } @media (min-width: 620px) { .top .hide-sm { display: inline-flex; } } /* ---------- Hero ---------- */ .hero { padding-block: clamp(24px, 5vw, 64px) clamp(56px, 8vw, 96px); overflow-x: clip; } .hero-grid { display: grid; gap: 44px; align-items: center; } @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.05fr .95fr; gap: 64px; } } h1 { font-size: clamp(2.3rem, 6vw, 3.9rem); line-height: 1.06; color: var(--olive-900); } .hero .lede { margin-top: 20px; font-size: 1.15rem; } .cta-stack { display: grid; gap: 12px; margin-top: 30px; max-width: 28rem; } .hero-note { margin-top: 18px; max-width: 30rem; font-size: .95rem; color: var(--muted); } .hero-art { position: relative; isolation: isolate; justify-self: center; width: 100%; max-width: 480px; } .hero-art::before, .hero-art::after { content: ""; position: absolute; border-radius: 50%; z-index: -1; } .hero-art::before { width: 62%; aspect-ratio: 1; background: var(--sage); opacity: .55; top: -9%; right: -10%; } .hero-art::after { width: 46%; aspect-ratio: 1; background: var(--yellow); opacity: .45; bottom: -7%; left: -9%; } .hero-art img { display: block; width: 100%; height: auto; border-radius: 18px; box-shadow: 0 22px 50px rgba(31, 39, 21, .28); } /* ---------- Titulares de sección ---------- */ h2 { font-size: clamp(1.7rem, 4.2vw, 2.5rem); line-height: 1.12; color: var(--olive-900); } /* ---------- Las dos opciones ---------- */ .options { padding-top: 0; } .options-grid { display: grid; gap: 20px; margin-top: 36px; } @media (min-width: 860px) { .options-grid { grid-template-columns: 1fr 1fr; align-items: stretch; } } .free { position: relative; background: var(--paper); border: 2.5px solid var(--yellow); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 14px; } .pill { align-self: flex-start; background: var(--yellow); color: var(--olive-950); font-size: .9rem; font-weight: 700; padding: .25rem .8rem; border-radius: 999px; } .free h3 { font-size: 1.6rem; color: var(--olive-900); } .free .btn { margin-top: auto; } .free .fine { font-size: .9rem; color: var(--muted); } .paid { background: var(--olive-800); color: #fff; border-radius: 22px; padding: 30px; display: flex; flex-direction: column; } .paid h3 { font-size: 1.6rem; } .paid .sub { color: rgba(255, 255, 255, .85); margin-top: 2px; } .paid ul { list-style: none; margin: 18px 0 0; padding: 0; } .paid li { padding: 9px 0; border-top: 1px solid rgba(242, 244, 230, .25); font-size: .98rem; } .paid li:last-child { border-bottom: 1px solid rgba(242, 244, 230, .25); } .paid .more { margin-top: 12px; font-size: .95rem; color: var(--sage); } .buy { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: auto; padding-top: 22px; } .price { font-family: var(--serif); font-size: 2.4rem; font-weight: 600; line-height: 1; } .price small { display: block; margin-top: 4px; font: 400 .85rem/1.2 var(--sans); color: rgba(255, 255, 255, .8); } .paid .fine { color: rgba(255, 255, 255, .8); margin-top: 14px; font-size: .9rem; } /* ---------- Qué incluye ---------- */ .contents { background: var(--paper); } .contents-grid { display: grid; gap: 36px; } @media (min-width: 860px) { .contents-grid { grid-template-columns: 5fr 7fr; gap: 64px; } } .contents dl { margin: 0; } .row { padding: 18px 0; border-top: 1px solid var(--line); display: grid; gap: 4px; } .row:last-child { border-bottom: 1px solid var(--line); } .row dt { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--olive-700); } .row dd { margin: 0; color: var(--muted); } /* ---------- Investigación ---------- */ .science { background: var(--olive-900); color: var(--page); } .science h2 { color: #fff; max-width: 40rem; } .science .lede { color: rgba(242, 244, 230, .85); margin-top: 16px; max-width: 40rem; } .sci-grid { display: grid; gap: 18px; margin-top: 40px; } @media (min-width: 620px) { .sci-grid { grid-template-columns: 1fr 1fr; } .sci:last-child { grid-column: 1 / -1; } } @media (min-width: 980px) { .sci-grid { grid-template-columns: repeat(6, 1fr); } .sci:nth-child(-n+3) { grid-column: span 2; } .sci:nth-child(n+4) { grid-column: span 3; } .sci:last-child { grid-column: span 3; } } .sci { background: rgba(242, 244, 230, .07); border: 1px solid rgba(242, 244, 230, .22); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 10px; } .sci .ico { width: 44px; height: 44px; border-radius: 50%; background: rgba(242, 244, 230, .14); display: grid; place-items: center; font-size: 1.35rem; } .sci .fig { font-family: var(--serif); font-size: clamp(2.3rem, 5vw, 3rem); font-weight: 600; line-height: 1; color: var(--yellow); margin-top: 6px; } .sci h3 { font-size: 1.2rem; color: #fff; line-height: 1.25; } .sci p { color: rgba(242, 244, 230, .85); font-size: .98rem; } .sci .tag { margin-top: auto; padding-top: 6px; font-size: .85rem; color: var(--sage); } .science-note { margin-top: 32px; max-width: 46rem; font-size: .92rem; color: rgba(242, 244, 230, .8); } .science .sources { border: 0; margin-top: 16px; max-width: 46rem; } .science .sources:last-child { border: 0; } .science .sources summary { padding: 6px 0; font: 600 .95rem/1.4 var(--sans); color: var(--yellow); } .science .sources summary::after { color: var(--yellow); } .science .sources ul { margin: 8px 0 0; padding-left: 1.1rem; font-size: .9rem; color: rgba(242, 244, 230, .85); } .science .sources li { margin-bottom: 6px; } .science .sources a { color: var(--sage); } /* ---------- Flor de las cuatro fases ---------- */ .cycle-grid { display: grid; gap: 40px; align-items: center; } @media (min-width: 880px) { .cycle-grid { grid-template-columns: 1fr 1fr; gap: 64px; } } .cycle { display: grid; gap: 14px; justify-items: center; } .bloom { width: 100%; max-width: 420px; height: auto; display: block; } .petal { mix-blend-mode: multiply; cursor: pointer; transform-box: fill-box; transform-origin: center; } .petal.is-on { stroke: var(--olive-950); stroke-width: 2.5; } .bloom-label { font-family: var(--serif); font-size: 17px; font-weight: 600; pointer-events: none; } .js .bloom:not(.play) .petal { opacity: 0; } .bloom.play .petal { animation: bloom .95s cubic-bezier(.2, .7, .2, 1) both; } .bloom.play .petal:nth-of-type(2) { animation-delay: .12s; } .bloom.play .petal:nth-of-type(3) { animation-delay: .24s; } .bloom.play .petal:nth-of-type(4) { animation-delay: .36s; } @keyframes bloom { from { transform: scale(.55); opacity: 0; } to { transform: scale(1); opacity: 1; } } .phase-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; } .phase-tabs button { min-height: 40px; padding: .4rem 1rem; border-radius: 999px; border: 1.5px solid var(--olive-700); background: transparent; color: var(--olive-800); font: 500 .95rem/1 var(--sans); cursor: pointer; transition: background-color .2s, color .2s; } .phase-tabs button:hover { background: rgba(74, 90, 42, .12); } .phase-tabs button[aria-pressed="true"] { background: var(--olive-700); color: #fff; } .phase-note { width: 100%; max-width: 420px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; } .phase-note h3 { font-size: 1.25rem; color: var(--olive-800); } .phase-note .days { font-size: .9rem; color: var(--muted); } .phase-note p { margin-top: 8px; } .phase-note .recipe { font-size: .95rem; color: var(--muted); } /* ---------- Muestra de receta ---------- */ .samplebg { background: var(--paper); } .sample-grid { display: grid; gap: 32px; align-items: center; } @media (min-width: 860px) { .sample-grid { grid-template-columns: 5fr 6fr; gap: 64px; } } .sample-card { background: var(--page); border: 1.5px solid var(--line); border-radius: 18px; padding: 26px; } .sample-card h3 { font-size: 1.35rem; color: var(--olive-800); } .meta { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 6px; font-size: .9rem; color: var(--muted); } .why { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); } .why b { font-family: var(--serif); font-size: 1.05rem; color: var(--olive-500); } .why p { margin-top: 6px; } /* ---------- Etiquetas de necesidad ---------- */ .chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 0; padding: 0; list-style: none; } .chips li { padding: .5rem 1rem; border-radius: 999px; background: var(--paper); border: 1px solid var(--line); font-size: .98rem; } /* ---------- Preguntas ---------- */ .faq-list { max-width: 44rem; margin-top: 28px; } details { border-top: 1px solid var(--line); } details:last-child { border-bottom: 1px solid var(--line); } summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 0; cursor: pointer; list-style: none; font-family: var(--serif); font-size: 1.15rem; font-weight: 600; color: var(--olive-800); } summary::-webkit-details-marker { display: none; } summary::after { content: "+"; font: 400 1.5rem/1 var(--sans); color: var(--olive-500); flex: none; } details[open] summary::after { content: "\2212"; } details p { padding: 0 2rem 20px 0; color: var(--muted); } /* ---------- Cierre ---------- */ .closing { background: var(--olive-800); color: #fff; } .closing h2 { color: #fff; max-width: 30rem; } .closing p { margin-top: 14px; max-width: 32rem; color: rgba(255, 255, 255, .88); } .closing .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; } .closing .btn-ghost { border-color: var(--page); color: var(--page); } .closing .btn-ghost:hover { background: var(--page); color: var(--olive-900); } footer { padding-block: 36px 48px; font-size: .92rem; color: var(--muted); } footer .wrap { display: grid; gap: 14px; } footer .tagline { font-family: var(--serif); font-size: 1.1rem; color: var(--olive-800); } footer .legal { max-width: 46rem; font-size: .85rem; } .pill-offer { background: var(--yellow); color: var(--olive-950); margin-bottom: 14px; } .was { font-size: 1.25rem; font-weight: 400; color: rgba(255, 255, 255, .72); text-decoration-thickness: 2px; } .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } /* ---------- Mira dentro ---------- */ .samplebg { background: var(--paper); } .peek-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; } .peek-tabs button { min-height: 42px; padding: .45rem 1.1rem; border-radius: 999px; border: 1.5px solid var(--olive-700); background: transparent; color: var(--olive-800); font: 500 .95rem/1 var(--sans); cursor: pointer; transition: background-color .2s, color .2s; } .peek-tabs button:hover { background: rgba(74, 90, 42, .12); } .peek-tabs button[aria-pressed="true"] { background: var(--olive-700); color: #fff; } .peek { display: grid; gap: 28px; margin-top: 28px; align-items: start; } @media (min-width: 900px) { .peek { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 48px; } .peek-side { position: sticky; top: 24px; } } @media (max-width: 899px) { .peek-side { order: -1; } } .peek-side img { display: block; width: 100%; height: auto; border-radius: 16px; } .peek-cap { margin-top: 8px; font-size: .85rem; color: var(--muted); } .peek-src { display: inline-block; margin-top: 14px; padding: .2rem .8rem; border-radius: 999px; font-size: .85rem; font-weight: 600; } .peek-src-free { background: var(--yellow); color: var(--olive-950); } .peek-src-paid { background: var(--olive-700); color: #fff; } /* Ficha de receta (texto real, siempre nítido) */ .rcard { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: clamp(18px, 3vw, 28px); box-shadow: 0 14px 36px rgba(31, 39, 21, .14); } .rcard[hidden] { display: none; } .rc-head { background: var(--page); border-radius: 12px; padding: 16px 18px; text-align: center; } .rc-head h3 { font-size: clamp(1.2rem, 2.8vw, 1.5rem); line-height: 1.22; color: var(--olive-800); } .rc-fase { margin-top: 6px; font-family: var(--serif); font-weight: 600; color: var(--olive-700); } .rc-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px 20px; margin-top: 8px; font-size: .9rem; color: var(--muted); } .rc-stats b { color: var(--ink); font-weight: 600; } .rc-h { display: inline-block; margin: 22px 0 10px; padding: .1rem .7rem; border-radius: 6px; font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--olive-900); } .rc-h-ing { background: rgba(242, 194, 48, .38); } .rc-h-prep { background: rgba(183, 196, 139, .55); } .rcard ul { margin: 0; padding-left: 1.15rem; font-size: .96rem; } .rcard li { margin-bottom: 7px; } .rc-why { margin-top: 22px; background: var(--page); border-radius: 12px; padding: 16px 18px; } .rc-why h4 { margin: 0 0 8px; font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--olive-700); } .rc-why p { font-size: .94rem; } .rc-why p + p { margin-top: .7rem; } /* ---------- Opiniones ---------- */ .rev-grid { display: grid; gap: 18px; margin-top: 32px; } @media (min-width: 700px) { .rev-grid { grid-template-columns: 1fr 1fr; } } .rev { margin: 0; background: var(--paper); border: 1.5px solid var(--line); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 12px; } .rev .stars { color: var(--olive-500); letter-spacing: .15em; font-size: 1.05rem; } .rev blockquote { margin: 0; } .rev blockquote p + p { margin-top: .8rem; } .rev figcaption { margin-top: auto; font-weight: 600; color: var(--olive-800); font-size: .95rem; } .cta-inline { margin-top: 32px; } /* ---------- Botón fijo en móvil ---------- */ .sticky-cta { display: none; } @media (max-width: 859px) { .sticky-cta { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); background: rgba(242, 244, 230, .96); border-top: 1px solid var(--line); transform: translateY(110%); visibility: hidden; transition: transform .3s, visibility .3s; } .sticky-cta.on { transform: none; visibility: visible; } .sticky-cta .btn { width: 100%; } footer { padding-bottom: 104px; } } .bg-paper { background: var(--paper); } .bg-page { background: var(--page); } /* ---------- Test: encuentra tu receta de hoy ---------- */ .quiz-sec { background: var(--olive-800); color: #fff; } .quiz-sec h2 { color: #fff; max-width: 36rem; } .quiz-sec .lede { color: rgba(255, 255, 255, .86); margin-top: 14px; } .quiz { background: var(--paper); color: var(--ink); border-radius: 24px; padding: clamp(20px, 4vw, 36px); margin-top: 32px; box-shadow: 0 24px 60px rgba(0, 0, 0, .28); } .quiz-top { display: flex; align-items: center; gap: 14px; font-size: .9rem; color: var(--muted); } .quiz-bar { flex: 1; height: 8px; border-radius: 99px; background: rgba(74, 90, 42, .16); overflow: hidden; } .quiz-bar i { display: block; height: 100%; width: 33%; background: var(--olive-500); border-radius: 99px; transition: width .35s; } .qstep h3 { font-size: clamp(1.4rem, 3.8vw, 1.9rem); color: var(--olive-900); margin: 22px 0 16px; outline: none; } .qopts { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); } .qopts button { text-align: left; min-height: 58px; padding: .8rem 1rem; border: 2px solid var(--line); border-radius: 14px; background: #fff; color: var(--ink); font: 600 1rem/1.25 var(--sans); cursor: pointer; transition: border-color .2s, background-color .2s; } .qopts button small { display: block; margin-top: 3px; font-weight: 400; font-size: .82rem; color: var(--muted); } .qopts button:hover { border-color: var(--olive-500); } .qopts button[aria-pressed="true"] { border-color: var(--olive-700); background: rgba(183, 196, 139, .38); } .qhelp { margin-top: 16px; font-size: .92rem; color: var(--muted); } .qhelp a { color: var(--olive-700); } .quiz-nav { margin-top: 18px; } .quiz-nav .linkbtn, .res-again .linkbtn { color: var(--olive-700); } .quiz-note { margin-top: 16px; font-size: .88rem; color: rgba(255, 255, 255, .8); } .res-main { background: #fff; border: 1.5px solid var(--olive-700); border-radius: 18px; padding: clamp(18px, 3vw, 26px); margin-top: 18px; animation: rise .5s both; } .res-kicker { font-size: .85rem; font-weight: 600; color: var(--olive-700); } .res-title { font-size: clamp(1.45rem, 3.6vw, 2rem); line-height: 1.15; color: var(--olive-900); margin: 6px 0 10px; outline: none; } .res-meta { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: .9rem; color: var(--muted); } .res-why { margin-top: 14px; } .res-sub { margin-top: 16px; font-family: var(--serif); font-weight: 600; color: var(--olive-800); } .res-ing { margin: 6px 0 0; padding-left: 1.15rem; font-size: .96rem; } .res-more { margin-top: 8px; font-size: .9rem; color: var(--muted); } .res-quote { margin: 16px 0 0; padding-left: 14px; border-left: 3px solid var(--sage); color: var(--muted); font-size: .94rem; } .res-quote b { color: var(--olive-700); } .res-cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; } .res-alt-title { margin-top: 22px; } .res-alt { display: grid; gap: 10px; margin-top: 10px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); } .res-alt div { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px; } .res-alt b { display: block; font-family: var(--serif); color: var(--olive-800); line-height: 1.25; } .res-alt span { font-size: .85rem; color: var(--muted); } .res-again { margin-top: 16px; } @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } } /* ---------- Menú semanal ---------- */ .menu-grid { display: grid; gap: 28px; margin-top: 32px; } @media (min-width: 900px) { .menu-grid { grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: start; } } .menu-name { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; color: var(--olive-800); margin-bottom: 12px; } .days { display: flex; flex-wrap: wrap; gap: 8px; } .days button { min-width: 56px; min-height: 46px; padding: .4rem .8rem; border-radius: 12px; border: 1.5px solid var(--olive-700); background: transparent; color: var(--olive-800); font: 600 .95rem/1 var(--sans); cursor: pointer; transition: background-color .2s, color .2s; } .days button:hover { background: rgba(74, 90, 42, .12); } .days button[aria-pressed="true"] { background: var(--olive-700); color: #fff; } .day { margin-top: 14px; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 6px 18px; } .day[hidden] { display: none; } .day dl { margin: 0; } .meal { display: grid; gap: 2px; padding: 13px 0; border-top: 1px solid var(--line); } .meal:first-child { border-top: 0; } @media (min-width: 560px) { .meal { grid-template-columns: 96px 1fr; gap: 14px; align-items: baseline; } } .meal dt { font-size: .85rem; font-weight: 600; color: var(--olive-700); } .meal dd { margin: 0; font-weight: 500; } .mt { margin-left: .4rem; font-size: .82rem; font-weight: 400; color: var(--muted); white-space: nowrap; } .menu-grid > div > .fine { margin-top: 12px; font-size: .88rem; color: var(--muted); } .shop { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; } .shop h3 { font-size: 1.3rem; color: var(--olive-900); } .shop-count { margin-top: 4px; font-size: .9rem; color: var(--muted); } .shop h4 { margin: 16px 0 6px; font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--olive-700); } .shop label { display: flex; gap: 10px; align-items: flex-start; padding: 5px 0; font-size: .95rem; cursor: pointer; } .shop input { flex: none; margin-top: .22rem; width: 18px; height: 18px; accent-color: var(--olive-700); } .shop input:checked + span { text-decoration: line-through; color: var(--muted); } @media (min-width: 900px) { .shop { max-height: 660px; overflow-y: auto; position: sticky; top: 16px; } } .shop-clear { margin-top: 14px; } .shop-clear .linkbtn { color: var(--olive-700); font-size: .9rem; } .others-title { margin-top: 44px; font-size: 1.35rem; color: var(--olive-900); } .others { display: grid; gap: 12px; margin-top: 14px; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); } .others article { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px; } .others b { font-family: var(--serif); color: var(--olive-800); } .others p { margin-top: 4px; font-size: .92rem; color: var(--muted); } /* ---------- Calculadora de fase ---------- */ .calc { margin-top: 26px; background: var(--paper); border: 1.5px solid var(--line); border-radius: 18px; padding: 20px 22px; max-width: 30rem; } .calc h3 { font-size: 1.25rem; color: var(--olive-900); } .calc-row { display: grid; gap: 4px; margin-top: 14px; } .calc-row label { font-size: .9rem; font-weight: 600; color: var(--olive-800); } .calc input, .calc select { min-height: 46px; padding: .5rem .8rem; border: 1.5px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); font: 400 1rem/1.2 var(--sans); } .calc .btn { margin-top: 18px; } #calc-out { margin-top: 14px; } .calc-res { margin-bottom: 10px; } .calc-warn { margin: 6px 0 10px; font-size: .92rem; color: var(--muted); } .calc .fine { margin-top: 14px; font-size: .85rem; color: var(--muted); } /* ---------- Embudo: test con anuncio, versión de muestra ---------- */ #quiz { scroll-margin-top: 14px; } .qgroup { margin: 18px 0 8px; font-size: .9rem; font-weight: 600; color: var(--olive-700); } .qopts + .qopts { margin-top: 10px; } .qopts-one { grid-template-columns: 1fr; } .qcont { margin: 0 0 18px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; } .qcont[hidden], .qdone[hidden] { display: none; } .qpre { font-size: .92rem; color: var(--muted); } .qdone h3 { font-size: clamp(1.4rem, 3.8vw, 1.9rem); color: var(--olive-900); margin: 22px 0 10px; outline: none; } .qdone p { max-width: 36rem; color: var(--muted); } .res-lock { display: flex; gap: 10px; align-items: flex-start; margin-top: 16px; padding: 12px 14px; border-radius: 12px; background: rgba(183, 196, 139, .3); color: var(--olive-800); font-size: .94rem; } .res-lock p { margin: 0; } .lockico { flex: none; margin-top: 2px; } .locked { background: #fff; border: 1px dashed var(--olive-500); border-radius: 14px; padding: 14px; display: grid; gap: 2px; color: var(--muted); } .locked b { font-family: var(--serif); color: var(--olive-800); } .locked .lockico { color: var(--olive-500); margin-bottom: 4px; } .locked span { font-size: .85rem; } .res-once { margin-top: 16px; font-size: .92rem; color: var(--muted); } .checks { list-style: none; } .paid .checks li::before { content: "✓"; margin-right: .65rem; font-weight: 700; color: var(--sage); } @media (max-width: 899px) { .hero-art { display: none; } } /* ---------- Portada con el test dentro ---------- */ .hero-grid { align-items: start; } @media (min-width: 900px) { .hero-grid { grid-template-columns: 1fr 1.1fr; gap: 48px; } .hero-copy { padding-top: 24px; } } .hero-quiz .quiz { margin-top: 0; box-shadow: 0 18px 44px rgba(31, 39, 21, .16); border: 1px solid var(--line); } .quiz-title { font-size: clamp(1.35rem, 3.6vw, 1.75rem); color: var(--olive-900); margin-bottom: 6px; } .quiz-intro { color: var(--muted); font-size: .98rem; margin-bottom: 14px; } .quiz-note { margin-top: 14px; font-size: .88rem; color: var(--muted); } .quiz-alt { margin-top: 8px; font-size: .95rem; } .quiz-alt a { color: var(--olive-700); font-weight: 600; } .qnote { margin: -6px 0 14px; font-size: .92rem; color: var(--muted); } .qopts { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); } .qnext { margin-top: 16px; } @media (max-width: 899px) { .hero-copy .lede { font-size: 1.02rem; margin-top: 12px; } h1 { font-size: clamp(1.9rem, 8vw, 2.4rem); } .hero-note { display: none; } } /* ---------- Resultado del test: acompañamiento y comparación honesta ---------- */ .res-thanks { margin-top: 18px; font-weight: 600; color: var(--olive-800); } .chips2 { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; padding: 0; list-style: none; } .chips2 li { padding: .3rem .8rem; border-radius: 999px; background: rgba(183, 196, 139, .4); font-size: .88rem; color: var(--olive-900); } .res-check { margin-top: 8px; font-size: .88rem; color: var(--muted); } .week { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; } .wday { display: inline-flex; align-items: center; gap: 5px; padding: .35rem .7rem; border-radius: 10px; border: 1px dashed var(--olive-500); font-size: .82rem; color: var(--muted); background: #fff; } .wday.on { background: var(--olive-700); border: 1px solid var(--olive-700); color: #fff; font-weight: 600; } .compare { display: grid; gap: 10px; margin-top: 8px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); } .cmp { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; } .cmp-paid { border: 2px solid var(--olive-700); } .cmp h4 { font-family: var(--serif); font-size: 1.05rem; color: var(--olive-900); margin: 0 0 8px; } .cmp .bar { height: 8px; border-radius: 99px; background: rgba(74, 90, 42, .15); overflow: hidden; margin-bottom: 8px; } .cmp .bar i { display: block; height: 100%; background: var(--olive-500); border-radius: 99px; } .cmp p { font-size: .92rem; } .cmp ul { margin: 8px 0 0; padding-left: 1.1rem; font-size: .88rem; color: var(--muted); } .cmp-note { margin-top: 8px; font-size: .84rem; color: var(--muted); } .res-cta { margin-top: 16px; } .news { background: var(--paper); border: 1.5px solid var(--line); border-radius: 22px; padding: clamp(24px, 4vw, 36px); text-align: center; max-width: 42rem; margin: 32px auto 0; } .news h2 { font-size: clamp(1.4rem, 3.6vw, 1.9rem); } .news-form { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 22px; } .news-form input[type=email] { flex: 1 1 240px; min-height: 50px; padding: .6rem 1rem; border: 1.5px solid var(--line); border-radius: 999px; font: 400 1rem/1.2 var(--sans); background: #fff; color: var(--ink); } .news-note { margin-top: 10px; font-size: .9rem; color: var(--olive-700); min-height: 1.2em; } .plus-box { display: flex; gap: 12px; align-items: flex-start; margin-top: 16px; padding: 14px 16px; border-radius: 14px; background: rgba(242, 194, 48, .16); border: 1.5px solid var(--yellow); } .plus-ico { flex: none; margin-top: 2px; color: var(--yellow); } .plus-title { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; color: #fff; } .plus-desc { margin-top: 3px; font-size: .92rem; color: rgba(255, 255, 255, .85); } .row-plus { background: rgba(242, 194, 48, .16); border-radius: 12px; padding: 16px 14px; border-top: none !important; margin: 4px 0; } .row-plus dt { color: var(--olive-700); } .legal-links { display: flex; flex-wrap: wrap; gap: 6px 18px; } .legal-links a { color: inherit; } .linkbtn { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; } .linkbtn:hover { color: var(--olive-800); } @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .bloom.play .petal { animation: none; } .btn, .phase-tabs button, .peek-tabs button, .sticky-cta, .qopts button, .quiz-bar i, .days button { transition: none; } .res-main { animation: none; } }
-</style> <style>
-/* StudyOS app-first hero V3 */
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(310px,.76fr);align-items:center;gap:clamp(30px,6vw,74px)}
-.hero-copy{min-width:0}
-.studyos-phone{width:min(340px,88vw);margin:0 auto;background:#171914;border-radius:46px;padding:10px;box-shadow:0 28px 70px rgba(34,42,25,.24);transform:rotate(1.5deg)}
-.studyos-screen{background:#fffdf8;border-radius:37px;min-height:590px;overflow:hidden;color:#26301d;position:relative}
-.studyos-status{height:30px;display:flex;justify-content:center;align-items:center;font-size:11px;font-weight:800}
-.studyos-appbar{padding:12px 18px;border-bottom:1px solid #e4ded1;display:flex;justify-content:space-between;align-items:center}
-.studyos-logo{font:700 21px Georgia,serif;color:#3b4a25}.studyos-logo b{color:#c79a00}.studyos-badge{font-size:9px;font-weight:800;background:#eef1e7;padding:6px 8px;border-radius:99px}
-.studyos-body{padding:20px 18px}.studyos-kicker{font-size:10px;letter-spacing:.12em;font-weight:800;color:#66744d}.studyos-title{font:700 30px/1.02 Georgia,serif;color:#3b4a25;margin:7px 0}.studyos-sub{font-size:12px;line-height:1.45;color:#6d7167}
-.studyos-rec{margin-top:18px;background:#3b4a25;color:white;border-radius:22px;padding:17px}.studyos-rec small{opacity:.8;font-weight:700}.studyos-rec h3{font:700 20px/1.08 Georgia,serif;color:white;margin:7px 0}.studyos-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.studyos-meta span{font-size:9px;background:rgba(255,255,255,.13);padding:6px 7px;border-radius:99px}
-.studyos-btn{display:block;margin-top:13px;background:#f2c230;color:#252714;border-radius:99px;padding:10px;text-align:center;font-size:11px;font-weight:900}
-.studyos-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.studyos-mini div{border:1px solid #ded7c8;border-radius:14px;padding:10px;font-size:10px;font-weight:750}
-.studyos-lock{margin-top:12px;border:1px dashed #c9c1b0;background:#f4f0e8;border-radius:15px;padding:10px;font-size:10px;color:#65695f}.studyos-lock strong{color:#3b4a25}
-.hero-trust{margin-top:12px;font-size:.88rem;color:#66744d;font-weight:650}
-@media(max-width:820px){.hero .wrap{grid-template-columns:1fr}.studyos-phone{margin-top:10px}.hero-copy{text-align:center}.hero .cta-row{justify-content:center}.hero-trust{text-align:center}}
-</style> 
-<style id="phone-free-cta-style">
-.phone-free-cta{margin:12px 16px 16px;text-align:center}
-.phone-free-cta .btn{display:flex;justify-content:center;width:100%;min-height:48px;padding:.72rem 1rem;font-size:.95rem}
-.phone-free-cta span{display:block;margin-top:7px;font:600 .72rem/1.2 Inter,sans-serif;color:#6f7467}
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+<title>StudyOS | 10 recetas gratis</title>
+<meta content="Prueba StudyOS con 10 recetas gratuitas y descubre cómo funciona la experiencia completa con 500 recetas · Crea tu semana · Cambia platos · Lista de la compra." name="description"/>
+<meta content="#f7f3ea" name="theme-color"/>
+<style>
+:root{--ink:#26301d;--olive:#3b4a25;--olive2:#66744d;--paper:#fffdf8;--page:#f5f0e6;--yellow:#f2c230;--line:#ded7c8;--muted:#6d7167;--lock:#ede8dc}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--page);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input{font:inherit}.app{max-width:760px;margin:auto;min-height:100vh;background:var(--paper);padding-bottom:94px}.top{position:sticky;top:0;z-index:20;background:rgba(255,253,248,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topin{display:flex;align-items:center;justify-content:space-between;padding:16px 18px}.brand{font-family:"Fraunces",Georgia,"Times New Roman",serif;font-size:25px;font-weight:600;letter-spacing:-.02em;color:#3B4A25}.brand span{color:#C9785F}.freepill{font-size:12px;font-weight:800;background:#eef1e7;border:1px solid #d5ddc6;border-radius:999px;padding:7px 10px}
+main{padding:22px 18px}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:var(--olive2)}h1,h2,h3{font-family:"Fraunces",Georgia,"Times New Roman",serif;font-weight:600;margin:.25em 0;color:var(--olive)}h1{font-size:clamp(34px,8vw,54px);line-height:.98}.lead{color:var(--muted);font-size:17px;line-height:1.55;max-width:590px}
+.heroCard,.card,.lockedCard{border:1px solid var(--line);border-radius:24px;background:#fff;padding:20px;box-shadow:0 8px 30px rgba(44,52,31,.06)}.heroCard{margin-top:22px;background:linear-gradient(145deg,#3b4a25,#59683e);color:white;border:0}.heroCard h2{color:white;font-size:28px}.heroCard p{color:#edf1e7;line-height:1,5}
+.btn{border:0;border-radius:999px;padding:13px 17px;font-weight:800;cursor:pointer}.btnYellow{background:var(--yellow);color:#252714}.btnGhost{background:#f3f0e8;color:var(--olive)}.wide{width:100%}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.section{margin-top:28px}.sectionHead{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:12px}.sectionHead h2{font-size:26px}.small{font-size:13px;color:var(--muted)}
+.recipes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.recipe{border:1px solid var(--line);background:#fff;border-radius:19px;padding:15px;cursor:pointer;text-align:left}.recipe h3{font-family:inherit;font-size:15px;line-height:1.25;margin:8px 0}.meta{font-size:12px;color:var(--muted)}.tag{display:inline-block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--olive);background:#eef1e7;padding:5px 7px;border-radius:999px}
+.search{width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 14px;background:white;margin:10px 0 14px}.chips{display:flex;gap:8px;overflow:auto;padding-bottom:5px}.chip{white-space:nowrap;border:1px solid var(--line);background:white;border-radius:999px;padding:9px 12px;cursor:pointer}.chip.active{background:var(--olive);color:white;border-color:var(--olive)}
+.lockgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.lockedCard{position:relative;background:var(--lock);min-height:130px;overflow:hidden}.lockedCard h3{font-family:inherit;font-size:15px}.lock{position:absolute;right:12px;top:12px}.lockedCard p{font-size:12px;color:var(--muted);line-height:1.4}.unlock{margin-top:14px;background:#fff7d3;border:1px solid #ead17a;border-radius:22px;padding:18px}.unlock strong{display:block;font:600 22px "Fraunces",Georgia,"Times New Roman",serif;color:var(--olive)}.price{font-size:25px;font-weight:900;margin:8px 0}
+.bottom{position:fixed;z-index:30;left:50%;bottom:0;transform:translateX(-50%);width:min(760px,100%);display:grid;grid-template-columns:1fr 1fr 1fr;background:rgba(255,253,248,.96);backdrop-filter:blur(15px);border-top:1px solid var(--line);padding:8px max(10px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom))}.nav{border:0;background:none;padding:7px 3px 5px;color:var(--muted);font-size:12px;font-weight:800;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:58px}.nav.active{color:var(--olive)}.navIcon{width:25px;height:25px;display:block;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}.navLabel{line-height:1}
+.view{display:none}.view.active{display:block}.modal{position:fixed;z-index:50;inset:0;background:rgba(25,29,20,.48);display:none;align-items:flex-end;justify-content:center}.modal.open{display:flex}.sheet{background:var(--paper);width:min(760px,100%);max-height:91vh;overflow:auto;border-radius:26px 26px 0 0;padding:20px 18px 34px}.close{float:right;border:0;background:#efebe2;border-radius:999px;width:38px;height:38px;font-size:20px}.sheet h2{font-size:30px;padding-right:45px}.facts{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.fact{background:#eef1e7;border-radius:999px;padding:7px 9px;font-size:12px}.sheet li{margin:7px 0;line-height:1.45}.bio{background:#f5f0df;border-left:4px solid var(--yellow);padding:14px;border-radius:12px;line-height:1,5}
+.quiz{display:grid;gap:15px}.q{display:none}.q.active{display:block}.q h3{font-size:21px}.opts{display:grid;gap:8px}.opt{text-align:left;border:1px solid var(--line);background:white;border-radius:14px;padding:13px;cursor:pointer}.progress{height:7px;background:#e7e2d8;border-radius:99px;overflow:hidden;margin:10px 0 18px}.progress i{display:block;height:100%;background:var(--yellow);width:25%;transition:.2s}.lockedOverlay{text-align:center;padding:35px 12px}.lockedOverlay .big{font-size:42px}
+@media(max-width:480px){.recipes,.lockgrid{grid-template-columns:1fr 1fr}.actions{grid-template-columns:1fr}.recipe{padding:13px}}
 </style>
-</head> <body>
-<header class="top"> <div class="wrap"> <a class="mark" href="#" aria-label="StudyOS, inicio">Study<span>OS</span></a> <nav aria-label="Principal"> <a href="https://www.instagram.com/studyos_oficial/" rel="noopener" target="_blank">@studyos_oficial</a> <a class="btn btn-yellow hide-sm" href="gratis.html" data-track="free">10 recetas gratis</a> </nav> </div>
-</header> <main> <!-- ===== Hero ===== --> <section class="hero"> <div class="wrap"> <div class="hero-copy"> <div class="eyebrow">TU RECETARIO, AHORA INTERACTIVO</div> <h1>De «¿qué como hoy?» a tener tu semana organizada.</h1> <p class="lede">500 recetas. StudyOS te ayuda a encontrar qué comer hoy.</p> <div class="cta-row"> <a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Probar StudyOS gratis</a> <a class="btn btn-light btn-lg" href="#como-funciona">Ver cómo funciona</a> </div> <p class="hero-trust">10 recetas gratis · Sin registro</p> </div> <div class="studyos-phone" aria-label="Vista previa de StudyOS"> <div class="studyos-screen"> <div class="studyos-status">9:41</div> <div class="studyos-appbar"><div class="studyos-logo">Study<b>OS</b></div><div class="studyos-badge">HOY</div></div> <div class="studyos-body"> <div class="studyos-kicker">STUDYOS · HOY</div> <div class="studyos-title">¿Qué quieres<br>comer hoy?</div> <div class="studyos-sub">Encuentra una receta sin perder tiempo buscando.</div> <div class="studyos-rec"> <small>UNA OPCIÓN PARA HOY</small> <h3>Crema de calabacín y jengibre con dados de pavo</h3> <div class="studyos-meta"><span>20 min</span><span>Cena</span><span>Antiinflamatoria</span></div> <div class="studyos-btn">Ver receta →</div> </div> <div class="studyos-mini"><div>✨ Recomiéndame</div><div>🔎 Explorar</div></div> <div class="studyos-lock">🔒 <strong>StudyOS+</strong> · 500 recetas, filtros avanzados, favoritas y más.</div> </div> </div> <div class="phone-free-cta">
-  <a class="btn btn-yellow" href="gratis.html" data-track="free">Probar StudyOS gratis</a>
-  <span>10 recetas · sin registro</span>
-</div></div> </div>
-</section><div class="wrap" style="padding-top:18px;padding-bottom:10px"> <div style="max-width:760px"> <p style="font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;color:var(--salmon,#C9785F)">QUÉ ES STUDYOS+</p> <h2 style="margin-top:8px">Un sistema para pasar de «no sé qué comer» a tener una opción clara.</h2> <p class="lede" style="margin-top:12px">StudyOS+ conecta un recetario de 500 recetas con un recomendador interactivo y herramientas de organización. Tú indicas qué buscas; StudyOS+ reduce opciones y te ayuda a elegir.</p> </div>
-</div> <script>if (window.studyosApplyHero) window.studyosApplyHero();</script> <!-- ===== Opiniones ===== --> <section id="como-funciona" class="section bg-paper" id="opiniones"> <div class="wrap"> <h2>Lo que dicen las lectoras</h2> <p class="lede" style="margin-top:14px">Opiniones de mujeres que ya han usado los recetarios de StudyOS.</p> <div class="rev-grid"> <figure class="rev"> <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div> <blockquote><p>Me encantó el diseño y los menús semanales.</p><p>Las recetas me quedaron espectaculares y me sentaron genial!!!</p></blockquote> <figcaption>Verónica Santos</figcaption> </figure> <figure class="rev"> <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div> <blockquote><p>…el apartado de “El Porqué Biológico” en cada una. Descubrí por qué ciertos ingredientes me daban pesadez y cómo combinarlos para mantener la glucosa estable.</p></blockquote> <figcaption>Carolina M.</figcaption> </figure> <figure class="rev"> <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div> <blockquote><p>Estaba harta de las típicas dietas estrictas de pollo a la plancha y lechuga. Este libro me demostró que comer antiinflamatorio puede ser variado, sabroso y súper saciante.</p></blockquote> <figcaption>Sonia G.</figcaption> </figure> <figure class="rev"> <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div> <blockquote><p>He probado ya diferentes productos de esta marca y no puedo estar más agradecida.</p><p>De verdad, recomendado al 100%, trato de 10 y productos super útiles.</p></blockquote> <figcaption>Ana V.</figcaption> </figure> </div> <p class="cta-inline"><a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Probar StudyOS gratis</a></p> </div> </section> <!-- ===== Las dos opciones ===== --> <section class="section options" id="empezar"> <div class="wrap"> <h2>Elige cómo empezar</h2> <p class="lede" style="margin-top:14px">El gratuito es una muestra del completo: así ves cómo son las recetas antes de decidir.</p> <div class="options-grid"> <article class="free"> <span class="pill">Gratis</span> <h3>10 Recetas Antiinflamatorias</h3> <p>Una muestra para probar el método antes de comprar el StudyOS+ completo: recetas sencillas, con ingredientes reales y pensadas para una alimentación antiinflamatoria.</p> <a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Probar StudyOS gratis</a> <p class="fine">Descarga inmediata, sin pagar nada. Además, te invitamos a la comunidad de WhatsApp de StudyOS.</p> </article> <article class="paid"> <span class="pill pill-offer">Oferta de lanzamiento, por tiempo limitado</span> <h3>500 recetas Antiinflamatorias</h3> <p class="sub">El StudyOS+ completo, adaptado a tu ciclo, a la perimenopausia y a la menopausia.</p> <ul class="checks"> <li>500 recetas</li> <li>Adaptadas a tu ciclo, la perimenopausia y la menopausia</li> <li>El Porqué Biológico en cada receta</li> <li>6 menús semanales</li> <li>Listas de la compra</li> <li>Guía de batch cooking</li> <li>Guía de alimentos y sustituciones</li> </ul> <div class="plus-box"> <svg class="plus-ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg> <div> <p class="plus-title">Incluye StudyOS+</p> <p class="plus-desc">La app interactiva del recetario: responde 3 preguntas y te dice al instante qué receta te conviene hoy, o explora las 500 por etapa, necesidad o tiempo.</p> </div> </div> <p class="more"><a href="#incluye">Ver todo lo que incluye</a></p> <div class="buy"> <div class="price"><s class="was"><span class="sr">Precio anterior: </span>10 €</s> 5 € · ≈ US$5.70<small> · pago único</small></div> <a class="btn btn-light" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Desbloquear StudyOS+</a> </div> <p class="fine">Pago seguro con Stripe con tarjetas de crédito o débito de cualquier país. Al terminar te llevamos a la página de descarga. El cobro es en euros: según tu país, Stripe puede mostrarte el precio en tu moneda y, si no, tu banco convierte el importe automáticamente al cambio del día.</p> </article> </div> </div> </section> <!-- ===== Mira dentro ===== --> <section class="section samplebg" id="dentro"> <div class="wrap"> <h2>Mira dentro de los recetarios</h2> <p class="lede" style="margin-top:14px">Así es cada receta: ingredientes claros, pasos sencillos y, al final, El Porqué Biológico, que te explica qué aporta cada ingrediente a tu cuerpo. Aquí ves una del StudyOS+ completo y tres del gratuito, que tienen el mismo formato.</p> <div class="peek-tabs" role="group" aria-label="Elige una receta de muestra"> <button type="button" data-i="0" aria-pressed="true">Ensalada de lentejas</button> <button type="button" data-i="1" aria-pressed="false">Bowl matutino</button> <button type="button" data-i="2" aria-pressed="false">Ensalada de salmón</button> <button type="button" data-i="3" aria-pressed="false">Wok de pollo</button> </div> <div class="peek" aria-live="polite"> <article class="rcard" id="rc-0"> <header class="rc-head"> <h3>Ensalada templada de lentejas, pimiento asado y ventresca</h3> <p class="rc-fase">Fase menstrual</p> <p class="rc-stats"><span>Tiempo de preparación: <b>10 minutos</b></span><span>Calorías aproximadas: <b>380 kcal</b></span></p> <p class="rc-stats"><span>Dificultad: <b>Fácil</b></span><span>Alérgenos: <b>Pescado</b></span></p> </header> <h4 class="rc-h rc-h-ing">Ingredientes</h4> <ul> <li>120 g de lentejas cocidas en conserva (bien lavadas y escurridas)</li> <li>70 g de pimiento rojo asado en tiras (en su jugo)</li> <li>60 g de ventresca de atún en aceite de oliva (escurrida)</li> <li>¼ de cebolla morada picada en dados finos (brunoise)</li> <li>1 cucharadita de AOVE + 1 cucharadita de vinagre de sidra de manzana</li> <li>Sal marina y perejil fresco picado</li> </ul> <h4 class="rc-h rc-h-prep">Preparación</h4> <ul> <li><strong>Aclarado de la legumbre:</strong> Coloca las lentejas en un colador bajo un hilo de agua fría. Aclara hasta eliminar la saponina (espuma) y escurre dándole unos golpecitos al colador.</li> <li><strong>Templado de la base:</strong> Vierte las lentejas en una sartén limpia a fuego medio sin necesidad de añadir aceite. Remueve durante 2 minutos hasta que adquieran una temperatura tibia homogénea. Retira del fuego.</li> <li><strong>Ensamblado de ingredientes:</strong> Pasa las lentejas templadas a un bowl. Añade las tiras de pimiento rojo asado, la cebolla morada picada en dados pequeños y la ventresca de atún separada en lascas gruesas.</li> <li><strong>Emulsión del aliño:</strong> En un vaso aparte, bate con un tenedor la cucharadita de AOVE, el vinagre de manzana, una pizca de sal y el perejil fresco picado durante 20 segundos hasta que la mezcla blanquee ligeramente.</li> <li><strong>Integración:</strong> Vierte la emulsión sobre el bowl y mezcla con delicadeza usando una cuchara de madera para no deshacer la ventresca ni las lentejas. Servir templado.</li> </ul> <div class="rc-why"> <h4>El Porqué Biológico</h4> <p>Perder entre 30 y 80 ml de sangre durante la regla provoca caídas notables de hierro sérico, y las lentejas son una de las mejores fuentes vegetales para reponerlo. Su absorción se multiplica al combinarse con la abundante vitamina C del pimiento rojo asado, un detalle nutricional que marca la diferencia. El vinagre de manzana cierra el plato mejorando el vaciado gástrico y reduciendo la inflamación abdominal.</p> </div> </article> <article class="rcard" id="rc-1" hidden> <header class="rc-head"> <h3>Bowl matutino de grasas saludables</h3> <p class="rc-fase">Fase menstrual / Menopausia</p> <p class="rc-stats"><span>Tiempo de preparación: <b>5 minutos</b></span><span>Calorías aproximadas: <b>330 kcal</b></span></p> <p class="rc-stats"><span>Dificultad: <b>Muy baja</b></span><span>Alérgenos: <b>Lácteos, frutos secos</b></span></p> </header> <h4 class="rc-h rc-h-ing">Ingredientes</h4> <ul> <li>150 g de yogur griego entero no azucarado (o yogur de coco alto en grasa)</li> <li>½ aguacate maduro en su punto</li> <li>1 puñado generoso (40 g) de arándanos frescos o congelados</li> <li>1 cucharada sopera (10-15 g) de semillas de lino o chía recién molidas</li> <li>1 pizca de canela de Ceilán en polvo</li> <li>Opcional: 1 cucharadita de nueces o semillas de calabaza picadas</li> </ul> <h4 class="rc-h rc-h-prep">Preparación</h4> <ul> <li><strong>Base proteico-lipídica:</strong> Vierte el yogur griego o de coco en la base de un cuenco amplio. Asegúrate de remover el suero natural del yogur para integrarlo.</li> <li><strong>Corte y presentación:</strong> Corta el medio aguacate en abanico o láminas finas e incorpóralo en un lateral del bol. Coloca los arándanos frescos en el lateral opuesto.</li> <li><strong>Activación de la fibra:</strong> Muele las semillas de lino o chía en el momento (para evitar la oxidación de sus ácidos grasos) e incorpóralas sobre la fruta y el yogur.</li> <li><strong>Toque térmico y glucémico:</strong> Espolvorea la canela de Ceilán por la superficie. Sirve a temperatura ambiente para no ralentizar la digestión matutina.</li> </ul> <div class="rc-why"> <h4>El Porqué Biológico</h4> <p>Iniciar la mañana sin carbohidratos de alto índice glucémico frena drásticamente el pico de glucosa e insulina. El aguacate y el yogur aportan ácidos grasos monoinsaturados y de cadena media que promueven la síntesis de hormonas esteroideas (como la progesterona).</p> <p>Las semillas molidas aportan lignanos, unos fitoestrógenos clave para modular la sobrecarga estrogénica o suavizar la caída hormonal en la menopausia. La canela, mimética de la insulina, actúa optimizando los receptores celulares de glucosa, evitando los bajones de energía y los picos de cortisol a media mañana.</p> </div> </article> <article class="rcard" id="rc-2" hidden> <header class="rc-head"> <h3>Ensalada de salmón, cítricos y nueces</h3> <p class="rc-fase">Fase ovulatoria / Perimenopausia / Menopausia</p> <p class="rc-stats"><span>Tiempo de preparación: <b>10 minutos</b></span><span>Calorías aproximadas: <b>415 kcal</b></span></p> <p class="rc-stats"><span>Dificultad: <b>Baja</b></span><span>Alérgenos: <b>Pescado, frutos secos</b></span></p> </header> <h4 class="rc-h rc-h-ing">Ingredientes</h4> <ul> <li>120 g de salmón ahumado de calidad (o lomo de salmón fresco cocinado a la plancha)</li> <li>2 puñados generosos de hoja verde variada (rúcula, canónigos y espinacas baby)</li> <li>½ naranja dulce cortada en gajos limpios</li> <li>4-5 mitades de nueces de California troceadas</li> <li>½ pepino mediano cortado en rodajas finas (aporta hidratación extra)</li> <li>Emulsión del aliño: 1 cda. de aceite de oliva virgen extra (AOVE), zumo de ¼ de limón fresco, una pizca de sal marina no refinada y pimienta negra</li> </ul> <h4 class="rc-h rc-h-prep">Preparación</h4> <ul> <li><strong>Montaje de hoja fresca:</strong> Crea una cama voluminosa en un plato hondo mezclando la rúcula, los canónigos y las espinacas baby previamente lavadas y secas.</li> <li><strong>Corte e integración:</strong> Distribuye las rodajas de pepino, los gajos de naranja limpios de piel blanca y las tiras o trozos de salmón por encima.</li> <li><strong>Crujiente:</strong> Trocea las nueces con las manos y espolvoréalas por toda la ensalada.</li> <li><strong>Emulsión activadora:</strong> En un vaso pequeño, bate con un tenedor el AOVE, el zumo de limón, la sal y la pimienta hasta obtener una mezcla turbia homogénea. Aliña justo en el momento de comer para no marchitar las hojas.</li> </ul> <div class="rc-why"> <h4>El Porqué Biológico</h4> <p>Durante la fase ovulatoria o en momentos de declive hormonal, los picos de inflamación pueden alterar el tejido reproductivo y vascular. El salmón y las nueces aportan una altísima densidad de ácidos grasos omega-3 (EPA y DHA), que reducen la síntesis de prostaglandinas proinflamatorias.</p> <p>La vitamina C de la naranja y el limón no solo actúa como un antioxidante directo en el folículo, sino que multiplica la biodisponibilidad del hierro no hemo de las hojas verdes. Además, la amargura de la rúcula estimula la segregación de bilis, facilitando la correcta eliminación metabólica de estrógenos en el hígado.</p> </div> </article> <article class="rcard" id="rc-3" hidden> <header class="rc-head"> <h3>Wok de pollo con brócoli, sésamo y jengibre</h3> <p class="rc-fase">Fase folicular / Perimenopausia / Menopausia</p> <p class="rc-stats"><span>Tiempo de preparación: <b>15 minutos</b></span><span>Calorías aproximadas: <b>370 kcal</b></span></p> <p class="rc-stats"><span>Dificultad: <b>Baja</b></span><span>Alérgenos: <b>Sésamo, soja</b></span></p> </header> <h4 class="rc-h rc-h-ing">Ingredientes</h4> <ul> <li>150 g de pechuga o contramuslo de pollo campero en dados</li> <li>1,5 tazas de floretes de brócoli cortados pequeños</li> <li>½ pimiento rojo cortado en tiras finas</li> <li>1 cucharada de semillas de sésamo blanco o negro</li> <li>1 cucharada de tamari (salsa de soja sin gluten) o aminos de coco</li> <li>1 trozo de jengibre fresco (1 cm) rallado</li> <li>1 cucharada de AOVE o aceite de sésamo para saltear</li> </ul> <h4 class="rc-h rc-h-prep">Preparación</h4> <ul> <li><strong>Sellar la proteína:</strong> En un wok o sartén grande con la cucharada de aceite bien caliente, añade los dados de pollo. Cocina a fuego vivo durante 4-5 minutos hasta que estén dorados por fuera.</li> <li><strong>Incorporar vegetales e infusión:</strong> Agrega el pimiento rojo, los floretes de brócoli y el jengibre recién rallado. Cocina a fuego medio-alto salteando constantemente durante 5-6 minutos (el brócoli debe quedar crujiente y «al dente» para conservar sus sulforafanos).</li> <li><strong>Glaseado:</strong> Añade el tamari o los aminos de coco por los bordes de la sartén y remueve vigorosamente durante 1 minuto adicional para que los ingredientes absorban el sabor.</li> <li><strong>Emplatado:</strong> Sirve en un bol y decora espolvoreando la cucharada de semillas de sésamo tostadas por encima.</li> </ul> <div class="rc-why"> <h4>El Porqué Biológico</h4> <p>En la fase folicular, el cuerpo necesita nutrientes de apoyo para construir tejido y metabolizar el aumento de estrógenos. El brócoli es rico en indol-3-carbinol y sulforafano, compuestos azufrados indispensables para activar la detoxificación hepática de fase II (fase de eliminación de estrógenos usados). El pollo proporciona proteínas magras ricas en tirosina para respaldar la producción de dopamina y la motivación. Las semillas de sésamo aportan zinc y calcio, necesarios para la maduración folicular y la densidad ósea en la mujer.</p> </div> </article> <div class="peek-side"> <img id="peek-photo" src="dentro-lentejas-foto.jpg" width="1000" height="545" loading="lazy" alt="Ensalada templada de lentejas con tiras de pimiento asado y ventresca de atún, con albahaca, en una fuente."> <p class="peek-cap">Sugerencia de presentación</p> <p class="peek-src peek-src-paid" id="peek-src">Del StudyOS+ completo</p> </div> </div> </div> </section> <!-- ===== Menú semanal ===== -->  <!-- ===== Qué incluye ===== --> <section class="section" id="como-funciona-"> <div class="wrap"> <div style="max-width:720px"><p style="font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;color:var(--salmon,#C9785F)">CÓMO FUNCIONA</p> <h2 style="margin-top:8px">Tres pasos. Sin perder tiempo buscando.</h2></div> <div class="steps" style="margin-top:26px"> <article><b>1 · Dinos qué buscas</b><p>Indica tu etapa, qué necesitas y el momento del día.</p></article> <article><b>2 · StudyOS+ reduce las opciones</b><p>El recomendador busca entre 500 recetas compatibles con tus preferencias.</p></article> <article><b>3 · Elige y cocina</b><p>Abre la receta, consulta ingredientes, preparación y su explicación nutricional divulgativa.</p></article> </div> </div>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style id="studyos-color-fix">
+/* StudyOS Free — remove browser-default blue from interactive UI */
+button, input, select, textarea { font: inherit; }
+button { color: var(--olive); }
+.choice, .chip, .filter, .option, .answer, .quiz-option,
+button.choice, button.chip, button.filter, button.option,
+[data-choice], [data-value] {
+  color: var(--olive) !important;
+  -webkit-text-fill-color: var(--olive);
+}
+.choice:hover, .chip:hover, .filter:hover, .option:hover,
+.choice:focus-visible, .chip:focus-visible, .filter:focus-visible, .option:focus-visible {
+  color: var(--olive) !important;
+}
+.choice.selected, .chip.active, .filter.active, .option.selected,
+button[aria-pressed="true"] {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff;
+}
+input::placeholder { color: #9a9b94; opacity: 1; }
+
+/* Bottom navigation remains proportional */
+.bottom .nav { color: #6d7167 !important; }
+.bottom .nav.active { color: var(--olive) !important; }
+.bottom .navIcon { width: 27px; height: 27px; flex: 0 0 27px; }
+</style>
+<style id="studyos-button-color-fix">
+.qopt, .filterBtn, .filterLock, .quiz button, .filters button {
+  color:#3B4A25 !important;
+  -webkit-text-fill-color:#3B4A25;
+}
+</style>
+<style id="studyos-plan-free-css">
+.planGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+.planLock{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;min-height:126px}
+.planLock .picon{font-size:25px;display:block;margin-bottom:9px}.planLock h3{margin:0 0 5px;font-size:16px}.planLock p{margin:0;color:var(--muted);font-size:13px;line-height:1.4}
+.planLock .lockpill{position:absolute;right:12px;top:12px;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:4px 7px;font-size:10px;font-weight:800}
+.planUpsell{margin-top:18px;background:var(--olive);color:#fff;border-radius:20px;padding:20px}.planUpsell h2{color:#fff;margin-top:0}.planUpsell p{color:#eef1e7}.planUpsell .btn{margin-top:12px}
+@media(max-width:520px){.planGrid{grid-template-columns:1fr}}
+</style>
+<style id="studyos-real-plan-css">
+.planHero{margin-bottom:18px}.planHero h1{margin-bottom:8px}
+.planTabs,.menuChooser,.dayChooser{display:flex;gap:8px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:none}.planTabs::-webkit-scrollbar,.menuChooser::-webkit-scrollbar,.dayChooser::-webkit-scrollbar{display:none}
+.planTab,.menuPick,.dayPick{flex:0 0 auto;border:1px solid var(--line);background:#fff;color:var(--olive);border-radius:999px;padding:10px 13px;font-weight:800;cursor:pointer}
+.planTab.on,.menuPick.on,.dayPick.on{background:#eef1e5;color:var(--olive)!important;-webkit-text-fill-color:var(--olive);border-color:var(--olive)}
+.menuIntro{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:15px;margin:10px 0 14px}.menuIntro b{display:block;font-family:var(--serif);font-size:1.12rem;color:var(--olive);margin-bottom:5px}.menuIntro p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.45}
+.mealGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.mealCard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}.mealCard small{display:block;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--muted);margin-bottom:6px}.mealCard b{color:var(--olive);line-height:1.25}
+.shopCat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0}.shopCat h3{margin:0 0 9px;font-size:1rem;color:var(--olive)}.shopItem{display:flex;gap:9px;align-items:flex-start;padding:6px 0;font-size:.9rem}.shopItem input{margin-top:2px;width:18px;height:18px;accent-color:var(--olive)}
+.batchCard,.subCard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0}.batchCard small{font-weight:800;color:var(--salmon);text-transform:uppercase;letter-spacing:.06em}.batchCard h3,.subCard h3{margin:5px 0;color:var(--olive);font-size:1rem}.batchCard p,.subCard p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.45}
+.lockedPlan{margin-top:18px;background:var(--olive);color:#fff;border-radius:20px;padding:18px}.lockedPlan h2{color:#fff;margin:0 0 8px}.lockedPlan p{color:#eef1e7}.lockFeatures{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0}.lockFeature{background:rgba(255,255,255,.1);border-radius:12px;padding:10px;font-size:.85rem;font-weight:700}
+@media(max-width:560px){.mealGrid{grid-template-columns:1fr}.lockFeatures{grid-template-columns:1fr}}
+</style>
+<script defer="" src="tracking.js"></script>
+<style id="selected-label-olive-fix">
+#plan .planTab.on,#plan .menuPick.on,#plan .dayPick.on{
+  color:#3B4A25 !important;
+  -webkit-text-fill-color:#3B4A25 !important;
+  background:#EEF1E5 !important;
+  border-color:#AAB58C !important;
+}
+</style>
+<style id="conversion-v3-css">
+.cv3-result-offer{margin-top:22px;border:1px solid rgba(59,74,37,.18);background:#f7f4ed}.cv3-result-offer strong{display:block;font-family:Fraunces,serif;font-size:1.25rem;color:#26331a;margin:5px 0 8px}.cv3-benefits{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:13px 0 15px;font-size:.82rem;font-weight:700}.cv3-benefits span{background:#fff;padding:8px 9px;border-radius:10px}.cv3-micro{text-align:center!important;font-size:.75rem!important;opacity:.72;margin:8px 0 0!important}@media(max-width:480px){.cv3-benefits{grid-template-columns:1fr}}
+</style>
+<style id="free-menu-click-style">
+.freeMenuRecipeLink{width:100%;text-align:left;font:inherit;color:inherit;-webkit-text-fill-color:currentColor;cursor:pointer}
+.freeMenuRecipeLink .menuRecipeHint{display:block;margin-top:7px;font-size:.72rem;font-weight:800;color:#3B4A25;-webkit-text-fill-color:#3B4A25}
+.freeMenuRecipeLink:hover,.freeMenuRecipeLink:focus{outline:2px solid rgba(59,74,37,.22);outline-offset:2px}
+</style>
+
+<style id="studyos-premium-polish">
+:root{
+  --sx-cream:#F7F2E8; --sx-paper:#FFFCF7; --sx-ink:#20251C;
+  --sx-olive:#3B4A25; --sx-olive2:#66734B; --sx-salmon:#C9785F;
+  --sx-yellow:#F0C95B; --sx-line:rgba(59,74,37,.14);
+}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(circle at 12% 5%,rgba(201,120,95,.10),transparent 26rem),
+    radial-gradient(circle at 92% 18%,rgba(240,201,91,.12),transparent 24rem),
+    var(--sx-cream);
+}
+.top{
+  position:sticky;top:0;z-index:40;
+  background:rgba(247,242,232,.88)!important;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(59,74,37,.10)!important;
+}
+.topin{min-height:66px!important}
+.brand{letter-spacing:-.045em}
+.freepill{
+  background:rgba(255,255,255,.65)!important;
+  border:1px solid rgba(59,74,37,.13)!important;
+  box-shadow:0 5px 18px rgba(42,48,31,.06);
+}
+.view{animation:sxIn .32s ease both}
+@keyframes sxIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+#home{padding-top:clamp(26px,6vw,54px)}
+#home>h1{
+  max-width:760px;font-size:clamp(2.55rem,9vw,5rem)!important;
+  line-height:.91!important;letter-spacing:-.055em!important;
+  text-wrap:balance;margin-bottom:14px!important;
+}
+#home>.lead{max-width:610px;font-size:clamp(1rem,2.5vw,1.18rem);line-height:1.55}
+.heroCard{
+  position:relative;overflow:hidden;
+  border-radius:30px!important;
+  padding:clamp(24px,5vw,38px)!important;
+  box-shadow:0 24px 55px rgba(42,54,28,.18);
+  border:1px solid rgba(255,255,255,.10)!important;
+}
+.heroCard:after{
+  content:"";position:absolute;width:190px;height:190px;border-radius:50%;
+  right:-80px;top:-80px;background:rgba(240,201,91,.14);pointer-events:none
+}
+.heroCard h2{font-size:clamp(1.65rem,5vw,2.35rem)!important;letter-spacing:-.035em}
+.heroCard p{max-width:570px;line-height:1.55}
+.btn{
+  min-height:50px;border-radius:999px!important;font-weight:800!important;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease
+}
+.btn:active{transform:scale(.985)}
+.btnYellow{box-shadow:0 8px 20px rgba(181,139,30,.18)}
+.actions{gap:10px!important}
+.actions .btn{background:rgba(255,252,247,.72)!important;border-color:rgba(59,74,37,.13)!important}
+.section{margin-top:clamp(34px,7vw,62px)!important}
+.sectionHead h2{letter-spacing:-.035em}
+.recipeCard,.card{
+  border-radius:22px!important;border-color:rgba(59,74,37,.12)!important;
+  box-shadow:0 8px 28px rgba(48,54,35,.055);
+}
+.recipeCard{overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}
+.recipeCard:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(48,54,35,.09)}
+.unlock{
+  border-radius:28px!important;padding:clamp(22px,5vw,34px)!important;
+  border:1px solid rgba(59,74,37,.12)!important;
+  background:linear-gradient(145deg,#fffaf1,#f1eadc)!important;
+}
+.unlock strong{font-family:var(--serif);font-size:clamp(1.45rem,4vw,2rem);letter-spacing:-.03em}
+.unlock .price{margin:18px 0 14px}
+.bottomNav{
+  background:rgba(255,252,247,.92)!important;
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-top:1px solid rgba(59,74,37,.10)!important;
+  box-shadow:0 -10px 32px rgba(48,54,35,.06);
+}
+
+/* Editorial transition: product -> explanation */
+.hybrid-info{max-width:1080px!important;margin-top:70px!important}
+.hybrid-intro{
+  position:relative;overflow:hidden;
+  background:var(--sx-olive);color:white;
+  border:0!important;border-radius:34px;padding:clamp(28px,7vw,58px)!important;
+  box-shadow:0 28px 65px rgba(42,54,28,.16)
+}
+.hybrid-intro:after{
+  content:"StudyOS";position:absolute;right:-18px;bottom:-30px;
+  font-family:var(--serif);font-size:clamp(5rem,17vw,11rem);font-weight:700;
+  color:rgba(255,255,255,.045);letter-spacing:-.07em;pointer-events:none
+}
+.hybrid-intro .eyebrow{color:#F4D87B!important}
+.hybrid-intro h2{color:white!important;font-size:clamp(2.15rem,7vw,4rem)!important;max-width:700px}
+.hybrid-intro p{color:#E8ECDD!important;position:relative;z-index:1}
+.hybrid-nav{position:relative;z-index:1;margin-top:18px}
+.hybrid-nav a{
+  color:white!important;background:rgba(255,255,255,.08)!important;
+  border-color:rgba(255,255,255,.15)!important;
+}
+.hybrid-section{
+  padding:clamp(50px,9vw,88px) 0!important;border-top:0!important;
+}
+.hybrid-section+.hybrid-section{border-top:1px solid var(--sx-line)!important}
+.hybrid-section>h2{
+  max-width:790px;font-size:clamp(2rem,6vw,3.65rem)!important;
+  letter-spacing:-.05em!important;line-height:1!important;text-wrap:balance
+}
+.hybrid-section>.lead{max-width:720px;line-height:1.65!important}
+.hybrid-grid{gap:14px!important;margin-top:28px!important}
+.hybrid-card{
+  position:relative;min-height:175px;
+  border-radius:24px!important;padding:24px!important;
+  box-shadow:0 10px 30px rgba(48,54,35,.045);
+  transition:transform .2s ease,box-shadow .2s ease
+}
+.hybrid-card:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(48,54,35,.075)}
+.hybrid-card h3{font-size:1.28rem!important;letter-spacing:-.025em}
+.hybrid-card p{line-height:1.6!important}
+#porque-biologico{
+  position:relative;
+}
+#porque-biologico:before{
+  content:"BIO";display:inline-grid;place-items:center;width:58px;height:58px;
+  border-radius:18px;background:#E5D49A;color:var(--sx-olive);
+  font:800 .78rem/1 var(--sans);letter-spacing:.08em;margin-bottom:18px
+}
+.hybrid-science{
+  position:relative;border:1px solid rgba(59,74,37,.10);
+  background:rgba(255,252,247,.68)!important;
+  border-radius:28px!important;padding:clamp(22px,5vw,34px)!important;
+  box-shadow:0 12px 36px rgba(48,54,35,.05)
+}
+.hybrid-science p{font-size:1.01rem}
+.hybrid-phases{gap:12px!important;margin-top:26px!important}
+.hybrid-phase{
+  min-height:116px;border-left:0!important;border-radius:22px!important;
+  padding:20px!important;background:rgba(255,252,247,.76)!important;
+  border:1px solid rgba(59,74,37,.11)!important;
+  box-shadow:0 8px 24px rgba(48,54,35,.04)
+}
+.hybrid-phase:before{
+  content:"";display:block;width:28px;height:4px;border-radius:999px;
+  background:var(--sx-salmon);margin-bottom:14px
+}
+.hybrid-phase b{font-family:var(--serif);font-size:1.16rem}
+.hybrid-faq details{
+  border-radius:20px!important;padding:17px 19px!important;
+  background:rgba(255,252,247,.72)!important;
+  box-shadow:0 6px 20px rgba(48,54,35,.035)
+}
+.hybrid-faq summary{font-size:1rem}
+.hybrid-final{
+  position:relative;overflow:hidden;
+  border-radius:34px!important;padding:clamp(28px,7vw,56px)!important;
+  background:linear-gradient(145deg,#34431f,#4a5b31)!important;
+  box-shadow:0 26px 60px rgba(42,54,28,.18)
+}
+.hybrid-final:after{
+  content:"500";position:absolute;right:-15px;top:-35px;
+  font-family:var(--serif);font-size:clamp(8rem,28vw,15rem);font-weight:800;
+  line-height:1;color:rgba(255,255,255,.045);pointer-events:none
+}
+.hybrid-final h2{max-width:690px;font-size:clamp(2rem,6vw,3.5rem)!important;letter-spacing:-.05em!important;line-height:1!important}
+.hybrid-final p{max-width:650px;position:relative;z-index:1}
+.hybrid-final .btn{position:relative;z-index:1;display:inline-flex!important;width:auto!important;padding-inline:22px!important;text-decoration:none}
+
+@media(max-width:650px){
+  #home{padding-top:22px}
+  #home>h1{font-size:clamp(2.65rem,14vw,4rem)!important}
+  .heroCard{border-radius:25px!important}
+  .hybrid-info{margin-top:50px!important;padding:0 12px!important}
+  .hybrid-intro{border-radius:27px;padding:28px 22px!important}
+  .hybrid-grid,.hybrid-phases{grid-template-columns:1fr!important}
+  .hybrid-card{min-height:auto}
+  .hybrid-section{padding:48px 4px!important}
+  .hybrid-final{border-radius:27px;padding:30px 22px!important}
+}
+</style>
+<style id="plus-wow-styles">
+.plus-reveal{
+  position:relative;isolation:isolate;overflow:hidden;
+  margin:20px 0 10px;border-radius:38px;
+  background:
+    radial-gradient(circle at 72% 18%,rgba(240,201,91,.20),transparent 28%),
+    radial-gradient(circle at 12% 62%,rgba(201,120,95,.17),transparent 31%),
+    linear-gradient(145deg,#27351a 0%,#3b4a25 48%,#53613a 100%);
+  color:#fff;box-shadow:0 35px 90px rgba(38,49,24,.25)
+}
+.plus-reveal-inner{position:relative;z-index:2;padding:clamp(34px,7vw,72px)}
+.plus-kicker,.plus-close-kicker{
+  color:#f2d773;font-size:.73rem;font-weight:900;letter-spacing:.14em
+}
+.plus-reveal h2{
+  color:#fff!important;max-width:780px;margin:12px 0 8px!important;
+  font-family:var(--serif);font-size:clamp(2.2rem,7vw,4.6rem)!important;
+  line-height:.96!important;letter-spacing:-.055em!important
+}
+.plus-lead{max-width:650px;color:#e5eadc;font-size:1.08rem;line-height:1.6;margin:12px 0 0}
+.plus-500{
+  display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  margin:24px 0 6px
+}
+.plus-500 span{font-family:var(--serif);font-size:clamp(1.5rem,4vw,2.4rem);font-weight:700}
+.plus-500 strong{
+  font-family:var(--serif);font-size:clamp(5.6rem,20vw,11rem);
+  line-height:.72;letter-spacing:-.085em;color:#f2d773
+}
+.plus-500 em{font-family:var(--serif);font-size:clamp(1.5rem,5vw,3rem);font-style:normal}
+.plus-stage{position:relative;min-height:570px;margin:34px auto 24px;max-width:900px}
+.plus-phone{
+  position:absolute;left:50%;top:20px;transform:translateX(-50%) rotate(-2deg);
+  width:min(290px,62vw);height:535px;padding:10px;border-radius:42px;
+  background:#171b15;border:1px solid rgba(255,255,255,.25);
+  box-shadow:0 34px 70px rgba(0,0,0,.32)
+}
+.plus-phone-top{height:25px;display:grid;place-items:center}
+.plus-phone-top span{width:70px;height:6px;border-radius:999px;background:#343b30}
+.plus-screen{
+  height:calc(100% - 25px);border-radius:31px;padding:24px 18px;
+  background:#f7f2e8;color:#25301d;overflow:hidden
+}
+.mini-brand{font-family:var(--serif);font-size:1.45rem;font-weight:800}
+.mini-brand span{color:#c9785f}
+.mini-label{font-size:.57rem;letter-spacing:.12em;font-weight:900;color:#7d846f;margin-top:28px}
+.mini-title{font-family:var(--serif);font-size:1.65rem;font-weight:700;line-height:1;margin:6px 0 16px}
+.mini-search{background:#fff;border:1px solid rgba(59,74,37,.12);border-radius:999px;padding:11px 12px;color:#858a7b;font-size:.67rem}
+.mini-card{margin-top:18px;padding:17px;border-radius:18px;background:#3b4a25;color:white}
+.mini-card b,.mini-card span{display:block}.mini-card span{font-size:.68rem;color:#dfe5d7;margin-top:5px}
+.mini-row{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+.mini-row i{display:block;height:100px;border-radius:16px;background:linear-gradient(145deg,#e3d5b9,#c9b99d)}
+.float-card{
+  position:absolute;display:flex;align-items:center;gap:11px;max-width:270px;
+  padding:14px 16px;border:1px solid rgba(255,255,255,.17);
+  border-radius:18px;background:rgba(255,255,255,.10);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 18px 42px rgba(0,0,0,.13)
+}
+.float-card b,.float-card small{display:block}.float-card b{font-size:.93rem}.float-card small{color:#dfe5d7;font-size:.72rem;line-height:1.3;margin-top:2px}
+.float-icon{
+  flex:0 0 39px;height:39px;border-radius:12px;display:grid;place-items:center;
+  background:#f2d773;color:#34431f;font-weight:900;font-size:.72rem
+}
+.fc-week{left:2%;top:70px;transform:rotate(-2deg)}
+.fc-fridge{right:0;top:155px;transform:rotate(2deg)}
+.fc-rescue{left:0;top:355px;transform:rotate(1deg)}
+.fc-bio{right:2%;top:415px;transform:rotate(-2deg)}
+.plus-capabilities{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:30px}
+.cap{
+  min-height:180px;padding:24px;border-radius:24px;
+  background:rgba(255,255,255,.085);border:1px solid rgba(255,255,255,.12)
+}
+.cap-big{background:#f2d773;color:#2e391f}
+.cap-num{display:block;font-family:var(--serif);font-size:4rem;line-height:.8;font-weight:800;letter-spacing:-.07em}
+.cap b{display:block;font-family:var(--serif);font-size:1.35rem;line-height:1.05;margin:10px 0 7px}
+.cap p{margin:0;color:#dfe5d7;line-height:1.45;font-size:.9rem}
+.cap-big p{color:#4e583e}.cap-tag{color:#f2d773;font-size:.65rem;font-weight:900;letter-spacing:.12em}
+.plus-close{
+  display:flex;justify-content:space-between;align-items:end;gap:30px;
+  margin-top:46px;padding-top:36px;border-top:1px solid rgba(255,255,255,.16)
+}
+.plus-close h3{
+  font-family:var(--serif);font-size:clamp(2rem,5vw,3.6rem);line-height:.98;
+  letter-spacing:-.05em;margin:9px 0 12px
+}
+.plus-close p{color:#e2e7da;margin:0}.plus-close p strong{color:#fff}
+.plus-cta{
+  flex:0 0 auto;display:inline-flex;align-items:center;gap:22px;
+  text-decoration:none;background:#f2d773;color:#2e391f;
+  padding:17px 20px;border-radius:999px;font-weight:900;
+  box-shadow:0 16px 36px rgba(0,0,0,.17)
+}
+.plus-cta span{font-size:1.35rem}
+.plus-orbit{position:absolute;border:1px solid rgba(255,255,255,.07);border-radius:50%;z-index:0}
+.plus-orbit-a{width:520px;height:520px;right:-250px;top:-210px}
+.plus-orbit-b{width:380px;height:380px;left:-240px;bottom:120px}
+@media(max-width:720px){
+ .plus-reveal{border-radius:29px}
+ .plus-reveal-inner{padding:30px 18px 32px}
+ .plus-stage{min-height:650px;margin-top:24px}
+ .plus-phone{top:52px;width:235px;height:445px;border-radius:35px}
+ .plus-screen{border-radius:26px;padding:20px 14px}
+ .mini-title{font-size:1.35rem}
+ .float-card{max-width:190px;padding:11px 12px}
+ .float-card b{font-size:.78rem}.float-card small{font-size:.64rem}
+ .float-icon{flex-basis:32px;height:32px;border-radius:10px}
+ .fc-week{left:-5px;top:8px}
+ .fc-fridge{right:-5px;top:182px}
+ .fc-rescue{left:-5px;top:400px}
+ .fc-bio{right:-5px;top:525px}
+ .plus-capabilities{grid-template-columns:1fr}
+ .cap{min-height:auto}
+ .plus-close{display:block}
+ .plus-cta{margin-top:24px;width:100%;justify-content:space-between;box-sizing:border-box}
+}
+</style>
+<style id="plus-home-slot-styles">
+.plus-home-slot{margin-top:46px!important}
+.plus-home-slot .plus-reveal{margin:0}
+.plus-home-slot .plus-reveal-inner{padding:clamp(28px,6vw,58px)}
+@media(max-width:720px){
+  .plus-home-slot{margin-top:34px!important}
+  .plus-home-slot .plus-reveal{border-radius:26px}
+  .plus-home-slot .plus-reveal-inner{padding:27px 16px 30px}
+}
+</style>
+<style id="legal-footer-styles">
+.studyos-legal-footer{max-width:1080px;margin:54px auto 0;padding:34px 18px 120px;border-top:1px solid rgba(59,74,37,.14);color:#68705f}
+.studyos-legal-inner{display:grid;gap:16px}
+.studyos-legal-brand{font-family:var(--serif);font-size:1.35rem;font-weight:800;color:var(--olive-900)}
+.studyos-legal-brand span{color:var(--salmon)}
+.studyos-legal-footer nav{display:flex;flex-wrap:wrap;gap:9px 18px}
+.studyos-legal-footer a,.studyos-legal-footer button{font:inherit;font-size:.83rem;color:inherit;text-decoration:underline;background:none;border:0;padding:0;cursor:pointer}
+.studyos-legal-footer p{max-width:720px;font-size:.78rem;line-height:1.55;margin:0}
+</style>
+<style id="plus-contrast-and-tabs">
+.plus-close h3{color:#fff!important;opacity:1!important}
+.plus-close p{color:#eef1e8!important}
+.plus-close p strong{color:#fff!important}
+.plus-reveal h2,.plus-reveal h3,.plus-reveal b{opacity:1}
+.plus-reveal .plus-close-kicker{color:#f2d773!important}
+.plus-reveal .plus-cta{color:#2e391f!important}
+@media(min-width:721px){
+  .plus-close h3{max-width:560px}
+}
+</style></head>
+<body>
+<div class="app">
+<header class="top"><div class="topin"><div class="brand">Study<span>OS</span></div><div class="freepill">GRATIS · 10 RECETAS</div></div></header>
+<main>
+<section class="view active" id="home">
+<div class="eyebrow">TU STUDYOS GRATIS</div>
+<h1>¿Qué quieres comer hoy?</h1>
+<p class="lead">Ya estás dentro. Encuentra una receta para hoy o explora las 10 disponibles gratis.</p>
+<div class="heroCard">
+<div class="eyebrow" style="color:#dce5ce">RECOMENDADOR</div>
+<h2>Te ayudamos a elegir</h2>
+<p>Responde 4 preguntas rápidas y encuentra una opción entre tus 10 recetas gratuitas.</p>
+<button class="btn btnYellow" data-track-action="free_recommendation_start" id="startQuiz">Encontrar mi receta →</button>
+</div>
+<div class="actions">
+<button class="btn btnGhost" data-go="explore" data-track-action="free_explore">🔎 Ver las 10 recetas</button>
+<button class="btn btnGhost" data-track-action="free_random_recipe" id="randomBtn">✨ Sorpréndeme</button>
+</div>
+<div class="section">
+<div class="sectionHead"><div><div class="eyebrow">GRATIS</div><h2>Tus recetas</h2></div><span class="small">10 disponibles</span></div>
+<div class="recipes" id="homeRecipes"></div>
+</div>
+<div class="section plus-home-slot">
+<section class="plus-reveal" id="studyos-plus">
+<div class="plus-orbit plus-orbit-a"></div>
+<div class="plus-orbit plus-orbit-b"></div>
+<div class="plus-reveal-inner">
+<div class="plus-kicker">ESTO ES SOLO EL PRINCIPIO</div>
+<h2>Has probado StudyOS con 10 recetas.</h2>
+<div class="plus-500"><span>StudyOS+</span><strong>500</strong><em>recetas</em></div>
+<p class="plus-lead">Pero StudyOS+ no es simplemente una biblioteca más grande. Es el sistema completo.</p>
+<div class="plus-stage">
+<div aria-hidden="true" class="plus-phone">
+<div class="plus-phone-top"><span></span></div>
+<div class="plus-screen">
+<div class="mini-brand">Study<span>OS+</span></div>
+<div class="mini-label">HOY</div>
+<div class="mini-title">¿Qué quieres comer?</div>
+<div class="mini-search">Buscar entre 500 recetas…</div>
+<div class="mini-card"><b>Tu recomendación</b><span>Lista en 15 min</span></div>
+<div class="mini-row"><i></i><i></i></div>
+</div>
+</div>
+<article class="float-card fc-week"><span class="float-icon">✦</span><div><b>Crea mi semana</b><small>21 comidas organizadas</small></div></article>
+<article class="float-card fc-fridge"><span class="float-icon">⌁</span><div><b>¿Qué tengo en la nevera?</b><small>Encuentra recetas con lo que tienes</small></div></article>
+<article class="float-card fc-rescue"><span class="float-icon">↗</span><div><b>StudyOS Rescue</b><small>Resuelve una comida cuando vas con prisa</small></div></article>
+<article class="float-card fc-bio"><span class="float-icon">BIO</span><div><b>Porqué Biológico</b><small>Entiende qué aporta cada receta</small></div></article>
+</div>
+<div class="plus-capabilities">
+<div class="cap cap-big"><span class="cap-num">500</span><b>recetas completas</b><p>Más variedad para que elegir no signifique repetir siempre lo mismo.</p></div>
+<div class="cap"><span class="cap-tag">RECOMENDADOR</span><b>Encuentra antes lo que buscas.</b><p>Etapa, objetivo, momento y preferencias para acotar opciones.</p></div>
+<div class="cap"><span class="cap-tag">PLANIFICA</span><b>De una receta a toda la semana.</b><p>Menús, lista de la compra, batch cooking y sustituciones reunidos en el mismo lugar.</p></div>
+<div class="cap"><span class="cap-tag">CAMBIA</span><b>No te convence un plato.</b><p>Cámbialo sin tener que rehacer toda tu semana.</p></div>
+</div>
+<div class="plus-close">
+<div>
+<span class="plus-close-kicker">TODO ESTO ES STUDYOS+</span>
+<h3>Menos tiempo pensando.<br/>Más fácil decidir.</h3>
+<p>Acceso completo por <strong>5 €</strong> en un único pago.</p>
+</div>
+<a class="plus-cta" data-track-action="plus_checkout" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ <span>→</span></a>
+</div>
+</div>
 </section>
-<section class="section contents" id="incluye"> <div class="wrap contents-grid"> <div> <h2>Todo lo que incluye StudyOS+</h2> <p class="lede" style="margin-top:14px">No es solo un recetario: StudyOS+ convierte 500 recetas en una herramienta interactiva para ayudarte a decidir qué comer y organizarte mejor.</p> </div> <dl> <div class="row"> <dt>500 recetas</dt> <dd>Desayunos, comidas, cenas, cremas, snacks y postres. Cada una indica para qué fase del ciclo, o para qué momento de la perimenopausia y la menopausia, encaja mejor.</dd> </div> <div class="row"> <dt>El Porqué Biológico</dt> <dd>Al final de cada receta, una explicación breve de cómo sus ingredientes trabajan a favor de tus hormonas.</dd> </div> <div class="row row-plus"> <dt>StudyOS+, la app del recetario</dt> <dd>Responde unas preguntas rápidas y StudyOS+ te propone recetas entre 500 opciones según tu etapa, lo que buscas y el momento del día. También puedes explorar, guardar favoritas y organizar tu semana.</dd> </div>  <div class="row"> <dt>6 listas de la compra</dt> <dd>Una por cada menú, organizadas por tipo de alimento para comprar sin darle vueltas.</dd> </div>   <div class="row"> <dt>Índice por necesidad</dt> <dd>Recetas agrupadas para los días de poca energía, hinchazón, antojos, poco tiempo o cuando quieres una cena ligera.</dd> </div> </dl> </div> </section> <!-- ===== Lo que dice la investigación ===== --> <section class="section science" id="investigacion"> <div class="wrap"> <h2>Lo que dice la investigación sobre alimentarte así</h2> <p class="lede">Estos son resultados de estudios sobre patrones de alimentación como el mediterráneo, que comparte con el recetario ingredientes clave: verduras, legumbres, pescado, frutos secos y aceite de oliva virgen extra.</p> <div class="sci-grid"> <article class="sci"> <div class="ico" aria-hidden="true">🔥</div> <div class="fig">Menos</div> <h3>marcadores de inflamación</h3> <p>En ensayos aleatorizados, la dieta mediterránea redujo marcadores como la proteína C reactiva ultrasensible y la interleucina-6 frente a otras dietas.</p> <span class="tag">Metaanálisis de ensayos aleatorizados</span> </article> <article class="sci"> <div class="ico" aria-hidden="true">🧠</div> <div class="fig">≈20%</div> <h3>menos riesgo de depresión</h3> <p>Quienes seguían más de cerca la dieta mediterránea tuvieron alrededor de un 19% menos de riesgo de depresión en estudios de seguimiento.</p> <span class="tag">Metaanálisis de estudios observacionales</span> </article> <article class="sci"> <div class="ico" aria-hidden="true">❤️</div> <div class="fig">≈30%</div> <h3>menos eventos cardiovasculares mayores</h3> <p>En el ensayo PREDIMED, una dieta mediterránea con aceite de oliva virgen extra o frutos secos redujo cerca de un 30% los infartos, ictus y muertes cardiovasculares en personas con alto riesgo.</p> <span class="tag">Ensayo aleatorizado</span> </article> <article class="sci"> <div class="ico" aria-hidden="true">🌙</div> <div class="fig">≈20%</div> <h3>menos probabilidad de sofocos y sudores nocturnos</h3> <p>En más de 6.000 mujeres australianas seguidas durante 9 años, comer al estilo mediterráneo se asoció con menos sofocos y sudores nocturnos.</p> <span class="tag">Estudio observacional</span> </article> <article class="sci"> <div class="ico" aria-hidden="true">🦴</div> <div class="fig">≈21%</div> <h3>menos riesgo de fractura de cadera</h3> <p>Una mayor adherencia a la dieta mediterránea se asoció con más densidad ósea y con menos fracturas de cadera.</p> <span class="tag">Metaanálisis de estudios observacionales</span> </article> </div> <p class="science-note">Son resultados de investigaciones sobre patrones de alimentación, no del recetario de StudyOS ni de un tratamiento. Los estudios observacionales muestran asociaciones, no prueban causa y efecto, y los resultados varían de una persona a otra. Este contenido es informativo y no sustituye el consejo de tu médica.</p> <details class="sources"> <summary>Ver las fuentes</summary> <ul> <li>Inflamación: Keshani et al., Nutrition Reviews (2025). <a href="https://pubmed.ncbi.nlm.nih.gov/41211687/" rel="noopener" target="_blank">Ver estudio</a></li> <li>Depresión: Shafiei et al., Nutrition Reviews (2023), riesgo relativo 0,81. <a href="https://academic.oup.com/nutritionreviews/article/81/7/889/7079098" rel="noopener" target="_blank">Ver estudio</a></li> <li>Corazón: ensayo PREDIMED, resumen de Harvard T.H. Chan. <a href="https://nutritionsource.hsph.harvard.edu/2018/06/22/predimed-retraction-republication/" rel="noopener" target="_blank">Ver resumen</a></li> <li>Sofocos: Herber-Gast y Mishra, American Journal of Clinical Nutrition (2013). <a href="https://ajcn.nutrition.org/article/S0002-9165(23)05518-1/fulltext" rel="noopener" target="_blank">Ver estudio</a></li> <li>Huesos: Malmir et al., European Journal of Nutrition (2018). <a href="https://pubmed.ncbi.nlm.nih.gov/28638994/" rel="noopener" target="_blank">Ver estudio</a></li> </ul> </details> </div> </section> <!-- ===== Cuatro fases ===== --> <section class="section" id="ciclo"> <div class="wrap cycle-grid"> <div> <h2>Recetas para cada fase de tu ciclo</h2> <p class="lede" style="margin-top:14px">Tu cuerpo no necesita lo mismo todos los días. Elige una fase y mira qué prioriza el recetario en ese momento.</p> <form class="calc" id="calc" novalidate> <h3 id="calcula">¿En qué fase estás hoy?</h3> <div class="calc-row"> <label for="calc-date">Primer día de tu última regla</label> <input type="date" id="calc-date"> </div> <div class="calc-row"> <label for="calc-len">Duración habitual de tu ciclo</label> <select id="calc-len"> <option value="24">24 días</option> <option value="25">25 días</option> <option value="26">26 días</option> <option value="27">27 días</option> <option value="28" selected>28 días (lo más habitual)</option> <option value="29">29 días</option> <option value="30">30 días</option> <option value="31">31 días</option> <option value="32">32 días</option> <option value="33">33 días</option> <option value="34">34 días</option> <option value="35">35 días</option> </select> </div> <button type="submit" class="btn btn-olive">Calcular mi fase</button> <div id="calc-out" aria-live="polite"></div> <p class="fine">Es una estimación orientativa: cada ciclo es distinto. No sirve como método anticonceptivo ni para buscar embarazo. La fecha se queda en tu dispositivo.</p> </form> </div> <div class="cycle"> <svg class="bloom" id="bloom" viewBox="0 0 420 420" role="img" aria-label="Cuatro círculos que se superponen y representan las fases del ciclo: menstrual, folicular, ovulatoria y lútea"> <circle class="petal is-on" data-i="0" cx="210" cy="135" r="112" fill="#33401F" fill-opacity=".9"/> <circle class="petal" data-i="1" cx="285" cy="210" r="112" fill="#B7C48B" fill-opacity=".9"/> <circle class="petal" data-i="2" cx="210" cy="285" r="112" fill="#F2C230" fill-opacity=".85"/> <circle class="petal" data-i="3" cx="135" cy="210" r="112" fill="#5E6F33" fill-opacity=".9"/> <g class="bloom-labels" text-anchor="middle"> <text class="bloom-label" x="210" y="82" fill="#fff">Menstrual</text> <text class="bloom-label" x="337" y="216" fill="#1F2715">Folicular</text> <text class="bloom-label" x="210" y="346" fill="#1F2715">Ovulatoria</text> <text class="bloom-label" x="83" y="216" fill="#fff">Lútea</text> </g> </svg> <div class="phase-tabs" role="group" aria-label="Elige una fase del ciclo"> <button type="button" data-i="0" aria-pressed="true">Menstrual</button> <button type="button" data-i="1" aria-pressed="false">Folicular</button> <button type="button" data-i="2" aria-pressed="false">Ovulatoria</button> <button type="button" data-i="3" aria-pressed="false">Lútea</button> </div> <div class="phase-note" aria-live="polite"> <h3 id="phase-name">Fase menstrual</h3> <div class="days" id="phase-days">Días 1 a 5 aproximadamente</div> <p id="phase-text">Prioridad: antiinflamación y reposición. Platos cálidos, de fácil digestión, con jengibre, cúrcuma y hierro.</p> <p class="recipe" id="phase-recipe">En el recetario: Crema de calabacín y jengibre con dados de pavo.</p> </div> </div> </div> </section> <!-- ===== Boletín ===== --> <section class="section bg-paper" id="boletin"> <div class="wrap"> <div class="news"> <div> <h2>Una receta nueva en tu correo cada semana</h2> <p class="lede" style="margin-top:10px">Sin spam: solo recetas, avisos de nuevos recetarios y algún consejo de StudyOS. Puedes darte de baja cuando quieras.</p> </div> <form class="news-form" id="news-form" action="https://formspree.io/f/xwlporjy" method="POST"> <label for="news-email" class="sr">Tu correo electrónico</label> <input type="email" id="news-email" name="email" placeholder="tucorreo@email.com" required> <input type="hidden" name="_subject" value="Nueva suscriptora StudyOS"> <button type="submit" class="btn btn-yellow">Quiero recibirlas</button> </form> <p class="news-note" id="news-note" aria-live="polite"></p> </div> </div> </section> <!-- ===== Preguntas ===== --> <section class="section bg-paper" id="preguntas"> <div class="wrap"> <h2>Preguntas frecuentes</h2> <div class="faq-list"> <details> <summary>¿Cómo recibo el recetario?</summary> <p>Al completar el pago te llevamos a una página con el botón de descarga inmediata y un enlace alternativo para verlo online si no se abre. Guarda el PDF en tu dispositivo para tenerlo siempre a mano.</p> </details> <details> <summary>¿Puedo pagar desde otro país o en otra moneda?</summary> <p>Sí. El precio base es de 5 €. Si pagas en otra moneda, el importe final puede variar según el tipo de cambio y las condiciones de tu banco o tarjeta. El pago es seguro y lo gestiona Stripe con tarjetas de crédito o débito. Según tu país, Stripe puede mostrarte el precio en tu moneda; si no, tu banco convierte el importe automáticamente al cambio del día.</p> </details> <details> <summary>¿El test y la calculadora guardan mis respuestas o mi fecha?</summary> <p>No. Funcionan en tu dispositivo: no guardamos ni enviamos tus respuestas ni la fecha de tu regla. Solo, si aceptaste las cookies de medición, se recuerda en tu dispositivo que ya hiciste el test (no lo que respondiste) y se cuenta que alguien lo completó, sin ningún dato personal.</p> </details> <details> <summary>¿Es una dieta?</summary> <p>No. No hay que contar calorías ni pesar la comida, y no hay alimentos prohibidos. Es una guía práctica para elegir platos sencillos y saciantes que acompañen a tu cuerpo.</p> </details> <details> <summary>¿Me sirve si estoy en la perimenopausia o la menopausia?</summary> <p>Sí. Las recetas están pensadas tanto para las fases del ciclo como para la perimenopausia y la menopausia, y cada una indica para qué momento encaja mejor.</p> </details> <details> <summary>¿Necesito saber cocinar?</summary> <p>No. Son platos sencillos, con pasos claros y pocos ingredientes, y la mayoría están listos en 25 minutos o menos.</p> </details> <details> <summary>¿Qué diferencia hay entre el gratuito y el de pago?</summary> <p>El gratuito reúne 10 recetas para que pruebes el método. StudyOS+ incluye 500 recetas, 6 menús semanales, 6 listas de la compra, la guía de batch cooking y la guía de alimentos y sustituciones.</p> </details> <details> <summary>He tenido un problema con la descarga, ¿qué hago?</summary> <p>Escríbenos por mensaje directo a <a href="https://www.instagram.com/studyos_oficial/" rel="noopener" target="_blank">@studyos_oficial</a> en Instagram y lo resolvemos.</p> </details> <details> <summary>¿Sustituye a mi médica o nutricionista?</summary> <p>No. StudyOS ofrece contenido educativo. Si tienes una condición médica o tomas medicación, consúltalo con una profesional antes de cambiar tu alimentación.</p> </details> </div> </div> </section> <!-- ===== Cierre ===== --> <section class="section closing"> <div class="wrap"> <h2>Empieza hoy con lo que necesita tu cuerpo</h2> <p>Prueba StudyOS gratis con 10 recetas, o desbloquea la experiencia completa con 500 recetas, menús y listas de la compra.</p> <div class="cta-row"> <a class="btn btn-yellow btn-lg" href="gratis.html" data-track="free">Probar StudyOS gratis</a> <a class="btn btn-light btn-lg" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track="checkout">Desbloquear StudyOS+</a> </div> </div> </section> </main> <footer> <div class="wrap"> <div class="tagline">Ciencia real para tu ciclo, ayuno y hormonas</div> <div><a href="https://www.instagram.com/studyos_oficial/" rel="noopener" target="_blank">Instagram: @studyos_oficial</a></div> <p class="legal">Los contenidos de StudyOS son educativos y no sustituyen el consejo de una profesional sanitaria.</p> <nav class="legal-links" aria-label="Información legal"> <a href="aviso-legal.html">Aviso legal</a> <a href="terminos.html">Términos y condiciones</a> <a href="privacidad.html">Privacidad y cookies</a> </nav> <div><button type="button" class="linkbtn" id="cookie-settings">Configurar cookies</button></div> </div>
-</footer> <div class="sticky-cta" id="sticky-cta" aria-hidden="true"> <a class="btn btn-yellow" href="gratis.html" data-track="free">Probar StudyOS gratis</a>
-</div> <script> // Fases del ciclo: textos que se muestran al elegir cada círculo. const phases = [ { name: "Fase menstrual", days: "Días 1 a 5 aproximadamente", text: "Prioridad: antiinflamación y reposición. Platos cálidos, de fácil digestión, con jengibre, cúrcuma y hierro.", recipe: "En el recetario: Crema de calabacín y jengibre con dados de pavo." }, { name: "Fase folicular", days: "Días 6 a 12 aproximadamente", text: "Prioridad: energía y construcción. Proteína limpia y carbohidratos complejos para acompañar la subida de energía.", recipe: "En el recetario: Bowl de quinoa y pollo al limón con cúrcuma." }, { name: "Fase ovulatoria", days: "Días 13 a 16 aproximadamente", text: "Prioridad: antioxidantes y apoyo al hígado. Omega-3 y verduras crucíferas para el pico de energía del ciclo.", recipe: "En el recetario: Salmón al horno con costra de sésamo y brócoli." }, { name: "Fase lútea y perimenopausia", days: "Días 17 a 28 aproximadamente", text: "Prioridad: saciedad y calma muscular. Carbohidratos de absorción lenta, magnesio y grasas saludables para los antojos.", recipe: "En el recetario: Crema de lentejas rojas y moniato al comino." } ]; const petals = document.querySelectorAll(".petal"); const tabs = document.querySelectorAll(".phase-tabs button"); const nameEl = document.getElementById("phase-name"); const daysEl = document.getElementById("phase-days"); const textEl = document.getElementById("phase-text"); const recipeEl = document.getElementById("phase-recipe"); function selectPhase(i) { const p = phases[i]; nameEl.textContent = p.name; daysEl.textContent = p.days; textEl.textContent = p.text; recipeEl.textContent = p.recipe; petals.forEach((el, n) => el.classList.toggle("is-on", n === i)); tabs.forEach((el, n) => el.setAttribute("aria-pressed", String(n === i))); } petals.forEach(el => el.addEventListener("click", () => selectPhase(Number(el.dataset.i)))); tabs.forEach(el => el.addEventListener("click", () => selectPhase(Number(el.dataset.i)))); // La flor "florece" una sola vez, cuando llega a la pantalla. const bloom = document.getElementById("bloom"); if ("IntersectionObserver" in window) { const io = new IntersectionObserver((entries) => { if (entries[0].isIntersecting) { bloom.classList.add("play"); io.disconnect(); } }, { threshold: 0.4 }); io.observe(bloom); } else { bloom.classList.add("play"); } // Vista previa de los recetarios: cambia de receta. const peeks = [ { free: false, photo: "dentro-lentejas-foto.jpg", alt: "Ensalada templada de lentejas con tiras de pimiento asado y ventresca de atún, con albahaca, en una fuente." }, { free: true, photo: "dentro-bowl-foto.jpg", alt: "Bowl de yogur con arándanos, aguacate, semillas y nueces sobre una mesa de madera." }, { free: true, photo: "dentro-salmon-foto.jpg", alt: "Ensalada de rúcula con salmón ahumado, gajos de naranja, pepino y nueces." }, { free: true, photo: "dentro-wok-foto.jpg", alt: "Wok de pollo con brócoli, tiras de pimiento rojo y semillas de sésamo." } ]; const peekBtns = document.querySelectorAll(".peek-tabs button"); const peekCards = document.querySelectorAll(".rcard"); function selectPeek(i) { const p = peeks[i]; peekCards.forEach((c, n) => { c.hidden = n !== i; }); const photo = document.getElementById("peek-photo"); photo.src = p.photo; photo.alt = p.alt; const srcEl = document.getElementById("peek-src"); srcEl.textContent = p.free ? "Del recetario gratuito" : "Del StudyOS+ completo"; srcEl.className = "peek-src " + (p.free ? "peek-src-free" : "peek-src-paid"); peekBtns.forEach((el, n) => el.setAttribute("aria-pressed", String(n === i))); } peekBtns.forEach(el => el.addEventListener("click", () => selectPeek(Number(el.dataset.i)))); // Botón fijo de descarga gratis en móvil: aparece al pasar el primer botón y se oculta en el cierre. const sticky = document.getElementById("sticky-cta"); const heroCta = document.getElementById("inicio"); const closingEl = document.querySelector(".closing"); const testEl = document.getElementById("test"); let passedHero = false, closingVisible = false, testVisible = false; function updateSticky() { const on = passedHero && !closingVisible && !testVisible; sticky.classList.toggle("on", on); sticky.setAttribute("aria-hidden", String(!on)); } if ("IntersectionObserver" in window && sticky && heroCta && closingEl) { new IntersectionObserver(es => { passedHero = !es[0].isIntersecting && es[0].boundingClientRect.top < 0; updateSticky(); }).observe(heroCta); new IntersectionObserver(es => { closingVisible = es[0].isIntersecting; updateSticky(); }).observe(closingEl); if (testEl) new IntersectionObserver(es => { testVisible = es[0].isIntersecting; updateSticky(); }, { threshold: 0.2 }).observe(testEl); } // view_item (GA4) + ViewContent (Meta): cuando la persona ve el StudyOS+ (solo con cookies aceptadas). window.addEventListener("load", function () { const paid = document.querySelector(".paid"); if (!("IntersectionObserver" in window) || !paid) return; const io2 = new IntersectionObserver(es => { if (!es[0].isIntersecting) return; io2.disconnect(); if (window.studyosWhenConsented) window.studyosWhenConsented(() => window.studyosFunnel("view_item")); }, { threshold: 0.4 }); io2.observe(paid); }); // Boletín (Formspree): evita recargar la página y avisa a Analytics (sin enviar el correo a GA/Meta). var newsForm = document.getElementById("news-form"); if (newsForm) { newsForm.addEventListener("submit", function (e) { e.preventDefault(); var note = document.getElementById("news-note"); var btn = newsForm.querySelector("button"); btn.disabled = true; note.textContent = "Enviando..."; fetch(newsForm.action, { method: "POST", body: new FormData(newsForm), headers: { Accept: "application/json" } }) .then(function (r) { if (r.ok) { note.textContent = "¡Listo! Ya estás apuntada a la lista de StudyOS."; newsForm.reset(); if (window.studyosFunnel) window.studyosFunnel("newsletter_signup", {}); } else { note.textContent = "No se pudo enviar. Prueba de nuevo en un momento."; btn.disabled = false; } }) .catch(function () { note.textContent = "No se pudo enviar. Prueba de nuevo en un momento."; btn.disabled = false; }); }); } // Menú semanal: elegir un día y marcar la lista de la compra (no se guarda nada). const dayBtns = document.querySelectorAll(".days button"); const dayPanels = document.querySelectorAll(".day"); dayBtns.forEach(b => b.addEventListener("click", () => { const d = b.dataset.d; dayBtns.forEach(x => x.setAttribute("aria-pressed", String(x === b))); dayPanels.forEach(p => { p.hidden = p.dataset.d !== d; }); })); const shopBoxes = document.querySelectorAll(".shop input[type=checkbox]"); const shopCount = document.getElementById("shop-count"); function updateShop() { const n = Array.from(shopBoxes).filter(c => c.checked).length; shopCount.textContent = n + " de " + shopBoxes.length + " marcados"; } shopBoxes.forEach(c => c.addEventListener("change", updateShop)); document.getElementById("shop-clear").addEventListener("click", () => { shopBoxes.forEach(c => { c.checked = false; }); updateShop(); }); // Embudo (GA4 y Meta): solo se envía si la persona ha aceptado las cookies. document.addEventListener("click", function (e) { var a = e.target.closest && e.target.closest("a[data-track]"); if (!a || !window.studyosFunnel) return; var sec = a.closest("[id]"); var where = a.closest("header") ? "cabecera" : a.classList.contains("btn") && a.closest(".sticky-cta") ? "barra_fija" : (sec && sec.id) || "web"; if (a.dataset.track === "free") { window.studyosFunnel("free_cta_click", { cta_location: where, funnel_version: "v2_app" }); } else if (a.dataset.track === "checkout") { var ref = window.studyosCheckoutRef && window.studyosCheckoutRef(); if (ref) { try { var u = new URL(a.href); u.searchParams.set("client_reference_id", ref); a.href = u.toString(); } catch (err) {} } window.studyosFunnel("begin_checkout", { cta_location: where }); } });
-</script> </body>
-</html>
+</div>
+</section>
+<section class="view" id="explore">
+<div class="eyebrow">Explorar</div><h1>Tus 10 recetas</h1><p class="lead">Busca por nombre o ingrediente. En StudyOS+ tendrás acceso a las 500.</p>
+<input class="search" id="search" placeholder="Buscar receta o ingrediente…"/>
+<div class="chips"><button class="chip active" data-filter="all">Todas</button><button class="chip" data-filter="D">Desayuno</button><button class="chip" data-filter="C">Comida</button><button class="chip" data-filter="N">Cena</button><button class="chip" data-filter="S">Snack</button><button class="chip" id="advancedLock">🔒 Filtros avanzados</button></div>
+<div class="recipes" id="exploreRecipes" style="margin-top:14px"></div>
+<div class="unlock"><span class="eyebrow">MÁS VARIEDAD</span><strong>De 10 a 500 recetas</strong><p>Cuando necesites más opciones, StudyOS+ amplía el buscador y el catálogo completo.</p><a class="btn btnYellow wide" data-go="plus" href="#" style="display:block;text-align:center;text-decoration:none">Descubrir StudyOS+ →</a></div>
+</section>
+<section class="view" id="plan">
+<div class="planHero"><div class="eyebrow">PLAN SEMANAL · GRATIS</div><h1>Tu menú de 7 días</h1><p class="lead">El menú antiinflamatorio incluido en la versión gratuita. Elige un día para ver desayuno, comida y cena.</p></div>
+<div class="dayChooser" id="freePlanDays"></div>
+<div class="mealGrid" id="freePlanMeals"></div>
+<div class="lockedPlan">
+<h2>Amplía tu planificación en StudyOS+</h2>
+<p>Además del menú, desbloqueas las listas de la compra, la guía de batch cooking y las sustituciones.</p>
+<div class="lockFeatures"><div class="lockFeature">🔒 6 menús semanales</div><div class="lockFeature">🔒 6 listas de la compra</div><div class="lockFeature">🔒 Batch cooking</div><div class="lockFeature">🔒 Sustituciones</div></div>
+<a class="btn btnYellow" data-track-action="plus_checkout" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ · 5 €</a>
+</div>
+</section>
+<section class="view" id="plus">
+<div class="eyebrow">STUDYOS+</div>
+<h1>Todo StudyOS, desbloqueado.</h1>
+<p class="lead">Si la versión gratuita te encaja, aquí tienes el acceso completo.</p>
+<div class="unlock">
+<span class="eyebrow">ACCESO COMPLETO</span>
+<strong>500 recetas y todas las herramientas</strong>
+<p>Recomendador ampliado, planificación, menús, listas de la compra, batch cooking, sustituciones y las funciones completas de StudyOS+.</p>
+<div class="price">5 € <span class="small">≈ US$5.70 · pago único</span></div>
+<a class="btn btnYellow wide" data-track-action="plus_checkout" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" style="display:block;text-align:center;text-decoration:none">Desbloquear StudyOS+ →</a>
+</div>
+<p class="small" style="margin-top:14px">Contenido educativo. StudyOS no sustituye el consejo médico o nutricional individualizado.</p>
+</section>
+<section class="view" id="quiz">
+<div class="eyebrow">Recomendador gratis</div><h1>Vamos a elegir</h1><div class="progress"><i id="bar"></i></div>
+<div class="quiz">
+<div class="q active" data-q="1"><h3>1. ¿En qué etapa estás?</h3><div class="opts"><button class="opt" data-key="stage" data-v="menstrual">Fase menstrual</button><button class="opt" data-key="stage" data-v="folicular">Fase folicular</button><button class="opt" data-key="stage" data-v="ovulatoria">Fase ovulatoria</button><button class="opt" data-key="stage" data-v="lutea">Fase lútea</button><button class="opt" data-key="stage" data-v="perimenopausia">Perimenopausia</button><button class="opt" data-key="stage" data-v="menopausia">Menopausia</button><button class="opt" data-key="stage" data-v="ninguna">Ninguna / no lo sé</button></div></div>
+<div class="q" data-q="2"><h3>2. ¿Qué buscas hoy?</h3><div class="opts"><button class="opt" data-key="need" data-v="ai">Antiinflamatorio</button><button class="opt" data-key="need" data-v="en">Más energía</button><button class="opt" data-key="need" data-v="hi">Ligero / hinchazón</button><button class="opt" data-key="need" data-v="sa">Más saciedad</button><button class="opt" data-key="need" data-v="an">Antojos</button><button class="opt" data-key="need" data-v="ra">Algo rápido</button></div></div>
+<div class="q" data-q="3"><h3>3. ¿Para qué momento?</h3><div class="opts"><button class="opt" data-key="moment" data-v="D">Desayuno</button><button class="opt" data-key="moment" data-v="C">Comida</button><button class="opt" data-key="moment" data-v="N">Cena</button><button class="opt" data-key="moment" data-v="S">Snack o dulce</button></div></div>
+<div class="q" data-q="4"><h3>4. ¿Quieres evitar algo?</h3><div class="opts"><button class="opt" data-key="avoid" data-v="none">Nada en especial</button><button class="opt" data-key="avoid" data-v="gluten">Gluten</button><button class="opt" data-key="avoid" data-v="lacteos">Lácteos</button><button class="opt" data-key="avoid" data-v="huevo">Huevo</button><button class="opt" data-key="avoid" data-v="frutos">Frutos secos</button></div></div>
+</div>
+</section>
+
+</main>
+<nav aria-label="Navegación principal" class="bottom" style="grid-template-columns:repeat(4,1fr)">
+<button class="nav active" data-go="home"><svg class="navIcon" viewbox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8"></path><path d="M5.5 9.5V21h13V9.5"></path><path d="M9.5 21v-6h5v6"></path></svg><span class="navLabel">Hoy</span></button>
+<button class="nav" data-go="explore"><svg class="navIcon" viewbox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg><span class="navLabel">Explorar</span></button>
+<button class="nav" data-go="plan"><svg class="navIcon" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="5"></rect><path d="M8 3v4M16 3v4M3 10h18"></path></svg><span class="navLabel">Plan</span></button>
+<button class="nav" data-go="plus"><svg class="navIcon" viewbox="0 0 24 24"><rect height="11" rx="2" width="14" x="5" y="10"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg><span class="navLabel">StudyOS+</span></button>
+</nav>
+</div>
+<div class="modal" id="modal"><div class="sheet"><button class="close" id="close">×</button><div id="detail"></div></div></div>
+<script id="recipe-data" type="application/json">[{"id":"tortitas-de-avena-y-calabaza","t":"Tortitas de Avena y Calabaza","ph":"Fase Lútea y Menstrual","p":["menstrual","lutea"],"m":12,"k":340,"d":"Fácil","a":"Huevo, Gluten y Frutos Secos","g":["harina de avena","puré de calabaza","claras de huevo"],"n":["an","en","ra"],"mo":["D"],"ing":["40 g de harina de avena integral","80 g de puré de calabaza (asada o cocida al microondas)","2 claras de huevo + 1 huevo entero","50 ml de leche vegetal (almendra o avena sin azúcar)","1 cucharadita de canela en polvo","1 puñado pequeño de semillas de calabaza"],"steps":["Preparación del puré: Si no tienes el puré listo, corta 80 g de calabaza en dados pequeños, colócalos en un recipiente apto para microondas tapado con un plato y cocina a máxima potencia durante 4 minutos hasta que esté tierna. Cháfala con un tenedor.","Elaboración de la masa: En el vaso de la batidora o procesador, añade el puré de calabaza, el huevo entero, las 2 claras, la harina de avena, la leche vegetal y la canela. Tritura a velocidad media-alta durante 45-60 segundos hasta obtener una mezcla fluida, cremosa y libre de grumos.","Calentado de la sartén: Coloca una sartén antiadherente a fuego medio (potencia 6 de 9). Añade 2 o 3 gotas de aceite de oliva virgen extra y extiéndelas bien con un papel absorbente o pincel de cocina.","Cocinado: Vierte porciones de unos 3-4 cucharadas soperas de masa para formar tortitas redondas de unos 8-10 cm de diámetro. Cocina durante 2 o 3 minutos a fuego medio hasta que veas aparecer pequeñas burbujas por toda la superficie y los bordes comiencen a verse opacos y asentados.","Volteado: Introduce una espátula fina por debajo con un movimiento firme y da la vuelta a cada tortita con cuidado. Cocina por el segundo lado durante 1 a 2 minutos extra hasta que esté dorada.","Emplatado y toque final: Apila las tortitas en forma de torre en un plato plano. Corona con el puñado de semillas de calabaza tostadas y espolvorea una pizca adicional de canela para potenciar el aroma."],"bio":"La caída de progesterona propia de estos días suele traer cambios de humor e inflamación de bajo grado. El puré de calabaza aporta carbohidratos de absorción lenta que calman la ansiedad por el dulce, mientras que las semillas de calabaza son una fuente excepcional de magnesio para relajar el útero. Este mineral participa además en la regulación de la respuesta inflamatoria.","pg":5},{"id":"bowl-de-quinoa-y-pollo-al-limon-con-curcuma","t":"Bowl de Quinoa y Pollo al Limón con Cúrcuma","ph":"Fase Folicular","p":["folicular"],"m":15,"k":460,"d":"Medio","a":"Ninguno","g":["quinoa","pechuga de pollo","calabacín"],"n":["ai","en","ra","sa"],"mo":["C"],"ing":["60 g de quinoa en seco","150 g de pechuga de pollo cortada en dados de 2 cm","1/2 calabacín mediano cortado en semicírculos fino","1 puñado grande (30 g) de espinacas frescas","El zumo de 1/2 limón fresco","1/2 cucharadita de cúrcuma en polvo","1 cucharadita de aceite de oliva virgen extra (AOVE)","Sal, pimienta negra molida al gusto"],"steps":["Lavado y cocción de la quinoa: Coloca los 60 g de quinoa en un colador fino y enjuágala bajo el grifo de agua fría durante 30 segundos frotando suavemente para eliminar la saponina (amargor natural). Pon la quinoa en un cazo pequeño con 120 ml de agua (el doble de volumen) y una pizca de sal. Lleva a ebullición a fuego alto; cuando rompa a hervir, baja el fuego al mínimo, tapa la olla y cocina durante 12-14 minutos. Apaga el fuego y deja reposar tapado 2 minutos para que quede suelta.","Salteado de la proteína: Pon una sartén amplia a fuego medio-alto con la cucharadita de AOVE. Sazona el pollo con sal y pimienta. Cuando la sartén esté bien caliente, añade los dados de pollo y cocina durante 4-5 minutos, moviéndolos para que se doren uniformemente por todos los lados.","Incorporación de verduras: Añade las rodajas de calabacín y saltea junto con el pollo durante 3 minutos a fuego medio. Agrega las espinacas frescas y remueve durante 1 minuto adicional solo hasta que reduzcan su volumen pero mantengan un color verde vivo.","Integración biológica: Baja el fuego al mínimo. Incorpora la quinoa cocida a la sartén junto con el pollo y las verduras. Añade la 1/2 cucharadita de cúrcuma y vierte el zumo de 1/2 limón. Mezcla todo enérgicamente con una cuchara de madera durante 1 minuto para que la cúrcuma pinte el plato homogéneamente y se absorban los jugos.","Presentación: Sirve en un bowl profundo. Espolvorea generosamente pimienta negra recién molida por encima (crucial para activar la curcumina)."],"bio":"En la fase folicular tu cuerpo tolera y metaboliza mejor los carbohidratos complejos como la quinoa debido al aumento de los estrógenos. El pollo aporta aminoácidos limpios para la construcción muscular, mientras que la combinación de cúrcuma y limón aporta compuestos con actividad antioxidante y antiinflamatoria, dentro de una alimentación que acompaña esta fase.","pg":7},{"id":"tartar-de-atun-mango-y-aguacate","t":"Tartar de Atún, Mango y Aguacate","ph":"Fase Ovulatoria","p":["ovulatoria"],"m":10,"k":420,"d":"Medio","a":"Pescado, Soja, Sésamo","g":["atún rojo","mango","semillas de sésamo"],"n":["ai","ra","sa"],"mo":["C","N"],"ing":["120 g de lomo de atún rojo (previamente congelado 48h) o en conserva al natural de alta calidad","1/2 aguacate maduro en su punto","1/2 mango pequeño firme pero dulce","1 cucharadita de semillas de sésamo","1 cucharadita de salsa de soja baja en sodio","Unas gotas de zumo de lima o limón fresco"],"steps":["Corte de precisión: Con un cuchillo bien afilado, seca bien el atún con papel absorbente y córtalo en dados pequeños y regulares de aproximadamente 0,5 cm. Haz lo mismo con el medio aguacate y el medio mango, procurando que todos los dados tengan un tamaño simétrico para garantizar una presentación cuidada.","Macerado del atún: Coloca el atún cortado en un cuenco pequeño. Añade la cucharadita de salsa de soja y unas gotas de zumo de lima. Mezcla suavemente y deja reposar exactamente 2 o 3 minutos a temperatura ambiente para que se impregnen los sabores sin que el ácido \"cocine\" en exceso el pescado.","Acondicionamiento de frutas: En otro bol, mezcla el aguacate y el mango con dos gotas de lima para evitar la oxidación del aguacate.","Montaje profesional: Coloca un aro de emplatar (de unos 7-8 cm de diámetro) en el centro de un plato plano. Si no tienes aro, puedes usar un vaso ancho de cristal forrado por dentro con film transparente.","Primera capa: Introduce el aguacate en la base y presiona ligeramente con el reverso de una cuchara para crear una capa compacta y firme.","Segunda capa: Añade los dados de mango sobre el aguacate, distribuyendo homogéneamente.","Tercera capa: Corona el montaje con el atún marinado escurrido de su jugo.","Desmolde y toque final: Levanta el aro verticalmente con cuidado y firmeza. Espolvorea la cucharadita de semillas de sésamo (pueden ser tostadas o mixtas) por la parte superior."],"bio":"El aguacate y el atún rojo aportan ácidos grasos esenciales Omega-3, fundamentales para asegurar una ovulación óptima y mejorar la calidad del ovocito. El sésamo suma un extra de calcio biodisponible, mineral que trabaja en equipo con estas grasas. El mango cierra el plato entregando antioxidantes clave para frenar el estrés oxidativo celular en este momento del ciclo.","pg":8},{"id":"pudding-de-chia-y-cacao-antiantojos","t":"Pudding de Chía y Cacao \"Antiantojos\"","ph":"Fase Lútea","p":["lutea"],"m":5,"k":290,"d":"Fácil","a":"Frutos secos","g":["semillas de chía","leche de coco","cacao puro desgrasado"],"n":["ai","an","en","ra","sa"],"mo":["D","S"],"ing":["3 cucharadas soperas (30 g) de semillas de chía","150 ml de leche de coco ligera (de brick) o almendras sin azúcar","1 cucharada sopera rasa (10 g) de cacao puro desgrasado en polvo","1/2 cucharadita de esencia o extracto de vainilla","2-3 nueces picadas para decorar"],"steps":["Disolución de la base: En un tarro de cristal con tapa (tipo Mason jar de unos 250 ml), vierte los 150 ml de leche vegetal, el cacao puro en polvo y la esencia de vainilla. Usa un batidor de varillas pequeño o un tenedor para remover con fuerza durante 1 minuto hasta que el cacao se disuelva completamente y no queden grumos flotando.","Adición y activación de la chía: Añade las 3 cucharadas soperas de semillas de chía. Remueve enérgicamente durante 60 segundos asegurándote de rascar el fondo para que las semillas no se queden pegadas en las esquinas inferiores.","Primer reposo de asentamiento: Deja reposar el tarro sobre la encimera a temperatura ambiente durante 8-10 minutos. Pasado este tiempo, las semillas habrán empezado a soltar gel; vuelve a remover muy bien con un tenedor para desarmar cualquier grupo que se haya formado.","Gelificación en frío: Cierra la tapa del tarro herméticamente y guárdalo en la nevera durante un mínimo de 4 horas (lo ideal es prepararlo la noche anterior para consumir por la mañana). Durante este tiempo la chía absorberá el líquido formando una textura cremosa tipo natilla.","Presentación: Al sacar del frigorífico, remueve la superficie para comprobar la densidad. Añade las 2-3 nueces picadas justo en el momento de servir para mantener un contraste crujiente."],"bio":"La caída de serotonina propia de estos días despierta antojos voraces de dulce, y este pudding responde con inteligencia nutricional. El cacao puro aporta triptófano, precursor directo de la serotonina, junto con magnesio para la relajación muscular. La chía se expande en el estómago aportando una enorme cantidad de fibra soluble y Omega-3, manteniendo la saciedad controlada durante horas.","pg":9},{"id":"crema-de-calabacin-y-jengibre-con-dados-de-pavo","t":"Crema de Calabacín y Jengibre con Dados de Pavo","ph":"Fase Menstrual","p":["menstrual"],"m":20,"k":310,"d":"Medio","a":"Ninguno","g":["calabacín","puerro","jengibre"],"n":["ai","en","hi"],"mo":["C","N"],"ing":["1 calabacín mediano lavado con piel","1/2 puerro (solo la parte blanca y verde clara)","1 rodaja fina de jengibre fresco (1 cm, pelado)","120 g de pechuga de pavo cortada en dados de 1,5 cm","1 cucharadita de aceite de oliva virgen extra (AOVE)","Sal y pimienta al gusto"],"steps":["Corte de verduras: Lava bien el calabacín sin quitarle la piel (aporta color y fibra) y córtalo en rodajas de 1 cm. Lava el puerro para retirar restos de tierra y trocéalo en aros gruesos. Pela la rodaja de jengibre retirando la piel con una cuchara.","Cocción al vapor/agua: Coloca el calabacín, el puerro y la rodaja de jengibre en una olla pequeña. Añade solo unos 150 ml de agua con una pizca de sal (el agua debe cubrir solo la mitad inferior de las verduras para evitar que la crema quede acuosa). Tapa la olla, lleva a ebullición y cocina a fuego medio durante 12-15 minutos hasta que el calabacín esté muy tierno al pincharlo con un tenedor.","Cocinado de la proteína: Mientras se cuecen las verduras, pon una sartén a fuego medio-alto con la cucharadita de AOVE. Salpimenta los dados de pavo y dóralos durante 4-5 minutos hasta que queden tostados por fuera y jugosos por dentro. Reserva templados.","Triturado terciopelo: Retira unas 3-4 cucharadas del agua de cocción de la olla y resérvalas en un vaso por si necesitas ajustar consistencia. Pasa la batidora de mano a máxima potencia durante 2 minutos seguidos directamente en la olla con el calabacín, puerro, jengibre y el resto de agua hasta obtener una textura aterciopelada y homogénea. Corrige de sal y espesor si fuera necesario.","Montaje: Vierte la crema muy caliente en un plato hondo o bowl. Coloca los dados de pavo en el centro de forma limpia."],"bio":"El jengibre es un analgésico y antiinflamatorio natural, con estudios que lo sitúan a la altura de algunos fármacos comunes para el dolor menstrual. El pavo suma proteínas ligeras de fácil digestión, ideales cuando el sistema digestivo está más sensible. El calabacín, por su parte, favorece un tránsito intestinal suave en unos días donde el intestino tiende a resentirse.","pg":10},{"id":"revuelto-de-champinones-y-espinacas","t":"Revuelto de Champiñones y Espinacas","ph":"Fase Folicular","p":["folicular"],"m":10,"k":330,"d":"Fácil","a":"Huevo, Gluten","g":["huevos","champiñones","espinacas"],"n":["ai","ra"],"mo":["D"],"ing":["2 huevos enteros + 2 claras de huevo","100 g de champiñones laminados frescos","2 puñados (40 g) de espinacas frescas","1 rebanada (40 g) de pan integral de centeno","1 cucharadita de aceite de oliva virgen extra (AOVE)","Sal, pimienta negra y una pizca de ajo en polvo"],"steps":["Reducción de vegetales: Coloca una sartén antiadherente a fuego medio con la cucharadita de AOVE. Añade los champiñones laminados y las espinacas frescas. Saltea durante 3-4 minutos moviendo constantemente hasta que los champiñones suelten su agua y las espinacas se hayan reducido completamente. Retira el exceso de líquido sobrante de la sartén si fuera necesario.","Batido de huevos: En un bol mediano, rompe los 2 huevos enteros, añade las 2 claras, la sal, la pimienta negra y el toque de ajo en polvo. Bate con un tenedor durante 30 segundos solo hasta que la yema y la clara se integren (evita batir demasiado para no meter exceso de aire).","Técnica del revuelto cremoso: Baja el fuego de la sartén a intensidad media-baja (potencia 3 o 4 de 9). Vierte los huevos batidos sobre los champiñones y espinacas. Con una espátula de silicona, remueve suavemente desde los bordes hacia el centro creando pliegues continuos durante 1,5 a 2 minutos.","Punto óptimo: Apaga el fuego cuando el huevo todavía parezca ligeramente húmedo y brillante. El calor residual de la sartén terminará de cuajarlo en unos segundos dejando una textura suave y melosa.","Emplatado: Tuesta la rebanada de pan de centeno hasta que esté crujiente. Sirve el revuelto recién hecho directamente encima o al lado de la tostada."],"bio":"Al salir de la menstruación, el cuerpo necesita reconstruir los niveles de hierro perdidos antes de que llegue el aumento de energía propio de esta fase. Las espinacas aportan hierro vegetal y folatos, potenciados por la proteína de máxima calidad biológica del huevo. El centeno integral suma carbohidratos de bajo índice glucémico, perfectos para sostener el entrenamiento de fuerza que el cuerpo tolera bien en estos días.","pg":11},{"id":"smoothie-bowl-equilibrio-hormonal","t":"Smoothie Bowl \"Equilibrio Hormonal\"","ph":"Fase Folicular","p":["folicular"],"m":8,"k":380,"d":"Fácil","a":"Lácteos, Frutos secos","g":["plátano","arándanos","yogur griego natural"],"n":["ai","en","ra","sa"],"mo":["D","S"],"ing":["1/2 plátano congelado previamente en rodajas","100 g de arándanos o frutos rojos (frescos o congelados)","150 g de yogur griego natural o de coco sin azúcar","1 cucharada sopera (10 g) de semillas de lino molidas","1/2 cucharadita de té matcha en polvo (opcional)","1 cucharada de almendras laminadas para topping"],"steps":["Preparación de la base congelada: Para obtener la textura de helado característica, asegúrate de tener el medio plátano troceado y congelado de antemano (mínimo 4 horas de congelador).","Triturado de alta potencia: Coloca en el vaso de la batidora o procesador de alimentos primero el yogur griego (el líquido abajo facilita el triturado), seguido del plátano congelado, los arándanos, las semillas de lino molidas y la 1/2 cucharadita de matcha.","Procesado: Tritura a velocidad máxima durante 1 o 2 minutos. Si tu batidora se encalla, apágala, empuja los ingredientes hacia las cuchillas con una espátula y vuelve a triturar hasta obtener una crema espesa, homogénea y suave.","Servido y tostado ligero: Vierte el smoothie cremoso con ayuda de una espátula en un bowl ancho y poco profundo. Pasa las almendras laminadas por una sartén seca durante 1 minuto a fuego medio hasta que doren ligeramente para intensificar su sabor.","Emplatado final: Decora la superficie del bowl con las almendras laminadas dispuestas en una línea o semicírculo estético. Consumir inmediatamente con cuchara."],"bio":"Los lignanos de las semillas de lino ayudan al hígado a metabolizar y equilibrar los estrógenos, que empiezan a subir justo en esta fase. Los arándanos suman flavonoides que protegen la salud ovárica y favorecen la vitalidad de la piel. Un desayuno rápido pensado para acompañar el inicio de la subida hormonal sin sobrecargar la digestión.","pg":12},{"id":"salmon-al-horno-con-costra-de-sesamo-y-brocoli","t":"Salmón al Horno con Costra de Sésamo y Brócoli","ph":"Fase Ovulatoria","p":["ovulatoria"],"m":18,"k":490,"d":"Medio","a":"Pescado, Sésamo, Mostaza","g":["salmón","floretes de brócoli","semillas de sésamo"],"n":["ai","sa"],"mo":["C"],"ing":["130 g de lomo de salmón fresco sin espinas","150 g de floretes de brócoli fresco","1 cucharadita de semillas de sésamo","1/2 cucharadita de mostaza de Dijon","1 cucharadita de aceite de oliva virgen extra (AOVE)","Un chorro de zumo de limón fresco, sal y pimienta negra"],"steps":["Precalentado y corte: Precalienta el horno a 180°C con calor arriba y abajo (o tu Airfryer a 180°C). Lava el brócoli y córtalo en floretes pequeños de tamaño uniforme.","Acondicionamiento de verduras: En un bol, coloca el brócoli, añade la cucharadita de AOVE, sal y pimienta. Remueve bien con las manos para que todos los floretes queden impregnados de aceite.","Elaboración de la costra de salmón: Seca la parte superior del lomo de salmón con un papel de cocina. Unta la 1/2 cucharadita de mostaza de Dijon formando una capa fina sobre la superficie superior. Espolvorea las semillas de sésamo sobre la mostaza y presiona suavemente con la yema del dedo para que queden adheridas fijamente.","Horneado: Coloca el salmón y el brócoli extendido en una bandeja cubierta con papel vegetal. Hornea a 180°C durante 12-14 minutos.","Señal de cocción: El salmón estará listo cuando las lascas se separen fácilmente con un tenedor y mantenga el centro jugoso, mientras el brócoli tenga las puntas ligeramente tostadas y crujientes.","Emplatado: Coloca el lomo de salmón en un lado del plato y el brócoli asado en el otro. Riega el brócoli y los bordes con un chorro de zumo de limón recién exprimido."],"bio":"Omega-3 y selenio son el aporte estrella del salmón, indispensables para la salud folicular y la calidad ovocitaria en estos días. El brócoli suma sulforafano e Indol-3-Carbinol, fitonutrientes que ayudan al organismo a depurar el exceso de estrógenos tras la ovulación. Un plato que combina nutrición hormonal con un extra de apoyo hepático.","pg":13},{"id":"crema-de-lentejas-rojas-y-boniato-al-comino","t":"Crema de Lentejas Rojas y Boniato al Comino","ph":"Fase Lútea","p":["lutea"],"m":22,"k":390,"d":"Medio","a":"Ninguno","g":["lentejas rojas","boniato","cebolla"],"n":["ai","an","en","hi","sa"],"mo":["C","N"],"ing":["50 g de lentejas rojas (no requieren remojo)","80 g de boniato o batata cortado en dados","1/2 cebolla pequeña","1/2 cucharadita de comino en polvo","1/2 cucharadita de cúrcuma","250 ml de caldo de verduras bajo en sodio","1 cucharadita de aceite de oliva virgen extra (AOVE)"],"steps":["Sofrito aromático: En un cazo u olla pequeña, calienta la cucharadita de AOVE a fuego medio. Añade la cebolla picada con una pizca de sal y sofríe durante 3 minutos hasta que esté transparente. Añade la 1/2 cucharadita de comino y la 1/2 de cúrcuma, removiendo durante 30 segundos a fuego bajo para liberar los aceites esenciales sin quemar las especias.","Lavado de legumbre: Mientras tanto, aclara las lentejas rojas en un colador fino bajo el agua del grifo hasta que el agua salga clara.","Cocción: Añade los dados de boniato, las lentejas rojas lavadas y los 250 ml de caldo de verduras al cazo. Sube el fuego hasta que comience a hervir. En ese momento, baja el fuego a intensidad media-baja, tapa la olla y cocina durante 15 minutos.","Comprobación: A los 15 minutos, comprueba que el boniato se deshaga al presionarlo y las lentejas estén completamente blandas y cocidas.","Triturado y servicio: Apaga el fuego y tritura con batidora de mano durante 90 segundos hasta conseguir una crema fina, sedosa y uniforme. Vierte en un plato hondo y sirve muy caliente."],"bio":"El gasto metabólico basal aumenta en estos días, elevando la demanda de carbohidratos complejos que el boniato y las lentejas rojas cubren con glucosa de liberación lenta. Esto estabiliza la insulina y frena los antojos de dulce típicos de la fase. Las lentejas rojas suman además vitamina B6, fundamental para la producción natural de progesterona.","pg":14},{"id":"tostada-de-aguacate-huevo-poche-y-semillas-de-girasol","t":"Tostada de Aguacate, Huevo Poché y Semillas de Girasol","ph":"Fase Menstrual","p":["menstrual"],"m":10,"k":360,"d":"Media","a":"Huevo, Gluten","g":["pan integral de","huevo","semillas de girasol"],"n":["ra"],"mo":["D"],"ing":["1 rebanada de pan integral de masa madre o centeno","1/2 aguacate maduro","1 huevo entero","Vinagre","1 cucharadita de semillas de girasol","1 pizca de pimentón de la Vera","Unas gotas de zumo de limón, sal y pimienta"],"steps":["Elaboración de la crema de aguacate: En un cuenco pequeño, coloca la pulpa de medio aguacate maduro. Añade unas gotas de zumo de limón, una pizca de sal y pimienta. Machaca con un tenedor manteniendo una textura rugosa con pequeños trozos (evita triturar demasiado).","Tostado: Tuesta la rebanada de pan de masa madre en la tostadora o en sartén hasta que quede dorada y crujiente por ambos lados. Técnica del huevo poché perfecto: Pon a calentar un cazo pequeño con unos 6-8 cm de agua a fuego medio-alto. Añade el vinagre (ayuda a cuajar la clara). Casca el huevo en una taza pequeña o cuenco previo. Cuando el agua empiece a hacer burbujitas pequeñas en el fondo sin llegar a hervir a borbotones (unos 85-90°C), crea un remolino en el centro removiendo el agua. Vierte el huevo despacio justo en el centro del remolino y cocina a fuego bajo durante exactamente 3 minutos. Retira el huevo con una espumadera y colócalo 5 segundos sobre un papel absorbente para retirar el exceso de agua.","Montaje: Extiende la mezcla de aguacate generosamente sobre el pan tostado. Coloca el huevo poché en el centro.","Toque final: Haz un pequeño corte superficial en la parte superior del huevo para dejar entrever la yema. Espolvorea las semillas de girasol y la pizca de pimentón por encima."],"bio":"Las semillas de girasol aportan vitamina E y zinc, dos nutrientes que ayudan a frenar la producción de prostaglandinas, las responsables directas de los calambres uterinos. El aguacate suma grasas saludables que estabilizan el estado de ánimo en días de mayor sensibilidad emocional. Además, estas grasas mejoran la absorción de nutrientes liposolubles como la propia vitamina E de las semillas.","pg":16}]</script>
+<script>
+(function(){
+const R=JSON.parse(document.getElementById('recipe-data').textContent);
+const labels={D:'Desayuno',C:'Comida',N:'Cena',S:'Snack'};
+let filter='all', state={};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+function card(r){return `<button class="recipe" data-id="${r.id}"><span class="tag">${r.ph}</span><h3>${r.t}</h3><div class="meta">${r.m} min · ${r.k} kcal aprox.</div></button>`}
+function bindCards(){ $$('.recipe').forEach(b=>b.onclick=()=>openRecipe(b.dataset.id)); }
+function renderHome(){ $('#homeRecipes').innerHTML=R.slice(0,4).map(card).join(''); bindCards(); }
+function renderExplore(){
+ const q=$('#search').value.trim().toLowerCase();
+ const list=R.filter(r=>(filter==='all'||r.mo.includes(filter))&&(!q||(r.t+' '+r.g.join(' ')+' '+r.ing.join(' ')).toLowerCase().includes(q)));
+ $('#exploreRecipes').innerHTML=list.length?list.map(card).join(''):'<p class="small">No hay resultados dentro de las 10 recetas gratuitas.</p>'; bindCards();
+}
+function go(id){$$('.view').forEach(v=>v.classList.toggle('active',v.id===id));$$('.nav').forEach(n=>n.classList.toggle('active',n.dataset.go===id));scrollTo(0,0);if(id==='explore')renderExplore()}
+$$('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+$('#startQuiz').onclick=()=>{state={};showQ(1);go('quiz')};
+$('#randomBtn').onclick=()=>openRecipe(R[Math.floor(Math.random()*R.length)].id);
+$('#search').oninput=renderExplore;
+$$('.chip[data-filter]').forEach(c=>c.onclick=()=>{$$('.chip[data-filter]').forEach(x=>x.classList.remove('active'));c.classList.add('active');filter=c.dataset.filter;renderExplore()});
+$('#advancedLock').onclick=()=>go('plus');
+function showQ(n){$$('.q').forEach(x=>x.classList.toggle('active',Number(x.dataset.q)===n));$('#bar').style.width=(n*25)+'%'}
+$$('.opt').forEach(b=>b.onclick=()=>{
+ state[b.dataset.key]=b.dataset.v;
+ const q=Number(b.closest('.q').dataset.q);
+ if(q<4)showQ(q+1); else recommend();
+});
+function allowed(r){
+ const a=(r.a||'').toLowerCase(),v=state.avoid;
+ if(!v||v==='none')return true;
+ if(v==='gluten')return !a.includes('gluten');
+ if(v==='lacteos')return !a.includes('lácte');
+ if(v==='huevo')return !a.includes('huevo');
+ if(v==='frutos')return !a.includes('frutos secos');
+ return true;
+}
+function recommend(){
+ const pool=R.filter(allowed); const base=pool.length?pool:R;
+ const ranked=base.map(r=>{let s=0;if(state.need&&r.n.includes(state.need))s+=6;if(state.moment&&r.mo.includes(state.moment))s+=6;if(state.stage&&state.stage!=='ninguna'&&r.p.includes(state.stage))s+=4;return {r,s}}).sort((a,b)=>b.s-a.s);
+ openRecipe(ranked[0].r.id,true);
+}
+window.studyosFreeOpenRecipe=function(id){openRecipe(id,false)};
+function openRecipe(id,rec){
+ const r=R.find(x=>x.id===id); if(!r)return;
+ $('#detail').innerHTML=`<div class="eyebrow">${rec?'UNA OPCIÓN SEGÚN TUS RESPUESTAS':'RECETA GRATIS'}</div><h2>${r.t}</h2><div class="facts"><span class="fact">${r.ph}</span><span class="fact">${r.m} min</span><span class="fact">${r.k} kcal aprox.</span><span class="fact">${r.d}</span></div><h3>Ingredientes</h3><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Preparación</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol><h3>El porqué biológico</h3><div class="bio">${r.bio}</div><div class="unlock cv3-result-offer"><span class="eyebrow">HAS PROBADO STUDYOS</span><strong>Hazlo con 500 recetas y toda tu semana.</strong><p>StudyOS+ amplía el recomendador y añade 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><div class="cv3-benefits"><span>✓ 500 recetas</span><span>✓ 6 menús semanales</span><span>✓ 6 listas de la compra</span><span>✓ Batch cooking + sustituciones</span></div><a class="btn btnYellow wide" data-cv3="recommendation" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track-action="plus_checkout">Desbloquear StudyOS+ · 5 €</a><p class="cv3-micro">Pago único · Sin suscripción.</p></div>`;
+ $('#modal').classList.add('open');
+}
+$('#close').onclick=()=>$('#modal').classList.remove('open');
+$('#modal').onclick=e=>{if(e.target===$('#modal'))$('#modal').classList.remove('open')};
+renderHome();renderExplore();
+})();
+</script>
+<script id="studyos-free-real-plan">
+(function(){
+const data={"Lunes": ["Bowl Matutino de Grasas Saludables", "Bowl de Quinoa y Pollo al Limón", "Omelette de Champiñones y Orégano"], "Martes": ["Tortitas de Avena y Calabaza", "Ensalada de Salmón, Cítricos", "Crema de verduras + huevo"], "Miércoles": ["Avena + canela + fruta", "Lentejas + verduras", "Wok de Pollo con Brócoli y Sésamo"], "Jueves": ["Pudding de Chía y Cacao Puro", "Tartar de Atún, Mango y Aguacate", "Salteado de Pavo y Calabacín"], "Viernes": ["Bowl Matutino de Grasas Saludables", "Arroz + pollo + verduras", "Ensalada completa"], "Sábado": ["Tortitas de Avena y Calabaza", "Bowl de Quinoa y Pollo al Limón", "Crema Verde Digestiva de Apio"], "Domingo": ["Pudding de Chía y Cacao Puro", "Ensalada de Salmón y Cítricos", "Crema Verde Digestiva de Apio"]};
+const days=["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"], labels=["Desayuno","Comida","Cena"];
+function render(day){
+ document.querySelectorAll("#freePlanDays button").forEach(b=>b.classList.toggle("on",b.dataset.day===day));
+ const box=document.getElementById("freePlanMeals"); if(!box)return;
+ const links={"Tortitas de Avena y Calabaza": "tortitas-de-avena-y-calabaza", "Bowl de Quinoa y Pollo al Limón": "bowl-de-quinoa-y-pollo-al-limon-con-curcuma", "Tartar de Atún, Mango y Aguacate": "tartar-de-atun-mango-y-aguacate"};
+ box.innerHTML=data[day].map((x,i)=>links[x]
+   ? `<button type="button" class="mealCard freeMenuRecipeLink" data-recipe-id="${links[x]}"><small>${labels[i]}</small><b>${x}</b><span class="menuRecipeHint">Ver receta →</span></button>`
+   : `<div class="mealCard"><small>${labels[i]}</small><b>${x}</b></div>`).join("");
+}
+document.addEventListener("DOMContentLoaded",()=>{
+ const d=document.getElementById("freePlanDays"); if(!d)return;
+ d.innerHTML=days.map((x,i)=>`<button class="dayPick ${i===0?"on":""}" data-day="${x}">${x.slice(0,3)}</button>`).join("");
+ d.addEventListener("click",e=>{const b=e.target.closest("button[data-day]");if(b)render(b.dataset.day)});
+ const meals=document.getElementById("freePlanMeals");
+ meals.addEventListener("click",e=>{
+   const b=e.target.closest("button[data-recipe-id]");
+   if(b && window.studyosFreeOpenRecipe) window.studyosFreeOpenRecipe(b.dataset.recipeId);
+ });
+ render(days[0]);
+});
+})();
+</script>
+<script id="studyos-free-tracking-v2">
+(function(){
+  function once(key, fn){
+    try { if(sessionStorage.getItem(key)) return; sessionStorage.setItem(key,"1"); } catch(e){}
+    fn();
+  }
+  window.addEventListener("load", function(){
+    if(window.studyosWhenConsented) window.studyosWhenConsented(function(){
+      once("studyos_free_open_v2", function(){ window.studyosFunnel && window.studyosFunnel("free_open",{page:"gratis",funnel_version:"v2_app"}); });
+    });
+  });
+  document.addEventListener("click", function(e){
+    var a=e.target.closest && e.target.closest('a[href*="buy.stripe.com"]');
+    if(a && window.studyosFunnel){
+      var ref=window.studyosCheckoutRef && window.studyosCheckoutRef();
+      if(ref){ try{var u=new URL(a.href);u.searchParams.set("client_reference_id",ref);a.href=u.toString();}catch(err){} }
+      window.studyosFunnel("plus_interest",{source:"gratis",cta_text:(a.textContent||"").trim().slice(0,80),funnel_version:"v2_app"});
+      window.studyosFunnel("begin_checkout",{source:"gratis",cta_location:"studyos_free",funnel_version:"v2_app"});
+    }
+  },true);
+  /* Detect the actual recommendation result modal opening, without recording answers. */
+  var obs=new MutationObserver(function(){
+    var d=document.getElementById("detail");
+    if(d && d.textContent && d.textContent.indexOf("UNA OPCIÓN SEGÚN TUS RESPUESTAS")>-1){
+      if(window.studyosFunnel) once("studyos_rec_done_v2",function(){window.studyosFunnel("free_recommendation_complete",{funnel_version:"v2_app"});});
+    }
+  });
+  window.addEventListener("DOMContentLoaded",function(){obs.observe(document.body,{subtree:true,childList:true,characterData:true});});
+})();
+</script>
+<script id="conversion-v3-tracking">
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("[data-cv3]");if(!a)return;try{if(window.gtag)gtag("event","studyos_plus_interest",{placement:a.getAttribute("data-cv3"),funnel_version:"v3_conversion"});if(window.fbq)fbq("trackCustom","StudyOSPlusInterest",{placement:a.getAttribute("data-cv3"),funnel_version:"v3_conversion"});}catch(_){}});
+</script>
+<footer class="studyos-legal-footer">
+<div class="studyos-legal-inner">
+<div class="studyos-legal-brand">Study<span>OS</span></div>
+<nav aria-label="Información legal">
+<a href="aviso-legal.html">Aviso legal</a>
+<a href="terminos.html">Términos y condiciones</a>
+<a href="privacidad.html">Privacidad y cookies</a>
+<button id="cookie-settings" type="button">Configurar cookies</button>
+</nav>
+<p>StudyOS ofrece contenido informativo y educativo y no sustituye el consejo médico o nutricional individualizado.</p>
+</div>
+</footer>
+<script id="studyos-funnel-hooks">
+(function(){
+  function funnel(name, extra){
+    if (typeof window.studyosFunnel === "function") window.studyosFunnel(name, extra || {});
+  }
+  function custom(name, extra){
+    if (typeof window.studyosGA === "function") window.studyosGA(name, extra || {});
+    if (typeof window.studyosTrackCustom === "function") window.studyosTrackCustom(name, extra || {});
+  }
+  function initStudyOSFunnel(){
+    /* Counts a direct arrival to StudyOS Free only after consent, because tracking.js gates GA/Meta. */
+    funnel("generate_lead", {funnel_version:"direct_free_v1", page_type:"studyos_free"});
+
+    var quiz=document.getElementById("startQuiz");
+    if(quiz) quiz.addEventListener("click", function(){
+      funnel("quiz_start", {funnel_version:"direct_free_v1"});
+    }, {once:true});
+
+    document.addEventListener("click", function(e){
+      var checkout=e.target.closest('a[href*="buy.stripe.com"]');
+      if(checkout){
+        funnel("begin_checkout", {funnel_version:"direct_free_v1", source:"gratis_html"});
+        return;
+      }
+      var plus=e.target.closest('a[href="#studyos-plus"],[data-go="plus"]');
+      if(plus) custom("studyos_plus_interest",{funnel_version:"direct_free_v1"});
+      var explore=e.target.closest('[data-track-action="free_explore"]');
+      if(explore) custom("studyos_free_explore",{funnel_version:"direct_free_v1"});
+      var random=e.target.closest('[data-track-action="free_random_recipe"]');
+      if(random) custom("studyos_free_random_recipe",{funnel_version:"direct_free_v1"});
+    });
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",initStudyOSFunnel);
+  else initStudyOSFunnel();
+})();
+</script>
+</body></html>

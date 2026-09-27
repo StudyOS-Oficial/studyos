@@ -1,11 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
 <title>StudyOS | 10 recetas gratis</title>
-<meta name="description" content="Prueba StudyOS con 10 recetas gratuitas y descubre cómo funciona la experiencia completa con 500 recetas · Crea tu semana · Cambia platos · Lista de la compra.">
-<meta name="theme-color" content="#f7f3ea">
+<meta content="Prueba StudyOS con 10 recetas gratuitas y descubre cómo funciona la experiencia completa con 500 recetas · Crea tu semana · Cambia platos · Lista de la compra." name="description"/>
+<meta content="#f7f3ea" name="theme-color"/>
 <style>
 :root{--ink:#26301d;--olive:#3b4a25;--olive2:#66744d;--paper:#fffdf8;--page:#f5f0e6;--yellow:#f2c230;--line:#ded7c8;--muted:#6d7167;--lock:#ede8dc}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--page);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
@@ -23,10 +24,9 @@ main{padding:22px 18px}.eyebrow{font-size:12px;text-transform:uppercase;letter-s
 .quiz{display:grid;gap:15px}.q{display:none}.q.active{display:block}.q h3{font-size:21px}.opts{display:grid;gap:8px}.opt{text-align:left;border:1px solid var(--line);background:white;border-radius:14px;padding:13px;cursor:pointer}.progress{height:7px;background:#e7e2d8;border-radius:99px;overflow:hidden;margin:10px 0 18px}.progress i{display:block;height:100%;background:var(--yellow);width:25%;transition:.2s}.lockedOverlay{text-align:center;padding:35px 12px}.lockedOverlay .big{font-size:42px}
 @media(max-width:480px){.recipes,.lockgrid{grid-template-columns:1fr 1fr}.actions{grid-template-columns:1fr}.recipe{padding:13px}}
 </style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <style id="studyos-color-fix">
 /* StudyOS Free — remove browser-default blue from interactive UI */
 button, input, select, textarea { font: inherit; }
@@ -53,16 +53,12 @@ input::placeholder { color: #9a9b94; opacity: 1; }
 .bottom .nav.active { color: var(--olive) !important; }
 .bottom .navIcon { width: 27px; height: 27px; flex: 0 0 27px; }
 </style>
-
-
 <style id="studyos-button-color-fix">
 .qopt, .filterBtn, .filterLock, .quiz button, .filters button {
   color:#3B4A25 !important;
   -webkit-text-fill-color:#3B4A25;
 }
 </style>
-
-
 <style id="studyos-plan-free-css">
 .planGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
 .planLock{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;min-height:126px}
@@ -71,7 +67,6 @@ input::placeholder { color: #9a9b94; opacity: 1; }
 .planUpsell{margin-top:18px;background:var(--olive);color:#fff;border-radius:20px;padding:20px}.planUpsell h2{color:#fff;margin-top:0}.planUpsell p{color:#eef1e7}.planUpsell .btn{margin-top:12px}
 @media(max-width:520px){.planGrid{grid-template-columns:1fr}}
 </style>
-
 <style id="studyos-real-plan-css">
 .planHero{margin-bottom:18px}.planHero h1{margin-bottom:8px}
 .planTabs,.menuChooser,.dayChooser{display:flex;gap:8px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:none}.planTabs::-webkit-scrollbar,.menuChooser::-webkit-scrollbar,.dayChooser::-webkit-scrollbar{display:none}
@@ -84,8 +79,7 @@ input::placeholder { color: #9a9b94; opacity: 1; }
 .lockedPlan{margin-top:18px;background:var(--olive);color:#fff;border-radius:20px;padding:18px}.lockedPlan h2{color:#fff;margin:0 0 8px}.lockedPlan p{color:#eef1e7}.lockFeatures{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0}.lockFeature{background:rgba(255,255,255,.1);border-radius:12px;padding:10px;font-size:.85rem;font-weight:700}
 @media(max-width:560px){.mealGrid{grid-template-columns:1fr}.lockFeatures{grid-template-columns:1fr}}
 </style>
-
-<script src="tracking.js" defer></script>
+<script defer="" src="tracking.js"></script>
 <style id="selected-label-olive-fix">
 #plan .planTab.on,#plan .menuPick.on,#plan .dayPick.on{
   color:#3B4A25 !important;
@@ -94,7 +88,6 @@ input::placeholder { color: #9a9b94; opacity: 1; }
   border-color:#AAB58C !important;
 }
 </style>
-
 <style id="conversion-v3-css">
 .cv3-result-offer{margin-top:22px;border:1px solid rgba(59,74,37,.18);background:#f7f4ed}.cv3-result-offer strong{display:block;font-family:Fraunces,serif;font-size:1.25rem;color:#26331a;margin:5px 0 8px}.cv3-benefits{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:13px 0 15px;font-size:.82rem;font-weight:700}.cv3-benefits span{background:#fff;padding:8px 9px;border-radius:10px}.cv3-micro{text-align:center!important;font-size:.75rem!important;opacity:.72;margin:8px 0 0!important}@media(max-width:480px){.cv3-benefits{grid-template-columns:1fr}}
 </style>
@@ -103,35 +96,6 @@ input::placeholder { color: #9a9b94; opacity: 1; }
 .freeMenuRecipeLink .menuRecipeHint{display:block;margin-top:7px;font-size:.72rem;font-weight:800;color:#3B4A25;-webkit-text-fill-color:#3B4A25}
 .freeMenuRecipeLink:hover,.freeMenuRecipeLink:focus{outline:2px solid rgba(59,74,37,.22);outline-offset:2px}
 </style>
-<style id="hybrid-info-styles">
-.hybrid-info{max-width:1100px;margin:28px auto 110px;padding:0 18px;color:var(--ink)}
-.hybrid-intro{border-top:1px solid var(--line);padding-top:34px;margin-top:18px}
-.hybrid-intro .eyebrow{margin-bottom:8px}
-.hybrid-intro h2,.hybrid-info h2{font-family:var(--serif);color:var(--olive-900);font-size:clamp(1.7rem,5vw,2.6rem);line-height:1.05;margin:0 0 12px}
-.hybrid-intro p{max-width:720px;color:var(--muted);font-size:1.02rem;line-height:1.6}
-.hybrid-nav{display:flex;gap:8px;overflow:auto;padding:16px 0 4px;scrollbar-width:none}
-.hybrid-nav a{white-space:nowrap;text-decoration:none;color:var(--olive-900);background:var(--paper);border:1px solid var(--line);padding:10px 14px;border-radius:999px;font-weight:700;font-size:.9rem}
-.hybrid-section{padding:42px 0;border-top:1px solid var(--line)}
-.hybrid-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
-.hybrid-card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:18px}
-.hybrid-card h3{font-family:var(--serif);font-size:1.15rem;color:var(--olive-900);margin:0 0 7px}
-.hybrid-card p{margin:0;color:var(--muted);line-height:1.5}
-.hybrid-science{background:#f3efe4;border-radius:24px;padding:22px;margin-top:18px}
-.hybrid-science p{color:var(--muted);line-height:1.6}
-.hybrid-phases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
-.hybrid-phase{border-left:4px solid var(--salmon);background:var(--paper);padding:15px;border-radius:0 16px 16px 0}
-.hybrid-phase b{display:block;color:var(--olive-900);margin-bottom:4px}
-.hybrid-phase span{color:var(--muted);font-size:.92rem;line-height:1.4}
-.hybrid-faq details{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:9px 0}
-.hybrid-faq summary{font-weight:800;color:var(--olive-900);cursor:pointer}
-.hybrid-faq p{color:var(--muted);line-height:1.55}
-.hybrid-final{background:var(--olive-900);color:white;border-radius:26px;padding:26px;margin-top:12px}
-.hybrid-final h2{color:white}
-.hybrid-final p{color:#e8ecdf;line-height:1.55}
-.hybrid-final .btn{margin-top:10px}
-@media(max-width:650px){.hybrid-grid,.hybrid-phases{grid-template-columns:1fr}.hybrid-info{padding:0 14px}.hybrid-section{padding:34px 0}}
-</style>
-
 
 <style id="studyos-premium-polish">
 :root{
@@ -311,8 +275,6 @@ body{
   .hybrid-final{border-radius:27px;padding:30px 22px!important}
 }
 </style>
-
-
 <style id="plus-wow-styles">
 .plus-reveal{
   position:relative;isolation:isolate;overflow:hidden;
@@ -430,8 +392,6 @@ body{
  .plus-cta{margin-top:24px;width:100%;justify-content:space-between;box-sizing:border-box}
 }
 </style>
-
-
 <style id="plus-home-slot-styles">
 .plus-home-slot{margin-top:46px!important}
 .plus-home-slot .plus-reveal{margin:0}
@@ -442,8 +402,6 @@ body{
   .plus-home-slot .plus-reveal-inner{padding:27px 16px 30px}
 }
 </style>
-
-
 <style id="legal-footer-styles">
 .studyos-legal-footer{max-width:1080px;margin:54px auto 0;padding:34px 18px 120px;border-top:1px solid rgba(59,74,37,.14);color:#68705f}
 .studyos-legal-inner{display:grid;gap:16px}
@@ -453,186 +411,134 @@ body{
 .studyos-legal-footer a,.studyos-legal-footer button{font:inherit;font-size:.83rem;color:inherit;text-decoration:underline;background:none;border:0;padding:0;cursor:pointer}
 .studyos-legal-footer p{max-width:720px;font-size:.78rem;line-height:1.55;margin:0}
 </style>
-
-</head>
+<style id="plus-contrast-and-tabs">
+.plus-close h3{color:#fff!important;opacity:1!important}
+.plus-close p{color:#eef1e8!important}
+.plus-close p strong{color:#fff!important}
+.plus-reveal h2,.plus-reveal h3,.plus-reveal b{opacity:1}
+.plus-reveal .plus-close-kicker{color:#f2d773!important}
+.plus-reveal .plus-cta{color:#2e391f!important}
+@media(min-width:721px){
+  .plus-close h3{max-width:560px}
+}
+</style></head>
 <body>
 <div class="app">
 <header class="top"><div class="topin"><div class="brand">Study<span>OS</span></div><div class="freepill">GRATIS · 10 RECETAS</div></div></header>
 <main>
-<section id="home" class="view active">
-  <div class="eyebrow">TU STUDYOS GRATIS</div>
-  <h1>¿Qué quieres comer hoy?</h1>
-  <p class="lead">Ya estás dentro. Encuentra una receta para hoy o explora las 10 disponibles gratis.</p>
-  <div class="heroCard">
-    <div class="eyebrow" style="color:#dce5ce">RECOMENDADOR</div>
-    <h2>Te ayudamos a elegir</h2>
-    <p>Responde 4 preguntas rápidas y encuentra una opción entre tus 10 recetas gratuitas.</p>
-    <button class="btn btnYellow" id="startQuiz" data-track-action="free_recommendation_start">Encontrar mi receta →</button>
-  </div>
-  <div class="actions">
-    <button class="btn btnGhost" data-go="explore" data-track-action="free_explore">🔎 Ver las 10 recetas</button>
-    <button class="btn btnGhost" id="randomBtn" data-track-action="free_random_recipe">✨ Sorpréndeme</button>
-  </div>
-  <div class="section">
-    <div class="sectionHead"><div><div class="eyebrow">GRATIS</div><h2>Tus recetas</h2></div><span class="small">10 disponibles</span></div>
-    <div id="homeRecipes" class="recipes"></div>
-  </div>
-  <div class="section plus-home-slot">
+<section class="view active" id="home">
+<div class="eyebrow">TU STUDYOS GRATIS</div>
+<h1>¿Qué quieres comer hoy?</h1>
+<p class="lead">Ya estás dentro. Encuentra una receta para hoy o explora las 10 disponibles gratis.</p>
+<div class="heroCard">
+<div class="eyebrow" style="color:#dce5ce">RECOMENDADOR</div>
+<h2>Te ayudamos a elegir</h2>
+<p>Responde 4 preguntas rápidas y encuentra una opción entre tus 10 recetas gratuitas.</p>
+<button class="btn btnYellow" data-track-action="free_recommendation_start" id="startQuiz">Encontrar mi receta →</button>
+</div>
+<div class="actions">
+<button class="btn btnGhost" data-go="explore" data-track-action="free_explore">🔎 Ver las 10 recetas</button>
+<button class="btn btnGhost" data-track-action="free_random_recipe" id="randomBtn">✨ Sorpréndeme</button>
+</div>
+<div class="section">
+<div class="sectionHead"><div><div class="eyebrow">GRATIS</div><h2>Tus recetas</h2></div><span class="small">10 disponibles</span></div>
+<div class="recipes" id="homeRecipes"></div>
+</div>
+<div class="section plus-home-slot">
 <section class="plus-reveal" id="studyos-plus">
-    <div class="plus-orbit plus-orbit-a"></div>
-    <div class="plus-orbit plus-orbit-b"></div>
-    <div class="plus-reveal-inner">
-      <div class="plus-kicker">ESTO ES SOLO EL PRINCIPIO</div>
-      <h2>Has probado StudyOS con 10 recetas.</h2>
-      <div class="plus-500"><span>StudyOS+</span><strong>500</strong><em>recetas</em></div>
-      <p class="plus-lead">Pero StudyOS+ no es simplemente una biblioteca más grande. Es el sistema completo.</p>
-
-      <div class="plus-stage">
-        <div class="plus-phone" aria-hidden="true">
-          <div class="plus-phone-top"><span></span></div>
-          <div class="plus-screen">
-            <div class="mini-brand">Study<span>OS+</span></div>
-            <div class="mini-label">HOY</div>
-            <div class="mini-title">¿Qué quieres comer?</div>
-            <div class="mini-search">Buscar entre 500 recetas…</div>
-            <div class="mini-card"><b>Tu recomendación</b><span>Lista en 15 min</span></div>
-            <div class="mini-row"><i></i><i></i></div>
-          </div>
-        </div>
-
-        <article class="float-card fc-week"><span class="float-icon">✦</span><div><b>Crea mi semana</b><small>21 comidas organizadas</small></div></article>
-        <article class="float-card fc-fridge"><span class="float-icon">⌁</span><div><b>¿Qué tengo en la nevera?</b><small>Encuentra recetas con lo que tienes</small></div></article>
-        <article class="float-card fc-rescue"><span class="float-icon">↗</span><div><b>StudyOS Rescue</b><small>Resuelve una comida cuando vas con prisa</small></div></article>
-        <article class="float-card fc-bio"><span class="float-icon">BIO</span><div><b>Porqué Biológico</b><small>Entiende qué aporta cada receta</small></div></article>
-      </div>
-
-      <div class="plus-capabilities">
-        <div class="cap cap-big"><span class="cap-num">500</span><b>recetas completas</b><p>Más variedad para que elegir no signifique repetir siempre lo mismo.</p></div>
-        <div class="cap"><span class="cap-tag">RECOMENDADOR</span><b>Encuentra antes lo que buscas.</b><p>Etapa, objetivo, momento y preferencias para acotar opciones.</p></div>
-        <div class="cap"><span class="cap-tag">PLANIFICA</span><b>De una receta a toda la semana.</b><p>Menús, lista de la compra, batch cooking y sustituciones reunidos en el mismo lugar.</p></div>
-        <div class="cap"><span class="cap-tag">CAMBIA</span><b>No te convence un plato.</b><p>Cámbialo sin tener que rehacer toda tu semana.</p></div>
-      </div>
-
-      <div class="plus-close">
-        <div>
-          <span class="plus-close-kicker">TODO ESTO ES STUDYOS+</span>
-          <h3>Menos tiempo pensando.<br>Más fácil decidir.</h3>
-          <p>Acceso completo por <strong>5 €</strong> en un único pago.</p>
-        </div>
-        <a class="plus-cta" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track-action="plus_checkout">Desbloquear StudyOS+ <span>→</span></a>
-      </div>
-    </div>
-  </section>
+<div class="plus-orbit plus-orbit-a"></div>
+<div class="plus-orbit plus-orbit-b"></div>
+<div class="plus-reveal-inner">
+<div class="plus-kicker">ESTO ES SOLO EL PRINCIPIO</div>
+<h2>Has probado StudyOS con 10 recetas.</h2>
+<div class="plus-500"><span>StudyOS+</span><strong>500</strong><em>recetas</em></div>
+<p class="plus-lead">Pero StudyOS+ no es simplemente una biblioteca más grande. Es el sistema completo.</p>
+<div class="plus-stage">
+<div aria-hidden="true" class="plus-phone">
+<div class="plus-phone-top"><span></span></div>
+<div class="plus-screen">
+<div class="mini-brand">Study<span>OS+</span></div>
+<div class="mini-label">HOY</div>
+<div class="mini-title">¿Qué quieres comer?</div>
+<div class="mini-search">Buscar entre 500 recetas…</div>
+<div class="mini-card"><b>Tu recomendación</b><span>Lista en 15 min</span></div>
+<div class="mini-row"><i></i><i></i></div>
+</div>
+</div>
+<article class="float-card fc-week"><span class="float-icon">✦</span><div><b>Crea mi semana</b><small>21 comidas organizadas</small></div></article>
+<article class="float-card fc-fridge"><span class="float-icon">⌁</span><div><b>¿Qué tengo en la nevera?</b><small>Encuentra recetas con lo que tienes</small></div></article>
+<article class="float-card fc-rescue"><span class="float-icon">↗</span><div><b>StudyOS Rescue</b><small>Resuelve una comida cuando vas con prisa</small></div></article>
+<article class="float-card fc-bio"><span class="float-icon">BIO</span><div><b>Porqué Biológico</b><small>Entiende qué aporta cada receta</small></div></article>
+</div>
+<div class="plus-capabilities">
+<div class="cap cap-big"><span class="cap-num">500</span><b>recetas completas</b><p>Más variedad para que elegir no signifique repetir siempre lo mismo.</p></div>
+<div class="cap"><span class="cap-tag">RECOMENDADOR</span><b>Encuentra antes lo que buscas.</b><p>Etapa, objetivo, momento y preferencias para acotar opciones.</p></div>
+<div class="cap"><span class="cap-tag">PLANIFICA</span><b>De una receta a toda la semana.</b><p>Menús, lista de la compra, batch cooking y sustituciones reunidos en el mismo lugar.</p></div>
+<div class="cap"><span class="cap-tag">CAMBIA</span><b>No te convence un plato.</b><p>Cámbialo sin tener que rehacer toda tu semana.</p></div>
+</div>
+<div class="plus-close">
+<div>
+<span class="plus-close-kicker">TODO ESTO ES STUDYOS+</span>
+<h3>Menos tiempo pensando.<br/>Más fácil decidir.</h3>
+<p>Acceso completo por <strong>5 €</strong> en un único pago.</p>
+</div>
+<a class="plus-cta" data-track-action="plus_checkout" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ <span>→</span></a>
+</div>
 </div>
 </section>
-
-<section id="explore" class="view">
-  <div class="eyebrow">Explorar</div><h1>Tus 10 recetas</h1><p class="lead">Busca por nombre o ingrediente. En StudyOS+ tendrás acceso a las 500.</p>
-  <input id="search" class="search" placeholder="Buscar receta o ingrediente…">
-  <div class="chips"><button class="chip active" data-filter="all">Todas</button><button class="chip" data-filter="D">Desayuno</button><button class="chip" data-filter="C">Comida</button><button class="chip" data-filter="N">Cena</button><button class="chip" data-filter="S">Snack</button><button class="chip" id="advancedLock">🔒 Filtros avanzados</button></div>
-  <div id="exploreRecipes" class="recipes" style="margin-top:14px"></div>
-  <div class="unlock"><strong>¿Quieres más opciones?</strong><p>Estás viendo 10 recetas. StudyOS+ desbloquea 500 recetas, 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><a class="btn btnYellow wide" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track-action="plus_checkout">Ver StudyOS+ completo →</a></div>
-</section>
-
-
-
-<section id="plan" class="view">
-  <div class="planHero"><div class="eyebrow">PLAN SEMANAL · GRATIS</div><h1>Tu menú de 7 días</h1><p class="lead">El menú antiinflamatorio incluido en la versión gratuita. Elige un día para ver desayuno, comida y cena.</p></div>
-  <div class="dayChooser" id="freePlanDays"></div>
-  <div class="mealGrid" id="freePlanMeals"></div>
-  <div class="lockedPlan">
-    <h2>En StudyOS+ tienes 6 semanas completas</h2>
-    <p>Además del menú, desbloqueas las listas de la compra, la guía de batch cooking y las sustituciones.</p>
-    <div class="lockFeatures"><div class="lockFeature">🔒 6 menús semanales</div><div class="lockFeature">🔒 6 listas de la compra</div><div class="lockFeature">🔒 Batch cooking</div><div class="lockFeature">🔒 Sustituciones</div></div>
-    <a class="btn btnYellow" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track-action="plus_checkout">Desbloquear StudyOS+ · 5 €</a>
-  </div>
-</section>
-<section id="plus" class="view">
-  <div class="lockedOverlay"><div class="big">🔒</div><div class="eyebrow">STUDYOS+</div><h1>Esto es solo el principio</h1><p class="lead" style="margin-inline:auto">La versión completa amplía tu biblioteca de 10 a 500 recetas y desbloquea filtros avanzados, favoritas, historial y planificación.</p><div class="unlock" style="text-align:left;max-width:520px;margin:25px auto"><strong>StudyOS+ completo</strong><p>500 recetas · 6 menús semanales · listas de la compra · batch cooking · guía de alimentos y sustituciones.</p><div class="price">5 € <span class="small">≈ US$5.70 · pago único</span></div><a class="btn btnYellow wide" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track-action="plus_checkout">Desbloquear ahora →</a></div></div>
-</section>
-
-<section id="quiz" class="view">
- <div class="eyebrow">Recomendador gratis</div><h1>Vamos a elegir</h1><div class="progress"><i id="bar"></i></div>
- <div class="quiz">
-  <div class="q active" data-q="1"><h3>1. ¿En qué etapa estás?</h3><div class="opts"><button class="opt" data-key="stage" data-v="menstrual">Fase menstrual</button><button class="opt" data-key="stage" data-v="folicular">Fase folicular</button><button class="opt" data-key="stage" data-v="ovulatoria">Fase ovulatoria</button><button class="opt" data-key="stage" data-v="lutea">Fase lútea</button><button class="opt" data-key="stage" data-v="perimenopausia">Perimenopausia</button><button class="opt" data-key="stage" data-v="menopausia">Menopausia</button><button class="opt" data-key="stage" data-v="ninguna">Ninguna / no lo sé</button></div></div>
-  <div class="q" data-q="2"><h3>2. ¿Qué buscas hoy?</h3><div class="opts"><button class="opt" data-key="need" data-v="ai">Antiinflamatorio</button><button class="opt" data-key="need" data-v="en">Más energía</button><button class="opt" data-key="need" data-v="hi">Ligero / hinchazón</button><button class="opt" data-key="need" data-v="sa">Más saciedad</button><button class="opt" data-key="need" data-v="an">Antojos</button><button class="opt" data-key="need" data-v="ra">Algo rápido</button></div></div>
-  <div class="q" data-q="3"><h3>3. ¿Para qué momento?</h3><div class="opts"><button class="opt" data-key="moment" data-v="D">Desayuno</button><button class="opt" data-key="moment" data-v="C">Comida</button><button class="opt" data-key="moment" data-v="N">Cena</button><button class="opt" data-key="moment" data-v="S">Snack o dulce</button></div></div>
-  <div class="q" data-q="4"><h3>4. ¿Quieres evitar algo?</h3><div class="opts"><button class="opt" data-key="avoid" data-v="none">Nada en especial</button><button class="opt" data-key="avoid" data-v="gluten">Gluten</button><button class="opt" data-key="avoid" data-v="lacteos">Lácteos</button><button class="opt" data-key="avoid" data-v="huevo">Huevo</button><button class="opt" data-key="avoid" data-v="frutos">Frutos secos</button></div></div>
- </div>
-</section>
-
-<div class="hybrid-info" id="sobre-studyos">
-  <section class="hybrid-intro">
-    <div class="eyebrow">YA LO ESTÁS PROBANDO</div>
-    <h2>¿Qué es StudyOS?</h2>
-    <p>StudyOS es una herramienta para hacer más fácil una decisión que se repite cada día: qué comer. La versión gratuita te deja probar el sistema con 10 recetas; StudyOS+ amplía la biblioteca a 500 recetas y añade más posibilidades para encontrar, organizar y adaptar tus comidas.</p>
-    <nav class="hybrid-nav" aria-label="Más sobre StudyOS">
-      <a href="#como-funciona">Cómo funciona</a>
-      <a href="#porque-biologico">Porqué Biológico</a>
-      <a href="#etapas">Ciclo y etapas</a>
-      <a href="#faq-studyos">Preguntas</a>
-    </nav>
-  </section>
-
-  <section class="hybrid-section" id="como-funciona">
-    <div class="eyebrow">CÓMO FUNCIONA</div>
-    <h2>No necesitas revisar cientos de recetas.</h2>
-    <p class="lead">Puedes explorar directamente o utilizar el recomendador para acotar opciones según lo que buscas. La idea no es darte más decisiones, sino ayudarte a llegar antes a una receta.</p>
-    <div class="hybrid-grid">
-      <article class="hybrid-card"><h3>1. Dinos qué buscas</h3><p>Etapa, necesidad y momento del día ayudan a reducir las opciones disponibles.</p></article>
-      <article class="hybrid-card"><h3>2. StudyOS filtra</h3><p>El recomendador compara tus respuestas con las etiquetas de las recetas y propone opciones compatibles.</p></article>
-      <article class="hybrid-card"><h3>3. Abre la receta</h3><p>Ingredientes, preparación, tiempo y alérgenos principales están reunidos en la misma ficha.</p></article>
-      <article class="hybrid-card"><h3>4. Entiende el plato</h3><p>Cada receta incorpora un Porqué Biológico que explica de forma divulgativa qué aportan ingredientes concretos.</p></article>
-    </div>
-  </section>
-
-  <section class="hybrid-section" id="porque-biologico">
-    <div class="eyebrow">EL PORQUÉ BIOLÓGICO</div>
-    <h2>No solo qué cocinar. También por qué esos ingredientes.</h2>
-    <div class="hybrid-science">
-      <p>Las recetas combinan alimentos y nutrientes con interés dentro de un patrón de alimentación variado. El Porqué Biológico traduce esa composición a una explicación breve y comprensible: por ejemplo, fibra soluble de la avena, omega‑3 de determinados pescados, grasas insaturadas de frutos secos o compuestos presentes en frutas y verduras.</p>
-      <p><strong>Importante:</strong> StudyOS es contenido educativo. Una receta no trata síntomas ni garantiza cambios hormonales, metabólicos o inflamatorios; la respuesta depende del conjunto de la dieta y de cada persona.</p>
-    </div>
-  </section>
-
-  <section class="hybrid-section" id="etapas">
-    <div class="eyebrow">UNA MISMA PERSONA NO COME SIEMPRE IGUAL</div>
-    <h2>Ciclo menstrual, perimenopausia y menopausia.</h2>
-    <p class="lead">StudyOS permite utilizar estas etapas como contexto para explorar el recetario, sin convertirlas en reglas rígidas ni sustituir recomendaciones sanitarias individualizadas.</p>
-    <div class="hybrid-phases">
-      <div class="hybrid-phase"><b>Fase menstrual</b><span>Opciones del recetario etiquetadas para esos días del ciclo.</span></div>
-      <div class="hybrid-phase"><b>Fase folicular</b><span>Una forma de explorar recetas dentro del contexto de esta fase.</span></div>
-      <div class="hybrid-phase"><b>Fase ovulatoria</b><span>Recetas etiquetadas para facilitar la búsqueda durante esta etapa.</span></div>
-      <div class="hybrid-phase"><b>Fase lútea</b><span>Otra vía para filtrar y variar las opciones del recetario.</span></div>
-      <div class="hybrid-phase"><b>Perimenopausia</b><span>Opciones pensadas para ampliar variedad y facilitar la planificación.</span></div>
-      <div class="hybrid-phase"><b>Menopausia</b><span>Recetas que pueden integrarse en una alimentación variada durante esta etapa.</span></div>
-    </div>
-  </section>
-
-  <section class="hybrid-section hybrid-faq" id="faq-studyos">
-    <div class="eyebrow">ANTES DE SEGUIR</div>
-    <h2>Preguntas frecuentes</h2>
-    <details><summary>¿StudyOS Free es realmente gratis?</summary><p>Sí. Puedes utilizar las 10 recetas disponibles en esta versión sin comprar StudyOS+.</p></details>
-    <details><summary>¿Qué cambia en StudyOS+?</summary><p>StudyOS+ amplía el catálogo hasta 500 recetas y desbloquea la experiencia completa del producto.</p></details>
-    <details><summary>¿Es una dieta?</summary><p>No. StudyOS es una herramienta educativa y de organización de recetas; no prescribe una dieta individualizada.</p></details>
-    <details><summary>¿Sustituye a una médica o dietista-nutricionista?</summary><p>No. Si tienes una enfermedad, alergia importante, estás embarazada o en lactancia, o tomas medicación, consulta con una profesional sanitaria antes de realizar cambios relevantes en tu alimentación.</p></details>
-  </section>
-
-  
-  
 </div>
+</section>
+<section class="view" id="explore">
+<div class="eyebrow">Explorar</div><h1>Tus 10 recetas</h1><p class="lead">Busca por nombre o ingrediente. En StudyOS+ tendrás acceso a las 500.</p>
+<input class="search" id="search" placeholder="Buscar receta o ingrediente…"/>
+<div class="chips"><button class="chip active" data-filter="all">Todas</button><button class="chip" data-filter="D">Desayuno</button><button class="chip" data-filter="C">Comida</button><button class="chip" data-filter="N">Cena</button><button class="chip" data-filter="S">Snack</button><button class="chip" id="advancedLock">🔒 Filtros avanzados</button></div>
+<div class="recipes" id="exploreRecipes" style="margin-top:14px"></div>
+<div class="unlock"><span class="eyebrow">MÁS VARIEDAD</span><strong>De 10 a 500 recetas</strong><p>Cuando necesites más opciones, StudyOS+ amplía el buscador y el catálogo completo.</p><a class="btn btnYellow wide" data-go="plus" href="#" style="display:block;text-align:center;text-decoration:none">Descubrir StudyOS+ →</a></div>
+</section>
+<section class="view" id="plan">
+<div class="planHero"><div class="eyebrow">PLAN SEMANAL · GRATIS</div><h1>Tu menú de 7 días</h1><p class="lead">El menú antiinflamatorio incluido en la versión gratuita. Elige un día para ver desayuno, comida y cena.</p></div>
+<div class="dayChooser" id="freePlanDays"></div>
+<div class="mealGrid" id="freePlanMeals"></div>
+<div class="lockedPlan">
+<h2>Amplía tu planificación en StudyOS+</h2>
+<p>Además del menú, desbloqueas las listas de la compra, la guía de batch cooking y las sustituciones.</p>
+<div class="lockFeatures"><div class="lockFeature">🔒 6 menús semanales</div><div class="lockFeature">🔒 6 listas de la compra</div><div class="lockFeature">🔒 Batch cooking</div><div class="lockFeature">🔒 Sustituciones</div></div>
+<a class="btn btnYellow" data-track-action="plus_checkout" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ · 5 €</a>
+</div>
+</section>
+<section class="view" id="plus">
+<div class="eyebrow">STUDYOS+</div>
+<h1>Todo StudyOS, desbloqueado.</h1>
+<p class="lead">Si la versión gratuita te encaja, aquí tienes el acceso completo.</p>
+<div class="unlock">
+<span class="eyebrow">ACCESO COMPLETO</span>
+<strong>500 recetas y todas las herramientas</strong>
+<p>Recomendador ampliado, planificación, menús, listas de la compra, batch cooking, sustituciones y las funciones completas de StudyOS+.</p>
+<div class="price">5 € <span class="small">≈ US$5.70 · pago único</span></div>
+<a class="btn btnYellow wide" data-track-action="plus_checkout" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" style="display:block;text-align:center;text-decoration:none">Desbloquear StudyOS+ →</a>
+</div>
+<p class="small" style="margin-top:14px">Contenido educativo. StudyOS no sustituye el consejo médico o nutricional individualizado.</p>
+</section>
+<section class="view" id="quiz">
+<div class="eyebrow">Recomendador gratis</div><h1>Vamos a elegir</h1><div class="progress"><i id="bar"></i></div>
+<div class="quiz">
+<div class="q active" data-q="1"><h3>1. ¿En qué etapa estás?</h3><div class="opts"><button class="opt" data-key="stage" data-v="menstrual">Fase menstrual</button><button class="opt" data-key="stage" data-v="folicular">Fase folicular</button><button class="opt" data-key="stage" data-v="ovulatoria">Fase ovulatoria</button><button class="opt" data-key="stage" data-v="lutea">Fase lútea</button><button class="opt" data-key="stage" data-v="perimenopausia">Perimenopausia</button><button class="opt" data-key="stage" data-v="menopausia">Menopausia</button><button class="opt" data-key="stage" data-v="ninguna">Ninguna / no lo sé</button></div></div>
+<div class="q" data-q="2"><h3>2. ¿Qué buscas hoy?</h3><div class="opts"><button class="opt" data-key="need" data-v="ai">Antiinflamatorio</button><button class="opt" data-key="need" data-v="en">Más energía</button><button class="opt" data-key="need" data-v="hi">Ligero / hinchazón</button><button class="opt" data-key="need" data-v="sa">Más saciedad</button><button class="opt" data-key="need" data-v="an">Antojos</button><button class="opt" data-key="need" data-v="ra">Algo rápido</button></div></div>
+<div class="q" data-q="3"><h3>3. ¿Para qué momento?</h3><div class="opts"><button class="opt" data-key="moment" data-v="D">Desayuno</button><button class="opt" data-key="moment" data-v="C">Comida</button><button class="opt" data-key="moment" data-v="N">Cena</button><button class="opt" data-key="moment" data-v="S">Snack o dulce</button></div></div>
+<div class="q" data-q="4"><h3>4. ¿Quieres evitar algo?</h3><div class="opts"><button class="opt" data-key="avoid" data-v="none">Nada en especial</button><button class="opt" data-key="avoid" data-v="gluten">Gluten</button><button class="opt" data-key="avoid" data-v="lacteos">Lácteos</button><button class="opt" data-key="avoid" data-v="huevo">Huevo</button><button class="opt" data-key="avoid" data-v="frutos">Frutos secos</button></div></div>
+</div>
+</section>
 
 </main>
-<nav class="bottom" aria-label="Navegación principal" style="grid-template-columns:repeat(4,1fr)">
-<button class="nav active" data-go="home"><svg class="navIcon" viewBox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8"/><path d="M5.5 9.5V21h13V9.5"/><path d="M9.5 21v-6h5v6"/></svg><span class="navLabel">Hoy</span></button>
-<button class="nav" data-go="explore"><svg class="navIcon" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><span class="navLabel">Explorar</span></button>
-<button class="nav" data-go="plan"><svg class="navIcon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg><span class="navLabel">Plan</span></button>
-<button class="nav" data-go="plus"><svg class="navIcon" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span class="navLabel">StudyOS+</span></button>
+<nav aria-label="Navegación principal" class="bottom" style="grid-template-columns:repeat(4,1fr)">
+<button class="nav active" data-go="home"><svg class="navIcon" viewbox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8"></path><path d="M5.5 9.5V21h13V9.5"></path><path d="M9.5 21v-6h5v6"></path></svg><span class="navLabel">Hoy</span></button>
+<button class="nav" data-go="explore"><svg class="navIcon" viewbox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg><span class="navLabel">Explorar</span></button>
+<button class="nav" data-go="plan"><svg class="navIcon" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="5"></rect><path d="M8 3v4M16 3v4M3 10h18"></path></svg><span class="navLabel">Plan</span></button>
+<button class="nav" data-go="plus"><svg class="navIcon" viewbox="0 0 24 24"><rect height="11" rx="2" width="14" x="5" y="10"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg><span class="navLabel">StudyOS+</span></button>
 </nav>
 </div>
-
-<div id="modal" class="modal"><div class="sheet"><button class="close" id="close">×</button><div id="detail"></div></div></div>
-<script type="application/json" id="recipe-data">[{"id":"tortitas-de-avena-y-calabaza","t":"Tortitas de Avena y Calabaza","ph":"Fase Lútea y Menstrual","p":["menstrual","lutea"],"m":12,"k":340,"d":"Fácil","a":"Huevo, Gluten y Frutos Secos","g":["harina de avena","puré de calabaza","claras de huevo"],"n":["an","en","ra"],"mo":["D"],"ing":["40 g de harina de avena integral","80 g de puré de calabaza (asada o cocida al microondas)","2 claras de huevo + 1 huevo entero","50 ml de leche vegetal (almendra o avena sin azúcar)","1 cucharadita de canela en polvo","1 puñado pequeño de semillas de calabaza"],"steps":["Preparación del puré: Si no tienes el puré listo, corta 80 g de calabaza en dados pequeños, colócalos en un recipiente apto para microondas tapado con un plato y cocina a máxima potencia durante 4 minutos hasta que esté tierna. Cháfala con un tenedor.","Elaboración de la masa: En el vaso de la batidora o procesador, añade el puré de calabaza, el huevo entero, las 2 claras, la harina de avena, la leche vegetal y la canela. Tritura a velocidad media-alta durante 45-60 segundos hasta obtener una mezcla fluida, cremosa y libre de grumos.","Calentado de la sartén: Coloca una sartén antiadherente a fuego medio (potencia 6 de 9). Añade 2 o 3 gotas de aceite de oliva virgen extra y extiéndelas bien con un papel absorbente o pincel de cocina.","Cocinado: Vierte porciones de unos 3-4 cucharadas soperas de masa para formar tortitas redondas de unos 8-10 cm de diámetro. Cocina durante 2 o 3 minutos a fuego medio hasta que veas aparecer pequeñas burbujas por toda la superficie y los bordes comiencen a verse opacos y asentados.","Volteado: Introduce una espátula fina por debajo con un movimiento firme y da la vuelta a cada tortita con cuidado. Cocina por el segundo lado durante 1 a 2 minutos extra hasta que esté dorada.","Emplatado y toque final: Apila las tortitas en forma de torre en un plato plano. Corona con el puñado de semillas de calabaza tostadas y espolvorea una pizca adicional de canela para potenciar el aroma."],"bio":"La caída de progesterona propia de estos días suele traer cambios de humor e inflamación de bajo grado. El puré de calabaza aporta carbohidratos de absorción lenta que calman la ansiedad por el dulce, mientras que las semillas de calabaza son una fuente excepcional de magnesio para relajar el útero. Este mineral participa además en la regulación de la respuesta inflamatoria.","pg":5},{"id":"bowl-de-quinoa-y-pollo-al-limon-con-curcuma","t":"Bowl de Quinoa y Pollo al Limón con Cúrcuma","ph":"Fase Folicular","p":["folicular"],"m":15,"k":460,"d":"Medio","a":"Ninguno","g":["quinoa","pechuga de pollo","calabacín"],"n":["ai","en","ra","sa"],"mo":["C"],"ing":["60 g de quinoa en seco","150 g de pechuga de pollo cortada en dados de 2 cm","1/2 calabacín mediano cortado en semicírculos fino","1 puñado grande (30 g) de espinacas frescas","El zumo de 1/2 limón fresco","1/2 cucharadita de cúrcuma en polvo","1 cucharadita de aceite de oliva virgen extra (AOVE)","Sal, pimienta negra molida al gusto"],"steps":["Lavado y cocción de la quinoa: Coloca los 60 g de quinoa en un colador fino y enjuágala bajo el grifo de agua fría durante 30 segundos frotando suavemente para eliminar la saponina (amargor natural). Pon la quinoa en un cazo pequeño con 120 ml de agua (el doble de volumen) y una pizca de sal. Lleva a ebullición a fuego alto; cuando rompa a hervir, baja el fuego al mínimo, tapa la olla y cocina durante 12-14 minutos. Apaga el fuego y deja reposar tapado 2 minutos para que quede suelta.","Salteado de la proteína: Pon una sartén amplia a fuego medio-alto con la cucharadita de AOVE. Sazona el pollo con sal y pimienta. Cuando la sartén esté bien caliente, añade los dados de pollo y cocina durante 4-5 minutos, moviéndolos para que se doren uniformemente por todos los lados.","Incorporación de verduras: Añade las rodajas de calabacín y saltea junto con el pollo durante 3 minutos a fuego medio. Agrega las espinacas frescas y remueve durante 1 minuto adicional solo hasta que reduzcan su volumen pero mantengan un color verde vivo.","Integración biológica: Baja el fuego al mínimo. Incorpora la quinoa cocida a la sartén junto con el pollo y las verduras. Añade la 1/2 cucharadita de cúrcuma y vierte el zumo de 1/2 limón. Mezcla todo enérgicamente con una cuchara de madera durante 1 minuto para que la cúrcuma pinte el plato homogéneamente y se absorban los jugos.","Presentación: Sirve en un bowl profundo. Espolvorea generosamente pimienta negra recién molida por encima (crucial para activar la curcumina)."],"bio":"En la fase folicular tu cuerpo tolera y metaboliza mejor los carbohidratos complejos como la quinoa debido al aumento de los estrógenos. El pollo aporta aminoácidos limpios para la construcción muscular, mientras que la combinación de cúrcuma y limón aporta compuestos con actividad antioxidante y antiinflamatoria, dentro de una alimentación que acompaña esta fase.","pg":7},{"id":"tartar-de-atun-mango-y-aguacate","t":"Tartar de Atún, Mango y Aguacate","ph":"Fase Ovulatoria","p":["ovulatoria"],"m":10,"k":420,"d":"Medio","a":"Pescado, Soja, Sésamo","g":["atún rojo","mango","semillas de sésamo"],"n":["ai","ra","sa"],"mo":["C","N"],"ing":["120 g de lomo de atún rojo (previamente congelado 48h) o en conserva al natural de alta calidad","1/2 aguacate maduro en su punto","1/2 mango pequeño firme pero dulce","1 cucharadita de semillas de sésamo","1 cucharadita de salsa de soja baja en sodio","Unas gotas de zumo de lima o limón fresco"],"steps":["Corte de precisión: Con un cuchillo bien afilado, seca bien el atún con papel absorbente y córtalo en dados pequeños y regulares de aproximadamente 0,5 cm. Haz lo mismo con el medio aguacate y el medio mango, procurando que todos los dados tengan un tamaño simétrico para garantizar una presentación cuidada.","Macerado del atún: Coloca el atún cortado en un cuenco pequeño. Añade la cucharadita de salsa de soja y unas gotas de zumo de lima. Mezcla suavemente y deja reposar exactamente 2 o 3 minutos a temperatura ambiente para que se impregnen los sabores sin que el ácido \"cocine\" en exceso el pescado.","Acondicionamiento de frutas: En otro bol, mezcla el aguacate y el mango con dos gotas de lima para evitar la oxidación del aguacate.","Montaje profesional: Coloca un aro de emplatar (de unos 7-8 cm de diámetro) en el centro de un plato plano. Si no tienes aro, puedes usar un vaso ancho de cristal forrado por dentro con film transparente.","Primera capa: Introduce el aguacate en la base y presiona ligeramente con el reverso de una cuchara para crear una capa compacta y firme.","Segunda capa: Añade los dados de mango sobre el aguacate, distribuyendo homogéneamente.","Tercera capa: Corona el montaje con el atún marinado escurrido de su jugo.","Desmolde y toque final: Levanta el aro verticalmente con cuidado y firmeza. Espolvorea la cucharadita de semillas de sésamo (pueden ser tostadas o mixtas) por la parte superior."],"bio":"El aguacate y el atún rojo aportan ácidos grasos esenciales Omega-3, fundamentales para asegurar una ovulación óptima y mejorar la calidad del ovocito. El sésamo suma un extra de calcio biodisponible, mineral que trabaja en equipo con estas grasas. El mango cierra el plato entregando antioxidantes clave para frenar el estrés oxidativo celular en este momento del ciclo.","pg":8},{"id":"pudding-de-chia-y-cacao-antiantojos","t":"Pudding de Chía y Cacao \"Antiantojos\"","ph":"Fase Lútea","p":["lutea"],"m":5,"k":290,"d":"Fácil","a":"Frutos secos","g":["semillas de chía","leche de coco","cacao puro desgrasado"],"n":["ai","an","en","ra","sa"],"mo":["D","S"],"ing":["3 cucharadas soperas (30 g) de semillas de chía","150 ml de leche de coco ligera (de brick) o almendras sin azúcar","1 cucharada sopera rasa (10 g) de cacao puro desgrasado en polvo","1/2 cucharadita de esencia o extracto de vainilla","2-3 nueces picadas para decorar"],"steps":["Disolución de la base: En un tarro de cristal con tapa (tipo Mason jar de unos 250 ml), vierte los 150 ml de leche vegetal, el cacao puro en polvo y la esencia de vainilla. Usa un batidor de varillas pequeño o un tenedor para remover con fuerza durante 1 minuto hasta que el cacao se disuelva completamente y no queden grumos flotando.","Adición y activación de la chía: Añade las 3 cucharadas soperas de semillas de chía. Remueve enérgicamente durante 60 segundos asegurándote de rascar el fondo para que las semillas no se queden pegadas en las esquinas inferiores.","Primer reposo de asentamiento: Deja reposar el tarro sobre la encimera a temperatura ambiente durante 8-10 minutos. Pasado este tiempo, las semillas habrán empezado a soltar gel; vuelve a remover muy bien con un tenedor para desarmar cualquier grupo que se haya formado.","Gelificación en frío: Cierra la tapa del tarro herméticamente y guárdalo en la nevera durante un mínimo de 4 horas (lo ideal es prepararlo la noche anterior para consumir por la mañana). Durante este tiempo la chía absorberá el líquido formando una textura cremosa tipo natilla.","Presentación: Al sacar del frigorífico, remueve la superficie para comprobar la densidad. Añade las 2-3 nueces picadas justo en el momento de servir para mantener un contraste crujiente."],"bio":"La caída de serotonina propia de estos días despierta antojos voraces de dulce, y este pudding responde con inteligencia nutricional. El cacao puro aporta triptófano, precursor directo de la serotonina, junto con magnesio para la relajación muscular. La chía se expande en el estómago aportando una enorme cantidad de fibra soluble y Omega-3, manteniendo la saciedad controlada durante horas.","pg":9},{"id":"crema-de-calabacin-y-jengibre-con-dados-de-pavo","t":"Crema de Calabacín y Jengibre con Dados de Pavo","ph":"Fase Menstrual","p":["menstrual"],"m":20,"k":310,"d":"Medio","a":"Ninguno","g":["calabacín","puerro","jengibre"],"n":["ai","en","hi"],"mo":["C","N"],"ing":["1 calabacín mediano lavado con piel","1/2 puerro (solo la parte blanca y verde clara)","1 rodaja fina de jengibre fresco (1 cm, pelado)","120 g de pechuga de pavo cortada en dados de 1,5 cm","1 cucharadita de aceite de oliva virgen extra (AOVE)","Sal y pimienta al gusto"],"steps":["Corte de verduras: Lava bien el calabacín sin quitarle la piel (aporta color y fibra) y córtalo en rodajas de 1 cm. Lava el puerro para retirar restos de tierra y trocéalo en aros gruesos. Pela la rodaja de jengibre retirando la piel con una cuchara.","Cocción al vapor/agua: Coloca el calabacín, el puerro y la rodaja de jengibre en una olla pequeña. Añade solo unos 150 ml de agua con una pizca de sal (el agua debe cubrir solo la mitad inferior de las verduras para evitar que la crema quede acuosa). Tapa la olla, lleva a ebullición y cocina a fuego medio durante 12-15 minutos hasta que el calabacín esté muy tierno al pincharlo con un tenedor.","Cocinado de la proteína: Mientras se cuecen las verduras, pon una sartén a fuego medio-alto con la cucharadita de AOVE. Salpimenta los dados de pavo y dóralos durante 4-5 minutos hasta que queden tostados por fuera y jugosos por dentro. Reserva templados.","Triturado terciopelo: Retira unas 3-4 cucharadas del agua de cocción de la olla y resérvalas en un vaso por si necesitas ajustar consistencia. Pasa la batidora de mano a máxima potencia durante 2 minutos seguidos directamente en la olla con el calabacín, puerro, jengibre y el resto de agua hasta obtener una textura aterciopelada y homogénea. Corrige de sal y espesor si fuera necesario.","Montaje: Vierte la crema muy caliente en un plato hondo o bowl. Coloca los dados de pavo en el centro de forma limpia."],"bio":"El jengibre es un analgésico y antiinflamatorio natural, con estudios que lo sitúan a la altura de algunos fármacos comunes para el dolor menstrual. El pavo suma proteínas ligeras de fácil digestión, ideales cuando el sistema digestivo está más sensible. El calabacín, por su parte, favorece un tránsito intestinal suave en unos días donde el intestino tiende a resentirse.","pg":10},{"id":"revuelto-de-champinones-y-espinacas","t":"Revuelto de Champiñones y Espinacas","ph":"Fase Folicular","p":["folicular"],"m":10,"k":330,"d":"Fácil","a":"Huevo, Gluten","g":["huevos","champiñones","espinacas"],"n":["ai","ra"],"mo":["D"],"ing":["2 huevos enteros + 2 claras de huevo","100 g de champiñones laminados frescos","2 puñados (40 g) de espinacas frescas","1 rebanada (40 g) de pan integral de centeno","1 cucharadita de aceite de oliva virgen extra (AOVE)","Sal, pimienta negra y una pizca de ajo en polvo"],"steps":["Reducción de vegetales: Coloca una sartén antiadherente a fuego medio con la cucharadita de AOVE. Añade los champiñones laminados y las espinacas frescas. Saltea durante 3-4 minutos moviendo constantemente hasta que los champiñones suelten su agua y las espinacas se hayan reducido completamente. Retira el exceso de líquido sobrante de la sartén si fuera necesario.","Batido de huevos: En un bol mediano, rompe los 2 huevos enteros, añade las 2 claras, la sal, la pimienta negra y el toque de ajo en polvo. Bate con un tenedor durante 30 segundos solo hasta que la yema y la clara se integren (evita batir demasiado para no meter exceso de aire).","Técnica del revuelto cremoso: Baja el fuego de la sartén a intensidad media-baja (potencia 3 o 4 de 9). Vierte los huevos batidos sobre los champiñones y espinacas. Con una espátula de silicona, remueve suavemente desde los bordes hacia el centro creando pliegues continuos durante 1,5 a 2 minutos.","Punto óptimo: Apaga el fuego cuando el huevo todavía parezca ligeramente húmedo y brillante. El calor residual de la sartén terminará de cuajarlo en unos segundos dejando una textura suave y melosa.","Emplatado: Tuesta la rebanada de pan de centeno hasta que esté crujiente. Sirve el revuelto recién hecho directamente encima o al lado de la tostada."],"bio":"Al salir de la menstruación, el cuerpo necesita reconstruir los niveles de hierro perdidos antes de que llegue el aumento de energía propio de esta fase. Las espinacas aportan hierro vegetal y folatos, potenciados por la proteína de máxima calidad biológica del huevo. El centeno integral suma carbohidratos de bajo índice glucémico, perfectos para sostener el entrenamiento de fuerza que el cuerpo tolera bien en estos días.","pg":11},{"id":"smoothie-bowl-equilibrio-hormonal","t":"Smoothie Bowl \"Equilibrio Hormonal\"","ph":"Fase Folicular","p":["folicular"],"m":8,"k":380,"d":"Fácil","a":"Lácteos, Frutos secos","g":["plátano","arándanos","yogur griego natural"],"n":["ai","en","ra","sa"],"mo":["D","S"],"ing":["1/2 plátano congelado previamente en rodajas","100 g de arándanos o frutos rojos (frescos o congelados)","150 g de yogur griego natural o de coco sin azúcar","1 cucharada sopera (10 g) de semillas de lino molidas","1/2 cucharadita de té matcha en polvo (opcional)","1 cucharada de almendras laminadas para topping"],"steps":["Preparación de la base congelada: Para obtener la textura de helado característica, asegúrate de tener el medio plátano troceado y congelado de antemano (mínimo 4 horas de congelador).","Triturado de alta potencia: Coloca en el vaso de la batidora o procesador de alimentos primero el yogur griego (el líquido abajo facilita el triturado), seguido del plátano congelado, los arándanos, las semillas de lino molidas y la 1/2 cucharadita de matcha.","Procesado: Tritura a velocidad máxima durante 1 o 2 minutos. Si tu batidora se encalla, apágala, empuja los ingredientes hacia las cuchillas con una espátula y vuelve a triturar hasta obtener una crema espesa, homogénea y suave.","Servido y tostado ligero: Vierte el smoothie cremoso con ayuda de una espátula en un bowl ancho y poco profundo. Pasa las almendras laminadas por una sartén seca durante 1 minuto a fuego medio hasta que doren ligeramente para intensificar su sabor.","Emplatado final: Decora la superficie del bowl con las almendras laminadas dispuestas en una línea o semicírculo estético. Consumir inmediatamente con cuchara."],"bio":"Los lignanos de las semillas de lino ayudan al hígado a metabolizar y equilibrar los estrógenos, que empiezan a subir justo en esta fase. Los arándanos suman flavonoides que protegen la salud ovárica y favorecen la vitalidad de la piel. Un desayuno rápido pensado para acompañar el inicio de la subida hormonal sin sobrecargar la digestión.","pg":12},{"id":"salmon-al-horno-con-costra-de-sesamo-y-brocoli","t":"Salmón al Horno con Costra de Sésamo y Brócoli","ph":"Fase Ovulatoria","p":["ovulatoria"],"m":18,"k":490,"d":"Medio","a":"Pescado, Sésamo, Mostaza","g":["salmón","floretes de brócoli","semillas de sésamo"],"n":["ai","sa"],"mo":["C"],"ing":["130 g de lomo de salmón fresco sin espinas","150 g de floretes de brócoli fresco","1 cucharadita de semillas de sésamo","1/2 cucharadita de mostaza de Dijon","1 cucharadita de aceite de oliva virgen extra (AOVE)","Un chorro de zumo de limón fresco, sal y pimienta negra"],"steps":["Precalentado y corte: Precalienta el horno a 180°C con calor arriba y abajo (o tu Airfryer a 180°C). Lava el brócoli y córtalo en floretes pequeños de tamaño uniforme.","Acondicionamiento de verduras: En un bol, coloca el brócoli, añade la cucharadita de AOVE, sal y pimienta. Remueve bien con las manos para que todos los floretes queden impregnados de aceite.","Elaboración de la costra de salmón: Seca la parte superior del lomo de salmón con un papel de cocina. Unta la 1/2 cucharadita de mostaza de Dijon formando una capa fina sobre la superficie superior. Espolvorea las semillas de sésamo sobre la mostaza y presiona suavemente con la yema del dedo para que queden adheridas fijamente.","Horneado: Coloca el salmón y el brócoli extendido en una bandeja cubierta con papel vegetal. Hornea a 180°C durante 12-14 minutos.","Señal de cocción: El salmón estará listo cuando las lascas se separen fácilmente con un tenedor y mantenga el centro jugoso, mientras el brócoli tenga las puntas ligeramente tostadas y crujientes.","Emplatado: Coloca el lomo de salmón en un lado del plato y el brócoli asado en el otro. Riega el brócoli y los bordes con un chorro de zumo de limón recién exprimido."],"bio":"Omega-3 y selenio son el aporte estrella del salmón, indispensables para la salud folicular y la calidad ovocitaria en estos días. El brócoli suma sulforafano e Indol-3-Carbinol, fitonutrientes que ayudan al organismo a depurar el exceso de estrógenos tras la ovulación. Un plato que combina nutrición hormonal con un extra de apoyo hepático.","pg":13},{"id":"crema-de-lentejas-rojas-y-boniato-al-comino","t":"Crema de Lentejas Rojas y Boniato al Comino","ph":"Fase Lútea","p":["lutea"],"m":22,"k":390,"d":"Medio","a":"Ninguno","g":["lentejas rojas","boniato","cebolla"],"n":["ai","an","en","hi","sa"],"mo":["C","N"],"ing":["50 g de lentejas rojas (no requieren remojo)","80 g de boniato o batata cortado en dados","1/2 cebolla pequeña","1/2 cucharadita de comino en polvo","1/2 cucharadita de cúrcuma","250 ml de caldo de verduras bajo en sodio","1 cucharadita de aceite de oliva virgen extra (AOVE)"],"steps":["Sofrito aromático: En un cazo u olla pequeña, calienta la cucharadita de AOVE a fuego medio. Añade la cebolla picada con una pizca de sal y sofríe durante 3 minutos hasta que esté transparente. Añade la 1/2 cucharadita de comino y la 1/2 de cúrcuma, removiendo durante 30 segundos a fuego bajo para liberar los aceites esenciales sin quemar las especias.","Lavado de legumbre: Mientras tanto, aclara las lentejas rojas en un colador fino bajo el agua del grifo hasta que el agua salga clara.","Cocción: Añade los dados de boniato, las lentejas rojas lavadas y los 250 ml de caldo de verduras al cazo. Sube el fuego hasta que comience a hervir. En ese momento, baja el fuego a intensidad media-baja, tapa la olla y cocina durante 15 minutos.","Comprobación: A los 15 minutos, comprueba que el boniato se deshaga al presionarlo y las lentejas estén completamente blandas y cocidas.","Triturado y servicio: Apaga el fuego y tritura con batidora de mano durante 90 segundos hasta conseguir una crema fina, sedosa y uniforme. Vierte en un plato hondo y sirve muy caliente."],"bio":"El gasto metabólico basal aumenta en estos días, elevando la demanda de carbohidratos complejos que el boniato y las lentejas rojas cubren con glucosa de liberación lenta. Esto estabiliza la insulina y frena los antojos de dulce típicos de la fase. Las lentejas rojas suman además vitamina B6, fundamental para la producción natural de progesterona.","pg":14},{"id":"tostada-de-aguacate-huevo-poche-y-semillas-de-girasol","t":"Tostada de Aguacate, Huevo Poché y Semillas de Girasol","ph":"Fase Menstrual","p":["menstrual"],"m":10,"k":360,"d":"Media","a":"Huevo, Gluten","g":["pan integral de","huevo","semillas de girasol"],"n":["ra"],"mo":["D"],"ing":["1 rebanada de pan integral de masa madre o centeno","1/2 aguacate maduro","1 huevo entero","Vinagre","1 cucharadita de semillas de girasol","1 pizca de pimentón de la Vera","Unas gotas de zumo de limón, sal y pimienta"],"steps":["Elaboración de la crema de aguacate: En un cuenco pequeño, coloca la pulpa de medio aguacate maduro. Añade unas gotas de zumo de limón, una pizca de sal y pimienta. Machaca con un tenedor manteniendo una textura rugosa con pequeños trozos (evita triturar demasiado).","Tostado: Tuesta la rebanada de pan de masa madre en la tostadora o en sartén hasta que quede dorada y crujiente por ambos lados. Técnica del huevo poché perfecto: Pon a calentar un cazo pequeño con unos 6-8 cm de agua a fuego medio-alto. Añade el vinagre (ayuda a cuajar la clara). Casca el huevo en una taza pequeña o cuenco previo. Cuando el agua empiece a hacer burbujitas pequeñas en el fondo sin llegar a hervir a borbotones (unos 85-90°C), crea un remolino en el centro removiendo el agua. Vierte el huevo despacio justo en el centro del remolino y cocina a fuego bajo durante exactamente 3 minutos. Retira el huevo con una espumadera y colócalo 5 segundos sobre un papel absorbente para retirar el exceso de agua.","Montaje: Extiende la mezcla de aguacate generosamente sobre el pan tostado. Coloca el huevo poché en el centro.","Toque final: Haz un pequeño corte superficial en la parte superior del huevo para dejar entrever la yema. Espolvorea las semillas de girasol y la pizca de pimentón por encima."],"bio":"Las semillas de girasol aportan vitamina E y zinc, dos nutrientes que ayudan a frenar la producción de prostaglandinas, las responsables directas de los calambres uterinos. El aguacate suma grasas saludables que estabilizan el estado de ánimo en días de mayor sensibilidad emocional. Además, estas grasas mejoran la absorción de nutrientes liposolubles como la propia vitamina E de las semillas.","pg":16}]</script>
+<div class="modal" id="modal"><div class="sheet"><button class="close" id="close">×</button><div id="detail"></div></div></div>
+<script id="recipe-data" type="application/json">[{"id":"tortitas-de-avena-y-calabaza","t":"Tortitas de Avena y Calabaza","ph":"Fase Lútea y Menstrual","p":["menstrual","lutea"],"m":12,"k":340,"d":"Fácil","a":"Huevo, Gluten y Frutos Secos","g":["harina de avena","puré de calabaza","claras de huevo"],"n":["an","en","ra"],"mo":["D"],"ing":["40 g de harina de avena integral","80 g de puré de calabaza (asada o cocida al microondas)","2 claras de huevo + 1 huevo entero","50 ml de leche vegetal (almendra o avena sin azúcar)","1 cucharadita de canela en polvo","1 puñado pequeño de semillas de calabaza"],"steps":["Preparación del puré: Si no tienes el puré listo, corta 80 g de calabaza en dados pequeños, colócalos en un recipiente apto para microondas tapado con un plato y cocina a máxima potencia durante 4 minutos hasta que esté tierna. Cháfala con un tenedor.","Elaboración de la masa: En el vaso de la batidora o procesador, añade el puré de calabaza, el huevo entero, las 2 claras, la harina de avena, la leche vegetal y la canela. Tritura a velocidad media-alta durante 45-60 segundos hasta obtener una mezcla fluida, cremosa y libre de grumos.","Calentado de la sartén: Coloca una sartén antiadherente a fuego medio (potencia 6 de 9). Añade 2 o 3 gotas de aceite de oliva virgen extra y extiéndelas bien con un papel absorbente o pincel de cocina.","Cocinado: Vierte porciones de unos 3-4 cucharadas soperas de masa para formar tortitas redondas de unos 8-10 cm de diámetro. Cocina durante 2 o 3 minutos a fuego medio hasta que veas aparecer pequeñas burbujas por toda la superficie y los bordes comiencen a verse opacos y asentados.","Volteado: Introduce una espátula fina por debajo con un movimiento firme y da la vuelta a cada tortita con cuidado. Cocina por el segundo lado durante 1 a 2 minutos extra hasta que esté dorada.","Emplatado y toque final: Apila las tortitas en forma de torre en un plato plano. Corona con el puñado de semillas de calabaza tostadas y espolvorea una pizca adicional de canela para potenciar el aroma."],"bio":"La caída de progesterona propia de estos días suele traer cambios de humor e inflamación de bajo grado. El puré de calabaza aporta carbohidratos de absorción lenta que calman la ansiedad por el dulce, mientras que las semillas de calabaza son una fuente excepcional de magnesio para relajar el útero. Este mineral participa además en la regulación de la respuesta inflamatoria.","pg":5},{"id":"bowl-de-quinoa-y-pollo-al-limon-con-curcuma","t":"Bowl de Quinoa y Pollo al Limón con Cúrcuma","ph":"Fase Folicular","p":["folicular"],"m":15,"k":460,"d":"Medio","a":"Ninguno","g":["quinoa","pechuga de pollo","calabacín"],"n":["ai","en","ra","sa"],"mo":["C"],"ing":["60 g de quinoa en seco","150 g de pechuga de pollo cortada en dados de 2 cm","1/2 calabacín mediano cortado en semicírculos fino","1 puñado grande (30 g) de espinacas frescas","El zumo de 1/2 limón fresco","1/2 cucharadita de cúrcuma en polvo","1 cucharadita de aceite de oliva virgen extra (AOVE)","Sal, pimienta negra molida al gusto"],"steps":["Lavado y cocción de la quinoa: Coloca los 60 g de quinoa en un colador fino y enjuágala bajo el grifo de agua fría durante 30 segundos frotando suavemente para eliminar la saponina (amargor natural). Pon la quinoa en un cazo pequeño con 120 ml de agua (el doble de volumen) y una pizca de sal. Lleva a ebullición a fuego alto; cuando rompa a hervir, baja el fuego al mínimo, tapa la olla y cocina durante 12-14 minutos. Apaga el fuego y deja reposar tapado 2 minutos para que quede suelta.","Salteado de la proteína: Pon una sartén amplia a fuego medio-alto con la cucharadita de AOVE. Sazona el pollo con sal y pimienta. Cuando la sartén esté bien caliente, añade los dados de pollo y cocina durante 4-5 minutos, moviéndolos para que se doren uniformemente por todos los lados.","Incorporación de verduras: Añade las rodajas de calabacín y saltea junto con el pollo durante 3 minutos a fuego medio. Agrega las espinacas frescas y remueve durante 1 minuto adicional solo hasta que reduzcan su volumen pero mantengan un color verde vivo.","Integración biológica: Baja el fuego al mínimo. Incorpora la quinoa cocida a la sartén junto con el pollo y las verduras. Añade la 1/2 cucharadita de cúrcuma y vierte el zumo de 1/2 limón. Mezcla todo enérgicamente con una cuchara de madera durante 1 minuto para que la cúrcuma pinte el plato homogéneamente y se absorban los jugos.","Presentación: Sirve en un bowl profundo. Espolvorea generosamente pimienta negra recién molida por encima (crucial para activar la curcumina)."],"bio":"En la fase folicular tu cuerpo tolera y metaboliza mejor los carbohidratos complejos como la quinoa debido al aumento de los estrógenos. El pollo aporta aminoácidos limpios para la construcción muscular, mientras que la combinación de cúrcuma y limón aporta compuestos con actividad antioxidante y antiinflamatoria, dentro de una alimentación que acompaña esta fase.","pg":7},{"id":"tartar-de-atun-mango-y-aguacate","t":"Tartar de Atún, Mango y Aguacate","ph":"Fase Ovulatoria","p":["ovulatoria"],"m":10,"k":420,"d":"Medio","a":"Pescado, Soja, Sésamo","g":["atún rojo","mango","semillas de sésamo"],"n":["ai","ra","sa"],"mo":["C","N"],"ing":["120 g de lomo de atún rojo (previamente congelado 48h) o en conserva al natural de alta calidad","1/2 aguacate maduro en su punto","1/2 mango pequeño firme pero dulce","1 cucharadita de semillas de sésamo","1 cucharadita de salsa de soja baja en sodio","Unas gotas de zumo de lima o limón fresco"],"steps":["Corte de precisión: Con un cuchillo bien afilado, seca bien el atún con papel absorbente y córtalo en dados pequeños y regulares de aproximadamente 0,5 cm. Haz lo mismo con el medio aguacate y el medio mango, procurando que todos los dados tengan un tamaño simétrico para garantizar una presentación cuidada.","Macerado del atún: Coloca el atún cortado en un cuenco pequeño. Añade la cucharadita de salsa de soja y unas gotas de zumo de lima. Mezcla suavemente y deja reposar exactamente 2 o 3 minutos a temperatura ambiente para que se impregnen los sabores sin que el ácido \"cocine\" en exceso el pescado.","Acondicionamiento de frutas: En otro bol, mezcla el aguacate y el mango con dos gotas de lima para evitar la oxidación del aguacate.","Montaje profesional: Coloca un aro de emplatar (de unos 7-8 cm de diámetro) en el centro de un plato plano. Si no tienes aro, puedes usar un vaso ancho de cristal forrado por dentro con film transparente.","Primera capa: Introduce el aguacate en la base y presiona ligeramente con el reverso de una cuchara para crear una capa compacta y firme.","Segunda capa: Añade los dados de mango sobre el aguacate, distribuyendo homogéneamente.","Tercera capa: Corona el montaje con el atún marinado escurrido de su jugo.","Desmolde y toque final: Levanta el aro verticalmente con cuidado y firmeza. Espolvorea la cucharadita de semillas de sésamo (pueden ser tostadas o mixtas) por la parte superior."],"bio":"El aguacate y el atún rojo aportan ácidos grasos esenciales Omega-3, fundamentales para asegurar una ovulación óptima y mejorar la calidad del ovocito. El sésamo suma un extra de calcio biodisponible, mineral que trabaja en equipo con estas grasas. El mango cierra el plato entregando antioxidantes clave para frenar el estrés oxidativo celular en este momento del ciclo.","pg":8},{"id":"pudding-de-chia-y-cacao-antiantojos","t":"Pudding de Chía y Cacao \"Antiantojos\"","ph":"Fase Lútea","p":["lutea"],"m":5,"k":290,"d":"Fácil","a":"Frutos secos","g":["semillas de chía","leche de coco","cacao puro desgrasado"],"n":["ai","an","en","ra","sa"],"mo":["D","S"],"ing":["3 cucharadas soperas (30 g) de semillas de chía","150 ml de leche de coco ligera (de brick) o almendras sin azúcar","1 cucharada sopera rasa (10 g) de cacao puro desgrasado en polvo","1/2 cucharadita de esencia o extracto de vainilla","2-3 nueces picadas para decorar"],"steps":["Disolución de la base: En un tarro de cristal con tapa (tipo Mason jar de unos 250 ml), vierte los 150 ml de leche vegetal, el cacao puro en polvo y la esencia de vainilla. Usa un batidor de varillas pequeño o un tenedor para remover con fuerza durante 1 minuto hasta que el cacao se disuelva completamente y no queden grumos flotando.","Adición y activación de la chía: Añade las 3 cucharadas soperas de semillas de chía. Remueve enérgicamente durante 60 segundos asegurándote de rascar el fondo para que las semillas no se queden pegadas en las esquinas inferiores.","Primer reposo de asentamiento: Deja reposar el tarro sobre la encimera a temperatura ambiente durante 8-10 minutos. Pasado este tiempo, las semillas habrán empezado a soltar gel; vuelve a remover muy bien con un tenedor para desarmar cualquier grupo que se haya formado.","Gelificación en frío: Cierra la tapa del tarro herméticamente y guárdalo en la nevera durante un mínimo de 4 horas (lo ideal es prepararlo la noche anterior para consumir por la mañana). Durante este tiempo la chía absorberá el líquido formando una textura cremosa tipo natilla.","Presentación: Al sacar del frigorífico, remueve la superficie para comprobar la densidad. Añade las 2-3 nueces picadas justo en el momento de servir para mantener un contraste crujiente."],"bio":"La caída de serotonina propia de estos días despierta antojos voraces de dulce, y este pudding responde con inteligencia nutricional. El cacao puro aporta triptófano, precursor directo de la serotonina, junto con magnesio para la relajación muscular. La chía se expande en el estómago aportando una enorme cantidad de fibra soluble y Omega-3, manteniendo la saciedad controlada durante horas.","pg":9},{"id":"crema-de-calabacin-y-jengibre-con-dados-de-pavo","t":"Crema de Calabacín y Jengibre con Dados de Pavo","ph":"Fase Menstrual","p":["menstrual"],"m":20,"k":310,"d":"Medio","a":"Ninguno","g":["calabacín","puerro","jengibre"],"n":["ai","en","hi"],"mo":["C","N"],"ing":["1 calabacín mediano lavado con piel","1/2 puerro (solo la parte blanca y verde clara)","1 rodaja fina de jengibre fresco (1 cm, pelado)","120 g de pechuga de pavo cortada en dados de 1,5 cm","1 cucharadita de aceite de oliva virgen extra (AOVE)","Sal y pimienta al gusto"],"steps":["Corte de verduras: Lava bien el calabacín sin quitarle la piel (aporta color y fibra) y córtalo en rodajas de 1 cm. Lava el puerro para retirar restos de tierra y trocéalo en aros gruesos. Pela la rodaja de jengibre retirando la piel con una cuchara.","Cocción al vapor/agua: Coloca el calabacín, el puerro y la rodaja de jengibre en una olla pequeña. Añade solo unos 150 ml de agua con una pizca de sal (el agua debe cubrir solo la mitad inferior de las verduras para evitar que la crema quede acuosa). Tapa la olla, lleva a ebullición y cocina a fuego medio durante 12-15 minutos hasta que el calabacín esté muy tierno al pincharlo con un tenedor.","Cocinado de la proteína: Mientras se cuecen las verduras, pon una sartén a fuego medio-alto con la cucharadita de AOVE. Salpimenta los dados de pavo y dóralos durante 4-5 minutos hasta que queden tostados por fuera y jugosos por dentro. Reserva templados.","Triturado terciopelo: Retira unas 3-4 cucharadas del agua de cocción de la olla y resérvalas en un vaso por si necesitas ajustar consistencia. Pasa la batidora de mano a máxima potencia durante 2 minutos seguidos directamente en la olla con el calabacín, puerro, jengibre y el resto de agua hasta obtener una textura aterciopelada y homogénea. Corrige de sal y espesor si fuera necesario.","Montaje: Vierte la crema muy caliente en un plato hondo o bowl. Coloca los dados de pavo en el centro de forma limpia."],"bio":"El jengibre es un analgésico y antiinflamatorio natural, con estudios que lo sitúan a la altura de algunos fármacos comunes para el dolor menstrual. El pavo suma proteínas ligeras de fácil digestión, ideales cuando el sistema digestivo está más sensible. El calabacín, por su parte, favorece un tránsito intestinal suave en unos días donde el intestino tiende a resentirse.","pg":10},{"id":"revuelto-de-champinones-y-espinacas","t":"Revuelto de Champiñones y Espinacas","ph":"Fase Folicular","p":["folicular"],"m":10,"k":330,"d":"Fácil","a":"Huevo, Gluten","g":["huevos","champiñones","espinacas"],"n":["ai","ra"],"mo":["D"],"ing":["2 huevos enteros + 2 claras de huevo","100 g de champiñones laminados frescos","2 puñados (40 g) de espinacas frescas","1 rebanada (40 g) de pan integral de centeno","1 cucharadita de aceite de oliva virgen extra (AOVE)","Sal, pimienta negra y una pizca de ajo en polvo"],"steps":["Reducción de vegetales: Coloca una sartén antiadherente a fuego medio con la cucharadita de AOVE. Añade los champiñones laminados y las espinacas frescas. Saltea durante 3-4 minutos moviendo constantemente hasta que los champiñones suelten su agua y las espinacas se hayan reducido completamente. Retira el exceso de líquido sobrante de la sartén si fuera necesario.","Batido de huevos: En un bol mediano, rompe los 2 huevos enteros, añade las 2 claras, la sal, la pimienta negra y el toque de ajo en polvo. Bate con un tenedor durante 30 segundos solo hasta que la yema y la clara se integren (evita batir demasiado para no meter exceso de aire).","Técnica del revuelto cremoso: Baja el fuego de la sartén a intensidad media-baja (potencia 3 o 4 de 9). Vierte los huevos batidos sobre los champiñones y espinacas. Con una espátula de silicona, remueve suavemente desde los bordes hacia el centro creando pliegues continuos durante 1,5 a 2 minutos.","Punto óptimo: Apaga el fuego cuando el huevo todavía parezca ligeramente húmedo y brillante. El calor residual de la sartén terminará de cuajarlo en unos segundos dejando una textura suave y melosa.","Emplatado: Tuesta la rebanada de pan de centeno hasta que esté crujiente. Sirve el revuelto recién hecho directamente encima o al lado de la tostada."],"bio":"Al salir de la menstruación, el cuerpo necesita reconstruir los niveles de hierro perdidos antes de que llegue el aumento de energía propio de esta fase. Las espinacas aportan hierro vegetal y folatos, potenciados por la proteína de máxima calidad biológica del huevo. El centeno integral suma carbohidratos de bajo índice glucémico, perfectos para sostener el entrenamiento de fuerza que el cuerpo tolera bien en estos días.","pg":11},{"id":"smoothie-bowl-equilibrio-hormonal","t":"Smoothie Bowl \"Equilibrio Hormonal\"","ph":"Fase Folicular","p":["folicular"],"m":8,"k":380,"d":"Fácil","a":"Lácteos, Frutos secos","g":["plátano","arándanos","yogur griego natural"],"n":["ai","en","ra","sa"],"mo":["D","S"],"ing":["1/2 plátano congelado previamente en rodajas","100 g de arándanos o frutos rojos (frescos o congelados)","150 g de yogur griego natural o de coco sin azúcar","1 cucharada sopera (10 g) de semillas de lino molidas","1/2 cucharadita de té matcha en polvo (opcional)","1 cucharada de almendras laminadas para topping"],"steps":["Preparación de la base congelada: Para obtener la textura de helado característica, asegúrate de tener el medio plátano troceado y congelado de antemano (mínimo 4 horas de congelador).","Triturado de alta potencia: Coloca en el vaso de la batidora o procesador de alimentos primero el yogur griego (el líquido abajo facilita el triturado), seguido del plátano congelado, los arándanos, las semillas de lino molidas y la 1/2 cucharadita de matcha.","Procesado: Tritura a velocidad máxima durante 1 o 2 minutos. Si tu batidora se encalla, apágala, empuja los ingredientes hacia las cuchillas con una espátula y vuelve a triturar hasta obtener una crema espesa, homogénea y suave.","Servido y tostado ligero: Vierte el smoothie cremoso con ayuda de una espátula en un bowl ancho y poco profundo. Pasa las almendras laminadas por una sartén seca durante 1 minuto a fuego medio hasta que doren ligeramente para intensificar su sabor.","Emplatado final: Decora la superficie del bowl con las almendras laminadas dispuestas en una línea o semicírculo estético. Consumir inmediatamente con cuchara."],"bio":"Los lignanos de las semillas de lino ayudan al hígado a metabolizar y equilibrar los estrógenos, que empiezan a subir justo en esta fase. Los arándanos suman flavonoides que protegen la salud ovárica y favorecen la vitalidad de la piel. Un desayuno rápido pensado para acompañar el inicio de la subida hormonal sin sobrecargar la digestión.","pg":12},{"id":"salmon-al-horno-con-costra-de-sesamo-y-brocoli","t":"Salmón al Horno con Costra de Sésamo y Brócoli","ph":"Fase Ovulatoria","p":["ovulatoria"],"m":18,"k":490,"d":"Medio","a":"Pescado, Sésamo, Mostaza","g":["salmón","floretes de brócoli","semillas de sésamo"],"n":["ai","sa"],"mo":["C"],"ing":["130 g de lomo de salmón fresco sin espinas","150 g de floretes de brócoli fresco","1 cucharadita de semillas de sésamo","1/2 cucharadita de mostaza de Dijon","1 cucharadita de aceite de oliva virgen extra (AOVE)","Un chorro de zumo de limón fresco, sal y pimienta negra"],"steps":["Precalentado y corte: Precalienta el horno a 180°C con calor arriba y abajo (o tu Airfryer a 180°C). Lava el brócoli y córtalo en floretes pequeños de tamaño uniforme.","Acondicionamiento de verduras: En un bol, coloca el brócoli, añade la cucharadita de AOVE, sal y pimienta. Remueve bien con las manos para que todos los floretes queden impregnados de aceite.","Elaboración de la costra de salmón: Seca la parte superior del lomo de salmón con un papel de cocina. Unta la 1/2 cucharadita de mostaza de Dijon formando una capa fina sobre la superficie superior. Espolvorea las semillas de sésamo sobre la mostaza y presiona suavemente con la yema del dedo para que queden adheridas fijamente.","Horneado: Coloca el salmón y el brócoli extendido en una bandeja cubierta con papel vegetal. Hornea a 180°C durante 12-14 minutos.","Señal de cocción: El salmón estará listo cuando las lascas se separen fácilmente con un tenedor y mantenga el centro jugoso, mientras el brócoli tenga las puntas ligeramente tostadas y crujientes.","Emplatado: Coloca el lomo de salmón en un lado del plato y el brócoli asado en el otro. Riega el brócoli y los bordes con un chorro de zumo de limón recién exprimido."],"bio":"Omega-3 y selenio son el aporte estrella del salmón, indispensables para la salud folicular y la calidad ovocitaria en estos días. El brócoli suma sulforafano e Indol-3-Carbinol, fitonutrientes que ayudan al organismo a depurar el exceso de estrógenos tras la ovulación. Un plato que combina nutrición hormonal con un extra de apoyo hepático.","pg":13},{"id":"crema-de-lentejas-rojas-y-boniato-al-comino","t":"Crema de Lentejas Rojas y Boniato al Comino","ph":"Fase Lútea","p":["lutea"],"m":22,"k":390,"d":"Medio","a":"Ninguno","g":["lentejas rojas","boniato","cebolla"],"n":["ai","an","en","hi","sa"],"mo":["C","N"],"ing":["50 g de lentejas rojas (no requieren remojo)","80 g de boniato o batata cortado en dados","1/2 cebolla pequeña","1/2 cucharadita de comino en polvo","1/2 cucharadita de cúrcuma","250 ml de caldo de verduras bajo en sodio","1 cucharadita de aceite de oliva virgen extra (AOVE)"],"steps":["Sofrito aromático: En un cazo u olla pequeña, calienta la cucharadita de AOVE a fuego medio. Añade la cebolla picada con una pizca de sal y sofríe durante 3 minutos hasta que esté transparente. Añade la 1/2 cucharadita de comino y la 1/2 de cúrcuma, removiendo durante 30 segundos a fuego bajo para liberar los aceites esenciales sin quemar las especias.","Lavado de legumbre: Mientras tanto, aclara las lentejas rojas en un colador fino bajo el agua del grifo hasta que el agua salga clara.","Cocción: Añade los dados de boniato, las lentejas rojas lavadas y los 250 ml de caldo de verduras al cazo. Sube el fuego hasta que comience a hervir. En ese momento, baja el fuego a intensidad media-baja, tapa la olla y cocina durante 15 minutos.","Comprobación: A los 15 minutos, comprueba que el boniato se deshaga al presionarlo y las lentejas estén completamente blandas y cocidas.","Triturado y servicio: Apaga el fuego y tritura con batidora de mano durante 90 segundos hasta conseguir una crema fina, sedosa y uniforme. Vierte en un plato hondo y sirve muy caliente."],"bio":"El gasto metabólico basal aumenta en estos días, elevando la demanda de carbohidratos complejos que el boniato y las lentejas rojas cubren con glucosa de liberación lenta. Esto estabiliza la insulina y frena los antojos de dulce típicos de la fase. Las lentejas rojas suman además vitamina B6, fundamental para la producción natural de progesterona.","pg":14},{"id":"tostada-de-aguacate-huevo-poche-y-semillas-de-girasol","t":"Tostada de Aguacate, Huevo Poché y Semillas de Girasol","ph":"Fase Menstrual","p":["menstrual"],"m":10,"k":360,"d":"Media","a":"Huevo, Gluten","g":["pan integral de","huevo","semillas de girasol"],"n":["ra"],"mo":["D"],"ing":["1 rebanada de pan integral de masa madre o centeno","1/2 aguacate maduro","1 huevo entero","Vinagre","1 cucharadita de semillas de girasol","1 pizca de pimentón de la Vera","Unas gotas de zumo de limón, sal y pimienta"],"steps":["Elaboración de la crema de aguacate: En un cuenco pequeño, coloca la pulpa de medio aguacate maduro. Añade unas gotas de zumo de limón, una pizca de sal y pimienta. Machaca con un tenedor manteniendo una textura rugosa con pequeños trozos (evita triturar demasiado).","Tostado: Tuesta la rebanada de pan de masa madre en la tostadora o en sartén hasta que quede dorada y crujiente por ambos lados. Técnica del huevo poché perfecto: Pon a calentar un cazo pequeño con unos 6-8 cm de agua a fuego medio-alto. Añade el vinagre (ayuda a cuajar la clara). Casca el huevo en una taza pequeña o cuenco previo. Cuando el agua empiece a hacer burbujitas pequeñas en el fondo sin llegar a hervir a borbotones (unos 85-90°C), crea un remolino en el centro removiendo el agua. Vierte el huevo despacio justo en el centro del remolino y cocina a fuego bajo durante exactamente 3 minutos. Retira el huevo con una espumadera y colócalo 5 segundos sobre un papel absorbente para retirar el exceso de agua.","Montaje: Extiende la mezcla de aguacate generosamente sobre el pan tostado. Coloca el huevo poché en el centro.","Toque final: Haz un pequeño corte superficial en la parte superior del huevo para dejar entrever la yema. Espolvorea las semillas de girasol y la pizca de pimentón por encima."],"bio":"Las semillas de girasol aportan vitamina E y zinc, dos nutrientes que ayudan a frenar la producción de prostaglandinas, las responsables directas de los calambres uterinos. El aguacate suma grasas saludables que estabilizan el estado de ánimo en días de mayor sensibilidad emocional. Además, estas grasas mejoran la absorción de nutrientes liposolubles como la propia vitamina E de las semillas.","pg":16}]</script>
 <script>
 (function(){
 const R=JSON.parse(document.getElementById('recipe-data').textContent);
@@ -685,7 +591,6 @@ $('#modal').onclick=e=>{if(e.target===$('#modal'))$('#modal').classList.remove('
 renderHome();renderExplore();
 })();
 </script>
-
 <script id="studyos-free-real-plan">
 (function(){
 const data={"Lunes": ["Bowl Matutino de Grasas Saludables", "Bowl de Quinoa y Pollo al Limón", "Omelette de Champiñones y Orégano"], "Martes": ["Tortitas de Avena y Calabaza", "Ensalada de Salmón, Cítricos", "Crema de verduras + huevo"], "Miércoles": ["Avena + canela + fruta", "Lentejas + verduras", "Wok de Pollo con Brócoli y Sésamo"], "Jueves": ["Pudding de Chía y Cacao Puro", "Tartar de Atún, Mango y Aguacate", "Salteado de Pavo y Calabacín"], "Viernes": ["Bowl Matutino de Grasas Saludables", "Arroz + pollo + verduras", "Ensalada completa"], "Sábado": ["Tortitas de Avena y Calabaza", "Bowl de Quinoa y Pollo al Limón", "Crema Verde Digestiva de Apio"], "Domingo": ["Pudding de Chía y Cacao Puro", "Ensalada de Salmón y Cítricos", "Crema Verde Digestiva de Apio"]};
@@ -711,7 +616,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 });
 })();
 </script>
-
 <script id="studyos-free-tracking-v2">
 (function(){
   function once(key, fn){
@@ -742,28 +646,21 @@ document.addEventListener("DOMContentLoaded",()=>{
   window.addEventListener("DOMContentLoaded",function(){obs.observe(document.body,{subtree:true,childList:true,characterData:true});});
 })();
 </script>
-
 <script id="conversion-v3-tracking">
 document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("[data-cv3]");if(!a)return;try{if(window.gtag)gtag("event","studyos_plus_interest",{placement:a.getAttribute("data-cv3"),funnel_version:"v3_conversion"});if(window.fbq)fbq("trackCustom","StudyOSPlusInterest",{placement:a.getAttribute("data-cv3"),funnel_version:"v3_conversion"});}catch(_){}});
 </script>
-
 <footer class="studyos-legal-footer">
-  <div class="studyos-legal-inner">
-    <div class="studyos-legal-brand">Study<span>OS</span></div>
-    <nav aria-label="Información legal">
-      <a href="aviso-legal.html">Aviso legal</a>
-      <a href="terminos.html">Términos y condiciones</a>
-      <a href="privacidad.html">Privacidad y cookies</a>
-      <button type="button" id="cookie-settings">Configurar cookies</button>
-    </nav>
-    <p>StudyOS ofrece contenido informativo y educativo y no sustituye el consejo médico o nutricional individualizado.</p>
-  </div>
+<div class="studyos-legal-inner">
+<div class="studyos-legal-brand">Study<span>OS</span></div>
+<nav aria-label="Información legal">
+<a href="aviso-legal.html">Aviso legal</a>
+<a href="terminos.html">Términos y condiciones</a>
+<a href="privacidad.html">Privacidad y cookies</a>
+<button id="cookie-settings" type="button">Configurar cookies</button>
+</nav>
+<p>StudyOS ofrece contenido informativo y educativo y no sustituye el consejo médico o nutricional individualizado.</p>
+</div>
 </footer>
-
-
-
-
-
 <script id="studyos-funnel-hooks">
 (function(){
   function funnel(name, extra){
@@ -800,5 +697,4 @@ document.addEventListener("click",function(e){var a=e.target.closest&&e.target.c
   else initStudyOSFunnel();
 })();
 </script>
-
 </body></html>
