@@ -777,15 +777,35 @@ document.addEventListener("DOMContentLoaded",()=>{
     try{if(sessionStorage.getItem(PREFIX+key))return false;sessionStorage.setItem(PREFIX+key,"1");}catch(e){}
     fn();return true;
   }
-  function measure(name,params){if(typeof window.studyosMeasure==="function")window.studyosMeasure(name,params||{});}
+  function measure(name,params){if(typeof window.studyosMeasure==="function")return window.studyosMeasure(name,params||{});return false;}
   function funnel(name,params){if(typeof window.studyosFunnel==="function")window.studyosFunnel(name,params||{});}
   function engage(source){once("engaged",function(){measure("FreeEngaged",{source:source,measurement_version:"m1"});});}
   function plusView(source){once("plus_view",function(){measure("PlusView",{source:source,measurement_version:"m1"});});}
 
-  /* One measurable StudyOS session, emitted only after analytics consent. */
-  if(typeof window.studyosWhenConsented==="function"){
-    window.studyosWhenConsented(function(){once("view",function(){measure("StudyOSView",{measurement_version:"m1"});});});
+  /* One measurable StudyOS session.
+     studyosMeasure() is the consent gate: it emits nothing unless consent is granted. */
+  function emitStudyOSView(){
+    try{if(sessionStorage.getItem(PREFIX+"view"))return;}catch(e){}
+    if(measure("StudyOSView",{measurement_version:"m1"})){
+      try{sessionStorage.setItem(PREFIX+"view","1");}catch(e){}
+    }
   }
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",emitStudyOSView,{once:true});
+  }else{
+    emitStudyOSView();
+  }
+
+  /* If consent is granted during this same page view, retry once after the choice.
+     The session flag is only useful after a successful consented emission. */
+  document.addEventListener("click",function(e){
+    var b=e.target.closest&&e.target.closest("#cookie-accept");
+    if(!b)return;
+    setTimeout(function(){
+      try{sessionStorage.removeItem(PREFIX+"view");}catch(err){}
+      emitStudyOSView();
+    },150);
+  },true);
 
   document.addEventListener("click",function(e){
     var target=e.target.closest&&e.target.closest("button,a,.recipe");
