@@ -198,6 +198,32 @@
   };
   window.studyosProduct = PRODUCT;
 
+
+  /* ---------- StudyOS anonymous aggregate funnel ---------- */
+  var ANON_ENDPOINT = "https://studyos-analytics.polgeligorriz.workers.dev/";
+
+  window.studyosAnon = function (eventName) {
+    var map = {
+      "StudyOSView": "visit",
+      "FreeEngaged": "free_start",
+      "RecommendationComplete": "recommendation_complete",
+      "RecipeOpen": "recipe_open",
+      "PlusView": "plus_view",
+      "InitiateCheckout": "checkout_click"
+    };
+    var event = map[eventName] || eventName;
+    if (["visit","free_start","recommendation_complete","recipe_open","plus_view","checkout_click"].indexOf(event) === -1) return;
+
+    fetch(ANON_ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({event:event}),
+      keepalive: true,
+      credentials: "omit",
+      referrerPolicy: "no-referrer"
+    }).catch(function(){});
+  };
+
   /* ---------- StudyOS measurement v1: canonical events ---------- */
   window.studyosMeasure = function (eventName, params) {
     params = params || {};

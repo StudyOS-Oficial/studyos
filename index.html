@@ -779,8 +779,8 @@ document.addEventListener("DOMContentLoaded",()=>{
   }
   function measure(name,params){if(typeof window.studyosMeasure==="function")return window.studyosMeasure(name,params||{});return false;}
   function funnel(name,params){if(typeof window.studyosFunnel==="function")window.studyosFunnel(name,params||{});}
-  function engage(source){once("engaged",function(){measure("FreeEngaged",{source:source,measurement_version:"m1"});});}
-  function plusView(source){once("plus_view",function(){measure("PlusView",{source:source,measurement_version:"m1"});});}
+  function engage(source){once("engaged",function(){if(window.studyosAnon)window.studyosAnon("FreeEngaged");measure("FreeEngaged",{source:source,measurement_version:"m1"});});}
+  function plusView(source){once("plus_view",function(){if(window.studyosAnon)window.studyosAnon("PlusView");measure("PlusView",{source:source,measurement_version:"m1"});});}
 
   /* One measurable StudyOS session.
      studyosMeasure() is the consent gate: it emits nothing unless consent is granted. */
@@ -790,10 +790,14 @@ document.addEventListener("DOMContentLoaded",()=>{
       try{sessionStorage.setItem(PREFIX+"view","1");}catch(e){}
     }
   }
+  function emitAnonVisit(){
+    try{if(sessionStorage.getItem(PREFIX+"anon_visit"))return;sessionStorage.setItem(PREFIX+"anon_visit","1");}catch(e){}
+    if(window.studyosAnon)window.studyosAnon("StudyOSView");
+  }
   if(document.readyState==="loading"){
-    document.addEventListener("DOMContentLoaded",emitStudyOSView,{once:true});
+    document.addEventListener("DOMContentLoaded",function(){emitAnonVisit();emitStudyOSView();},{once:true});
   }else{
-    emitStudyOSView();
+    emitAnonVisit();emitStudyOSView();
   }
 
   /* If consent is granted during this same page view, retry once after the choice.
@@ -825,6 +829,7 @@ document.addEventListener("DOMContentLoaded",()=>{
       once("checkout",function(){
         var ref=window.studyosCheckoutRef&&window.studyosCheckoutRef();
         if(ref){try{var u=new URL(checkout.href);u.searchParams.set("client_reference_id",ref);checkout.href=u.toString();}catch(err){}}
+        if(window.studyosAnon)window.studyosAnon("InitiateCheckout");
         funnel("begin_checkout",{source:"studyos",measurement_version:"m1"});
       });
     }
@@ -836,7 +841,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     if(!recommendationSeen&&d&&d.textContent&&d.textContent.indexOf("UNA OPCIÓN SEGÚN TUS RESPUESTAS")>-1){
       recommendationSeen=true;
       engage("recommendation_complete");
-      once("recommendation_complete",function(){measure("RecommendationComplete",{measurement_version:"m1"});});
+      once("recommendation_complete",function(){if(window.studyosAnon)window.studyosAnon("RecommendationComplete");measure("RecommendationComplete",{measurement_version:"m1"});});
     }
   });
   document.addEventListener("DOMContentLoaded",function(){observer.observe(document.body,{subtree:true,childList:true,characterData:true});});
@@ -844,7 +849,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   window.studyosTrackRecipeOpen=function(recipeId,isRecommendation){
     engage(isRecommendation?"recommendation_result":"recipe_open");
     var key="recipe_"+String(recipeId||"unknown").replace(/[^a-z0-9_-]/gi,"").slice(0,50);
-    once(key,function(){measure("RecipeOpen",{recipe_id:String(recipeId||"").slice(0,80),recommendation:!!isRecommendation,measurement_version:"m1"});});
+    once(key,function(){if(window.studyosAnon)window.studyosAnon("RecipeOpen");measure("RecipeOpen",{recipe_id:String(recipeId||"").slice(0,80),recommendation:!!isRecommendation,measurement_version:"m1"});});
   };
 })();
 </script>
