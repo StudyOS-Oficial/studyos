@@ -603,7 +603,7 @@ body{
 </div>
 </div>
 <div class="pmp-price-row">
-<div><strong>5 €<span>≈ US$5.70</span></strong><small>Pago único · sin suscripción</small></div>
+<div><strong>5 € · ≈ US$5.70 <span>· ≈ US$5.70</span></strong><small>Pago único · sin suscripción</small></div>
 <button class="pmp-button" data-go="plus" type="button">Ver StudyOS+ →</button>
 </div>
 <p class="currency-note">El precio base es de 5 €. El importe en dólares es orientativo y puede variar según el tipo de cambio. Tu banco o emisor de la tarjeta puede realizar la conversión y aplicar su propio tipo de cambio o comisiones.</p>
@@ -653,7 +653,7 @@ body{
 <div>
 <span class="plus-close-kicker">TODO ESTO ES STUDYOS+</span>
 <h3>Menos tiempo pensando.<br/>Más fácil decidir.</h3>
-<p>Acceso completo por <strong>5 € ($5.70)</strong> en un único pago.</p>
+<p>Acceso completo por <strong>5 € · ≈ US$5.70</strong> en un único pago.</p>
 </div>
 <a class="plus-cta" data-track-action="plus_checkout" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Desbloquear StudyOS+ <span>→</span></a><p class="currency-note">Precio base: 5 €. ≈ US$5.70 es orientativo; la conversión final puede variar según el tipo de cambio y las condiciones de tu banco o tarjeta.</p>
 </div>
@@ -722,6 +722,7 @@ function recommend(){
 window.studyosFreeOpenRecipe=function(id){openRecipe(id,false)};
 function openRecipe(id,rec){
  const r=R.find(x=>x.id===id); if(!r)return;
+ if(window.studyosTrackRecipeOpen) window.studyosTrackRecipeOpen(id,!!rec);
  $('#detail').innerHTML=`<div class="eyebrow">${rec?'UNA OPCIÓN SEGÚN TUS RESPUESTAS':'RECETA GRATIS'}</div><h2>${r.t}</h2><div class="facts"><span class="fact">${r.ph}</span><span class="fact">${r.m} min</span><span class="fact">${r.k} kcal aprox.</span><span class="fact">${r.d}</span></div><h3>Ingredientes</h3><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Preparación</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol><h3>El porqué biológico</h3><div class="bio">${r.bio}</div><div class="unlock cv3-result-offer"><span class="eyebrow">HAS PROBADO STUDYOS</span><strong>Hazlo con 500 recetas y toda tu semana.</strong><p>StudyOS+ amplía el recomendador y añade 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><div class="cv3-benefits"><span>✓ 500 recetas</span><span>✓ 6 menús semanales</span><span>✓ 6 listas de la compra</span><span>✓ Batch cooking + sustituciones</span></div><a class="btn btnYellow wide" data-cv3="recommendation" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track-action="plus_checkout">Desbloquear StudyOS+ · 5 € · ≈ US$5.70</a><p class="cv3-micro">Pago único · Sin suscripción.</p></div>`;
  $('#modal').classList.add('open');
 }
@@ -755,39 +756,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 });
 })();
 </script>
-<script id="studyos-free-tracking-v2">
-(function(){
-  function once(key, fn){
-    try { if(sessionStorage.getItem(key)) return; sessionStorage.setItem(key,"1"); } catch(e){}
-    fn();
-  }
-  window.addEventListener("load", function(){
-    if(window.studyosWhenConsented) window.studyosWhenConsented(function(){
-      once("studyos_free_open_v2", function(){ window.studyosFunnel && window.studyosFunnel("free_open",{page:"gratis",funnel_version:"v2_app"}); });
-    });
-  });
-  document.addEventListener("click", function(e){
-    var a=e.target.closest && e.target.closest('a[href*="buy.stripe.com"]');
-    if(a && window.studyosFunnel){
-      var ref=window.studyosCheckoutRef && window.studyosCheckoutRef();
-      if(ref){ try{var u=new URL(a.href);u.searchParams.set("client_reference_id",ref);a.href=u.toString();}catch(err){} }
-      window.studyosFunnel("plus_interest",{source:"gratis",cta_text:(a.textContent||"").trim().slice(0,80),funnel_version:"v2_app"});
-      window.studyosFunnel("begin_checkout",{source:"gratis",cta_location:"studyos_free",funnel_version:"v2_app"});
-    }
-  },true);
-  /* Detect the actual recommendation result modal opening, without recording answers. */
-  var obs=new MutationObserver(function(){
-    var d=document.getElementById("detail");
-    if(d && d.textContent && d.textContent.indexOf("UNA OPCIÓN SEGÚN TUS RESPUESTAS")>-1){
-      if(window.studyosFunnel) once("studyos_rec_done_v2",function(){window.studyosFunnel("free_recommendation_complete",{funnel_version:"v2_app"});});
-    }
-  });
-  window.addEventListener("DOMContentLoaded",function(){obs.observe(document.body,{subtree:true,childList:true,characterData:true});});
-})();
-</script>
-<script id="conversion-v3-tracking">
-document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("[data-cv3]");if(!a)return;try{if(window.gtag)gtag("event","studyos_plus_interest",{placement:a.getAttribute("data-cv3"),funnel_version:"v3_conversion"});if(window.fbq)fbq("trackCustom","StudyOSPlusInterest",{placement:a.getAttribute("data-cv3"),funnel_version:"v3_conversion"});}catch(_){}});
-</script>
 <footer class="studyos-legal-footer">
 <div class="studyos-legal-inner">
 <div class="studyos-legal-brand">Study<span>OS</span></div>
@@ -800,4 +768,65 @@ document.addEventListener("click",function(e){var a=e.target.closest&&e.target.c
 <p>StudyOS ofrece contenido informativo y educativo y no sustituye el consejo médico o nutricional individualizado.</p>
 </div>
 </footer>
+
+<script id="studyos-tracking-v1">
+(function(){
+  "use strict";
+  var PREFIX="studyos_m1_";
+  function once(key,fn){
+    try{if(sessionStorage.getItem(PREFIX+key))return false;sessionStorage.setItem(PREFIX+key,"1");}catch(e){}
+    fn();return true;
+  }
+  function measure(name,params){if(typeof window.studyosMeasure==="function")window.studyosMeasure(name,params||{});}
+  function funnel(name,params){if(typeof window.studyosFunnel==="function")window.studyosFunnel(name,params||{});}
+  function engage(source){once("engaged",function(){measure("FreeEngaged",{source:source,measurement_version:"m1"});});}
+  function plusView(source){once("plus_view",function(){measure("PlusView",{source:source,measurement_version:"m1"});});}
+
+  /* One measurable StudyOS session, emitted only after analytics consent. */
+  if(typeof window.studyosWhenConsented==="function"){
+    window.studyosWhenConsented(function(){once("view",function(){measure("StudyOSView",{measurement_version:"m1"});});});
+  }
+
+  document.addEventListener("click",function(e){
+    var target=e.target.closest&&e.target.closest("button,a,.recipe");
+    if(!target)return;
+
+    if(target.id==="startQuiz")engage("recommendation_start");
+    else if(target.id==="randomBtn")engage("random_recipe");
+    else if(target.classList&&target.classList.contains("recipe"))engage("recipe_card");
+    else if(target.matches&&target.matches(".freeMenuRecipeLink"))engage("plan_recipe");
+
+    var go=target.closest&&target.closest('[data-go="plus"]');
+    if(go)plusView("navigation");
+
+    var checkout=target.closest&&target.closest('a[href*="buy.stripe.com"]');
+    if(checkout){
+      plusView("checkout_cta");
+      once("checkout",function(){
+        var ref=window.studyosCheckoutRef&&window.studyosCheckoutRef();
+        if(ref){try{var u=new URL(checkout.href);u.searchParams.set("client_reference_id",ref);checkout.href=u.toString();}catch(err){}}
+        funnel("begin_checkout",{source:"studyos",measurement_version:"m1"});
+      });
+    }
+  },true);
+
+  var recommendationSeen=false;
+  var observer=new MutationObserver(function(){
+    var d=document.getElementById("detail");
+    if(!recommendationSeen&&d&&d.textContent&&d.textContent.indexOf("UNA OPCIÓN SEGÚN TUS RESPUESTAS")>-1){
+      recommendationSeen=true;
+      engage("recommendation_complete");
+      once("recommendation_complete",function(){measure("RecommendationComplete",{measurement_version:"m1"});});
+    }
+  });
+  document.addEventListener("DOMContentLoaded",function(){observer.observe(document.body,{subtree:true,childList:true,characterData:true});});
+
+  window.studyosTrackRecipeOpen=function(recipeId,isRecommendation){
+    engage(isRecommendation?"recommendation_result":"recipe_open");
+    var key="recipe_"+String(recipeId||"unknown").replace(/[^a-z0-9_-]/gi,"").slice(0,50);
+    once(key,function(){measure("RecipeOpen",{recipe_id:String(recipeId||"").slice(0,80),recommendation:!!isRecommendation,measurement_version:"m1"});});
+  };
+})();
+</script>
+
 </body></html>

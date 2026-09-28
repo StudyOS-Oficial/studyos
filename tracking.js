@@ -21,7 +21,7 @@
   var KEY = "studyos_cookies"; // "granted" (acepta) o "denied" (rechaza)
 
   // Producto de pago (se usa en los eventos de GA4 y de Meta)
-  var PRODUCT = { id: "recetario-100-recetas", name: "100 Recetas Antiinflamatorias", price: 5, currency: "EUR" };
+  var PRODUCT = { id: "studyos-plus", name: "StudyOS+", price: 5, currency: "EUR" };
   var ATTR_KEY = "studyos_attribution";
   var ATTR_TTL = 30 * 24 * 3600 * 1000; // 30 días
   var UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
@@ -158,7 +158,7 @@
   };
 
   /* ---------- Eventos de GA4 y del embudo ---------- */
-  function items() { return [{ item_id: PRODUCT.id, item_name: PRODUCT.name, item_category: "ebook", price: PRODUCT.price, quantity: 1 }]; }
+  function items() { return [{ item_id: PRODUCT.id, item_name: PRODUCT.name, item_category: "digital_app", price: PRODUCT.price, quantity: 1 }]; }
   window.studyosGA = function (name, params) {
     if (readConsent() !== "granted" || !window.gtag) return;
     var p = gaParams();
@@ -197,6 +197,29 @@
     }
   };
   window.studyosProduct = PRODUCT;
+
+  /* ---------- StudyOS measurement v1: canonical events ---------- */
+  window.studyosMeasure = function (eventName, params) {
+    params = params || {};
+    if (readConsent() !== "granted") return false;
+
+    var gaName = {
+      "StudyOSView": "studyos_view",
+      "FreeEngaged": "free_engaged",
+      "RecommendationComplete": "recommendation_complete",
+      "RecipeOpen": "recipe_open",
+      "PlusView": "plus_view"
+    }[eventName];
+
+    if (gaName) window.studyosGA(gaName, params);
+
+    /* Meta custom events use the exact canonical names shown above. */
+    if (["StudyOSView","FreeEngaged","RecommendationComplete","RecipeOpen","PlusView"].indexOf(eventName) > -1) {
+      window.studyosTrackCustom(eventName, params);
+    }
+    return true;
+  };
+
 
   function grant() {
     saveConsent("granted");
