@@ -486,25 +486,30 @@ body{
  .pmp-price-row{align-items:flex-start;flex-direction:column}
  .pmp-price-row .pmp-button{width:100%}
 }
+</style><style id="guided-museum-v1">
+.guidedHero{padding:clamp(28px,6vw,44px)!important}.guidedHero h2{font-size:clamp(2rem,7vw,3.35rem)!important;max-width:590px;line-height:.98!important}.guidedHero>p{font-size:1.02rem;max-width:560px}.guidedPrimary{width:100%;margin-top:8px;min-height:60px!important;font-size:1.02rem!important;box-shadow:0 12px 28px rgba(242,194,48,.25)!important}.guidedSteps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}.guidedSteps span{display:flex;align-items:center;gap:7px;padding:10px;border:1px solid rgba(255,255,255,.13);border-radius:13px;background:rgba(255,255,255,.07);font-size:.72rem;font-weight:700;color:#edf1e7}.guidedSteps b{display:grid;place-items:center;flex:0 0 23px;height:23px;border-radius:50%;background:#f2d773;color:#2e391f}.guidedSecondary{margin-top:14px;padding:13px 4px 0}.guidedSecondary>p{margin:0;color:var(--muted);font-size:.78rem;line-height:1.45;text-align:center}.guidedSecondary .actions{opacity:.82}#quiz .eyebrow{color:#c9785f}#quiz>h1{max-width:600px}.q h3{font-family:"Fraunces",Georgia,serif!important;font-size:clamp(1.45rem,5vw,2rem)!important}.opt{min-height:52px;font-weight:700;transition:.15s}.opt:active{transform:scale(.99)}@media(max-width:520px){#home>h1{font-size:clamp(2.45rem,12.5vw,3.7rem)!important}.guidedSteps{grid-template-columns:1fr}.guidedSteps span{padding:8px 10px}}
 </style></head>
 <body>
 <div class="app">
 <header class="top"><div class="topin"><div class="brand">Study<span>OS</span></div><div class="freepill">GRATIS · 10 RECETAS</div></div></header>
 <main>
 <section class="view active" id="home">
-<div class="eyebrow">TU STUDYOS GRATIS</div>
-<h1>¿Qué quieres comer hoy?</h1>
-<p class="lead">Ya estás dentro. Encuentra una receta para hoy o explora las 10 disponibles gratis.</p>
-<div class="heroCard">
-<div class="eyebrow" style="color:#dce5ce">RECOMENDADOR</div>
-<h2>Te ayudamos a elegir</h2>
-<p>Responde 4 preguntas rápidas y encuentra una opción entre tus 10 recetas gratuitas.</p>
-<button class="btn btnYellow" data-track-action="free_recommendation_start" id="startQuiz">Encontrar mi receta →</button>
+<div class="eyebrow">STUDYOS · TU GUÍA PARA HOY</div>
+<h1>No busques entre recetas.<br/>Deja que StudyOS elija contigo.</h1>
+<p class="lead">Cuatro preguntas. Una receta para empezar. Prueba primero cómo funciona StudyOS y después explora todo lo demás.</p>
+<div class="heroCard guidedHero">
+<div class="eyebrow" style="color:#f2d773">EMPIEZA AQUÍ · 1 DE 3</div>
+<h2>Encuentra qué comer hoy</h2>
+<p>Te preguntaremos tu etapa, qué buscas y para qué momento del día. Tardas menos de un minuto.</p>
+<button class="btn btnYellow guidedPrimary" data-track-action="free_recommendation_start" id="startQuiz">Empezar · 4 preguntas →</button>
+<div class="guidedSteps"><span><b>1</b> Responde</span><span><b>2</b> Recibe una receta</span><span><b>3</b> Explora StudyOS</span></div>
 </div>
+<div class="guidedSecondary">
+<p><strong>¿Prefieres mirar por tu cuenta?</strong> También puedes hacerlo, pero te recomendamos probar primero el recomendador.</p>
 <div class="actions">
-<button class="btn btnGhost" data-go="explore" data-track-action="free_explore">🔎 Ver las 10 recetas</button>
-<button class="btn btnGhost" data-track-action="free_random_recipe" id="randomBtn">✨ Sorpréndeme</button>
-</div>
+<button class="btn btnGhost" data-go="explore" data-track-action="free_explore">Ver las 10 recetas</button>
+<button class="btn btnGhost" data-track-action="free_random_recipe" id="randomBtn">Sorpréndeme</button>
+</div></div>
 <div class="section">
 <div class="sectionHead"><div><div class="eyebrow">GRATIS</div><h2>Tus recetas</h2></div><span class="small">10 disponibles</span></div>
 <div class="recipes" id="homeRecipes"></div>
@@ -603,7 +608,7 @@ body{
 </div>
 </div>
 <div class="pmp-price-row">
-<div><strong>5 € · ≈ US$5.70 <span>· ≈ US$5.70</span></strong><small>Pago único · sin suscripción</small></div>
+<div><strong>5 € <span>· pago único</span></strong><small>Pago único · sin suscripción</small></div>
 <button class="pmp-button" data-go="plus" type="button">Ver StudyOS+ →</button>
 </div>
 <p class="currency-note">El precio base es de 5 €. El importe en dólares es orientativo y puede variar según el tipo de cambio. Tu banco o emisor de la tarjeta puede realizar la conversión y aplicar su propio tipo de cambio o comisiones.</p>
