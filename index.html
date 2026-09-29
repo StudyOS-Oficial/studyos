@@ -776,7 +776,6 @@ body{
 <script>
 (function(){
 const R=JSON.parse(document.getElementById('recipe-data').textContent);
-const IMG={};
 let filter='all', state={moment:'C'}, featuredId="salmon-al-horno-con-costra-de-sesamo-y-brocoli";
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 function card(r){return `<button class="recipe" data-id="${r.id}"><span class="tag">${r.ph}</span><h3>${r.t}</h3><div class="meta">${r.m} min · ${r.k} kcal aprox.</div></button>`}
@@ -798,12 +797,6 @@ function renderFeatured(){
  const r=R.find(x=>x.id===featuredId)||R[0];
  $('#pfRecipeTitle').textContent=r.t;
  $('#pfRecipeFacts').innerHTML=`<span>${r.m} min</span><span>${r.k} kcal aprox.</span><span>${r.d}</span>`;
- const wrap=$('.pfImageWrap'), pic=$('#pfRecipeImage');
- if(IMG[r.id]){
-   pic.src=IMG[r.id]; pic.alt=r.t; wrap.style.display='';
- }else{
-   pic.removeAttribute('src'); pic.alt=''; wrap.style.display='none';
- }
  const names={D:'☀️ IDEA PARA ESTA MAÑANA',C:'🥗 IDEA PARA COMER',N:'🌙 IDEA PARA ESTA NOCHE',S:'🍎 IDEA PARA UN SNACK'};
  $('#pfImageLabel').textContent=names[state.moment]||'IDEA PARA HOY';
 }
@@ -818,15 +811,12 @@ $('#pfAnother').onclick=()=>{
  const i=pool.findIndex(r=>r.id===featuredId);
  featuredId=pool[(i<0?0:i+1)%pool.length].id;
  renderFeatured();
- try{if(window.studyosAnon)window.studyosAnon("AnotherRecipe")}catch(e){}
 };
 $('#pfOpenRecipe').onclick=()=>openRecipe(featuredId,false);
 $('#startQuiz').onclick=()=>{
  const moment=state.moment;
  state={moment};
  showQ(1);go('quiz');
- try{if(window.studyosAnon)window.studyosAnon("FreeEngaged")}catch(e){}
- if(window.studyosMeasure)window.studyosMeasure("FreeEngaged",{source:"personalize_start",measurement_version:"product_first_v1"});
 };
 $('#search').oninput=renderExplore;
 $$('.chip[data-filter]').forEach(c=>c.onclick=()=>{$$('.chip[data-filter]').forEach(x=>x.classList.remove('active'));c.classList.add('active');filter=c.dataset.filter;renderExplore()});
@@ -972,10 +962,8 @@ document.addEventListener("DOMContentLoaded",()=>{
   var recommendationSeen=false;
   var observer=new MutationObserver(function(){
     var d=document.getElementById("detail");
-    if(!recommendationSeen&&d&&d.textContent&&d.textContent.indexOf("UNA OPCIÓN SEGÚN TUS RESPUESTAS")>-1){
+    if(!recommendationSeen&&d&&d.textContent&&(d.textContent.indexOf("UNA OPCIÓN SEGÚN TUS RESPUESTAS")>-1||d.textContent.indexOf("TU RECOMENDACIÓN")>-1)){
       recommendationSeen=true;
-      engage("recommendation_complete");
-      once("recommendation_complete",function(){if(window.studyosAnon)window.studyosAnon("RecommendationComplete");measure("RecommendationComplete",{measurement_version:"m1"});});
     }
   });
   document.addEventListener("DOMContentLoaded",function(){observer.observe(document.body,{subtree:true,childList:true,characterData:true});});
