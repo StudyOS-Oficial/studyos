@@ -292,7 +292,7 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
 <p class="v2-kicker">StudyOS+ · Hoy</p>
 <h1>¿Qué quieres comer hoy?</h1>
 <p class="v2-sub">Encuentra una receta entre 500 opciones del recetario sin perder tiempo buscando.</p>
-<div class="v4-primary"><small>NUEVO · STUDYOS V4</small><h2>✨ Crea mi semana</h2><p>Genera 7 días de desayunos, comidas y cenas según tu etapa, objetivo, tiempo y preferencias. Cambia cualquier plato y crea tu lista de la compra.</p><button type="button" class="btn" id="v4-week-open">Crear mi semana →</button></div>
+<div class="v4-primary"><small>STUDYOS+ · PLANIFICA</small><h2>✨ Crea mi semana</h2><p>Genera 7 días de desayunos, comidas y cenas según tu etapa, objetivo, tiempo y preferencias. Cambia cualquier plato y crea tu lista de la compra.</p><button type="button" class="btn" id="v4-week-open">Crear mi semana →</button></div>
 <div class="v2-primary"><small>RECOMENDADOR</small><h2>Encuentra una receta para ahora</h2>
 <p>Responde unas preguntas y StudyOS+ reducirá las opciones según tus respuestas.</p>
 <button type="button" class="btn btn-yellow" id="v2-recommend">Empezar →</button></div>
@@ -315,7 +315,7 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
 
 <section id="v4-tools" class="v2-view v4-view" hidden><div class="wrap">
 <button type="button" class="linkbtn v2-back" id="v4-back">← Volver a Hoy</button>
-<div id="v4-week-tool" hidden><p class="v2-kicker">STUDYOS V4</p><h1>Crea mi semana</h1><p class="v2-sub">21 comidas elegidas entre 500 recetas. Puedes cambiar cualquier plato antes de crear la lista.</p>
+<div id="v4-week-tool" hidden><p class="v2-kicker">STUDYOS+</p><h1>Crea mi semana</h1><p class="v2-sub">21 comidas elegidas entre 500 recetas. Puedes cambiar cualquier plato antes de crear la lista.</p>
 <div class="v4-panel"><div class="v4-controls">
 <label>Etapa<select id="v4-stage"><option value="">Sin filtrar</option><option value="perimenopausia">Perimenopausia</option><option value="menopausia">Menopausia</option><option value="menstrual">Fase menstrual</option><option value="folicular">Fase folicular</option><option value="ovulatoria">Fase ovulatoria</option><option value="lutea">Fase lútea</option></select></label>
 <label>Objetivo<select id="v4-need"><option value="en">Más energía</option><option value="hi">Bajar la hinchazón</option><option value="an">Calmar los antojos</option><option value="sa">Más saciedad</option><option value="ra">Algo rápido</option><option value="ai">Priorizar lo antiinflamatorio</option></select></label>
@@ -563,8 +563,9 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
     prefs = prefs || {};
     var avoid = prefs.avoid || [], time = prefs.time || "any";
     var pool = R.filter(function (r) { return allowed(r, avoid); });
-    var relaxed = pool.length < 3;
-    if (relaxed) pool = R;
+    if (!pool.length) {
+      return { recipe: null, match: null, stageMatched: false, alternatives: [], noMatch: true };
+    }
     var pf = { stage: stage, need: need, moment: moment, time: time };
     var scored = pool.map(function (r) { return { r: r, s: score(r, pf) }; });
     var topScore = scored.reduce(function (m, x) { return Math.max(m, x.s); }, -1);
@@ -664,6 +665,17 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
 
   function finish() {
     var rec = getRecommendedRecipe(state.stage, state.need, state.mo, { avoid: state.avoid, time: "any" });
+    if (!rec || !rec.recipe) {
+      result.innerHTML = '<div class="res-main"><p class="res-kicker">NO HAY COINCIDENCIA SEGURA</p><h3 class="res-title">Mantendremos tus exclusiones</h3><p class="res-why">No hemos encontrado una receta que cumpla todas las exclusiones seleccionadas. StudyOS no las relajará para mostrarte una opción. Vuelve a responder y cambia la etapa, el objetivo o el momento del día, manteniendo tus exclusiones.</p><div class="res-cta"><button type="button" class="btn btn-outline" id="restart-quiz-nomatch">Volver a responder</button></div></div>';
+      quiz.querySelector(".quiz-top").hidden = true;
+      steps.forEach(function (st) { st.hidden = true; });
+      back.hidden = true;
+      result.hidden = false;
+      var rb = document.getElementById("restart-quiz-nomatch");
+      if (rb) rb.addEventListener("click", restart);
+      quiz.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
     renderResult(rec, true);
     quiz.querySelector(".quiz-top").hidden = true;
     steps.forEach(function (st) { st.hidden = true; });

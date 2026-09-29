@@ -853,8 +853,13 @@ function allowed(r){
  return true;
 }
 function recommend(){
- const pool=R.filter(allowed); const base=pool.length?pool:R;
- const ranked=base.map(r=>{let s=0;if(state.need&&r.n.includes(state.need))s+=6;if(state.moment&&r.mo.includes(state.moment))s+=6;if(state.stage&&state.stage!=='ninguna'&&r.p.includes(state.stage))s+=4;return {r,s}}).sort((a,b)=>b.s-a.s);
+ const pool=R.filter(allowed);
+ if(!pool.length){
+   $('#detail').innerHTML=`<div class="eyebrow">NO HAY COINCIDENCIA SEGURA</div><h2>Mantendremos tu exclusión</h2><p>No hemos encontrado una receta de las 10 gratuitas que cumpla esta exclusión. StudyOS no la ignorará para mostrarte una receta. Puedes volver al test y cambiar otro criterio, o explorar las recetas compatibles.</p>`;
+   $('#modal').classList.add('open');
+   return;
+ }
+ const ranked=pool.map(r=>{let s=0;if(state.need&&r.n.includes(state.need))s+=6;if(state.moment&&r.mo.includes(state.moment))s+=6;if(state.stage&&state.stage!=='ninguna'&&r.p.includes(state.stage))s+=4;return {r,s}}).sort((a,b)=>b.s-a.s);
  openRecipe(ranked[0].r.id,true);
 }
 window.studyosFreeOpenRecipe=function(id){openRecipe(id,false)};
@@ -917,14 +922,14 @@ document.addEventListener("DOMContentLoaded",()=>{
   }
   function measure(name,params){if(typeof window.studyosMeasure==="function")return window.studyosMeasure(name,params||{});return false;}
   function funnel(name,params){if(typeof window.studyosFunnel==="function")window.studyosFunnel(name,params||{});}
-  function engage(source){once("engaged",function(){if(window.studyosAnon)window.studyosAnon("FreeEngaged");measure("FreeEngaged",{source:source,measurement_version:"m1"});});}
-  function plusView(source){once("plus_view",function(){if(window.studyosAnon)window.studyosAnon("PlusView");measure("PlusView",{source:source,measurement_version:"m1"});});}
+  function engage(source){once("engaged",function(){if(window.studyosAnon)window.studyosAnon("FreeEngaged");measure("FreeEngaged",{source:source,measurement_version:"lp2"});});}
+  function plusView(source){once("plus_view",function(){if(window.studyosAnon)window.studyosAnon("PlusView");measure("PlusView",{source:source,measurement_version:"lp2"});});}
 
   /* One measurable StudyOS session.
      studyosMeasure() is the consent gate: it emits nothing unless consent is granted. */
   function emitStudyOSView(){
     try{if(sessionStorage.getItem(PREFIX+"view"))return;}catch(e){}
-    if(measure("StudyOSView",{measurement_version:"m1"})){
+    if(measure("StudyOSView",{measurement_version:"lp2"})){
       try{sessionStorage.setItem(PREFIX+"view","1");}catch(e){}
     }
   }
@@ -954,9 +959,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     if(!target)return;
 
     if(target.id==="startQuiz")engage("recommendation_start");
-    else if(target.id==="randomBtn")engage("random_recipe");
-    else if(target.classList&&target.classList.contains("recipe"))engage("recipe_card");
-    else if(target.matches&&target.matches(".freeMenuRecipeLink"))engage("plan_recipe");
 
     var go=target.closest&&target.closest('[data-go="plus"]');
     if(go)plusView("navigation");
@@ -968,7 +970,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         var ref=window.studyosCheckoutRef&&window.studyosCheckoutRef();
         if(ref){try{var u=new URL(checkout.href);u.searchParams.set("client_reference_id",ref);checkout.href=u.toString();}catch(err){}}
         if(window.studyosAnon)window.studyosAnon("InitiateCheckout");
-        funnel("begin_checkout",{source:"studyos",measurement_version:"m1"});
+        funnel("begin_checkout",{source:"studyos",measurement_version:"lp2"});
       });
     }
   },true);
@@ -978,16 +980,14 @@ document.addEventListener("DOMContentLoaded",()=>{
     var d=document.getElementById("detail");
     if(!recommendationSeen&&d&&d.textContent&&d.textContent.indexOf("UNA OPCIÓN SEGÚN TUS RESPUESTAS")>-1){
       recommendationSeen=true;
-      engage("recommendation_complete");
-      once("recommendation_complete",function(){if(window.studyosAnon)window.studyosAnon("RecommendationComplete");measure("RecommendationComplete",{measurement_version:"m1"});});
+      once("recommendation_complete",function(){if(window.studyosAnon)window.studyosAnon("RecommendationComplete");measure("RecommendationComplete",{measurement_version:"lp2"});});
     }
   });
   document.addEventListener("DOMContentLoaded",function(){observer.observe(document.body,{subtree:true,childList:true,characterData:true});});
 
   window.studyosTrackRecipeOpen=function(recipeId,isRecommendation){
-    engage(isRecommendation?"recommendation_result":"recipe_open");
     var key="recipe_"+String(recipeId||"unknown").replace(/[^a-z0-9_-]/gi,"").slice(0,50);
-    once(key,function(){if(window.studyosAnon)window.studyosAnon("RecipeOpen");measure("RecipeOpen",{recipe_id:String(recipeId||"").slice(0,80),recommendation:!!isRecommendation,measurement_version:"m1"});});
+    once(key,function(){if(window.studyosAnon)window.studyosAnon("RecipeOpen");measure("RecipeOpen",{recipe_id:String(recipeId||"").slice(0,80),recommendation:!!isRecommendation,measurement_version:"lp2"});});
   };
 })();
 </script>

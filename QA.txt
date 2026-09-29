@@ -1,0 +1,36 @@
+{
+  "index.html": {
+    "duplicate_ids": [],
+    "js_errors": []
+  },
+  "plus.html": {
+    "duplicate_ids": [
+      "dynamic-template-id false positive only"
+    ],
+    "js_errors": []
+  },
+  "gracias.html": {
+    "duplicate_ids": [],
+    "js_errors": []
+  },
+  "terminos.html": {
+    "duplicate_ids": [],
+    "js_errors": []
+  },
+  "aviso-legal.html": {
+    "duplicate_ids": [],
+    "js_errors": []
+  },
+  "checks": {
+    "free_no_allergen_fallback": true,
+    "free_start_only_start_click": true,
+    "premium_no_relax": true,
+    "premium_500": true,
+    "public_v4_labels_removed": true,
+    "thanks_500": true,
+    "thanks_100_removed": true,
+    "terms_500": true,
+    "terms_old_100_removed": true,
+    "tracking_anon_present": true
+  }
+}
