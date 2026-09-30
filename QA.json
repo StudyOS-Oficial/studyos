@@ -1,0 +1,19 @@
+{
+  "recipes": 500,
+  "unique_ids": 500,
+  "unique_titles": 500,
+  "allergen_additions_or_revisions": 9,
+  "allergen_removals": 8,
+  "generic_quantity_replacements": 172,
+  "personalized_duplicate_preparations": 88,
+  "duplicate_step_recipe_count_after": 0,
+  "duplicate_bio_recipe_count_after": 0,
+  "missing_menu_references": 0,
+  "difficulty_counts": {
+    "Fácil": 270,
+    "Media": 229,
+    "Avanzada": 1
+  },
+  "inline_js_blocks_checked": 5,
+  "js_syntax_errors": 0
+}
