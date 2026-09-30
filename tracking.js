@@ -212,7 +212,7 @@
       "InitiateCheckout": "checkout_click"
     };
     var event = map[eventName] || eventName;
-    if (["visit","free_start","recommendation_complete","recipe_open","plus_view","checkout_click"].indexOf(event) === -1) return;
+    if (["visit","free_start","visible_5s","scroll_25","first_action","quiz_start","explore_click","random_click","recommendation_complete","recipe_open","plus_view","checkout_click"].indexOf(event) === -1) return;
 
     fetch(ANON_ENDPOINT, {
       method: "POST",
@@ -345,4 +345,68 @@
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
+})();
+
+
+/* ---------- LP2 diagnostic signals (aggregate, no answers / no user IDs) ---------- */
+(function(){
+  "use strict";
+  var PREFIX="studyos_lp2d1_diag_";
+
+  function once(key,eventName){
+    try{
+      if(sessionStorage.getItem(PREFIX+key)) return false;
+      sessionStorage.setItem(PREFIX+key,"1");
+    }catch(e){}
+    try{
+      if(typeof window.studyosAnon==="function") window.studyosAnon(eventName);
+    }catch(e){}
+    return true;
+  }
+
+  /* Count only if the page stays continuously visible for 5 seconds. */
+  var visibleTimer=null;
+  function armVisibleTimer(){
+    if(document.visibilityState!=="visible" || visibleTimer) return;
+    visibleTimer=setTimeout(function(){
+      visibleTimer=null;
+      if(document.visibilityState==="visible") once("visible_5s","visible_5s");
+    },5000);
+  }
+  function disarmVisibleTimer(){
+    if(visibleTimer){ clearTimeout(visibleTimer); visibleTimer=null; }
+  }
+  document.addEventListener("visibilitychange",function(){
+    if(document.visibilityState==="visible") armVisibleTimer();
+    else disarmVisibleTimer();
+  });
+  armVisibleTimer();
+
+  /* 25% of the actually scrollable page. */
+  function checkScroll25(){
+    var doc=document.documentElement;
+    var max=Math.max(0,doc.scrollHeight-window.innerHeight);
+    if(max>0 && window.scrollY/max>=0.25){
+      once("scroll_25","scroll_25");
+      window.removeEventListener("scroll",checkScroll25);
+    }
+  }
+  window.addEventListener("scroll",checkScroll25,{passive:true});
+
+  /* Exact actions, independent from the old FreeEngaged event. */
+  document.addEventListener("click",function(e){
+    var target=e.target.closest && e.target.closest("button,a,.recipe,input,select");
+    if(!target) return;
+
+    once("first_action","first_action");
+
+    if(target.id==="startQuiz") once("quiz_start","quiz_start");
+
+    var explore=target.closest && target.closest('[data-go="explore"]');
+    if(explore) once("explore_click","explore_click");
+
+    if(target.id==="randomBtn" || (target.closest && target.closest("#randomBtn"))){
+      once("random_click","random_click");
+    }
+  },true);
 })();
