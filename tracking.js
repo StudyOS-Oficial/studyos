@@ -202,6 +202,19 @@
   /* ---------- StudyOS anonymous aggregate funnel ---------- */
   var ANON_ENDPOINT = "https://studyos-analytics.polgeligorriz.workers.dev/";
 
+  function anonymousAdVariant() {
+    try {
+      var p = new URLSearchParams(location.search);
+      var direct = String(p.get("ad") || "").toLowerCase();
+      if (direct === "original" || direct === "soso") return direct;
+
+      /* Fallback: permite usar utm_content=original / soso si lo prefieres en Meta. */
+      var content = String(p.get("utm_content") || "").toLowerCase();
+      if (content === "original" || content === "soso") return content;
+    } catch (e) {}
+    return "unknown";
+  }
+
   window.studyosAnon = function (eventName) {
     var map = {
       "StudyOSView": "visit",
@@ -217,7 +230,7 @@
     fetch(ANON_ENDPOINT, {
       method: "POST",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({event:event}),
+      body: JSON.stringify({event:event, ad:anonymousAdVariant()}),
       keepalive: true,
       credentials: "omit",
       referrerPolicy: "no-referrer"
@@ -351,7 +364,7 @@
 /* ---------- LP2 diagnostic signals (aggregate, no answers / no user IDs) ---------- */
 (function(){
   "use strict";
-  var PREFIX="studyos_lp2d1_diag_";
+  var PREFIX="studyos_lp2d2_diag_";
 
   function once(key,eventName){
     try{
