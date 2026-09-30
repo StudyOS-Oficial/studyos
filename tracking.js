@@ -200,7 +200,7 @@
 
 
   /* ---------- StudyOS anonymous aggregate funnel ---------- */
-  var ANON_ENDPOINT = "https://studyos-analytics.polgeligorriz.workers.dev/";
+  var ANON_ENDPOINT = "https://studyos-analytics.studyos-oficial-spain.workers.dev/";
 
   function anonymousAdVariant() {
     try {
