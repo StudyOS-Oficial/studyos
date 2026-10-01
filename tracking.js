@@ -406,19 +406,25 @@
   }
   window.addEventListener("scroll",checkScroll25,{passive:true});
 
-  /* Exact actions, independent from the old FreeEngaged event. */
+  /* Exact actions. Only real product interaction counts as first_action.
+     Cookie consent, legal links and synthetic clicks do not count. */
   document.addEventListener("click",function(e){
     var target=e.target.closest && e.target.closest("button,a,.recipe,input,select");
     if(!target) return;
 
-    once("first_action","first_action");
+    var meaningful=target.closest && target.closest(
+      '[data-quick-moment],.lp4-choice,[data-go="explore"],[data-go="plan"],[data-go="plus"],#randomBtn,.recipe,.freeMenuRecipeLink,a[href*="buy.stripe.com"]'
+    );
+    if(e.isTrusted && meaningful) once("first_action","first_action");
 
-    if(target.id==="startQuiz") once("quiz_start","quiz_start");
+    /* On legacy pages with a real Start button this still works.
+       LP4 uses a synthetic hidden click, which is already recorded once by FreeEngaged. */
+    if(e.isTrusted && target.id==="startQuiz") once("quiz_start","quiz_start");
 
     var explore=target.closest && target.closest('[data-go="explore"]');
-    if(explore) once("explore_click","explore_click");
+    if(explore && e.isTrusted) once("explore_click","explore_click");
 
-    if(target.id==="randomBtn" || (target.closest && target.closest("#randomBtn"))){
+    if(e.isTrusted && (target.id==="randomBtn" || (target.closest && target.closest("#randomBtn")))){
       once("random_click","random_click");
     }
   },true);

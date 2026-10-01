@@ -599,7 +599,7 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
   function getRecommendedRecipe(stage, need, moment, prefs) {
     prefs = prefs || {};
     var avoid = prefs.avoid || [], time = prefs.time || "any";
-    var pool = R.filter(function (r) { return allowed(r, avoid); });
+    var pool = R.filter(function (r) { return allowed(r, avoid) && (!moment || r.mo.indexOf(moment) > -1) && (time === "any" || readyMinutes(r) <= Number(time)); });
     if (!pool.length) {
       return { recipe: null, match: null, stageMatched: false, alternatives: [], noMatch: true };
     }
@@ -637,7 +637,7 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
     var ing = r.ing.map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("");
     var steps = r.steps.map(function (s) { return "<li>" + esc(s) + "</li>"; }).join("");
     var mm = {D:["☀️","Desayuno"],C:["🍽️","Comida"],N:["🌙","Cena"],S:["🍓","Snack"]};
-    var mainMoment = (r.mo && r.mo.length ? r.mo[0] : "C");
+    var mainMoment = opts.moment || (r.mo && r.mo.length ? r.mo[0] : "C");
     var moment = mm[mainMoment] || mm.C;
     var html = '<div class="res-main">';
     html += '<div class="res-hero"><div class="res-hero-top"><div>';
@@ -713,7 +713,7 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
   function finish() {
     var rec = getRecommendedRecipe(state.stage, state.need, state.mo, { avoid: state.avoid, time: "any" });
     if (!rec || !rec.recipe) {
-      result.innerHTML = '<div class="res-main"><p class="res-kicker">NO HAY COINCIDENCIA SEGURA</p><h3 class="res-title">Mantendremos tus exclusiones</h3><p class="res-why">No hemos encontrado una receta que cumpla todas las exclusiones seleccionadas. StudyOS no las relajará para mostrarte una opción. Vuelve a responder y cambia la etapa, el objetivo o el momento del día, manteniendo tus exclusiones.</p><div class="res-cta"><button type="button" class="btn btn-outline" id="restart-quiz-nomatch">Volver a responder</button></div></div>';
+      result.innerHTML = '<div class="res-main"><p class="res-kicker">NO HAY COINCIDENCIA SEGURA</p><h3 class="res-title">Mantendremos tus exclusiones</h3><p class="res-why">No hemos encontrado una receta que cumpla todas las exclusiones seleccionadas. El sistema no las relajará para mostrarte una opción. Vuelve a responder y cambia la etapa, el objetivo o el momento del día, manteniendo tus exclusiones.</p><div class="res-cta"><button type="button" class="btn btn-outline" id="restart-quiz-nomatch">Volver a responder</button></div></div>';
       quiz.querySelector(".quiz-top").hidden = true;
       steps.forEach(function (st) { st.hidden = true; });
       back.hidden = true;
@@ -738,9 +738,9 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
     else if (state.stage && state.stage !== "ninguna") why += ". Para esta combinación no hay una receta específica de " + STAGELABEL[state.stage] + "; esta es la que mejor encaja";
     why += ".";
 
-    var html = renderDetail(r, { kicker: "Una opción según tus respuestas", why: why });
+    var html = renderDetail(r, { kicker: "Una opción según tus respuestas", why: why, moment: state.mo });
     var alt = rec.alternatives.map(function (a) {
-      return '<button type="button" class="alt-pick" data-id="' + esc(a.id) + '"><b>' + esc(a.t) + "</b><span>" + a.m + " min · " + a.k + " kcal aprox.</span></button>";
+      return '<button type="button" class="alt-pick" data-id="' + esc(a.id) + '"><b>' + esc(a.t) + "</b><span>" + timeLabel(a) + " · " + a.k + " kcal aprox.</span></button>";
     }).join("");
     html += '<p class="res-sub res-alt-title">Otras 2 recetas que también encajan</p><div class="res-alt">' + alt + "</div>";
     html += '<div class="res-cta"><button type="button" class="btn btn-outline" id="restart-quiz">Volver a responder</button></div>';

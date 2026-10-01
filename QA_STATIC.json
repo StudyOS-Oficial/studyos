@@ -1,0 +1,18 @@
+{
+  "landing_recipes": 10,
+  "premium_recipes": 500,
+  "premium_unique_ids": 500,
+  "premium_unique_titles": 500,
+  "free_recommender_wrong_constraints": 0,
+  "free_recommender_nomatch_combinations": 42,
+  "premium_recommender_wrong_constraints": 0,
+  "premium_single_exclusion_nomatch_combinations": 0,
+  "landing_js_blocks_checked": 3,
+  "premium_js_blocks_checked": 5,
+  "js_syntax_errors": 0,
+  "usd_occurrences_landing": 0,
+  "euro_price_occurrences_landing": 3,
+  "old_biological_label_occurrences": 0,
+  "premium_recipes_101_500_min_steps": 4,
+  "premium_recipes_101_500_avg_prep_chars": 563.2
+}
