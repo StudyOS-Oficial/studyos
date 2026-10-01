@@ -477,8 +477,8 @@ body{
 .pmp-feature-star{grid-column:1/-1;background:rgba(242,215,115,.12);border-color:rgba(242,215,115,.25)}
 .pmp-price-row{display:flex;justify-content:space-between;gap:14px;align-items:center;margin-top:20px;padding-top:19px;border-top:1px solid rgba(255,255,255,.14)}
 .pmp-price-row>div>strong{display:block;font-family:var(--serif);font-size:1.45rem;color:#fff}.pmp-price-row>div>strong span{font-size:.8rem;color:#f2d773}.pmp-price-row>div>small{display:block;color:#dfe5d7;font-size:.68rem;margin-top:3px}
-.currency-note{font-size:.65rem!important;line-height:1.45!important;opacity:.78;margin:10px 0 0!important;max-width:680px}
-.personal-menu-promo .currency-note{color:#dfe5d7}
+
+.personal-menu-promo 
 @media(max-width:700px){
  .personal-menu-promo{grid-template-columns:1fr!important}
  .pmp-feature-grid{grid-template-columns:1fr}
@@ -629,29 +629,134 @@ body{
 .lp4Hero .lp3-micro{margin-top:12px}.lp4Hero>p{max-width:570px}
 @media(max-width:380px){.lp4-question{grid-template-columns:1fr}.lp4-choice{min-height:50px}}
 </style>
+
+<style id="lp4b-inline-and-recipes">
+/* Inline recommender: one continuous card */
+.lp4Hero{min-height:460px;overflow:hidden}
+.lp4-quiztop{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.lp4-step-label{font-size:.68rem;font-weight:900;letter-spacing:.08em;color:#dfe7d7;border:1px solid rgba(255,255,255,.16);padding:6px 9px;border-radius:999px}
+.lp4-progress-dots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:14px 0 20px}
+.lp4-progress-dots i{height:4px;border-radius:999px;background:rgba(255,255,255,.16);transition:.22s}
+.lp4-progress-dots i.on,.lp4-progress-dots i.done{background:#f2d773}
+.lp4-pane{display:none;animation:lp4in .22s ease both}
+.lp4-pane.active{display:block}
+@keyframes lp4in{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
+.lp4-pane h2{font-size:clamp(1.85rem,8.5vw,2.65rem)!important;line-height:.98!important;margin-top:4px!important;max-width:590px}
+.lp4-pane>p{font-size:.92rem;line-height:1.45;color:#e6ecdf;max-width:575px}
+.lp4-back{border:0;background:transparent;color:#e8eee2;font:inherit;font-size:.76rem;font-weight:800;padding:0;margin:0 0 12px;cursor:pointer}
+.lp4-question{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.lp4-choice{display:grid!important;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:9px;align-items:center;min-height:68px!important}
+.lp4-choice>span{grid-row:1/3;font-size:1.12rem;min-width:23px;text-align:center;margin:0!important}
+.lp4-choice>b{display:block;font-size:.86rem;line-height:1.15;color:#fff}
+.lp4-choice>small{display:block;margin-top:3px;font-size:.65rem;line-height:1.2;color:#d9e0d3;font-weight:600}
+.lp4-choice.selected{background:rgba(242,215,115,.18)!important;border-color:#f2d773!important;box-shadow:0 0 0 1px rgba(242,215,115,.15) inset}
+.lp4-full{grid-column:1/-1}
+.lp4-hidden-start{display:none!important}
+@media(max-width:420px){.lp4-question{grid-template-columns:1fr 1fr!important;gap:8px}.lp4-choice{padding:10px!important;min-height:64px!important}.lp4-choice>b{font-size:.79rem}.lp4-choice>small{font-size:.61rem}.lp4-stage-grid .lp4-choice{min-height:58px!important}}
+
+/* Dynamic recipe rail */
+#homeRecipes{display:flex!important;gap:14px!important;overflow-x:auto!important;scroll-snap-type:x mandatory;padding:4px 3px 16px!important;margin-inline:-3px!important;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+#homeRecipes::-webkit-scrollbar{display:none}
+#homeRecipes .recipe-v2{flex:0 0 min(82vw,310px);scroll-snap-align:start}
+#exploreRecipes{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px!important}
+.recipe-v2{padding:0!important;overflow:hidden;border:1px solid rgba(59,74,37,.11)!important;border-radius:22px!important;background:#fff!important;text-align:left!important;box-shadow:0 10px 26px rgba(42,52,30,.07)!important;transition:transform .18s ease,box-shadow .18s ease!important}
+.recipe-v2:hover,.recipe-v2:focus-visible{transform:translateY(-3px);box-shadow:0 16px 34px rgba(42,52,30,.12)!important;outline:none}
+.recipe-v2-top{height:122px;position:relative;padding:14px;display:flex;align-items:flex-start;justify-content:space-between;overflow:hidden}
+.recipe-v2-top::before,.recipe-v2-top::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.30)}
+.recipe-v2-top::before{width:110px;height:110px;right:-28px;bottom:-38px}.recipe-v2-top::after{width:55px;height:55px;right:62px;top:17px;background:rgba(255,255,255,.18)}
+.recipe-v2-top.theme-D{background:linear-gradient(135deg,#efe6b8,#f6d76e)}
+.recipe-v2-top.theme-C{background:linear-gradient(135deg,#dce7c7,#aabe7a)}
+.recipe-v2-top.theme-N{background:linear-gradient(135deg,#e7c3b5,#c9785f)}
+.recipe-v2-top.theme-S{background:linear-gradient(135deg,#eed8df,#dca7b8)}
+.recipe-v2-icon{font-size:2.25rem;line-height:1;position:relative;z-index:2;filter:drop-shadow(0 3px 7px rgba(0,0,0,.08))}
+.recipe-v2-time{position:relative;z-index:2;background:rgba(255,255,255,.78);backdrop-filter:blur(4px);border-radius:999px;padding:6px 9px;font-size:.68rem;font-weight:900;color:#344322}
+.recipe-v2-body{padding:15px 16px 16px}
+.recipe-v2-eyebrow{display:block;font-size:.63rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase;color:#6b765a;margin-bottom:7px}
+.recipe-v2 h3{font-family:var(--serif)!important;font-size:1.16rem!important;line-height:1.08!important;margin:0 0 10px!important;color:#28351b!important}
+.recipe-v2-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:13px}
+.recipe-v2-tags span{font-size:.64rem;font-weight:750;background:#f0f3e9;color:#536043;border-radius:999px;padding:5px 8px}
+.recipe-v2-open{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #eceee7;padding-top:11px;font-size:.75rem;font-weight:900;color:#3b4a25}
+.recipe-v2-open b{font-size:1rem}
+.recipe-swipe-hint{font-weight:800;color:#6b765a}
+@media(max-width:680px){#exploreRecipes{grid-template-columns:1fr!important}.recipe-v2-top{height:112px}}
+
+/* Richer recipe detail */
+.recipe-detail-hero{margin:-3px -3px 18px;border-radius:20px;padding:20px;background:linear-gradient(135deg,#eef2e5,#fff7db);border:1px solid #e2e7d8;position:relative;overflow:hidden}
+.recipe-detail-hero::after{content:"";position:absolute;width:130px;height:130px;border-radius:50%;right:-50px;top:-45px;background:rgba(242,194,48,.17)}
+.recipe-detail-kicker{font-size:.67rem;font-weight:900;letter-spacing:.08em;color:#627050;text-transform:uppercase;position:relative;z-index:1}
+.recipe-detail-title{font-family:var(--serif);font-size:clamp(1.75rem,7vw,2.45rem);line-height:1.02;color:#28351b;margin:8px 0 13px;position:relative;z-index:1}
+.recipe-detail-meta{display:flex;gap:7px;flex-wrap:wrap;position:relative;z-index:1}
+.recipe-detail-meta span{background:#fff;border:1px solid #e2e7d8;border-radius:999px;padding:6px 9px;font-size:.7rem;font-weight:800;color:#536043}
+</style>
+
 </head>
 <body>
 <div class="app">
 <header class="top"><div class="topin"><div class="productBrand"><div class="brand hcbBrand">Hoy <span>Como Bien</span></div><small>by StudyOS</small></div><div class="freepill">GRATIS · SIN REGISTRO</div></div></header>
 <main>
 <section class="view active" id="home">
-<div class="heroCard guidedHero lp3Hero lp4Hero">
-<div class="eyebrow" style="color:#f2d773">HOY COMO BIEN · GRATIS</div>
-<h2>¿Qué comida quieres resolver ahora?</h2>
-<p>Empieza por una sola cosa. <strong>Elige el momento</strong> y nuestro sistema te guía hasta una receta concreta.</p>
-<div class="lp4-question" aria-label="Elige el momento del día">
-  <button type="button" class="lp4-choice" data-quick-moment="D"><span>☀️</span>Desayuno</button>
-  <button type="button" class="lp4-choice" data-quick-moment="C"><span>🍽️</span>Comida</button>
-  <button type="button" class="lp4-choice" data-quick-moment="N"><span>🌙</span>Cena</button>
-  <button type="button" class="lp4-choice" data-quick-moment="S"><span>🍓</span>Snack o dulce</button>
+<div class="heroCard guidedHero lp3Hero lp4Hero" id="inlineRecommender">
+<div class="lp4-quiztop">
+  <div class="eyebrow" style="color:#f2d773">HOY COMO BIEN · GRATIS</div>
+  <span class="lp4-step-label" id="lp4StepLabel">1 DE 4</span>
 </div>
+<div class="lp4-progress-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+
+<div class="lp4-pane active" data-inline-step="1">
+  <h2>¿Qué comida quieres resolver ahora?</h2>
+  <p>Empieza por una sola cosa. <strong>Elige el momento</strong> y seguimos desde aquí, sin cambiar de pantalla.</p>
+  <div class="lp4-question" aria-label="Elige el momento del día">
+    <button type="button" class="lp4-choice" data-quick-moment="D"><span>☀️</span><b>Desayuno</b><small>Empieza el día</small></button>
+    <button type="button" class="lp4-choice" data-quick-moment="C"><span>🍽️</span><b>Comida</b><small>Algo para mediodía</small></button>
+    <button type="button" class="lp4-choice" data-quick-moment="N"><span>🌙</span><b>Cena</b><small>Resuelve esta noche</small></button>
+    <button type="button" class="lp4-choice" data-quick-moment="S"><span>🍓</span><b>Snack o dulce</b><small>Entre horas</small></button>
+  </div>
+</div>
+
+<div class="lp4-pane" data-inline-step="2">
+  <button class="lp4-back" type="button" data-back-step="1">← Volver</button>
+  <h2>¿Qué buscas hoy?</h2>
+  <p>No hay una respuesta correcta. Elige lo que más encaje contigo ahora.</p>
+  <div class="lp4-question lp4-six">
+    <button type="button" class="lp4-choice" data-key="need" data-v="ai"><span>🌿</span><b>Enfoque antiinflamatorio</b></button>
+    <button type="button" class="lp4-choice" data-key="need" data-v="en"><span>⚡</span><b>Más energía</b></button>
+    <button type="button" class="lp4-choice" data-key="need" data-v="hi"><span>🪶</span><b>Algo ligero</b></button>
+    <button type="button" class="lp4-choice" data-key="need" data-v="sa"><span>🥣</span><b>Más saciedad</b></button>
+    <button type="button" class="lp4-choice" data-key="need" data-v="an"><span>🍫</span><b>Antojos</b></button>
+    <button type="button" class="lp4-choice" data-key="need" data-v="ra"><span>⏱️</span><b>Algo rápido</b></button>
+  </div>
+</div>
+
+<div class="lp4-pane" data-inline-step="3">
+  <button class="lp4-back" type="button" data-back-step="2">← Volver</button>
+  <h2>Si quieres, afina un poco más</h2>
+  <p>La etapa solo nos ayuda a ordenar mejor las opciones. Puedes saltártela.</p>
+  <div class="lp4-question lp4-stage-grid">
+    <button type="button" class="lp4-choice" data-key="stage" data-v="menstrual"><span>◐</span><b>Fase menstrual</b></button>
+    <button type="button" class="lp4-choice" data-key="stage" data-v="folicular"><span>◒</span><b>Fase folicular</b></button>
+    <button type="button" class="lp4-choice" data-key="stage" data-v="ovulatoria"><span>◉</span><b>Fase ovulatoria</b></button>
+    <button type="button" class="lp4-choice" data-key="stage" data-v="lutea"><span>◓</span><b>Fase lútea</b></button>
+    <button type="button" class="lp4-choice" data-key="stage" data-v="perimenopausia"><span>↗</span><b>Perimenopausia</b></button>
+    <button type="button" class="lp4-choice" data-key="stage" data-v="menopausia"><span>○</span><b>Menopausia</b></button>
+    <button type="button" class="lp4-choice lp4-full" data-key="stage" data-v="ninguna"><span>—</span><b>No lo sé / prefiero no indicarlo</b></button>
+  </div>
+</div>
+
+<div class="lp4-pane" data-inline-step="4">
+  <button class="lp4-back" type="button" data-back-step="3">← Volver</button>
+  <h2>¿Quieres evitar algo?</h2>
+  <p>Esta exclusión se mantiene: no la ignoraremos para enseñarte una receta.</p>
+  <div class="lp4-question">
+    <button type="button" class="lp4-choice" data-key="avoid" data-v="none"><span>✓</span><b>Nada en especial</b></button>
+    <button type="button" class="lp4-choice" data-key="avoid" data-v="gluten"><span>G</span><b>Gluten</b></button>
+    <button type="button" class="lp4-choice" data-key="avoid" data-v="lacteos"><span>L</span><b>Lácteos</b></button>
+    <button type="button" class="lp4-choice" data-key="avoid" data-v="huevo"><span>🥚</span><b>Huevo</b></button>
+    <button type="button" class="lp4-choice lp4-full" data-key="avoid" data-v="frutos"><span>🌰</span><b>Frutos secos</b></button>
+  </div>
+</div>
+
 <button class="lp4-hidden-start" data-track-action="free_recommendation_start" id="startQuiz" type="button">Empezar</button>
 <div class="lp3-micro">4 toques · menos de 1 min · sin registro</div>
-<div class="lp3-result" aria-label="Ejemplo de resultado">
-  <div class="lp3-result-top"><span>ASÍ TERMINA</span><b>Ejemplo · Cena · 20 min</b></div>
-  <strong>Crema de calabacín y jengibre con dados de pavo</strong>
-  <small>Una opción según tus respuestas</small>
-</div>
 </div>
 
 <div class="eyebrow">PRUÉBALO ANTES DE DECIDIR</div>
@@ -665,7 +770,7 @@ body{
 <button class="btn btnGhost" data-track-action="free_random_recipe" id="randomBtn">Sorpréndeme</button>
 </div></div>
 <div class="section">
-<div class="sectionHead"><div><div class="eyebrow">GRATIS</div><h2>Tus recetas</h2></div><span class="small">10 disponibles</span></div>
+<div class="sectionHead"><div><div class="eyebrow">GRATIS</div><h2>Tus recetas</h2></div><span class="small recipe-swipe-hint">10 gratis · desliza →</span></div>
 <div class="recipes" id="homeRecipes"></div>
 </div>
 <section class="home-plus-summary">
@@ -818,15 +923,6 @@ body{
 </div>
 </div>
 </section></section>
-<section class="view" id="quiz">
-<div class="eyebrow">Recomendador gratis</div><h1>Vamos a elegir</h1><div class="progress"><i id="bar"></i></div>
-<div class="quiz">
-<div class="q active" data-q="1"><h3>1. ¿Qué quieres resolver?</h3><div class="opts"><button class="opt" data-key="moment" data-v="D">Desayuno</button><button class="opt" data-key="moment" data-v="C">Comida</button><button class="opt" data-key="moment" data-v="N">Cena</button><button class="opt" data-key="moment" data-v="S">Snack o dulce</button></div></div>
-<div class="q" data-q="2"><h3>2. ¿Qué buscas hoy?</h3><div class="opts"><button class="opt" data-key="need" data-v="ai">Enfoque antiinflamatorio</button><button class="opt" data-key="need" data-v="en">Más energía</button><button class="opt" data-key="need" data-v="hi">Algo ligero</button><button class="opt" data-key="need" data-v="sa">Más saciedad</button><button class="opt" data-key="need" data-v="an">Antojos</button><button class="opt" data-key="need" data-v="ra">Algo rápido</button></div></div>
-<div class="q" data-q="3"><h3>3. Si quieres, afina un poco más</h3><p class="small" style="margin-top:-4px">La etapa solo ayuda a ordenar mejor las opciones.</p><div class="opts"><button class="opt" data-key="stage" data-v="menstrual">Fase menstrual</button><button class="opt" data-key="stage" data-v="folicular">Fase folicular</button><button class="opt" data-key="stage" data-v="ovulatoria">Fase ovulatoria</button><button class="opt" data-key="stage" data-v="lutea">Fase lútea</button><button class="opt" data-key="stage" data-v="perimenopausia">Perimenopausia</button><button class="opt" data-key="stage" data-v="menopausia">Menopausia</button><button class="opt" data-key="stage" data-v="ninguna">No lo sé / prefiero no indicarlo</button></div></div>
-<div class="q" data-q="4"><h3>4. ¿Quieres evitar algo?</h3><div class="opts"><button class="opt" data-key="avoid" data-v="none">Nada en especial</button><button class="opt" data-key="avoid" data-v="gluten">Gluten</button><button class="opt" data-key="avoid" data-v="lacteos">Lácteos</button><button class="opt" data-key="avoid" data-v="huevo">Huevo</button><button class="opt" data-key="avoid" data-v="frutos">Frutos secos</button></div></div>
-</div>
-</section>
 </main>
 <nav aria-label="Navegación principal" class="bottom" style="grid-template-columns:repeat(4,1fr)">
 <button class="nav active" data-go="home"><svg class="navIcon" viewbox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8"></path><path d="M5.5 9.5V21h13V9.5"></path><path d="M9.5 21v-6h5v6"></path></svg><span class="navLabel">Hoy</span></button>
@@ -843,9 +939,11 @@ const R=JSON.parse(document.getElementById('recipe-data').textContent);
 const labels={D:'Desayuno',C:'Comida',N:'Cena',S:'Snack'};
 let filter='all', state={};
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-function card(r){return `<button class="recipe" data-id="${r.id}"><span class="tag">${r.ph}</span><h3>${r.t}</h3><div class="meta">${r.m} min · ${r.k} kcal aprox.</div></button>`}
+function mealCode(r){return (r.mo&&r.mo[0])||'C'}
+function mealIcon(r){return {D:'☀️',C:'🍽️',N:'🌙',S:'🍓'}[mealCode(r)]||'🍽️'}
+function card(r){const code=mealCode(r),meal=labels[code]||'Receta',g=(r.g||[]).slice(0,1);return `<button class="recipe recipe-v2" data-id="${r.id}"><div class="recipe-v2-top theme-${code}"><span class="recipe-v2-icon">${mealIcon(r)}</span><span class="recipe-v2-time">${r.m} min</span></div><div class="recipe-v2-body"><span class="recipe-v2-eyebrow">${meal} · ${r.ph}</span><h3>${r.t}</h3><div class="recipe-v2-tags"><span>${r.d}</span>${g.map(x=>`<span>${x}</span>`).join('')}</div><div class="recipe-v2-open"><span>Ver receta</span><b>→</b></div></div></button>`}
 function bindCards(){ $$('.recipe').forEach(b=>b.onclick=()=>openRecipe(b.dataset.id)); }
-function renderHome(){ $('#homeRecipes').innerHTML=R.slice(0,4).map(card).join(''); bindCards(); }
+function renderHome(){ $('#homeRecipes').innerHTML=R.map(card).join(''); bindCards(); }
 function renderExplore(){
  const q=$('#search').value.trim().toLowerCase();
  const list=R.filter(r=>(filter==='all'||r.mo.includes(filter))&&(!q||(r.t+' '+r.g.join(' ')+' '+r.ing.join(' ')).toLowerCase().includes(q)));
@@ -853,18 +951,32 @@ function renderExplore(){
 }
 function go(id){$$('.view').forEach(v=>v.classList.toggle('active',v.id===id));$$('.nav').forEach(n=>n.classList.toggle('active',n.dataset.go===id));scrollTo(0,0);if(id==='explore')renderExplore()}
 $$('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
-$('#startQuiz').onclick=()=>{const preset=window.studyosQuickMoment||null;state=preset?{moment:preset}:{};showQ(preset?2:1);go('quiz');window.studyosQuickMoment=null};
-$$('[data-quick-moment]').forEach(b=>b.onclick=()=>{window.studyosQuickMoment=b.dataset.quickMoment;$('#startQuiz').click()});
+let inlineStep=1,quizStarted=false;
+function syncSelected(){
+  $$('[data-quick-moment]').forEach(b=>b.classList.toggle('selected',state.moment===b.dataset.quickMoment));
+  $$('.lp4-choice[data-key]').forEach(b=>b.classList.toggle('selected',state[b.dataset.key]===b.dataset.v));
+}
+function setInlineStep(n){
+  inlineStep=n;
+  $$('.lp4-pane').forEach(p=>p.classList.toggle('active',Number(p.dataset.inlineStep)===n));
+  $$('.lp4-progress-dots i').forEach((dot,i)=>{dot.classList.toggle('on',i===n-1);dot.classList.toggle('done',i<n-1)});
+  $('#lp4StepLabel').textContent=n+' DE 4';
+  syncSelected();
+}
+function trackQuizStartOnce(){if(!quizStarted){quizStarted=true;$('#startQuiz').click();}}
+$('#startQuiz').onclick=()=>{};
+$$('[data-quick-moment]').forEach(b=>b.onclick=()=>{state.moment=b.dataset.quickMoment;trackQuizStartOnce();setInlineStep(2)});
+$$('.lp4-choice[data-key]').forEach(b=>b.onclick=()=>{
+ state[b.dataset.key]=b.dataset.v;
+ const q=Number(b.closest('.lp4-pane').dataset.inlineStep);
+ syncSelected();
+ if(q<4)setInlineStep(q+1); else recommend();
+});
+$$('.lp4-back').forEach(b=>b.onclick=()=>setInlineStep(Number(b.dataset.backStep)));
 $('#randomBtn').onclick=()=>openRecipe(R[Math.floor(Math.random()*R.length)].id);
 $('#search').oninput=renderExplore;
 $$('.chip[data-filter]').forEach(c=>c.onclick=()=>{$$('.chip[data-filter]').forEach(x=>x.classList.remove('active'));c.classList.add('active');filter=c.dataset.filter;renderExplore()});
 $('#advancedLock').onclick=()=>go('plus');
-function showQ(n){$$('.q').forEach(x=>x.classList.toggle('active',Number(x.dataset.q)===n));$('#bar').style.width=(n*25)+'%'}
-$$('.opt').forEach(b=>b.onclick=()=>{
- state[b.dataset.key]=b.dataset.v;
- const q=Number(b.closest('.q').dataset.q);
- if(q<4)showQ(q+1); else recommend();
-});
 function allowed(r){
  const a=(r.a||'').toLowerCase(),v=state.avoid;
  if(!v||v==='none')return true;
@@ -888,7 +1000,8 @@ window.studyosFreeOpenRecipe=function(id){openRecipe(id,false)};
 function openRecipe(id,rec){
  const r=R.find(x=>x.id===id); if(!r)return;
  if(window.studyosTrackRecipeOpen) window.studyosTrackRecipeOpen(id,!!rec);
- $('#detail').innerHTML=`<div class="eyebrow">${rec?'UNA OPCIÓN SEGÚN TUS RESPUESTAS':'RECETA GRATIS'}</div><h2>${r.t}</h2><div class="facts"><span class="fact">${r.ph}</span><span class="fact">${r.m} min</span><span class="fact">${r.k} kcal aprox.</span><span class="fact">${r.d}</span></div><h3>Ingredientes</h3><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Preparación</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol><h3>El porqué biológico</h3><div class="bio">${r.bio}</div><div class="unlock cv3-result-offer"><span class="eyebrow">HOY YA LO TIENES RESUELTO</span><strong>Haz que el sistema te ayude también mañana.</strong><p>La versión completa amplía el recomendador a 500 recetas y añade 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><div class="cv3-benefits"><span>✓ 500 recetas</span><span>✓ 6 menús semanales</span><span>✓ 6 listas de la compra</span><span>✓ Batch cooking + sustituciones</span></div><a class="btn btnYellow wide" data-cv3="recommendation" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track-action="plus_checkout">Desbloquear acceso completo · 5 €</a><p class="cv3-micro">Pago único · Sin suscripción.</p></div>`;
+ const code=mealCode(r),meal=labels[code]||'Receta';
+ $('#detail').innerHTML=`<div class="recipe-detail-hero"><div class="recipe-detail-kicker">${rec?'UNA OPCIÓN SEGÚN TUS RESPUESTAS':meal+' · RECETA GRATIS'}</div><div class="recipe-detail-title">${r.t}</div><div class="recipe-detail-meta"><span>${meal}</span><span>${r.m} min</span><span>${r.d}</span><span>${r.k} kcal aprox.</span></div></div><h3>Ingredientes</h3><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Preparación</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol><h3>El porqué biológico</h3><div class="bio">${r.bio}</div><div class="unlock cv3-result-offer"><span class="eyebrow">HOY YA LO TIENES RESUELTO</span><strong>Haz que el sistema te ayude también mañana.</strong><p>La versión completa amplía el recomendador a 500 recetas y añade 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><div class="cv3-benefits"><span>✓ 500 recetas</span><span>✓ 6 menús semanales</span><span>✓ 6 listas de la compra</span><span>✓ Batch cooking + sustituciones</span></div><a class="btn btnYellow wide" data-cv3="recommendation" style="display:block;text-align:center;text-decoration:none" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00" data-track-action="plus_checkout">Desbloquear acceso completo · 5 €</a><p class="cv3-micro">Pago único · Sin suscripción.</p></div>`;
  $('#modal').classList.add('open');
 }
 $('#close').onclick=()=>$('#modal').classList.remove('open');
