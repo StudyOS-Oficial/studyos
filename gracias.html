@@ -2,215 +2,88 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gracias por tu compra | StudyOS</title>
-<meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#3B4A25">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Tu acceso está listo | Hoy Como Bien</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#2B3520">
+<meta name="description" content="Acceso a Hoy Como Bien · Completo, el producto de StudyOS con 500 recetas y herramientas para decidir y organizar tus comidas.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='24' cy='32' r='20' fill='%233B4A25'/%3E%3Ccircle cx='40' cy='32' r='20' fill='%23F2C230' fill-opacity='.8'/%3E%3C/svg%3E">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="tracking.js" defer></script>
-
-<!--
-  SUBE ESTE ARCHIVO junto a index.html y tracking.js.
-  EN STRIPE (Payment Link > Después del pago > Redirigir a tu sitio web), pon:
-     https://TU-DOMINIO/gracias.html?session_id={CHECKOUT_SESSION_ID}
-  AJUSTES EN ESTE ARCHIVO:
-  - Descarga: enlace directo del PDF mejorado en Drive. Ver online: el mismo archivo en el visor de Drive.
-  - CAPI_ENDPOINT (al final): la dirección de tu función del servidor, cuando la tengas.
--->
-
 <style>
-  :root {
-    --olive-950: #1F2715; --olive-900: #2B3520; --olive-800: #3B4A25; --olive-700: #4A5A2A;
-    --olive-500: #6E8036; --sage: #B7C48B; --page: #F2F4E6; --paper: #FAFBF4;
-    --yellow: #F2C230; --yellow-hover: #FFD24D; --salmon: #C9785F;
-    --ink: #26301F; --muted: #56613F; --line: rgba(74, 90, 42, .24);
-    --serif: "Fraunces", Georgia, "Times New Roman", serif;
-    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  }
-  *, *::before, *::after { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body { margin: 0; background: var(--page); color: var(--ink); font-family: var(--sans); font-size: 1.0625rem; line-height: 1.6; }
-  a { color: inherit; }
-  h1, h2 { font-family: var(--serif); font-weight: 600; margin: 0; letter-spacing: -.01em; }
-  p { margin: 0; }
-  :focus-visible { outline: 3px solid var(--olive-500); outline-offset: 3px; border-radius: 4px; }
-  .wrap { width: 100%; max-width: 760px; margin-inline: auto; padding-inline: clamp(20px, 5vw, 40px); }
-
-  .top { padding-block: 18px; }
-  .mark { font-family: var(--serif); font-size: 1.6rem; font-weight: 600; color: var(--olive-800); text-decoration: none; letter-spacing: -.02em; }
-  .mark span { color: var(--salmon); }
-
-  .thanks { padding-block: clamp(32px, 7vw, 80px) 40px; }
-  h1 { font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.08; color: var(--olive-900); }
-  .lede { margin-top: 18px; max-width: 34rem; color: var(--muted); font-size: 1.15rem; }
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; text-align: center;
-    min-height: 60px; padding: .9rem 2rem; margin-top: 30px;
-    border-radius: 999px; background: var(--yellow); color: var(--olive-950);
-    font: 700 1.15rem/1.2 var(--sans); text-decoration: none;
-    box-shadow: 0 6px 18px rgba(242, 194, 48, .38); transition: background-color .2s;
-  }
-  .btn:hover { background: var(--yellow-hover); }
-  .alt { margin-top: 16px; font-size: .95rem; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
-  .btn-line { display: inline-flex; align-items: center; min-height: 44px; padding: .5rem 1.2rem; border: 2px solid var(--olive-700); border-radius: 999px; font-weight: 600; color: var(--olive-800); text-decoration: none; }
-  .btn-line:hover { background: var(--olive-700); color: #fff; }
-  .alt a { color: var(--olive-700); }
-
-  .plus-card { background: var(--paper); border: 2px solid var(--yellow); border-radius: 22px; padding: clamp(24px, 4vw, 34px); }
-  .plus-card h2 { color: var(--olive-900); font-size: clamp(1.4rem, 4vw, 1.8rem); }
-  .plus-card p { margin-top: 10px; color: var(--muted); max-width: 34rem; }
-  .plus-card .btn { margin-top: 20px; background: var(--olive-700); color: #fff; }
-  .plus-card .btn:hover { background: var(--olive-900); }
-  .community { background: var(--olive-800); color: #fff; border-radius: 22px; padding: clamp(24px, 4vw, 34px); }
-  .community h2 { font-size: clamp(1.4rem, 4vw, 1.8rem); color: #fff; }
-  .community p { margin-top: 10px; color: rgba(255, 255, 255, .88); max-width: 34rem; }
-  .community .btn { background: var(--page); color: var(--olive-900); box-shadow: none; margin-top: 20px; }
-  .community .btn:hover { background: #fff; }
-  .comm-wrap { padding-block: 8px 8px; }
-  .start { padding-block: 24px 64px; }
-  .start h2 { font-size: 1.6rem; color: var(--olive-900); }
-  .start ul { list-style: none; margin: 18px 0 0; padding: 0; }
-  .start li { padding: 14px 0; border-top: 1px solid var(--line); color: var(--muted); }
-  .start li:last-child { border-bottom: 1px solid var(--line); }
-  .start li b { display: block; font-family: var(--serif); font-size: 1.15rem; font-weight: 600; color: var(--olive-700); }
-  .ig { margin-top: 22px; color: var(--muted); }
-
-  footer { padding-block: 28px 44px; font-size: .9rem; color: var(--muted); }
-  .legal-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
-  .legal-links { margin-bottom: 12px; }
-  .legal-links a { color: inherit; }
-  .linkbtn { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; }
+:root{--olive:#3B4A25;--dark:#26301F;--deep:#2B3520;--sage:#B7C48B;--page:#F3F4E8;--paper:#FCFCF7;--yellow:#F2C230;--salmon:#C9785F;--muted:#667051;--line:rgba(59,74,37,.18);--serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--dark);font-family:var(--sans);line-height:1.55}a{color:inherit}.wrap{width:min(760px,100%);margin:auto;padding-inline:20px}.top{padding:18px 0}.brand{font-family:var(--serif);font-size:1.55rem;font-weight:600;color:var(--olive);text-decoration:none}.brand span{color:var(--salmon)}
+.hero{padding:26px 0 22px}.kicker{font-size:.75rem;font-weight:800;letter-spacing:.1em;color:var(--olive);text-transform:uppercase}.hero h1{font-family:var(--serif);font-size:clamp(2.25rem,9vw,4rem);line-height:.98;letter-spacing:-.045em;margin:9px 0 14px;color:var(--deep)}.hero .lead{font-size:1.08rem;color:var(--muted);max-width:38rem}.status{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:8px 12px;border-radius:999px;background:#E5EBD4;font-size:.8rem;font-weight:800;color:var(--olive)}.dot{width:8px;height:8px;border-radius:50%;background:#6E8036}
+.access{margin-top:18px;background:var(--deep);color:#fff;border-radius:28px;padding:clamp(22px,6vw,34px);box-shadow:0 18px 50px rgba(31,39,21,.15)}.access small{display:block;color:#E9D96F;font-weight:800;letter-spacing:.08em}.access h2{font-family:var(--serif);font-size:clamp(1.75rem,6vw,2.5rem);line-height:1.04;margin:8px 0 10px}.access p{color:#E6EBDD;max-width:36rem}.cta{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:22px;background:var(--yellow);color:var(--dark);border-radius:999px;padding:16px 20px;text-decoration:none;font-weight:800;box-shadow:0 8px 22px rgba(242,194,48,.22)}.cta:hover{filter:brightness(1.04)}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.feature{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:15px;padding:12px}.feature b{display:block;font-size:.86rem}.feature span{display:block;font-size:.72rem;color:#DDE4D4;margin-top:3px}
+.secondary{margin:18px 0;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:22px}.secondary h2,.start h2{font-family:var(--serif);font-size:1.5rem;margin:0;color:var(--deep)}.secondary p{color:var(--muted);margin:8px 0 0}.secondary-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}.btnline{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:9px 14px;border-radius:999px;border:1.5px solid var(--olive);color:var(--olive);font-weight:700;text-decoration:none;background:transparent}
+.start{padding:10px 0 36px}.start-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.step{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px}.step strong{font-family:var(--serif);display:block;font-size:1.05rem}.step span{display:block;color:var(--muted);font-size:.84rem;margin-top:5px}
+.community{margin:0 0 28px;padding:18px 20px;border-radius:20px;background:#E8EBDD}.community b{display:block}.community p{color:var(--muted);font-size:.9rem;margin:5px 0 10px}.community a{font-weight:800;color:var(--olive)}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);font-size:.82rem}.legal{display:flex;flex-wrap:wrap;gap:8px 16px;margin-bottom:12px}.linkbtn{border:0;background:transparent;padding:0;text-decoration:underline;color:inherit;font:inherit;cursor:pointer}
+@media(max-width:620px){.features,.start-grid{grid-template-columns:1fr}.cta{border-radius:18px}.hero{padding-top:16px}}
 </style>
 </head>
-
 <body>
-
-<header class="top">
-  <div class="wrap"><a class="mark" href="index.html" aria-label="StudyOS, inicio">Study<span>OS</span></a></div>
-</header>
-
+<header class="top"><div class="wrap"><a class="brand" href="index.html" aria-label="StudyOS, inicio">Study<span>OS</span></a></div></header>
 <main>
-  <section class="thanks">
-    <div class="wrap">
-      <h1>¡Gracias por tu compra!</h1>
-      <p class="lede">Tu acceso a StudyOS+ ya está listo. Entra ahora y empieza a encontrar la receta que buscas entre las 500 opciones.</p>
-
-      <a class="btn" id="ver-plus-main" href="plus.html">Abrir StudyOS+ →</a>
-      <p class="alt">500 recetas · acceso completo · pago único</p>
-    </div>
-  </section>
-
-  <section class="comm-wrap">
-    <div class="wrap">
-      <div class="plus-card">
-        <h2>Todo StudyOS+ está desbloqueado 🔓</h2>
-        <p>Explora las 500 recetas, utiliza el recomendador y filtra según tu etapa, necesidad, momento del día o tiempo de preparación.</p>
-        <a class="btn" id="ver-plus" href="plus.html">Entrar a StudyOS+</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="comm-wrap">
-    <div class="wrap">
-      <div class="community">
-        <h2>Únete a la comunidad de StudyOS en WhatsApp</h2>
-        <p>Cada día compartimos consejos y recetas. Unirte es voluntario y puedes salir cuando quieras.</p>
-        <a class="btn" id="whatsapp" href="https://chat.whatsapp.com/KZn3BneaAfKGsTAgORsOLn" target="_blank" rel="noopener">Unirme a la comunidad</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="start">
-    <div class="wrap">
-      <h2>Por dónde empezar</h2>
-      <ul>
-        <li><b>Empieza por “Hoy”</b>Responde las preguntas de StudyOS+ y recibe una opción según tus respuestas.</li>
-        <li><b>Explora las 500 recetas</b>Usa el buscador y los filtros para encontrar rápidamente lo que te apetece.</li>
-        <li><b>Aprovecha los extras</b>Tienes 6 menús semanales, listas de la compra, batch cooking y guía de alimentos y sustituciones.</li>
-      </ul>
-      <p class="ig">Cuéntanos qué receta preparas primero en <a href="https://www.instagram.com/studyos_oficial/" target="_blank" rel="noopener">@studyos_oficial</a>.</p>
-    </div>
-  </section>
+<section class="hero"><div class="wrap">
+<div class="kicker">HOY COMO BIEN · ACCESO COMPLETO</div>
+<h1>Tu acceso ya está listo.</h1>
+<p class="lead">Gracias por tu compra. Puedes entrar directamente en Hoy Como Bien y empezar por la decisión más útil: qué comer ahora.</p>
+<div class="status"><span class="dot"></span>5 € · pago único · sin suscripción</div>
+<div class="access">
+<small>EMPIEZA AQUÍ</small>
+<h2>Abre Hoy Como Bien</h2>
+<p>Encuentra una receta entre 500 opciones, organiza tu semana, busca por ingredientes o resuelve una comida rápida cuando no quieras darle más vueltas.</p>
+<div class="features">
+<div class="feature"><b>500 recetas</b><span>Desayunos, comidas, cenas y snacks.</span></div>
+<div class="feature"><b>Recomendador</b><span>Reduce opciones según lo que buscas.</span></div>
+<div class="feature"><b>Crea mi semana</b><span>7 días + lista de la compra orientativa.</span></div>
+<div class="feature"><b>Nevera y rápido</b><span>Busca por ingredientes o por tiempo.</span></div>
+</div>
+<a class="cta" id="open-product" href="plus.html"><span>Abrir Hoy Como Bien</span><span aria-hidden="true">→</span></a>
+</div>
+</div></section>
+<section><div class="wrap">
+<div class="secondary">
+<h2>¿También quieres guardar el recetario en PDF?</h2>
+<p>El PDF es un complemento del acceso interactivo. Puedes descargarlo o abrirlo online.</p>
+<div class="secondary-actions">
+<a class="btnline" id="download-pdf" href="https://drive.google.com/uc?export=download&id=1zXt4ycUuWuXLDbDsRWfpBN0fTz3fCtU_" target="_blank" rel="noopener">Descargar PDF</a>
+<a class="btnline" id="view-pdf" href="https://drive.google.com/file/d/1zXt4ycUuWuXLDbDsRWfpBN0fTz3fCtU_/view" target="_blank" rel="noopener">Ver PDF online</a>
+</div>
+</div>
+<div class="start">
+<h2>Tres formas de empezar</h2>
+<div class="start-grid">
+<div class="step"><strong>¿Qué como ahora?</strong><span>Deja que el sistema reduzca las 500 opciones.</span></div>
+<div class="step"><strong>Tengo ingredientes</strong><span>Escribe lo que tienes y encuentra coincidencias.</span></div>
+<div class="step"><strong>Quiero organizarme</strong><span>Crea una semana y después su lista de la compra.</span></div>
+</div>
+</div>
+<div class="community"><b>Comunidad StudyOS en WhatsApp</b><p>Es opcional. Puedes entrar para seguir novedades y salir cuando quieras.</p><a id="whatsapp" href="https://chat.whatsapp.com/KZn3BneaAfKGsTAgORsOLn" target="_blank" rel="noopener">Unirme a la comunidad →</a></div>
+</div></section>
 </main>
-
-<footer>
-  <div class="wrap">
-    <nav class="legal-links" aria-label="Información legal">
-      <a href="aviso-legal.html">Aviso legal</a>
-      <a href="terminos.html">Términos y condiciones</a>
-      <a href="privacidad.html">Privacidad y cookies</a>
-    </nav>
-    <button type="button" class="linkbtn" id="cookie-settings">Configurar cookies</button>
-  </div>
-</footer>
-
+<footer><div class="wrap"><nav class="legal" aria-label="Información legal"><a href="aviso-legal.html">Aviso legal</a><a href="terminos.html">Términos y condiciones</a><a href="privacidad.html">Privacidad y cookies</a></nav><button type="button" class="linkbtn" id="cookie-settings">Configurar cookies</button></div></footer>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // ===== AJUSTES =====
-    var VALOR = 5.00;          // precio del recetario
-    var MONEDA = "EUR";
-    // Dirección de tu función del servidor para la API de Conversiones (déjala vacía hasta que la tengas).
-    // Ejemplo: "https://studyos-capi.vercel.app/api/purchase"
-    var CAPI_ENDPOINT = "";
-
-    // ===== Evento Purchase =====
-    // Solo se envía si: (1) han aceptado las cookies, (2) la URL trae el session_id de Stripe (cs_...)
-    // y (3) no se ha enviado ya para esa misma compra (por si recargan la página).
-    var sid = new URLSearchParams(location.search).get("session_id") || "";
-    if (sid.indexOf("cs_") !== 0 || !window.studyosWhenConsented) return;
-
-    function cookie(name) {
-      var m = document.cookie.match("(?:^|; )" + name + "=([^;]*)");
-      return m ? decodeURIComponent(m[1]) : undefined;
-    }
-
-    window.studyosWhenConsented(function () {
-      var flag = "studyos_purchase_" + sid;
-      try {
-        if (localStorage.getItem(flag)) return;
-        localStorage.setItem(flag, "1");
-      } catch (e) {}
-
-      // 1) GA4 (purchase) y Pixel de Meta (Purchase). La misma eventID en el servidor evita que Meta cuente la compra dos veces.
-      window.studyosFunnel("purchase", { transaction_id: sid, funnel_version: "v2_app" });
-
-      // 2) API de Conversiones (servidor), opcional.
-      if (CAPI_ENDPOINT) {
-        fetch(CAPI_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          keepalive: true,
-          body: JSON.stringify({
-            session_id: sid,
-            fbp: cookie("_fbp"),
-            fbc: cookie("_fbc"),
-            url: location.origin + location.pathname
-          })
-        }).catch(function () {});
-      }
+document.addEventListener("DOMContentLoaded",function(){
+  var sid=new URLSearchParams(location.search).get("session_id")||"";
+  if(sid.indexOf("cs_")===0 && window.studyosWhenConsented){
+    window.studyosWhenConsented(function(){
+      var flag="studyos_purchase_"+sid;
+      try{if(localStorage.getItem(flag))return;localStorage.setItem(flag,"1");}catch(e){}
+      if(window.studyosFunnel)window.studyosFunnel("purchase",{transaction_id:sid});
     });
-  });
+  }
+  var open=document.getElementById("open-product");
+  if(open)open.addEventListener("click",function(){if(window.studyosTrackCustom)window.studyosTrackCustom("PaidProductOpen",{});});
+  var pdf=document.getElementById("download-pdf");
+  if(pdf)pdf.addEventListener("click",function(){if(window.studyosGA)window.studyosGA("paid_pdf_download",{});});
+  var w=document.getElementById("whatsapp");
+  if(w)w.addEventListener("click",function(){if(window.studyosTrack)window.studyosTrack("Contact",{content_name:"Comunidad WhatsApp"});});
+});
 </script>
-
-<script>
-  // Clic en la comunidad de WhatsApp (solo se registra si aceptó las cookies).
-  document.addEventListener("DOMContentLoaded", function () {
-    var w = document.getElementById("whatsapp");
-    if (w) w.addEventListener("click", function () {
-      if (window.studyosTrack) window.studyosTrack("Contact", { content_name: "Comunidad WhatsApp" });
-    });
-    ["ver-plus", "ver-plus-main"].forEach(function (id) {
-      var plus = document.getElementById(id);
-      if (plus) plus.addEventListener("click", function () {
-        if (window.studyosTrackCustom) window.studyosTrackCustom("StudyOSPlusOpen", {});
-      });
-    });
-  });
-</script>
-
 </body>
 </html>

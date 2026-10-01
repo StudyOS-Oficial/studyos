@@ -1,0 +1,17 @@
+{
+  "stripe_url": "https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00",
+  "price_eur": 5,
+  "landing_stripe_links": 2,
+  "landing_usd_occurrences": 0,
+  "thankyou_old_100_recipe_mentions": 0,
+  "thankyou_500_recipe_mentions": 2,
+  "purchase_requires_cs_prefix": true,
+  "ad_parameter_preserved_in_consented_attribution": true,
+  "checkout_reference_uses_ad_angle": true,
+  "public_product_name": "Hoy Como Bien · Completo",
+  "offline_browser_checkout_ref": "https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00?client_reference_id=ad-whatsappstory",
+  "offline_browser_checkout_test": "OK",
+  "offline_browser_thankyou_test": "OK",
+  "offline_browser_premium_load": "OK",
+  "offline_browser_js_errors": 0
+}

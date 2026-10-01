@@ -21,7 +21,7 @@
   var KEY = "studyos_cookies"; // "granted" (acepta) o "denied" (rechaza)
 
   // Producto de pago (se usa en los eventos de GA4 y de Meta)
-  var PRODUCT = { id: "studyos-plus", name: "StudyOS+", price: 5, currency: "EUR" };
+  var PRODUCT = { id: "studyos-plus", name: "Hoy Como Bien · Completo", price: 5, currency: "EUR" };
   var ATTR_KEY = "studyos_attribution";
   var ATTR_TTL = 30 * 24 * 3600 * 1000; // 30 días
   var UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
@@ -95,6 +95,7 @@
       var p = new URLSearchParams(location.search);
       var key = window.studyosPainKey ? window.studyosPainKey() : "";
       if (key) a.pain_point = key;
+      var ad = cleanVal(p.get("ad")); if (ad) a.ad = ad;
       UTM_KEYS.forEach(function (k) { var v = cleanVal(p.get(k)); if (v) a[k] = v; });
     } catch (e) {}
     return a;
@@ -108,7 +109,7 @@
       var o = JSON.parse(raw);
       if (!o || !o.ts || Date.now() - o.ts > ATTR_TTL) { localStorage.removeItem(ATTR_KEY); return null; }
       var clean = {};
-      Object.keys(o).forEach(function (k) { if (k === "pain_point" || UTM_KEYS.indexOf(k) > -1) clean[k] = cleanVal(o[k]); });
+      Object.keys(o).forEach(function (k) { if (k === "pain_point" || k === "ad" || UTM_KEYS.indexOf(k) > -1) clean[k] = cleanVal(o[k]); });
       return clean;
     } catch (e) { return null; }
   }
@@ -124,9 +125,10 @@
   function gaParams() {
     var out = {
       landing_variant: attr.pain_point ? "dolor_" + attr.pain_point : "default",
-      ad_angle: attr.utm_content || attr.pain_point || "none"
+      ad_angle: attr.ad || attr.utm_content || attr.pain_point || "none"
     };
     if (attr.pain_point) out.pain_point = attr.pain_point;
+    if (attr.ad) out.ad_variant = attr.ad;
     ["utm_source", "utm_medium", "utm_campaign", "utm_content"].forEach(function (k) { if (attr[k]) out[k] = attr[k]; });
     return out;
   }
@@ -134,6 +136,7 @@
     var g = gaParams();
     var c = { landing_variant: g.landing_variant, ad_angle: g.ad_angle };
     if (g.pain_point) c.pain_point = g.pain_point;
+    if (g.ad_variant) c.ad_variant = g.ad_variant;
     return c;
   }
   window.studyosAttribution = function () { return gaParams(); };

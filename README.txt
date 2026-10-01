@@ -1,12 +1,12 @@
-HOY COMO BIEN · CONTROL FINAL
+HOY COMO BIEN · PAS 3 FUNNEL FINAL
 
-Fitxers:
-- index.html
-- plus.html
-- tracking.js
-- worker-lp4d3-reset.js
-- QA_CONTROL_FINAL.md
-- QA_STATIC.json
-- QA_BROWSER.json
+Sube al repositorio:
+1. index.html
+2. plus.html
+3. tracking.js
+4. gracias.html
 
-Ordre recomanat: index.html -> plus.html -> tracking.js -> Worker D3.
+Después comprueba en Stripe que la redirección del Payment Link sea:
+https://studyos-oficial.github.io/studyos/gracias.html?session_id={CHECKOUT_SESSION_ID}
+
+No cambies la URL de pago de la landing: ya usa el Payment Link actual.
