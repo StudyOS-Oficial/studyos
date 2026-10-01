@@ -280,6 +280,30 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
 .v4-week-grid{display:grid;gap:14px;margin-top:18px}.v4-day{background:#fff;border:1px solid var(--line);border-radius:20px;padding:15px}.v4-day h3{margin:0 0 10px;color:var(--olive)}.v4-meal{display:grid;grid-template-columns:72px 1fr auto;gap:8px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}.v4-meal:first-of-type{border-top:0}.v4-meal small{font-weight:900;color:var(--muted)}.v4-open{border:0;background:none;text-align:left;font:inherit;color:var(--olive);font-weight:800;cursor:pointer}.v4-swap{border:1px solid var(--line);background:#fafbf5;border-radius:10px;padding:7px 9px;cursor:pointer}.v4-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.v4-list{columns:2;column-gap:28px}.v4-list li{break-inside:avoid;margin:0 0 8px}.v4-results{display:grid;gap:9px;margin-top:12px}.v4-result{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px;text-align:left;cursor:pointer}.v4-result b{display:block;color:var(--olive)}.v4-result small{color:var(--muted)}
 @media(max-width:620px){.v4-controls{grid-template-columns:1fr}.v4-meal{grid-template-columns:58px 1fr}.v4-swap{grid-column:2;justify-self:start}.v4-list{columns:1}}
 </style>
+
+<style id="hcb-pas2-ux">
+/* PAS 2 · home */
+.hcb-main-action{margin-top:22px;background:var(--olive-900);color:#fff;border-radius:28px;padding:22px;box-shadow:0 16px 36px rgba(43,53,32,.16);position:relative;overflow:hidden}
+.hcb-main-action:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:rgba(242,194,48,.15);right:-72px;top:-92px;pointer-events:none}
+.hcb-main-copy{position:relative;z-index:1}.hcb-main-copy small{font-weight:850;letter-spacing:.11em;color:#f4dc73}.hcb-main-copy h2{font-size:1.65rem;line-height:1.08;color:#fff;margin:7px 0 8px}.hcb-main-copy p{color:rgba(255,255,255,.79);max-width:33rem;font-size:.94rem}.hcb-main-action>.btn{margin-top:18px;position:relative;z-index:1;width:100%}
+.hcb-action-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.hcb-action{min-height:126px;border:1px solid var(--line);border-radius:20px;background:var(--paper);padding:16px;text-align:left;color:var(--ink);font:inherit;cursor:pointer;transition:transform .16s,border-color .16s,box-shadow .16s}.hcb-action:active{transform:scale(.985)}.hcb-action:hover{border-color:var(--olive-500);box-shadow:0 8px 22px rgba(43,53,32,.07)}.hcb-action-icon{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:rgba(183,196,139,.24);font-size:1.18rem;margin-bottom:12px}.hcb-action b,.hcb-action small{display:block}.hcb-action b{color:var(--olive-900);font-size:.94rem}.hcb-action small{color:var(--muted);font-size:.76rem;line-height:1.35;margin-top:4px}
+.hcb-library{margin-top:28px}.hcb-library-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline}.hcb-library-head h2{font-size:1.2rem;color:var(--olive-900)}.hcb-text-action{border:0;background:none;padding:0;color:var(--olive-700);font:700 .78rem var(--sans);cursor:pointer}.hcb-library-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.hcb-library-row button{border:1px solid var(--line);background:#fff;border-radius:16px;padding:13px 15px;text-align:left;color:var(--ink);cursor:pointer;font:inherit}.hcb-library-row span{font-size:1.1rem;margin-right:7px}.hcb-library-row b{font-size:.86rem}
+@media(max-width:370px){.hcb-action-grid{grid-template-columns:1fr}.hcb-action{min-height:auto}}
+
+/* PAS 2 · fitxa de recepta */
+.res-main{--recipe-accent:var(--sage)}
+.res-hero{background:linear-gradient(150deg,#f4f5ea,#fff);border:1px solid var(--line);border-radius:22px;padding:18px;margin:-2px -2px 4px;position:relative;overflow:hidden}.res-hero:after{content:"";position:absolute;width:125px;height:125px;border-radius:50%;background:rgba(183,196,139,.22);right:-45px;top:-50px}.res-hero-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;position:relative;z-index:1}.res-hero-icon{width:52px;height:52px;border-radius:16px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-size:1.45rem;flex:0 0 auto;box-shadow:0 7px 18px rgba(43,53,32,.07)}.res-hero .res-title{font-size:clamp(1.5rem,5vw,2rem);margin:7px 0 0;max-width:30rem}.res-kicker{letter-spacing:.08em;text-transform:uppercase;font-size:.72rem;font-weight:850}.res-stage{margin-top:7px;color:var(--muted);font-size:.84rem;position:relative;z-index:1}
+.res-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px;position:relative;z-index:1}.res-chip{display:inline-flex;align-items:center;gap:5px;min-height:30px;padding:5px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:.76rem;font-weight:750;color:var(--olive-900)}.res-chip-soft{background:rgba(183,196,139,.18)}
+.res-why{padding:13px 15px;border-radius:15px;background:#fff6d7;border:1px solid #eadb9a;margin-top:14px;font-size:.9rem;line-height:1.45}.res-why b{color:var(--olive-900)}
+.res-tabs{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:20px 0 12px;padding:5px;background:#f2f3eb;border-radius:14px}.res-tab{border:0;background:transparent;color:var(--muted);border-radius:10px;padding:10px 12px;font:750 .88rem var(--sans);cursor:pointer}.res-tab[aria-selected="true"]{background:#fff;color:var(--olive-900);box-shadow:0 3px 12px rgba(43,53,32,.08)}.res-panel[hidden]{display:none!important}
+.res-panel-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px}.res-panel-card .res-sub{margin:0 0 10px;font-size:1rem}.res-ing{padding-left:0;list-style:none;margin:0;display:grid;gap:0}.res-ing li{position:relative;padding:10px 0 10px 24px;border-top:1px solid #eceee4;margin:0}.res-ing li:first-child{border-top:0}.res-ing li:before{content:"✓";position:absolute;left:0;top:10px;color:var(--olive-700);font-weight:900}
+.res-steps{list-style:none;counter-reset:step;padding:0;margin:0;display:grid;gap:10px}.res-steps li{counter-increment:step;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 14px 14px 52px;position:relative;line-height:1.48}.res-steps li:before{content:counter(step);position:absolute;left:13px;top:13px;width:27px;height:27px;border-radius:9px;background:var(--olive-900);color:#fff;display:grid;place-items:center;font:800 .78rem var(--sans)}
+.res-info{margin-top:16px;border:1px solid var(--line);border-radius:16px;background:rgba(183,196,139,.12);overflow:hidden}.res-info summary{cursor:pointer;padding:14px 16px;font-weight:800;color:var(--olive-900);list-style:none}.res-info summary::-webkit-details-marker{display:none}.res-info summary:after{content:"＋";float:right}.res-info[open] summary:after{content:"−"}.res-info p{padding:0 16px 15px;font-size:.9rem;line-height:1.5}
+.res-allergen{margin-top:14px;padding:11px 13px;border-radius:13px;background:#fbf3ef;border:1px solid #ead5ca;font-size:.82rem;color:#6f554a}.res-allergen b{color:#5b4036}.res-page{font-size:.78rem}.res-check{line-height:1.4;margin-top:8px}.fav-btn{width:100%;margin-top:15px;min-height:46px}
+.modal{max-width:720px}
+@media(min-width:700px){.res-hero{padding:22px}.res-tabs{max-width:430px}.res-panel-card{padding:20px}}
+</style>
+
 </head>
 <body>
 <header class="top"><div class="wrap"><div class="row">
@@ -290,44 +314,52 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
 
 <section id="v2-home" class="v2-view v2-home"><div class="wrap">
 <p class="v2-kicker">HOY COMO BIEN · ACCESO COMPLETO</p>
-<h1>¿Qué quieres comer hoy?</h1>
-<p class="v2-sub">Dime qué buscas hoy y reduce 500 opciones a unas pocas que encajen contigo.</p>
-<div class="v2-primary"><small>EMPIEZA AQUÍ</small><h2>Encuentra una receta para ahora</h2>
-<p>Responde 4 preguntas y nuestro sistema reduce las opciones según tus respuestas.</p>
-<button type="button" class="btn btn-yellow" id="v2-recommend">Empezar →</button></div>
-<div class="v4-primary"><small>PLANIFICA</small><h2>✨ Crea mi semana</h2><p>Organiza 7 días de desayunos, comidas y cenas según los filtros que elijas. Cambia cualquier plato antes de crear la lista de la compra.</p><button type="button" class="btn" id="v4-week-open">Crear mi semana →</button></div>
-<div class="v2-quick">
-<button type="button" id="v2-fast"><span>⚡</span>Tengo poco tiempo</button>
-<button type="button" id="v2-ingredients"><span>🥕</span>Buscar por ingredientes</button>
+<h1>¿Qué quieres resolver ahora?</h1>
+<p class="v2-sub">Elige una ruta. Puedes encontrar una receta, improvisar con lo que tienes o dejar la semana organizada.</p>
+
+<div class="hcb-main-action">
+  <div class="hcb-main-copy"><small>EMPIEZA AQUÍ</small><h2>Encuentra qué comer ahora</h2><p>4 preguntas para reducir 500 recetas a unas pocas opciones que encajen contigo.</p></div>
+  <button type="button" class="btn btn-yellow" id="v2-recommend">Encontrar mi receta →</button>
 </div>
-<div class="v2-quick" style="margin-top:10px"><button type="button" id="v4-fridge-open"><span>🧊</span>¿Qué tengo en la nevera?</button><button type="button" id="v4-rescue-open"><span>⚡</span>¿Qué como ahora?</button></div>
-<h2 class="v2-section-title">Tus accesos rápidos</h2>
-<div class="v2-shortcuts">
-<button type="button" class="v2-shortcut" id="v2-favs"><span>♡</span>Favoritas</button>
-<button type="button" class="v2-shortcut" id="v2-history"><span>↺</span>Vistas recientes</button>
-<button type="button" class="v2-shortcut" id="v2-all"><span>⌕</span>Las 500 recetas</button><button type="button" class="v2-shortcut" id="v2-plan-open"><span>▦</span>Plan semanal</button>
+
+<div class="hcb-action-grid" aria-label="Formas de usar Hoy Como Bien">
+  <button type="button" class="hcb-action" id="v4-rescue-open"><span class="hcb-action-icon">⚡</span><b>Voy con prisa</b><small>3 opciones según el tiempo que tienes.</small></button>
+  <button type="button" class="hcb-action" id="v4-fridge-open"><span class="hcb-action-icon">🥕</span><b>Tengo ingredientes</b><small>Busca con lo que ya hay en casa.</small></button>
+  <button type="button" class="hcb-action" id="v4-week-open"><span class="hcb-action-icon">▦</span><b>Quiero organizarme</b><small>Crea 7 días y cambia platos.</small></button>
+  <button type="button" class="hcb-action" id="v2-all"><span class="hcb-action-icon">⌕</span><b>Quiero explorar</b><small>Busca y filtra las 500 recetas.</small></button>
 </div>
-<div id="v2-last-wrap" hidden><h2 class="v2-section-title">Vuelve a donde estabas</h2><div id="v2-last" class="v2-card"></div></div>
+
+<div class="hcb-library">
+  <div class="hcb-library-head"><h2>Tu espacio</h2><button type="button" class="hcb-text-action" id="v2-plan-open">Ver 6 menús preparados →</button></div>
+  <div class="hcb-library-row">
+    <button type="button" id="v2-favs"><span>♡</span><b>Favoritas</b></button>
+    <button type="button" id="v2-history"><span>↺</span><b>Recientes</b></button>
+  </div>
+</div>
+
+<!-- aliases funcionals, ocults: mantenen compatibilitat amb el JS anterior -->
+<button type="button" id="v2-fast" hidden aria-hidden="true" tabindex="-1">Poco tiempo</button>
+<button type="button" id="v2-ingredients" hidden aria-hidden="true" tabindex="-1">Ingredientes</button>
+
+<div id="v2-last-wrap" hidden><h2 class="v2-section-title">Continúa donde lo dejaste</h2><div id="v2-last" class="v2-card"></div></div>
 <p class="v2-note">Favoritas e historial se guardan solo en este navegador. Puedes borrarlos cuando quieras.</p>
 </div></section>
 
-
-
 <section id="v4-tools" class="v2-view v4-view" hidden><div class="wrap">
 <button type="button" class="linkbtn v2-back" id="v4-back">← Volver a Hoy</button>
-<div id="v4-week-tool" hidden><p class="v2-kicker">STUDYOS+</p><h1>Crea mi semana</h1><p class="v2-sub">21 comidas elegidas entre 500 recetas. Puedes cambiar cualquier plato antes de crear la lista.</p>
+<div id="v4-week-tool" hidden><p class="v2-kicker">HOY COMO BIEN</p><h1>Crea mi semana</h1><p class="v2-sub">21 comidas elegidas entre 500 recetas. Puedes cambiar cualquier plato antes de crear la lista.</p>
 <div class="v4-panel"><div class="v4-controls">
 <label>Etapa<select id="v4-stage"><option value="">Sin filtrar</option><option value="perimenopausia">Perimenopausia</option><option value="menopausia">Menopausia</option><option value="menstrual">Fase menstrual</option><option value="folicular">Fase folicular</option><option value="ovulatoria">Fase ovulatoria</option><option value="lutea">Fase lútea</option></select></label>
 <label>Objetivo<select id="v4-need"><option value="en">Más energía</option><option value="hi">Algo ligero</option><option value="an">Tengo antojo</option><option value="sa">Más saciedad</option><option value="ra">Algo rápido</option><option value="ai">Enfoque antiinflamatorio</option></select></label>
 <label>Tiempo<select id="v4-time"><option value="any">Me da igual</option><option value="15">Hasta 15 min</option><option value="30">Hasta 30 min</option></select></label>
 <label>Evitar<select id="v4-avoid"><option value="">Nada en especial</option><option value="lacteos">Lácteos</option><option value="gluten">Gluten</option><option value="huevo">Huevo</option><option value="frutossecos">Frutos secos / cacahuete</option><option value="pescado">Pescado y marisco</option><option value="soja">Soja</option></select></label>
 </div><div class="v4-actions"><button class="btn btn-yellow" id="v4-generate">Generar mi semana →</button></div></div><div id="v4-week-output"></div></div>
-<div id="v4-fridge-tool" hidden><p class="v2-kicker">NEVERA</p><h1>¿Qué tienes en casa?</h1><p class="v2-sub">Escribe ingredientes separados por comas y StudyOS buscará las recetas que más coinciden.</p><div class="v4-panel"><input id="v4-fridge-input" style="width:100%;padding:13px;border:1px solid var(--line);border-radius:12px" placeholder="Ej.: salmón, calabacín, quinoa"><div class="v4-actions"><button class="btn btn-yellow" id="v4-fridge-search">Buscar recetas →</button></div><div id="v4-fridge-results" class="v4-results"></div></div></div>
-<div id="v4-rescue-tool" hidden><p class="v2-kicker">RESUELVE AHORA</p><h1>¿Qué como ahora?</h1><p class="v2-sub">Cuando no quieres pensar: elige el momento y cuánto tiempo tienes.</p><div class="v4-panel"><div class="v4-controls"><label>Momento<select id="v4-rescue-moment"><option value="D">Desayuno</option><option value="C">Comida</option><option value="N" selected>Cena</option><option value="S">Snack</option></select></label><label>Tiempo máximo<select id="v4-rescue-time"><option value="10">10 min</option><option value="15" selected>15 min</option><option value="25">25 min</option></select></label></div><div class="v4-actions"><button class="btn btn-yellow" id="v4-rescue-go">Rescátame →</button></div><div id="v4-rescue-results" class="v4-results"></div></div></div>
+<div id="v4-fridge-tool" hidden><p class="v2-kicker">NEVERA</p><h1>¿Qué tienes en casa?</h1><p class="v2-sub">Escribe ingredientes separados por comas y buscaremos las recetas que más coinciden.</p><div class="v4-panel"><input id="v4-fridge-input" style="width:100%;padding:13px;border:1px solid var(--line);border-radius:12px" placeholder="Ej.: salmón, calabacín, quinoa"><div class="v4-actions"><button class="btn btn-yellow" id="v4-fridge-search">Buscar recetas →</button></div><div id="v4-fridge-results" class="v4-results"></div></div></div>
+<div id="v4-rescue-tool" hidden><p class="v2-kicker">RESUELVE AHORA</p><h1>¿Qué como ahora?</h1><p class="v2-sub">Cuando no quieres pensar: elige el momento y cuánto tiempo tienes.</p><div class="v4-panel"><div class="v4-controls"><label>Momento<select id="v4-rescue-moment"><option value="D">Desayuno</option><option value="C">Comida</option><option value="N" selected>Cena</option><option value="S">Snack</option></select></label><label>Tiempo máximo<select id="v4-rescue-time"><option value="10">10 min</option><option value="15" selected>15 min</option><option value="25">25 min</option></select></label></div><div class="v4-actions"><button class="btn btn-yellow" id="v4-rescue-go">Dame 3 opciones →</button></div><div id="v4-rescue-results" class="v4-results"></div></div></div>
 </div></section>
 <section id="v2-plan" class="v2-view" hidden><div class="wrap">
 <button type="button" class="linkbtn v2-back" data-v2-home>← Volver a Hoy</button>
-<div class="planHero"><p class="v2-kicker">PLANIFICACIÓN</p><h1>Tu plan StudyOS+</h1><p class="v2-sub">Seis menús semanales completos, sus listas de la compra, batch cooking y sustituciones.</p></div>
+<div class="planHero"><p class="v2-kicker">PLANIFICACIÓN</p><h1>6 menús preparados</h1><p class="v2-sub">Seis menús semanales completos, sus listas de la compra, batch cooking y sustituciones.</p></div>
 <div class="planTabs">
 <button class="planTab on" data-ptab="menu">📅 Menús</button>
 <button class="planTab" data-ptab="shop">🛒 Lista</button>
@@ -604,18 +636,27 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
     addHistory(r.id);
     var ing = r.ing.map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("");
     var steps = r.steps.map(function (s) { return "<li>" + esc(s) + "</li>"; }).join("");
-    var html = "";
-    if (opts.kicker) html += '<p class="res-kicker">' + esc(opts.kicker) + "</p>";
-    html += '<h3 class="res-title" tabindex="-1">' + esc(r.t) + "</h3>";
-    html += '<p class="res-meta"><span>' + esc(r.ph) + "</span><span>" + r.m + " minutos</span><span>" + r.k + " kcal aprox.</span><span>Dificultad: " + esc(r.d) + "</span><span>Alérgenos: " + esc(r.a) + "</span></p>";
-    if (opts.why) html += '<p class="res-why">' + opts.why + "</p>";
-    if (r.prepNote) html += '<p class="res-why">Antes de empezar: ' + esc(r.prepNote) + "</p>";
-    html += '<div class="det-cols"><div><p class="res-sub">Ingredientes</p><ul class="res-ing">' + ing + "</ul></div>";
-    html += '<div><p class="res-sub">Preparación</p><ol class="res-steps">' + steps + "</ol></div></div>";
-    html += '<div class="res-quote"><b>Qué aporta esta receta</b><p>' + esc(r.bio) + "</p></div>";
-    if (r.pg) html += '<p class="res-page">Está en la página ' + r.pg + ' de tu recetario en PDF.</p>'; else html += '<p class="res-page">Receta exclusiva del acceso completo.</p>';
+    var mm = {D:["☀️","Desayuno"],C:["🍽️","Comida"],N:["🌙","Cena"],S:["🍓","Snack"]};
+    var mainMoment = (r.mo && r.mo.length ? r.mo[0] : "C");
+    var moment = mm[mainMoment] || mm.C;
+    var html = '<div class="res-main">';
+    html += '<div class="res-hero"><div class="res-hero-top"><div>';
+    html += '<p class="res-kicker">' + esc(opts.kicker || moment[1]) + '</p>';
+    html += '<h3 class="res-title" tabindex="-1">' + esc(r.t) + '</h3></div>';
+    html += '<div class="res-hero-icon" aria-hidden="true">' + moment[0] + '</div></div>';
+    html += '<p class="res-stage">' + esc(r.ph) + '</p>';
+    html += '<div class="res-chips"><span class="res-chip">◷ ' + esc(timeLabel(r)) + '</span><span class="res-chip">' + r.k + ' kcal aprox.</span><span class="res-chip res-chip-soft">' + esc(r.d) + '</span></div></div>';
+    if (opts.why) html += '<p class="res-why"><b>Por qué te la mostramos</b><br>' + opts.why + '</p>';
+    if (r.prepNote) html += '<p class="res-why"><b>Antes de empezar</b><br>' + esc(r.prepNote) + '</p>';
+    html += '<div class="res-tabs" role="tablist" aria-label="Contenido de la receta"><button type="button" class="res-tab" data-res-tab="ingredients" role="tab" aria-selected="true">Ingredientes</button><button type="button" class="res-tab" data-res-tab="steps" role="tab" aria-selected="false">Preparación</button></div>';
+    html += '<section class="res-panel res-panel-card" data-res-panel="ingredients"><p class="res-sub">Ingredientes</p><ul class="res-ing">' + ing + '</ul></section>';
+    html += '<section class="res-panel" data-res-panel="steps" hidden><ol class="res-steps">' + steps + '</ol></section>';
+    html += '<details class="res-info"><summary>Qué aporta esta receta</summary><p>' + esc(r.bio) + '</p></details>';
+    if (r.a && r.a !== "Ninguno") html += '<p class="res-allergen"><b>Alérgenos indicados:</b> ' + esc(r.a) + '</p>';
+    if (r.pg) html += '<p class="res-page">También está en la página ' + r.pg + ' del recetario en PDF.</p>';
     html += '<p class="res-check">La clasificación por etapa es orientativa. Si tienes alergias o intolerancias, comprueba también el etiquetado de los productos envasados.</p>';
     html += '<button type="button" class="fav-btn' + (isFavorite(r.id) ? ' is-fav' : '') + '" data-fav-id="' + esc(r.id) + '">' + (isFavorite(r.id) ? '♥ Guardada en favoritas' : '♡ Guardar en favoritas') + '</button>';
+    html += '</div>';
     return html;
   }
 
@@ -881,6 +922,7 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
   document.getElementById("v2-all").addEventListener("click",function(){showBrowseV2(false);});
   document.getElementById("v2-favs").addEventListener("click",function(){renderSaved("favorites");});
   document.getElementById("v2-history").addEventListener("click",function(){renderSaved("history");});
+  document.getElementById("v2-plan-open").addEventListener("click",function(){hideAllViews();document.getElementById("v2-plan").hidden=false;navState("nav-home");window.scrollTo({top:0,behavior:"smooth"});});
   document.getElementById("nav-home").addEventListener("click",showHome);
   document.getElementById("nav-explore").addEventListener("click",function(){showBrowseV2(false);});
   document.getElementById("nav-saved").addEventListener("click",function(){renderSaved("favorites");});
@@ -889,6 +931,7 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
   document.getElementById("v2-saved-list").addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-open-saved]");if(!b)return;var r=byId(b.getAttribute("data-open-saved"));if(r)openModal(r);});
   document.getElementById("v2-last").addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-open-last]");if(!b)return;var r=byId(b.getAttribute("data-open-last"));if(r)openModal(r);});
   document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-fav-id]");if(!b)return;var id=b.getAttribute("data-fav-id");toggleFavorite(id);b.classList.toggle("is-fav",isFavorite(id));b.textContent=isFavorite(id)?"♥ Guardada en favoritas":"♡ Guardar en favoritas";});
+  document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-res-tab]");if(!b)return;var root=b.closest(".res-main");if(!root)return;var tab=b.getAttribute("data-res-tab");root.querySelectorAll("[data-res-tab]").forEach(function(x){x.setAttribute("aria-selected",String(x===b));});root.querySelectorAll("[data-res-panel]").forEach(function(p){p.hidden=p.getAttribute("data-res-panel")!==tab;});});
   refreshLast();showHome();
 
   hideSplash();
@@ -897,16 +940,6 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
 
 
 
-<script id="studyos-plan-plus-js">
-document.addEventListener("DOMContentLoaded",function(){
-  var b=document.getElementById("v2-plan-open"), p=document.getElementById("v2-plan");
-  if(!b||!p)return;
-  b.addEventListener("click",function(){
-    document.querySelectorAll(".v2-view").forEach(function(v){v.hidden=true;});
-    p.hidden=false; window.scrollTo({top:0,behavior:"smooth"});
-  });
-});
-</script>
 
 
 <script id="studyos-plus-real-plan">
@@ -943,7 +976,7 @@ function render(){
    subs.map(x=>`<div class="subCard"><h3>${esc(x[0])} → ${esc(x[1])}</h3><p>${esc(x[2])}</p></div>`).join("");
  }
 }
-document.addEventListener("DOMContentLoaded",()=>{
+(function(){
  const root=document.getElementById("v2-plan"); if(!root)return;
  root.addEventListener("click",e=>{
    let b=e.target.closest("[data-ptab]"); if(b){tab=b.dataset.ptab;render();return;}
@@ -951,7 +984,7 @@ document.addEventListener("DOMContentLoaded",()=>{
    b=e.target.closest("[data-pday]"); if(b){day=b.dataset.pday;render();return;}
  });
  render();
-});
+})();
 })();
 
 document.getElementById("plusPlanContent").addEventListener("click",function(e){const b=e.target.closest(".menuRecipeLink");if(!b)return;if(window.studyosOpenRecipeByTitle)window.studyosOpenRecipeByTitle(b.dataset.menuTitle||"");});
@@ -978,7 +1011,6 @@ function hideAll(){[home,recipes,saved,plan,tools].forEach(function(x){if(x)x.hi
 function openTool(id){hideAll();tools.hidden=false;['v4-week-tool','v4-fridge-tool','v4-rescue-tool'].forEach(function(x){document.getElementById(x).hidden=x!==id;});window.scrollTo({top:0,behavior:'smooth'});}
 function back(){tools.hidden=true;home.hidden=false;window.scrollTo({top:0,behavior:'smooth'});}
 document.getElementById('v4-week-open').onclick=function(){openTool('v4-week-tool')};document.getElementById('v4-fridge-open').onclick=function(){openTool('v4-fridge-tool')};document.getElementById('v4-rescue-open').onclick=function(){openTool('v4-rescue-tool')};document.getElementById('v4-back').onclick=back;
-document.getElementById('v2-plan-open').onclick=function(){hideAll();plan.hidden=false;window.scrollTo({top:0,behavior:'smooth'});};
 function okAvoid(r,a){if(!a)return true;var rx={lacteos:/lácteos/i,gluten:/gluten/i,huevo:/huevo/i,frutossecos:/frutos secos|cacahuete/i,pescado:/pescado|crustáceos|moluscos|marisco/i,soja:/soja/i}[a];return !rx||!rx.test(r.a||'');}
 function points(r,p){var x=0,rm=readyMinutes(r);if(p.stage&&r.p.indexOf(p.stage)>-1)x+=4;if(r.n.indexOf(p.need)>-1)x+=6;if(r.mo.indexOf(p.mo)>-1)x+=8;if(p.time!=='any'&&rm<=+p.time)x+=4;if(p.time!=='any'&&rm>+p.time)x-=20;return x+Math.random()*1.5;}
 var week=[];
@@ -997,6 +1029,18 @@ document.getElementById('v4-fridge-results').onclick=function(e){var b=e.target.
 document.getElementById('v4-rescue-go').onclick=function(){var mo=document.getElementById('v4-rescue-moment').value,t=+document.getElementById('v4-rescue-time').value;var pool=R4.filter(function(r){return r.mo.indexOf(mo)>-1&&readyMinutes(r)<=t}).sort(function(a,b){return readyMinutes(a)-readyMinutes(b)});for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),q=pool[i];pool[i]=pool[j];pool[j]=q;}pool=pool.slice(0,3);document.getElementById('v4-rescue-results').innerHTML=pool.map(function(r){return '<button class="v4-result" data-v4-result="'+r.id+'"><b>'+r.t+'</b><small>'+timeLabel(r)+' · '+r.k+' kcal aprox.</small></button>';}).join('')||'<p>No hay recetas con ese límite. Prueba con más tiempo.</p>';};
 document.getElementById('v4-rescue-results').onclick=function(e){var b=e.target.closest('[data-v4-result]');if(b)openRecipe(b.dataset.v4Result)};
 try{var old=JSON.parse(localStorage.getItem('studyos_v4_week')||'[]');if(Array.isArray(old)&&old.length===21){week=old.filter(function(x){return R4.some(function(r){return r.id===x.id})});if(week.length===21)render();}}catch(e){}
+})();
+</script>
+
+<script id="hcb-plan-hook">
+(function(){
+  var b=document.getElementById("v2-plan-open");
+  if(!b)return;
+  b.onclick=function(){
+    document.querySelectorAll(".v2-view").forEach(function(v){v.hidden=true;});
+    var p=document.getElementById("v2-plan"); if(p)p.hidden=false;
+    window.scrollTo({top:0,behavior:"smooth"});
+  };
 })();
 </script>
 </body>
