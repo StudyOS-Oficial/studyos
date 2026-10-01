@@ -47,14 +47,6 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);f
 </div>
 </div></section>
 <section><div class="wrap">
-<div class="secondary">
-<h2>¿También quieres guardar el recetario en PDF?</h2>
-<p>El PDF es un complemento del acceso interactivo. Puedes descargarlo o abrirlo online.</p>
-<div class="secondary-actions">
-<a class="btnline" id="download-pdf" href="https://drive.google.com/uc?export=download&id=1zXt4ycUuWuXLDbDsRWfpBN0fTz3fCtU_" target="_blank" rel="noopener">Descargar PDF</a>
-<a class="btnline" id="view-pdf" href="https://drive.google.com/file/d/1zXt4ycUuWuXLDbDsRWfpBN0fTz3fCtU_/view" target="_blank" rel="noopener">Ver PDF online</a>
-</div>
-</div>
 <div class="start">
 <h2>Tres formas de empezar</h2>
 <div class="start-grid">
@@ -79,8 +71,6 @@ document.addEventListener("DOMContentLoaded",function(){
   }
   var open=document.getElementById("open-product");
   if(open)open.addEventListener("click",function(){if(window.studyosTrackCustom)window.studyosTrackCustom("PaidProductOpen",{});});
-  var pdf=document.getElementById("download-pdf");
-  if(pdf)pdf.addEventListener("click",function(){if(window.studyosGA)window.studyosGA("paid_pdf_download",{});});
   var w=document.getElementById("whatsapp");
   if(w)w.addEventListener("click",function(){if(window.studyosTrack)window.studyosTrack("Contact",{content_name:"Comunidad WhatsApp"});});
 });
