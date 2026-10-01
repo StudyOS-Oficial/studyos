@@ -206,11 +206,11 @@
     try {
       var p = new URLSearchParams(location.search);
       var direct = String(p.get("ad") || "").toLowerCase();
-      if (direct === "original" || direct === "soso" || direct === "hoycomobien") return direct;
+      if (direct === "original" || direct === "soso" || direct === "hoycomobien" || direct === "whatsappstory") return direct;
 
-      /* Fallback: permite usar utm_content=original / soso si lo prefieres en Meta. */
+      /* Fallback: permite usar utm_content con las variantes conocidas si lo prefieres en Meta. */
       var content = String(p.get("utm_content") || "").toLowerCase();
-      if (content === "original" || content === "soso" || content === "hoycomobien") return content;
+      if (content === "original" || content === "soso" || content === "hoycomobien" || content === "whatsappstory") return content;
     } catch (e) {}
     return "unknown";
   }
