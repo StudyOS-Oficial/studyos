@@ -1,19 +1,52 @@
 {
-  "recipes": 500,
-  "unique_ids": 500,
-  "unique_titles": 500,
-  "allergen_additions_or_revisions": 9,
-  "allergen_removals": 8,
-  "generic_quantity_replacements": 172,
-  "personalized_duplicate_preparations": 88,
-  "duplicate_step_recipe_count_after": 0,
-  "duplicate_bio_recipe_count_after": 0,
-  "missing_menu_references": 0,
-  "difficulty_counts": {
-    "Fácil": 270,
-    "Media": 229,
-    "Avanzada": 1
+  "index.html": {
+    "inline_js_blocks": 4,
+    "inline_js_syntax_errors": 0,
+    "tracking_src": true,
+    "pdf_visible": false,
+    "usd_visible": false,
+    "stripe_links": 1
   },
-  "inline_js_blocks_checked": 5,
-  "js_syntax_errors": 0
+  "plus.html": {
+    "inline_js_blocks": 6,
+    "inline_js_syntax_errors": 0,
+    "tracking_src": true,
+    "pdf_visible": false,
+    "usd_visible": false,
+    "stripe_links": 0
+  },
+  "gracias.html": {
+    "inline_js_blocks": 1,
+    "inline_js_syntax_errors": 0,
+    "tracking_src": true,
+    "pdf_visible": false,
+    "usd_visible": false,
+    "stripe_links": 0
+  },
+  "landing": {
+    "startQuiz_ids": 1,
+    "cta_exact": true,
+    "intro_copy": true,
+    "quiz_hidden_initially": true,
+    "d5_measurement_prefix": true,
+    "old_m1_prefix": 0,
+    "measurement_version_lp5d5": 6
+  },
+  "tracking": {
+    "landing_scope_guard": true,
+    "anon_ad_session": true,
+    "whatsappstory": true,
+    "freeengaged_to_quiz": true,
+    "start_is_first_action": true,
+    "direct_duplicate_start_listener": false,
+    "consented_ad_angle": true
+  },
+  "worker": {
+    "experiment_lp5d5": true,
+    "no_kv_list": true,
+    "event_key": true,
+    "bulk_get": true,
+    "dashboard_d5": true,
+    "all_events": true
+  }
 }

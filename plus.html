@@ -653,7 +653,6 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
     html += '<section class="res-panel" data-res-panel="steps" hidden><ol class="res-steps">' + steps + '</ol></section>';
     html += '<details class="res-info"><summary>Qué aporta esta receta</summary><p>' + esc(r.bio) + '</p></details>';
     if (r.a && r.a !== "Ninguno") html += '<p class="res-allergen"><b>Alérgenos indicados:</b> ' + esc(r.a) + '</p>';
-    if (r.pg) html += '<p class="res-page">También está en la página ' + r.pg + ' del recetario en PDF.</p>';
     html += '<p class="res-check">La clasificación por etapa es orientativa. Si tienes alergias o intolerancias, comprueba también el etiquetado de los productos envasados.</p>';
     html += '<button type="button" class="fav-btn' + (isFavorite(r.id) ? ' is-fav' : '') + '" data-fav-id="' + esc(r.id) + '">' + (isFavorite(r.id) ? '♥ Guardada en favoritas' : '♡ Guardar en favoritas') + '</button>';
     html += '</div>';

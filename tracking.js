@@ -21,7 +21,7 @@
   var KEY = "studyos_cookies"; // "granted" (acepta) o "denied" (rechaza)
 
   // Producto de pago (se usa en los eventos de GA4 y de Meta)
-  var PRODUCT = { id: "studyos-plus", name: "Hoy Como Bien · Completo", price: 5, currency: "EUR" };
+  var PRODUCT = { id: "hoy-como-bien-completo", name: "Hoy Como Bien · Completo", price: 5, currency: "EUR" };
   var ATTR_KEY = "studyos_attribution";
   var ATTR_TTL = 30 * 24 * 3600 * 1000; // 30 días
   var UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
@@ -95,7 +95,8 @@
       var p = new URLSearchParams(location.search);
       var key = window.studyosPainKey ? window.studyosPainKey() : "";
       if (key) a.pain_point = key;
-      var ad = cleanVal(p.get("ad")); if (ad) a.ad = ad;
+      var ad = cleanVal(String(p.get("ad") || "").toLowerCase());
+      if (["original","soso","hoycomobien","whatsappstory"].indexOf(ad) > -1) a.ad = ad;
       UTM_KEYS.forEach(function (k) { var v = cleanVal(p.get(k)); if (v) a[k] = v; });
     } catch (e) {}
     return a;
@@ -115,6 +116,14 @@
   }
   // Con consentimiento: si llegan parámetros nuevos se guardan; si no, se recupera lo guardado (así llega hasta la compra)
   function hydrateAttribution() {
+    /* If the visitor arrived through an ad before granting analytics consent,
+       recover only the categorical ad label stored for this tab. */
+    if (!attr.ad) {
+      try {
+        var sessionAd = String(sessionStorage.getItem("studyos_anon_ad") || "").toLowerCase();
+        if (["original","soso","hoycomobien","whatsappstory"].indexOf(sessionAd) > -1) attr.ad = sessionAd;
+      } catch (e) {}
+    }
     if (Object.keys(attr).length) {
       try { var o = {}; Object.keys(attr).forEach(function (k) { o[k] = attr[k]; }); o.ts = Date.now(); localStorage.setItem(ATTR_KEY, JSON.stringify(o)); } catch (e) {}
     } else {
@@ -128,15 +137,13 @@
       ad_angle: attr.ad || attr.utm_content || attr.pain_point || "none"
     };
     if (attr.pain_point) out.pain_point = attr.pain_point;
-    if (attr.ad) out.ad_variant = attr.ad;
-    ["utm_source", "utm_medium", "utm_campaign", "utm_content"].forEach(function (k) { if (attr[k]) out[k] = attr[k]; });
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "ad"].forEach(function (k) { if (attr[k]) out[k] = attr[k]; });
     return out;
   }
   function gaConfigParams() {
     var g = gaParams();
     var c = { landing_variant: g.landing_variant, ad_angle: g.ad_angle };
     if (g.pain_point) c.pain_point = g.pain_point;
-    if (g.ad_variant) c.ad_variant = g.ad_variant;
     return c;
   }
   window.studyosAttribution = function () { return gaParams(); };
@@ -205,15 +212,24 @@
   /* ---------- StudyOS anonymous aggregate funnel ---------- */
   var ANON_ENDPOINT = "https://studyos-analytics.studyos-oficial-spain.workers.dev/";
 
+  var ANON_AD_KEY = "studyos_anon_ad";
+  var VALID_ADS = ["original","soso","hoycomobien","whatsappstory"];
   function anonymousAdVariant() {
+    var candidate = "";
     try {
       var p = new URLSearchParams(location.search);
       var direct = String(p.get("ad") || "").toLowerCase();
-      if (direct === "original" || direct === "soso" || direct === "hoycomobien" || direct === "whatsappstory") return direct;
-
-      /* Fallback: permite usar utm_content con las variantes conocidas si lo prefieres en Meta. */
       var content = String(p.get("utm_content") || "").toLowerCase();
-      if (content === "original" || content === "soso" || content === "hoycomobien" || content === "whatsappstory") return content;
+      if (VALID_ADS.indexOf(direct) > -1) candidate = direct;
+      else if (VALID_ADS.indexOf(content) > -1) candidate = content;
+      if (candidate) {
+        try { sessionStorage.setItem(ANON_AD_KEY, candidate); } catch (e) {}
+        return candidate;
+      }
+      try {
+        var stored = String(sessionStorage.getItem(ANON_AD_KEY) || "").toLowerCase();
+        if (VALID_ADS.indexOf(stored) > -1) return stored;
+      } catch (e) {}
     } catch (e) {}
     return "unknown";
   }
@@ -221,7 +237,7 @@
   window.studyosAnon = function (eventName) {
     var map = {
       "StudyOSView": "visit",
-      "FreeEngaged": "free_start",
+      "FreeEngaged": "quiz_start",
       "RecommendationComplete": "recommendation_complete",
       "RecipeOpen": "recipe_open",
       "PlusView": "plus_view",
@@ -364,10 +380,11 @@
 })();
 
 
-/* ---------- LP2 diagnostic signals (aggregate, no answers / no user IDs) ---------- */
+/* ---------- LP5 diagnostic signals (landing only; aggregate, no answers / no user IDs) ---------- */
 (function(){
   "use strict";
-  var PREFIX="studyos_lp2d2_diag_";
+  if(!document.getElementById("inlineRecommender")) return;
+  var PREFIX="studyos_lp5d5_diag_";
 
   function once(key,eventName){
     try{
@@ -416,13 +433,9 @@
     if(!target) return;
 
     var meaningful=target.closest && target.closest(
-      '[data-quick-moment],.lp4-choice,[data-go="explore"],[data-go="plan"],[data-go="plus"],#randomBtn,.recipe,.freeMenuRecipeLink,a[href*="buy.stripe.com"]'
+      '#startQuiz,[data-quick-moment],.lp4-choice,[data-go="explore"],[data-go="plan"],[data-go="plus"],#randomBtn,.recipe,.freeMenuRecipeLink,a[href*="buy.stripe.com"]'
     );
     if(e.isTrusted && meaningful) once("first_action","first_action");
-
-    /* On legacy pages with a real Start button this still works.
-       LP4 uses a synthetic hidden click, which is already recorded once by FreeEngaged. */
-    if(e.isTrusted && target.id==="startQuiz") once("quiz_start","quiz_start");
 
     var explore=target.closest && target.closest('[data-go="explore"]');
     if(explore && e.isTrusted) once("explore_click","explore_click");

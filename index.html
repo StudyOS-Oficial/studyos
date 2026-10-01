@@ -654,6 +654,36 @@ body{
 .lp4-hidden-start{display:none!important}
 @media(max-width:420px){.lp4-question{grid-template-columns:1fr 1fr!important;gap:8px}.lp4-choice{padding:10px!important;min-height:64px!important}.lp4-choice>b{font-size:.79rem}.lp4-choice>small{font-size:.61rem}.lp4-stage-grid .lp4-choice{min-height:58px!important}}
 
+
+/* LP5 · test-first: one unmistakable primary action */
+.lp5-intro{display:block;position:relative;z-index:2;text-align:left;padding:2px 0 4px}
+.lp5-intro[hidden],.lp5-quiz-shell[hidden]{display:none!important}
+.lp5-intro .lp5-kicker{font-size:.69rem;font-weight:900;letter-spacing:.09em;color:#f2d773;text-transform:uppercase;margin-bottom:15px}
+.lp5-intro h1{font-family:var(--serif);font-size:clamp(2.35rem,10vw,3.7rem);line-height:.94;letter-spacing:-.035em;color:#fff;margin:0 0 16px;max-width:650px}
+.lp5-intro .lp5-lead{font-size:1rem;line-height:1.5;color:#edf1e7;max-width:590px;margin:0 0 19px}
+.lp5-intro .lp5-lead strong{color:#fff}
+.lp5-start-wrap{margin-top:18px}
+.lp5-start-hint{display:flex;align-items:center;gap:8px;color:#f6e89b;font-size:.72rem;font-weight:900;letter-spacing:.04em;text-transform:uppercase;margin:0 0 8px 4px}
+.lp5-start-hint:before{content:"↓";display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:rgba(242,215,115,.17);border:1px solid rgba(242,215,115,.42);font-size:.85rem}
+#startQuiz.lp5-start-btn{width:100%;min-height:64px;border:0;border-radius:18px;background:#f2d773;color:#263119;font:900 1rem/1 var(--sans);letter-spacing:.01em;padding:18px 20px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:11px;box-shadow:0 14px 30px rgba(242,215,115,.24),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+#startQuiz.lp5-start-btn:hover,#startQuiz.lp5-start-btn:focus-visible{background:#f7df83;transform:translateY(-2px);box-shadow:0 18px 34px rgba(242,215,115,.30);outline:3px solid rgba(255,255,255,.7);outline-offset:3px}
+#startQuiz.lp5-start-btn:active{transform:translateY(0) scale(.99)}
+.lp5-arrow{font-size:1.25rem;line-height:1}
+.lp5-proof{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+.lp5-proof span{font-size:.66rem;font-weight:800;color:#e6ecdf;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:6px 9px}
+.lp5-result-preview{display:flex;align-items:center;gap:10px;margin-top:17px;padding:11px 12px;border-radius:15px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+.lp5-result-preview .icon{display:grid;place-items:center;flex:0 0 38px;height:38px;border-radius:12px;background:#eef2e5;color:#344322;font-size:1.2rem}
+.lp5-result-preview b{display:block;color:#fff;font-size:.76rem;line-height:1.2}.lp5-result-preview small{display:block;color:#d8e0d1;font-size:.65rem;line-height:1.3;margin-top:2px}
+.lp5-quiz-shell{display:block}
+.lp5-sticky-start{display:none}
+@media(max-width:560px){
+  .lp4Hero{min-height:0!important}
+  .lp5-intro h1{font-size:clamp(2.3rem,11.8vw,3.15rem)}
+  .lp5-intro .lp5-lead{font-size:.94rem}
+  #startQuiz.lp5-start-btn{min-height:62px;font-size:.98rem;border-radius:17px}
+  .lp5-proof{gap:5px}.lp5-proof span{font-size:.61rem;padding:5px 7px}
+}
+
 /* Dynamic recipe rail */
 #homeRecipes{display:flex!important;gap:14px!important;overflow-x:auto!important;scroll-snap-type:x mandatory;padding:4px 3px 16px!important;margin-inline:-3px!important;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 #homeRecipes::-webkit-scrollbar{display:none}
@@ -696,6 +726,20 @@ body{
 <main>
 <section class="view active" id="home">
 <div class="heroCard guidedHero lp3Hero lp4Hero" id="inlineRecommender">
+
+<div class="lp5-intro" id="lp5Intro">
+  <div class="lp5-kicker">HOY COMO BIEN · GRATIS</div>
+  <h1>¿No sabes qué comer hoy?</h1>
+  <p class="lp5-lead">Responde <strong>4 preguntas</strong> y te enseñamos una receta concreta para hoy.</p>
+  <div class="lp5-start-wrap">
+    <div class="lp5-start-hint">Empieza aquí</div>
+    <button class="lp5-start-btn" data-track-action="free_recommendation_start" id="startQuiz" type="button">EMPEZAR EL TEST GRATIS <span class="lp5-arrow">→</span></button>
+  </div>
+  <div class="lp5-proof"><span>4 preguntas</span><span>menos de 1 minuto</span><span>sin registro</span></div>
+  <div class="lp5-result-preview"><span class="icon">🍽️</span><span><b>Al final verás una receta concreta</b><small>Con ingredientes y preparación para que sepas qué hacer hoy.</small></span></div>
+</div>
+<div class="lp5-quiz-shell" id="lp5QuizShell" hidden>
+
 <div class="lp4-quiztop">
   <div class="eyebrow" style="color:#f2d773">HOY COMO BIEN · GRATIS</div>
   <span class="lp4-step-label" id="lp4StepLabel">1 DE 4</span>
@@ -755,13 +799,14 @@ body{
   </div>
 </div>
 
-<button class="lp4-hidden-start" data-track-action="free_recommendation_start" id="startQuiz" type="button">Empezar</button>
+
 <div class="lp3-micro">4 toques · menos de 1 min · sin registro</div>
+</div><!-- /lp5QuizShell -->
 </div>
 
-<div class="eyebrow">PRUÉBALO ANTES DE DECIDIR</div>
-<h1>Menos buscar.<br/>Más fácil elegir.</h1>
-<p class="lead">Primero te ayudamos a resolver una comida. Después, si quieres, puedes explorar las 10 recetas gratuitas.</p>
+<div class="eyebrow">SI PREFIERES EXPLORAR</div>
+<h1>También puedes mirar<br/>por tu cuenta.</h1>
+<p class="lead">El recomendador es el camino principal, pero las 10 recetas gratuitas siguen disponibles para explorar.</p>
 
 <div class="guidedSecondary">
 <p><strong>¿Prefieres mirar por tu cuenta?</strong> También puedes hacerlo, pero te recomendamos probar primero el recomendador.</p>
@@ -963,9 +1008,15 @@ function setInlineStep(n){
   $('#lp4StepLabel').textContent=n+' DE 4';
   syncSelected();
 }
-function trackQuizStartOnce(){if(!quizStarted){quizStarted=true;$('#startQuiz').click();}}
-$('#startQuiz').onclick=()=>{};
-$$('[data-quick-moment]').forEach(b=>b.onclick=()=>{state.moment=b.dataset.quickMoment;trackQuizStartOnce();setInlineStep(2)});
+$('#startQuiz').onclick=()=>{
+  if(quizStarted)return;
+  quizStarted=true;
+  $('#lp5Intro').hidden=true;
+  $('#lp5QuizShell').hidden=false;
+  setInlineStep(1);
+  requestAnimationFrame(()=>$('#inlineRecommender').scrollIntoView({behavior:'smooth',block:'start'}));
+};
+$$('[data-quick-moment]').forEach(b=>b.onclick=()=>{state.moment=b.dataset.quickMoment;setInlineStep(2)});
 $$('.lp4-choice[data-key]').forEach(b=>b.onclick=()=>{
  state[b.dataset.key]=b.dataset.v;
  const q=Number(b.closest('.lp4-pane').dataset.inlineStep);
@@ -1050,21 +1101,21 @@ document.addEventListener("DOMContentLoaded",()=>{
 <script id="studyos-tracking-v1">
 (function(){
   "use strict";
-  var PREFIX="studyos_m1_";
+  var PREFIX="studyos_lp5d5_m_";
   function once(key,fn){
     try{if(sessionStorage.getItem(PREFIX+key))return false;sessionStorage.setItem(PREFIX+key,"1");}catch(e){}
     fn();return true;
   }
   function measure(name,params){if(typeof window.studyosMeasure==="function")return window.studyosMeasure(name,params||{});return false;}
   function funnel(name,params){if(typeof window.studyosFunnel==="function")window.studyosFunnel(name,params||{});}
-  function engage(source){once("engaged",function(){if(window.studyosAnon)window.studyosAnon("FreeEngaged");measure("FreeEngaged",{source:source,measurement_version:"lp2"});});}
-  function plusView(source){once("plus_view",function(){if(window.studyosAnon)window.studyosAnon("PlusView");measure("PlusView",{source:source,measurement_version:"lp2"});});}
+  function engage(source){once("engaged",function(){if(window.studyosAnon)window.studyosAnon("FreeEngaged");measure("FreeEngaged",{source:source,measurement_version:"lp5d5"});});}
+  function plusView(source){once("plus_view",function(){if(window.studyosAnon)window.studyosAnon("PlusView");measure("PlusView",{source:source,measurement_version:"lp5d5"});});}
 
   /* One measurable StudyOS session.
      studyosMeasure() is the consent gate: it emits nothing unless consent is granted. */
   function emitStudyOSView(){
     try{if(sessionStorage.getItem(PREFIX+"view"))return;}catch(e){}
-    if(measure("StudyOSView",{measurement_version:"lp2"})){
+    if(measure("StudyOSView",{measurement_version:"lp5d5"})){
       try{sessionStorage.setItem(PREFIX+"view","1");}catch(e){}
     }
   }
@@ -1105,7 +1156,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         var ref=window.studyosCheckoutRef&&window.studyosCheckoutRef();
         if(ref){try{var u=new URL(checkout.href);u.searchParams.set("client_reference_id",ref);checkout.href=u.toString();}catch(err){}}
         if(window.studyosAnon)window.studyosAnon("InitiateCheckout");
-        funnel("begin_checkout",{source:"studyos",measurement_version:"lp2"});
+        funnel("begin_checkout",{source:"studyos",measurement_version:"lp5d5"});
       });
     }
   },true);
@@ -1115,14 +1166,14 @@ document.addEventListener("DOMContentLoaded",()=>{
     var d=document.getElementById("detail");
     if(!recommendationSeen&&d&&d.textContent&&d.textContent.indexOf("UNA OPCIÓN SEGÚN TUS RESPUESTAS")>-1){
       recommendationSeen=true;
-      once("recommendation_complete",function(){if(window.studyosAnon)window.studyosAnon("RecommendationComplete");measure("RecommendationComplete",{measurement_version:"lp2"});});
+      once("recommendation_complete",function(){if(window.studyosAnon)window.studyosAnon("RecommendationComplete");measure("RecommendationComplete",{measurement_version:"lp5d5"});});
     }
   });
   document.addEventListener("DOMContentLoaded",function(){observer.observe(document.body,{subtree:true,childList:true,characterData:true});});
 
   window.studyosTrackRecipeOpen=function(recipeId,isRecommendation){
     var key="recipe_"+String(recipeId||"unknown").replace(/[^a-z0-9_-]/gi,"").slice(0,50);
-    once(key,function(){if(window.studyosAnon)window.studyosAnon("RecipeOpen");measure("RecipeOpen",{recipe_id:String(recipeId||"").slice(0,80),recommendation:!!isRecommendation,measurement_version:"lp2"});});
+    once(key,function(){if(window.studyosAnon)window.studyosAnon("RecipeOpen");measure("RecipeOpen",{recipe_id:String(recipeId||"").slice(0,80),recommendation:!!isRecommendation,measurement_version:"lp5d5"});});
   };
 })();
 </script>
