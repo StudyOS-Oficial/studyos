@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
-<title>Hoy Como Bien | Tu receta para hoy · by StudyOS</title>
+<title>Hoy Como Bien | Elige qué comer hoy · by StudyOS</title>
 <meta content="¿No sabes qué comer hoy? Hoy Como Bien te ayuda a elegir una receta en menos de un minuto. Gratis, sin registro. Un producto de StudyOS." name="description"/>
 <meta content="#f7f3ea" name="theme-color"/>
 <style>
@@ -621,6 +621,13 @@ body{
 </style>
 <style id="lp3-hoy-como-bien">
 .productBrand{display:flex;flex-direction:column;line-height:1}.productBrand small{margin-top:3px;font-size:9px;letter-spacing:.10em;text-transform:uppercase;color:#7b806f;font-weight:800}.hcbBrand{font-size:22px!important;white-space:nowrap}.hcbBrand span{color:#C9785F!important}.lp3Hero{position:relative;overflow:hidden}.lp3Hero:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-95px;top:-90px;background:rgba(242,194,48,.10);pointer-events:none}.lp3Hero h2{max-width:620px!important}.lp3Hero>p strong{color:#fff}.lp3-micro{text-align:center;margin:0 0 15px;font-size:.7rem;font-weight:800;color:#e8eddf;letter-spacing:.02em}.lp3-result{position:relative;z-index:1;margin-top:9px;padding:14px 15px;border-radius:16px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}.lp3-result-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px}.lp3-result-top span{font-size:.58rem;letter-spacing:.09em;font-weight:900;color:#f2d773}.lp3-result-top b{font-size:.66rem;color:#e8eddf}.lp3-result>strong{display:block;color:#fff;font-family:"Fraunces",Georgia,serif;font-size:1.05rem;line-height:1.18}.lp3-result>small{display:block;margin-top:4px;color:#dce4d3;font-size:.66rem}.guidedSecondary{margin-top:20px!important}@media(max-width:480px){.topin{padding:13px 14px}.hcbBrand{font-size:20px!important}.freepill{font-size:10px;padding:6px 8px}.lp3Hero{padding:25px 20px!important}.lp3Hero h2{font-size:clamp(2rem,10.8vw,2.8rem)!important;line-height:.96!important}.lp3Hero>p{font-size:.92rem!important;line-height:1.45}.lp3-result-top{align-items:flex-start}.lp3-result>strong{font-size:.98rem}}
+
+.lp4-question{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.lp4-choice{min-height:58px;border:1px solid rgba(255,255,255,.22);border-radius:16px;background:rgba(255,255,255,.10);color:#fff;font-weight:850;text-align:left;padding:12px 13px;cursor:pointer;transition:.15s transform,.15s background,.15s border-color}
+.lp4-choice span{display:inline-block;margin-right:7px}.lp4-choice:hover,.lp4-choice:focus-visible{background:rgba(242,194,48,.16);border-color:#f2d773;transform:translateY(-1px);outline:none}
+.lp4-hidden-start{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;clip-path:inset(50%)!important}
+.lp4Hero .lp3-micro{margin-top:12px}.lp4Hero>p{max-width:570px}
+@media(max-width:380px){.lp4-question{grid-template-columns:1fr}.lp4-choice{min-height:50px}}
 </style>
 </head>
 <body>
@@ -628,22 +635,28 @@ body{
 <header class="top"><div class="topin"><div class="productBrand"><div class="brand hcbBrand">Hoy <span>Como Bien</span></div><small>by StudyOS</small></div><div class="freepill">GRATIS · SIN REGISTRO</div></div></header>
 <main>
 <section class="view active" id="home">
-<div class="heroCard guidedHero lp3Hero">
+<div class="heroCard guidedHero lp3Hero lp4Hero">
 <div class="eyebrow" style="color:#f2d773">HOY COMO BIEN · GRATIS</div>
-<h2>¿Otra vez sin saber qué comer hoy?</h2>
-<p>Dime en qué etapa estás, qué buscas y para qué momento del día. <strong>Nuestro sistema</strong> te recomienda una receta en menos de un minuto.</p>
-<button class="btn btnYellow guidedPrimary" data-track-action="free_recommendation_start" id="startQuiz">Encontrar mi receta gratis →</button>
-<div class="lp3-micro">4 preguntas · menos de 1 min · sin registro</div>
+<h2>¿Qué comida quieres resolver ahora?</h2>
+<p>Empieza por una sola cosa. <strong>Elige el momento</strong> y nuestro sistema te guía hasta una receta concreta.</p>
+<div class="lp4-question" aria-label="Elige el momento del día">
+  <button type="button" class="lp4-choice" data-quick-moment="D"><span>☀️</span>Desayuno</button>
+  <button type="button" class="lp4-choice" data-quick-moment="C"><span>🍽️</span>Comida</button>
+  <button type="button" class="lp4-choice" data-quick-moment="N"><span>🌙</span>Cena</button>
+  <button type="button" class="lp4-choice" data-quick-moment="S"><span>🍓</span>Snack o dulce</button>
+</div>
+<button class="lp4-hidden-start" data-track-action="free_recommendation_start" id="startQuiz" type="button">Empezar</button>
+<div class="lp3-micro">4 toques · menos de 1 min · sin registro</div>
 <div class="lp3-result" aria-label="Ejemplo de resultado">
-  <div class="lp3-result-top"><span>EJEMPLO DE RESULTADO</span><b>Cena · 20 min</b></div>
+  <div class="lp3-result-top"><span>ASÍ TERMINA</span><b>Ejemplo · Cena · 20 min</b></div>
   <strong>Crema de calabacín y jengibre con dados de pavo</strong>
   <small>Una opción según tus respuestas</small>
 </div>
 </div>
 
-<div class="eyebrow">HOY COMO BIEN · TU GUÍA PARA HOY</div>
-<h1>No busques entre recetas.<br/>Deja que nuestro sistema elija contigo.</h1>
-<p class="lead">Cuatro preguntas. Una receta para empezar. Prueba cómo funciona y después explora las 10 recetas gratuitas.</p>
+<div class="eyebrow">PRUÉBALO ANTES DE DECIDIR</div>
+<h1>Menos buscar.<br/>Más fácil elegir.</h1>
+<p class="lead">Primero te ayudamos a resolver una comida. Después, si quieres, puedes explorar las 10 recetas gratuitas.</p>
 
 <div class="guidedSecondary">
 <p><strong>¿Prefieres mirar por tu cuenta?</strong> También puedes hacerlo, pero te recomendamos probar primero el recomendador.</p>
@@ -808,9 +821,9 @@ body{
 <section class="view" id="quiz">
 <div class="eyebrow">Recomendador gratis</div><h1>Vamos a elegir</h1><div class="progress"><i id="bar"></i></div>
 <div class="quiz">
-<div class="q active" data-q="1"><h3>1. ¿En qué etapa estás?</h3><div class="opts"><button class="opt" data-key="stage" data-v="menstrual">Fase menstrual</button><button class="opt" data-key="stage" data-v="folicular">Fase folicular</button><button class="opt" data-key="stage" data-v="ovulatoria">Fase ovulatoria</button><button class="opt" data-key="stage" data-v="lutea">Fase lútea</button><button class="opt" data-key="stage" data-v="perimenopausia">Perimenopausia</button><button class="opt" data-key="stage" data-v="menopausia">Menopausia</button><button class="opt" data-key="stage" data-v="ninguna">Ninguna / no lo sé</button></div></div>
+<div class="q active" data-q="1"><h3>1. ¿Qué quieres resolver?</h3><div class="opts"><button class="opt" data-key="moment" data-v="D">Desayuno</button><button class="opt" data-key="moment" data-v="C">Comida</button><button class="opt" data-key="moment" data-v="N">Cena</button><button class="opt" data-key="moment" data-v="S">Snack o dulce</button></div></div>
 <div class="q" data-q="2"><h3>2. ¿Qué buscas hoy?</h3><div class="opts"><button class="opt" data-key="need" data-v="ai">Enfoque antiinflamatorio</button><button class="opt" data-key="need" data-v="en">Más energía</button><button class="opt" data-key="need" data-v="hi">Algo ligero</button><button class="opt" data-key="need" data-v="sa">Más saciedad</button><button class="opt" data-key="need" data-v="an">Antojos</button><button class="opt" data-key="need" data-v="ra">Algo rápido</button></div></div>
-<div class="q" data-q="3"><h3>3. ¿Para qué momento?</h3><div class="opts"><button class="opt" data-key="moment" data-v="D">Desayuno</button><button class="opt" data-key="moment" data-v="C">Comida</button><button class="opt" data-key="moment" data-v="N">Cena</button><button class="opt" data-key="moment" data-v="S">Snack o dulce</button></div></div>
+<div class="q" data-q="3"><h3>3. Si quieres, afina un poco más</h3><p class="small" style="margin-top:-4px">La etapa solo ayuda a ordenar mejor las opciones.</p><div class="opts"><button class="opt" data-key="stage" data-v="menstrual">Fase menstrual</button><button class="opt" data-key="stage" data-v="folicular">Fase folicular</button><button class="opt" data-key="stage" data-v="ovulatoria">Fase ovulatoria</button><button class="opt" data-key="stage" data-v="lutea">Fase lútea</button><button class="opt" data-key="stage" data-v="perimenopausia">Perimenopausia</button><button class="opt" data-key="stage" data-v="menopausia">Menopausia</button><button class="opt" data-key="stage" data-v="ninguna">No lo sé / prefiero no indicarlo</button></div></div>
 <div class="q" data-q="4"><h3>4. ¿Quieres evitar algo?</h3><div class="opts"><button class="opt" data-key="avoid" data-v="none">Nada en especial</button><button class="opt" data-key="avoid" data-v="gluten">Gluten</button><button class="opt" data-key="avoid" data-v="lacteos">Lácteos</button><button class="opt" data-key="avoid" data-v="huevo">Huevo</button><button class="opt" data-key="avoid" data-v="frutos">Frutos secos</button></div></div>
 </div>
 </section>
@@ -840,7 +853,8 @@ function renderExplore(){
 }
 function go(id){$$('.view').forEach(v=>v.classList.toggle('active',v.id===id));$$('.nav').forEach(n=>n.classList.toggle('active',n.dataset.go===id));scrollTo(0,0);if(id==='explore')renderExplore()}
 $$('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
-$('#startQuiz').onclick=()=>{state={};showQ(1);go('quiz')};
+$('#startQuiz').onclick=()=>{const preset=window.studyosQuickMoment||null;state=preset?{moment:preset}:{};showQ(preset?2:1);go('quiz');window.studyosQuickMoment=null};
+$$('[data-quick-moment]').forEach(b=>b.onclick=()=>{window.studyosQuickMoment=b.dataset.quickMoment;$('#startQuiz').click()});
 $('#randomBtn').onclick=()=>openRecipe(R[Math.floor(Math.random()*R.length)].id);
 $('#search').oninput=renderExplore;
 $$('.chip[data-filter]').forEach(c=>c.onclick=()=>{$$('.chip[data-filter]').forEach(x=>x.classList.remove('active'));c.classList.add('active');filter=c.dataset.filter;renderExplore()});
