@@ -244,7 +244,7 @@
       "InitiateCheckout": "checkout_click"
     };
     var event = map[eventName] || eventName;
-    if (["visit","free_start","visible_5s","scroll_25","first_action","quiz_start","explore_click","random_click","recommendation_complete","recipe_open","plus_view","checkout_click"].indexOf(event) === -1) return;
+    if (["visit","free_start","visible_5s","scroll_25","first_action","quiz_start","quiz_q1","quiz_q2","quiz_q3","quiz_q4","recommendation_complete","recommendation_no_match","explore_click","random_click","recipe_open","plus_view","checkout_click"].indexOf(event) === -1) return;
 
     fetch(ANON_ENDPOINT, {
       method: "POST",
@@ -380,11 +380,11 @@
 })();
 
 
-/* ---------- LP5 diagnostic signals (landing only; aggregate, no answers / no user IDs) ---------- */
+/* ---------- LP6 diagnostic signals (landing only; aggregate, no answers / no user IDs) ---------- */
 (function(){
   "use strict";
   if(!document.getElementById("inlineRecommender")) return;
-  var PREFIX="studyos_lp5d5_diag_";
+  var PREFIX="studyos_lp6d6_diag_";
 
   function once(key,eventName){
     try{
@@ -433,7 +433,7 @@
     if(!target) return;
 
     var meaningful=target.closest && target.closest(
-      '#startQuiz,[data-quick-moment],.lp4-choice,[data-go="explore"],[data-go="plan"],[data-go="plus"],#randomBtn,.recipe,.freeMenuRecipeLink,a[href*="buy.stripe.com"]'
+      '[data-quick-moment],.lp6-choice,.lp4-choice,[data-go="explore"],[data-go="plan"],[data-go="plus"],#randomBtn,.recipe,.freeMenuRecipeLink,a[href*="buy.stripe.com"]'
     );
     if(e.isTrusted && meaningful) once("first_action","first_action");
 
