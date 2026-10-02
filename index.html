@@ -797,6 +797,29 @@ body.lp6-quiz-active .freepill{display:none}
 .lp6-result-foot{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:12px}.lp6-result-foot small{color:#747b74;font-size:.68rem;line-height:1.35}.lp6-restart{border:0;background:none;color:#56613f;font:850 .72rem var(--sans);padding:5px 0;cursor:pointer;text-decoration:underline}
 .lp6-nomatch{background:#fff;color:#28351b;border:1px solid #dde1dd;border-radius:20px;padding:21px}.lp6-nomatch h2{color:#34431f!important;font-size:1.65rem!important}.lp6-nomatch p{color:#62685c!important}.lp6-nomatch .actions{margin-top:14px}
 .lp6-explore-link{display:block;margin:26px auto 0;border:0;background:none;color:#596159;text-decoration:underline;font:700 .84rem var(--sans);cursor:pointer}
+.lp6-why{margin:-10px 0 22px;padding:12px 14px;border-left:3px solid #91a070;background:#f0f4eb;border-radius:0 13px 13px 0;color:#5d6658;font-size:.82rem;line-height:1.45}
+.lp6-why b{color:#34431f}
+.lp6-authority{display:none;animation:lp6in .20s ease both;max-width:700px;margin:0 auto}
+.lp6-authority.active{display:block}
+.lp6-authority-card{background:#fff;border:1px solid #dfe3df;border-radius:24px;padding:24px;box-shadow:0 14px 34px rgba(34,44,31,.07)}
+.lp6-authority-kicker{font-size:.68rem;font-weight:900;letter-spacing:.10em;text-transform:uppercase;color:#6e8036;margin-bottom:10px}
+.lp6-authority h2{font-family:var(--sans)!important;color:#262a26!important;font-size:clamp(2rem,7vw,2.7rem)!important;line-height:1.08!important;letter-spacing:-.035em!important;margin:0 0 13px!important}
+.lp6-authority-lead{color:#626a62;font-size:1rem;line-height:1.52;margin:0 0 18px}
+.lp6-authority-stat{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;background:#f0f4eb;border:1px solid #d8e0d0;border-radius:18px;padding:16px;margin:16px 0}
+.lp6-authority-stat strong{font-family:var(--serif);font-size:2.35rem;line-height:1;color:#c9785f;letter-spacing:-.05em}
+.lp6-authority-stat span{font-size:.88rem;line-height:1.4;color:#475043}
+.lp6-authority-evidence{font-size:.78rem;line-height:1.48;color:#6a7169;margin:12px 0}
+.lp6-authority-evidence a{color:#465a34;font-weight:800}
+.lp6-authority-note{font-size:.70rem;line-height:1.42;color:#7a8178;margin:12px 0 0}
+.lp6-continue{width:100%;min-height:56px;border:0;border-radius:16px;background:#34431f;color:#fff;font:900 .95rem var(--sans);cursor:pointer;margin-top:18px}
+.lp6-match{display:none;animation:lp6in .2s ease both;max-width:700px;margin:0 auto;text-align:center;padding-top:20px}
+.lp6-match.active{display:block}
+.lp6-match .spinner{width:54px;height:54px;border:5px solid #dfe5dc;border-top-color:#6e8036;border-radius:50%;margin:0 auto 22px;animation:lp6spin .8s linear infinite}
+@keyframes lp6spin{to{transform:rotate(360deg)}}
+.lp6-match h2{font-family:var(--sans)!important;color:#262a26!important;font-size:clamp(1.9rem,7vw,2.5rem)!important;margin:0 0 10px!important}
+.lp6-match p{color:#687068;line-height:1.5;margin:0 auto;max-width:580px}
+.lp6-match-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:18px}
+.lp6-match-chips span{background:#eef1e9;border:1px solid #d7ddd2;border-radius:999px;padding:7px 10px;font-size:.72rem;font-weight:800;color:#536043}
 @media(max-width:560px){
   #inlineRecommender.lp6Hero{padding:0 22px 105px!important;min-height:calc(100vh - 72px)!important}
   body.lp6-quiz-active .topin{min-height:72px;padding:16px 18px}
@@ -824,13 +847,14 @@ body.lp6-quiz-active .freepill{display:none}
 <div class="heroCard guidedHero lp3Hero lp4Hero lp6Hero" id="inlineRecommender">
   <div class="lp6-top">
     <div class="lp6-kicker">Tu recomendación de hoy</div>
-    <span class="lp6-step" id="lp6StepLabel">1 DE 4</span>
+    <span class="lp6-step" id="lp6StepLabel">1 DE 5</span>
   </div>
   <div class="lp6-progress" aria-hidden="true"><i id="lp6Progress"></i></div>
 
   <div class="lp6-pane active" data-inline-step="1">
     <h1>¿Qué quieres comer ahora?</h1>
-    <p>Elige una opción. Usaremos tus respuestas para encontrar una receta concreta entre las 10 gratuitas.</p>
+    <p>Empezamos por lo práctico: qué comida necesitas resolver.</p>
+    <div class="lp6-why"><b>Por qué te lo preguntamos:</b> el momento del día funciona como un filtro real. Una receta de desayuno no resuelve una cena.</div>
     <div class="lp6-question" aria-label="Elige el momento del día">
       <button type="button" class="lp6-choice" data-quick-moment="D"><span class="lp6-icon">☀️</span><b>Desayuno</b><small>Empieza el día</small></button>
       <button type="button" class="lp6-choice" data-quick-moment="C"><span class="lp6-icon">🍽️</span><b>Comida</b><small>Algo para mediodía</small></button>
@@ -843,8 +867,9 @@ body.lp6-quiz-active .freepill{display:none}
   <div class="lp6-pane" data-inline-step="2">
     <button class="lp6-back" type="button" data-back-step="1">← Volver</button>
     <div class="lp6-trail" id="lp6Trail2"></div>
-    <h2>¿Qué te apetece hoy?</h2>
-    <p>Selecciona la opción que mejor encaje contigo ahora.</p>
+    <h2>¿Qué buscas hoy?</h2>
+    <p>No es un diagnóstico: solo nos ayuda a ordenar mejor las opciones.</p>
+    <div class="lp6-why"><b>Por qué te lo preguntamos:</b> dos personas pueden querer una cena, pero una priorizar rapidez y otra saciedad. Esta respuesta cambia qué recetas suben primero.</div>
     <div class="lp6-question">
       <button type="button" class="lp6-choice" data-key="need" data-v="ra"><span class="lp6-icon">⏱️</span><b>Algo rápido</b><small>Poco tiempo</small></button>
       <button type="button" class="lp6-choice" data-key="need" data-v="hi"><span class="lp6-icon">🪶</span><b>Algo ligero</b><small>Que no pese</small></button>
@@ -855,11 +880,24 @@ body.lp6-quiz-active .freepill{display:none}
     </div>
   </div>
 
+  <div class="lp6-authority" id="lp6Science">
+    <div class="lp6-authority-card">
+      <div class="lp6-authority-kicker">LA CIENCIA, SIN PROMESAS MÁGICAS</div>
+      <h2>Comer bien importa. Y hay datos detrás.</h2>
+      <p class="lp6-authority-lead">Muchas recetas de Hoy Como Bien comparten elementos habituales del patrón mediterráneo: verduras, legumbres, pescado, frutos secos y aceite de oliva virgen extra.</p>
+      <div class="lp6-authority-stat"><strong>≈30%</strong><span>En PREDIMED, una dieta mediterránea suplementada con aceite de oliva virgen extra o frutos secos redujo cerca de un 30% los eventos cardiovasculares mayores en personas con alto riesgo.</span></div>
+      <p class="lp6-authority-evidence">Además, metaanálisis de ensayos aleatorizados han observado reducciones de marcadores inflamatorios como la proteína C reactiva ultrasensible y la interleucina-6 frente a otras dietas. <a href="https://pubmed.ncbi.nlm.nih.gov/41211687/" target="_blank" rel="noopener">Ver metaanálisis ↗</a> · <a href="https://nutritionsource.hsph.harvard.edu/2018/06/22/predimed-retraction-republication/" target="_blank" rel="noopener">Ver PREDIMED ↗</a></p>
+      <p class="lp6-authority-note">Estos resultados corresponden a patrones dietéticos y poblaciones estudiadas. No significan que una receta concreta produzca esos efectos ni garantizan resultados individuales.</p>
+      <button type="button" class="lp6-continue" id="lp6ScienceContinue">SEGUIR CON MI RECOMENDACIÓN →</button>
+    </div>
+  </div>
+
   <div class="lp6-pane" data-inline-step="3">
     <button class="lp6-back" type="button" data-back-step="2">← Volver</button>
     <div class="lp6-trail" id="lp6Trail3"></div>
     <h2>¿Cuánto tiempo quieres dedicar a cocinar?</h2>
-    <p>Así evitamos enseñarte opciones que hoy no te sirven.</p>
+    <p>Queremos que la recomendación sea útil hoy, no solo que suene bien.</p>
+    <div class="lp6-why"><b>Por qué te lo preguntamos:</b> una receta puede encajar nutricionalmente y aun así no servirte si tarda 40 minutos y tú solo tienes 15.</div>
     <div class="lp6-question">
       <button type="button" class="lp6-choice" data-key="time" data-v="15"><span class="lp6-icon">⚡</span><b>Hasta 15 min</b><small>Quiero resolverlo ya</small></button>
       <button type="button" class="lp6-choice" data-key="time" data-v="30"><span class="lp6-icon">◷</span><b>Hasta 30 min</b><small>Tengo un poco de margen</small></button>
@@ -870,8 +908,23 @@ body.lp6-quiz-active .freepill{display:none}
   <div class="lp6-pane" data-inline-step="4">
     <button class="lp6-back" type="button" data-back-step="3">← Volver</button>
     <div class="lp6-trail" id="lp6Trail4"></div>
+    <h2>¿Qué es lo que más te cuesta normalmente?</h2>
+    <p>Esta respuesta no cambia tu receta de hoy: nos ayuda a enseñarte después la herramienta que puede resultarte más útil.</p>
+    <div class="lp6-why"><b>Por qué te lo preguntamos:</b> Hoy Como Bien no solo recomienda recetas; también puede ayudarte a decidir, ahorrar tiempo, aprovechar lo que tienes o planificar la semana.</div>
+    <div class="lp6-question">
+      <button type="button" class="lp6-choice" data-key="problem" data-v="decidir"><span class="lp6-icon">🤔</span><b>No sé qué cocinar</b><small>Me bloqueo al decidir</small></button>
+      <button type="button" class="lp6-choice" data-key="problem" data-v="tiempo"><span class="lp6-icon">⏱️</span><b>No tengo tiempo</b><small>Necesito resolverlo rápido</small></button>
+      <button type="button" class="lp6-choice" data-key="problem" data-v="compra"><span class="lp6-icon">🛒</span><b>No sé qué comprar</b><small>Me cuesta organizar la compra</small></button>
+      <button type="button" class="lp6-choice" data-key="problem" data-v="organizar"><span class="lp6-icon">📅</span><b>Me cuesta organizar la semana</b><small>Voy improvisando cada día</small></button>
+    </div>
+  </div>
+
+  <div class="lp6-pane" data-inline-step="5">
+    <button class="lp6-back" type="button" data-back-step="4">← Volver</button>
+    <div class="lp6-trail" id="lp6Trail5"></div>
     <h2>¿Hay algo que prefieras evitar?</h2>
-    <p>Último paso. Lo trataremos como una restricción al buscar tu receta.</p>
+    <p>Último paso. Mantendremos esta exclusión al buscar tu receta.</p>
+    <div class="lp6-why"><b>Por qué te lo preguntamos:</b> una recomendación solo es útil si respeta lo que quieres evitar. Comprueba siempre el etiquetado de los productos envasados.</div>
     <div class="lp6-question">
       <button type="button" class="lp6-choice" data-key="avoid" data-v="none"><span class="lp6-icon">✓</span><b>Nada en especial</b><small>Sin exclusiones</small></button>
       <button type="button" class="lp6-choice" data-key="avoid" data-v="gluten"><span class="lp6-icon">G</span><b>Gluten</b><small>Evitarlo</small></button>
@@ -881,8 +934,16 @@ body.lp6-quiz-active .freepill{display:none}
     </div>
   </div>
 
+  <div class="lp6-match" id="lp6Match">
+    <div class="spinner" aria-hidden="true"></div>
+    <h2>Estamos cruzando tus respuestas</h2>
+    <p>Momento, objetivo, tiempo y preferencias para reducir las opciones a una receta concreta.</p>
+    <div class="lp6-match-chips" id="lp6MatchChips"></div>
+    <p class="lp6-authority-note">La recomendación gratuita busca entre 10 recetas. Hoy Como Bien · Completo aplica el sistema a 500.</p>
+  </div>
+
   <div class="lp6-result" id="lp6Result" hidden></div>
-  <div class="lp6-micro" id="lp6Micro">4 toques · menos de 1 min · sin registro</div>
+  <div class="lp6-micro" id="lp6Micro">5 respuestas · menos de 1 min · sin registro</div>
 </div>
 
 <div class="eyebrow">SI PREFIERES EXPLORAR</div>
@@ -1081,6 +1142,13 @@ let inlineStep=1;
 const needLabels={ra:'Algo rápido',hi:'Algo ligero',sa:'Más saciedad',en:'Más energía',an:'Tengo antojo',ai:'Enfoque antiinflamatorio'};
 const momentLabels={D:'Desayuno',C:'Comida',N:'Cena',S:'Snack o dulce'};
 const timeLabels={'15':'≤ 15 min','30':'≤ 30 min',any:'Tiempo flexible'};
+const problemLabels={decidir:'Decidir qué cocinar',tiempo:'Poco tiempo',compra:'Organizar la compra',organizar:'Organizar la semana'};
+const problemPitch={
+ decidir:'El recomendador reduce 500 opciones a unas pocas que encajan contigo.',
+ tiempo:'El modo “Voy con prisa” busca opciones según el tiempo que tienes.',
+ compra:'La planificación incluye listas de la compra para los menús preparados.',
+ organizar:'“Crea mi semana” organiza 7 días y permite cambiar platos concretos sin empezar de cero.'
+};
 
 function trackStep(step){
   if(typeof window.studyosTrackQuizStep==="function") window.studyosTrackQuizStep(step);
@@ -1093,17 +1161,49 @@ function trailHtml(){
   return bits.length?`<span>✓ Perfecto: ${bits.join(' · ')}</span>`:'';
 }
 function syncTrail(){
-  ['2','3','4'].forEach(n=>{const el=$('#lp6Trail'+n);if(el)el.innerHTML=trailHtml();});
+  ['2','3','4','5'].forEach(n=>{const el=$('#lp6Trail'+n);if(el)el.innerHTML=trailHtml();});
+}
+function hideInterludes(){
+  const science=$('#lp6Science'),match=$('#lp6Match');
+  if(science)science.classList.remove('active');
+  if(match)match.classList.remove('active');
 }
 function setInlineStep(n){
   inlineStep=n;
+  hideInterludes();
   $$('.lp6-pane').forEach(p=>p.classList.toggle('active',Number(p.dataset.inlineStep)===n));
   $('#lp6Result').hidden=true;
-  $('#lp6StepLabel').textContent=n+' DE 4';
-  $('#lp6Progress').style.width=(n*25)+'%';
-  $('#lp6Micro').textContent='4 toques · menos de 1 min · sin registro';
+  $('#lp6StepLabel').textContent=n+' DE 5';
+  $('#lp6Progress').style.width=(n*20)+'%';
+  $('#lp6Micro').textContent='5 respuestas · menos de 1 min · sin registro';
   syncTrail();
   requestAnimationFrame(()=>$('#inlineRecommender').scrollIntoView({behavior:'smooth',block:'start'}));
+}
+function showScience(){
+  $$('.lp6-pane').forEach(p=>p.classList.remove('active'));
+  $('#lp6Result').hidden=true;
+  $('#lp6Science').classList.add('active');
+  $('#lp6StepLabel').textContent='POR QUÉ IMPORTA';
+  $('#lp6Progress').style.width='40%';
+  $('#lp6Micro').textContent='Evidencia sobre patrones dietéticos · no promesas individuales';
+  requestAnimationFrame(()=>$('#inlineRecommender').scrollIntoView({behavior:'smooth',block:'start'}));
+}
+function showMatchThenRecommend(){
+  $$('.lp6-pane').forEach(p=>p.classList.remove('active'));
+  $('#lp6Science').classList.remove('active');
+  $('#lp6Result').hidden=true;
+  const match=$('#lp6Match');match.classList.add('active');
+  $('#lp6StepLabel').textContent='BUSCANDO';
+  $('#lp6Progress').style.width='100%';
+  $('#lp6Micro').textContent='Aplicando tus respuestas';
+  const chips=[];
+  if(state.moment)chips.push(momentLabels[state.moment]);
+  if(state.need)chips.push(needLabels[state.need]);
+  if(state.time)chips.push(timeLabels[state.time]);
+  if(state.problem)chips.push(problemLabels[state.problem]);
+  $('#lp6MatchChips').innerHTML=chips.map(x=>`<span>${x}</span>`).join('');
+  requestAnimationFrame(()=>$('#inlineRecommender').scrollIntoView({behavior:'smooth',block:'start'}));
+  setTimeout(()=>{match.classList.remove('active');recommend();},1150);
 }
 function restartQuiz(){
   state={};
@@ -1120,9 +1220,18 @@ $$('.lp6-choice[data-key]').forEach(b=>b.onclick=()=>{
   b.classList.add('selected');
   const q=Number(b.closest('.lp6-pane').dataset.inlineStep);
   trackStep(q);
-  setTimeout(()=>{b.classList.remove('selected');if(q<4)setInlineStep(q+1); else recommend();},140);
+  setTimeout(()=>{
+    b.classList.remove('selected');
+    if(q===2)showScience();
+    else if(q<5)setInlineStep(q+1);
+    else showMatchThenRecommend();
+  },140);
 });
 $$('.lp6-back').forEach(b=>b.onclick=()=>setInlineStep(Number(b.dataset.backStep)));
+$('#lp6ScienceContinue').onclick=()=>{
+  if(typeof window.studyosTrackValidationContinue==='function')window.studyosTrackValidationContinue();
+  setInlineStep(3);
+};
 $('#randomBtn').onclick=()=>openRecipe(R[Math.floor(Math.random()*R.length)].id);
 $('#search').oninput=renderExplore;
 $$('.chip[data-filter]').forEach(c=>c.onclick=()=>{$$('.chip[data-filter]').forEach(x=>x.classList.remove('active'));c.classList.add('active');filter=c.dataset.filter;renderExplore()});
@@ -1172,7 +1281,7 @@ function showRecommendation(r,limit){
   const exactTime=!limit||r.m<=limit;
   const result=$('#lp6Result');
   result.hidden=false;
-  result.innerHTML=`<h2>Esta es tu receta para hoy</h2><p class="lp6-result-sub">La hemos elegido según las 4 respuestas que acabas de dar.</p>
+  result.innerHTML=`<h2>Esta es tu receta para hoy</h2><p class="lp6-result-sub">La hemos elegido según las 5 respuestas que acabas de dar.</p>
     <div class="lp6-result-card">
       <div class="lp6-result-visual theme-${code}"><span class="lp6-food-icon">${mealIcon(r)}</span><span class="lp6-time">${r.m} min</span></div>
       <div class="lp6-result-body">
@@ -1180,6 +1289,7 @@ function showRecommendation(r,limit){
         <div class="lp6-result-title">${r.t}</div>
         <div class="lp6-result-meta"><span>${r.d}</span><span>${r.k} kcal aprox.</span>${state.need?`<span>${needLabels[state.need]}</span>`:''}</div>
         ${exactTime?'':`<div class="lp6-near-note">No hay una opción compatible de ${timeLabels[state.time]} entre las 10 gratuitas. Esta es la coincidencia más cercana y tarda ${r.m} min.</div>`}
+        ${state.problem?`<div class="lp6-near-note"><b>Además:</b> ${problemPitch[state.problem]}</div>`:''}
         <button type="button" class="lp6-open" id="lp6OpenRecipe">VER RECETA GRATIS →</button>
       </div>
     </div>
@@ -1193,7 +1303,7 @@ function openRecipe(id,rec){
  const r=R.find(x=>x.id===id); if(!r)return;
  if(window.studyosTrackRecipeOpen) window.studyosTrackRecipeOpen(id,!!rec);
  const code=(rec&&state.moment)?state.moment:mealCode(r),meal=labels[code]||'Receta';
- $('#detail').innerHTML=`<div class="recipe-detail-hero"><div class="recipe-detail-kicker">${rec?'UNA OPCIÓN SEGÚN TUS RESPUESTAS':meal+' · RECETA GRATIS'}</div><div class="recipe-detail-title">${r.t}</div><div class="recipe-detail-meta"><span>${meal}</span><span>${r.m} min</span><span>${r.d}</span><span>${r.k} kcal aprox.</span></div></div><h3>Ingredientes</h3><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Preparación</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol><h3>Qué aporta esta receta</h3><div class="bio">${r.bio}</div><p class="cv3-micro">La clasificación por etapa es orientativa y no implica que una receta produzca un efecto hormonal específico.</p><div class="unlock cv3-result-offer"><span class="eyebrow">HOY YA LO TIENES RESUELTO</span><strong>Haz que el sistema te ayude también mañana.</strong><p>La versión completa amplía el recomendador a 500 recetas y añade 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><div class="cv3-benefits"><span>✓ 500 recetas</span><span>✓ 6 menús semanales</span><span>✓ 6 listas de la compra</span><span>✓ Batch cooking + sustituciones</span></div><button class="btn btnYellow wide" data-go="plus" id="modalPlusBtn" data-cv3="recommendation" style="display:block;text-align:center" type="button">Ver Hoy Como Bien · Completo →</button><p class="cv3-micro">500 recetas + herramientas · 5 € pago único.</p></div>`;
+ $('#detail').innerHTML=`<div class="recipe-detail-hero"><div class="recipe-detail-kicker">${rec?'UNA OPCIÓN SEGÚN TUS RESPUESTAS':meal+' · RECETA GRATIS'}</div><div class="recipe-detail-title">${r.t}</div><div class="recipe-detail-meta"><span>${meal}</span><span>${r.m} min</span><span>${r.d}</span><span>${r.k} kcal aprox.</span></div></div><h3>Ingredientes</h3><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Preparación</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol><h3>Qué aporta esta receta</h3><div class="bio">${r.bio}</div><p class="cv3-micro">La clasificación por etapa es orientativa y no implica que una receta produzca un efecto hormonal específico.</p><div class="unlock cv3-result-offer"><span class="eyebrow">HOY YA LO TIENES RESUELTO</span><strong>Haz que el sistema te ayude también mañana.</strong><p>${state.problem?problemPitch[state.problem]+" ":""}La versión completa amplía el recomendador a 500 recetas y añade 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><div class="cv3-benefits"><span>✓ 500 recetas</span><span>✓ 6 menús semanales</span><span>✓ 6 listas de la compra</span><span>✓ Batch cooking + sustituciones</span></div><button class="btn btnYellow wide" data-go="plus" id="modalPlusBtn" data-cv3="recommendation" style="display:block;text-align:center" type="button">Ver Hoy Como Bien · Completo →</button><p class="cv3-micro">500 recetas + herramientas · 5 € pago único.</p></div>`;
  const modalPlus=$('#modalPlusBtn');
  if(modalPlus)modalPlus.onclick=()=>{$('#modal').classList.remove('open');go('plus');};
  $('#modal').classList.add('open');
@@ -1244,41 +1354,47 @@ document.addEventListener("DOMContentLoaded",()=>{
 <script id="studyos-tracking-v1">
 (function(){
   "use strict";
-  var PREFIX="studyos_lp6d6_m_";
+  var PREFIX="studyos_lp6c_d7_m_";
   function once(key,fn){
     try{if(sessionStorage.getItem(PREFIX+key))return false;sessionStorage.setItem(PREFIX+key,"1");}catch(e){}
     fn();return true;
   }
   function measure(name,params){if(typeof window.studyosMeasure==="function")return window.studyosMeasure(name,params||{});return false;}
   function funnel(name,params){if(typeof window.studyosFunnel==="function")window.studyosFunnel(name,params||{});}
-  function engage(source){once("engaged",function(){if(window.studyosAnon)window.studyosAnon("FreeEngaged");measure("FreeEngaged",{source:source,measurement_version:"lp6d6"});});}
-  function plusView(source){once("plus_view",function(){if(window.studyosAnon)window.studyosAnon("PlusView");measure("PlusView",{source:source,measurement_version:"lp6d6"});});}
+  function engage(source){once("engaged",function(){if(window.studyosAnon)window.studyosAnon("FreeEngaged");measure("FreeEngaged",{source:source,measurement_version:"lp6c_d7"});});}
+  function plusView(source){once("plus_view",function(){if(window.studyosAnon)window.studyosAnon("PlusView");measure("PlusView",{source:source,measurement_version:"lp6c_d7"});});}
 
   window.studyosTrackQuizStep=function(step){
     step=Number(step);
-    if(step<1||step>4)return;
+    if(step<1||step>5)return;
     once("quiz_q"+step,function(){
       if(step===1)engage("direct_question_1");
       if(window.studyosAnon)window.studyosAnon("quiz_q"+step);
-      if(typeof window.studyosGA==="function")window.studyosGA("quiz_q"+step,{measurement_version:"lp6d6"});
+      if(typeof window.studyosGA==="function")window.studyosGA("quiz_q"+step,{measurement_version:"lp6c_d7"});
+    });
+  };
+  window.studyosTrackValidationContinue=function(){
+    once("validation_science_continue",function(){
+      if(window.studyosAnon)window.studyosAnon("validation_science_continue");
+      if(typeof window.studyosGA==="function")window.studyosGA("validation_science_continue",{measurement_version:"lp6c_d7"});
     });
   };
   window.studyosTrackRecommendationComplete=function(){
     once("recommendation_complete",function(){
       if(window.studyosAnon)window.studyosAnon("RecommendationComplete");
-      measure("RecommendationComplete",{measurement_version:"lp6d6"});
+      measure("RecommendationComplete",{measurement_version:"lp6c_d7"});
     });
   };
   window.studyosTrackRecommendationNoMatch=function(){
     once("recommendation_no_match",function(){
       if(window.studyosAnon)window.studyosAnon("recommendation_no_match");
-      if(typeof window.studyosGA==="function")window.studyosGA("recommendation_no_match",{measurement_version:"lp6d6"});
+      if(typeof window.studyosGA==="function")window.studyosGA("recommendation_no_match",{measurement_version:"lp6c_d7"});
     });
   };
 
   function emitStudyOSView(){
     try{if(sessionStorage.getItem(PREFIX+"view"))return;}catch(e){}
-    if(measure("StudyOSView",{measurement_version:"lp6d6"})){
+    if(measure("StudyOSView",{measurement_version:"lp6c_d7"})){
       try{sessionStorage.setItem(PREFIX+"view","1");}catch(e){}
     }
   }
@@ -1315,7 +1431,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         var ref=window.studyosCheckoutRef&&window.studyosCheckoutRef();
         if(ref){try{var u=new URL(checkout.href);u.searchParams.set("client_reference_id",ref);checkout.href=u.toString();}catch(err){}}
         if(window.studyosAnon)window.studyosAnon("InitiateCheckout");
-        funnel("begin_checkout",{source:"studyos",measurement_version:"lp6d6"});
+        funnel("begin_checkout",{source:"studyos",measurement_version:"lp6c_d7"});
       });
     }
   },true);
@@ -1324,7 +1440,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     var key="recipe_"+String(recipeId||"unknown").replace(/[^a-z0-9_-]/gi,"").slice(0,50);
     once(key,function(){
       if(window.studyosAnon)window.studyosAnon("RecipeOpen");
-      measure("RecipeOpen",{recipe_id:String(recipeId||"").slice(0,80),recommendation:!!isRecommendation,measurement_version:"lp6d6"});
+      measure("RecipeOpen",{recipe_id:String(recipeId||"").slice(0,80),recommendation:!!isRecommendation,measurement_version:"lp6c_d7"});
     });
   };
 })();
