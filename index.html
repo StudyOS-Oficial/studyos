@@ -544,7 +544,7 @@ body{
 .lp6-entry.active{display:block}
 .lp6-entry-kicker{font-size:.70rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:#6e8036;margin-bottom:13px}
 .lp6-entry h1{font-family:var(--sans)!important;color:#252925!important;font-size:clamp(2.05rem,7.5vw,3rem)!important;line-height:1.06!important;letter-spacing:-.045em!important;margin:0 0 16px!important;max-width:660px}
-.lp6-entry-lead{color:#626a62;font-size:1.03rem;line-height:1.5;margin:0 0 22px;max-width:625px}
+.lp6-entry-lead{color:#5f6f2f;font-size:1.03rem;line-height:1.5;margin:0 0 22px;max-width:625px;font-weight:500;opacity:1}
 .lp6-entry-visual{position:relative;overflow:hidden;background:linear-gradient(145deg,#eef2e8,#fff8e2);border:1px solid #dbe1d5;border-radius:26px;padding:22px;margin:0 0 18px;min-height:220px;display:grid;grid-template-columns:160px 1fr;gap:20px;align-items:center}
 .lp6-entry-visual:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;right:-85px;top:-90px;background:rgba(201,120,95,.12)}
 .lp6-entry-number{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;background:#34431f;color:#fff;box-shadow:0 18px 38px rgba(52,67,31,.18);position:relative;z-index:1}
@@ -870,6 +870,19 @@ body.lp6-quiz-active .freepill{display:none}
   .lp6-micro{left:22px;right:22px;bottom:27px;font-size:.72rem}
   .lp6-result-visual{height:160px}
 }
+
+/* FINAL VISUAL POLISH · woman hero + real recipe covers */
+.lp6-entry-portrait{position:relative;z-index:1;width:160px;height:190px;border-radius:22px;overflow:hidden;box-shadow:0 16px 36px rgba(52,67,31,.16);background:#e8ece3}
+.lp6-entry-portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+.lp6-entry-badge{position:absolute;left:9px;right:9px;bottom:9px;background:rgba(255,253,248,.94);backdrop-filter:blur(7px);border:1px solid rgba(59,74,37,.12);border-radius:13px;padding:8px 10px;color:#34431f;box-shadow:0 6px 18px rgba(38,48,29,.10)}
+.lp6-entry-badge strong{display:block;font-family:var(--serif);font-size:1.35rem;line-height:1;color:#c9785f}.lp6-entry-badge span{display:block;font-size:.62rem;font-weight:850;margin-top:3px;text-transform:uppercase;letter-spacing:.05em}
+.recipe-v2-top.has-photo,.lp6-result-visual.has-photo{background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
+.recipe-v2-top.has-photo::before,.recipe-v2-top.has-photo::after,.lp6-result-visual.has-photo::after{display:none!important}
+.recipe-v2-top.has-photo:after,.lp6-result-visual.has-photo:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.18));z-index:0}
+.recipe-v2-top.has-photo .recipe-v2-time,.lp6-result-visual.has-photo .lp6-time{background:rgba(255,255,255,.92);box-shadow:0 3px 12px rgba(0,0,0,.10)}
+.recipe-v2-top.has-photo .recipe-v2-icon,.lp6-result-visual.has-photo .lp6-food-icon{display:none}
+.recipe-detail-cover{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:20px;margin:-3px -3px 14px;display:block;border:1px solid #e2e7d8}
+@media(max-width:560px){.lp6-entry-portrait{width:112px;height:146px;border-radius:18px}.lp6-entry-badge{left:6px;right:6px;bottom:6px;padding:6px 7px}.lp6-entry-badge strong{font-size:1.08rem}.lp6-entry-badge span{font-size:.52rem}}
 </style>
 
 </head>
@@ -888,9 +901,9 @@ body.lp6-quiz-active .freepill{display:none}
   <div class="lp6-entry active" id="lp6Entry">
     <div class="lp6-entry-kicker">EXPERIENCIA REAL DE LA COMUNIDAD</div>
     <h1>Más de 200 descargas. Cientos de conversaciones reales.</h1>
-    <p class="lp6-entry-lead">Durante los últimos meses hemos creado recursos gratuitos, respondido cientos de mensajes sobre alimentación y menopausia y escuchado qué hace difícil comer bien en el día a día. <strong>Hoy Como Bien nace de todo ese trabajo.</strong></p>
+    <p class="lp6-entry-lead" style="color:#5f6f2f !important;opacity:1 !important;font-weight:500;">Durante los últimos meses hemos creado recursos gratuitos, respondido cientos de mensajes sobre alimentación y menopausia y escuchado qué hace difícil comer bien en el día a día. <strong style="color:#5f6f2f !important;opacity:1 !important;">Hoy Como Bien nace de todo ese trabajo.</strong></p>
     <div class="lp6-entry-visual" aria-label="Prueba social de StudyOS">
-      <div class="lp6-entry-number"><div><strong>200+</strong><span>descargas</span></div></div>
+      <div class="lp6-entry-portrait"><img src="assets/hero-woman.jpg" alt="Mujer sonriente, imagen de bienvenida de Hoy Como Bien"><div class="lp6-entry-badge"><strong>200+</strong><span>descargas de recursos</span></div></div>
       <div class="lp6-entry-copy"><b>No empezamos por una lista infinita de recetas.</b><p>Organizamos 500 recetas para ayudarte a llegar a una opción concreta según lo que necesitas hoy.</p></div>
     </div>
     <div class="lp6-entry-proof">
@@ -1178,7 +1191,9 @@ let filter='all', state={};
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 function mealCode(r){return (r.mo&&r.mo[0])||'C'}
 function mealIcon(r){return {D:'☀️',C:'🍽️',N:'🌙',S:'🍓'}[mealCode(r)]||'🍽️'}
-function card(r){const code=mealCode(r),meal=labels[code]||'Receta',g=(r.g||[]).slice(0,1);return `<button class="recipe recipe-v2" data-id="${r.id}"><div class="recipe-v2-top theme-${code}"><span class="recipe-v2-icon">${mealIcon(r)}</span><span class="recipe-v2-time">${r.m} min</span></div><div class="recipe-v2-body"><span class="recipe-v2-eyebrow">${meal} · ${r.ph}</span><h3>${r.t}</h3><div class="recipe-v2-tags"><span>${r.d}</span>${g.map(x=>`<span>${x}</span>`).join('')}</div><div class="recipe-v2-open"><span>Ver receta</span><b>→</b></div></div></button>`}
+const RECIPE_IMAGES={"tortitas-de-avena-y-calabaza":"assets/pancakes-calabaza.jpg","bowl-de-quinoa-y-pollo-al-limon-con-curcuma":"assets/bowl-quinoa-pollo.jpg","tartar-de-atun-mango-y-aguacate":"assets/tartar-atun-mango-aguacate.jpg","pudding-de-chia-y-cacao-antiantojos":"assets/chia-cacao-frambuesa.jpg","crema-de-calabacin-y-jengibre-con-dados-de-pavo":"assets/crema-verde-semillas.jpg","revuelto-de-champinones-y-espinacas":"assets/revuelto-setas-espinacas.jpg","smoothie-bowl-equilibrio-hormonal":"assets/yogur-aguacate-arandanos.jpg","salmon-al-horno-con-costra-de-sesamo-y-brocoli":"assets/ensalada-salmon-naranja.jpg","crema-de-lentejas-rojas-y-boniato-al-comino":"assets/salteado-calabacin-pollo.jpg","tostada-de-aguacate-huevo-poche-y-semillas-de-girasol":"assets/salteado-brocoli-pollo.jpg"};
+function recipeImage(r){return RECIPE_IMAGES[r.id]||'';}
+function card(r){const code=mealCode(r),meal=labels[code]||'Receta',g=(r.g||[]).slice(0,1),img=recipeImage(r);const photo=img?` has-photo" style="background-image:url('${img}')`:'"';return `<button class="recipe recipe-v2" data-id="${r.id}"><div class="recipe-v2-top theme-${code}${photo}"><span class="recipe-v2-icon">${mealIcon(r)}</span><span class="recipe-v2-time">${r.m} min</span></div><div class="recipe-v2-body"><span class="recipe-v2-eyebrow">${meal} · ${r.ph}</span><h3>${r.t}</h3><div class="recipe-v2-tags"><span>${r.d}</span>${g.map(x=>`<span>${x}</span>`).join('')}</div><div class="recipe-v2-open"><span>Ver receta</span><b>→</b></div></div></button>`}
 function bindCards(){ $$('.recipe').forEach(b=>b.onclick=()=>openRecipe(b.dataset.id)); }
 function renderHome(){ $('#homeRecipes').innerHTML=R.map(card).join(''); bindCards(); }
 function renderExplore(){
@@ -1343,7 +1358,7 @@ function showRecommendation(r,limit){
   result.hidden=false;
   result.innerHTML=`<h2>Esta es tu receta para hoy</h2><p class="lp6-result-sub">La hemos elegido según las 5 respuestas que acabas de dar.</p>
     <div class="lp6-result-card">
-      <div class="lp6-result-visual theme-${code}"><span class="lp6-food-icon">${mealIcon(r)}</span><span class="lp6-time">${r.m} min</span></div>
+      <div class="lp6-result-visual theme-${code}${recipeImage(r)?' has-photo':''}"${recipeImage(r)?` style="background-image:url('${recipeImage(r)}')"`:''}><span class="lp6-food-icon">${mealIcon(r)}</span><span class="lp6-time">${r.m} min</span></div>
       <div class="lp6-result-body">
         <div class="lp6-result-label">${meal} · recomendación gratuita</div>
         <div class="lp6-result-title">${r.t}</div>
@@ -1363,7 +1378,7 @@ function openRecipe(id,rec){
  const r=R.find(x=>x.id===id); if(!r)return;
  if(window.studyosTrackRecipeOpen) window.studyosTrackRecipeOpen(id,!!rec);
  const code=(rec&&state.moment)?state.moment:mealCode(r),meal=labels[code]||'Receta';
- $('#detail').innerHTML=`<div class="recipe-detail-hero"><div class="recipe-detail-kicker">${rec?'UNA OPCIÓN SEGÚN TUS RESPUESTAS':meal+' · RECETA GRATIS'}</div><div class="recipe-detail-title">${r.t}</div><div class="recipe-detail-meta"><span>${meal}</span><span>${r.m} min</span><span>${r.d}</span><span>${r.k} kcal aprox.</span></div></div><h3>Ingredientes</h3><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Preparación</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol><h3>Qué aporta esta receta</h3><div class="bio">${r.bio}</div><p class="cv3-micro">La clasificación por etapa es orientativa y no implica que una receta produzca un efecto hormonal específico.</p><div class="unlock cv3-result-offer"><span class="eyebrow">HOY YA LO TIENES RESUELTO</span><strong>Haz que el sistema te ayude también mañana.</strong><p>${state.problem?problemPitch[state.problem]+" ":""}La versión completa amplía el recomendador a 500 recetas y añade 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><div class="cv3-benefits"><span>✓ 500 recetas</span><span>✓ 6 menús semanales</span><span>✓ 6 listas de la compra</span><span>✓ Batch cooking + sustituciones</span></div><button class="btn btnYellow wide" data-go="plus" id="modalPlusBtn" data-cv3="recommendation" style="display:block;text-align:center" type="button">Ver Hoy Como Bien · Completo →</button><p class="cv3-micro">500 recetas + herramientas · 5 € pago único.</p></div>`;
+ $('#detail').innerHTML=`${recipeImage(r)?`<img class="recipe-detail-cover" src="${recipeImage(r)}" alt="${r.t}">`:''}<div class="recipe-detail-hero"><div class="recipe-detail-kicker">${rec?'UNA OPCIÓN SEGÚN TUS RESPUESTAS':meal+' · RECETA GRATIS'}</div><div class="recipe-detail-title">${r.t}</div><div class="recipe-detail-meta"><span>${meal}</span><span>${r.m} min</span><span>${r.d}</span><span>${r.k} kcal aprox.</span></div></div><h3>Ingredientes</h3><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><h3>Preparación</h3><ol>${r.steps.map(x=>`<li>${x}</li>`).join('')}</ol><h3>Qué aporta esta receta</h3><div class="bio">${r.bio}</div><p class="cv3-micro">La clasificación por etapa es orientativa y no implica que una receta produzca un efecto hormonal específico.</p><div class="unlock cv3-result-offer"><span class="eyebrow">HOY YA LO TIENES RESUELTO</span><strong>Haz que el sistema te ayude también mañana.</strong><p>${state.problem?problemPitch[state.problem]+" ":""}La versión completa amplía el recomendador a 500 recetas y añade 6 menús semanales, 6 listas de la compra, batch cooking y sustituciones.</p><div class="cv3-benefits"><span>✓ 500 recetas</span><span>✓ 6 menús semanales</span><span>✓ 6 listas de la compra</span><span>✓ Batch cooking + sustituciones</span></div><button class="btn btnYellow wide" data-go="plus" id="modalPlusBtn" data-cv3="recommendation" style="display:block;text-align:center" type="button">Ver Hoy Como Bien · Completo →</button><p class="cv3-micro">500 recetas + herramientas · 5 € pago único.</p></div>`;
  const modalPlus=$('#modalPlusBtn');
  if(modalPlus)modalPlus.onclick=()=>{$('#modal').classList.remove('open');go('plus');};
  $('#modal').classList.add('open');
