@@ -15,6 +15,36 @@
 .features{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:28px}.feature{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px}.feature b{font-size:18px}.feature p{margin-bottom:0;color:#62685b;line-height:1.5}.science{background:#3b4a25;color:#fff;border-radius:34px;padding:clamp(28px,5vw,54px);display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;align-items:center}.science h2{color:#fff}.science p{color:#e4e9dd;line-height:1.65}.stat{background:#fffdf8;color:var(--ink);border-radius:25px;padding:28px}.stat strong{font-family:Georgia,serif;font-size:64px;color:var(--coral)}.stat p{color:#59604f}.stat a{font-weight:800;color:var(--olive)}
 .price{padding:78px 0}.pricebox{background:#fff;border:1px solid var(--line);border-radius:32px;padding:clamp(28px,6vw,56px);display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;box-shadow:0 20px 60px rgba(49,58,34,.08)}.pricebox h2{font-size:clamp(36px,5vw,58px)}.amount{text-align:center}.amount strong{display:block;font-family:Georgia,serif;font-size:72px;color:var(--olive);line-height:.9}.amount span{display:block;color:#6a7064;font-size:13px;margin:8px 0 18px}.fine{font-size:12px;line-height:1.55;color:#75796f;margin-top:18px}.footer{padding:24px 0 50px;color:#72766d;font-size:12px;text-align:center}
 @media(max-width:800px){.hero-grid,.science,.pricebox{grid-template-columns:1fr}.proof-grid,.goals,.features{grid-template-columns:1fr}.phone{transform:none}.amount{text-align:left}.top .mini{display:none}.hero{padding-top:38px}.screen{min-height:auto}.five strong{font-size:78px}}
+
+/* General landing · interactive recipe search demo */
+.search-demo{padding:18px 0 72px}
+.search-demo-shell{background:#fff;border:1px solid var(--line);border-radius:32px;padding:clamp(22px,5vw,38px);box-shadow:0 18px 50px rgba(49,58,34,.08)}
+.search-demo-head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;margin-bottom:22px}
+.search-demo h2{font-size:clamp(34px,5vw,56px);line-height:.98;letter-spacing:-.035em;margin:6px 0 8px}
+.search-demo-note{font-size:13px;color:#6a7163;font-weight:700;text-align:right;max-width:220px}
+.demo-search-row{display:flex;gap:10px;align-items:center;background:#f5f1e8;border:1px solid #ddd6c8;border-radius:18px;padding:8px 10px 8px 15px}
+.demo-search-icon{font-size:20px;opacity:.65}
+#demoRecipeSearch{flex:1;border:0;outline:0;background:transparent;padding:11px 2px;font-size:16px;color:var(--ink);min-width:0}
+#demoRecipeSearch::placeholder{color:#8a8e84}
+.demo-clear{border:0;background:#e8e3d8;color:var(--olive);border-radius:999px;padding:9px 12px;font-weight:800;cursor:pointer}
+.demo-chips{display:flex;gap:8px;overflow-x:auto;padding:12px 0 4px;scrollbar-width:none}.demo-chips::-webkit-scrollbar{display:none}
+.demo-chip{white-space:nowrap;border:1px solid var(--line);background:#fff;color:var(--olive);border-radius:999px;padding:9px 13px;font-weight:800;cursor:pointer}
+.demo-chip.active{background:var(--olive);color:#fff;border-color:var(--olive)}
+.demo-results-top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:18px 0 10px;font-size:13px;color:#6b7165}
+.demo-results-top b{color:var(--olive)}
+.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.demo-card{border:1px solid var(--line);background:#fffdf8;border-radius:20px;padding:18px;text-align:left;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.demo-card:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(49,58,34,.08);border-color:#c7c0b2}
+.demo-card-kicker{font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:900;color:var(--coral)}
+.demo-card h3{font-family:Georgia,serif;font-size:21px;line-height:1.06;margin:8px 0 10px;color:var(--olive)}
+.demo-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px}.demo-meta span{background:#eef1e7;border-radius:999px;padding:6px 8px;font-size:11px;font-weight:800;color:#536043}
+.demo-ingredients{font-size:13px;line-height:1.5;color:#676d61;margin:0}
+.demo-open{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #ece8df;margin-top:13px;padding-top:11px;font-size:12px;font-weight:900;color:var(--olive)}
+.demo-empty{grid-column:1/-1;background:#faf7f0;border:1px dashed #cbc4b6;border-radius:18px;padding:24px;text-align:center;color:#6f746b}
+.demo-upsell{margin-top:18px;background:linear-gradient(145deg,#3b4a25,#52613a);color:#fff;border-radius:22px;padding:20px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
+.demo-upsell b{display:block;font-family:Georgia,serif;font-size:24px;margin-bottom:4px}.demo-upsell span{font-size:13px;color:#e6ebdf}.demo-upsell .btn{white-space:nowrap}
+.demo-preview{margin-top:14px;border:1px solid #d7ddcf;background:#f3f6ee;border-radius:20px;padding:20px;display:none}.demo-preview.open{display:block}.demo-preview-top{display:flex;justify-content:space-between;gap:12px}.demo-preview h3{font-size:26px;margin:4px 0 8px}.demo-preview-close{border:0;background:#fff;border-radius:999px;width:38px;height:38px;font-size:20px;color:var(--olive);cursor:pointer;flex:0 0 auto}.demo-preview ul{margin:10px 0 0;padding-left:20px;color:#5d6557;line-height:1.5}.demo-preview-foot{margin-top:14px;padding-top:12px;border-top:1px solid #dce2d6;font-size:12px;color:#72786d}
+@media(max-width:800px){.search-demo-head{grid-template-columns:1fr}.search-demo-note{text-align:left;max-width:none}.demo-grid{grid-template-columns:1fr}.demo-upsell{grid-template-columns:1fr}.demo-upsell .btn{width:100%}}
 </style>
 <script src="tracking.js" defer></script>
 </head>
@@ -29,6 +59,15 @@
 <div class="micro"><span>500 recetas completas</span><span>5 € una vez</span><span>sin suscripción</span><span>para hombres y mujeres</span></div>
 </div><div class="phone" aria-hidden="true"><div class="screen"><div class="smallbrand">Hoy <span>Como Bien</span></div><div class="five"><strong>500</strong><em>recetas</em></div><div class="search">Buscar por ingrediente, objetivo o momento…</div><div class="recipe"><b>Bowl de quinoa, pollo y limón</b><small>15 min · 460 kcal aprox. · Fácil</small></div><div class="recipe"><b>Salmón con coliflor y espinacas</b><small>20 min · 460 kcal aprox. · Fácil</small></div><div class="tools-mini"><div>✦ Crea mi semana</div><div>⌁ Qué tengo en la nevera</div><div>↗ Rescate rápido</div><div>✓ Favoritas e historial</div></div></div></div></div></section>
 
+<section class="search-demo" id="prueba-buscador"><div class="wrap"><div class="search-demo-shell">
+  <div class="search-demo-head"><div><div class="kicker">PRUÉBALO ANTES DE COMPRAR</div><h2>Busca una receta ahora.</h2><p class="section-lead">Escribe un ingrediente o un plato y prueba cómo funciona el buscador con 10 recetas de muestra. En Hoy Como Bien · Completo busca entre 500.</p></div><div class="search-demo-note">Demo real · sin registro</div></div>
+  <div class="demo-search-row"><span class="demo-search-icon">⌕</span><input id="demoRecipeSearch" type="search" autocomplete="off" placeholder="Prueba: salmón, pollo, aguacate, desayuno…"><button class="demo-clear" id="demoRecipeClear" type="button">Borrar</button></div>
+  <div class="demo-chips" aria-label="Filtrar por momento"><button class="demo-chip active" type="button" data-demo-filter="all">Todas</button><button class="demo-chip" type="button" data-demo-filter="D">Desayuno</button><button class="demo-chip" type="button" data-demo-filter="C">Comida</button><button class="demo-chip" type="button" data-demo-filter="N">Cena</button><button class="demo-chip" type="button" data-demo-filter="S">Snack</button></div>
+  <div class="demo-results-top"><span id="demoRecipeCount">10 recetas de muestra</span><b>Haz clic en una para verla</b></div>
+  <div class="demo-grid" id="demoRecipeResults"></div>
+  <div class="demo-preview" id="demoRecipePreview" aria-live="polite"></div>
+  <div class="demo-upsell"><div><b>Esto es solo una muestra de 10.</b><span>El acceso completo amplía el buscador a 500 recetas y añade recomendador, semana, nevera, rescate rápido y más.</span></div><a class="btn btn-main checkout" href="https://buy.stripe.com/9B6fZj3tX6j8dvKcni1VK00">Acceder a las 500 →</a></div>
+</div></div></section>
 
 <section class="proof"><div class="wrap proof-grid"><div class="proof-card"><strong>200+</strong><p>descargas de recursos gratuitos de StudyOS.</p></div><div class="proof-card"><strong>100+</strong><p>mujeres han pasado por nuestra comunidad mientras desarrollábamos recursos de alimentación y menopausia.</p></div><div class="proof-card"><strong>500</strong><p>recetas organizadas para convertir información en decisiones concretas.</p></div></div></section>
 
@@ -53,6 +92,54 @@
   setTimeout(function(){ if(document.visibilityState==='visible') once('studyos_general500_5s',function(){ anon('visible_5s'); }); },5000);
   var scrolled=false; window.addEventListener('scroll',function(){ if(scrolled) return; var h=document.documentElement.scrollHeight-innerHeight; if(h>0 && scrollY/h>=.25){scrolled=true; once('studyos_general500_scroll',function(){ anon('scroll_25'); });}}, {passive:true});
   document.addEventListener('click',function(e){ var target=e.target.closest&&e.target.closest('a,button'); if(!target)return; once('studyos_general500_action',function(){ anon('first_action'); }); if(target.closest('.checkout')) anon('checkout_click'); });
+})();
+</script>
+
+<script id="general-search-demo">
+(function(){
+  const recipes=[{"id":"tortitas-de-avena-y-calabaza","t":"Tortitas de Avena y Calabaza","m":12,"k":340,"d":"Fácil","mo":["D"],"g":["harina de avena","puré de calabaza","claras de huevo"],"ing":["40 g de harina de avena integral","80 g de puré de calabaza (asada o cocida al microondas)","2 claras de huevo + 1 huevo entero","50 ml de leche vegetal (almendra o avena sin azúcar)","1 cucharadita de canela en polvo","1 puñado pequeño de semillas de calabaza"]},{"id":"bowl-de-quinoa-y-pollo-al-limon-con-curcuma","t":"Bowl de Quinoa y Pollo al Limón con Cúrcuma","m":15,"k":460,"d":"Media","mo":["C"],"g":["quinoa","pechuga de pollo","calabacín"],"ing":["60 g de quinoa en seco","150 g de pechuga de pollo cortada en dados de 2 cm","1/2 calabacín mediano cortado en semicírculos fino","1 puñado grande (30 g) de espinacas frescas","El zumo de 1/2 limón fresco","1/2 cucharadita de cúrcuma en polvo"]},{"id":"tartar-de-atun-mango-y-aguacate","t":"Tartar de Atún, Mango y Aguacate","m":10,"k":420,"d":"Media","mo":["C","N"],"g":["atún rojo","mango","semillas de sésamo"],"ing":["120 g de lomo de atún rojo (previamente congelado 48h) o en conserva al natural de alta calidad","1/2 aguacate maduro en su punto","1/2 mango pequeño firme pero dulce","1 cucharadita de semillas de sésamo","1 cucharadita de salsa de soja baja en sodio","Unas gotas de zumo de lima o limón fresco"]},{"id":"pudding-de-chia-y-cacao-antiantojos","t":"Pudding de Chía, Cacao y Nueces","m":5,"k":290,"d":"Fácil","mo":["D","S"],"g":["semillas de chía","leche de coco","cacao puro desgrasado"],"ing":["3 cucharadas soperas (30 g) de semillas de chía","150 ml de leche de coco ligera (de brick) o almendras sin azúcar","1 cucharada sopera rasa (10 g) de cacao puro desgrasado en polvo","1/2 cucharadita de esencia o extracto de vainilla","2-3 nueces picadas para decorar"]},{"id":"crema-de-calabacin-y-jengibre-con-dados-de-pavo","t":"Crema de Calabacín y Jengibre con Dados de Pavo","m":20,"k":310,"d":"Media","mo":["C","N"],"g":["calabacín","puerro","jengibre"],"ing":["1 calabacín mediano lavado con piel","1/2 puerro (solo la parte blanca y verde clara)","1 rodaja fina de jengibre fresco (1 cm, pelado)","120 g de pechuga de pavo cortada en dados de 1,5 cm","1 cucharadita de aceite de oliva virgen extra (AOVE)","Sal y pimienta al gusto"]},{"id":"revuelto-de-champinones-y-espinacas","t":"Revuelto de Champiñones y Espinacas","m":10,"k":330,"d":"Fácil","mo":["D"],"g":["huevos","champiñones","espinacas"],"ing":["2 huevos enteros + 2 claras de huevo","100 g de champiñones laminados frescos","2 puñados (40 g) de espinacas frescas","1 rebanada (40 g) de pan integral de centeno","1 cucharadita de aceite de oliva virgen extra (AOVE)","Sal, pimienta negra y una pizca de ajo en polvo"]},{"id":"smoothie-bowl-equilibrio-hormonal","t":"Smoothie Bowl de Arándanos, Plátano y Lino","m":8,"k":380,"d":"Fácil","mo":["D","S"],"g":["plátano","arándanos","yogur griego natural"],"ing":["1/2 plátano congelado previamente en rodajas","100 g de arándanos o frutos rojos (frescos o congelados)","150 g de yogur griego natural o de coco sin azúcar","1 cucharada sopera (10 g) de semillas de lino molidas","1/2 cucharadita de té matcha en polvo (opcional)","1 cucharada de almendras laminadas para topping"]},{"id":"salmon-al-horno-con-costra-de-sesamo-y-brocoli","t":"Salmón al Horno con Costra de Sésamo y Brócoli","m":18,"k":490,"d":"Media","mo":["C"],"g":["salmón","floretes de brócoli","semillas de sésamo"],"ing":["130 g de lomo de salmón fresco sin espinas","150 g de floretes de brócoli fresco","1 cucharadita de semillas de sésamo","1/2 cucharadita de mostaza de Dijon","1 cucharadita de aceite de oliva virgen extra (AOVE)","Un chorro de zumo de limón fresco, sal y pimienta negra"]},{"id":"crema-de-lentejas-rojas-y-boniato-al-comino","t":"Crema de Lentejas Rojas y Boniato al Comino","m":22,"k":390,"d":"Media","mo":["C","N"],"g":["lentejas rojas","moniato","cebolla"],"ing":["50 g de lentejas rojas (no requieren remojo)","80 g de boniato o batata cortado en dados","1/2 cebolla pequeña","1/2 cucharadita de comino en polvo","1/2 cucharadita de cúrcuma","250 ml de caldo de verduras bajo en sodio"]},{"id":"tostada-de-aguacate-huevo-poche-y-semillas-de-girasol","t":"Tostada de Aguacate, Huevo Poché y Semillas de Girasol","m":10,"k":360,"d":"Media","mo":["D"],"g":["pan integral de","huevo","semillas de girasol"],"ing":["1 rebanada de pan integral de masa madre o centeno","1/2 aguacate maduro","1 huevo entero","Vinagre","1 cucharadita de semillas de girasol","1 pizca de pimentón de la Vera"]}];
+  const labels={D:'Desayuno',C:'Comida',N:'Cena',S:'Snack'};
+  const input=document.getElementById('demoRecipeSearch');
+  const results=document.getElementById('demoRecipeResults');
+  const count=document.getElementById('demoRecipeCount');
+  const preview=document.getElementById('demoRecipePreview');
+  const clear=document.getElementById('demoRecipeClear');
+  const chips=[...document.querySelectorAll('[data-demo-filter]')];
+  let filter='all';
+  function norm(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
+  function mealText(r){return r.mo.map(x=>labels[x]||x).join(' · ');}
+  function matches(r,q){
+    if(filter!=='all' && !r.mo.includes(filter)) return false;
+    if(!q) return true;
+    const hay=norm([r.t,...r.g,...r.ing,mealText(r)].join(' '));
+    return hay.includes(q);
+  }
+  function card(r){
+    const ingredients=r.g.slice(0,3).join(' · ');
+    return `<button type="button" class="demo-card" data-demo-recipe="${r.id}"><span class="demo-card-kicker">${mealText(r)}</span><h3>${r.t}</h3><div class="demo-meta"><span>${r.m} min</span><span>${r.k} kcal aprox.</span><span>${r.d}</span></div><p class="demo-ingredients">${ingredients}</p><span class="demo-open">Ver muestra <b>→</b></span></button>`;
+  }
+  function render(){
+    const q=norm(input.value.trim());
+    const list=recipes.filter(r=>matches(r,q));
+    count.textContent=list.length===1?'1 receta de muestra':`${list.length} recetas de muestra`;
+    results.innerHTML=list.length?list.map(card).join(''):'<div class="demo-empty"><b>No encontramos esa combinación en las 10 recetas de muestra.</b><br>Prueba otro ingrediente. El producto completo busca entre 500.</div>';
+  }
+  function showPreview(id){
+    const r=recipes.find(x=>x.id===id); if(!r)return;
+    try{ if(window.studyosAnon) window.studyosAnon('recipe_open'); }catch(e){}
+    preview.innerHTML=`<div class="demo-preview-top"><div><span class="demo-card-kicker">MUESTRA DEL BUSCADOR · ${mealText(r)}</span><h3>${r.t}</h3><div class="demo-meta"><span>${r.m} min</span><span>${r.k} kcal aprox.</span><span>${r.d}</span></div></div><button class="demo-preview-close" id="demoPreviewClose" type="button" aria-label="Cerrar">×</button></div><b>Algunos ingredientes:</b><ul>${r.ing.map(x=>`<li>${x}</li>`).join('')}</ul><div class="demo-preview-foot">En Hoy Como Bien · Completo puedes buscar y filtrar entre 500 recetas.</div>`;
+    preview.classList.add('open');
+    preview.scrollIntoView({behavior:'smooth',block:'nearest'});
+    document.getElementById('demoPreviewClose').onclick=()=>preview.classList.remove('open');
+  }
+  input.addEventListener('input',()=>{
+    try{ if(!sessionStorage.getItem('studyos_general500_action')){sessionStorage.setItem('studyos_general500_action','1'); if(window.studyosAnon) window.studyosAnon('first_action');} }catch(e){}
+    render();
+  });
+  clear.addEventListener('click',()=>{input.value='';filter='all';chips.forEach(c=>c.classList.toggle('active',c.dataset.demoFilter==='all'));preview.classList.remove('open');render();input.focus();});
+  chips.forEach(c=>c.addEventListener('click',()=>{filter=c.dataset.demoFilter;chips.forEach(x=>x.classList.toggle('active',x===c));preview.classList.remove('open');render();}));
+  results.addEventListener('click',e=>{const b=e.target.closest('[data-demo-recipe]');if(b)showPreview(b.dataset.demoRecipe);});
+  render();
 })();
 </script>
 </body></html>
