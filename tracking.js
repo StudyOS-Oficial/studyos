@@ -96,7 +96,7 @@
       var key = window.studyosPainKey ? window.studyosPainKey() : "";
       if (key) a.pain_point = key;
       var ad = cleanVal(String(p.get("ad") || "").toLowerCase());
-      if (["original","soso","hoycomobien","whatsappstory","general500"].indexOf(ad) > -1) a.ad = ad;
+      if (["original","soso","hoycomobien","whatsappstory","general500","retargeting"].indexOf(ad) > -1) a.ad = ad;
       UTM_KEYS.forEach(function (k) { var v = cleanVal(p.get(k)); if (v) a[k] = v; });
     } catch (e) {}
     return a;
@@ -121,7 +121,7 @@
     if (!attr.ad) {
       try {
         var sessionAd = String(sessionStorage.getItem("studyos_anon_ad") || "").toLowerCase();
-        if (["original","soso","hoycomobien","whatsappstory","general500"].indexOf(sessionAd) > -1) attr.ad = sessionAd;
+        if (["original","soso","hoycomobien","whatsappstory","general500","retargeting"].indexOf(sessionAd) > -1) attr.ad = sessionAd;
       } catch (e) {}
     }
     if (Object.keys(attr).length) {
@@ -213,7 +213,7 @@
   var ANON_ENDPOINT = "https://studyos-analytics.studyos-oficial-spain.workers.dev/";
 
   var ANON_AD_KEY = "studyos_anon_ad";
-  var VALID_ADS = ["original","soso","hoycomobien","whatsappstory","general500"];
+  var VALID_ADS = ["original","soso","hoycomobien","whatsappstory","general500","retargeting"];
   function anonymousAdVariant() {
     var candidate = "";
     try {
