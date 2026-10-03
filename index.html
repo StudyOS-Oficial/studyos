@@ -538,7 +538,41 @@ body{
   color:#704536!important;
 }
 #browseBtn:active,#randomBtn:active{transform:scale(.985)}
+
+/* LP6d · authority entry screen: social proof before the first question */
+.lp6-entry{display:none;animation:lp6in .20s ease both;max-width:700px;margin:0 auto}
+.lp6-entry.active{display:block}
+.lp6-entry-kicker{font-size:.70rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:#6e8036;margin-bottom:13px}
+.lp6-entry h1{font-family:var(--sans)!important;color:#252925!important;font-size:clamp(2.05rem,7.5vw,3rem)!important;line-height:1.06!important;letter-spacing:-.045em!important;margin:0 0 16px!important;max-width:660px}
+.lp6-entry-lead{color:#626a62;font-size:1.03rem;line-height:1.5;margin:0 0 22px;max-width:625px}
+.lp6-entry-visual{position:relative;overflow:hidden;background:linear-gradient(145deg,#eef2e8,#fff8e2);border:1px solid #dbe1d5;border-radius:26px;padding:22px;margin:0 0 18px;min-height:220px;display:grid;grid-template-columns:160px 1fr;gap:20px;align-items:center}
+.lp6-entry-visual:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;right:-85px;top:-90px;background:rgba(201,120,95,.12)}
+.lp6-entry-number{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;background:#34431f;color:#fff;box-shadow:0 18px 38px rgba(52,67,31,.18);position:relative;z-index:1}
+.lp6-entry-number div{text-align:center;line-height:1}
+.lp6-entry-number strong{display:block;font-family:var(--serif);font-size:3.25rem;letter-spacing:-.06em}
+.lp6-entry-number span{display:block;font-size:.70rem;font-weight:850;letter-spacing:.06em;text-transform:uppercase;margin-top:6px;color:#eef2e8}
+.lp6-entry-copy{position:relative;z-index:1}
+.lp6-entry-copy b{display:block;color:#2d3629;font-size:1.12rem;line-height:1.25;margin-bottom:9px}
+.lp6-entry-copy p{margin:0;color:#626a62;font-size:.90rem;line-height:1.45}
+.lp6-entry-proof{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 18px}
+.lp6-entry-proof div{background:#fff;border:1px solid #dfe3df;border-radius:17px;padding:13px 14px;box-shadow:0 7px 20px rgba(34,44,31,.04)}
+.lp6-entry-proof strong{display:block;color:#34431f;font-size:1.1rem;margin-bottom:3px}
+.lp6-entry-proof span{display:block;color:#737a72;font-size:.75rem;line-height:1.35}
+.lp6-entry-btn{width:100%;min-height:58px;border:0;border-radius:16px;background:#34431f;color:#fff;font:900 .96rem var(--sans);cursor:pointer;box-shadow:0 10px 24px rgba(52,67,31,.18)}
+.lp6-entry-btn:active{transform:scale(.992)}
+.lp6-entry-note{text-align:center;color:#7a817a;font-size:.72rem;font-weight:650;margin:10px 0 0}
 @media(max-width:560px){
+  .lp6-entry h1{font-size:clamp(2rem,9vw,2.55rem)!important}
+  .lp6-entry-lead{font-size:.95rem;margin-bottom:18px}
+  .lp6-entry-visual{grid-template-columns:112px 1fr;min-height:170px;padding:17px;gap:15px;border-radius:22px}
+  .lp6-entry-number{width:108px;height:108px}
+  .lp6-entry-number strong{font-size:2.45rem}
+  .lp6-entry-number span{font-size:.58rem}
+  .lp6-entry-copy b{font-size:.98rem}
+  .lp6-entry-copy p{font-size:.78rem}
+  .lp6-entry-proof{gap:8px}
+  .lp6-entry-proof div{padding:11px 12px}
+  .lp6-entry-proof strong{font-size:.98rem}
   #home > .heroCard.guidedHero + .guidedHero{padding-top:20px!important}
   #home > .heroCard.guidedHero + .guidedHero h1{
     font-size:clamp(2.35rem,12vw,3.35rem)!important;
@@ -846,12 +880,28 @@ body.lp6-quiz-active .freepill{display:none}
 <section class="view active" id="home">
 <div class="heroCard guidedHero lp3Hero lp4Hero lp6Hero" id="inlineRecommender">
   <div class="lp6-top">
-    <div class="lp6-kicker">Tu recomendación de hoy</div>
-    <span class="lp6-step" id="lp6StepLabel">1 DE 5</span>
+    <div class="lp6-kicker" id="lp6Kicker">Comunidad StudyOS</div>
+    <span class="lp6-step" id="lp6StepLabel">ANTES DE EMPEZAR</span>
   </div>
-  <div class="lp6-progress" aria-hidden="true"><i id="lp6Progress"></i></div>
+  <div class="lp6-progress" aria-hidden="true"><i id="lp6Progress" style="width:0%"></i></div>
 
-  <div class="lp6-pane active" data-inline-step="1">
+  <div class="lp6-entry active" id="lp6Entry">
+    <div class="lp6-entry-kicker">EXPERIENCIA REAL DE LA COMUNIDAD</div>
+    <h1>Más de 200 descargas. Cientos de conversaciones reales.</h1>
+    <p class="lp6-entry-lead">Durante los últimos meses hemos creado recursos gratuitos, respondido cientos de mensajes sobre alimentación y menopausia y escuchado qué hace difícil comer bien en el día a día. <strong>Hoy Como Bien nace de todo ese trabajo.</strong></p>
+    <div class="lp6-entry-visual" aria-label="Prueba social de StudyOS">
+      <div class="lp6-entry-number"><div><strong>200+</strong><span>descargas</span></div></div>
+      <div class="lp6-entry-copy"><b>No empezamos por una lista infinita de recetas.</b><p>Organizamos 500 recetas para ayudarte a llegar a una opción concreta según lo que necesitas hoy.</p></div>
+    </div>
+    <div class="lp6-entry-proof">
+      <div><strong>100+</strong><span>mujeres han pasado por nuestra comunidad</span></div>
+      <div><strong>500</strong><span>recetas organizadas en Hoy Como Bien</span></div>
+    </div>
+    <button type="button" class="lp6-entry-btn" id="lp6AuthorityContinue">DESCUBRIR QUÉ COMER HOY →</button>
+    <p class="lp6-entry-note">Gratis · sin registro · recomendación en menos de 1 minuto</p>
+  </div>
+
+  <div class="lp6-pane" data-inline-step="1">
     <h1>¿Qué quieres comer ahora?</h1>
     <p>Empezamos por lo práctico: qué comida necesitas resolver.</p>
     <div class="lp6-why"><b>Por qué te lo preguntamos:</b> el momento del día funciona como un filtro real. Una receta de desayuno no resuelve una cena.</div>
@@ -1164,15 +1214,17 @@ function syncTrail(){
   ['2','3','4','5'].forEach(n=>{const el=$('#lp6Trail'+n);if(el)el.innerHTML=trailHtml();});
 }
 function hideInterludes(){
-  const science=$('#lp6Science'),match=$('#lp6Match');
+  const science=$('#lp6Science'),match=$('#lp6Match'),entry=$('#lp6Entry');
   if(science)science.classList.remove('active');
   if(match)match.classList.remove('active');
+  if(entry)entry.classList.remove('active');
 }
 function setInlineStep(n){
   inlineStep=n;
   hideInterludes();
   $$('.lp6-pane').forEach(p=>p.classList.toggle('active',Number(p.dataset.inlineStep)===n));
   $('#lp6Result').hidden=true;
+  $('#lp6Kicker').textContent='Tu recomendación de hoy';
   $('#lp6StepLabel').textContent=n+' DE 5';
   $('#lp6Progress').style.width=(n*20)+'%';
   $('#lp6Micro').textContent='5 respuestas · menos de 1 min · sin registro';
@@ -1183,7 +1235,8 @@ function showScience(){
   $$('.lp6-pane').forEach(p=>p.classList.remove('active'));
   $('#lp6Result').hidden=true;
   $('#lp6Science').classList.add('active');
-  $('#lp6StepLabel').textContent='POR QUÉ IMPORTA';
+  $('#lp6Kicker').textContent='Por qué importa';
+  $('#lp6StepLabel').textContent='CIENCIA';
   $('#lp6Progress').style.width='40%';
   $('#lp6Micro').textContent='Evidencia sobre patrones dietéticos · no promesas individuales';
   requestAnimationFrame(()=>$('#inlineRecommender').scrollIntoView({behavior:'smooth',block:'start'}));
@@ -1193,6 +1246,7 @@ function showMatchThenRecommend(){
   $('#lp6Science').classList.remove('active');
   $('#lp6Result').hidden=true;
   const match=$('#lp6Match');match.classList.add('active');
+  $('#lp6Kicker').textContent='Tu recomendación de hoy';
   $('#lp6StepLabel').textContent='BUSCANDO';
   $('#lp6Progress').style.width='100%';
   $('#lp6Micro').textContent='Aplicando tus respuestas';
@@ -1209,6 +1263,10 @@ function restartQuiz(){
   state={};
   setInlineStep(1);
 }
+$('#lp6AuthorityContinue').onclick=()=>{
+  if(typeof window.studyosTrackAuthorityEntryContinue==='function')window.studyosTrackAuthorityEntryContinue();
+  setInlineStep(1);
+};
 $$('[data-quick-moment]').forEach(b=>b.onclick=()=>{
   state.moment=b.dataset.quickMoment;
   b.classList.add('selected');
@@ -1250,6 +1308,7 @@ function recommend(){
  if(!pool.length){
    if(typeof window.studyosTrackRecommendationNoMatch==="function") window.studyosTrackRecommendationNoMatch();
    $$('.lp6-pane').forEach(p=>p.classList.remove('active'));
+   $('#lp6Kicker').textContent='Tu recomendación de hoy';
    $('#lp6StepLabel').textContent='RESULTADO';
    $('#lp6Progress').style.width='100%';
    $('#lp6Micro').textContent='Tus exclusiones se mantienen';
@@ -1274,6 +1333,7 @@ function recommend(){
 function showRecommendation(r,limit){
   if(typeof window.studyosTrackRecommendationComplete==="function") window.studyosTrackRecommendationComplete();
   $$('.lp6-pane').forEach(p=>p.classList.remove('active'));
+  $('#lp6Kicker').textContent='Tu recomendación de hoy';
   $('#lp6StepLabel').textContent='TU RECETA';
   $('#lp6Progress').style.width='100%';
   $('#lp6Micro').textContent='Elegida entre las 10 recetas gratuitas';
@@ -1354,15 +1414,22 @@ document.addEventListener("DOMContentLoaded",()=>{
 <script id="studyos-tracking-v1">
 (function(){
   "use strict";
-  var PREFIX="studyos_lp6c_d7_m_";
+  var PREFIX="studyos_lp6d_d8_m_";
   function once(key,fn){
     try{if(sessionStorage.getItem(PREFIX+key))return false;sessionStorage.setItem(PREFIX+key,"1");}catch(e){}
     fn();return true;
   }
   function measure(name,params){if(typeof window.studyosMeasure==="function")return window.studyosMeasure(name,params||{});return false;}
   function funnel(name,params){if(typeof window.studyosFunnel==="function")window.studyosFunnel(name,params||{});}
-  function engage(source){once("engaged",function(){if(window.studyosAnon)window.studyosAnon("FreeEngaged");measure("FreeEngaged",{source:source,measurement_version:"lp6c_d7"});});}
-  function plusView(source){once("plus_view",function(){if(window.studyosAnon)window.studyosAnon("PlusView");measure("PlusView",{source:source,measurement_version:"lp6c_d7"});});}
+  function engage(source){once("engaged",function(){if(window.studyosAnon)window.studyosAnon("FreeEngaged");measure("FreeEngaged",{source:source,measurement_version:"lp6d_d8"});});}
+  function plusView(source){once("plus_view",function(){if(window.studyosAnon)window.studyosAnon("PlusView");measure("PlusView",{source:source,measurement_version:"lp6d_d8"});});}
+
+  window.studyosTrackAuthorityEntryContinue=function(){
+    once("authority_entry_continue",function(){
+      if(window.studyosAnon)window.studyosAnon("authority_entry_continue");
+      if(typeof window.studyosGA==="function")window.studyosGA("authority_entry_continue",{measurement_version:"lp6d_d8"});
+    });
+  };
 
   window.studyosTrackQuizStep=function(step){
     step=Number(step);
@@ -1370,31 +1437,31 @@ document.addEventListener("DOMContentLoaded",()=>{
     once("quiz_q"+step,function(){
       if(step===1)engage("direct_question_1");
       if(window.studyosAnon)window.studyosAnon("quiz_q"+step);
-      if(typeof window.studyosGA==="function")window.studyosGA("quiz_q"+step,{measurement_version:"lp6c_d7"});
+      if(typeof window.studyosGA==="function")window.studyosGA("quiz_q"+step,{measurement_version:"lp6d_d8"});
     });
   };
   window.studyosTrackValidationContinue=function(){
     once("validation_science_continue",function(){
       if(window.studyosAnon)window.studyosAnon("validation_science_continue");
-      if(typeof window.studyosGA==="function")window.studyosGA("validation_science_continue",{measurement_version:"lp6c_d7"});
+      if(typeof window.studyosGA==="function")window.studyosGA("validation_science_continue",{measurement_version:"lp6d_d8"});
     });
   };
   window.studyosTrackRecommendationComplete=function(){
     once("recommendation_complete",function(){
       if(window.studyosAnon)window.studyosAnon("RecommendationComplete");
-      measure("RecommendationComplete",{measurement_version:"lp6c_d7"});
+      measure("RecommendationComplete",{measurement_version:"lp6d_d8"});
     });
   };
   window.studyosTrackRecommendationNoMatch=function(){
     once("recommendation_no_match",function(){
       if(window.studyosAnon)window.studyosAnon("recommendation_no_match");
-      if(typeof window.studyosGA==="function")window.studyosGA("recommendation_no_match",{measurement_version:"lp6c_d7"});
+      if(typeof window.studyosGA==="function")window.studyosGA("recommendation_no_match",{measurement_version:"lp6d_d8"});
     });
   };
 
   function emitStudyOSView(){
     try{if(sessionStorage.getItem(PREFIX+"view"))return;}catch(e){}
-    if(measure("StudyOSView",{measurement_version:"lp6c_d7"})){
+    if(measure("StudyOSView",{measurement_version:"lp6d_d8"})){
       try{sessionStorage.setItem(PREFIX+"view","1");}catch(e){}
     }
   }
@@ -1431,7 +1498,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         var ref=window.studyosCheckoutRef&&window.studyosCheckoutRef();
         if(ref){try{var u=new URL(checkout.href);u.searchParams.set("client_reference_id",ref);checkout.href=u.toString();}catch(err){}}
         if(window.studyosAnon)window.studyosAnon("InitiateCheckout");
-        funnel("begin_checkout",{source:"studyos",measurement_version:"lp6c_d7"});
+        funnel("begin_checkout",{source:"studyos",measurement_version:"lp6d_d8"});
       });
     }
   },true);
@@ -1440,7 +1507,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     var key="recipe_"+String(recipeId||"unknown").replace(/[^a-z0-9_-]/gi,"").slice(0,50);
     once(key,function(){
       if(window.studyosAnon)window.studyosAnon("RecipeOpen");
-      measure("RecipeOpen",{recipe_id:String(recipeId||"").slice(0,80),recommendation:!!isRecommendation,measurement_version:"lp6c_d7"});
+      measure("RecipeOpen",{recipe_id:String(recipeId||"").slice(0,80),recommendation:!!isRecommendation,measurement_version:"lp6d_d8"});
     });
   };
 })();
