@@ -349,7 +349,7 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
 <button type="button" class="linkbtn v2-back" id="v4-back">← Volver a Hoy</button>
 <div id="v4-week-tool" hidden><p class="v2-kicker">HOY COMO BIEN</p><h1>Crea mi semana</h1><p class="v2-sub">21 comidas elegidas entre 500 recetas. Puedes cambiar cualquier plato antes de crear la lista.</p>
 <div class="v4-panel"><div class="v4-controls">
-<label>Etapa<select id="v4-stage"><option value="">Sin filtrar</option><option value="perimenopausia">Perimenopausia</option><option value="menopausia">Menopausia</option><option value="menstrual">Fase menstrual</option><option value="folicular">Fase folicular</option><option value="ovulatoria">Fase ovulatoria</option><option value="lutea">Fase lútea</option></select></label>
+<label>Etapa hormonal (opcional)<select id="v4-stage"><option value="">Sin filtrar</option><option value="perimenopausia">Perimenopausia</option><option value="menopausia">Menopausia</option><option value="menstrual">Fase menstrual</option><option value="folicular">Fase folicular</option><option value="ovulatoria">Fase ovulatoria</option><option value="lutea">Fase lútea</option></select></label>
 <label>Objetivo<select id="v4-need"><option value="en">Más energía</option><option value="hi">Algo ligero</option><option value="an">Tengo antojo</option><option value="sa">Más saciedad</option><option value="ra">Algo rápido</option><option value="ai">Enfoque antiinflamatorio</option></select></label>
 <label>Tiempo<select id="v4-time"><option value="any">Me da igual</option><option value="15">Hasta 15 min</option><option value="30">Hasta 30 min</option></select></label>
 <label>Evitar<select id="v4-avoid"><option value="">Nada en especial</option><option value="lacteos">Lácteos</option><option value="gluten">Gluten</option><option value="huevo">Huevo</option><option value="frutossecos">Frutos secos / cacahuete</option><option value="pescado">Pescado y marisco</option><option value="soja">Soja</option></select></label>
@@ -382,30 +382,36 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
     <section id="view-quiz" class="view">
       <div class="quiz" id="quiz">
         <div class="quiz-top">
-          <span id="quiz-step" aria-live="polite">Pregunta 1 de 4</span>
+          <span id="quiz-step" aria-live="polite">Pregunta 1 de 5</span>
           <div class="quiz-bar" aria-hidden="true"><i id="quiz-bar-i"></i></div>
         </div>
 
         <div class="qstep" data-q="1">
-          <h3 tabindex="-1">¿En qué etapa estás?</h3>
-          <div class="qgroup">Perimenopausia o menopausia</div>
+          <h3 tabindex="-1">¿Eres mujer u hombre?</h3>
+          <p class="qgroup">Solo lo usamos para decidir si te mostramos el filtro hormonal. Las 500 recetas están disponibles para todos.</p>
+          <div class="qopts">
+            <button type="button" data-v="mujer" aria-pressed="false">Mujer<small>puedes personalizar por etapa hormonal o saltarla</small></button>
+            <button type="button" data-v="hombre" aria-pressed="false">Hombre<small>iremos directamente a tus preferencias de comida</small></button>
+          </div>
+        </div>
+
+        <div class="qstep" data-q="2" hidden>
+          <h3 tabindex="-1">¿Quieres personalizar por etapa hormonal?</h3>
+          <p class="qgroup">Es opcional. Si no te interesa, el recomendador funcionará sin este filtro.</p>
           <div class="qopts">
             <button type="button" data-v="perimenopausia" aria-pressed="false">Perimenopausia<small>ciclos irregulares</small></button>
             <button type="button" data-v="menopausia" aria-pressed="false">Menopausia<small>sin regla desde hace un año o más</small></button>
-          </div>
-          <div class="qgroup">O tu fase del ciclo</div>
-          <div class="qopts">
             <button type="button" data-v="menstrual" aria-pressed="false">Fase menstrual<small>días 1 a 5</small></button>
             <button type="button" data-v="folicular" aria-pressed="false">Fase folicular<small>días 6 a 12</small></button>
             <button type="button" data-v="ovulatoria" aria-pressed="false">Fase ovulatoria<small>días 13 a 16</small></button>
             <button type="button" data-v="lutea" aria-pressed="false">Fase lútea<small>días 17 a 28</small></button>
           </div>
-          <div class="qopts qopts-one">
-            <button type="button" data-v="ninguna" aria-pressed="false">No lo sé<small>sin filtrar por etapa</small></button>
+          <div class="qopts qopts-one" style="margin-top:10px">
+            <button type="button" data-v="ninguna" aria-pressed="false">Seguir sin filtro hormonal<small>usar las 500 recetas sin clasificar por etapa</small></button>
           </div>
         </div>
 
-        <div class="qstep" data-q="2" hidden>
+        <div class="qstep" data-q="3" hidden>
           <h3 tabindex="-1">¿Qué necesitas hoy?</h3>
           <div class="qopts">
             <button type="button" data-v="en" aria-pressed="false">Más energía</button>
@@ -417,7 +423,7 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
           </div>
         </div>
 
-        <div class="qstep" data-q="3" hidden>
+        <div class="qstep" data-q="4" hidden>
           <h3 tabindex="-1">¿Para qué momento del día?</h3>
           <div class="qopts">
             <button type="button" data-v="D" aria-pressed="false">Desayuno</button>
@@ -427,7 +433,7 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
           </div>
         </div>
 
-        <div class="qstep" data-q="4" hidden>
+        <div class="qstep" data-q="5" hidden>
           <h3 tabindex="-1">¿Hay algo que prefieras evitar?</h3>
           <div class="qopts">
             <button type="button" data-v="lacteos" aria-pressed="false">Lácteos</button>
@@ -462,8 +468,8 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
           <button type="button" class="btn btn-outline" id="random-btn">Sorpréndeme</button>
         </div>
         <div class="filter-grid">
-          <select id="f-stage" aria-label="Filtrar por etapa">
-            <option value="">Todas las etapas</option>
+          <select id="f-stage" aria-label="Filtrar por etapa hormonal (opcional)">
+            <option value="">Sin filtro hormonal</option>
             <option value="menstrual">Fase menstrual</option>
             <option value="folicular">Fase folicular</option>
             <option value="ovulatoria">Fase ovulatoria</option>
@@ -644,7 +650,7 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
     html += '<p class="res-kicker">' + esc(opts.kicker || moment[1]) + '</p>';
     html += '<h3 class="res-title" tabindex="-1">' + esc(r.t) + '</h3></div>';
     html += '<div class="res-hero-icon" aria-hidden="true">' + moment[0] + '</div></div>';
-    html += '<p class="res-stage">' + esc(r.ph) + '</p>';
+    if (opts.showStage) html += '<p class="res-stage">' + esc(r.ph) + '</p>';
     html += '<div class="res-chips"><span class="res-chip">◷ ' + esc(timeLabel(r)) + '</span><span class="res-chip">' + r.k + ' kcal aprox.</span><span class="res-chip res-chip-soft">' + esc(r.d) + '</span></div></div>';
     if (opts.why) html += '<p class="res-why"><b>Por qué te la mostramos</b><br>' + opts.why + '</p>';
     if (r.prepNote) html += '<p class="res-why"><b>Antes de empezar</b><br>' + esc(r.prepNote) + '</p>';
@@ -653,7 +659,7 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
     html += '<section class="res-panel" data-res-panel="steps" hidden><ol class="res-steps">' + steps + '</ol></section>';
     html += '<details class="res-info"><summary>Qué aporta esta receta</summary><p>' + esc(r.bio) + '</p></details>';
     if (r.a && r.a !== "Ninguno") html += '<p class="res-allergen"><b>Alérgenos indicados:</b> ' + esc(r.a) + '</p>';
-    html += '<p class="res-check">La clasificación por etapa es orientativa. Si tienes alergias o intolerancias, comprueba también el etiquetado de los productos envasados.</p>';
+    html += '<p class="res-check">El filtro hormonal es opcional y orientativo. Si tienes alergias o intolerancias, comprueba también el etiquetado de los productos envasados.</p>';
     html += '<button type="button" class="fav-btn' + (isFavorite(r.id) ? ' is-fav' : '') + '" data-fav-id="' + esc(r.id) + '">' + (isFavorite(r.id) ? '♥ Guardada en favoritas' : '♡ Guardar en favoritas') + '</button>';
     html += '</div>';
     return html;
@@ -673,46 +679,66 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
   modeQuiz.addEventListener("click", function () { setMode("quiz"); });
   modeBrowse.addEventListener("click", function () { setMode("browse"); initBrowseOnce(); });
 
-  /* ---------------------------------------------------------------- Test (4 preguntas + resultado) */
+  /* ---------------------------------------------------------------- Test universal (sexo + filtro hormonal opcional + resultado) */
   var quiz = document.getElementById("quiz");
   var steps = quiz.querySelectorAll(".qstep");
   var result = document.getElementById("quiz-result");
   var stepLabel = document.getElementById("quiz-step");
   var bar = document.getElementById("quiz-bar-i");
   var back = document.getElementById("quiz-back");
-  var TOTAL = 4;
-  var state = { stage: null, need: null, mo: null, avoid: [] };
+  var state = { sex: null, stage: null, need: null, mo: null, avoid: [] };
   var current = 1;
+
+  function sequence() {
+    return state.sex === "hombre" ? [1,3,4,5] : [1,2,3,4,5];
+  }
 
   function showStep(n, focus) {
     current = n;
     result.hidden = true;
     quiz.querySelector(".quiz-top").hidden = false;
     steps.forEach(function (st) { st.hidden = Number(st.getAttribute("data-q")) !== n; });
-    stepLabel.textContent = "Pregunta " + n + " de " + TOTAL;
-    bar.style.width = Math.round((n / TOTAL) * 100) + "%";
-    back.hidden = n === 1;
+    var seq = sequence();
+    var pos = Math.max(0, seq.indexOf(n));
+    stepLabel.textContent = "Pregunta " + (pos + 1) + " de " + seq.length;
+    bar.style.width = Math.round(((pos + 1) / seq.length) * 100) + "%";
+    back.hidden = pos === 0;
     if (focus) {
       var h = quiz.querySelector('.qstep[data-q="' + n + '"] h3');
       if (h) h.focus({ preventScroll: true });
     }
   }
 
-  function mark(q, value, multi) {
+  function mark(q, value) {
     var group = quiz.querySelector('.qstep[data-q="' + q + '"]');
-    if (!multi) {
-      group.querySelectorAll(".qopts button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-v") === value)); });
-    }
+    group.querySelectorAll(".qopts button").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.getAttribute("data-v") === value));
+    });
+  }
+
+  function nextAfter(q) {
+    var seq = sequence();
+    var i = seq.indexOf(q);
+    return i > -1 && i < seq.length - 1 ? seq[i + 1] : null;
   }
 
   function answered(q) {
-    window.setTimeout(function () { if (q < TOTAL) showStep(q + 1, true); else finish(); }, 200);
+    window.setTimeout(function () {
+      var next = nextAfter(q);
+      if (next) showStep(next, true); else finish();
+    }, 200);
+  }
+
+  function restart() {
+    state = { sex: null, stage: null, need: null, mo: null, avoid: [] };
+    quiz.querySelectorAll(".qopts button").forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+    showStep(1, true);
   }
 
   function finish() {
     var rec = getRecommendedRecipe(state.stage, state.need, state.mo, { avoid: state.avoid, time: "any" });
     if (!rec || !rec.recipe) {
-      result.innerHTML = '<div class="res-main"><p class="res-kicker">NO HAY COINCIDENCIA SEGURA</p><h3 class="res-title">Mantendremos tus exclusiones</h3><p class="res-why">No hemos encontrado una receta que cumpla todas las exclusiones seleccionadas. El sistema no las relajará para mostrarte una opción. Vuelve a responder y cambia la etapa, el objetivo o el momento del día, manteniendo tus exclusiones.</p><div class="res-cta"><button type="button" class="btn btn-outline" id="restart-quiz-nomatch">Volver a responder</button></div></div>';
+      result.innerHTML = '<div class="res-main"><p class="res-kicker">NO HAY COINCIDENCIA SEGURA</p><h3 class="res-title">Mantendremos tus exclusiones</h3><p class="res-why">No hemos encontrado una receta que cumpla todas las exclusiones seleccionadas. El sistema no las relajará para mostrarte una opción. Vuelve a responder y cambia tus preferencias manteniendo las exclusiones que necesites.</p><div class="res-cta"><button type="button" class="btn btn-outline" id="restart-quiz-nomatch">Volver a responder</button></div></div>';
       quiz.querySelector(".quiz-top").hidden = true;
       steps.forEach(function (st) { st.hidden = true; });
       back.hidden = true;
@@ -733,11 +759,11 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
   function renderResult(rec, isQuiz) {
     var r = rec.recipe;
     var why = "Elegida porque buscas <b>" + NEED[state.need] + "</b> para <b>" + MOMENT[state.mo] + "</b>";
-    if (rec.stageMatched) why += " y la hemos clasificado dentro de <b>" + STAGELABEL[state.stage] + "</b>";
+    if (rec.stageMatched && state.stage && state.stage !== "ninguna") why += " y la hemos clasificado dentro de <b>" + STAGELABEL[state.stage] + "</b>";
     else if (state.stage && state.stage !== "ninguna") why += ". Para esta combinación no hay una receta específica de " + STAGELABEL[state.stage] + "; esta es la que mejor encaja";
     why += ".";
 
-    var html = renderDetail(r, { kicker: "Una opción según tus respuestas", why: why, moment: state.mo });
+    var html = renderDetail(r, { kicker: "Una opción según tus respuestas", why: why, moment: state.mo, showStage: !!state.stage && state.stage !== "ninguna" });
     var alt = rec.alternatives.map(function (a) {
       return '<button type="button" class="alt-pick" data-id="' + esc(a.id) + '"><b>' + esc(a.t) + "</b><span>" + timeLabel(a) + " · " + a.k + " kcal aprox.</span></button>";
     }).join("");
@@ -758,11 +784,7 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
         }
       });
     });
-    document.getElementById("restart-quiz").addEventListener("click", function () {
-      state = { stage: null, need: null, mo: null, avoid: [] };
-      quiz.querySelectorAll(".qopts button").forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
-      showStep(1, true);
-    });
+    document.getElementById("restart-quiz").addEventListener("click", restart);
   }
 
   quiz.addEventListener("click", function (e) {
@@ -770,7 +792,7 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
     if (b) {
       var q = Number(b.closest(".qstep").getAttribute("data-q"));
       var v = b.getAttribute("data-v");
-      if (q === 4) {
+      if (q === 5) {
         var group = b.closest(".qstep");
         if (v === "nada") {
           state.avoid = [];
@@ -783,16 +805,23 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
         state.avoid = Array.prototype.filter.call(group.querySelectorAll(".qopts button"), function (x) { return x.getAttribute("aria-pressed") === "true" && x.getAttribute("data-v") !== "nada"; }).map(function (x) { return x.getAttribute("data-v"); });
         return;
       }
-      if (q === 1) state.stage = v;
-      else if (q === 2) state.need = v;
-      else if (q === 3) state.mo = v;
+      if (q === 1) {
+        state.sex = v;
+        state.stage = v === "hombre" ? "ninguna" : null;
+      } else if (q === 2) state.stage = v;
+      else if (q === 3) state.need = v;
+      else if (q === 4) state.mo = v;
       mark(q, v);
       answered(q);
       return;
     }
-    if (e.target.closest && e.target.closest("[data-next]")) answered(4);
+    if (e.target.closest && e.target.closest("[data-next]")) answered(5);
   });
-  back.addEventListener("click", function () { if (current > 1) showStep(current - 1, true); });
+  back.addEventListener("click", function () {
+    var seq = sequence();
+    var i = seq.indexOf(current);
+    if (i > 0) showStep(seq[i - 1], true);
+  });
 
   showStep(1, false);
 
@@ -835,7 +864,7 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
     }
     emptyState.hidden = true;
     rgrid.innerHTML = list.map(function (r) {
-      return '<button type="button" class="rcard" data-id="' + esc(r.id) + '"><h4>' + esc(r.t) + '</h4><p class="ph">' + esc(r.ph) + '</p><p class="rm">' + timeLabel(r) + " · " + r.k + " kcal · " + esc(r.d) + "</p></button>";
+      return '<button type="button" class="rcard" data-id="' + esc(r.id) + '"><h4>' + esc(r.t) + '</h4><p class="rm">' + timeLabel(r) + " · " + r.k + " kcal · " + esc(r.d) + "</p></button>";
     }).join("");
   }
 
@@ -913,8 +942,8 @@ body{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));background:
   function showHome(){hideAllViews();v2Home.hidden=false;navState("nav-home");refreshLast();window.scrollTo({top:0,behavior:"smooth"});}
   function showQuizV2(){hideAllViews();v2Recipes.hidden=false;setMode("quiz");navState("nav-home");window.scrollTo({top:0,behavior:"smooth"});}
   function showBrowseV2(fast){hideAllViews();v2Recipes.hidden=false;setMode("browse");initBrowseOnce();navState("nav-explore");if(fast){fTime.value="15";renderGrid();}window.scrollTo({top:0,behavior:"smooth"});}
-  function renderSaved(kind){var ids=kind==="history"?v2state.history:v2state.favorites;document.getElementById("v2-saved-kicker").textContent=kind==="history"?"VISTAS RECIENTES":"TU BIBLIOTECA";document.getElementById("v2-saved-title").textContent=kind==="history"?"Recetas recientes":"Favoritas";var box=document.getElementById("v2-saved-list"),recipes=ids.map(byId).filter(Boolean);box.innerHTML=recipes.length?recipes.map(function(r){return '<button type="button" data-open-saved="'+esc(r.id)+'"><b>'+esc(r.t)+'</b><small>'+timeLabel(r)+' · '+esc(r.ph)+'</small></button>';}).join(""):'<p class="v2-empty">Todavía no hay recetas aquí.</p>';document.getElementById("v2-clear-saved").dataset.kind=kind;hideAllViews();v2Saved.hidden=false;navState(kind==="history"?"nav-home":"nav-saved");window.scrollTo({top:0,behavior:"smooth"});}
-  function refreshLast(){var wrap=document.getElementById("v2-last-wrap"),box=document.getElementById("v2-last");if(!wrap||!box)return;var r=v2state.history.length?byId(v2state.history[0]):null;if(!r){wrap.hidden=true;return;}wrap.hidden=false;box.innerHTML='<h3>'+esc(r.t)+'</h3><p>'+timeLabel(r)+' · '+esc(r.ph)+'</p><button type="button" class="btn btn-outline" data-open-last="'+esc(r.id)+'" style="margin-top:12px">Abrir receta</button>';}
+  function renderSaved(kind){var ids=kind==="history"?v2state.history:v2state.favorites;document.getElementById("v2-saved-kicker").textContent=kind==="history"?"VISTAS RECIENTES":"TU BIBLIOTECA";document.getElementById("v2-saved-title").textContent=kind==="history"?"Recetas recientes":"Favoritas";var box=document.getElementById("v2-saved-list"),recipes=ids.map(byId).filter(Boolean);box.innerHTML=recipes.length?recipes.map(function(r){return '<button type="button" data-open-saved="'+esc(r.id)+'"><b>'+esc(r.t)+'</b><small>'+timeLabel(r)+' · '+r.k+' kcal aprox.</small></button>';}).join(""):'<p class="v2-empty">Todavía no hay recetas aquí.</p>';document.getElementById("v2-clear-saved").dataset.kind=kind;hideAllViews();v2Saved.hidden=false;navState(kind==="history"?"nav-home":"nav-saved");window.scrollTo({top:0,behavior:"smooth"});}
+  function refreshLast(){var wrap=document.getElementById("v2-last-wrap"),box=document.getElementById("v2-last");if(!wrap||!box)return;var r=v2state.history.length?byId(v2state.history[0]):null;if(!r){wrap.hidden=true;return;}wrap.hidden=false;box.innerHTML='<h3>'+esc(r.t)+'</h3><p>'+timeLabel(r)+' · '+r.k+' kcal aprox.</p><button type="button" class="btn btn-outline" data-open-last="'+esc(r.id)+'" style="margin-top:12px">Abrir receta</button>';}
   document.getElementById("v2-recommend").addEventListener("click",showQuizV2);
   document.getElementById("v2-fast").addEventListener("click",function(){showBrowseV2(true);});
   document.getElementById("v2-ingredients").addEventListener("click",function(){showBrowseV2(false);searchInput.focus();});
