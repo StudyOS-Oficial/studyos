@@ -196,6 +196,133 @@ body{overflow-x:hidden}
 @media(max-width:380px){.hero3d{min-height:430px}.hero3d-scene{height:354px}.hero3d-plate{height:270px}.hero3d-food{top:92px;height:150px}.hero3d-card{width:66%}.hero3d-toggle{font-size:0;width:44px;justify-content:center}.hero3d-toggle .hand{font-size:1.15rem}}
 @media(prefers-reduced-motion:reduce){.hero3d-layer,.hero3d-shadow{transition:none}.hero3d-scene{--rx:0deg!important;--ry:0deg!important;--dx:0px!important;--dy:0px!important}}
 </style>
+
+<style id="d15-mobile-hero-centered-css">
+/* D15 · centered mobile hero refinement */
+@media (max-width:760px){
+  .hero{padding:14px 0 22px!important}
+  .hero-grid{gap:24px!important}
+  .hero-grid>.hero3d{order:1;width:100%;margin:0 auto}
+  .hero-grid>div:first-child{order:2;width:100%}
+
+  .hero3d{
+    min-height:610px!important;
+    padding:18px 14px 16px!important;
+    border-radius:30px!important;
+    overflow:hidden!important;
+    background:
+      radial-gradient(circle at 50% 24%,rgba(255,255,255,.72),transparent 34%),
+      radial-gradient(circle at 90% 12%,rgba(242,194,48,.18),transparent 24%),
+      linear-gradient(155deg,#f8f6ec 0%,#eef3df 58%,#e6edd5 100%)!important;
+    box-shadow:0 22px 52px rgba(40,50,29,.11)!important;
+  }
+  .hero3d-topline{
+    justify-content:center!important;
+    text-align:center!important;
+    padding:2px 0 4px!important;
+    font-size:.72rem!important;
+    letter-spacing:.13em!important;
+  }
+  .hero3d-topline b{display:none!important}
+
+  .hero3d-scene{
+    height:515px!important;
+    margin-top:0!important;
+    perspective:1200px!important;
+    touch-action:pan-y!important;
+  }
+  .hero3d-shadow{
+    left:15%!important;right:15%!important;bottom:150px!important;height:52px!important;
+    filter:blur(18px)!important;opacity:.7
+  }
+  .hero3d-plate{
+    left:50%!important;right:auto!important;top:58px!important;
+    width:94%!important;height:300px!important;
+    border-radius:28px!important;
+    clip-path:none!important;
+    overflow:hidden!important;
+    transform:translate3d(calc(-50% + var(--dx)*.12),calc(var(--dy)*.08),24px) rotateX(calc(var(--rx)*.48)) rotateY(calc(var(--ry)*.55))!important;
+    filter:drop-shadow(0 24px 22px rgba(38,47,29,.20))!important;
+    background:#f7f3e8!important;
+  }
+  .hero3d-plate img{
+    width:100%!important;height:100%!important;object-fit:cover!important;object-position:50% 52%!important;
+    transform:scale(1.02)!important
+  }
+  /* keep a subtle depth layer only; avoid the duplicate/cropped food blob on small screens */
+  .hero3d-food{display:none!important}
+  .hero3d-ring{
+    width:245px!important;height:245px!important;left:50%!important;top:83px!important;
+    transform:translate3d(calc(-50% + var(--dx)*.15),calc(var(--dy)*.10),62px) rotateX(calc(var(--rx)*.32)) rotateY(calc(var(--ry)*.36))!important;
+    opacity:.78!important
+  }
+
+  .hero3d-chip{
+    opacity:1!important;
+    font-size:.70rem!important;
+    padding:7px 10px 7px 7px!important;
+    gap:7px!important;
+    max-width:42%!important;
+    white-space:nowrap!important;
+    pointer-events:none!important;
+    box-shadow:0 8px 20px rgba(42,52,31,.12)!important;
+    transform:none!important;
+  }
+  .hero3d-chip i{width:19px!important;height:19px!important;flex:0 0 19px!important}
+  .chip-a{left:5%!important;right:auto!important;top:66px!important}
+  .chip-b{right:5%!important;left:auto!important;top:72px!important}
+  .chip-d{left:5%!important;right:auto!important;top:295px!important}
+  .chip-c{right:5%!important;left:auto!important;top:295px!important}
+
+  .hero3d-card{
+    left:50%!important;right:auto!important;bottom:70px!important;
+    width:calc(100% - 44px)!important;max-width:none!important;
+    padding:17px 18px 16px!important;
+    border-radius:22px!important;
+    text-align:center!important;
+    background:rgba(255,252,244,.94)!important;
+    box-shadow:0 15px 34px rgba(45,54,34,.14)!important;
+    transform:translate3d(-50%,0,92px)!important;
+    pointer-events:none!important;
+  }
+  .hero3d-card small{font-size:.61rem!important;margin-bottom:6px!important}
+  .hero3d-card strong{font-size:1.55rem!important;line-height:1.02!important}
+  .hero3d-card div{justify-content:center!important;margin-top:11px!important}
+  .hero3d-card div span{font-size:.66rem!important;padding:6px 9px!important}
+
+  .hero3d-toggle{
+    left:50%!important;right:auto!important;bottom:14px!important;
+    width:calc(100% - 90px)!important;min-height:50px!important;
+    justify-content:center!important;
+    font-size:.78rem!important;
+    padding:0 18px!important;
+    transform:translateX(-50%)!important;
+    box-shadow:0 12px 26px rgba(43,54,30,.20)!important;
+  }
+  .hero3d-toggle:active{transform:translateX(-50%) scale(.985)!important}
+  .hero3d-caption{margin-top:8px!important;font-size:.70rem!important;gap:8px!important;text-align:center!important}
+
+  /* ingredient reveal: keep labels highlighted without breaking the centered layout */
+  .hero3d.is-open .hero3d-chip{opacity:1!important;filter:brightness(1.02)!important}
+  .hero3d.is-open .hero3d-ring{opacity:1!important;box-shadow:0 0 0 10px rgba(255,255,255,.10),0 0 0 18px rgba(242,194,48,.08)!important}
+
+  /* copy below the interactive recipe */
+  .hero h1{font-size:clamp(2.55rem,12vw,3.35rem)!important;line-height:.96!important}
+  .lead{font-size:1rem!important;line-height:1.5!important}
+}
+@media(max-width:390px){
+  .hero3d{min-height:575px!important;padding-left:10px!important;padding-right:10px!important}
+  .hero3d-scene{height:485px!important}
+  .hero3d-plate{top:54px!important;width:96%!important;height:278px!important}
+  .hero3d-ring{width:222px!important;height:222px!important;top:82px!important}
+  .chip-a,.chip-b{top:62px!important}.chip-c,.chip-d{top:272px!important}
+  .hero3d-chip{font-size:.64rem!important;padding:6px 8px 6px 6px!important}
+  .hero3d-card{bottom:68px!important;width:calc(100% - 28px)!important;padding:15px 14px!important}
+  .hero3d-card strong{font-size:1.38rem!important}
+  .hero3d-toggle{width:calc(100% - 54px)!important;bottom:12px!important}
+}
+</style>
+
 </head>
 <body>
 <header class="top"><div class="wrap topin">
@@ -579,7 +706,7 @@ const emoji={D:'☀️',C:'🥗',N:'🌙',S:'🍓'};
   }
 })();
 </script>
-<script id="d14-immersive-recipe-js">
+<script id="d15-immersive-recipe-js">
 (function(){
  const box=document.getElementById('hero3d'), scene=document.getElementById('hero3dScene'), toggle=document.getElementById('hero3dToggle');
  if(!box||!scene||!toggle)return;
