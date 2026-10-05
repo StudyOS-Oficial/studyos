@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#F7F2E8" />
+  <title>StudyOS Pro | Nutrición entre consultas</title>
+  <meta name="description" content="StudyOS Pro: una herramienta digital para ayudar a tus pacientes a decidir qué comer, organizar su semana y encontrar recetas entre consultas." />
+  <style>
+    :root{--bg:#f7f2e8;--paper:#fffaf2;--ink:#24321c;--muted:#6f7566;--olive:#59673f;--olive2:#7d8b60;--terr:#c96542;--line:#dcd5c8;--cream:#efe7d8;--shadow:0 18px 50px rgba(52,58,39,.10)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+    h1,h2,h3,.serif{font-family:Georgia,"Times New Roman",serif;letter-spacing:-.025em}
+    a{text-decoration:none;color:inherit}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}.pill{display:inline-flex;align-items:center;gap:.45rem;padding:.48rem .78rem;border-radius:999px;background:#eee5d6;color:var(--olive);font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    header{position:sticky;top:0;z-index:20;background:rgba(247,242,232,.88);backdrop-filter:blur(12px);border-bottom:1px solid rgba(89,103,63,.12)}
+    .nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:10px;font-family:Georgia,serif;font-size:1.45rem;font-weight:700}.brand img{width:42px;height:42px;object-fit:contain}.brand b{color:var(--terr)}
+    nav{display:flex;align-items:center;gap:24px;font-size:.92rem}.cta{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;background:var(--terr);color:white;border:0;border-radius:999px;padding:.9rem 1.2rem;font-weight:800;cursor:pointer;box-shadow:0 10px 26px rgba(201,101,66,.20)}.cta.secondary{background:transparent;color:var(--olive);border:1px solid rgba(89,103,63,.35);box-shadow:none}
+    .hero{padding:72px 0 34px}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}.hero h1{font-size:clamp(3rem,6vw,5.9rem);line-height:.92;margin:.35rem 0 1.3rem}.hero h1 em{font-style:italic;color:var(--olive)}.hero p{font-size:1.18rem;color:#586052;max-width:680px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 22px}.micro{display:flex;gap:18px;flex-wrap:wrap;color:#606a57;font-size:.88rem}.micro span{display:flex;gap:.45rem;align-items:center}.dot{width:8px;height:8px;border-radius:50%;background:var(--olive2)}
+    .hero-card{position:relative;background:var(--paper);border:1px solid rgba(89,103,63,.14);border-radius:32px;padding:18px;box-shadow:var(--shadow);overflow:hidden}.hero-card img{display:block;width:100%;border-radius:24px}.hero-card .tag{position:absolute;right:30px;top:30px;background:rgba(255,250,242,.94);padding:.68rem .85rem;border-radius:16px;font-size:.82rem;max-width:170px;box-shadow:0 8px 20px rgba(0,0,0,.08)}
+    section{padding:72px 0}.section-title{max-width:760px;margin-bottom:34px}.section-title h2{font-size:clamp(2.2rem,4vw,4rem);line-height:1;margin:.4rem 0 1rem}.section-title p{color:var(--muted);font-size:1.05rem}
+    .problem-grid,.benefit-grid,.faq-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:rgba(255,250,242,.8);border:1px solid rgba(89,103,63,.12);border-radius:24px;padding:24px;box-shadow:0 10px 30px rgba(61,65,46,.05)}.card .ico{width:46px;height:46px;border-radius:14px;background:#e8ead9;display:grid;place-items:center;font-size:1.35rem;margin-bottom:14px}.card h3{font-size:1.3rem;margin:.2rem 0 .45rem}.card p{color:var(--muted);margin:0;font-size:.95rem}
+    .demo{background:#efe8da;border-top:1px solid #e1dacd;border-bottom:1px solid #e1dacd}.demo-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:42px;align-items:center}.demo-shot{background:var(--paper);padding:14px;border-radius:28px;box-shadow:var(--shadow)}.demo-shot img{width:100%;display:block;border-radius:20px}.steps{display:grid;gap:14px}.step{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}.num{width:42px;height:42px;border-radius:50%;background:var(--terr);color:white;display:grid;place-items:center;font-weight:900}.step h3{margin:0 0 .25rem;font-size:1.4rem}.step p{margin:0;color:var(--muted)}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{background:var(--paper);border-radius:28px;padding:30px;border:1px solid rgba(89,103,63,.12)}.panel h3{font-size:2rem;margin:0 0 18px}.check{list-style:none;padding:0;margin:0;display:grid;gap:13px}.check li{display:grid;grid-template-columns:28px 1fr;gap:10px}.check b{display:block}.check small{color:var(--muted)}
+    .pilot{background:linear-gradient(135deg,#435132,#26321f);color:white}.pilot-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}.pilot h2{font-size:clamp(2.6rem,5vw,5rem);line-height:.95;margin:.35rem 0 1rem}.pilot p{color:#e8e9de;font-size:1.05rem}.pricebox{background:#fff8eb;color:var(--ink);border-radius:28px;padding:28px}.price{font-family:Georgia,serif;font-size:4.3rem;line-height:1;margin:.25rem 0}.pricebox .cta{width:100%;margin-top:18px}.fine{font-size:.8rem;color:#77806e;margin-top:12px}
+    .faq-grid{grid-template-columns:1fr 1fr}.faq-grid .card h3{font-family:inherit;font-size:1.04rem;letter-spacing:0}.faq-grid .card p{margin-top:.4rem}
+    footer{padding:34px 0 92px;color:#73796b;font-size:.87rem}.foot{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;border-top:1px solid var(--line);padding-top:22px}.foot strong{color:var(--ink)}
+    .sticky{display:none;position:fixed;left:14px;right:14px;bottom:14px;z-index:30}.sticky .cta{width:100%;box-shadow:0 15px 35px rgba(0,0,0,.18)}
+    dialog{border:0;border-radius:28px;padding:0;width:min(560px,calc(100% - 24px));background:var(--paper);box-shadow:0 30px 90px rgba(0,0,0,.25)}dialog::backdrop{background:rgba(26,31,21,.58);backdrop-filter:blur(4px)}.modal{padding:28px}.modal-head{display:flex;justify-content:space-between;gap:16px;align-items:start}.modal h2{font-size:2.2rem;margin:0}.close{border:0;background:#e9e2d5;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1.3rem}.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.fields label{font-size:.82rem;font-weight:700}.fields input,.fields select{width:100%;margin-top:6px;border:1px solid #d9d2c5;background:white;border-radius:14px;padding:.85rem;font:inherit;color:var(--ink)}.fields .full{grid-column:1/-1}.modal .cta{width:100%;margin-top:18px}.note{background:#eee9dd;border-radius:14px;padding:12px;font-size:.82rem;color:#66705c;margin-top:12px}
+    @media(max-width:860px){nav a:not(.cta){display:none}.hero{padding-top:44px}.hero-grid,.demo-grid,.pilot-grid{grid-template-columns:1fr}.hero-grid{gap:28px}.hero h1{font-size:clamp(3.1rem,14vw,5.5rem)}.problem-grid,.benefit-grid{grid-template-columns:1fr 1fr}.split{grid-template-columns:1fr}.hero-card{max-width:620px}.sticky{display:block}footer{padding-bottom:110px}}
+    @media(max-width:560px){.wrap{width:min(100% - 22px,1120px)}.nav{height:64px}.brand{font-size:1.16rem}.brand img{width:36px;height:36px}.nav .cta{padding:.72rem .9rem;font-size:.82rem}.hero{padding-top:34px}.hero p{font-size:1.03rem}.problem-grid,.benefit-grid,.faq-grid{grid-template-columns:1fr}.card{padding:20px}.section-title h2{font-size:2.55rem}.fields{grid-template-columns:1fr}.fields .full{grid-column:auto}.pilot{padding-bottom:88px}.price{font-size:3.7rem}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><img src="assets/logo-mark.png" alt="StudyOS"><span>StudyOS <b>Pro</b></span></a>
+    <nav><a href="#como">Cómo funciona</a><a href="#beneficios">Beneficios</a><a href="#faq">FAQ</a><button class="cta" data-open>Quiero probarlo →</button></nav>
+  </div>
+</header>
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill">Piloto para profesionales</span>
+        <h1>La nutrición no termina cuando <em>acaba la consulta.</em></h1>
+        <p>StudyOS Pro es una herramienta digital para que tus pacientes encuentren ideas de comida, organicen su semana y tengan recursos prácticos entre consultas.</p>
+        <div class="hero-actions"><button class="cta" data-open>Quiero probar StudyOS Pro →</button><a class="cta secondary" href="#demo">Ver cómo funciona</a></div>
+        <div class="micro"><span><i class="dot"></i>Sin app que instalar</span><span><i class="dot"></i>Versión móvil y web</span><span><i class="dot"></i>Piloto limitado</span></div>
+      </div>
+      <div class="hero-card"><img src="assets/pro-concept.png" alt="Concepto visual de StudyOS Pro"><div class="tag"><strong>Una herramienta de apoyo</strong><br>para el día a día del paciente.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-title"><span class="pill">El problema</span><h2>Tu paciente sale de consulta con un plan. Luego llega la vida real.</h2><p>StudyOS Pro está pensado para cubrir ese espacio práctico entre una visita y la siguiente, sin sustituir tu criterio profesional.</p></div>
+      <div class="problem-grid">
+        <div class="card"><div class="ico">🍽️</div><h3>“¿Qué como hoy?”</h3><p>Ideas realistas según momento, tiempo disponible e ingredientes.</p></div>
+        <div class="card"><div class="ico">🛒</div><h3>“¿Qué compro?”</h3><p>Planificación semanal y una lista de compra más organizada.</p></div>
+        <div class="card"><div class="ico">🔎</div><h3>“¿Qué hago con esto?”</h3><p>Buscador para aprovechar ingredientes que ya tiene en casa.</p></div>
+        <div class="card"><div class="ico">📱</div><h3>“¿Dónde lo miro?”</h3><p>Un único punto digital para consultar recetas y recursos prácticos.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="demo" id="demo">
+    <div class="wrap demo-grid">
+      <div class="demo-shot"><img src="assets/studyos-inside.png" alt="Pantallas actuales de StudyOS"></div>
+      <div>
+        <div class="section-title"><span class="pill">Así se ve</span><h2>Ya existe una experiencia funcional.</h2><p>La versión actual de StudyOS permite explorar recetas, resolver qué comer, organizar la semana y aprovechar ingredientes. El piloto Pro busca validar cómo llevar esa experiencia al entorno profesional.</p></div>
+        <div class="steps" id="como">
+          <div class="step"><div class="num">1</div><div><h3>Invitas al paciente</h3><p>Le compartes el acceso que preparemos para tu piloto.</p></div></div>
+          <div class="step"><div class="num">2</div><div><h3>El paciente consulta</h3><p>Explora recetas, usa el recomendador y organiza su semana.</p></div></div>
+          <div class="step"><div class="num">3</div><div><h3>Tú haces seguimiento</h3><p>StudyOS complementa tu trabajo; no sustituye tus indicaciones ni tu consulta.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="beneficios">
+    <div class="wrap">
+      <div class="section-title"><span class="pill">Dos caras del mismo producto</span><h2>Útil para el paciente. Interesante para tu consulta.</h2></div>
+      <div class="split">
+        <div class="panel"><h3>Qué recibe tu paciente</h3><ul class="check">
+          <li><span>✓</span><div><b>Más de 500 recetas</b><small>Biblioteca práctica para distintos momentos del día.</small></div></li>
+          <li><span>✓</span><div><b>Recomendador rápido</b><small>Opciones según momento y tiempo disponible.</small></div></li>
+          <li><span>✓</span><div><b>Buscador por ingredientes</b><small>Para aprovechar lo que ya tiene en casa.</small></div></li>
+          <li><span>✓</span><div><b>Plan semanal y lista</b><small>Organización en un único espacio.</small></div></li>
+        </ul></div>
+        <div class="panel"><h3>Qué validamos contigo</h3><ul class="check">
+          <li><span>✓</span><div><b>Uso real entre consultas</b><small>Qué funciones utilizan y cuáles sobran.</small></div></li>
+          <li><span>✓</span><div><b>Personalización básica</b><small>Durante el piloto adaptamos la presentación a tu marca.</small></div></li>
+          <li><span>✓</span><div><b>Encaje con tu forma de trabajar</b><small>Queremos aprender antes de desarrollar un software más complejo.</small></div></li>
+          <li><span>✓</span><div><b>Feedback directo</b><small>Los primeros profesionales influirán en la versión Pro definitiva.</small></div></li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pilot" id="pilot">
+    <div class="wrap pilot-grid">
+      <div><span class="pill" style="background:#61704b;color:white">Acceso limitado</span><h2>Buscamos 5 profesionales para el piloto.</h2><p>No queremos construir funciones a ciegas. Queremos probar StudyOS Pro con dietistas-nutricionistas y profesionales de la nutrición, aprender de su uso real y decidir qué merece la pena desarrollar.</p></div>
+      <div class="pricebox"><strong>Piloto · 30 días</strong><div class="price">39 €</div><div>Sin permanencia. Configuración inicial incluida.</div><button class="cta" data-open>Quiero una de las 5 plazas →</button><div class="fine">El piloto no incluye gestión de historia clínica ni almacenamiento de datos sanitarios del paciente.</div></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap"><div class="section-title"><span class="pill">Preguntas frecuentes</span><h2>Antes de probarlo.</h2></div>
+      <div class="faq-grid">
+        <div class="card"><h3>¿Es un software de gestión clínica?</h3><p>No. Esta primera versión es una herramienta de apoyo con recetas, recomendación y planificación. No gestiona historias clínicas ni diagnósticos.</p></div>
+        <div class="card"><h3>¿Sustituye el plan del nutricionista?</h3><p>No. El objetivo es complementar el trabajo profesional y facilitar recursos prácticos entre consultas.</p></div>
+        <div class="card"><h3>¿Tengo que instalar una app?</h3><p>No. La experiencia funciona desde navegador y está pensada para móvil.</p></div>
+        <div class="card"><h3>¿Por qué solo 5 plazas?</h3><p>Porque en esta fase queremos acompañar cada prueba de cerca y recoger feedback útil antes de escalar.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap foot"><div><strong>StudyOS Pro</strong><br>Nutrición digital práctica.</div><div>Versión piloto · 2026<br>No sustituye consejo sanitario individualizado.</div></div></footer>
+<div class="sticky"><button class="cta" data-open>Quiero probar StudyOS Pro →</button></div>
+
+<dialog id="leadDialog">
+  <form class="modal" id="leadForm">
+    <div class="modal-head"><div><span class="pill">Piloto</span><h2>¿Te interesa probarlo?</h2><p style="color:var(--muted);margin:.5rem 0 0">Rellena cuatro datos. Te prepararemos un mensaje para contactar por Instagram.</p></div><button type="button" class="close" data-close>×</button></div>
+    <div class="fields">
+      <label>Nombre<input name="nombre" required placeholder="Laura"></label>
+      <label>Profesión<select name="profesion"><option>Dietista-nutricionista</option><option>Técnico/a en dietética</option><option>Centro de nutrición</option><option>Otro profesional</option></select></label>
+      <label>Instagram<input name="instagram" placeholder="@tuusuario"></label>
+      <label>Pacientes/mes<input name="pacientes" placeholder="Ej. 20"></label>
+      <label class="full">¿Qué te gustaría resolver?<input name="problema" placeholder="Ej. ahorrar tiempo preparando recursos entre consultas"></label>
+    </div>
+    <button class="cta" type="submit">Abrir Instagram y escribir a StudyOS →</button>
+    <div class="note" id="copyNote">Al pulsar, copiaremos un mensaje con tus datos al portapapeles y abriremos @studyos_oficial. Solo tendrás que pegarlo en el DM.</div>
+  </form>
+</dialog>
+<script>
+  const dialog=document.getElementById('leadDialog');
+  document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>dialog.showModal()));
+  document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>dialog.close()));
+  document.getElementById('leadForm').addEventListener('submit', async e=>{
+    e.preventDefault(); const d=new FormData(e.currentTarget);
+    const msg=`Hola StudyOS, me interesa probar el piloto de StudyOS Pro.\n\nNombre: ${d.get('nombre')}\nProfesión: ${d.get('profesion')}\nInstagram: ${d.get('instagram')||'-'}\nPacientes/mes: ${d.get('pacientes')||'-'}\nMe gustaría resolver: ${d.get('problema')||'-'}\n\n¿Me podéis contar cómo funcionaría la prueba?`;
+    try{await navigator.clipboard.writeText(msg);document.getElementById('copyNote').textContent='✓ Mensaje copiado. Se abrirá Instagram: pégalo en el DM de @studyos_oficial.'}catch(err){document.getElementById('copyNote').textContent='Se abrirá Instagram. Escríbenos “PILOTO PRO” y te contamos los siguientes pasos.'}
+    setTimeout(()=>window.open('https://ig.me/m/studyos_oficial','_blank'),250);
+  });
+</script>
+</body>
+</html>
