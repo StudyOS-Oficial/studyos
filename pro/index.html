@@ -118,29 +118,20 @@
 <div class="sticky"><button class="cta" data-open>Quiero probar StudyOS Pro →</button></div>
 
 <dialog id="leadDialog">
-  <form class="modal" id="leadForm">
-    <div class="modal-head"><div><span class="pill">Piloto</span><h2>¿Te interesa probarlo?</h2><p style="color:var(--muted);margin:.5rem 0 0">Rellena cuatro datos. Te prepararemos un mensaje para contactar por Instagram.</p></div><button type="button" class="close" data-close>×</button></div>
-    <div class="fields">
-      <label>Nombre<input name="nombre" required placeholder="Laura"></label>
-      <label>Profesión<select name="profesion"><option>Dietista-nutricionista</option><option>Técnico/a en dietética</option><option>Centro de nutrición</option><option>Otro profesional</option></select></label>
-      <label>Instagram<input name="instagram" placeholder="@tuusuario"></label>
-      <label>Pacientes/mes<input name="pacientes" placeholder="Ej. 20"></label>
-      <label class="full">¿Qué te gustaría resolver?<input name="problema" placeholder="Ej. ahorrar tiempo preparando recursos entre consultas"></label>
+  <div class="modal">
+    <div class="modal-head"><div><span class="pill">Piloto</span><h2>¿Te interesa probarlo?</h2><p style="color:var(--muted);margin:.5rem 0 0">Escríbenos por Instagram y te contamos cómo funcionaría el piloto.</p></div><button type="button" class="close" data-close>×</button></div>
+    <div class="card" style="margin-top:1rem">
+      <h3>Mensaje recomendado</h3>
+      <p style="color:var(--muted)">Envíanos <strong>“PILOTO PRO”</strong> por DM. La web no envía mensajes automáticamente.</p>
     </div>
-    <button class="cta" type="submit">Abrir Instagram y escribir a StudyOS →</button>
-    <div class="note" id="copyNote">Al pulsar, copiaremos un mensaje con tus datos al portapapeles y abriremos @studyos_oficial. Solo tendrás que pegarlo en el DM.</div>
-  </form>
+    <a class="cta" href="https://www.instagram.com/studyos_oficial/" target="_blank" rel="noopener" style="display:inline-flex;margin-top:1rem;text-decoration:none">Abrir @studyos_oficial en Instagram →</a>
+    <div class="note">Tú decides si escribirnos. No se envía ni se guarda ningún dato desde esta página.</div>
+  </div>
 </dialog>
 <script>
   const dialog=document.getElementById('leadDialog');
   document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>dialog.showModal()));
   document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>dialog.close()));
-  document.getElementById('leadForm').addEventListener('submit', async e=>{
-    e.preventDefault(); const d=new FormData(e.currentTarget);
-    const msg=`Hola StudyOS, me interesa probar el piloto de StudyOS Pro.\n\nNombre: ${d.get('nombre')}\nProfesión: ${d.get('profesion')}\nInstagram: ${d.get('instagram')||'-'}\nPacientes/mes: ${d.get('pacientes')||'-'}\nMe gustaría resolver: ${d.get('problema')||'-'}\n\n¿Me podéis contar cómo funcionaría la prueba?`;
-    try{await navigator.clipboard.writeText(msg);document.getElementById('copyNote').textContent='✓ Mensaje copiado. Se abrirá Instagram: pégalo en el DM de @studyos_oficial.'}catch(err){document.getElementById('copyNote').textContent='Se abrirá Instagram. Escríbenos “PILOTO PRO” y te contamos los siguientes pasos.'}
-    setTimeout(()=>window.open('https://ig.me/m/studyos_oficial','_blank'),250);
-  });
 </script>
 </body>
 </html>
