@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ca">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IA des de zero — Aprèn a utilitzar la intel·ligència artificial sense por</title>
-<meta name="description" content="Curs pràctic per aprendre a utilitzar la intel·ligència artificial des de zero, pas a pas i sense complicacions.">
+<title>IA desde cero — Aprende a utilizar la inteligencia artificial sin miedo</title>
+<meta name="description" content="Curso práctico para aprender a utilizar la inteligencia artificial desde cero, paso a paso y sin complicaciones.">
 <style>
 :root{--ink:#17312b;--muted:#5e706b;--cream:#f8f5ee;--paper:#fffdf9;--sage:#dce9df;--green:#1f6b54;--green2:#15533f;--yellow:#f4c95d;--line:#dce4df;--white:#fff}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--cream);font-size:18px;line-height:1.55}a{text-decoration:none;color:inherit}.wrap{max-width:1120px;margin:auto;padding:0 24px}
@@ -12,7 +12,7 @@
 nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0}.brand{font-weight:900;font-size:22px;letter-spacing:-.5px}.nav-cta{background:var(--green);color:#fff;padding:12px 20px;border-radius:999px;font-weight:800;font-size:16px}
 .hero{padding:54px 0 76px}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center}.eyebrow{display:inline-flex;background:var(--sage);color:var(--green2);padding:8px 13px;border-radius:999px;font-weight:800;font-size:15px;margin-bottom:18px}
 h1{font-size:clamp(42px,5.5vw,68px);line-height:1.02;letter-spacing:-2.8px;margin:0 0 24px;max-width:720px}h2{font-size:clamp(32px,4vw,46px);line-height:1.08;letter-spacing:-1.5px;margin:0 0 18px}h3{font-size:23px;line-height:1.2;margin:0 0 10px}.lead{font-size:22px;color:var(--muted);max-width:680px}.actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:30px 0 16px}.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:#fff;padding:16px 25px;border-radius:12px;font-size:19px;font-weight:900;box-shadow:0 8px 22px #1f6b5426}.btn:hover{background:var(--green2);transform:translateY(-1px)}.micro{font-size:14px;color:var(--muted)}
-.hero-card{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 20px 55px #17312b12;position:relative;overflow:hidden}.hero-card:before{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:var(--sage);right:-60px;top:-60px}.person{position:relative;background:#eef4ee;border-radius:20px;padding:28px;min-height:340px;display:flex;align-items:end;justify-content:center}.avatar{width:165px;height:165px;border-radius:50%;background:#d9a477;position:relative;margin-bottom:25px}.avatar:before{content:"";position:absolute;width:180px;height:80px;background:#eee7dc;border-radius:100px 100px 0 0;left:-8px;top:-25px}.shirt{position:absolute;width:210px;height:115px;background:#739985;border-radius:110px 110px 20px 20px;bottom:-25px;left:-22px}.phone{position:absolute;right:22px;top:30px;width:105px;height:185px;background:#193b32;border:6px solid #fff;border-radius:18px;box-shadow:0 8px 20px #17312b22;z-index:2}.phone:after{content:"Hola! Com t\'ajudo?";position:absolute;left:10px;right:10px;top:50px;background:#fff;color:var(--ink);padding:10px;border-radius:10px;font-size:12px;font-weight:800}.badge{position:absolute;left:18px;bottom:18px;background:#fff;padding:12px 15px;border-radius:12px;font-weight:800;box-shadow:0 7px 20px #17312b14;z-index:3}
+.hero-card{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 20px 55px #17312b12;position:relative;overflow:hidden}.hero-card:before{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:var(--sage);right:-60px;top:-60px}.person{position:relative;background:#eef4ee;border-radius:20px;padding:28px;min-height:340px;display:flex;align-items:end;justify-content:center}.avatar{width:165px;height:165px;border-radius:50%;background:#d9a477;position:relative;margin-bottom:25px}.avatar:before{content:"";position:absolute;width:180px;height:80px;background:#eee7dc;border-radius:100px 100px 0 0;left:-8px;top:-25px}.shirt{position:absolute;width:210px;height:115px;background:#739985;border-radius:110px 110px 20px 20px;bottom:-25px;left:-22px}.phone{position:absolute;right:22px;top:30px;width:105px;height:185px;background:#193b32;border:6px solid #fff;border-radius:18px;box-shadow:0 8px 20px #17312b22;z-index:2}.phone:after{content:"¡Hola! ¿Cómo te ayudo?";position:absolute;left:10px;right:10px;top:50px;background:#fff;color:var(--ink);padding:10px;border-radius:10px;font-size:12px;font-weight:800}.badge{position:absolute;left:18px;bottom:18px;background:#fff;padding:12px 15px;border-radius:12px;font-weight:800;box-shadow:0 7px 20px #17312b14;z-index:3}
 section{padding:82px 0}.soft{background:var(--sage)}.center{text-align:center}.center p{margin-left:auto;margin-right:auto}.section-lead{max-width:720px;color:var(--muted);font-size:20px}
 .problem{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:38px}.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:27px}.problem .card:first-child{background:#fff8eb;border-color:#f1dfb0}.icon{font-size:30px;margin-bottom:10px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}.benefit{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:25px}.benefit p,.card p{color:var(--muted);margin:0}
@@ -27,73 +27,73 @@ footer{padding:28px 0;color:var(--muted);font-size:14px;border-top:1px solid var
 </style>
 </head>
 <body>
-<div class="top">🎓 Llançament especial · preu fundador per als primers alumnes</div>
+<div class="top">🎓 Lanzamiento especial · precio fundador para los primeros alumnos</div>
 <div class="wrap">
-<nav><div class="brand">IA fàcil</div><a class="nav-cta" href="#oferta">Vull aprendre</a></nav>
+<nav><div class="brand">IA fácil</div><a class="nav-cta" href="#oferta">Quiero aprender</a></nav>
 </div>
 
 <main>
 <section class="hero">
 <div class="wrap hero-grid">
 <div>
-<div class="eyebrow">Pensat per començar des de zero</div>
-<h1>La intel·ligència artificial també pot ser fàcil per a tu.</h1>
-<p class="lead">Aprèn a utilitzar ChatGPT i altres eines d’IA <strong>pas a pas, amb exemples reals i sense necessitat de saber informàtica.</strong></p>
-<div class="actions"><a class="btn" href="#oferta">Vull començar →</a></div>
-<div class="micro">Curs pràctic · Explicacions senzilles · Al teu ritme</div>
+<div class="eyebrow">Pensado para empezar desde cero</div>
+<h1>La inteligencia artificial también puede ser fácil para ti.</h1>
+<p class="lead">Aprende a utilizar ChatGPT y otras herramientas de IA <strong>paso a paso, con ejemplos reales y sin necesidad de saber informática.</strong></p>
+<div class="actions"><a class="btn" href="#oferta">Quiero empezar →</a></div>
+<div class="micro">Curso práctico · Explicaciones sencillas · A tu ritmo</div>
 </div>
 <div class="hero-card">
-<div class="person"><div class="phone"></div><div class="avatar"><div class="shirt"></div></div><div class="badge">“Ara sí que ho entenc!”</div></div>
+<div class="person"><div class="phone"></div><div class="avatar"><div class="shirt"></div></div><div class="badge">“¡Ahora sí lo entiendo!”</div></div>
 </div>
 </div>
 </section>
 
 <section class="soft">
 <div class="wrap center">
-<h2>No has de ser una persona “tecnològica”.</h2>
-<p class="section-lead">Potser ja has sentit parlar de ChatGPT, però no saps ben bé què és, què li pots preguntar o si realment et pot servir. Aquest curs està fet precisament per començar sense por.</p>
+<h2>No tienes que ser una persona “tecnológica”.</h2>
+<p class="section-lead">Quizá ya has oído hablar de ChatGPT, pero no sabes muy bien qué es, qué puedes preguntarle o si realmente puede servirte. Este curso está hecho precisamente para empezar sin miedo.</p>
 <div class="problem">
-<div class="card"><div class="icon">😕</div><h3>“No sé ni per on començar.”</h3><p>T’ho expliquem des del principi, amb un llenguatge normal i sense paraules complicades.</p></div>
-<div class="card"><div class="icon">💡</div><h3>“I això per a què em serveix?”</h3><p>Ho aprendràs amb situacions quotidianes: viatges, receptes, textos, idees, informació i molt més.</p></div>
+<div class="card"><div class="icon">😕</div><h3>“No sé ni por dónde empezar.”</h3><p>Te lo explicamos desde el principio, con un lenguaje normal y sin palabras complicadas.</p></div>
+<div class="card"><div class="icon">💡</div><h3>“¿Y esto para qué me sirve?”</h3><p>Lo aprenderás con situaciones cotidianas: viajes, recetas, textos, ideas, información y mucho más.</p></div>
 </div>
 </div>
 </section>
 
 <section>
 <div class="wrap">
-<div class="center"><h2>Què podràs fer quan acabis?</h2><p class="section-lead">L’objectiu no és convertir-te en expert. És que puguis utilitzar la IA amb confiança i que et sigui realment útil.</p></div>
+<div class="center"><h2>¿Qué podrás hacer cuando termines?</h2><p class="section-lead">El objetivo no es convertirte en experto. Es que puedas utilizar la IA con confianza y que te resulte realmente útil.</p></div>
 <div class="grid3">
-<div class="benefit"><div class="icon">💬</div><h3>Conversar amb ChatGPT</h3><p>Aprèn què preguntar i com donar-li instruccions perquè entengui què necessites.</p></div>
-<div class="benefit"><div class="icon">✈️</div><h3>Planificar un viatge</h3><p>Demana-li idees, rutes, llistes i plans adaptats a tu.</p></div>
-<div class="benefit"><div class="icon">✉️</div><h3>Escriure millor</h3><p>Prepara missatges, cartes, textos i correus sense quedar-te mirant la pantalla en blanc.</p></div>
-<div class="benefit"><div class="icon">🍲</div><h3>Cuinar amb el que tens</h3><p>Digues quins ingredients tens i demana idees de receptes.</p></div>
-<div class="benefit"><div class="icon">📄</div><h3>Entendre informació</h3><p>Aprèn a demanar explicacions senzilles quan un text et sembla massa complicat.</p></div>
-<div class="benefit"><div class="icon">🔐</div><h3>Utilitzar-la amb seny</h3><p>Aprèn què no hauries de compartir i com detectar possibles errors o respostes poc fiables.</p></div>
+<div class="benefit"><div class="icon">💬</div><h3>Conversar con ChatGPT</h3><p>Aprende qué preguntar y cómo darle instrucciones para que entienda lo que necesitas.</p></div>
+<div class="benefit"><div class="icon">✈️</div><h3>Planificar un viaje</h3><p>Pídele ideas, rutas, listas y planes adaptados a ti.</p></div>
+<div class="benefit"><div class="icon">✉️</div><h3>Escribir mejor</h3><p>Prepara mensajes, cartas, textos y correos sin quedarte mirando la pantalla en blanco.</p></div>
+<div class="benefit"><div class="icon">🍲</div><h3>Cocinar con lo que tienes</h3><p>Dile qué ingredientes tienes y pídele ideas de recetas.</p></div>
+<div class="benefit"><div class="icon">📄</div><h3>Entender información</h3><p>Aprende a pedir explicaciones sencillas cuando un texto te parece demasiado complicado.</p></div>
+<div class="benefit"><div class="icon">🔐</div><h3>Utilizarla con sentido común</h3><p>Aprende qué no deberías compartir y cómo detectar posibles errores o respuestas poco fiables.</p></div>
 </div>
 </div>
 </section>
 
 <section class="soft">
 <div class="wrap course">
-<div><div class="eyebrow">El curs</div><h2>Aprendràs fent, no memoritzant.</h2><p class="section-lead">Lliçons curtes, exemples pràctics i exercicis perquè puguis provar cada cosa al moment.</p></div>
+<div><div class="eyebrow">El curso</div><h2>Aprenderás haciendo, no memorizando.</h2><p class="section-lead">Lecciones cortas, ejemplos prácticos y ejercicios para que puedas probar cada cosa al momento.</p></div>
 <div class="modules">
-<div class="module"><div class="num">1</div><div><strong>Què és la IA i què és ChatGPT?</strong><span>Entén què tens davant i què pot fer realment.</span></div></div>
-<div class="module"><div class="num">2</div><div><strong>El teu primer missatge</strong><span>Com començar una conversa i aconseguir respostes útils.</span></div></div>
-<div class="module"><div class="num">3</div><div><strong>Com fer bones preguntes</strong><span>La clau perquè la IA entengui exactament què vols.</span></div></div>
-<div class="module"><div class="num">4</div><div><strong>IA per al teu dia a dia</strong><span>Exemples reals que pots començar a utilitzar avui.</span></div></div>
-<div class="module"><div class="num">5</div><div><strong>Errors, mentides i informació falsa</strong><span>Com comprovar el que et diu la IA abans de confiar-hi.</span></div></div>
-<div class="module"><div class="num">6</div><div><strong>Privacitat i seguretat</strong><span>Quines dades no hauries de compartir i com utilitzar-la amb prudència.</span></div></div>
+<div class="module"><div class="num">1</div><div><strong>¿Qué es la IA y qué es ChatGPT?</strong><span>Entiende qué tienes delante y qué puede hacer realmente.</span></div></div>
+<div class="module"><div class="num">2</div><div><strong>Tu primer mensaje</strong><span>Cómo empezar una conversación y conseguir respuestas útiles.</span></div></div>
+<div class="module"><div class="num">3</div><div><strong>Cómo hacer buenas preguntas</strong><span>La clave para que la IA entienda exactamente lo que quieres.</span></div></div>
+<div class="module"><div class="num">4</div><div><strong>IA para tu día a día</strong><span>Ejemplos reales que puedes empezar a utilizar hoy.</span></div></div>
+<div class="module"><div class="num">5</div><div><strong>Errores, mentiras e información falsa</strong><span>Cómo comprobar lo que te dice la IA antes de confiar en ello.</span></div></div>
+<div class="module"><div class="num">6</div><div><strong>Privacidad y seguridad</strong><span>Qué datos no deberías compartir y cómo utilizarla con prudencia.</span></div></div>
 </div>
 </div>
 </section>
 
 <section>
 <div class="wrap">
-<div class="center"><h2>Com funciona?</h2></div>
+<div class="center"><h2>¿Cómo funciona?</h2></div>
 <div class="steps">
-<div class="step"><b>01 · Entra</b><h3>Accedeix al curs</h3><p>Des de l’ordinador, tauleta o mòbil.</p></div>
-<div class="step"><b>02 · Aprèn</b><h3>Segueix les lliçons</h3><p>Explicacions curtes i senzilles, al teu ritme.</p></div>
-<div class="step"><b>03 · Practica</b><h3>Prova-ho tu mateix</h3><p>Posa en pràctica cada lliçó amb exemples reals.</p></div>
+<div class="step"><b>01 · Entra</b><h3>Accede al curso</h3><p>Desde el ordenador, tableta o móvil.</p></div>
+<div class="step"><b>02 · Aprèn</b><h3>Sigue las lecciones</h3><p>Explicaciones cortas y sencillas, a tu ritmo.</p></div>
+<div class="step"><b>03 · Practica</b><h3>Pruébalo tú mismo</h3><p>Pon en práctica cada lección con ejemplos reales.</p></div>
 </div>
 </div>
 </section>
@@ -101,30 +101,30 @@ footer{padding:28px 0;color:var(--muted);font-size:14px;border-top:1px solid var
 <section id="oferta">
 <div class="wrap">
 <div class="offer">
-<div><div class="eyebrow">OFERTA DE LLANÇAMENT</div><h2>Sigues dels primers a provar-lo.</h2><p>Estem llançant el nostre primer curs i volem aconseguir els primers alumnes i opinions honestes per continuar millorant-lo.</p><p><strong>Per això, durant el llançament tindràs un preu especial.</strong></p></div>
-<div class="price-box"><div class="old">Preu habitual: 39,90 €</div><div class="price">9,90 €</div><div class="small">Preu fundador · primers alumnes</div><br><a class="btn" href="#" onclick="return false">Vull accedir al curs</a><p class="small">El botó es connectarà al checkout.</p></div>
+<div><div class="eyebrow">OFERTA DE LANZAMIENTO</div><h2>Sé de los primeros en probarlo.</h2><p>Estamos lanzando nuestro primer curso y queremos conseguir los primeros alumnos y opiniones honestas para seguir mejorándolo.</p><p><strong>Por eso, durante el lanzamiento tendrás un precio especial.</strong></p></div>
+<div class="price-box"><div class="old">Precio habitual: 39,90 €</div><div class="price">9,90 €</div><div class="small">Precio fundador · primeros alumnos</div><br><a class="btn" href="#" onclick="return false">Quiero acceder al curso</a><p class="small">El botón se conectará al checkout.</p></div>
 </div>
 </div>
 </section>
 
 <section>
 <div class="wrap">
-<div class="center"><h2>Preguntes freqüents</h2></div>
+<div class="center"><h2>Preguntas frecuentes</h2></div>
 <div class="faq">
-<details><summary>Necessito saber utilitzar gaire l’ordinador?</summary><p>No. El curs parteix de zero i explica cada pas de manera senzilla.</p></details>
-<details><summary>He de pagar ChatGPT per fer el curs?</summary><p>No plantegem el curs depenent d’una subscripció de pagament. T’explicarem quines opcions tens i què pots fer amb cada una.</p></details>
-<details><summary>Puc fer el curs des del mòbil?</summary><p>Sí. El contingut està pensat perquè puguis aprendre des de l’ordinador, la tauleta o el mòbil.</p></details>
-<details><summary>I si em costa seguir algun pas?</summary><p>El curs està dissenyat per avançar a poc a poc. Les lliçons són curtes i pots tornar-les a veure quan vulguis.</p></details>
-<details><summary>La IA sempre diu la veritat?</summary><p>No. Una part important del curs és aprendre a detectar errors i saber quan cal comprovar la informació.</p></details>
+<details><summary>¿Necesito saber utilizar mucho el ordenador?</summary><p>No. El curso parte de cero y explica cada paso de forma sencilla.</p></details>
+<details><summary>¿Tengo que pagar ChatGPT para hacer el curso?</summary><p>No planteamos el curso dependiendo de una suscripción de pago. Te explicaremos qué opciones tienes y qué puedes hacer con cada una.</p></details>
+<details><summary>¿Puedo hacer el curso desde el móvil?</summary><p>Sí. El contenido está pensado para que puedas aprender desde el ordenador, la tableta o el móvil.</p></details>
+<details><summary>¿Y si me cuesta seguir algún paso?</summary><p>El curso está diseñado para avanzar poco a poco. Las lecciones son cortas y puedes volver a verlas cuando quieras.</p></details>
+<details><summary>¿La IA siempre dice la verdad?</summary><p>No. Una parte importante del curso es aprender a detectar errores y saber cuándo hay que comprobar la información.</p></details>
 </div>
 </div>
 </section>
 
 <section class="final">
-<div class="wrap"><h2>No cal entendre la tecnologia per començar a aprofitar-la.</h2><p>Comença des de zero, aprèn amb exemples i descobreix si la intel·ligència artificial et pot fer el dia a dia una mica més fàcil.</p><a class="btn" href="#oferta">Vull començar per 9,90 € →</a></div>
+<div class="wrap"><h2>No necesitas entender la tecnología para empezar a aprovecharla.</h2><p>Empieza desde cero, aprende con ejemplos y descubre si la inteligencia artificial puede hacerte el día a día un poco más fácil.</p><a class="btn" href="#oferta">Quiero empezar por 9,90 € →</a></div>
 </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 IA fàcil</span><span>Producte en llançament · Informació comercial subjecta a actualització</span></div></footer>
+<footer><div class="wrap"><span>© 2026 IA fàcil</span><span>Producto en lanzamiento · Información comercial sujeta a actualización</span></div></footer>
 </body>
 </html>
