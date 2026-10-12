@@ -57,7 +57,20 @@ button{font:inherit}.app{display:grid;grid-template-columns:280px 1fr;min-height
 
 <section class="section" id="reto" data-section><h2>9 · Reto final</h2><p class="lead">Ahora aplica todo lo aprendido.</p><div class="exercise"><b>Paso 1.</b> Piensa en una tarea real que tengas esta semana.</div><div class="exercise"><b>Paso 2.</b> Escríbela a ChatGPT de forma natural.</div><div class="exercise"><b>Paso 3.</b> Añade un detalle que ayude a personalizar la respuesta.</div><div class="exercise"><b>Paso 4.</b> Pide: “Hazlo más claro y práctico.”</div><label class="check"><input type="checkbox" data-done> He completado el reto final</label></section>
 
-<section class="section" id="recuerda" data-section><h2>10 · Lo esencial</h2><div class="grid"><div class="card"><strong>01</strong>La IA es una herramienta, no una persona.</div><div class="card"><strong>02</strong>ChatGPT permite mantener una conversación.</div><div class="card"><strong>03</strong>Puedes escribir de forma natural.</div><div class="card"><strong>04</strong>Puede ayudarte a explicar, escribir, resumir, organizar y generar ideas.</div><div class="card"><strong>05</strong>Puede equivocarse: la información importante debe comprobarse.</div></div><div class="quiz"><h3>Mini test</h3><p><b>¿Cuál es la mejor forma de utilizar ChatGPT?</b></p><button onclick="quiz(this,false)">A. Creer siempre la primera respuesta.</button><button onclick="quiz(this,true)">B. Explicar lo que necesitas, pedir cambios y comprobar lo importante.</button><button onclick="quiz(this,false)">C. Utilizar palabras técnicas y comandos especiales.</button><div id="result" class="result"></div></div></section>
+<section class="section" id="recuerda" data-section><h2>10 · Lo esencial</h2><div class="grid"><div class="card"><strong>01</strong>La IA es una herramienta, no una persona.</div><div class="card"><strong>02</strong>ChatGPT permite mantener una conversación.</div><div class="card"><strong>03</strong>Puedes escribir de forma natural.</div><div class="card"><strong>04</strong>Puede ayudarte a explicar, escribir, resumir, organizar y generar ideas.</div><div class="card"><strong>05</strong>Puede equivocarse: la información importante debe comprobarse.</div></div><div class="quiz"><h3>Cuestionario del módulo</h3>
+<p><b>1. ¿Qué es la inteligencia artificial?</b></p>
+<button onclick="q(this,false)">A. Una persona que responde preguntas.</button><button onclick="q(this,true)">B. Una tecnología capaz de realizar tareas que asociamos con capacidades humanas.</button><button onclick="q(this,false)">C. Una página web para buscar información.</button>
+<p><b>2. ¿Qué diferencia a ChatGPT de una pregunta aislada?</b></p>
+<button onclick="q(this,false)">A. Solo funciona con palabras técnicas.</button><button onclick="q(this,true)">B. Puedes mantener una conversación y pedir cambios sobre la respuesta.</button><button onclick="q(this,false)">C. Nunca puede equivocarse.</button>
+<p><b>3. ¿Cuál es una buena forma de pedir algo?</b></p>
+<button onclick="q(this,true)">A. Explicar lo que necesitas y aportar contexto.</button><button onclick="q(this,false)">B. Escribir solo palabras sueltas.</button><button onclick="q(this,false)">C. Utilizar comandos especiales.</button>
+<p><b>4. ¿Qué debes hacer con una información importante?</b></p>
+<button onclick="q(this,false)">A. Creerla automáticamente.</button><button onclick="q(this,true)">B. Comprobarla con una fuente fiable.</button><button onclick="q(this,false)">C. Preguntar una vez y no revisar nada.</button>
+<p><b>5. Si una respuesta no te sirve, ¿qué haces?</b></p>
+<button onclick="q(this,true)">A. Explicas mejor lo que necesitas o pides otra versión.</button><button onclick="q(this,false)">B. Das por terminado el aprendizaje.</button><button onclick="q(this,false)">C. Reinicias siempre la conversación.</button>
+<div id="result" class="result"></div></div>
+<div class="tip"><b>¡Módulo completado!</b> En el portal ya tienes disponible el siguiente módulo.</div>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><a class="cta" href="../">← Volver al portal</a><a class="cta" href="../modulo-2/">Ir al módulo 2 →</a></div></section>
 
 <div class="footer">IA fácil · Aprende sin miedo, paso a paso.<br><small>Módulo 1 · Introducción a la inteligencia artificial</small></div>
 </main></div>
@@ -67,7 +80,7 @@ function update(){const seen=sections.filter(s=>s.getBoundingClientRect().top<wi
 window.addEventListener('scroll',update,{passive:true});update();
 function goNext(){document.querySelector('#que-es').scrollIntoView({behavior:'smooth'})}
 document.querySelector('[data-done]').addEventListener('change',e=>{localStorage.setItem('iafacil-m1-done',e.target.checked?'1':'0');update()});
-function quiz(btn,ok){document.querySelectorAll('.quiz button').forEach(b=>b.style.borderColor='var(--line)');btn.style.borderColor=ok?'#54c99a':'#f3a56c';document.getElementById('result').textContent=ok?'✓ Correcto. Esa es la idea: utilizar la IA como ayuda y mantener el criterio.':'Casi. Recuerda: la IA puede equivocarse y tú debes revisar la información importante.'}
+let score=0,answered=0;function q(btn,ok){if(btn.dataset.done)return;btn.dataset.done='1';answered++;btn.style.borderColor=ok?'#54c99a':'#f3a56c';if(ok)score++;document.getElementById('result').textContent=answered<5?'Respuesta registrada.':'Resultado: '+score+'/5 correctas. '+(score>=4?'¡Muy bien! Ya tienes la base.':'Repasa las ideas clave y vuelve a intentarlo.')}
 const links=[...document.querySelectorAll('.nav a')];window.addEventListener('scroll',()=>{let current='inicio';sections.forEach(s=>{if(s.getBoundingClientRect().top<180)current=s.id});links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current))},{passive:true});
 </script>
 </body></html>
