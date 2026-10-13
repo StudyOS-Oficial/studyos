@@ -14,225 +14,77 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0
 h1{font-size:clamp(42px,5.5vw,68px);line-height:1.02;letter-spacing:-2.8px;margin:0 0 24px;max-width:720px}h2{font-size:clamp(32px,4vw,46px);line-height:1.08;letter-spacing:-1.5px;margin:0 0 18px}h3{font-size:23px;line-height:1.2;margin:0 0 10px}.lead{font-size:22px;color:var(--muted);max-width:680px}.actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:30px 0 16px}.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:#fff;padding:16px 25px;border-radius:12px;font-size:19px;font-weight:900;box-shadow:0 8px 22px #1f6b5426}.btn:hover{background:var(--green2);transform:translateY(-1px)}.micro{font-size:14px;color:var(--muted)}
 .hero-card{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 20px 55px #17312b12;position:relative;overflow:hidden}.hero-card:before{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:var(--sage);right:-60px;top:-60px}.person{position:relative;background:#eef4ee;border-radius:20px;padding:28px;min-height:340px;display:flex;align-items:end;justify-content:center}.avatar{width:165px;height:165px;border-radius:50%;background:#d9a477;position:relative;margin-bottom:25px}.avatar:before{content:"";position:absolute;width:180px;height:80px;background:#eee7dc;border-radius:100px 100px 0 0;left:-8px;top:-25px}.shirt{position:absolute;width:210px;height:115px;background:#739985;border-radius:110px 110px 20px 20px;bottom:-25px;left:-22px}.phone{position:absolute;right:22px;top:30px;width:105px;height:185px;background:#193b32;border:6px solid #fff;border-radius:18px;box-shadow:0 8px 20px #17312b22;z-index:2}.phone:after{content:"¡Hola! ¿Cómo te ayudo?";position:absolute;left:10px;right:10px;top:50px;background:#fff;color:var(--ink);padding:10px;border-radius:10px;font-size:12px;font-weight:800}.badge{position:absolute;left:18px;bottom:18px;background:#fff;padding:12px 15px;border-radius:12px;font-weight:800;box-shadow:0 7px 20px #17312b14;z-index:3}
 section{padding:82px 0}.soft{background:var(--sage)}.center{text-align:center}.center p{margin-left:auto;margin-right:auto}.section-lead{max-width:720px;color:var(--muted);font-size:20px}
-.problem{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:38px}.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:27px}.problem .card:first-child{background:#fff8eb;border-color:#f1dfb0}.icon{font-size:30px;margin-bottom:10px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}.benefit{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:25px}.benefit p,.card p{color:var(--muted);margin:0}
+.problem{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:38px}.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:27px}.problem .card:first-child{background:#fff8eb;border-color:#f1dfb0}.icon{font-size:30px;margin-bottom:10px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}.benefit{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:25px}.benefit p,.card p{color:var(--muted);margin:0}
 .course{display:grid;grid-template-columns:.85fr 1.15fr;gap:46px;align-items:start}.modules{display:grid;gap:12px}.course-extras{grid-column:1/-1;margin-top:6px}.course-extras>.center h3{font-size:26px;margin-bottom:8px}.course-extras>.center .section-lead{font-size:18px;margin-top:0}.module{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:18px 20px;display:flex;gap:15px}.num{min-width:36px;height:36px;border-radius:50%;background:var(--sage);display:grid;place-items:center;font-weight:900;color:var(--green2)}.module strong{display:block}.module span{color:var(--muted);font-size:16px}
 .offer{background:var(--green2);color:#fff;border-radius:28px;padding:44px;display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:center}.offer p{color:#dce9df}.price-box{background:#fff;color:var(--ink);border-radius:22px;padding:28px;text-align:center}.old{text-decoration:line-through;color:var(--muted)}.price{font-size:52px;line-height:1;font-weight:950;margin:6px 0}.small{font-size:14px;color:var(--muted)}.offer .btn{background:var(--yellow);color:var(--ink);box-shadow:none;width:100%}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}.step{padding:28px;background:var(--paper);border:1px solid var(--line);border-radius:18px}.step b{font-size:14px;color:var(--green);text-transform:uppercase}
 .faq{max-width:820px;margin:35px auto 0}.faq details{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:10px 0}.faq summary{cursor:pointer;font-weight:850;font-size:19px}.faq p{color:var(--muted);margin:13px 0 0}
-.final{padding:75px 0;text-align:center;background:#eaf1eb}.final p{max-width:650px;margin:0 auto 25px;color:var(--muted)}
-footer{padding:28px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.final{padding:75px 0;text-align:center;background:#eaf1eb}.final p{max-width:650px;margin:0 auto 25px;color:var(--muted)}footer{padding:28px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 @media(max-width:850px){.hero-grid,.course,.offer{grid-template-columns:1fr}.grid3,.steps{grid-template-columns:1fr}.problem{grid-template-columns:1fr}.hero{padding-top:28px}h1{letter-spacing:-1.8px}.offer{padding:30px}.hero-card{max-width:560px;margin:auto}}
 @media(max-width:520px){body{font-size:17px}.wrap{padding:0 17px}nav{padding:17px 0}.nav-cta{padding:10px 14px;font-size:14px}.hero{padding-bottom:45px}.hero-card{padding:14px}.person{min-height:285px}.avatar{width:130px;height:130px}.phone{transform:scale(.82);transform-origin:top right}.actions .btn{width:100%}section{padding:58px 0}}
-
-.interactive-demo{margin-top:42px;background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 18px 45px #17312b12;text-align:left}
-.demo-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:22px;flex-wrap:wrap}.demo-head p{color:var(--muted);margin:0;max-width:650px}
-.demo-grid{display:grid;grid-template-columns:1fr 64px 1fr;gap:18px;align-items:stretch}.demo-panel{border:1px solid var(--line);border-radius:20px;padding:22px;background:#fff}.demo-panel.after{background:#f2f7f2;border-color:#cfe0d3}.demo-label{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px}.demo-panel.after .demo-label{color:var(--green2)}
-.demo-text{font-size:20px;line-height:1.45;min-height:105px}.demo-arrow{display:grid;place-items:center;font-size:30px;color:var(--green);font-weight:900}.demo-controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.demo-input{width:100%;border:1px solid var(--line);border-radius:14px;padding:15px 16px;font:inherit;color:var(--ink);background:#fff}.demo-btn{border:0;cursor:pointer;background:var(--green);color:#fff;padding:13px 18px;border-radius:12px;font:inherit;font-weight:900}.demo-btn.secondary{background:var(--sage);color:var(--green2)}.demo-note{font-size:14px;color:var(--muted);margin-top:12px}.wow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}.wow-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center}.wow-card .icon{font-size:30px}.wow-card strong{display:block;font-size:19px}.wow-card span{display:block;color:var(--muted);font-size:15px;margin-top:4px}
-.kit{margin-top:34px;background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:30px}.kit-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:24px}.kit-item{border:1px solid var(--line);border-radius:17px;padding:18px 12px;text-align:center;background:#fff}.kit-item .icon{font-size:28px;margin:0 0 7px}.kit-item strong{font-size:15px;display:block}.kit-item span{font-size:12px;color:var(--muted);display:block;margin-top:3px}.kit-value{margin-top:20px;text-align:center;font-weight:850;color:var(--green2)}
-@media(max-width:850px){.demo-grid{grid-template-columns:1fr}.demo-arrow{transform:rotate(90deg);height:18px}.wow-grid{grid-template-columns:1fr}.kit-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:520px){.interactive-demo{padding:18px}.demo-text{font-size:18px}.kit{padding:20px}.kit-grid{grid-template-columns:repeat(2,1fr)}}
+.interactive-demo{margin-top:42px;background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 18px 45px #17312b12;text-align:left}.demo-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:22px;flex-wrap:wrap}.demo-head p{color:var(--muted);margin:0;max-width:650px}.demo-grid{display:grid;grid-template-columns:1fr 64px 1fr;gap:18px;align-items:stretch}.demo-panel{border:1px solid var(--line);border-radius:20px;padding:22px;background:#fff}.demo-panel.after{background:#f2f7f2;border-color:#cfe0d3}.demo-label{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px}.demo-panel.after .demo-label{color:var(--green2)}.demo-text{font-size:20px;line-height:1.45;min-height:105px}.demo-arrow{display:grid;place-items:center;font-size:30px;color:var(--green);font-weight:900}.demo-controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.demo-input{width:100%;border:1px solid var(--line);border-radius:14px;padding:15px 16px;font:inherit;color:var(--ink);background:#fff}.demo-btn{border:0;cursor:pointer;background:var(--green);color:#fff;padding:13px 18px;border-radius:12px;font:inherit;font-weight:900}.demo-btn.secondary{background:var(--sage);color:var(--green2)}.demo-note{font-size:14px;color:var(--muted);margin-top:12px}.wow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}.wow-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center}.wow-card .icon{font-size:30px}.wow-card strong{display:block;font-size:19px}.wow-card span{display:block;color:var(--muted);font-size:15px;margin-top:4px}.kit{margin-top:34px;background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:30px}.kit-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:24px}.kit-item{border:1px solid var(--line);border-radius:17px;padding:18px 12px;text-align:center;background:#fff}.kit-item .icon{font-size:28px;margin:0 0 7px}.kit-item strong{font-size:15px;display:block}.kit-item span{font-size:12px;color:var(--muted);display:block;margin-top:3px}.kit-value{margin-top:20px;text-align:center;font-weight:850;color:var(--green2)}
+@media(max-width:850px){.demo-grid{grid-template-columns:1fr}.demo-arrow{transform:rotate(90deg);height:18px}.wow-grid{grid-template-columns:1fr}.kit-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:520px){.interactive-demo{padding:18px}.demo-text{font-size:18px}.kit{padding:20px}.kit-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
-<div class="top">🎓 Lanzamiento especial · precio fundador para los primeros alumnos</div>
-<div class="wrap">
-<nav><div class="brand">IA fácil</div><a class="nav-cta" href="#oferta">Quiero aprender</a></nav>
-</div>
-
+<div class="top">🎓 Lanzamiento especial · precio fundador para los primeros alumnos</div><div class="wrap"><nav><div class="brand">IA fácil</div><a class="nav-cta" href="#oferta">Quiero aprender</a></nav></div>
 <main>
-<section class="hero">
-<div class="wrap hero-grid">
-<div>
-<div class="eyebrow">Pensado para empezar desde cero</div>
-<h1>La inteligencia artificial también puede ser fácil para ti.</h1>
-<p class="lead">Aprende a utilizar ChatGPT <strong>paso a paso, con ejemplos reales y sin necesidad de saber informática.</strong></p>
-<div class="actions"><a class="btn" href="#oferta">Quiero empezar →</a></div>
-<div class="micro">Curso práctico · Explicaciones sencillas · A tu ritmo</div>
-</div>
-<div class="hero-card">
-<div class="person"><div class="phone"></div><div class="avatar"><div class="shirt"></div></div><div class="badge">“¡Ahora sí lo entiendo!”</div></div>
-</div>
-</div>
-</section>
+<section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">Pensado para empezar desde cero</div><h1>La inteligencia artificial también puede ser fácil para ti.</h1><p class="lead">Aprende a utilizar ChatGPT <strong>paso a paso, con ejemplos reales y sin necesidad de saber informática.</strong></p><div class="actions"><a class="btn" href="#oferta">Quiero empezar →</a></div><div class="micro">Curso práctico · Explicaciones sencillas · A tu ritmo</div></div><div class="hero-card"><div class="person"><div class="phone"></div><div class="avatar"><div class="shirt"></div></div><div class="badge">“¡Ahora sí lo entiendo!”</div></div></div></div></section>
+<section class="soft"><div class="wrap center"><h2>No tienes que ser una persona “tecnológica”.</h2><p class="section-lead">Quizá ya has oído hablar de ChatGPT, pero no sabes muy bien qué es, qué puedes preguntarle o si realmente puede servirte. Este curso está hecho precisamente para empezar sin miedo.</p><div class="problem"><div class="card"><div class="icon">😕</div><h3>“No sé ni por dónde empezar.”</h3><p>Te lo explicamos desde el principio, con un lenguaje normal y sin palabras complicadas.</p></div><div class="card"><div class="icon">💡</div><h3>“¿Y esto para qué me sirve?”</h3><p>Lo aprenderás con situaciones cotidianas: viajes, recetas, textos, ideas, información y mucho más.</p></div></div></div></section>
+<section><div class="wrap"><div class="center"><h2>¿Qué podrás hacer cuando termines?</h2><p class="section-lead">El objetivo no es convertirte en experto. Es que puedas utilizar la IA con confianza y que te resulte realmente útil.</p></div><div class="grid3"><div class="benefit"><div class="icon">💬</div><h3>Conversar con ChatGPT</h3><p>Aprende qué preguntar y cómo darle instrucciones para que entienda lo que necesitas.</p></div><div class="benefit"><div class="icon">✈️</div><h3>Planificar un viaje</h3><p>Pídele ideas, rutas, listas y planes adaptados a ti.</p></div><div class="benefit"><div class="icon">✉️</div><h3>Escribir mejor</h3><p>Prepara mensajes, cartas, textos y correos sin quedarte mirando la pantalla en blanco.</p></div><div class="benefit"><div class="icon">🍲</div><h3>Cocinar con lo que tienes</h3><p>Dile qué ingredientes tienes y pídele ideas de recetas.</p></div><div class="benefit"><div class="icon">📄</div><h3>Entender información</h3><p>Aprende a pedir explicaciones sencillas cuando un texto te parece demasiado complicado.</p></div><div class="benefit"><div class="icon">🔐</div><h3>Utilizarla con sentido común</h3><p>Aprende qué no deberías compartir y cómo detectar posibles errores o respuestas poco fiables.</p></div></div></div></section>
 
-<section class="soft">
-<div class="wrap center">
-<h2>No tienes que ser una persona “tecnológica”.</h2>
-<p class="section-lead">Quizá ya has oído hablar de ChatGPT, pero no sabes muy bien qué es, qué puedes preguntarle o si realmente puede servirte. Este curso está hecho precisamente para empezar sin miedo.</p>
-<div class="problem">
-<div class="card"><div class="icon">😕</div><h3>“No sé ni por dónde empezar.”</h3><p>Te lo explicamos desde el principio, con un lenguaje normal y sin palabras complicadas.</p></div>
-<div class="card"><div class="icon">💡</div><h3>“¿Y esto para qué me sirve?”</h3><p>Lo aprenderás con situaciones cotidianas: viajes, recetas, textos, ideas, información y mucho más.</p></div>
-</div>
-</div>
-</section>
+<section id="prueba"><div class="wrap"><div class="center"><div class="eyebrow">✨ Pruébalo ahora</div><h2>Descubre en 30 segundos lo que puedes aprender.</h2><p class="section-lead">Escribe algo que le pedirías a ChatGPT y mira cómo una petición sencilla puede convertirse en una mucho mejor.</p></div>
+<div class="interactive-demo"><div class="demo-head"><div><h3>Tu primera mejora con IA fácil</h3><p>Escribe una petición corta y pulsa «Mejorar mi pregunta».</p></div><span class="eyebrow">100% gratuito</span></div>
+<textarea id="demoInput" class="demo-input" rows="3" placeholder="Ejemplo: Quiero organizar un viaje a Italia"></textarea><div class="demo-controls"><button class="demo-btn" id="improveBtn" type="button">✨ Mejorar mi pregunta</button><button class="demo-btn secondary" id="exampleBtn" type="button">Probar un ejemplo</button></div>
+<div class="demo-grid" style="margin-top:22px"><div class="demo-panel"><div class="demo-label">Antes</div><div class="demo-text" id="beforeText">Quiero organizar un viaje a Italia.</div></div><div class="demo-arrow">→</div><div class="demo-panel after"><div class="demo-label">Después</div><div class="demo-text" id="afterText">Actúa como experto en viajes. Ayúdame a organizar un viaje a Italia de 7 días para dos personas, con un presupuesto medio. Propón una ruta por ciudades, qué visitar cada día y consejos prácticos de transporte y alojamiento.</div></div></div>
+<div class="demo-note">💡 La clave no es usar palabras mágicas: es aprender a explicar qué necesitas, dar contexto y pedir el formato que te resulte útil.</div></div>
+<div class="wow-grid"><div class="wow-card"><div class="icon">🧩</div><strong>Contexto</strong><span>La IA entiende mejor qué necesitas.</span></div><div class="wow-card"><div class="icon">🎯</div><strong>Objetivo</strong><span>Le dices exactamente qué quieres conseguir.</span></div><div class="wow-card"><div class="icon">✨</div><strong>Resultado</strong><span>Obtienes una respuesta más útil para ti.</span></div></div></div></section>
 
-<section>
-<div class="wrap">
-<div class="center"><h2>¿Qué podrás hacer cuando termines?</h2><p class="section-lead">El objetivo no es convertirte en experto. Es que puedas utilizar la IA con confianza y que te resulte realmente útil.</p></div>
-<div class="grid3">
-<div class="benefit"><div class="icon">💬</div><h3>Conversar con ChatGPT</h3><p>Aprende qué preguntar y cómo darle instrucciones para que entienda lo que necesitas.</p></div>
-<div class="benefit"><div class="icon">✈️</div><h3>Planificar un viaje</h3><p>Pídele ideas, rutas, listas y planes adaptados a ti.</p></div>
-<div class="benefit"><div class="icon">✉️</div><h3>Escribir mejor</h3><p>Prepara mensajes, cartas, textos y correos sin quedarte mirando la pantalla en blanco.</p></div>
-<div class="benefit"><div class="icon">🍲</div><h3>Cocinar con lo que tienes</h3><p>Dile qué ingredientes tienes y pídele ideas de recetas.</p></div>
-<div class="benefit"><div class="icon">📄</div><h3>Entender información</h3><p>Aprende a pedir explicaciones sencillas cuando un texto te parece demasiado complicado.</p></div>
-<div class="benefit"><div class="icon">🔐</div><h3>Utilizarla con sentido común</h3><p>Aprende qué no deberías compartir y cómo detectar posibles errores o respuestas poco fiables.</p></div>
-</div>
-</div>
-</section>
+<section><div class="wrap"><div class="center"><div class="eyebrow">De esto… a esto</div><h2>No necesitas hablar “en lenguaje de IA”.</h2><p class="section-lead">Solo necesitas aprender unas pocas ideas sencillas para pedir mejor lo que ya quieres.</p></div><div class="problem" style="margin-top:32px"><div class="card"><div class="icon">😕</div><h3>Antes</h3><p style="font-size:21px;color:var(--ink);margin-top:12px">“ChatGPT, hazme un mensaje para mi vecino.”</p><p style="margin-top:12px">Puede funcionar, pero la respuesta quizá no tenga el tono, la longitud o el contexto que necesitas.</p></div><div class="card" style="background:#f2f7f2;border-color:#cfe0d3"><div class="icon">✨</div><h3>Después</h3><p style="font-size:21px;color:var(--ink);margin-top:12px">“Escribe un mensaje breve, educado y cercano para mi vecino. Quiero pedirle si puede recoger un paquete mañana. Que no suene demasiado formal.”</p><p style="margin-top:12px">Mucho más claro: quién, qué necesitas y cómo quieres que suene.</p></div></div></div></section>
 
+<section class="soft"><div class="wrap course"><div><div class="eyebrow">El curso completo</div><h2>10 módulos para aprender a utilizar la IA con confianza.</h2><p class="section-lead">Aprenderás haciendo, no memorizando: lecciones cortas, ejemplos cotidianos, ejercicios y un cuestionario al final de cada módulo.</p></div><div class="modules">
+<div class="module"><div class="num">1</div><div><strong>¿Qué es la IA y qué es ChatGPT?</strong><span>Entiende qué tienes delante, qué puede hacer y cómo empezar.</span></div></div><div class="module"><div class="num">2</div><div><strong>Tu primera conversación con ChatGPT</strong><span>Haz peticiones claras, da contexto, pide cambios y continúa la conversación.</span></div></div><div class="module"><div class="num">3</div><div><strong>Aprende a hacer buenas preguntas</strong><span>Descubre cómo explicar lo que necesitas para obtener mejores respuestas.</span></div></div><div class="module"><div class="num">4</div><div><strong>IA para tu vida cotidiana</strong><span>Viajes, mensajes, recetas, compras, organización, aprendizaje y mucho más.</span></div></div><div class="module"><div class="num">5</div><div><strong>Consigue mejores respuestas</strong><span>Aprende a ser concreto, dar contexto, elegir el tono y mejorar una respuesta.</span></div></div><div class="module"><div class="num">6</div><div><strong>No te creas todo a la primera</strong><span>Detecta errores y aprende a comprobar la información importante.</span></div></div><div class="module"><div class="num">7</div><div><strong>Cuida tus datos</strong><span>Qué información compartir, qué proteger y cómo evitar engaños.</span></div></div><div class="module"><div class="num">8</div><div><strong>Aprende con IA</strong><span>Utiliza ChatGPT para entender, practicar, repasar y aprender a tu ritmo.</span></div></div><div class="module"><div class="num">9</div><div><strong>Organízate con IA</strong><span>Ordena tareas, planifica tu tiempo, crea rutinas y prepara planes prácticos.</span></div></div><div class="module"><div class="num">10</div><div><strong>Crea y comunica con IA</strong><span>Escribe, resume, prepara explicaciones, genera ideas y mejora tus textos.</span></div></div></div>
+<div class="course-extras"><div class="center"><h3>Y además, tendrás recursos para seguir practicando</h3><p class="section-lead">Cuando termines los módulos, podrás seguir utilizando lo aprendido con herramientas prácticas.</p></div><div class="grid3"><div class="benefit"><div class="icon">🧰</div><h3>Kit de prompts</h3><p>Plantillas listas para copiar y adaptar en situaciones reales.</p></div><div class="benefit"><div class="icon">🧪</div><h3>Zona de práctica</h3><p>Retos para entrenar lo aprendido y comparar tus ideas con posibles soluciones.</p></div><div class="benefit"><div class="icon">🏆</div><h3>Reto final</h3><p>Un proyecto integrador para demostrar que sabes utilizar la IA de principio a fin.</p></div><div class="benefit"><div class="icon">📖</div><h3>Caja de herramientas</h3><p>Un resumen de conceptos, reglas de seguridad y buenas prácticas para consultar cuando quieras.</p></div><div class="benefit"><div class="icon">🚀</div><h3>¿Y ahora qué?</h3><p>Ideas para convertir lo aprendido en un hábito útil en tu día a día.</p></div><div class="benefit"><div class="icon">🎓</div><h3>Certificado final</h3><p>Al completar los 10 módulos podrás generar un certificado personalizado de finalización.</p></div></div></div>
+<div class="kit"><div class="center"><h3>🎁 Todo lo que te llevas</h3><p class="section-lead" style="font-size:18px">No compras solo unas lecciones: te llevas un pequeño sistema para seguir utilizando la IA después del curso.</p></div><div class="kit-grid"><div class="kit-item"><div class="icon">🧠</div><strong>10 módulos</strong><span>Aprendizaje paso a paso</span></div><div class="kit-item"><div class="icon">📚</div><strong>100 lecciones</strong><span>Contenido breve y práctico</span></div><div class="kit-item"><div class="icon">✍️</div><strong>Kit de prompts</strong><span>Plantillas listas para usar</span></div><div class="kit-item"><div class="icon">🧪</div><strong>Prácticas</strong><span>5 situaciones reales</span></div><div class="kit-item"><div class="icon">🏆</div><strong>Reto final</strong><span>Proyecto integrador</span></div><div class="kit-item"><div class="icon">🎓</div><strong>Certificado</strong><span>Personalizado al completar</span></div></div><div class="kit-value">✓ Acceso a todos los recursos incluidos en el curso</div></div></div></div></section>
 
-<section id="prueba">
-<div class="wrap">
-<div class="center">
-<div class="eyebrow">✨ Pruébalo ahora</div>
-<h2>Descubre en 30 segundos lo que puedes aprender.</h2>
-<p class="section-lead">No hace falta imaginarlo. Escribe algo que le pedirías a ChatGPT y mira cómo una petición sencilla puede convertirse en una mucho mejor.</p>
-</div>
-<div class="interactive-demo">
-<div class="demo-head"><div><h3>Tu primera mejora con IA fácil</h3><p>Escribe una petición corta y pulsa «Mejorar mi pregunta».</p></div><span class="eyebrow">Sin registrarte</span></div>
-<textarea id="demoInput" class="demo-input" rows="3" placeholder="Ejemplo: Quiero organizar un viaje a Italia"></textarea>
-<div class="demo-controls"><button class="demo-btn" id="improveBtn" type="button">✨ Mejorar mi pregunta</button><button class="demo-btn secondary" id="exampleBtn" type="button">Probar un ejemplo</button></div>
-<div class="demo-grid" style="margin-top:22px">
-<div class="demo-panel"><div class="demo-label">Antes</div><div class="demo-text" id="beforeText">Quiero organizar un viaje a Italia.</div></div>
-<div class="demo-arrow">→</div>
-<div class="demo-panel after"><div class="demo-label">Después</div><div class="demo-text" id="afterText">Actúa como experto en viajes. Ayúdame a organizar un viaje a Italia de 7 días para dos personas, con un presupuesto medio. Propón una ruta por ciudades, qué visitar cada día y consejos prácticos de transporte y alojamiento.</div></div>
-</div>
-<div class="demo-note">💡 La clave no es usar palabras mágicas: es aprender a explicar qué necesitas, dar contexto y pedir el formato que te resulte útil.</div>
-</div>
-<div class="wow-grid">
-<div class="wow-card"><div class="icon">🧩</div><strong>Contexto</strong><span>La IA entiende mejor qué necesitas.</span></div>
-<div class="wow-card"><div class="icon">🎯</div><strong>Objetivo</strong><span>Le dices exactamente qué quieres conseguir.</span></div>
-<div class="wow-card"><div class="icon">✨</div><strong>Resultado</strong><span>Obtienes una respuesta más útil para ti.</span></div>
-</div>
-</div>
-</section>
-
-
-<section>
-<div class="wrap">
-<div class="center"><div class="eyebrow">De esto… a esto</div><h2>No necesitas hablar “en lenguaje de IA”.</h2><p class="section-lead">Solo necesitas aprender unas pocas ideas sencillas para pedir mejor lo que ya quieres.</p></div>
-<div class="problem" style="margin-top:32px">
-<div class="card"><div class="icon">😕</div><h3>Antes</h3><p style="font-size:21px;color:var(--ink);margin-top:12px">“ChatGPT, hazme un mensaje para mi vecino.”</p><p style="margin-top:12px">Puede funcionar, pero la respuesta quizá no tenga el tono, la longitud o el contexto que necesitas.</p></div>
-<div class="card" style="background:#f2f7f2;border-color:#cfe0d3"><div class="icon">✨</div><h3>Después</h3><p style="font-size:21px;color:var(--ink);margin-top:12px">“Escribe un mensaje breve, educado y cercano para mi vecino. Quiero pedirle si puede recoger un paquete mañana. Que no suene demasiado formal.”</p><p style="margin-top:12px">Mucho más claro: quién, qué necesitas y cómo quieres que suene.</p></div>
-</div>
-</div>
-</section>
-
-<section class="soft">
-<div class="wrap course">
-<div>
-<div class="eyebrow">El curso completo</div>
-<h2>10 módulos para aprender a utilizar la IA con confianza.</h2>
-<p class="section-lead">Aprenderás haciendo, no memorizando: lecciones cortas, ejemplos cotidianos, ejercicios y un cuestionario al final de cada módulo.</p>
-</div>
-<div class="modules">
-<div class="module"><div class="num">1</div><div><strong>¿Qué es la IA y qué es ChatGPT?</strong><span>Entiende qué tienes delante, qué puede hacer y cómo empezar.</span></div></div>
-<div class="module"><div class="num">2</div><div><strong>Tu primera conversación con ChatGPT</strong><span>Haz peticiones claras, da contexto, pide cambios y continúa la conversación.</span></div></div>
-<div class="module"><div class="num">3</div><div><strong>Aprende a hacer buenas preguntas</strong><span>Descubre cómo explicar lo que necesitas para obtener mejores respuestas.</span></div></div>
-<div class="module"><div class="num">4</div><div><strong>IA para tu vida cotidiana</strong><span>Viajes, mensajes, recetas, compras, organización, aprendizaje y mucho más.</span></div></div>
-<div class="module"><div class="num">5</div><div><strong>Consigue mejores respuestas</strong><span>Aprende a ser concreto, dar contexto, elegir el tono y mejorar una respuesta.</span></div></div>
-<div class="module"><div class="num">6</div><div><strong>No te creas todo a la primera</strong><span>Detecta errores y aprende a comprobar la información importante.</span></div></div>
-<div class="module"><div class="num">7</div><div><strong>Cuida tus datos</strong><span>Qué información compartir, qué proteger y cómo evitar engaños.</span></div></div>
-<div class="module"><div class="num">8</div><div><strong>Aprende con IA</strong><span>Utiliza ChatGPT para entender, practicar, repasar y aprender a tu ritmo.</span></div></div>
-<div class="module"><div class="num">9</div><div><strong>Organízate con IA</strong><span>Ordena tareas, planifica tu tiempo, crea rutinas y prepara planes prácticos.</span></div></div>
-<div class="module"><div class="num">10</div><div><strong>Crea y comunica con IA</strong><span>Escribe, resume, prepara explicaciones, genera ideas y mejora tus textos.</span></div></div>
-</div>
-</div>
-<div class="course-extras">
-<div class="center"><h3>Y además, tendrás recursos para seguir practicando</h3><p class="section-lead">Cuando termines los módulos, podrás seguir utilizando lo aprendido con herramientas prácticas.</p></div>
-<div class="grid3">
-<div class="benefit"><div class="icon">🧰</div><h3>Kit de prompts</h3><p>Plantillas listas para copiar y adaptar en situaciones reales.</p></div>
-<div class="benefit"><div class="icon">🧪</div><h3>Zona de práctica</h3><p>Retos para entrenar lo aprendido y comparar tus ideas con posibles soluciones.</p></div>
-<div class="benefit"><div class="icon">🏆</div><h3>Reto final</h3><p>Un proyecto integrador para demostrar que sabes utilizar la IA de principio a fin.</p></div>
-<div class="benefit"><div class="icon">📖</div><h3>Caja de herramientas</h3><p>Un resumen de conceptos, reglas de seguridad y buenas prácticas para consultar cuando quieras.</p></div>
-<div class="benefit"><div class="icon">🚀</div><h3>¿Y ahora qué?</h3><p>Ideas para convertir lo aprendido en un hábito útil en tu día a día.</p></div>
-<div class="benefit"><div class="icon">🎓</div><h3>Certificado final</h3><p>Al completar los 10 módulos podrás generar un certificado personalizado de finalización.</p></div>
-</div>
-</div>
-
-<div class="kit">
-<div class="center"><h3>🎁 Todo lo que te llevas</h3><p class="section-lead" style="font-size:18px">No compras solo unas lecciones: te llevas un pequeño sistema para seguir utilizando la IA después del curso.</p></div>
-<div class="kit-grid">
-<div class="kit-item"><div class="icon">🧠</div><strong>10 módulos</strong><span>Aprendizaje paso a paso</span></div>
-<div class="kit-item"><div class="icon">📚</div><strong>100 lecciones</strong><span>Contenido breve y práctico</span></div>
-<div class="kit-item"><div class="icon">✍️</div><strong>Kit de prompts</strong><span>Plantillas listas para usar</span></div>
-<div class="kit-item"><div class="icon">🧪</div><strong>Prácticas</strong><span>5 situaciones reales</span></div>
-<div class="kit-item"><div class="icon">🏆</div><strong>Reto final</strong><span>Proyecto integrador</span></div>
-<div class="kit-item"><div class="icon">🎓</div><strong>Certificado</strong><span>Personalizado al completar</span></div>
-</div>
-<div class="kit-value">✓ Acceso a todos los recursos incluidos en el curso</div>
-</div>
-
-</div>
-</section>
-
-<section>
-<div class="wrap">
-<div class="center"><h2>¿Cómo funciona?</h2></div>
-<div class="steps">
-<div class="step"><b>01 · Entra</b><h3>Accede al curso</h3><p>Desde el ordenador, tableta o móvil.</p></div>
-<div class="step"><b>02 · Aprende</b><h3>Sigue las lecciones</h3><p>Explicaciones cortas y sencillas, a tu ritmo.</p></div>
-<div class="step"><b>03 · Practica</b><h3>Pruébalo tú mismo</h3><p>Pon en práctica cada lección con ejemplos reales.</p></div>
-</div>
-</div>
-</section>
-
-<section id="oferta">
-<div class="wrap">
-<div class="offer">
-<div><div class="eyebrow">OFERTA DE LANZAMIENTO</div><h2>Sé de los primeros en probarlo.</h2><p>Estamos lanzando nuestro primer curso y queremos conseguir los primeros alumnos y opiniones honestas para seguir mejorándolo.</p><p><strong>Por eso, durante el lanzamiento tendrás un precio especial.</strong></p></div>
-<div class="price-box"><div class="old">Precio habitual: 39,90 €</div><div class="price">9,90 €</div><div class="small">Precio fundador · primeros alumnos</div><br><a class="btn" href="#" onclick="return false">Quiero acceder al curso</a><p class="small">El botón se conectará a la página de pago.</p></div>
-</div>
-</div>
-</section>
-
-<section>
-<div class="wrap">
-<div class="center"><h2>Preguntas frecuentes</h2></div>
-<div class="faq">
-<details><summary>¿Necesito saber utilizar mucho el ordenador?</summary><p>No. El curso parte de cero y explica cada paso de forma sencilla.</p></details>
-<details><summary>¿Tengo que pagar ChatGPT para hacer el curso?</summary><p>El curso está pensado para aprender los fundamentos y practicar sin depender de una suscripción de pago concreta. Algunas funciones de ChatGPT pueden variar según el plan que utilices.</p></details>
-<details><summary>¿Puedo hacer el curso desde el móvil?</summary><p>Sí. El contenido está pensado para que puedas aprender desde el ordenador, la tableta o el móvil.</p></details>
-<details><summary>¿Y si me cuesta seguir algún paso?</summary><p>El curso está diseñado para avanzar poco a poco. Las lecciones son cortas y puedes volver a verlas cuando quieras.</p></details>
-<details><summary>¿La IA siempre dice la verdad?</summary><p>No. Una parte importante del curso es aprender a detectar errores y saber cuándo hay que comprobar la información.</p></details>
-</div>
-</div>
-</section>
-
-<section class="final">
-<div class="wrap"><h2>No necesitas entender la tecnología para empezar a aprovecharla.</h2><p>Empieza desde cero, aprende con ejemplos y descubre si la inteligencia artificial puede hacerte el día a día un poco más fácil.</p><a class="btn" href="#oferta">Quiero empezar por 9,90 € →</a></div>
-</section>
+<section><div class="wrap"><div class="center"><h2>¿Cómo funciona?</h2></div><div class="steps"><div class="step"><b>01 · Entra</b><h3>Accede al curso</h3><p>Desde el ordenador, tableta o móvil.</p></div><div class="step"><b>02 · Aprende</b><h3>Sigue las lecciones</h3><p>Explicaciones cortas y sencillas, a tu ritmo.</p></div><div class="step"><b>03 · Practica</b><h3>Pruébalo tú mismo</h3><p>Pon en práctica cada lección con ejemplos reales.</p></div></div></div></section>
+<section id="oferta"><div class="wrap"><div class="offer"><div><div class="eyebrow">OFERTA DE LANZAMIENTO</div><h2>Sé de los primeros en probarlo.</h2><p>Estamos lanzando nuestro primer curso y queremos conseguir los primeros alumnos y opiniones honestas para seguir mejorándolo.</p><p><strong>Por eso, durante el lanzamiento tendrás un precio especial.</strong></p></div><div class="price-box"><div class="old">Precio habitual: 39,90 €</div><div class="price">9,90 €</div><div class="small">Precio fundador · primeros alumnos</div><br><a class="btn" href="#" onclick="return false">Quiero acceder al curso</a><p class="small">El botón se conectará a la página de pago.</p></div></div></div></section>
+<section><div class="wrap"><div class="center"><h2>Preguntas frecuentes</h2></div><div class="faq"><details><summary>¿Necesito saber utilizar mucho el ordenador?</summary><p>No. El curso parte de cero y explica cada paso de forma sencilla.</p></details><details><summary>¿Tengo que pagar ChatGPT para hacer el curso?</summary><p>El curso está pensado para aprender los fundamentos y practicar sin depender de una suscripción de pago concreta. Algunas funciones de ChatGPT pueden variar según el plan que utilices.</p></details><details><summary>¿Puedo hacer el curso desde el móvil?</summary><p>Sí. El contenido está pensado para que puedas aprender desde el ordenador, la tableta o el móvil.</p></details><details><summary>¿Y si me cuesta seguir algún paso?</summary><p>El curso está diseñado para avanzar poco a poco. Las lecciones son cortas y puedes volver a verlas cuando quieras.</p></details><details><summary>¿La IA siempre dice la verdad?</summary><p>No. Una parte importante del curso es aprender a detectar errores y saber cuándo hay que comprobar la información.</p></details></div></div></section>
+<section class="final"><div class="wrap"><h2>No necesitas entender la tecnología para empezar a aprovecharla.</h2><p>Empieza desde cero, aprende con ejemplos y descubre si la inteligencia artificial puede hacerte el día a día un poco más fácil.</p><a class="btn" href="#oferta">Quiero empezar por 9,90 € →</a></div></section>
 </main>
-
 <footer><div class="wrap"><span>© 2026 IA fácil</span><span>Producto en lanzamiento · Información comercial sujeta a actualización</span></div></footer>
-
 <script>
 (function(){
-  const input=document.getElementById('demoInput'), before=document.getElementById('beforeText'), after=document.getElementById('afterText');
-  const improve=document.getElementById('improveBtn'), example=document.getElementById('exampleBtn');
+  const input=document.getElementById('demoInput'),before=document.getElementById('beforeText'),after=document.getElementById('afterText'),improve=document.getElementById('improveBtn'),example=document.getElementById('exampleBtn');
   if(!input||!before||!after)return;
+  const templates=[
+    {keys:['viaj','vacacion','hotel','vuelo','turismo','escapada'],label:'viajes',make:q=>'Actúa como experto en viajes. Ayúdame con '+q+'. Ten en cuenta mi presupuesto, tiempo disponible y preferencias. Organiza la respuesta por pasos y añade recomendaciones prácticas de transporte, alojamiento y actividades.'},
+    {keys:['mensaje','whatsapp','correo','email','carta','responder'],label:'comunicación',make:q=>'Ayúdame a redactar '+q+'. Hazlo claro, natural y adecuado para la persona que lo recibirá. Propón una versión breve, con un tono cercano y sin sonar demasiado formal.'},
+    {keys:['receta','cocinar','cocina','comida','ingrediente','cena','almuerzo'],label:'cocina',make:q=>'Actúa como cocinero práctico. Ayúdame con '+q+'. Indica ingredientes, cantidades aproximadas y pasos sencillos. Si falta algún ingrediente, propone una alternativa.'},
+    {keys:['comprar','compra','producto','precio','oferta','móvil','telefono','ordenador','portatil'],label:'compras',make:q=>'Ayúdame a tomar una decisión de compra sobre '+q+'. Compara las opciones relevantes, explica ventajas y desventajas y dime qué criterios debería revisar antes de decidir.'},
+    {keys:['estudi','examen','asignatura','aprender','tema','clase','deberes','ejercicio'],label:'estudios',make:q=>'Actúa como profesor particular. Ayúdame con '+q+'. Explícalo paso a paso con un lenguaje sencillo, pon un ejemplo y termina con unas preguntas cortas para comprobar si lo he entendido.'},
+    {keys:['trabajo','reunión','curriculum','cv','entrevista','empresa','proyecto','presentación'],label:'trabajo',make:q=>'Ayúdame con '+q+'. Primero organiza la tarea, después propón una solución clara y práctica y, si hay varias opciones, compáralas brevemente para que pueda elegir.'},
+    {keys:['casa','limpiar','limpieza','ordenar','jardín','planta','plantas','reparar'],label:'hogar',make:q=>'Ayúdame a resolver '+q+'. Dame un plan sencillo paso a paso, indica qué necesito y ordénalo de la forma más práctica posible.'},
+    {keys:['día','semana','organizar','organización','agenda','tiempo','rutina','tareas','planificar'],label:'organización',make:q=>'Ayúdame a organizar '+q+'. Convierte lo que te he contado en un plan claro, prioriza lo importante y reparte las tareas de forma realista.'},
+    {keys:['idea','ideas','regalo','cumpleaños','fiesta','nombre','creativo','creativa'],label:'ideas',make:q=>'Actúa como compañero de ideas. Ayúdame con '+q+'. Dame varias propuestas diferentes, explica brevemente cada una y señala cuáles son las más sencillas de llevar a cabo.'},
+    {keys:['texto','escribir','escrito','artículo','post','resum','redact'],label:'escritura',make:q=>'Ayúdame a mejorar '+q+'. Mantén las ideas principales, ordénalas de forma clara y utiliza un lenguaje natural. Si algo puede expresarse mejor, propón una alternativa.'},
+    {keys:['dinero','ahorrar','presupuesto','gasto','finanzas','banco'],label:'finanzas',make:q=>'Ayúdame a organizar '+q+'. Explica las opciones de forma sencilla, separa los datos de tus recomendaciones y señala qué información debería comprobar antes de tomar una decisión.'},
+    {keys:['ejercicio','deporte','entrenar','entrenamiento','correr','gimnasio'],label:'deporte',make:q=>'Ayúdame a organizar '+q+'. Propón una opción sencilla y progresiva, explica cada paso y adapta la propuesta a la información que te he dado.'}
+  ];
+  function clean(q){return q.replace(/[.!?]+$/,'').trim();}
   function improvePrompt(raw){
-    const q=raw.trim();
-    if(!q)return;
+    const q=clean(raw); if(!q)return;
     before.textContent=q;
     const lower=q.toLowerCase();
+    const match=templates.find(t=>t.keys.some(k=>lower.includes(k)));
     let result;
-    if(lower.includes('viaj')||lower.includes('vacacion')){
-      result='Actúa como experto en viajes. Ayúdame a planificar '+q.replace(/^quiero\s*/i,'').replace(/[.]+$/,'')+'. Indica opciones concretas, organiza la información por pasos y añade los detalles prácticos que debería tener en cuenta.';
-    }else if(lower.includes('mensaje')||lower.includes('whatsapp')||lower.includes('correo')||lower.includes('email')){
-      result='Ayúdame a redactar '+q.replace(/[.]+$/,'')+'. Hazlo claro, natural y adecuado para la persona que lo recibirá. Propón una versión breve y cercana, evitando un tono demasiado formal.';
-    }else if(lower.includes('receta')||lower.includes('cocin')){
-      result='Actúa como cocinero práctico. Ayúdame con '+q.replace(/[.]+$/,'')+'. Indica ingredientes, cantidades aproximadas y pasos sencillos, y sugiere una alternativa si me falta algún ingrediente.';
-    }else if(lower.includes('compra')||lower.includes('comprar')){
-      result='Ayúdame a tomar una decisión de compra sobre '+q.replace(/[.]+$/,'')+'. Compara las opciones relevantes, explica ventajas y desventajas y dime qué criterios debería revisar antes de decidir.';
-    }else{
-      result='Ayúdame con '+q.replace(/[.]+$/,'')+'. Primero aclara el objetivo, después organiza la respuesta en pasos sencillos y adapta las recomendaciones a mi situación. Si falta información importante, pregúntame antes de asumirla.';
-    }
+    if(match) result=match.make(q);
+    else result='Ayúdame con '+q+'. Primero identifica qué quiero conseguir, después organiza la respuesta en pasos sencillos y adapta las recomendaciones a mi situación. Si falta información importante, pregúntame antes de asumirla.';
     after.textContent=result;
   }
   improve.addEventListener('click',()=>improvePrompt(input.value));
-  example.addEventListener('click',()=>{input.value='Quiero organizar un viaje a Italia';improvePrompt(input.value)});
+  example.addEventListener('click',()=>{input.value='Quiero organizar un viaje a Italia';improvePrompt(input.value);});
+  input.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter')improvePrompt(input.value);});
 })();
 </script>
 </body>
