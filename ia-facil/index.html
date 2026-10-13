@@ -16,7 +16,7 @@ h1{font-size:clamp(42px,5.5vw,68px);line-height:1.02;letter-spacing:-2.8px;margi
 section{padding:82px 0}.soft{background:var(--sage)}.center{text-align:center}.center p{margin-left:auto;margin-right:auto}.section-lead{max-width:720px;color:var(--muted);font-size:20px}
 .problem{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:38px}.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:27px}.problem .card:first-child{background:#fff8eb;border-color:#f1dfb0}.icon{font-size:30px;margin-bottom:10px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}.benefit{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:25px}.benefit p,.card p{color:var(--muted);margin:0}
-.course{display:grid;grid-template-columns:.85fr 1.15fr;gap:46px;align-items:start}.modules{display:grid;gap:12px}.module{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:18px 20px;display:flex;gap:15px}.num{min-width:36px;height:36px;border-radius:50%;background:var(--sage);display:grid;place-items:center;font-weight:900;color:var(--green2)}.module strong{display:block}.module span{color:var(--muted);font-size:16px}
+.course{display:grid;grid-template-columns:.85fr 1.15fr;gap:46px;align-items:start}.modules{display:grid;gap:12px}.course-extras{grid-column:1/-1;margin-top:6px}.course-extras>.center h3{font-size:26px;margin-bottom:8px}.course-extras>.center .section-lead{font-size:18px;margin-top:0}.module{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:18px 20px;display:flex;gap:15px}.num{min-width:36px;height:36px;border-radius:50%;background:var(--sage);display:grid;place-items:center;font-weight:900;color:var(--green2)}.module strong{display:block}.module span{color:var(--muted);font-size:16px}
 .offer{background:var(--green2);color:#fff;border-radius:28px;padding:44px;display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:center}.offer p{color:#dce9df}.price-box{background:#fff;color:var(--ink);border-radius:22px;padding:28px;text-align:center}.old{text-decoration:line-through;color:var(--muted)}.price{font-size:52px;line-height:1;font-weight:950;margin:6px 0}.small{font-size:14px;color:var(--muted)}.offer .btn{background:var(--yellow);color:var(--ink);box-shadow:none;width:100%}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}.step{padding:28px;background:var(--paper);border:1px solid var(--line);border-radius:18px}.step b{font-size:14px;color:var(--green);text-transform:uppercase}
 .faq{max-width:820px;margin:35px auto 0}.faq details{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:10px 0}.faq summary{cursor:pointer;font-weight:850;font-size:19px}.faq p{color:var(--muted);margin:13px 0 0}
@@ -75,24 +75,44 @@ footer{padding:28px 0;color:var(--muted);font-size:14px;border-top:1px solid var
 
 <section class="soft">
 <div class="wrap course">
-<div><div class="eyebrow">El curso</div><h2>Aprenderás haciendo, no memorizando.</h2><p class="section-lead">Lecciones cortas, ejemplos prácticos y ejercicios para que puedas probar cada cosa al momento.</p></div>
+<div>
+<div class="eyebrow">El curso completo</div>
+<h2>10 módulos para aprender a utilizar la IA con confianza.</h2>
+<p class="section-lead">Aprenderás haciendo, no memorizando: lecciones cortas, ejemplos cotidianos, ejercicios y un cuestionario al final de cada módulo.</p>
+</div>
 <div class="modules">
-<div class="module"><div class="num">1</div><div><strong>¿Qué es la IA y qué es ChatGPT?</strong><span>Entiende qué tienes delante y qué puede hacer realmente.</span></div></div>
-<div class="module"><div class="num">2</div><div><strong>Tu primer mensaje</strong><span>Cómo empezar una conversación y conseguir respuestas útiles.</span></div></div>
-<div class="module"><div class="num">3</div><div><strong>Cómo hacer buenas preguntas</strong><span>La clave para que la IA entienda exactamente lo que quieres.</span></div></div>
-<div class="module"><div class="num">4</div><div><strong>IA para tu día a día</strong><span>Ejemplos reales que puedes empezar a utilizar hoy.</span></div></div>
-<div class="module"><div class="num">5</div><div><strong>Errores, mentiras e información falsa</strong><span>Cómo comprobar lo que te dice la IA antes de confiar en ello.</span></div></div>
-<div class="module"><div class="num">6</div><div><strong>Privacidad y seguridad</strong><span>Qué datos no deberías compartir y cómo utilizarla con prudencia.</span></div></div>
+<div class="module"><div class="num">1</div><div><strong>¿Qué es la IA y qué es ChatGPT?</strong><span>Entiende qué tienes delante, qué puede hacer y cómo empezar.</span></div></div>
+<div class="module"><div class="num">2</div><div><strong>Tu primera conversación con ChatGPT</strong><span>Haz peticiones claras, da contexto, pide cambios y continúa la conversación.</span></div></div>
+<div class="module"><div class="num">3</div><div><strong>Aprende a hacer buenas preguntas</strong><span>Descubre cómo explicar lo que necesitas para obtener mejores respuestas.</span></div></div>
+<div class="module"><div class="num">4</div><div><strong>IA para tu vida cotidiana</strong><span>Viajes, mensajes, recetas, compras, organización, aprendizaje y mucho más.</span></div></div>
+<div class="module"><div class="num">5</div><div><strong>Consigue mejores respuestas</strong><span>Aprende a ser concreto, dar contexto, elegir el tono y mejorar una respuesta.</span></div></div>
+<div class="module"><div class="num">6</div><div><strong>No te creas todo a la primera</strong><span>Detecta errores y aprende a comprobar la información importante.</span></div></div>
+<div class="module"><div class="num">7</div><div><strong>Cuida tus datos</strong><span>Qué información compartir, qué proteger y cómo evitar engaños.</span></div></div>
+<div class="module"><div class="num">8</div><div><strong>Aprende con IA</strong><span>Utiliza ChatGPT para entender, practicar, repasar y aprender a tu ritmo.</span></div></div>
+<div class="module"><div class="num">9</div><div><strong>Organízate con IA</strong><span>Ordena tareas, planifica tu tiempo, crea rutinas y prepara planes prácticos.</span></div></div>
+<div class="module"><div class="num">10</div><div><strong>Crea y comunica con IA</strong><span>Escribe, resume, prepara explicaciones, genera ideas y mejora tus textos.</span></div></div>
+</div>
+</div>
+<div class="course-extras">
+<div class="center"><h3>Y además, tendrás recursos para seguir practicando</h3><p class="section-lead">Cuando termines los módulos, podrás seguir utilizando lo aprendido con herramientas prácticas.</p></div>
+<div class="grid3">
+<div class="benefit"><div class="icon">🧰</div><h3>Kit de prompts</h3><p>Plantillas listas para copiar y adaptar en situaciones reales.</p></div>
+<div class="benefit"><div class="icon">🧪</div><h3>Zona de práctica</h3><p>Retos para entrenar lo aprendido y comparar tus ideas con posibles soluciones.</p></div>
+<div class="benefit"><div class="icon">🏆</div><h3>Reto final</h3><p>Un proyecto integrador para demostrar que sabes utilizar la IA de principio a fin.</p></div>
+<div class="benefit"><div class="icon">📖</div><h3>Caja de herramientas</h3><p>Un resumen de conceptos, reglas de seguridad y buenas prácticas para consultar cuando quieras.</p></div>
+<div class="benefit"><div class="icon">🚀</div><h3>¿Y ahora qué?</h3><p>Ideas para convertir lo aprendido en un hábito útil en tu día a día.</p></div>
 </div>
 </div>
 </section>
 
 <section>
 <div class="wrap">
+<div class="center"><h2>¿Cómo funciona?</h2><section>
+<div class="wrap">
 <div class="center"><h2>¿Cómo funciona?</h2></div>
 <div class="steps">
 <div class="step"><b>01 · Entra</b><h3>Accede al curso</h3><p>Desde el ordenador, tableta o móvil.</p></div>
-<div class="step"><b>02 · Aprèn</b><h3>Sigue las lecciones</h3><p>Explicaciones cortas y sencillas, a tu ritmo.</p></div>
+<div class="step"><b>02 · Aprende</b><h3>Sigue las lecciones</h3><p>Explicaciones cortas y sencillas, a tu ritmo.</p></div>
 <div class="step"><b>03 · Practica</b><h3>Pruébalo tú mismo</h3><p>Pon en práctica cada lección con ejemplos reales.</p></div>
 </div>
 </div>
@@ -125,6 +145,6 @@ footer{padding:28px 0;color:var(--muted);font-size:14px;border-top:1px solid var
 </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 IA fàcil</span><span>Producto en lanzamiento · Información comercial sujeta a actualización</span></div></footer>
+<footer><div class="wrap"><span>© 2026 IA fácil</span><span>Producto en lanzamiento · Información comercial sujeta a actualización</span></div></footer>
 </body>
 </html>
