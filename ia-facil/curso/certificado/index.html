@@ -44,15 +44,23 @@ label{display:block;font-weight:800;margin-bottom:8px}input{width:100%;padding:1
 <div class="foot">Curso IA fácil · 10 módulos completados</div>
 </section>
 </main>
-<script>
-function completed(){
- return Array.from({length:10},(_,i)=>localStorage.getItem('iafacil-m'+(i+1)+'-done')==='1').every(Boolean);
-}
-function generateCertificate(){
+<script type="module">
+import { loadCompletedModules } from "../acceso/progreso.js";
+async function generateCertificate(){
  const name=document.getElementById('name').value.trim();
  const notice=document.getElementById('notice');
  if(!name){notice.textContent='Escribe tu nombre para generar el certificado.';notice.style.background='#fff7e6';return}
- if(!completed()){notice.textContent='Todavía no has completado los 10 módulos. Termínalos y vuelve aquí para generar tu certificado.';notice.style.background='#fff7e6';return}
+ notice.textContent='Comprobando tu progreso…';
+ try{
+   const completed=await loadCompletedModules();
+   if(!Array.from({length:10},(_,i)=>i+1).every(n=>completed.includes(n))){
+     notice.textContent='Todavía no has completado los 10 módulos. Termínalos y vuelve aquí para generar el certificado.';
+     notice.style.background='#fff7e6';return;
+   }
+ }catch(err){
+   notice.textContent='No se ha podido comprobar tu progreso. Comprueba tu conexión e inténtalo de nuevo.';
+   notice.style.background='#fff7e6';return;
+ }
  document.getElementById('certificateName').textContent=name;
  document.getElementById('certificateName2').textContent=name;
  document.getElementById('certificate').classList.add('show');
@@ -60,6 +68,7 @@ function generateCertificate(){
  notice.style.background='#eaf7ef';
  document.getElementById('certificate').scrollIntoView({behavior:'smooth',block:'start'});
 }
+window.generateCertificate=generateCertificate;
 </script>
 </body>
 </html>
