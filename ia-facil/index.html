@@ -30,6 +30,7 @@ section{padding:82px 0}.soft{background:var(--sage)}.center{text-align:center}.c
 fbq('init','1420061570074591');
 
 const capi=(eventName,eventId,custom={})=>{
+  const testEventCode=new URLSearchParams(location.search).get('test_event_code') || '';
   const cookies=document.cookie.split(';').map(x=>x.trim());
   const getCookie=name=>{const x=cookies.find(v=>v.startsWith(name+'='));return x?decodeURIComponent(x.slice(name.length+1)):''};
   fetch('https://studyos-omega-five.vercel.app/api/meta-capi',{
@@ -42,6 +43,7 @@ const capi=(eventName,eventId,custom={})=>{
       event_source_url:location.href,
       fbp:getCookie('_fbp'),
       fbc:getCookie('_fbc'),
+      ...(testEventCode ? {test_event_code:testEventCode} : {}),
       ...custom
     })
   }).catch(()=>{});
