@@ -26,13 +26,42 @@ section{padding:82px 0}.soft{background:var(--sage)}.center{text-align:center}.c
 @media(max-width:850px){.demo-grid{grid-template-columns:1fr}.demo-arrow{transform:rotate(90deg);height:18px}.wow-grid{grid-template-columns:1fr}.kit-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:520px){.interactive-demo{padding:18px}.demo-text{font-size:18px}.kit{padding:20px}.kit-grid{grid-template-columns:repeat(2,1fr)}}
 .floating-cta{position:fixed;right:22px;bottom:22px;z-index:1000;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--green);color:#fff;padding:14px 20px;border-radius:999px;font-size:16px;font-weight:900;box-shadow:0 10px 28px #17312b35;border:2px solid #fff;transition:transform .2s,background .2s,box-shadow .2s}.floating-cta:hover{background:var(--green2);transform:translateY(-2px);box-shadow:0 14px 32px #17312b42}.floating-cta span{font-size:18px}@media(max-width:520px){.floating-cta{right:14px;left:14px;bottom:14px;width:auto;padding:13px 18px;font-size:15px}.floating-cta span{font-size:17px}}</style>
 <script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(n)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1420061570074591');
-fbq('track','PageView');
-fbq('track','ViewContent',{content_name:'IA fácil — Curso completo',content_category:'curso'});
+
+const capi=(eventName,eventId,custom={})=>{
+  const cookies=document.cookie.split(';').map(x=>x.trim());
+  const getCookie=name=>{const x=cookies.find(v=>v.startsWith(name+'='));return x?decodeURIComponent(x.slice(name.length+1)):''};
+  fetch('/curso/api/meta-capi',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    keepalive:true,
+    body:JSON.stringify({
+      event_name:eventName,
+      event_id:eventId,
+      event_source_url:location.href,
+      fbp:getCookie('_fbp'),
+      fbc:getCookie('_fbc'),
+      ...custom
+    })
+  }).catch(()=>{});
+};
+
+const pageViewId=crypto.randomUUID();
+fbq('track','PageView',{}, {eventID:pageViewId});
+capi('PageView',pageViewId);
+
+const viewContentId=crypto.randomUUID();
+fbq('track','ViewContent',{content_name:'IA fácil — Curso completo',content_category:'curso'}, {eventID:viewContentId});
+capi('ViewContent',viewContentId);
+
 document.addEventListener('click',function(e){
   const link=e.target.closest('a[href*="buy.stripe.com"]');
-  if(link){fbq('track','InitiateCheckout',{content_name:'IA fácil — Curso completo',value:9.90,currency:'EUR'});}
+  if(link){
+    const eventId=crypto.randomUUID();
+    fbq('track','InitiateCheckout',{content_name:'IA fácil — Curso completo',value:9.90,currency:'EUR'},{eventID:eventId});
+    capi('InitiateCheckout',eventId,{value:9.90,currency:'EUR'});
+  }
 });
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1420061570074591&ev=PageView&noscript=1" /></noscript>
