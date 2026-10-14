@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IA fácil · Analytics del curso</title>
+<style>
+:root{--ink:#172033;--muted:#687386;--bg:#f5f7fb;--card:#fff;--line:#e1e6ee;--blue:#2d7ff9;--soft:#edf4ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{max-width:1100px;margin:auto;padding:30px 20px}.top{display:flex;justify-content:space-between;gap:16px;align-items:end;margin-bottom:24px}.eyebrow{font-size:13px;font-weight:800;text-transform:uppercase;color:var(--blue);letter-spacing:.08em}.title{font-size:38px;line-height:1.05;margin:5px 0}.muted{color:var(--muted)}.btn{border:0;border-radius:12px;background:var(--blue);color:#fff;padding:13px 18px;font:inherit;font-weight:800;cursor:pointer}.notice{padding:12px 14px;background:#fff4e5;border:1px solid #efd9aa;border-radius:12px;font-size:14px;margin-bottom:16px}.hidden{display:none!important}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}.metric{font-size:36px;font-weight:900;margin-top:6px}.metric-label{font-size:14px;color:var(--muted)}.section{margin-top:18px}.section h2{font-size:21px;margin:0 0 5px}.section-intro{color:var(--muted);font-size:14px;margin:0 0 16px}.bars{display:grid;gap:10px}.bar-row{display:grid;grid-template-columns:180px 1fr 45px;gap:10px;align-items:center;font-size:14px}.bar{height:10px;background:#e8edf5;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--blue);border-radius:99px}.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line);font-size:13px;white-space:nowrap}.table th{color:var(--muted);font-weight:700}.pill{display:inline-block;padding:5px 9px;border-radius:999px;background:var(--soft);color:#1e5fc5;font-weight:800;font-size:12px}@media(max-width:700px){.grid{grid-template-columns:1fr}.top{align-items:start;flex-direction:column}.title{font-size:30px}.bar-row{grid-template-columns:110px 1fr 35px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<div class="top">
+  <div>
+    <div class="eyebrow">IA fácil · Curso</div>
+    <div class="title">Analytics del curso</div>
+    <div class="muted">Entradas y navegación anónimas dentro del curso.</div>
+  </div>
+  <button id="refresh" class="btn">Actualizar</button>
+</div>
+
+<div id="notice" class="notice hidden"></div>
+
+<section class="grid">
+  <div class="card"><div class="metric-label">Entradas al curso</div><div id="views" class="metric">—</div><div class="metric-label">eventos course_view</div></div>
+  <div class="card"><div class="metric-label">Clics en módulos</div><div id="clicks" class="metric">—</div><div class="metric-label">eventos module_click</div></div>
+  <div class="card"><div class="metric-label">Visitantes del curso</div><div id="unique" class="metric">—</div><div class="metric-label">identificadores anónimos detectados</div></div>
+</section>
+
+<section class="section card">
+  <h2>📅 Actividad por día</h2>
+  <p class="section-intro">Entradas y clics registrados dentro del curso.</p>
+  <div id="days" class="bars"></div>
+</section>
+
+<section class="section card">
+  <h2>📚 Módulos visitados</h2>
+  <p class="section-intro">Qué módulos han recibido clics desde el portal.</p>
+  <div id="modules" class="bars"></div>
+</section>
+
+<section class="section card">
+  <h2>🕐 Últimos eventos del curso</h2>
+  <p class="section-intro">Incluye solo course_view y module_click. No muestra datos personales.</p>
+  <div class="table-wrap">
+    <table class="table">
+      <thead><tr><th>Fecha</th><th>Evento</th><th>Módulo</th><th>Visitante</th></tr></thead>
+      <tbody id="events"></tbody>
+    </table>
+  </div>
+</section>
+</main>
+
+<script>
+const WORKER_URL="https://cursoia.studyos-oficial-spain.workers.dev";
+const $=id=>document.getElementById(id);
+
+async function load(){
+  $("notice").classList.add("hidden");
+  try{
+    const r=await fetch(WORKER_URL+"/stats");
+    if(!r.ok) throw new Error("No se pudieron cargar los datos del Worker.");
+    const d=await r.json();
+    const events=(d.recent||[]).filter(e=>e.event==="course_view"||e.event==="module_click");
+    render(events);
+  }catch(e){
+    $("notice").textContent=e.message;
+    $("notice").classList.remove("hidden");
+  }
+}
+
+function render(events){
+  const views=events.filter(e=>e.event==="course_view");
+  const clicks=events.filter(e=>e.event==="module_click");
+  const visitors=new Set(events.map(e=>e.visitor_id).filter(Boolean));
+  $("views").textContent=views.length;
+  $("clicks").textContent=clicks.length;
+  $("unique").textContent=visitors.size||"—";
+
+  const days={};
+  events.forEach(e=>{
+    const day=new Date(e.ts).toLocaleDateString("es-ES");
+    days[day]=(days[day]||0)+1;
+  });
+  renderBars("days",days);
+
+  const modules={};
+  clicks.forEach(e=>{
+    const target=e.target||"";
+    const m=(target.match(/modulo-([0-9]+)/)||[])[1];
+    const key=m?"Módulo "+m:target||"Otro";
+    modules[key]=(modules[key]||0)+1;
+  });
+  renderBars("modules",modules);
+
+  $("events").innerHTML=events.slice().reverse().slice(0,100).map(e=>{
+    const target=e.target||"—";
+    const m=(target.match(/modulo-([0-9]+)/)||[])[1];
+    const visitor=e.visitor_id?e.visitor_id.slice(0,8)+"…":"—";
+    return "<tr><td>"+fmt(e.ts)+"</td><td><span class='pill'>"+esc(e.event)+"</span></td><td>"+esc(m?"Módulo "+m:"—")+"</td><td>"+esc(visitor)+"</td></tr>";
+  }).join("")||"<tr><td colspan='4' class='muted'>Encara no hi ha dades del curs.</td></tr>";
+}
+
+function renderBars(id,obj){
+  const entries=Object.entries(obj).sort((a,b)=>b[1]-a[1]);
+  const max=entries[0]?.[1]||1;
+  $(id).innerHTML=entries.length?entries.map(([k,v])=>"<div class='bar-row'><span>"+esc(k)+"</span><div class='bar'><i style='width:'+Math.max(3,v/max*100)+'%'></i></div><b>"+v+"</b></div>").join(""):"<span class='muted'>Sense dades.</span>";
+}
+function fmt(ts){return new Date(ts).toLocaleString("es-ES",{dateStyle:"short",timeStyle:"short"});}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
+$("refresh").onclick=load;load();
+</script>
+</body>
+</html>
