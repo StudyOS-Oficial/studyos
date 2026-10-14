@@ -1,6 +1,10 @@
 const PIXEL_ID = "1420061570074591";
 
 export default async function handler(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "https://studyos-oficial.github.io");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  if (req.method === "OPTIONS") return res.status(204).end();
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
 
   const token = process.env.META_CAPI_ACCESS_TOKEN;
