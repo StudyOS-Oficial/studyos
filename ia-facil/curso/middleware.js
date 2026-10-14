@@ -15,7 +15,7 @@ export default async function middleware(request) {
   const path = url.pathname;
 
   if (path === "/acceso" || path.startsWith("/acceso/") || path.startsWith("/api/session")) {
-    return new Response(null, { status: 200 });
+    return;
   }
 
   const token = getCookie(request, "ia_course_token");
@@ -39,7 +39,7 @@ export default async function middleware(request) {
     return Response.redirect(new URL("/acceso/?denied=1", request.url), 302);
   }
 
-  return new Response(null, { status: 200 });
+  return;
 }
 
 export const config = {
