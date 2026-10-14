@@ -134,7 +134,7 @@ a{color:inherit}
 
 <div class="info">
   <div class="info-icon">💡</div>
-  <div><strong>No tienes que hacerlo todo de golpe.</strong><p>Haz un módulo, practica lo aprendido y vuelve cuando quieras. Tu progreso se guarda en este dispositivo.</p></div>
+  <div><strong>No tienes que hacerlo todo de golpe.</strong><p>Haz un módulo, practica lo aprendido y vuelve cuando quieras. Tu progreso se guarda en tu cuenta y podrás continuar desde cualquier dispositivo.</p></div>
 </div>
 
 <div class="footer">IA fácil · Aprende sin miedo, paso a paso.</div>
@@ -172,5 +172,31 @@ a{color:inherit}
   });
 })();
 </script>
-</body>
+<script type="module">
+import { loadCompletedModules } from "./acceso/progreso.js";
+(async()=>{
+  try{
+    const completed=await loadCompletedModules();
+    const done=Array.from({length:10},(_,i)=>completed.includes(i+1));
+    done.forEach((v,i)=>localStorage.setItem("iafacil-m"+(i+1)+"-done",v?"1":"0"));
+    const count=done.filter(Boolean).length;
+    const pct=Math.round(count/10*100);
+    document.getElementById("progressBar").style.width=pct+"%";
+    document.getElementById("progressPercent").textContent=pct+"%";
+    document.getElementById("countBadge").textContent=count+" de 10 completados";
+    document.querySelectorAll(".module").forEach(card=>{
+      const n=Number(card.dataset.module);
+      if(done[n-1]){
+        card.classList.add("done");
+        const tag=card.querySelector(".tag"), btn=card.querySelector(".btn");
+        if(tag) tag.textContent="Módulo "+n+" · COMPLETADO";
+        if(btn) btn.textContent="Repasar módulo →";
+      }
+    });
+    const note=document.getElementById("progressNote"),btn=document.getElementById("continueBtn");
+    if(count===10){note.textContent="¡Has completado todo el recorrido! Puedes volver a cualquier módulo para repasar.";btn.textContent="Volver al Módulo 1 →";btn.href="./modulo-1/";}
+    else if(count>0){const next=done.findIndex(v=>!v)+1;note.textContent="Vas muy bien. Tu siguiente paso es el Módulo "+next+".";btn.href="./modulo-"+next+"/";btn.textContent="Continuar en el Módulo "+next+" →";}
+  }catch(err){console.error("No se pudo cargar el progreso:",err);}
+})();
+</script></body>
 </html>
