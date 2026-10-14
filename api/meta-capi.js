@@ -15,6 +15,7 @@ export default async function handler(req, res) {
     const eventName = body.event_name;
     const eventId = body.event_id;
     const sourceUrl = body.event_source_url || "https://studyos-oficial.github.io/studyos/ia-facil/";
+    const testEventCode = body.test_event_code || new URL(req.url, "https://example.com").searchParams.get("test_event_code");
     if (!["PageView", "ViewContent", "InitiateCheckout"].includes(eventName) || !eventId) {
       return res.status(400).json({ error: "Evento no válido" });
     }
@@ -30,7 +31,7 @@ export default async function handler(req, res) {
     const response = await fetch("https://graph.facebook.com/v23.0/" + PIXEL_ID + "/events?access_token=" + encodeURIComponent(token), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ data: [{ event_name: eventName, event_time: Math.floor(Date.now() / 1000), event_id: eventId, action_source: "website", event_source_url: sourceUrl, user_data: userData, custom_data: customData }] })
+      body: JSON.stringify({ data: [{ event_name: eventName, event_time: Math.floor(Date.now() / 1000), event_id: eventId, action_source: "website", event_source_url: sourceUrl, user_data: userData, custom_data: customData }], ...(testEventCode ? { test_event_code: testEventCode } : {}) })
     });
     const result = await response.json();
     if (!response.ok) { console.error("Meta CAPI rejected event", result); return res.status(502).json({ error: "Meta CAPI error" }); }
