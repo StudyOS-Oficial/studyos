@@ -6,7 +6,21 @@ let mode="login";
 const $=id=>document.getElementById(id), msg=$("msg");
 $("loginTab").onclick=()=>{mode="login";$("loginTab").classList.add("active");$("signupTab").classList.remove("active");$("submit").textContent="Entrar";$("intro").textContent="Inicia sesión con tu cuenta de IA fácil."};
 $("signupTab").onclick=()=>{mode="signup";$("signupTab").classList.add("active");$("loginTab").classList.remove("active");$("submit").textContent="Crear cuenta";$("intro").textContent="Usa el mismo email que utilizaste al comprar el curso."};
+async function syncServerSession(session){
+  if(!session?.access_token){
+    await fetch("/api/session",{method:"DELETE"}).catch(()=>{});
+    return;
+  }
+  await fetch("/api/session",{
+    method:"POST",
+    headers:{Authorization:"Bearer "+session.access_token}
+  }).catch(()=>{});
+}
 function show(t){msg.hidden=false;msg.textContent=t}
+supabase.auth.onAuthStateChange((event,session)=>{
+  if(session) syncServerSession(session);
+  else fetch("/api/session",{method:"DELETE"}).catch(()=>{});
+});
 $("form").onsubmit=async e=>{e.preventDefault();msg.hidden=true;const email=$("email").value.trim().toLowerCase(),password=$("password").value;
 let r;
 if(mode==="signup") r=await supabase.auth.signUp({email,password});
@@ -15,7 +29,7 @@ if(r.error){show(r.error.message);return}
 if(mode==="signup" && !r.data.session){show("Cuenta creada. Revisa tu email para confirmar la cuenta y después inicia sesión.");return}
 const claim=await supabase.functions.invoke("claim-ia-facil-access");
 if(claim.error || !claim.data?.has_access){show("No encontramos una compra asociada a este email. Usa el mismo email que utilizaste en Stripe.");await supabase.auth.signOut();return}
-location.href="../";
+await syncServerSession(r.data.session);location.href="../";
 };
 const params=new URLSearchParams(location.search);if(params.get("denied"))show("Necesitas una compra activa para entrar al curso.");
 </script></body></html>
