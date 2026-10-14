@@ -32,7 +32,7 @@ fbq('init','1420061570074591');
 const capi=(eventName,eventId,custom={})=>{
   const cookies=document.cookie.split(';').map(x=>x.trim());
   const getCookie=name=>{const x=cookies.find(v=>v.startsWith(name+'='));return x?decodeURIComponent(x.slice(name.length+1)):''};
-  fetch('https://studyos-polgeligorriz-1054.vercel.app/api/meta-capi',{
+  fetch('https://studyos-omega-five.vercel.app/api/meta-capi',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     keepalive:true,
