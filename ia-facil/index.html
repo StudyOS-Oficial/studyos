@@ -87,5 +87,31 @@ section{padding:82px 0}.soft{background:var(--sage)}.center{text-align:center}.c
   input.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter')improvePrompt(input.value);});
 })();
 </script>
+<script>
+(function(){
+  const TRACKING_ENDPOINT="https://cursoia.studyos-oficial-spain.workers.dev/track";
+  const params=new URLSearchParams(location.search);
+  const base={
+    path:location.pathname,
+    referrer:document.referrer||"",
+    utm_source:params.get("utm_source")||"",
+    utm_medium:params.get("utm_medium")||"",
+    utm_campaign:params.get("utm_campaign")||""
+  };
+  function track(event){
+    const payload=JSON.stringify({...base,event});
+    try{
+      if(navigator.sendBeacon){
+        navigator.sendBeacon(TRACKING_ENDPOINT,new Blob([payload],{type:"application/json"}));
+      }else{
+        fetch(TRACKING_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:payload,keepalive:true}).catch(()=>{});
+      }
+    }catch(e){}
+  }
+  track("page_view");
+  document.querySelectorAll('a[href="#oferta"]').forEach(a=>a.addEventListener("click",()=>track("cta_click")));
+  document.querySelectorAll('a[href^="https://buy.stripe.com/"]').forEach(a=>a.addEventListener("click",()=>track("purchase_click")));
+})();
+</script>
 </body>
 </html>
