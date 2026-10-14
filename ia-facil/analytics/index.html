@@ -5,66 +5,280 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>IA fácil · Analytics</title>
 <style>
-:root{--ink:#17312b;--muted:#64736e;--bg:#f5f7f4;--card:#fff;--line:#dce4df;--green:#1f6b54;--green2:#15533f}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-.wrap{max-width:1180px;margin:auto;padding:32px 20px}.top{display:flex;justify-content:space-between;gap:16px;align-items:end;margin-bottom:24px}.eyebrow{font-size:13px;font-weight:800;text-transform:uppercase;color:var(--green);letter-spacing:.08em}.title{font-size:38px;line-height:1.05;margin:5px 0}.muted{color:var(--muted)}
-.login{max-width:430px;margin:80px auto;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 18px 50px #17312b12}.login h1{margin-top:0}.input{width:100%;padding:14px 15px;border:1px solid var(--line);border-radius:12px;font:inherit;margin:8px 0 12px}.btn{border:0;border-radius:12px;background:var(--green);color:white;padding:13px 18px;font:inherit;font-weight:800;cursor:pointer}.btn.secondary{background:#e8efe9;color:var(--green2)}.error{color:#a33;margin-top:12px;font-size:14px}
-.hidden{display:none!important}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}.metric{font-size:34px;font-weight:900;margin-top:6px}.metric-label{font-size:14px;color:var(--muted)}.section{margin-top:18px}.section h2{font-size:21px;margin:0 0 12px}.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);font-size:14px}.table th{color:var(--muted);font-weight:700}.bar-row{display:grid;grid-template-columns:130px 1fr 45px;gap:10px;align-items:center;margin:10px 0;font-size:14px}.bar{height:10px;background:#e8eee9;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--green);border-radius:99px}.actions{display:flex;gap:8px;flex-wrap:wrap}.notice{padding:12px 14px;background:#eef5ef;border:1px solid #d3e3d6;border-radius:12px;font-size:14px;margin-bottom:16px}
-@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.top{align-items:start;flex-direction:column}}@media(max-width:520px){.wrap{padding:22px 14px}.title{font-size:30px}.grid{grid-template-columns:1fr}}
+:root{--ink:#17312b;--muted:#64736e;--bg:#f5f7f4;--card:#fff;--line:#dce4df;--green:#1f6b54;--green2:#15533f;--soft:#eef5ef}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{max-width:1200px;margin:auto;padding:30px 20px}
+.top{display:flex;justify-content:space-between;gap:16px;align-items:end;margin-bottom:24px}
+.eyebrow{font-size:13px;font-weight:800;text-transform:uppercase;color:var(--green);letter-spacing:.08em}
+.title{font-size:38px;line-height:1.05;margin:5px 0}
+.muted{color:var(--muted)}
+.actions{display:flex;gap:8px}
+.btn{border:0;border-radius:12px;background:var(--green);color:white;padding:13px 18px;font:inherit;font-weight:800;cursor:pointer}
+.notice{padding:12px 14px;background:#fff4e5;border:1px solid #efd9aa;border-radius:12px;font-size:14px;margin-bottom:16px}
+.hidden{display:none!important}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.metric{font-size:34px;font-weight:900;margin-top:6px}
+.metric-label{font-size:14px;color:var(--muted)}
+.metric-sub{font-size:13px;color:var(--muted);margin-top:4px}
+.section{margin-top:18px}
+.section h2{font-size:21px;margin:0 0 5px}
+.section-intro{color:var(--muted);font-size:14px;margin:0 0 16px}
+.scroll-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.scroll-card{background:var(--soft);border:1px solid #d5e4d8;border-radius:16px;padding:18px}
+.scroll-card strong{display:block;font-size:28px}
+.scroll-card .pct{font-size:13px;color:var(--muted);margin-top:3px}
+.progress{height:9px;background:#dfe9e1;border-radius:99px;overflow:hidden;margin-top:12px}
+.progress i{display:block;height:100%;background:var(--green);border-radius:99px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.bar-row{display:grid;grid-template-columns:150px 1fr 45px;gap:10px;align-items:center;margin:10px 0;font-size:14px}
+.bar{height:10px;background:#e8eee9;border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--green);border-radius:99px}
+.table-wrap{overflow:auto}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line);font-size:13px;white-space:nowrap}
+.table th{color:var(--muted);font-weight:700}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.scroll-grid{grid-template-columns:repeat(3,1fr)}.two{grid-template-columns:1fr}}
+@media(max-width:560px){.wrap{padding:22px 14px}.top{align-items:start;flex-direction:column}.title{font-size:30px}.grid{grid-template-columns:1fr}.scroll-grid{grid-template-columns:repeat(2,1fr)}.bar-row{grid-template-columns:100px 1fr 35px}}
 </style>
 </head>
 <body>
-<main id="app">
+<main>
 <div class="wrap">
+
   <div class="top">
-    <div><div class="eyebrow">IA fácil · Dashboard</div><div class="title">Rendimiento de la landing</div><div class="muted">Datos anónimos recogidos por Cloudflare Worker + KV.</div></div>
-    <div class="actions"><button id="refresh" class="btn">Actualizar</button></div>
+    <div>
+      <div class="eyebrow">IA fácil · Dashboard</div>
+      <div class="title">Rendimiento de la landing</div>
+      <div class="muted">Visitas y comportamiento anónimo de los visitantes.</div>
+    </div>
+    <div class="actions">
+      <button id="refresh" class="btn">Actualizar</button>
+    </div>
   </div>
+
   <div id="notice" class="notice hidden"></div>
+
   <section class="grid">
-    <div class="card"><div class="metric-label">Visitas</div><div id="visits" class="metric">—</div></div>
-    <div class="card"><div class="metric-label">Clics CTA</div><div id="cta" class="metric">—</div></div>
-    <div class="card"><div class="metric-label">Clics Stripe</div><div id="stripe" class="metric">—</div></div>
-    <div class="card"><div class="metric-label">Conversión a CTA</div><div id="conversion" class="metric">—</div></div>
+    <div class="card">
+      <div class="metric-label">Visitas</div>
+      <div id="visits" class="metric">—</div>
+      <div class="metric-sub">páginas cargadas</div>
+    </div>
+    <div class="card">
+      <div class="metric-label">Visitantes únicos</div>
+      <div id="unique" class="metric">—</div>
+      <div class="metric-sub">navegadores anónimos</div>
+    </div>
+    <div class="card">
+      <div class="metric-label">Clics CTA</div>
+      <div id="cta" class="metric">—</div>
+      <div id="ctaRate" class="metric-sub">—</div>
+    </div>
+    <div class="card">
+      <div class="metric-label">Clics Stripe</div>
+      <div id="stripe" class="metric">—</div>
+      <div id="stripeRate" class="metric-sub">—</div>
+    </div>
   </section>
-  <section class="section card"><h2>Visitas por día</h2><div id="days"></div></section>
-  <section class="section card"><h2>Origen / UTM</h2><div id="sources"></div></section>
-  <section class="section card"><h2>Dispositivo</h2><div id="devices"></div></section>
-  <section class="section card"><h2>Últimos eventos</h2><div class="table-wrap"><table class="table"><thead><tr><th>Fecha</th><th>Evento</th><th>Origen</th><th>Dispositivo</th><th>País</th></tr></thead><tbody id="events"></tbody></table></div></section>
+
+  <section class="section card">
+    <h2>📜 Profundidad de scroll</h2>
+    <p class="section-intro">Porcentaje de visitantes únicos que llegaron como mínimo a cada punto de la landing.</p>
+    <div class="scroll-grid">
+      <div class="scroll-card"><strong id="s25">—</strong><div>25% de scroll</div><div class="pct" id="s25n">—</div><div class="progress"><i id="s25bar"></i></div></div>
+      <div class="scroll-card"><strong id="s50">—</strong><div>50% de scroll</div><div class="pct" id="s50n">—</div><div class="progress"><i id="s50bar"></i></div></div>
+      <div class="scroll-card"><strong id="s75">—</strong><div>75% de scroll</div><div class="pct" id="s75n">—</div><div class="progress"><i id="s75bar"></i></div></div>
+      <div class="scroll-card"><strong id="s90">—</strong><div>90% de scroll</div><div class="pct" id="s90n">—</div><div class="progress"><i id="s90bar"></i></div></div>
+      <div class="scroll-card"><strong id="s100">—</strong><div>100% de scroll</div><div class="pct" id="s100n">—</div><div class="progress"><i id="s100bar"></i></div></div>
+    </div>
+    <p class="section-intro" style="margin-top:16px;margin-bottom:0">Scroll medio registrado: <strong id="avgScroll">—</strong>%</p>
+  </section>
+
+  <div class="two">
+    <section class="section card">
+      <h2>📅 Visitas por día</h2>
+      <p class="section-intro">Evolución de las visitas.</p>
+      <div id="days"></div>
+    </section>
+
+    <section class="section card">
+      <h2>📱 Dispositivo</h2>
+      <p class="section-intro">Desde qué tipo de dispositivo llegan.</p>
+      <div id="devices"></div>
+    </section>
+  </div>
+
+  <div class="two">
+    <section class="section card">
+      <h2>🔗 Origen / UTM</h2>
+      <p class="section-intro">De dónde vienen los visitantes.</p>
+      <div id="sources"></div>
+    </section>
+
+    <section class="section card">
+      <h2>🌍 País</h2>
+      <p class="section-intro">Distribución geográfica aproximada.</p>
+      <div id="countries"></div>
+    </section>
+  </div>
+
+  <div class="two">
+    <section class="section card">
+      <h2>🎯 Campañas</h2>
+      <p class="section-intro">UTM campaign detectadas.</p>
+      <div id="campaigns"></div>
+    </section>
+
+    <section class="section card">
+      <h2>📣 Medios</h2>
+      <p class="section-intro">UTM medium detectadas.</p>
+      <div id="mediums"></div>
+    </section>
+  </div>
+
+  <section class="section card">
+    <h2>🕐 Últimos eventos</h2>
+    <p class="section-intro">Últimos 100 eventos registrados.</p>
+    <div class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Evento</th>
+            <th>Scroll</th>
+            <th>Origen</th>
+            <th>Dispositivo</th>
+            <th>País</th>
+          </tr>
+        </thead>
+        <tbody id="events"></tbody>
+      </table>
+    </div>
+  </section>
+
 </div>
 </main>
+
 <script>
 const WORKER_URL="https://cursoia.studyos-oficial-spain.workers.dev";
 const $=id=>document.getElementById(id);
+
 async function load(){
+  $("notice").classList.add("hidden");
+
   try{
     const r=await fetch(WORKER_URL+"/stats");
-    if(!r.ok) throw new Error("No se pudieron cargar los datos");
+
+    if(!r.ok){
+      throw new Error("No se pudieron cargar los datos del Worker");
+    }
+
     const d=await r.json();
     render(d);
+
   }catch(e){
     $("notice").textContent=e.message;
     $("notice").classList.remove("hidden");
   }
 }
+
 function render(d){
   $("visits").textContent=d.totals.visits;
+  $("unique").textContent=d.totals.uniqueVisitors;
   $("cta").textContent=d.totals.cta;
   $("stripe").textContent=d.totals.stripe;
-  $("conversion").textContent=d.totals.visits?((d.totals.cta/d.totals.visits)*100).toFixed(1)+"%":"0%";
+
+  $("ctaRate").textContent=
+    "Conversión: "+d.conversion.cta+"%";
+
+  $("stripeRate").textContent=
+    "Conversión: "+d.conversion.stripe+"%";
+
+  $("avgScroll").textContent=d.averageScroll;
+
+  [25,50,75,90,100].forEach(n=>{
+    const item=d.scrollDepth[n];
+
+    $("s"+n).textContent=item.percentage+"%";
+    $("s"+n+"n").textContent=item.visitors+" visitantes";
+    $("s"+n+"bar").style.width=item.percentage+"%";
+  });
+
   renderBars("days",d.byDay);
-  renderBars("sources",d.bySource);
   renderBars("devices",d.byDevice);
-  $("events").innerHTML=d.recent.map(e=>"<tr><td>"+fmt(e.ts)+"</td><td>"+esc(e.event)+"</td><td>"+esc(e.utm_source||"direct")+"</td><td>"+esc(e.device||"—")+"</td><td>"+esc(e.country||"—")+"</td></tr>").join("");
+  renderBars("sources",d.bySource);
+  renderBars("countries",d.byCountry);
+  renderBars("campaigns",d.byCampaign);
+  renderBars("mediums",d.byMedium);
+
+  $("events").innerHTML=d.recent.map(e=>{
+    const scroll=e.event==="scroll_depth"
+      ? e.scroll_percent+"%"
+      : "—";
+
+    return "<tr>"+
+      "<td>"+fmt(e.ts)+"</td>"+
+      "<td>"+esc(eventName(e.event))+"</td>"+
+      "<td>"+esc(scroll)+"</td>"+
+      "<td>"+esc(e.utm_source||"direct")+"</td>"+
+      "<td>"+esc(e.device||"—")+"</td>"+
+      "<td>"+esc(e.country||"—")+"</td>"+
+    "</tr>";
+  }).join("");
 }
+
+function eventName(event){
+  if(event==="page_view")return"Visita";
+  if(event==="cta_click")return"Clic CTA";
+  if(event==="purchase_click")return"Clic Stripe";
+  if(event==="scroll_depth")return"Scroll";
+  return event;
+}
+
 function renderBars(id,obj){
-  const entries=Object.entries(obj||{}).sort((a,b)=>b[1]-a[1]);
+  const entries=Object.entries(obj||{})
+    .sort((a,b)=>b[1]-a[1]);
+
   const max=entries[0]?.[1]||1;
-  $(id).innerHTML=entries.length?entries.slice(0,15).map(([k,v])=>'<div class="bar-row"><span>'+esc(k)+'</span><div class="bar"><i style="width:'+Math.max(3,v/max*100)+'%"></i></div><b>'+v+'</b></div>').join(""):'<span class="muted">Sin datos todavía.</span>';
+
+  $(id).innerHTML=entries.length
+    ? entries.slice(0,15).map(([k,v])=>
+      '<div class="bar-row">'+
+        '<span>'+esc(k)+'</span>'+
+        '<div class="bar"><i style="width:'+Math.max(3,v/max*100)+'%"></i></div>'+
+        '<b>'+v+'</b>'+
+      '</div>'
+    ).join("")
+    : '<span class="muted">Sin datos todavía.</span>';
 }
-function fmt(ts){return new Date(ts).toLocaleString("es-ES",{dateStyle:"short",timeStyle:"short"})}
-function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+
+function fmt(ts){
+  return new Date(ts).toLocaleString(
+    "es-ES",
+    {
+      dateStyle:"short",
+      timeStyle:"short"
+    }
+  );
+}
+
+function esc(s){
+  return String(s??"").replace(
+    /[&<>"']/g,
+    c=>({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[c])
+  );
+}
+
 $("refresh").onclick=load;
+
 load();
 </script>
 </body>
