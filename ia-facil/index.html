@@ -47,18 +47,19 @@ const capi=(eventName,eventId,custom={})=>{
   }).catch(()=>{});
 };
 
-const pageViewId=crypto.randomUUID();
+const makeEventId=()=>window.crypto?.randomUUID?.() || ('iafacil_'+Date.now()+'_'+Math.random().toString(36).slice(2));
+const pageViewId=makeEventId();
 fbq('track','PageView',{}, {eventID:pageViewId});
 capi('PageView',pageViewId);
 
-const viewContentId=crypto.randomUUID();
+const viewContentId=makeEventId();
 fbq('track','ViewContent',{content_name:'IA fácil — Curso completo',content_category:'curso'}, {eventID:viewContentId});
 capi('ViewContent',viewContentId);
 
 document.addEventListener('click',function(e){
   const link=e.target.closest('a[href*="buy.stripe.com"]');
   if(link){
-    const eventId=crypto.randomUUID();
+    const eventId=makeEventId();
     fbq('track','InitiateCheckout',{content_name:'IA fácil — Curso completo',value:9.90,currency:'EUR'},{eventID:eventId});
     capi('InitiateCheckout',eventId,{value:9.90,currency:'EUR'});
   }
