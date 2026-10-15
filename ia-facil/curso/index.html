@@ -239,33 +239,15 @@ import { loadCompletedModules } from "./acceso/progreso.js";
 </script>
 <script>
 (function(){
-  const ENDPOINT="https://cursoia.studyos-oficial-spain.workers.dev/track";
-  const params=new URLSearchParams(location.search);
-  let visitorId="";
-  try{
-    visitorId=localStorage.getItem("ia_facil_visitor_id")||"";
-    if(!visitorId){
-      visitorId=(crypto.randomUUID?crypto.randomUUID():String(Date.now())+"-"+Math.random().toString(36).slice(2));
-      localStorage.setItem("ia_facil_visitor_id",visitorId);
-    }
-  }catch(e){ visitorId="anon-"+Date.now(); }
-  function track(event,extra={}){
-    const payload=JSON.stringify({
-      event, visitor_id:visitorId, path:location.pathname,
-      referrer:document.referrer||"",
-      utm_source:params.get("utm_source")||"",
-      utm_medium:params.get("utm_medium")||"",
-      utm_campaign:params.get("utm_campaign")||"",
-      ...extra
+  function initCourseTracking(){
+    if(typeof window.iaFacilTrack!=="function")return;
+    window.iaFacilTrack("course_view",{course:"ia-facil"});
+    document.querySelectorAll('a[href*="./modulo-"]').forEach(a=>{
+      a.addEventListener("click",()=>window.iaFacilTrack("module_click",{target:a.getAttribute("href")}));
     });
-    try{
-      if(navigator.sendBeacon) navigator.sendBeacon(ENDPOINT,new Blob([payload],{type:"application/json"}));
-      else fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:payload,keepalive:true}).catch(()=>{});
-    }catch(e){}
   }
-  track("course_view",{course:"ia-facil"});
-  window.iaFacilTrack=track;
-  document.querySelectorAll('a[href*="./modulo-"]').forEach(a=>a.addEventListener("click",()=>track("module_click",{target:a.getAttribute("href")})));
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initCourseTracking,{once:true});
+  else initCourseTracking();
 })();
 </script>
 </body>
