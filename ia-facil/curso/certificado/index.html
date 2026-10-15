@@ -17,7 +17,7 @@ label{display:block;font-weight:800;margin-bottom:8px}input{width:100%;padding:1
 @media(max-width:600px){.certificate{padding:55px 35px;min-height:560px}.back{float:none;display:block;margin-top:10px}.top{padding-bottom:10px}}
 @media print{body{background:white}.top,.intro,.panel{display:none!important}.main{padding:0}.certificate{display:flex!important;box-shadow:none;border-width:10px;margin:0;max-width:none;width:100%;min-height:100vh;outline:2px solid #b9ccec;outline-offset:-20px}.wrap{width:100%}@page{size:A4 landscape;margin:12mm}}
 </style>
-</head>
+<meta name="robots" content="noindex,nofollow,noarchive"></head>
 <body><script type="module">import { requireCourseAccess } from "../acceso/access.js"; requireCourseAccess();</script>
 <header class="top wrap"><a class="brand" href="../">IA fácil</a><a class="back" href="../">← Volver al curso</a></header>
 <main>
@@ -70,5 +70,5 @@ async function generateCertificate(){
 }
 window.generateCertificate=generateCertificate;
 </script>
-</body>
+<script type="module">import "../acceso/tracking.js";</script></body>
 </html>
