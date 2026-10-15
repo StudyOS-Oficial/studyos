@@ -94,13 +94,17 @@ export default async function middleware(request) {
 
   if (await hasValidCourseCookie(request, secret)) return;
 
-  const response = Response.redirect(new URL(ACCESS_PATH, request.url), 302);
-  response.headers.set("Cache-Control", "no-store");
-  response.headers.append(
-    "Set-Cookie",
-    `${COOKIE_NAME}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax; Priority=High`
-  );
-  return response;
+  // Response.redirect() creates immutable headers in this runtime. Build the
+  // response directly so the redirect, no-store policy, and cookie clearing
+  // can all be included without mutating an immutable Headers object.
+  return new Response(null, {
+    status: 302,
+    headers: {
+      "Location": new URL(ACCESS_PATH, request.url).toString(),
+      "Cache-Control": "no-store",
+      "Set-Cookie": `${COOKIE_NAME}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax; Priority=High`
+    }
+  });
 }
 
 export const config = {
