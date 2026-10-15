@@ -1,352 +1,49 @@
-const ALLOWED_ORIGINS = new Set([
-  "https://studyos-oficial.github.io",
-  "http://localhost",
-  "http://127.0.0.1"
-]);
+// Worker "cursoia" · analítica anónima. Guarda SOLO contadores (sin IP, sin IDs).
+const ORIGINS = new Set(["https://studyos-oficial.github.io", "https://studyos-omega-five.vercel.app"]);
+const KINDS = new Set(["pv", "scroll", "click", "section", "done", "quiz"]);
+const KEY = /^[a-z0-9_:.#\/-]{1,60}$/, PATH = /^\/[a-z0-9_\/-]{0,60}$/, HOST = /^[a-z0-9.-]{0,60}$/;
+const MAX_PER_DAY = 600;
 
-function allowedOrigin(request) {
-  const origin = request.headers.get("Origin") || "";
-  return ALLOWED_ORIGINS.has(origin) ? origin : "https://studyos-oficial.github.io";
+const cors = (o) => ({ "Access-Control-Allow-Origin": o, "Vary": "Origin", "Access-Control-Allow-Methods": "GET,POST,OPTIONS", "Access-Control-Allow-Headers": "Content-Type, Authorization", "Access-Control-Max-Age": "86400" });
+const reply = (o, status, body) => new Response(body ? JSON.stringify(body) : null, { status, headers: { ...cors(o), "Content-Type": "application/json", "Cache-Control": "no-store" } });
+const madridDay = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Madrid" }).format(new Date());
+async function hash(s) { const d = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)); return [...new Uint8Array(d).slice(0,8)].map(x=>x.toString(16).padStart(2,"0")).join(""); }
+const device = ua => /tablet|ipad/i.test(ua) ? "tablet" : /mobile|android|iphone|ipod/i.test(ua) ? "movil" : "escritorio";
+function bump(db,day,s,h,kind,key){return [
+ db.prepare("INSERT OR IGNORE INTO dedupe(day,s,h,kind,key) VALUES(?,?,?,?,?)").bind(day,s,h,kind,key),
+ db.prepare("INSERT INTO counters(day,s,kind,key,total,uniq) VALUES(?,?,?,?,1,changes()) ON CONFLICT(day,s,kind,key) DO UPDATE SET total=total+1, uniq=uniq+changes()").bind(day,s,kind,key)
+];}
+async function track(req,env,ctx,origin){
+ let b;try{b=JSON.parse(await req.text())}catch{return reply(origin,400)}
+ const {s,t,k="",p="/",r="",u=""}=b||{};
+ if(!["landing","course"].includes(s)||!KINDS.has(t)||!PATH.test(p))return reply(origin,400);
+ if(t!=="pv"&&!KEY.test(k))return reply(origin,400);
+ const day=madridDay(),ua=req.headers.get("User-Agent")||"";
+ const h=await hash((env.HASH_SECRET||"")+day+(req.headers.get("CF-Connecting-IP")||"")+ua);
+ const rate=await env.DB.prepare("INSERT INTO rate(day,h,n) VALUES(?,?,1) ON CONFLICT(day,h) DO UPDATE SET n=n+1 RETURNING n").bind(day,h).first();
+ if(rate&&rate.n>MAX_PER_DAY)return reply(origin,429);
+ let st=bump(env.DB,day,s,h,t,t==="pv"?p:p+"|"+k);
+ if(t==="pv"){
+  const clean=v=>String(v).toLowerCase().replace(/^www\./,"");
+  const src=KEY.test(clean(u))?clean(u):HOST.test(r)&&r&&r!=="studyos-oficial.github.io"?clean(r):"directo";
+  st=st.concat(bump(env.DB,day,s,h,"src",src),bump(env.DB,day,s,h,"dev",device(ua)),bump(env.DB,day,s,h,"cty",(req.headers.get("CF-IPCountry")||"??").slice(0,2)));
+ }
+ await env.DB.batch(st);
+ if(Math.random()<0.02)ctx.waitUntil(env.DB.batch([env.DB.prepare("DELETE FROM dedupe WHERE day<?").bind(day),env.DB.prepare("DELETE FROM rate WHERE day<?").bind(day)]));
+ return reply(origin,204);
 }
-
-function cors(request, extra = {}) {
-  return {
-    "Access-Control-Allow-Origin": allowedOrigin(request),
-    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    "Vary": "Origin",
-    ...extra
-  };
+async function stats(req,env,origin){
+ const auth=req.headers.get("Authorization")||"",want="Bearer "+(env.STATS_TOKEN||"");
+ if(!env.STATS_TOKEN||auth.length!==want.length||[...auth].reduce((a,c,i)=>a|(c.charCodeAt(0)^want.charCodeAt(i)),0))return reply(origin,401,{error:"no autorizado"});
+ const days=Math.min(365,Math.max(1,parseInt(new URL(req.url).searchParams.get("days"))||30));
+ const from=new Intl.DateTimeFormat("en-CA",{timeZone:"Europe/Madrid"}).format(new Date(Date.now()-days*864e5));
+ const {results}=await env.DB.prepare("SELECT day,s,kind,key,total,uniq FROM counters WHERE day>=? ORDER BY day").bind(from).all();
+ return reply(origin,200,{rows:results});
 }
-
-function json(data, status = 200, request) {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: {
-      ...cors(request),
-      "Content-Type": "application/json; charset=utf-8"
-    }
-  });
-}
-
-function deviceFromUA(ua = "") {
-  if (/tablet|ipad/i.test(ua)) return "tablet";
-  if (/mobile|android|iphone|ipod/i.test(ua)) return "mobile";
-  return "desktop";
-}
-
-function clean(value, max = 120) {
-  return String(value ?? "").slice(0, max).replace(/[<>]/g, "");
-}
-
-async function track(request, env) {
-  let body;
-
-  try {
-    body = await request.json();
-  } catch {
-    return json({ ok: false }, 400, request);
-  }
-
-  const event = clean(body.event, 40);
-
-  if (![
-    "page_view",
-    "cta_click",
-    "purchase_click",
-    "scroll_depth",
-    "course_view","module_click","module_view","quiz_started","quiz_completed","module_completed","course_completed","consent_granted"
-  ].includes(event)) {
-    return json({ ok: false }, 400, request);
-  }
-
-  const scrollPercent =
-    Number(body.scroll_percent);
-
-  if (
-    event === "scroll_depth" &&
-    ![25, 50, 75, 90, 100].includes(scrollPercent)
-  ) {
-    return json({ ok: false }, 400, request);
-  }
-
-  const now = new Date().toISOString();
-  const id = crypto.randomUUID();
-  const ua = request.headers.get("User-Agent") || "";
-
-  const data = {
-    event,
-    ts: now,
-
-    visitor_id: clean(
-      body.visitor_id,
-      80
-    ),
-
-    path: clean(
-      body.path,
-      200
-    ),
-
-    referrer: clean(
-      body.referrer,
-      300
-    ),
-
-    utm_source: clean(
-      body.utm_source,
-      80
-    ),
-
-    utm_medium: clean(
-      body.utm_medium,
-      80
-    ),
-
-    utm_campaign: clean(
-      body.utm_campaign,
-      120
-    ),
-
-    device: deviceFromUA(ua),
-
-    country: clean(
-      request.headers.get("CF-IPCountry") || "",
-      10
-    )
-  };
-
-  if (event === "scroll_depth") {
-    data.scroll_percent = scrollPercent;
-  }
-
-  await env.CURSOIA.put(
-    "event:" + Date.now() + ":" + id,
-    JSON.stringify(data),
-    {
-      expirationTtl: 60 * 60 * 24 * 180
-    }
-  );
-
-  return json({ ok: true }, 201, request);
-}
-
-async function stats(request, env) {
-  const events = [];
-  let cursor = undefined;
-
-  do {
-    const page = await env.CURSOIA.list({
-      prefix: "event:",
-      limit: 1000,
-      cursor
-    });
-
-    for (const key of page.keys) {
-      const raw = await env.CURSOIA.get(key.name);
-
-      if (raw) {
-        try {
-          events.push(JSON.parse(raw));
-        } catch {}
-      }
-    }
-
-    cursor = page.list_complete
-      ? undefined
-      : page.cursor;
-
-  } while (cursor);
-
-  events.sort(
-    (a, b) =>
-      new Date(b.ts) - new Date(a.ts)
-  );
-
-  const pageViews =
-    events.filter(e => e.event === "page_view");
-
-  const uniqueVisitors =
-    new Set(
-      pageViews
-        .map(e => e.visitor_id)
-        .filter(Boolean)
-    );
-
-  const totals = {
-    visits: pageViews.length,
-    uniqueVisitors: uniqueVisitors.size,
-    cta: events.filter(
-      e => e.event === "cta_click"
-    ).length,
-    stripe: events.filter(
-      e => e.event === "purchase_click"
-    ).length
-  };
-
-  const byDay = {};
-  const bySource = {};
-  const byMedium = {};
-  const byCampaign = {};
-  const byDevice = {};
-  const byCountry = {};
-
-  for (const e of pageViews) {
-    const day = e.ts.slice(0, 10);
-    byDay[day] =
-      (byDay[day] || 0) + 1;
-
-    const source =
-      e.utm_source || "direct";
-    bySource[source] =
-      (bySource[source] || 0) + 1;
-
-    if (e.utm_medium) {
-      byMedium[e.utm_medium] =
-        (byMedium[e.utm_medium] || 0) + 1;
-    }
-
-    if (e.utm_campaign) {
-      byCampaign[e.utm_campaign] =
-        (byCampaign[e.utm_campaign] || 0) + 1;
-    }
-
-    const device =
-      e.device || "unknown";
-    byDevice[device] =
-      (byDevice[device] || 0) + 1;
-
-    const country =
-      e.country || "unknown";
-    byCountry[country] =
-      (byCountry[country] || 0) + 1;
-  }
-
-  const visitorsByDepth = {
-    25: new Set(),
-    50: new Set(),
-    75: new Set(),
-    90: new Set(),
-    100: new Set()
-  };
-
-  for (const e of events) {
-    if (
-      e.event !== "scroll_depth" ||
-      !e.visitor_id ||
-      !visitorsByDepth[e.scroll_percent]
-    ) {
-      continue;
-    }
-
-    visitorsByDepth[e.scroll_percent].add(
-      e.visitor_id
-    );
-  }
-
-  const scrollDepth = {};
-
-  for (const threshold of [25, 50, 75, 90, 100]) {
-    const reached =
-      visitorsByDepth[threshold].size;
-
-    scrollDepth[threshold] = {
-      visitors: reached,
-      percentage: uniqueVisitors.size
-        ? Number(
-            ((reached / uniqueVisitors.size) * 100)
-              .toFixed(1)
-          )
-        : 0
-    };
-  }
-
-  const allScrollEvents =
-    events.filter(
-      e =>
-        e.event === "scroll_depth" &&
-        Number.isFinite(e.scroll_percent)
-    );
-
-  const averageScroll =
-    allScrollEvents.length
-      ? Number(
-          (
-            allScrollEvents.reduce(
-              (sum, e) =>
-                sum + e.scroll_percent,
-              0
-            ) / allScrollEvents.length
-          ).toFixed(1)
-        )
-      : 0;
-
-  const courseEvents=events.filter(e=>["course_view","module_click","module_view","quiz_started","quiz_completed","module_completed","course_completed"].includes(e.event));
-  const courseViews=courseEvents.filter(e=>e.event==="course_view");
-  const courseVisitors=new Set(courseEvents.map(e=>e.visitor_id).filter(Boolean));
-  const courseByDay={}; const modules={}; const completedModules={}; const quizzes={started:0,completed:0};
-  for(const e of courseEvents){const day=e.ts.slice(0,10);courseByDay[day]=(courseByDay[day]||0)+1;if(Number.isFinite(e.module)){if(e.event==="module_click"||e.event==="module_view")modules[e.module]=(modules[e.module]||0)+1;if(e.event==="module_completed")completedModules[e.module]=(completedModules[e.module]||0)+1;}if(e.event==="quiz_started")quizzes.started++;if(e.event==="quiz_completed")quizzes.completed++;}
-  const safeRecent=events.slice(0,100).map(({visitor_id,referrer,...e})=>e);
-
-  return json({
-    totals,
-    course:{views:courseViews.length,uniqueVisitors:courseVisitors.size,moduleClicks:courseEvents.filter(e=>e.event==="module_click").length,moduleViews:courseEvents.filter(e=>e.event==="module_view").length,moduleCompleted:courseEvents.filter(e=>e.event==="module_completed").length,courseCompleted:courseEvents.filter(e=>e.event==="course_completed").length,quizzes,byDay:courseByDay,modules,completedModules},
-    conversion: {
-      cta: totals.visits
-        ? Number(
-            ((totals.cta / totals.visits) * 100)
-              .toFixed(1)
-          )
-        : 0,
-      stripe: totals.visits
-        ? Number(
-            ((totals.stripe / totals.visits) * 100)
-              .toFixed(1)
-          )
-        : 0
-    },
-    scrollDepth,
-    averageScroll,
-    byDay,
-    bySource,
-    byMedium,
-    byCampaign,
-    byDevice,
-    byCountry,
-    recent: safeRecent
-  }, 200, request);
-}
-
-export default {
-  async fetch(request, env) {
-    if (request.method === "OPTIONS") {
-      return new Response(null, {
-        headers: cors(request)
-      });
-    }
-
-    const url = new URL(request.url);
-
-    if (
-      url.pathname === "/track" &&
-      request.method === "POST"
-    ) {
-      return track(request, env);
-    }
-
-    if (
-      url.pathname === "/stats" &&
-      request.method === "GET"
-    ) {
-      return stats(request, env);
-    }
-
-    return json({
-      service: "IA fácil analytics",
-      endpoints: [
-        "POST /track",
-        "GET /stats"
-      ]
-    }, 200, request);
-  }
-};
+export default{async fetch(req,env,ctx){
+ const origin=ORIGINS.has(req.headers.get("Origin"))?req.headers.get("Origin"):"",pathname=new URL(req.url).pathname;
+ if(req.method==="OPTIONS")return new Response(null,{status:204,headers:origin?cors(origin):{}});
+ if(pathname==="/t"&&req.method==="POST")return origin?track(req,env,ctx,origin):new Response(null,{status:403});
+ if(pathname==="/stats"&&req.method==="GET")return stats(req,env,origin||"null");
+ return new Response("IA fácil analytics",{status:200});
+}};
