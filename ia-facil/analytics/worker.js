@@ -1,8 +1,17 @@
-const ALLOWED_ORIGIN = "https://studyos-oficial.github.io";
+const ALLOWED_ORIGINS = new Set([
+  "https://studyos-oficial.github.io",
+  "http://localhost",
+  "http://127.0.0.1"
+]);
 
-function cors(extra = {}) {
+function allowedOrigin(request) {
+  const origin = request.headers.get("Origin") || "";
+  return ALLOWED_ORIGINS.has(origin) ? origin : "https://studyos-oficial.github.io";
+}
+
+function cors(request, extra = {}) {
   return {
-    "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
+    "Access-Control-Allow-Origin": allowedOrigin(request),
     "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
     "Vary": "Origin",
@@ -10,11 +19,11 @@ function cors(extra = {}) {
   };
 }
 
-function json(data, status = 200) {
+function json(data, status = 200, request) {
   return new Response(JSON.stringify(data), {
     status,
     headers: {
-      ...cors(),
+      ...cors(request),
       "Content-Type": "application/json; charset=utf-8"
     }
   });
@@ -36,7 +45,7 @@ async function track(request, env) {
   try {
     body = await request.json();
   } catch {
-    return json({ ok: false }, 400);
+    return json({ ok: false }, 400, request);
   }
 
   const event = clean(body.event, 40);
@@ -119,7 +128,7 @@ async function track(request, env) {
     }
   );
 
-  return json({ ok: true }, 201);
+  return json({ ok: true }, 201, request);
 }
 
 async function stats(request, env) {
@@ -305,14 +314,14 @@ async function stats(request, env) {
     byDevice,
     byCountry,
     recent: safeRecent
-  });
+  }, 200, request);
 }
 
 export default {
   async fetch(request, env) {
     if (request.method === "OPTIONS") {
       return new Response(null, {
-        headers: cors()
+        headers: cors(request)
       });
     }
 
@@ -338,6 +347,6 @@ export default {
         "POST /track",
         "GET /stats"
       ]
-    });
+    }, 200, request);
   }
 };
