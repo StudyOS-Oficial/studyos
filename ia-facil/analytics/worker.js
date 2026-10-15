@@ -45,7 +45,8 @@ async function track(request, env) {
     "page_view",
     "cta_click",
     "purchase_click",
-    "scroll_depth"
+    "scroll_depth",
+    "course_view","module_click","module_view","quiz_started","quiz_completed","module_completed","course_completed","consent_granted"
   ].includes(event)) {
     return json({ ok: false }, 400);
   }
@@ -271,8 +272,16 @@ async function stats(request, env) {
         )
       : 0;
 
+  const courseEvents=events.filter(e=>["course_view","module_click","module_view","quiz_started","quiz_completed","module_completed","course_completed"].includes(e.event));
+  const courseViews=courseEvents.filter(e=>e.event==="course_view");
+  const courseVisitors=new Set(courseEvents.map(e=>e.visitor_id).filter(Boolean));
+  const courseByDay={}; const modules={}; const completedModules={}; const quizzes={started:0,completed:0};
+  for(const e of courseEvents){const day=e.ts.slice(0,10);courseByDay[day]=(courseByDay[day]||0)+1;if(Number.isFinite(e.module)){if(e.event==="module_click"||e.event==="module_view")modules[e.module]=(modules[e.module]||0)+1;if(e.event==="module_completed")completedModules[e.module]=(completedModules[e.module]||0)+1;}if(e.event==="quiz_started")quizzes.started++;if(e.event==="quiz_completed")quizzes.completed;}
+  const safeRecent=events.slice(0,100).map(({visitor_id,referrer,...e})=>e);
+
   return json({
     totals,
+    course:{views:courseViews.length,uniqueVisitors:courseVisitors.size,moduleClicks:courseEvents.filter(e=>e.event==="module_click").length,moduleViews:courseEvents.filter(e=>e.event==="module_view").length,moduleCompleted:courseEvents.filter(e=>e.event==="module_completed").length,courseCompleted:courseEvents.filter(e=>e.event==="course_completed").length,quizzes,byDay:courseByDay,modules,completedModules},
     conversion: {
       cta: totals.visits
         ? Number(
@@ -295,7 +304,7 @@ async function stats(request, env) {
     byCampaign,
     byDevice,
     byCountry,
-    recent: events.slice(0, 100)
+    recent: safeRecent
   });
 }
 
