@@ -276,7 +276,7 @@ async function stats(request, env) {
   const courseViews=courseEvents.filter(e=>e.event==="course_view");
   const courseVisitors=new Set(courseEvents.map(e=>e.visitor_id).filter(Boolean));
   const courseByDay={}; const modules={}; const completedModules={}; const quizzes={started:0,completed:0};
-  for(const e of courseEvents){const day=e.ts.slice(0,10);courseByDay[day]=(courseByDay[day]||0)+1;if(Number.isFinite(e.module)){if(e.event==="module_click"||e.event==="module_view")modules[e.module]=(modules[e.module]||0)+1;if(e.event==="module_completed")completedModules[e.module]=(completedModules[e.module]||0)+1;}if(e.event==="quiz_started")quizzes.started++;if(e.event==="quiz_completed")quizzes.completed;}
+  for(const e of courseEvents){const day=e.ts.slice(0,10);courseByDay[day]=(courseByDay[day]||0)+1;if(Number.isFinite(e.module)){if(e.event==="module_click"||e.event==="module_view")modules[e.module]=(modules[e.module]||0)+1;if(e.event==="module_completed")completedModules[e.module]=(completedModules[e.module]||0)+1;}if(e.event==="quiz_started")quizzes.started++;if(e.event==="quiz_completed")quizzes.completed++;}
   const safeRecent=events.slice(0,100).map(({visitor_id,referrer,...e})=>e);
 
   return json({
