@@ -29,9 +29,9 @@ export default async function handler(req, res) {
   const cookieSecret = process.env.ACCESS_COOKIE_SECRET;
   const isProduction = process.env.VERCEL_ENV === "production";
   const expectedMode = isProduction ? "live" : "test";
-  const keyPrefix = isProduction ? "sk_live_" : "sk_test_";
+  const keyPrefixes = isProduction ? ["sk_live_", "rk_live_"] : ["sk_test_", "rk_test_"];
 
-  if (!secretKey?.startsWith(keyPrefix) ||
+  if (!secretKey || !keyPrefixes.some((prefix) => secretKey.startsWith(prefix)) ||
       !/^plink_[A-Za-z0-9]+$/.test(paymentLinkId || "") ||
       !cookieSecret ||
       cookieSecret.length < 32 ||
@@ -71,7 +71,7 @@ export default async function handler(req, res) {
       "; Path=/; Max-Age=" + COOKIE_TTL_SECONDS + "; HttpOnly; Secure; SameSite=Lax";
 
     res.setHeader("Set-Cookie", cookie);
-    res.setHeader("Location", "/ia-facil/curso-nuevo/");
+    res.setHeader("Location", "/ia-facil/curso-nuevo/bienvenida/");
     res.setHeader("Referrer-Policy", "no-referrer");
     return res.status(303).end();
   } catch {
