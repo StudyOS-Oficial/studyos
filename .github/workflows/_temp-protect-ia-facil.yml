@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   protect:
-    if: github.event.head_commit.message == 'TEMP-PROTECT-IA-FACIL'
+    if: github.event.head_commit.message == 'TEMP-PROTECT-IA-FACIL-2'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -38,7 +38,7 @@ jobs:
               if(e.name==='acceso'||e.name==='analytics'||e.name==='node_modules') continue;
               const abs=path.join(dir,e.name), r=path.join(rel,e.name);
               if(e.isDirectory()) walk(abs,r);
-              else if(/\\.html$/i.test(e.name)) files.push([abs,r.replaceAll('\\\\','/')]);
+              else if(/\.html$/i.test(e.name)) files.push([abs,r.replaceAll('\\\\','/')]);
             }
           }
           walk(root);
