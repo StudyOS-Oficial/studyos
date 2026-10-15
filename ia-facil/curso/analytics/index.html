@@ -37,8 +37,8 @@
 const API="https://cursoia.studyos-oficial-spain.workers.dev/stats", $=id=>document.getElementById(id);
 const METRICS=[
  {key:"landing_view",label:"Visitas",hint:"Cargas de la landing"},
- {key:"cta_click",label:"Primera acción",hint:"Clics en botones"},
- {key:"demo_attempt",label:"Demo iniciada",hint:"Interacciones con la demo"},
+ {key:"cta_click",label:"Clics en botones",hint:"Acciones sobre los botones"},
+ {key:"demo_attempt",label:"Intentos de demo",hint:"Interacciones con la demo"},
  {key:"scroll_depth",label:"Lectura de la página",hint:"Eventos de scroll registrados"}
 ];
 async function load(){try{$("notice").classList.add("hidden");const r=await fetch(API,{cache:"no-store"});if(!r.ok)throw Error("Cloudflare respondió con un error al cargar las estadísticas.");const data=await r.json();renderLanding(data.landing||{});renderCourse(data.course||{});$("updated").textContent=new Date().toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit"});}catch(e){$("notice").textContent=e.message;$("notice").classList.remove("hidden");}}
