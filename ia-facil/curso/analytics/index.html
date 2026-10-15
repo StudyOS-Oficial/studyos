@@ -41,16 +41,26 @@ const METRICS=[
  {key:"demo_attempt",label:"Intentos de demo",hint:"Interacciones con la demo"},
  {key:"scroll_depth",label:"Lectura de la página",hint:"Eventos de scroll registrados"}
 ];
-async function load(){try{$("notice").classList.add("hidden");const r=await fetch(API,{cache:"no-store"});if(!r.ok)throw Error("Cloudflare respondió con un error al cargar las estadísticas.");const data=await r.json();renderLanding(data.landing||{});renderCourse(data.course||{});$("updated").textContent=new Date().toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit"});}catch(e){$("notice").textContent=e.message;$("notice").classList.remove("hidden");}}
-function renderLanding(landing){
- const events=landing.events||{}, daily=landing.byDay||{};
- const keys=new Set([...METRICS.map(x=>x.key),...Object.keys(events)]);
- const cards=[...keys].map(key=>{const def=METRICS.find(x=>x.key===key);return {key,label:def?.label||pretty(key),hint:def?.hint||"Eventos registrados",value:num(events[key])};});
+async function load(){try{$("notice").classList.add("hidden");const r=await fetch(API,{cache:"no-store"});if(!r.ok)throw Error("Cloudflare respondió con un error al cargar las estadísticas.");const data=await r.json();renderLanding(data);renderCourse(data.course||{});$("updated").textContent=new Date().toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit"});}catch(e){$("notice").textContent=e.message;$("notice").classList.remove("hidden");}}
+function renderLanding(data){
+ const totals=data.totals||{}, daily=data.byDay||{}, depth=data.scrollDepth||{};
+ const scrollEvents=[25,50,75,90,100].reduce((sum,n)=>sum+num(depth[n]?.visitors),0);
+ const events={
+   landing_view:num(totals.visits),
+   cta_click:num(totals.cta),
+   purchase_click:num(totals.stripe),
+   scroll_depth:scrollEvents
+ };
+ const cards=[
+   {key:"landing_view",label:"Visitas",hint:"Cargas de la landing",value:events.landing_view},
+   {key:"cta_click",label:"Clics en botones",hint:"Acciones sobre los botones",value:events.cta_click},
+   {key:"purchase_click",label:"Clics Stripe",hint:"Intentos de acceso al pago",value:events.purchase_click},
+   {key:"scroll_depth",label:"Lectura de la página",hint:"Visitantes que alcanzaron puntos de scroll",value:events.scroll_depth}
+ ];
  $("landing-metrics").innerHTML=cards.map(c=>"<article class='metric-card'><div><div class='metric-name'>"+esc(c.label)+"</div><div class='metric-hint'>"+esc(c.hint)+"</div></div><div class='metric-value'>"+c.value+"</div></article>").join("");
- const totals=Object.fromEntries(Object.entries(daily).map(([day,byEvent])=>[day,Object.values(byEvent||{}).reduce((a,b)=>a+num(b),0)]));
- bars("landing-days",totals);
+ bars("landing-days",daily);
  const rows=Object.entries(events).sort((a,b)=>num(b[1])-num(a[1]));
- $("landing-events").innerHTML=rows.length?"<table class='table'><thead><tr><th>Evento</th><th>Total</th></tr></thead><tbody>"+rows.map(([key,value])=>"<tr><td><span class='pill'>"+esc(pretty(key))+"</span></td><td>"+num(value)+"</td></tr>").join("")+"</tbody></table>":"<div class='empty'>Aún no hay eventos. Cuando haya visitas con analítica aceptada, aparecerán aquí.</div>";
+ $("landing-events").innerHTML=rows.length?"<table class='table'><thead><tr><th>Evento</th><th>Total</th></tr></thead><tbody>"+rows.map(([key,value])=>"<tr><td><span class='pill'>"+esc(pretty(key))+"</span></td><td>"+num(value)+"</td></tr>").join("")+"</tbody></table>":"<div class='empty'>Aún no hay eventos.</div>";
 }
 function renderCourse(c){
  const q=c.quizzes||{};
