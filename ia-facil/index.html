@@ -273,11 +273,21 @@ document.addEventListener('click',function(e){
     checkScroll();
   }
 
-  if(typeof window.studyosWhenConsented==="function"){
-    window.studyosWhenConsented(start);
-  }else{
-    start();
+  function boot(){
+    if(typeof window.studyosWhenConsented==="function"){
+      window.studyosWhenConsented(start);
+      return;
+    }
+
+    if(localStorage.getItem(CONSENT_KEY)==="granted"){
+      start();
+      return;
+    }
+
+    setTimeout(boot,100);
   }
+
+  boot();
 })();
 </script>
 </body>
