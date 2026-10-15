@@ -57,7 +57,7 @@ async function track(request, env) {
     "scroll_depth",
     "course_view","module_click","module_view","quiz_started","quiz_completed","module_completed","course_completed","consent_granted"
   ].includes(event)) {
-    return json({ ok: false }, 400);
+    return json({ ok: false }, 400, request);
   }
 
   const scrollPercent =
@@ -67,7 +67,7 @@ async function track(request, env) {
     event === "scroll_depth" &&
     ![25, 50, 75, 90, 100].includes(scrollPercent)
   ) {
-    return json({ ok: false }, 400);
+    return json({ ok: false }, 400, request);
   }
 
   const now = new Date().toISOString();
