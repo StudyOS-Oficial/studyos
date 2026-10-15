@@ -39,7 +39,7 @@ function track(event, extra = {}) {
   } catch {}
 }
 
-function showConsent() {
+function injectConsentStyles() {\n  if (document.getElementById("iafacil-consent-style")) return;\n  const style=document.createElement("style");\n  style.id="iafacil-consent-style";\n  style.textContent="#iafacil-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:99999;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:14px 16px;background:#172033;color:#fff;border-radius:16px;box-shadow:0 12px 35px #0003;font:13px/1.45 system-ui,sans-serif}#iafacil-consent>div:first-child{max-width:760px}#iafacil-consent span{color:#dce5f2}#iafacil-consent button{border:0;border-radius:10px;padding:9px 12px;margin-left:8px;font:inherit;font-weight:800;cursor:pointer}#iafacil-consent-no{background:#fff;color:#172033}#iafacil-consent-yes{background:#2d7ff9;color:#fff}@media(max-width:700px){#iafacil-consent{left:10px;right:10px;bottom:10px;display:block}#iafacil-consent button{margin-top:9px}}";\n  document.head.appendChild(style);\n}\n\nfunction showConsent() {
   if (hasConsent() || document.getElementById("iafacil-consent")) return;
   const box=document.createElement("div");
   box.id="iafacil-consent";
