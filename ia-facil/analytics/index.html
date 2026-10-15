@@ -169,17 +169,21 @@ async function load(){
   $("notice").classList.add("hidden");
 
   try{
-    const r=await fetch(WORKER_URL+"/stats");
+    const r=await fetch(WORKER_URL+"/stats?ts="+Date.now(),{method:"GET",mode:"cors",cache:"no-store",headers:{"Accept":"application/json"}});
 
     if(!r.ok){
       throw new Error("No se pudieron cargar los datos del Worker");
     }
 
     const d=await r.json();
+    if(!d || !d.totals || !d.scrollDepth || !d.recent){
+      throw new Error("El Worker ha respondido, pero los datos de Analytics no tienen el formato esperado.");
+    }
     render(d);
 
   }catch(e){
-    $("notice").textContent=e.message;
+    console.error("IA Fácil Analytics:",e);
+    $("notice").textContent="No se han podido cargar las estadísticas. Comprueba la conexión con el Worker. Detalle: "+(e?.message||e);
     $("notice").classList.remove("hidden");
   }
 }
