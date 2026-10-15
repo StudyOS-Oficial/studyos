@@ -173,68 +173,13 @@ document.addEventListener('click',function(e){
 </script>
 <script>
 (function(){
-  const ENDPOINT="https://cursoia.studyos-oficial-spain.workers.dev/track";
-  const CONSENT_KEY="studyos_cookies";
-  const SESSION_KEY="ia_facil_analytics_session";
-  try{localStorage.removeItem("ia_facil_visitor_id");}catch(e){}
-  const params=new URLSearchParams(location.search);
-  const base={
-    path:location.pathname,
-    referrer:(()=>{try{return document.referrer?new URL(document.referrer).origin:"";}catch(e){return "";}})(),
-    utm_source:params.get("utm_source")||"",
-    utm_medium:params.get("utm_medium")||"",
-    utm_campaign:params.get("utm_campaign")||""
-  };
-
-  function sessionId(){
-    try{
-      let id=sessionStorage.getItem(SESSION_KEY);
-      if(!id){id=crypto.randomUUID?crypto.randomUUID():Date.now()+"-"+Math.random().toString(36).slice(2);sessionStorage.setItem(SESSION_KEY,id);}
-      return id;
-    }catch(e){return "";}
-  }
-
-  function track(event,extra={}){
-    if(localStorage.getItem(CONSENT_KEY)!=="granted")return false;
-    const data={...base,event,visitor_id:sessionId(),...extra};
-    const payload=JSON.stringify(data);
-    try{
-      if(navigator.sendBeacon)navigator.sendBeacon(ENDPOINT,new Blob([payload],{type:"application/json"}));
-      else fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:payload,keepalive:true,credentials:"omit",referrerPolicy:"no-referrer"}).catch(()=>{});
-    }catch(e){}
-    if(typeof window.studyosGA==="function")window.studyosGA("ia_facil_"+event,{course:"ia-facil",page_path:location.pathname,...extra});
-    return true;
-  }
-
-  function startTracking(){
-    if(typeof window.studyosWhenConsented!=="function")return;
-    window.studyosWhenConsented(()=>{
-      track("landing_view");
-      document.querySelectorAll('a[href="#oferta"]').forEach(a=>a.addEventListener("click",()=>track("cta_click")));
-      document.querySelectorAll('a[href^="https://buy.stripe.com/"]').forEach(a=>a.addEventListener("click",()=>track("checkout_click")));
-      const demo=document.getElementById("improveBtn");
-      if(demo)demo.addEventListener("click",()=>track("demo_attempt"));
-      const thresholds=[25,50,75,90,100],sent={};
-      function checkScroll(){
-        const max=document.documentElement.scrollHeight-window.innerHeight;
-        const current=max<=0?100:Math.min(100,Math.round(window.scrollY/max*100));
-        thresholds.forEach(n=>{if(current>=n&&!sent[n]){sent[n]=true;track("scroll_depth",{scroll_percent:n});}});
-      }
-      let pending=false;
-      window.addEventListener("scroll",()=>{if(!pending){requestAnimationFrame(()=>{checkScroll();pending=false;});pending=true;}},{passive:true});
-      checkScroll();
-    });
-  }
-  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",startTracking,{once:true});else startTracking();
-})();
-</script>
-<script>
-(function(){
   "use strict";
 
   const ENDPOINT="https://cursoia.studyos-oficial-spain.workers.dev/track";
-  const SESSION_KEY="ia_facil_landing_session";
-  const sent={};
+  const CONSENT_KEY="studyos_cookies";
+  const SESSION_KEY="ia_facil_analytics_session";
+  const sent=new Set();
+  const scrollSent=new Set();
 
   function visitorId(){
     try{
@@ -244,21 +189,24 @@ document.addEventListener('click',function(e){
         sessionStorage.setItem(SESSION_KEY,id);
       }
       return id;
-    }catch{
+    }catch(e){
       return "";
     }
   }
 
-  function send(event,extra={}){
-    if(sent[event] && !extra.force)return;
-    if(event!=="scroll_depth")sent[event]=true;
+  function track(event,extra={}){
+    if(localStorage.getItem(CONSENT_KEY)!=="granted") return;
+
+    if(event!=="scroll_depth" && sent.has(event)) return;
+    if(event==="scroll_depth" && scrollSent.has(extra.scroll_percent)) return;
 
     const params=new URLSearchParams(location.search);
+
     const data={
       event,
       visitor_id:visitorId(),
       path:location.pathname,
-      referrer:document.referrer?new URL(document.referrer).origin:"",
+      referrer:(()=>{try{return document.referrer?new URL(document.referrer).origin:"";}catch(e){return "";}})(),
       utm_source:params.get("utm_source")||"",
       utm_medium:params.get("utm_medium")||"",
       utm_campaign:params.get("utm_campaign")||"",
@@ -283,44 +231,42 @@ document.addEventListener('click',function(e){
           referrerPolicy:"no-referrer"
         }).catch(()=>{});
       }
-    }catch{}
+    }catch(e){}
+
+    if(event==="scroll_depth") scrollSent.add(extra.scroll_percent);
+    else sent.add(event);
   }
 
-  function init(){
-    send("page_view");
+  function start(){
+    track("page_view");
 
     document.addEventListener("click",function(e){
       const link=e.target.closest("a");
-      if(!link)return;
+      if(!link) return;
 
       if(link.getAttribute("href")==="#oferta"){
-        send("cta_click");
+        track("cta_click");
       }
 
       if(link.href.includes("buy.stripe.com")){
-        send("purchase_click");
+        track("purchase_click");
       }
-    });
+    },true);
 
     const thresholds=[25,50,75,90,100];
-    const reached=new Set();
 
     function checkScroll(){
       const doc=document.documentElement;
       const max=Math.max(0,doc.scrollHeight-window.innerHeight);
-      if(!max)return;
+      if(max<=0) return;
 
       const pct=(window.scrollY/max)*100;
 
-      for(const threshold of thresholds){
-        if(pct>=threshold && !reached.has(threshold)){
-          reached.add(threshold);
-          send("scroll_depth",{
-            scroll_percent:threshold,
-            force:true
-          });
+      thresholds.forEach(n=>{
+        if(pct>=n && !scrollSent.has(n)){
+          track("scroll_depth",{scroll_percent:n});
         }
-      }
+      });
     }
 
     window.addEventListener("scroll",checkScroll,{passive:true});
@@ -328,9 +274,9 @@ document.addEventListener('click',function(e){
   }
 
   if(typeof window.studyosWhenConsented==="function"){
-    window.studyosWhenConsented(init);
+    window.studyosWhenConsented(start);
   }else{
-    init();
+    start();
   }
 })();
 </script>
