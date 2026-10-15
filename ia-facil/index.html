@@ -215,8 +215,10 @@ document.addEventListener('click',function(e){
 
     const payload=JSON.stringify(data);
 
+    let delivered=false;
+
     try{
-      fetch(ENDPOINT,{
+      const response=await fetch(ENDPOINT,{
         method:"POST",
         mode:"cors",
         headers:{"Content-Type":"application/json"},
@@ -224,30 +226,29 @@ document.addEventListener('click',function(e){
         keepalive:true,
         credentials:"omit",
         referrerPolicy:"no-referrer"
-      })
-      .catch(()=>{
-        try{
-          if(navigator.sendBeacon){
-            navigator.sendBeacon(
-              ENDPOINT,
-              new Blob([payload],{type:"application/json"})
-            );
-          }
-        }catch(e){}
       });
-    }catch(e){
+
+      if(response.ok){
+        const result=await response.json().catch(()=>null);
+        delivered=!!(result && result.ok===true);
+      }
+    }catch(e){}
+
+    if(!delivered){
       try{
         if(navigator.sendBeacon){
-          navigator.sendBeacon(
+          delivered=navigator.sendBeacon(
             ENDPOINT,
             new Blob([payload],{type:"application/json"})
           );
         }
-      }catch(_e){}
+      }catch(e){}
     }
 
-    if(event==="scroll_depth") scrollSent.add(extra.scroll_percent);
-    else sent.add(event);
+    if(delivered){
+      if(event==="scroll_depth") scrollSent.add(extra.scroll_percent);
+      else sent.add(event);
+    }
   }
 
   function start(){
