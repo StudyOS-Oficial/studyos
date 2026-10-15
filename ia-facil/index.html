@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>IA fácil — Aprende a utilizar la IA en tu vida diaria</title>
 <meta name="description" content="Descubre cómo utilizar la inteligencia artificial hoy mismo para viajar, cocinar, escribir, aprender, organizarte y mucho más. Curso práctico desde cero.">
+<script src="../tracking.js" defer></script>
 <style>
 :root{--ink:#17312b;--muted:#5e706b;--cream:#f8f5ee;--paper:#fffdf9;--sage:#dce9df;--green:#1f6b54;--green2:#15533f;--yellow:#f4c95d;--line:#dce4df;--white:#fff}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--cream);font-size:18px;line-height:1.55}a{text-decoration:none;color:inherit}.wrap{max-width:1120px;margin:auto;padding:0 24px}
@@ -172,89 +173,58 @@ document.addEventListener('click',function(e){
 </script>
 <script>
 (function(){
-  const TRACKING_ENDPOINT="https://cursoia.studyos-oficial-spain.workers.dev/track";
+  const ENDPOINT="https://cursoia.studyos-oficial-spain.workers.dev/track";
+  const CONSENT_KEY="studyos_cookies";
+  const SESSION_KEY="ia_facil_analytics_session";
   const params=new URLSearchParams(location.search);
   const base={
     path:location.pathname,
-    referrer:document.referrer||"",
+    referrer:(()=>{try{return document.referrer?new URL(document.referrer).origin:"";}catch(e){return "";}})(),
     utm_source:params.get("utm_source")||"",
     utm_medium:params.get("utm_medium")||"",
     utm_campaign:params.get("utm_campaign")||""
   };
 
-  let visitorId="";
-  try{
-    visitorId=localStorage.getItem("ia_facil_visitor_id")||"";
-    if(!visitorId){
-      visitorId=(crypto.randomUUID?crypto.randomUUID():String(Date.now())+"-"+Math.random().toString(36).slice(2));
-      localStorage.setItem("ia_facil_visitor_id",visitorId);
-    }
-  }catch(e){
-    visitorId="anon-"+Date.now()+"-"+Math.random().toString(36).slice(2);
+  function sessionId(){
+    try{
+      let id=sessionStorage.getItem(SESSION_KEY);
+      if(!id){id=crypto.randomUUID?crypto.randomUUID():Date.now()+"-"+Math.random().toString(36).slice(2);sessionStorage.setItem(SESSION_KEY,id);}
+      return id;
+    }catch(e){return "";}
   }
 
   function track(event,extra={}){
-    const payload=JSON.stringify({...base,event,visitor_id:visitorId,...extra});
+    if(localStorage.getItem(CONSENT_KEY)!=="granted")return false;
+    const data={...base,event,visitor_id:sessionId(),...extra};
+    const payload=JSON.stringify(data);
     try{
-      if(navigator.sendBeacon){
-        navigator.sendBeacon(
-          TRACKING_ENDPOINT,
-          new Blob([payload],{type:"application/json"})
-        );
-      }else{
-        fetch(TRACKING_ENDPOINT,{
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:payload,
-          keepalive:true
-        }).catch(()=>{});
-      }
+      if(navigator.sendBeacon)navigator.sendBeacon(ENDPOINT,new Blob([payload],{type:"application/json"}));
+      else fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:payload,keepalive:true,credentials:"omit",referrerPolicy:"no-referrer"}).catch(()=>{});
     }catch(e){}
+    if(typeof window.studyosGA==="function")window.studyosGA("ia_facil_"+event,{course:"ia-facil",page_path:location.pathname,...extra});
+    return true;
   }
 
-  track("page_view");
-
-  document.querySelectorAll('a[href="#oferta"]').forEach(a=>{
-    a.addEventListener("click",()=>track("cta_click"));
-  });
-
-  document.querySelectorAll('a[href^="https://buy.stripe.com/"]').forEach(a=>{
-    a.addEventListener("click",()=>track("purchase_click"));
-  });
-
-  const thresholds=[25,50,75,90,100];
-  const sent={};
-
-  function getScrollPercent(){
-    const doc=document.documentElement;
-    const max=doc.scrollHeight-window.innerHeight;
-    if(max<=0)return 100;
-    return Math.min(100,Math.round((window.scrollY/max)*100));
-  }
-
-  function checkScroll(){
-    const current=getScrollPercent();
-
-    thresholds.forEach(threshold=>{
-      if(current>=threshold&&!sent[threshold]){
-        sent[threshold]=true;
-        track("scroll_depth",{scroll_percent:threshold});
+  function startTracking(){
+    if(typeof window.studyosWhenConsented!=="function")return;
+    window.studyosWhenConsented(()=>{
+      track("landing_view");
+      document.querySelectorAll('a[href="#oferta"]').forEach(a=>a.addEventListener("click",()=>track("cta_click")));
+      document.querySelectorAll('a[href^="https://buy.stripe.com/"]').forEach(a=>a.addEventListener("click",()=>track("checkout_click")));
+      const demo=document.getElementById("improveBtn");
+      if(demo)demo.addEventListener("click",()=>track("demo_attempt"));
+      const thresholds=[25,50,75,90,100],sent={};
+      function checkScroll(){
+        const max=document.documentElement.scrollHeight-window.innerHeight;
+        const current=max<=0?100:Math.min(100,Math.round(window.scrollY/max*100));
+        thresholds.forEach(n=>{if(current>=n&&!sent[n]){sent[n]=true;track("scroll_depth",{scroll_percent:n});}});
       }
+      let pending=false;
+      window.addEventListener("scroll",()=>{if(!pending){requestAnimationFrame(()=>{checkScroll();pending=false;});pending=true;}},{passive:true});
+      checkScroll();
     });
   }
-
-  let scrollTick=false;
-  window.addEventListener("scroll",()=>{
-    if(!scrollTick){
-      window.requestAnimationFrame(()=>{
-        checkScroll();
-        scrollTick=false;
-      });
-      scrollTick=true;
-    }
-  },{passive:true});
-
-  window.addEventListener("load",checkScroll);
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",startTracking,{once:true});else startTracking();
 })();
 </script>
 </body>
