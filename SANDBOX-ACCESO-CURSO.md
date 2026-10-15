@@ -20,3 +20,11 @@ Do not add these values to GitHub or Production variables. Do not use a live Str
 The existing root middleware, Supabase `/api/session`, access page, thank-you page, course pages and recipes flow are unchanged. The cookie is for sandbox verification only; no middleware consumes it and course access remains public.
 
 This route does not create a checkout or grant production access. A successful return-page check is not a complete production fulfillment design: before using access control in production, add signed Stripe webhook handling for completed and asynchronous payment outcomes, and verify the cookie before enforcing it.
+
+## Preview test checklist
+
+1. Complete one purchase using the course's Stripe test Payment Link and Stripe's standard test payment details.
+2. Copy the returned `cs_test_...` Checkout Session ID and open the Preview URL at `/ia-facil/curso/entrar?session_id=...`.
+3. A valid course purchase should set the sandbox cookie and redirect to the course.
+4. A fabricated session, unpaid session, live-mode session, or session from another Payment Link should be rejected without setting a cookie.
+5. After testing, revoke any standard `sk_test_...` key shared in chat and replace it with a restricted test key in this branch's Preview environment.
