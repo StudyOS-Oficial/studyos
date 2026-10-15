@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/ia-facil/curso/entrar",
+      "destination": "/api/ia-facil-curso-entrar"
+    },
+    {
+      "source": "/ia-facil/curso/entrar/",
+      "destination": "/api/ia-facil-curso-entrar"
+    }
+  ]
+}
