@@ -353,7 +353,7 @@
     box.setAttribute("aria-label", "Aviso de cookies");
     box.innerHTML =
       "<p>Usamos cookies de medición de Meta (Facebook e Instagram) y de Google Analytics para saber qué anuncios funcionan y cómo se usa la web. " +
-      "Solo se activan si las aceptas. <a href=\"privacidad.html#cookies\">Más información</a></p>" +
+      "Solo se activan si las aceptas. <a href=\"/studyos/privacidad.html#cookies\">Más información</a></p>" +
       '<div class="sc-btns">' +
       '<button type="button" data-a="deny">Rechazar</button>' +
       '<button type="button" data-a="grant">Aceptar</button>' +
