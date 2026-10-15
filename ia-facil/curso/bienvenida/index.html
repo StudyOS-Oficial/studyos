@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>Antes de empezar · IA fácil</title>
+  <style>
+    :root{--ink:#172033;--muted:#5c687b;--blue:#2d7ff9;--line:#e4e9f1;--bg:#f5f7fb;--card:#fff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    main{width:min(880px,100%);margin:auto;padding:28px 20px 54px}
+    .brand{font-weight:850;font-size:1.15rem;margin-bottom:22px}
+    .mark{display:inline-grid;place-items:center;width:36px;height:36px;margin-right:8px;border-radius:12px;background:linear-gradient(135deg,#2d7ff9,#72b7ff);color:#fff;vertical-align:middle}
+    .card{padding:clamp(24px,5vw,44px);background:var(--card);border:1px solid var(--line);border-radius:26px;box-shadow:0 18px 50px #14203310}
+    h1{font-size:clamp(2rem,6vw,3rem);line-height:1.08;letter-spacing:-.04em;margin:0 0 12px}
+    .lead{margin:0;color:var(--muted);font-size:1.08rem}
+    .section{margin-top:26px}
+    h2{font-size:1.25rem;line-height:1.25;margin:0 0 8px}
+    p{margin:7px 0;color:var(--muted)}
+    ul{margin:8px 0;padding-left:22px;color:var(--muted)}
+    li+li{margin-top:7px}
+    .notice{margin-top:22px;padding:15px 17px;border-radius:15px;background:#eef7ff;border:1px solid #d9eaff}
+    .notice strong{color:#1767dc}
+    .support{color:#1767dc;font-weight:750}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 19px;border-radius:12px;background:var(--blue);color:#fff;text-decoration:none;font-weight:850}
+    .button:hover{filter:brightness(.96)}
+    @media(max-width:600px){main{padding:16px 14px 36px}.card{border-radius:21px}.actions .button{width:100%}}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand"><span class="mark">✦</span>IA fácil · StudyOS</div>
+    <article class="card">
+      <h1>Antes de empezar</h1>
+      <p class="lead">Guarda estos consejos para volver al curso fácilmente y no perder tu progreso.</p>
+
+      <section class="section">
+        <h2>Tu acceso y tu navegador</h2>
+        <p>La sesión de acceso se conserva durante 30 días en este navegador y perfil. Para que siga funcionando, vuelve a abrir el curso aquí y no borres las cookies ni los datos del sitio.</p>
+        <ul>
+          <li>Si cambias de navegador, dispositivo o perfil, o usas una ventana privada, tendrás que abrir de nuevo tu enlace personal de acceso.</li>
+          <li>El progreso de las lecciones se guarda en este dispositivo y navegador. Puede que no aparezca si cambias de dispositivo o borras sus datos.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Añade el curso a la pantalla de inicio</h2>
+        <ul>
+          <li><strong>iPhone o iPad:</strong> abre el curso en Safari, pulsa Compartir y elige «Añadir a pantalla de inicio».</li>
+          <li><strong>Android:</strong> abre el curso en Chrome, pulsa el menú ⋮ y elige «Añadir a pantalla de inicio» o «Instalar aplicación».</li>
+        </ul>
+      </section>
+
+      <div class="notice">
+        <strong>¿Necesitas recuperar el acceso?</strong>
+        <p>Escríbenos a <a class="support" href="mailto:studyos.oficial.spain@gmail.com">studyos.oficial.spain@gmail.com</a> y te ayudaremos.</p>
+      </div>
+
+      <div class="actions">
+        <a class="button" href="../">Entrar al curso →</a>
+      </div>
+    </article>
+  </main>
+  <script>
+    (function(){
+      var key="ia_facil_first_access_guide_seen_v1";
+      try {
+        if (localStorage.getItem(key)==="1") {
+          location.replace("../");
+          return;
+        }
+        localStorage.setItem(key,"1");
+      } catch (error) {}
+    })();
+  </script>
+</body>
+</html>
