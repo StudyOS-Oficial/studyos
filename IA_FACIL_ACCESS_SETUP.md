@@ -13,7 +13,7 @@ Añadirlas como variables server-only (nunca con prefijo `NEXT_PUBLIC_`) y como 
 - `ACCESS_COOKIE_SECRET`: valor aleatorio de al menos 32 caracteres, distinto por entorno.
 - `ENFORCE_NEW_COURSE_ACCESS`: `true`.
 
-Limitar las variables de Preview a la rama `live/ia-facil-course-access` si Vercel permite seleccionar una rama. El endpoint rechaza claves `sk_live_` y sesiones `cs_live_` en Preview.
+Limitar las variables de Preview a la rama `live/ia-facil-course-access` si Vercel permite seleccionar una rama. El endpoint admite claves Stripe Test `sk_test_` o restringidas `rk_test_`, y rechaza claves Live y sesiones `cs_live_` en Preview.
 
 ### Production (solo después de revisión y autorización de lanzamiento)
 
@@ -22,7 +22,7 @@ Limitar las variables de Preview a la rama `live/ia-facil-course-access` si Verc
 - `ACCESS_COOKIE_SECRET`: secreto aleatorio de al menos 32 caracteres, diferente al de Preview.
 - `ENFORCE_NEW_COURSE_ACCESS`: `true`.
 
-El endpoint rechaza claves `sk_test_` y sesiones `cs_test_` en Production. No habilitar estas variables en Production hasta revisar el candidato y acordar el cambio del destino de éxito del Payment Link.
+El endpoint admite claves Stripe Live `sk_live_` o restringidas `rk_live_`, y rechaza claves Test y sesiones `cs_test_` en Production. No habilitar estas variables en Production hasta revisar el candidato y acordar el cambio del destino de éxito del Payment Link.
 
 ## Validación del flujo
 
