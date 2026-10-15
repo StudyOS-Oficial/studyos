@@ -194,7 +194,7 @@ document.addEventListener('click',function(e){
     }
   }
 
-  function track(event,extra={}){
+  async function track(event,extra={}){
     if(localStorage.getItem(CONSENT_KEY)!=="granted") return;
 
     if(event!=="scroll_depth" && sent.has(event)) return;
