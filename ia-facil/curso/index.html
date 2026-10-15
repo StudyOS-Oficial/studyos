@@ -64,6 +64,15 @@ a{color:inherit}
 .module{min-height:0}
 .info{grid-template-columns:1fr}
 }
+.home-guide{margin-top:28px;background:linear-gradient(135deg,#fff 0%,#f3f8ff 100%);border:1px solid var(--line);border-radius:22px;padding:25px}
+.home-guide h2{font-size:24px;letter-spacing:-.03em;margin:0}
+.home-guide-intro{margin:6px 0 18px;color:var(--muted)}
+.home-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.home-guide-step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
+.home-guide-step h3{font-size:17px;margin:0 0 8px}
+.home-guide-step ol{margin:0;padding-left:21px;color:var(--muted);font-size:14px}
+.home-guide-step li+li{margin-top:5px}
+@media(max-width:760px){.home-guide{padding:21px}.home-guide-grid{grid-template-columns:1fr}}
 </style>
 <meta name="robots" content="noindex,nofollow,noarchive"></head>
 <body>
@@ -137,6 +146,30 @@ a{color:inherit}
   <div><strong>No tienes que hacerlo todo de golpe.</strong><p>Haz un módulo, practica lo aprendido y vuelve cuando quieras. Tu progreso se guarda en este dispositivo. Si cambias de dispositivo o borras sus datos, tendrás que volver a marcar los módulos completados.</p></div>
 </div>
 
+<section class="home-guide" aria-labelledby="home-guide-title">
+  <h2 id="home-guide-title">Abre el curso desde la pantalla de inicio</h2>
+  <p class="home-guide-intro">Añade un acceso directo para encontrar el curso fácilmente en tu móvil o tablet.</p>
+  <div class="home-guide-grid">
+    <div class="home-guide-step">
+      <h3>iPhone o iPad (Safari)</h3>
+      <ol>
+        <li>Abre esta página en Safari.</li>
+        <li>Toca el botón <strong>Compartir</strong> (el cuadrado con una flecha).</li>
+        <li>Desplázate y elige <strong>Añadir a pantalla de inicio</strong>.</li>
+        <li>Toca <strong>Añadir</strong> para guardar el acceso directo.</li>
+      </ol>
+    </div>
+    <div class="home-guide-step">
+      <h3>Android (Chrome)</h3>
+      <ol>
+        <li>Abre esta página en Chrome.</li>
+        <li>Toca el menú de los tres puntos <strong>⋮</strong>.</li>
+        <li>Elige <strong>Añadir a pantalla de inicio</strong> o <strong>Instalar aplicación</strong>.</li>
+        <li>Confirma con <strong>Añadir</strong> o <strong>Instalar</strong>.</li>
+      </ol>
+    </div>
+  </div>
+</section>
 <div class="footer">IA fácil · Aprende sin miedo, paso a paso.</div>
 </div>
 
