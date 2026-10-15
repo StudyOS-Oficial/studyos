@@ -102,7 +102,7 @@ export default async function handler(req, res) {
     }
 
     res.setHeader("Set-Cookie", makeCookie(sessionId, cookieSecret));
-    res.setHeader("Location", "/ia-facil/curso/");
+    res.setHeader("Location", "/ia-facil/curso/bienvenida/");
     return res.status(303).end();
   } catch {
     return reject(res, 502, "No se pudo conectar con Stripe");
