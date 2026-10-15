@@ -1,0 +1,3 @@
+CREATE TABLE IF NOT EXISTS counters(day TEXT,s TEXT,kind TEXT,key TEXT,total INTEGER,uniq INTEGER,PRIMARY KEY(day,s,kind,key));
+CREATE TABLE IF NOT EXISTS dedupe(day TEXT,s TEXT,h TEXT,kind TEXT,key TEXT,PRIMARY KEY(day,s,h,kind,key));
+CREATE TABLE IF NOT EXISTS rate(day TEXT,h TEXT,n INTEGER,PRIMARY KEY(day,h));
