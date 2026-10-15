@@ -4,6 +4,8 @@ import "../../../tracking.js";
 const ENDPOINT="https://cursoia.studyos-oficial-spain.workers.dev/track";
 const CONSENT_KEY="studyos_cookies";
 const SESSION_KEY="ia_facil_analytics_session";
+const pendingEvents=[];
+try{localStorage.removeItem("ia_facil_visitor_id");}catch{}
 
 function sessionId(){
   try{
@@ -13,11 +15,7 @@ function sessionId(){
   }catch{return "";}
 }
 
-export function trackIaFacil(event,extra={}){
-  let consent;
-  try{consent=localStorage.getItem(CONSENT_KEY);}catch{return false;}
-  if(consent!=="granted")return false;
-
+function sendEvent(event,extra={}){
   let referrer="";
   try{referrer=document.referrer?new URL(document.referrer).origin:"";}catch{}
   const params=new URLSearchParams(location.search);
@@ -37,8 +35,20 @@ export function trackIaFacil(event,extra={}){
     else fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:payload,keepalive:true,credentials:"omit",referrerPolicy:"no-referrer"}).catch(()=>{});
   }catch{}
   if(typeof window.studyosGA==="function")window.studyosGA("ia_facil_"+event,{course:"ia-facil",page_path:location.pathname,...extra});
-  return true;
 }
 
+export function trackIaFacil(event,extra={}){
+  let consent;
+  try{consent=localStorage.getItem(CONSENT_KEY);}catch{return false;}
+  if(consent==="granted"){sendEvent(event,extra);return true;}
+  if(consent!=="denied"&&pendingEvents.length<30){pendingEvents.push([event,extra]);}
+  return false;
+}
+
+if(typeof window.studyosWhenConsented==="function"){
+  window.studyosWhenConsented(()=>{
+    pendingEvents.splice(0).forEach(([event,extra])=>sendEvent(event,extra));
+  });
+}
 window.iaFacilTrack=trackIaFacil;
 window.iaFacilHasAnalyticsConsent=()=>{try{return localStorage.getItem(CONSENT_KEY)==="granted";}catch{return false;}};
