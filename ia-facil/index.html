@@ -176,6 +176,7 @@ document.addEventListener('click',function(e){
   const ENDPOINT="https://cursoia.studyos-oficial-spain.workers.dev/track";
   const CONSENT_KEY="studyos_cookies";
   const SESSION_KEY="ia_facil_analytics_session";
+  try{localStorage.removeItem("ia_facil_visitor_id");}catch(e){}
   const params=new URLSearchParams(location.search);
   const base={
     path:location.pathname,
