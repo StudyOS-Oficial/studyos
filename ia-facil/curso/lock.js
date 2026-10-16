@@ -78,6 +78,65 @@
     "input[type=password],input[type=text]{width:100%;box-sizing:border-box;font:inherit;padding:14px;border:2px solid #bbb;border-radius:12px;margin:10px 0}" +
     "button{width:100%;font:inherit;font-weight:700;padding:16px;border:0;border-radius:12px;background:#e0763b;color:#fff;cursor:pointer;margin-top:6px}" +
     "label{display:block;margin:4px 0}#er{color:#c0392b;font-weight:700;min-height:1.5em}.s{font-size:16px;opacity:.8}";
+  function enhanceCourse() {
+    var root = document.querySelector("main.main") || document.querySelector(".main");
+    if (!root) return;
+    var style = document.createElement("style");
+    style.textContent = "" +
+      ".quiz button{color:#111827!important;background:#fff!important;border:2px solid #d8dee8!important;border-radius:16px!important;padding:15px 17px!important;min-height:54px!important;font-size:16px!important;font-weight:650!important;line-height:1.35!important;transition:background .18s ease,border-color .18s ease,transform .12s ease!important}" +
+      ".quiz button:active{transform:scale(.99)}" +
+      ".quiz button.ia-answer-correct{background:#dff7e8!important;border-color:#32a852!important;color:#111827!important}" +
+      ".quiz button.ia-answer-wrong{background:#fde2e2!important;border-color:#dc3545!important;color:#111827!important}" +
+      ".ia-section-trigger{display:none}" +
+      "@media(max-width:850px){.ia-section-trigger{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;margin:0 0 14px;padding:12px 15px;border:1px solid #d8e0ea;border-radius:14px;background:#fff;color:#172033;font:700 15px/1.2 system-ui,sans-serif;box-shadow:0 3px 12px rgba(20,32,51,.06);cursor:pointer}.ia-section-panel{display:none;margin:0 0 16px;padding:8px;border:1px solid #d8e0ea;border-radius:16px;background:#fff;box-shadow:0 10px 28px rgba(20,32,51,.12)}.ia-section-panel.open{display:block}.ia-section-panel a{display:block;padding:11px 12px;margin:2px 0;border-radius:10px;color:#27364a;text-decoration:none;font:600 14px/1.35 system-ui,sans-serif}.ia-section-panel a:active,.ia-section-panel a:hover{background:#eaf3ff;color:#1767dc}}";
+    document.head.appendChild(style);
+
+    var mobile = document.querySelector(".mobile");
+    if (mobile && !document.getElementById("ia-section-trigger")) {
+      var sections = Array.from(root.querySelectorAll("section[id]"));
+      if (sections.length) {
+        var trigger = document.createElement("button");
+        trigger.type = "button";
+        trigger.id = "ia-section-trigger";
+        trigger.className = "ia-section-trigger";
+        trigger.setAttribute("aria-expanded", "false");
+        trigger.innerHTML = "☰ <span>Secciones</span>";
+        var panel = document.createElement("div");
+        panel.className = "ia-section-panel";
+        sections.forEach(function(sec){
+          var a = document.createElement("a");
+          a.href = "#" + sec.id;
+          var h = sec.querySelector("h2");
+          a.textContent = h ? h.textContent.replace(/^\s*\d+\s*[·.]?\s*/, "").trim() : sec.id;
+          panel.appendChild(a);
+        });
+        mobile.parentNode.insertBefore(trigger, mobile.nextSibling);
+        mobile.parentNode.insertBefore(panel, trigger.nextSibling);
+        trigger.addEventListener("click", function(){
+          var open = panel.classList.toggle("open");
+          trigger.setAttribute("aria-expanded", String(open));
+        });
+        panel.addEventListener("click", function(e){
+          if(e.target.closest("a")) { panel.classList.remove("open"); trigger.setAttribute("aria-expanded","false"); }
+        });
+      }
+    }
+
+    root.querySelectorAll(".quiz button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (btn.dataset.iaAnswered === "1") return;
+        btn.dataset.iaAnswered = "1";
+        var answer = (btn.getAttribute("onclick") || "").replace(/\s/g, "");
+        if (/q\(this,true\)/.test(answer)) btn.classList.add("ia-answer-correct");
+        else if (/q\(this,false\)/.test(answer)) btn.classList.add("ia-answer-wrong");
+      }, true);
+    });
+  }
+
+  function renderAndEnhance(html) {
+    render(html);
+    setTimeout(enhanceCourse, 0);
+  }
   function gate() {
     var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
     document.body.innerHTML = '<form class="g" id="f"><h1>🔐 Tu acceso personal a IA Fácil</h1><p>Te hemos generado esta <b>contraseña unipersonal</b> para acceder al curso.</p><p><b>Guarda esta contraseña en un lugar seguro. La necesitarás para acceder al curso.</b></p><input id="pw" type="password" autocomplete="current-password" aria-label="Contraseña" autofocus><label><input type="checkbox" id="sh"> Ver la contraseña</label><button id="ok" type="submit">Entrar al curso</button><p id="er" role="alert"></p><p class="s">Una vez introducida en tu dispositivo, <b>no tendrás que volver a escribirla</b>.</p><p class="s" id="ct"></p></form>';
@@ -95,7 +154,7 @@
         var W = await fromPw(v), html;
         try { html = await open(W); } catch (x) { er.textContent = "Contraseña incorrecta. Revisa las mayúsculas y que no haya espacios."; ok.disabled = false; ok.textContent = "Entrar al curso"; return; }
         try { localStorage.setItem(KS, e(new Uint8Array(await sub.exportKey("raw", W)))); } catch (x) {}
-        render(html);
+        renderAndEnhance(html);
       } catch (x) { er.textContent = "Ha habido un problema. Inténtalo de nuevo."; ok.disabled = false; ok.textContent = "Entrar al curso"; }
     };
   }
@@ -104,7 +163,7 @@
     catch (x) { document.documentElement.style.visibility = "visible"; document.body.textContent = "No se ha podido cargar el curso. Revisa tu conexión e inténtalo de nuevo."; return; }
     var s = null; try { s = localStorage.getItem(KS); } catch (x) {}
     if (s) {
-      try { render(await open(await sub.importKey("raw", d(s), "AES-GCM", false, ["decrypt"]))); return; }
+      try { renderAndEnhance(await open(await sub.importKey("raw", d(s), "AES-GCM", false, ["decrypt"]))); return; }
       catch (x) { try { localStorage.removeItem(KS); } catch (y) {} }
     }
     gate();
