@@ -31,12 +31,14 @@ export async function saveModuleCompleted(moduleNumber, completed) {
 // Completing the module quiz with 5/5 correct answers also completes the module.
 function watchQuizCompletion() {
   const result = document.getElementById("result");
-  if (!result || !Number.isInteger(window.moduleNumber)) return;
+  const match = window.location.pathname.match(/\/modulo-(\d+)\//);
+  const moduleNumber = match ? Number(match[1]) : 0;
+  if (!result || !moduleNumber) return;
 
   const markFromQuiz = async () => {
     if (!/Resultado:\s*5\s*\/\s*5/.test(result.textContent || "")) return;
     try {
-      await saveModuleCompleted(window.moduleNumber, true);
+      await saveModuleCompleted(moduleNumber, true);
       const box = document.getElementById("done");
       if (box && !box.checked) box.checked = true;
       if (typeof window.up === "function") window.up();
