@@ -1,6 +1,8 @@
 /* IA fácil · puerta de acceso. Descifra la página en el navegador con la contraseña del curso. */
 (function () {
   "use strict";
+  // Evita el destello del contenido cifrado antes de que termine la apertura.
+  document.documentElement.style.visibility = "hidden";
   var S = document.currentScript, BASE = new URL(".", S.src).href, KS = "iafacil-lock-v1", sub = crypto.subtle;
   var pay = JSON.parse(document.getElementById("payload").textContent), meta;
   var d = function (s) { var b = atob(s), a = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) a[i] = b.charCodeAt(i); return a; };
