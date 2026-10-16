@@ -3,6 +3,15 @@
   "use strict";
   // Evita el destello del contenido cifrado antes de que termine la apertura.
   document.documentElement.style.visibility = "hidden";
+  // Elimina restos de cookies de medición/consentimiento del antiguo recetario al entrar al curso.
+  try {
+    document.cookie.split(";").forEach(function (part) {
+      var name = part.split("=")[0].trim();
+      if (/^(studyos_cookies|studyos_purchase_|_fbp|_fbc|_gid|_ga|_gat)/.test(name)) {
+        document.cookie = name + "=; Max-Age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+      }
+    });
+  } catch (x) {}
   var S = document.currentScript, BASE = new URL(".", S.src).href, KS = "iafacil-lock-v1", sub = crypto.subtle;
   var pay = JSON.parse(document.getElementById("payload").textContent), meta;
   var d = function (s) { var b = atob(s), a = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) a[i] = b.charCodeAt(i); return a; };
