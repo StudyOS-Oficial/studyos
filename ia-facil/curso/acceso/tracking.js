@@ -1,5 +1,5 @@
-// Compatibilitat: les pàgines antigues del curs poden continuar important aquest mòdul.
-import "../../../tracking.js";
+// Compatibilidad con páginas antiguas del curso.
+// El curso usa únicamente la analítica de ia-facil/track.js, sin cookies ni identificadores.
 import "../../track.js";
 
 export function trackIaFacil(event, extra = {}) {
@@ -7,6 +7,4 @@ export function trackIaFacil(event, extra = {}) {
 }
 
 window.iaFacilTrack = window.iaFacilTrack || trackIaFacil;
-window.iaFacilHasAnalyticsConsent = () => {
-  try { return localStorage.getItem("studyos_cookies") === "granted"; } catch { return false; }
-};
+window.iaFacilHasAnalyticsConsent = () => true;
