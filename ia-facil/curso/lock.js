@@ -102,6 +102,18 @@
       "}";
     document.head.appendChild(headerStyle);
 
+    /* Oculta el selector antiguo "Índice" y su contenedor completo. */
+    document.querySelectorAll("select").forEach(function(sel){
+      var p = sel.parentElement;
+      for (var i=0; p && i<3; i++, p=p.parentElement) {
+        if (/^\\s*Índice\\b/i.test((p.textContent || "").trim())) {
+          p.style.display = "none";
+          break;
+        }
+      }
+      sel.style.display = "none";
+    });
+
     var mobile = document.querySelector(".mobile");
     if (mobile && !document.getElementById("ia-section-trigger")) {
       var sections = Array.from(root.querySelectorAll("section[id]"));
