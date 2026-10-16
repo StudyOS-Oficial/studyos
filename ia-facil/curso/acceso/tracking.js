@@ -1,5 +1,5 @@
-// Compatibilidad con páginas antiguas del curso.
-// El curso usa únicamente la analítica de ia-facil/track.js, sin cookies ni identificadores.
+// Compatibilidad: páginas antiguas del curso.
+// El curso usa exclusivamente la analítica anónima de IA fácil, sin cookies.
 import "../../track.js";
 
 export function trackIaFacil(event, extra = {}) {
