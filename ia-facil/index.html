@@ -2,126 +2,58 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IA fácil — Aprende a utilizar la IA desde cero</title>
-<meta name="description" content="Aprende a utilizar la inteligencia artificial desde cero, aunque no seas experto en tecnología. Curso práctico con ejemplos de la vida real.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IA fácil — Aprende a usar ChatGPT desde cero</title>
+<meta name="description" content="Aprende a usar ChatGPT desde cero, paso a paso, en español y a tu ritmo. 10 módulos por 9,90 € en un único pago.">
 <style>
-:root{--ink:#17312b;--muted:#5e706b;--cream:#f8f5ee;--paper:#fffdf9;--sage:#dce9df;--green:#1f6b54;--green2:#15533f;--yellow:#f4c95d;--line:#dce4df}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--cream);font-size:18px;line-height:1.55}a{text-decoration:none;color:inherit}.wrap{max-width:1080px;margin:auto;padding:0 22px}
-.top{background:var(--green2);color:#fff;text-align:center;padding:9px 15px;font-size:14px;font-weight:800}
-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0}.brand{font-weight:950;font-size:23px;letter-spacing:-.7px}.nav-cta{background:var(--green);color:#fff;padding:11px 18px;border-radius:999px;font-weight:850;font-size:15px}
-.hero{padding:48px 0 65px}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center}.eyebrow{display:inline-flex;background:var(--sage);color:var(--green2);padding:7px 12px;border-radius:999px;font-weight:850;font-size:14px;margin-bottom:16px}
-h1{font-size:clamp(42px,5.8vw,68px);line-height:1.01;letter-spacing:-3px;margin:0 0 20px}h2{font-size:clamp(31px,4vw,45px);line-height:1.08;letter-spacing:-1.6px;margin:0 0 16px}h3{font-size:22px;line-height:1.2;margin:0 0 9px}.lead{font-size:21px;color:var(--muted);max-width:680px}.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:25px 0 12px}.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:#fff;padding:15px 23px;border-radius:12px;font-size:18px;font-weight:900;box-shadow:0 8px 22px #1f6b5426}.btn:hover{background:var(--green2)}.micro{font-size:14px;color:var(--muted)}
-.hero-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:10px;box-shadow:0 24px 65px #17312b18;overflow:hidden}.hero-photo{display:block;width:100%;height:430px;object-fit:cover;object-position:center;border-radius:22px}.hero-photo-shade{position:absolute;inset:10px;border-radius:22px;background:linear-gradient(180deg,transparent 48%,#17312b72 100%);pointer-events:none}.hero-pill{position:absolute;left:26px;bottom:27px;background:#fff;color:var(--ink);padding:11px 15px;border-radius:999px;font-size:14px;font-weight:900;box-shadow:0 9px 24px #17312b25}.hero-pill strong{color:var(--green)}
-section{padding:72px 0}.soft{background:var(--sage)}.center{text-align:center}.center p{margin-left:auto;margin-right:auto}.section-lead{max-width:700px;color:var(--muted);font-size:19px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}.card,.benefit,.step{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px}.benefit p,.card p,.step p{color:var(--muted);margin:0}.icon{font-size:28px;margin-bottom:9px}
-.demo{margin-top:30px;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:25px;box-shadow:0 18px 45px #17312b12}.demo-input{width:100%;border:1px solid var(--line);border-radius:13px;padding:14px 15px;font:inherit;color:var(--ink);background:#fff;resize:vertical}.demo-controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.demo-btn{border:0;cursor:pointer;background:var(--green);color:#fff;padding:12px 17px;border-radius:11px;font:inherit;font-weight:900}.demo-btn.secondary{background:var(--sage);color:var(--green2)}.demo-grid{display:grid;grid-template-columns:1fr 55px 1fr;gap:14px;align-items:stretch;margin-top:20px}.demo-panel{border:1px solid var(--line);border-radius:17px;padding:19px;background:#fff}.demo-panel.after{background:#f2f7f2;border-color:#cfe0d3}.demo-label{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:9px}.demo-text{font-size:18px;line-height:1.45;min-height:95px}.demo-arrow{display:grid;place-items:center;font-size:28px;color:var(--green);font-weight:900}.demo-note{font-size:14px;color:var(--muted);margin-top:12px}
-.offer{background:var(--green2);color:#fff;border-radius:28px;padding:38px;display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center}.offer p{color:#dce9df}.price-box{background:#fff;color:var(--ink);border-radius:21px;padding:25px;text-align:center}.old{text-decoration:line-through;color:var(--muted)}.price{font-size:51px;line-height:1;font-weight:950;margin:7px 0}.small{font-size:14px;color:var(--muted)}.offer .btn{background:var(--yellow);color:var(--ink);box-shadow:none;width:100%}.support{margin-top:14px;padding-top:13px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}.support a{color:var(--green2);font-weight:800;text-decoration:underline}
-.course{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:start}.modules{display:grid;gap:10px}.module{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;gap:13px}.num{min-width:34px;height:34px;border-radius:50%;background:var(--sage);display:grid;place-items:center;font-weight:900;color:var(--green2)}.module strong{display:block}.module span{color:var(--muted);font-size:15px}.extras{grid-column:1/-1}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
-.faq{max-width:800px;margin:28px auto 0}.faq details{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin:9px 0}.faq summary{cursor:pointer;font-weight:850;font-size:18px}.faq p{color:var(--muted);margin:11px 0 0}
-.final{padding:65px 0;text-align:center;background:#eaf1eb}.final p{max-width:650px;margin:0 auto 23px;color:var(--muted)}footer{padding:25px 0;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.legal{display:flex;gap:15px;flex-wrap:wrap;width:100%;justify-content:center;margin-top:5px}
-.floating-cta{position:fixed;right:18px;bottom:18px;z-index:1000;background:var(--green);color:#fff;padding:13px 19px;border-radius:999px;font-size:15px;font-weight:900;box-shadow:0 10px 28px #17312b35;border:2px solid #fff}@media(max-width:850px){.hero-grid,.course,.offer{grid-template-columns:1fr}.grid3,.steps{grid-template-columns:1fr}.demo-grid{grid-template-columns:1fr}.demo-arrow{transform:rotate(90deg);height:16px}.hero{padding-top:28px}.offer{padding:28px}}@media(max-width:520px){body{font-size:17px}.wrap{padding:0 16px}nav{padding:16px 0}.nav-cta{padding:9px 13px;font-size:14px}h1{letter-spacing:-2px}.lead{font-size:19px}.actions .btn{width:100%}section{padding:55px 0}.hero-card{padding:9px}.hero-photo{height:350px}.hero-photo-shade{inset:9px}.hero-pill{left:21px;bottom:22px;font-size:13px;padding:10px 13px}.offer{padding:22px}.floating-cta{left:18px;right:18px;bottom:12px;text-align:center;padding:11px 16px;font-size:14px}}
+:root{--green:#17654f;--green-dark:#10513f;--cream:#f8f5ee;--yellow:#f7cc58;--white:#fff;--ink:#17312b;--muted:#60736d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.hero{min-height:100svh;background:var(--green);color:#fff;display:flex;align-items:center}
+.hero-inner{width:min(1080px,100%);margin:auto;padding:64px 7.5vw}
+.brand{display:inline-flex;align-items:center;gap:12px;background:#ffffff19;border-radius:999px;padding:9px 20px 10px 14px;font-size:28px;font-weight:900;letter-spacing:-.7px;margin-bottom:34px}
+.brand span{font-size:29px}
+h1{font-size:clamp(48px,7.4vw,88px);line-height:.94;letter-spacing:-4px;max-width:930px;margin:0 0 25px;font-weight:950}
+.sub{font-size:clamp(24px,3.1vw,38px);line-height:1.15;margin:0 0 40px;color:#f5f1e8;letter-spacing:-1px}
+.price-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}.price{display:inline-block;background:var(--yellow);color:var(--ink);padding:10px 28px;border-radius:12px;font-size:clamp(25px,3.3vw,39px);font-weight:950;letter-spacing:-1px}.single{font-size:clamp(25px,3.3vw,39px);font-weight:900}
+.cta{display:inline-flex;margin-top:42px;background:#fff;color:var(--green-dark);padding:18px 30px;border-radius:14px;font-size:21px;font-weight:950;box-shadow:0 12px 30px #062d2340;transition:.2s}.cta:hover{transform:translateY(-2px);box-shadow:0 15px 35px #062d2350}
+.info{background:var(--cream);padding:70px 22px}.info-inner{max-width:900px;margin:auto;text-align:center}.info h2{font-size:38px;line-height:1.1;letter-spacing:-1.5px;margin:0 0 35px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:#fff;border:1px solid #dce4df;border-radius:18px;padding:24px;text-align:left}.card b{display:block;font-size:19px;margin-bottom:7px}.card p{margin:0;color:var(--muted);line-height:1.5}
+footer{padding:25px 22px;text-align:center;background:var(--cream);color:var(--muted);font-size:13px;border-top:1px solid #dce4df}footer a{color:inherit;margin:0 8px}
+@media(max-width:700px){.hero-inner{padding:40px 28px 48px}.brand{font-size:23px;padding:8px 16px 9px 12px;margin-bottom:27px}.brand span{font-size:24px}h1{font-size:clamp(45px,14vw,64px);letter-spacing:-2.8px}.sub{font-size:24px;margin-bottom:30px}.price-row{gap:12px}.price{font-size:27px;padding:9px 17px}.single{font-size:27px}.cta{width:100%;justify-content:center;margin-top:32px}.info{padding:50px 18px}.info h2{font-size:31px}.cards{grid-template-columns:1fr}}
 </style>
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1420061570074591');
-const capi=(eventName,eventId,custom={})=>{const testEventCode=new URLSearchParams(location.search).get('test_event_code')||'';const cookies=document.cookie.split(';').map(x=>x.trim());const getCookie=name=>{const x=cookies.find(v=>v.startsWith(name+'='));return x?decodeURIComponent(x.slice(name.length+1)):''};fetch('https://studyos-omega-five.vercel.app/api/meta-capi',{method:'POST',headers:{'Content-Type':'application/json'},keepalive:true,body:JSON.stringify({event_name:eventName,event_id:eventId,event_source_url:location.href,fbp:getCookie('_fbp'),fbc:getCookie('_fbc'),...(testEventCode?{test_event_code:testEventCode}:{}),...custom})}).catch(()=>{})};
-const makeEventId=()=>window.crypto?.randomUUID?.()||('iafacil_'+Date.now()+'_'+Math.random().toString(36).slice(2));
-const pvId=makeEventId();fbq('track','PageView',{}, {eventID:pvId});capi('PageView',pvId);
-const vcId=makeEventId();fbq('track','ViewContent',{content_name:'IA fácil — Curso completo',content_category:'curso'}, {eventID:vcId});capi('ViewContent',vcId);
-document.addEventListener('click',e=>{const link=e.target.closest('a[href*="buy.stripe.com"]');if(link){const id=makeEventId();fbq('track','InitiateCheckout',{content_name:'IA fácil — Curso completo',value:9.90,currency:'EUR'},{eventID:id});capi('InitiateCheckout',id,{value:9.90,currency:'EUR'});}});
+const capi=(eventName,eventId,custom={})=>{const p=new URLSearchParams(location.search),tc=p.get('test_event_code')||'',cookies=document.cookie.split(';').map(x=>x.trim()),get=n=>{const x=cookies.find(v=>v.startsWith(n+'='));return x?decodeURIComponent(x.slice(n.length+1)):''};fetch('https://studyos-omega-five.vercel.app/api/meta-capi',{method:'POST',headers:{'Content-Type':'application/json'},keepalive:true,body:JSON.stringify({event_name:eventName,event_id:eventId,event_source_url:location.href,fbp:get('_fbp'),fbc:get('_fbc'),...(tc?{test_event_code:tc}:{}),...custom})}).catch(()=>{})};
+const eid=()=>crypto.randomUUID?crypto.randomUUID():'iafacil_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+let id=eid();fbq('track','PageView',{}, {eventID:id});capi('PageView',id);
+id=eid();fbq('track','ViewContent',{content_name:'IA fácil — Curso completo',content_category:'curso'},{eventID:id});capi('ViewContent',id);
+document.addEventListener('click',e=>{const a=e.target.closest('a[href*="buy.stripe.com"]');if(a){const id=eid();fbq('track','InitiateCheckout',{content_name:'IA fácil — Curso completo',value:9.90,currency:'EUR'},{eventID:id});capi('InitiateCheckout',id,{value:9.90,currency:'EUR'});}});
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1420061570074591&ev=PageView&noscript=1"></noscript>
 </head>
 <body>
-<div class="top">🎓 Precio especial de lanzamiento · Curso completo por 9,90 €</div>
-<div class="wrap"><nav><div class="brand">IA fácil</div><a class="nav-cta" href="#oferta">Ver el curso</a></nav></div>
-<a class="floating-cta" href="#oferta">→ Empezar por 9,90 €</a>
-
 <main>
-<section class="hero"><div class="wrap hero-grid"><div>
-<div class="eyebrow">Desde cero · Sin conocimientos técnicos</div>
-<h1>La IA no es el futuro.<br><span style="color:var(--green)">Es el presente.</span></h1>
-<p class="lead"><strong>Aprende a utilizar la inteligencia artificial desde cero</strong>, aunque no seas experto en tecnología. Descubre cómo puede ayudarte en tu vida diaria.</p>
-<div class="actions"><a class="btn" href="#oferta">Quiero aprender a utilizar la IA →</a></div>
-<div class="micro">Lecciones cortas · Ejemplos reales · Prácticas · 10 módulos · <strong>9,90 €</strong></div>
-</div><div class="hero-card"><img class="hero-photo" src="https://images.pexels.com/photos/7545050/pexels-photo-7545050.jpeg?cs=srgb&fm=jpg" alt="Mujer mayor utilizando un teléfono móvil en casa" fetchpriority="high"><div class="hero-photo-shade"></div><div class="hero-pill">📱 <strong>IA fácil</strong> · Desde cero</div></div></div></section>
-
-<section id="prueba"><div class="wrap"><div class="center"><div class="eyebrow">✨ Pruébalo ahora</div><h2>Mira cómo una buena pregunta cambia una respuesta.</h2><p class="section-lead">Aprende a explicar bien lo que necesitas para conseguir respuestas mucho más útiles.</p></div>
-<div class="demo"><h3>Mejora una petición</h3><p style="color:var(--muted);margin-top:0">Escribe algo que le pedirías a ChatGPT.</p>
-<textarea id="demoInput" class="demo-input" rows="3" placeholder="Ejemplo: Quiero organizar un viaje a Italia"></textarea>
-<div class="demo-controls"><button class="demo-btn" id="improveBtn" type="button">✨ Mejorar mi pregunta</button><button class="demo-btn secondary" id="exampleBtn" type="button">Probar un ejemplo</button></div>
-<div class="demo-grid"><div class="demo-panel"><div class="demo-label">Antes</div><div class="demo-text" id="beforeText">Quiero organizar un viaje a Italia.</div></div><div class="demo-arrow">→</div><div class="demo-panel after"><div class="demo-label">Después</div><div class="demo-text" id="afterText">Actúa como experto en viajes. Ayúdame a organizar un viaje a Italia de 7 días para dos personas, con un presupuesto medio. Propón una ruta por ciudades y consejos prácticos.</div></div></div>
-<div class="demo-note">💡 La clave: objetivo + contexto + cómo quieres la respuesta.</div></div></div></section>
-
-<section class="soft"><div class="wrap"><div class="center"><h2>Aprender IA no significa aprender tecnología.</h2><p class="section-lead">Significa aprender a utilizar una herramienta nueva para hacer cosas que ya haces en tu día a día.</p></div>
-<div class="grid3">
-<div class="benefit"><div class="icon">💬</div><h3>Aprende a hablar con la IA</h3><p>Descubre qué pedir, cómo dar contexto y cómo conseguir mejores respuestas.</p></div>
-<div class="benefit"><div class="icon">🛠️</div><h3>Utilízala en tu día a día</h3><p>Viajes, recetas, mensajes, documentos, aprendizaje, organización y mucho más.</p></div>
-<div class="benefit"><div class="icon">🔐</div><h3>Úsala con cabeza</h3><p>Aprende qué información proteger, cómo detectar errores y cuándo comprobar una respuesta.</p></div>
-</div></div></section>
-
-<section><div class="wrap"><div class="center"><div class="eyebrow">Situaciones reales</div><h2>¿Para qué te puede servir?</h2><p class="section-lead">Para mucho más de lo que quizá imaginas.</p></div>
-<div class="grid3">
-<div class="benefit"><div class="icon">✈️</div><h3>Planificar un viaje</h3><p>Rutas, ideas, listas, transporte y planes adaptados a ti.</p></div>
-<div class="benefit"><div class="icon">🍲</div><h3>Cocinar con lo que tienes</h3><p>Dile qué ingredientes tienes y pide una receta sencilla.</p></div>
-<div class="benefit"><div class="icon">✉️</div><h3>Escribir un mensaje</h3><p>Prepara correos, cartas y mensajes con el tono que necesites.</p></div>
-<div class="benefit"><div class="icon">📄</div><h3>Entender un documento</h3><p>Convierte información complicada en una explicación clara.</p></div>
-<div class="benefit"><div class="icon">📚</div><h3>Aprender algo nuevo</h3><p>Pide explicaciones, ejemplos, ejercicios y preguntas para practicar.</p></div>
-<div class="benefit"><div class="icon">🗓️</div><h3>Organizarte mejor</h3><p>Transforma tus tareas y objetivos en un plan sencillo.</p></div>
-</div></div></section>
-
-<section><div class="wrap"><div class="center"><div class="eyebrow">¿Es para ti?</div><h2>Este curso es para ti si...</h2><p class="section-lead">No necesitas experiencia previa. Solo ganas de aprender algo que ya forma parte de nuestro día a día.</p></div><div class="grid3"><div class="benefit"><div class="icon">🌱</div><h3>Empiezas desde cero</h3><p>Nunca has utilizado ChatGPT o no sabes por dónde empezar.</p></div><div class="benefit"><div class="icon">📱</div><h3>Quieres algo práctico</h3><p>Quieres utilizar la IA para resolver tareas reales de tu día a día.</p></div><div class="benefit"><div class="icon">🧠</div><h3>Quieres ganar confianza</h3><p>Quieres entender la IA, utilizarla bien y saber qué información proteger.</p></div></div></div></section>
-
-<section class="soft"><div class="wrap"><div class="center"><div class="eyebrow">La experiencia de una alumna</div><h2>“Me ha encantado y he aprendido muchísimo.”</h2><p class="section-lead">Una de nuestras primeras alumnas nos transmitió este feedback después de realizar el curso.</p></div><div class="card" style="max-width:760px;margin:28px auto 0;text-align:center;padding:30px"><div class="icon">💬</div><p style="font-size:21px;line-height:1.5;color:var(--ink);margin:0 0 12px"><strong>“Me ha encantado el curso y he aprendido mucho.”</strong></p><p style="margin:0;color:var(--muted)">— Alumna de IA Fácil</p></div></div></section>
-
-<section class="soft"><div class="wrap"><div class="center"><div class="eyebrow">¿Te suena?</div><h2>“Mi nieto habla de ChatGPT y no sé ni qué decirle.”</h2><p class="section-lead">No necesitas ser joven ni experto para entender la IA. Necesitas que alguien te la explique de forma clara y práctica.</p></div>
-<div class="grid3"><div class="card"><div class="icon">👨‍👩‍👧</div><h3>Entiende de qué hablan</h3><p>Descubre qué es ChatGPT y qué puede hacer realmente.</p></div><div class="card"><div class="icon">🤝</div><h3>Hazlo tú mismo</h3><p>Aprende practicando con situaciones que forman parte de tu vida.</p></div><div class="card"><div class="icon">🧠</div><h3>Gana confianza</h3><p>Deja de ver la IA como algo complicado o reservado para expertos.</p></div></div></div></section>
-
-<section><div class="wrap course"><div><div class="eyebrow">El curso completo</div><h2>10 módulos para aprender a utilizar la IA con confianza.</h2><p class="section-lead">Lecciones cortas, ejemplos cotidianos, ejercicios y cuestionarios. Aprende haciendo, no memorizando.</p><div class="grid3" style="grid-template-columns:1fr;margin-top:22px"><div class="benefit"><div class="icon">⏱️</div><h3>4–5 horas</h3><p>Duración orientativa. Tú decides cuándo avanzar.</p></div><div class="benefit"><div class="icon">🎯</div><h3>10 cuestionarios</h3><p>Comprueba lo aprendido al terminar cada módulo.</p></div><div class="benefit"><div class="icon">🎓</div><h3>Recursos incluidos</h3><p>Kit de prompts, prácticas, reto final y certificado.</p></div></div></div>
-<div class="modules">
-<div class="module"><div class="num">1</div><div><strong>Qué es la IA y ChatGPT</strong><span>Entiende qué tienes delante y cómo empezar.</span></div></div>
-<div class="module"><div class="num">2</div><div><strong>Tu primera conversación</strong><span>Haz peticiones claras y continúa la conversación.</span></div></div>
-<div class="module"><div class="num">3</div><div><strong>Buenas preguntas</strong><span>Explica lo que necesitas para obtener mejores respuestas.</span></div></div>
-<div class="module"><div class="num">4</div><div><strong>IA para tu vida cotidiana</strong><span>Viajes, mensajes, recetas, compras y organización.</span></div></div>
-<div class="module"><div class="num">5</div><div><strong>Consigue mejores respuestas</strong><span>Contexto, tono, formato y mejora de respuestas.</span></div></div>
-<div class="module"><div class="num">6</div><div><strong>Comprueba la información</strong><span>Aprende a detectar errores y no creértelo todo.</span></div></div>
-<div class="module"><div class="num">7</div><div><strong>Cuida tus datos</strong><span>Qué compartir, qué proteger y cómo evitar engaños.</span></div></div>
-<div class="module"><div class="num">8</div><div><strong>Aprende con IA</strong><span>Explicaciones, práctica, repaso y aprendizaje a tu ritmo.</span></div></div>
-<div class="module"><div class="num">9</div><div><strong>Organízate con IA</strong><span>Tareas, tiempo, rutinas y planes prácticos.</span></div></div>
-<div class="module"><div class="num">10</div><div><strong>Crea y comunica</strong><span>Escribe, resume, genera ideas y mejora tus textos.</span></div></div>
+<section class="hero">
+<div class="hero-inner">
+<div class="brand"><span>🎓</span> IA fácil</div>
+<h1>Aprende a usar<br>ChatGPT desde cero</h1>
+<p class="sub">Paso a paso, en español y a tu ritmo</p>
+<div class="price-row"><div class="price">10 módulos · 9,90 €</div><div class="single">Pago único</div></div>
+<a class="cta" href="https://buy.stripe.com/aFa7sNd4x7nc9fufzu1VK09">Quiero aprender a usar ChatGPT →</a>
 </div>
-<div class="extras"><div class="center"><h3>Y después del curso</h3><p class="section-lead">Te llevas recursos para seguir practicando.</p></div><div class="grid3"><div class="benefit"><div class="icon">✍️</div><h3>Kit de prompts</h3><p>Plantillas listas para copiar y adaptar.</p></div><div class="benefit"><div class="icon">🧪</div><h3>Zona de práctica</h3><p>Retos para entrenar lo aprendido.</p></div><div class="benefit"><div class="icon">🏆</div><h3>Reto final + certificado</h3><p>Completa el curso y demuestra lo aprendido.</p></div></div></div></div></section>
-
-<section id="oferta"><div class="wrap"><div class="offer"><div><div class="eyebrow">Precio especial de lanzamiento</div><h2>Empieza a aprender IA por menos de 10 €.</h2><p>Curso completo, 10 módulos y todos los recursos incluidos.</p><p><strong>Sin conocimientos técnicos. A tu ritmo. Desde móvil, tableta u ordenador.</strong></p></div><div class="price-box"><div class="small" style="font-weight:850;color:var(--green2)">PRECIO ESPECIAL DE LANZAMIENTO</div><div class="price">9,90 €</div><div class="small">Precio especial de lanzamiento</div><br><a class="btn" href="https://buy.stripe.com/aFa7sNd4x7nc9fufzu1VK09">Acceder al curso por 9,90 € →</a><p class="small">🔒 Pago seguro con Stripe.</p><p class="small"><strong>Después del pago recibirás las instrucciones para acceder al curso.</strong></p><div class="support">¿Problemas? <a href="mailto:studyos.oficial.spain@gmail.com">studyos.oficial.spain@gmail.com</a></div></div></div></div></section>
-
-<section><div class="wrap"><div class="center"><h2>¿Cómo funciona?</h2><p class="section-lead">Tres pasos y empiezas. Después del pago, recibirás las instrucciones de acceso.</p></div><div class="steps"><div class="step"><b>01 · ENTRA</b><h3>Compra el curso</h3><p>Completa el pago de forma segura con Stripe.</p></div><div class="step"><b>02 · APRENDE</b><h3>Sigue las lecciones</h3><p>Avanza poco a poco, desde el dispositivo que quieras.</p></div><div class="step"><b>03 · PRACTICA</b><h3>Úsalo tú mismo</h3><p>Aplica cada idea a situaciones reales.</p></div></div></div></section>
-
-<section><div class="wrap"><div class="center"><h2>Preguntas frecuentes</h2></div><div class="faq">
-<details><summary>¿Necesito saber mucho de ordenadores?</summary><p>No. El curso parte de cero y explica cada paso de forma sencilla.</p></details>
-<details><summary>¿Necesito pagar ChatGPT?</summary><p>No necesitas una suscripción de pago concreta para aprender los fundamentos. Algunas funciones pueden variar según el plan que utilices.</p></details>
-<details><summary>¿Puedo hacerlo desde el móvil?</summary><p>Sí. Puedes acceder desde móvil, tableta u ordenador.</p></details>
-<details><summary>¿La IA siempre dice la verdad?</summary><p>No. Precisamente aprenderás a detectar errores y saber cuándo comprobar la información.</p></details>
-<details><summary>¿Qué recibo al comprar?</summary><p>Acceso al curso completo, sus 10 módulos, cuestionarios, prácticas, kit de prompts, reto final y certificado.</p></details>
-</div></div></section>
-
-<section class="final"><div class="wrap"><h2>La IA ya está aquí. Aprende a aprovecharla.</h2><p>No necesitas saberlo todo. Empieza desde cero y descubre cómo utilizar una herramienta que ya forma parte del presente.</p><a class="btn" href="#oferta">Quiero empezar por 9,90 € →</a></div></section>
+</section>
+<section class="info">
+<div class="info-inner">
+<h2>Todo lo que necesitas para empezar desde cero</h2>
+<div class="cards">
+<div class="card"><b>📚 10 módulos</b><p>Lecciones cortas y explicadas paso a paso, sin conocimientos técnicos.</p></div>
+<div class="card"><b>🧠 A tu ritmo</b><p>Aprende desde móvil, tableta u ordenador y avanza cuando quieras.</p></div>
+<div class="card"><b>🎯 100% práctico</b><p>Ejemplos cotidianos, prácticas, cuestionarios y recursos para seguir aprendiendo.</p></div>
+</div>
+</div>
+</section>
 </main>
-<footer><div class="wrap"><span>© 2026 IA fácil</span><div class="legal"><a href="./aviso-legal.html">Aviso legal</a><a href="./terminos.html">Términos y condiciones</a><a href="./privacidad.html">Privacidad y cookies</a><a href="./condiciones-compra.html">Condiciones de compra</a></div></div></footer>
-
-<script>
-(function(){
-const input=document.getElementById('demoInput'),before=document.getElementById('beforeText'),after=document.getElementById('afterText'),improve=document.getElementById('improveBtn'),example=document.getElementById('exampleBtn');
-const templates=[
-{keys:['viaj','vacacion','hotel','vuelo','turismo','escapada'],make:q=>'Actúa como experto en viajes. Ayúdame con '+q+'. Ten en cuenta mi presupuesto, tiempo disponible y preferencias. Organiza la respuesta por pasos y añade recomendaciones prácticas.'},
-{keys:['mensaje','whatsapp','correo','email','carta','responder'],make:q=>'Ayúdame a redactar '+q+'. Hazlo claro, natural y adecuado para la persona que lo recibirá. Propón una versión breve y cercana.'},
-{keys:['receta','cocinar','cocina','comida','ingrediente','cena','almuerzo'],make:q=>'Actúa como cocinero práctico. Ayúdame con '+q+'. Indica ingredientes, cantidades aproximadas y pasos sencillos. Si falta algo, propone una alternativa.'},
-{keys:['estudi','examen','asignatura','aprender','tema','clase','deberes'],make:q=>'Actúa como profesor particular. Ayúdame con '+q+'. Explícalo paso a paso, pon un ejemplo y termina con unas preguntas para comprobar si lo he entendido.'},
-{keys:['organizar','organización','agenda','tiempo','rutina','tareas','planificar'],make:q=>'Ayúdame a organizar '+q+'. Convierte lo que te he contado en un plan claro, prioriza lo importante y repártelo de forma realista.'}
-];
-function improvePrompt(raw){const q=raw.replace(/[.!?]+$/,'').trim();if(!q)return;before.textContent=q;const lower=q.toLowerCase();const t=templates.find(x=>x.keys.some(k=>lower.includes(k)));after.textContent=t?t.make(q):'Ayúdame con '+q+'. Primero identifica qué quiero conseguir, después organiza la respuesta en pasos sencillos y adapta las recomendaciones a mi situación.'}
-improve.addEventListener('click',()=>improvePrompt(input.value));example.addEventListener('click',()=>{input.value='Quiero organizar un viaje a Italia';improvePrompt(input.value)});input.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter')improvePrompt(input.value)});
-})();
-</script>
+<footer>© 2026 IA fácil · <a href="./aviso-legal.html">Aviso legal</a> · <a href="./terminos.html">Términos</a> · <a href="./privacidad.html">Privacidad y cookies</a> · <a href="./condiciones-compra.html">Condiciones de compra</a></footer>
 <script src="./track.js"></script>
 </body>
 </html>
