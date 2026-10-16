@@ -25,6 +25,10 @@ export async function saveModuleCompleted(moduleNumber, completed) {
   else next.delete(Number(moduleNumber));
   const values = [...next].sort((a,b)=>a-b);
   write(values);
+  // The course portal reads the per-module completion flags.
+  try {
+    localStorage.setItem(`iafacil-m${Number(moduleNumber)}-done`, completed ? "1" : "0");
+  } catch {}
   return values;
 }
 
