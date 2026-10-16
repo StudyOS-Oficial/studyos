@@ -27,3 +27,37 @@ export async function saveModuleCompleted(moduleNumber, completed) {
   write(values);
   return values;
 }
+
+// Completing the module quiz with 5/5 correct answers also completes the module.
+function watchQuizCompletion() {
+  const result = document.getElementById("result");
+  if (!result || !Number.isInteger(window.moduleNumber)) return;
+
+  const markFromQuiz = async () => {
+    if (!/Resultado:\s*5\s*\/\s*5/.test(result.textContent || "")) return;
+    try {
+      await saveModuleCompleted(window.moduleNumber, true);
+      const box = document.getElementById("done");
+      if (box && !box.checked) box.checked = true;
+      if (typeof window.up === "function") window.up();
+      if (typeof window.update === "function") window.update();
+    } catch (err) {
+      console.error("No se pudo guardar el progreso del cuestionario:", err);
+    }
+  };
+
+  new MutationObserver(markFromQuiz).observe(result, {
+    childList: true,
+    characterData: true,
+    subtree: true
+  });
+  markFromQuiz();
+}
+
+if (typeof document !== "undefined") {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", watchQuizCompletion, { once: true });
+  } else {
+    watchQuizCompletion();
+  }
+}
