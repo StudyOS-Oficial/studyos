@@ -12,7 +12,53 @@
     var K = await sub.importKey("raw", kraw, "AES-GCM", false, ["decrypt"]);
     return new TextDecoder().decode(await sub.decrypt({ name: "AES-GCM", iv: d(pay.iv) }, K, d(pay.ct)));
   }
-  function render(html) { document.open(); document.write(html); document.close(); }
+  function enhance(html) {
+    if (typeof html !== "string" || !html.includes('<nav class="nav">')) return html;
+
+    var uiCss = '<style id="iafacil-course-ui">' +
+      '.quiz button{color:#142033!important;background:#fff!important;border:2px solid #dbe3ed!important;border-radius:16px!important;padding:15px 17px!important;min-height:54px!important;font-size:16px!important;line-height:1.35!important;font-weight:650!important;box-shadow:0 2px 7px rgba(20,32,51,.05);transition:background .16s,border-color .16s,color .16s,transform .08s,box-shadow .16s}' +
+      '.quiz button:active{transform:scale(.99)}' +
+      '.quiz button.iaf-correct{background:#dcf7e8!important;border-color:#27a967!important;color:#145c39!important;box-shadow:0 0 0 2px #b9ebcf!important}' +
+      '.quiz button.iaf-wrong{background:#ffe3e3!important;border-color:#df5a5a!important;color:#7f1d1d!important;box-shadow:0 0 0 2px #f7c0c0!important}' +
+      '.iaf-section-picker{display:none}' +
+      '@media(max-width:850px){.iaf-section-picker{display:block;position:sticky;top:61px;z-index:4;margin:10px 14px 0;border:1px solid #dce4ee;border-radius:16px;background:rgba(255,255,255,.97);box-shadow:0 6px 20px rgba(20,32,51,.09);overflow:hidden}.iaf-section-picker summary{list-style:none;display:flex;align-items:center;gap:10px;padding:14px 16px;cursor:pointer;font-weight:800;color:#142033}.iaf-section-picker summary::-webkit-details-marker{display:none}.iaf-section-picker summary:after{content:"⌄";margin-left:auto;color:#65758b;font-size:18px}.iaf-section-picker[open] summary:after{content:"⌃"}.iaf-section-title{flex:1}.iaf-section-list{max-height:48vh;overflow:auto;border-top:1px solid #e7edf5;padding:7px}.iaf-section-list a{display:block;text-decoration:none;color:#142033!important;background:#fff;border-radius:11px;padding:11px 12px;margin:2px 0;font-size:14px;line-height:1.35}.iaf-section-list a:active,.iaf-section-list a:hover{background:#eaf3ff!important;color:#1767dc!important}.quiz button{font-size:16px!important;min-height:58px!important;margin:9px 0!important;padding:15px 16px!important}}' +
+      '</style>';
+
+    var uiJs = '<script>(function(){' +
+      'function init(){' +
+        'var nav=document.querySelector(".nav");' +
+        'if(!nav||document.querySelector(".iaf-section-picker"))return;' +
+        'var links=nav.querySelectorAll("a");' +
+        'var picker=document.createElement("details");picker.className="iaf-section-picker";' +
+        'var summary=document.createElement("summary");' +
+        'summary.innerHTML="<span aria-hidden=\"true\">☰</span><span class=\"iaf-section-title\">Seleccionar sección</span>";' +
+        'var list=document.createElement("div");list.className="iaf-section-list";' +
+        'Array.prototype.forEach.call(links,function(a){' +
+          'var b=document.createElement("a");b.href=a.getAttribute("href")||"#";b.textContent=a.textContent.trim();' +
+          'b.addEventListener("click",function(){summary.querySelector(".iaf-section-title").textContent=b.textContent;picker.open=false;});' +
+          'list.appendChild(b);' +
+        '});' +
+        'picker.appendChild(summary);picker.appendChild(list);' +
+        'var main=document.querySelector(".main");' +
+        'if(main&&main.parentNode)main.parentNode.insertBefore(picker,main);' +
+        'document.addEventListener("click",function(ev){' +
+          'var b=ev.target&&ev.target.closest?ev.target.closest(".quiz button"):null;' +
+          'if(!b||b.dataset.iafStyled==="1")return;' +
+          'b.dataset.iafStyled="1";' +
+          'var oc=b.getAttribute("onclick")||"";' +
+          'if(/q\\(this,\\s*true\\)/.test(oc))b.classList.add("iaf-correct");' +
+          'else if(/q\\(this,\\s*false\\)/.test(oc))b.classList.add("iaf-wrong");' +
+        '},true);' +
+      '}' +
+      'if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();' +
+    '})();<\/script>';
+
+    if (html.includes("</head>")) html = html.replace("</head>", uiCss + "</head>");
+    if (html.includes("</body>")) html = html.replace("</body>", uiJs + "</body>");
+    return html;
+  }
+
+  function render(html) { document.open(); document.write(enhance(html)); document.close(); }
   async function fromPw(pw) {
     var b = await sub.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
     return sub.deriveKey({ name: "PBKDF2", salt: d(meta.salt), iterations: meta.iter, hash: "SHA-256" }, b, { name: "AES-GCM", length: 256 }, true, ["decrypt"]);
