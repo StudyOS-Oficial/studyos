@@ -3,6 +3,7 @@ const ORIGINS = new Set(["https://studyos-oficial.github.io", "https://studyos-o
 const KINDS = new Set(["pv", "scroll", "click", "section", "done", "quiz"]);
 const KEY = /^[a-z0-9_:.#\/-]{1,60}$/, PATH = /^\/[a-z0-9_\/-]{0,60}$/, HOST = /^[a-z0-9.-]{0,60}$/;
 const MAX_PER_DAY = 600;
+const META_GRAPH_VERSION = "v24.0";
 
 const cors = (o) => ({ "Access-Control-Allow-Origin": o, "Vary": "Origin", "Access-Control-Allow-Methods": "GET,POST,OPTIONS", "Access-Control-Allow-Headers": "Content-Type, Authorization", "Access-Control-Max-Age": "86400" });
 const reply = (o, status, body) => new Response(body ? JSON.stringify(body) : null, { status, headers: { ...cors(o), "Content-Type": "application/json", "Cache-Control": "no-store" } });
@@ -32,6 +33,47 @@ async function track(req,env,ctx,origin){
  if(Math.random()<0.02)ctx.waitUntil(env.DB.batch([env.DB.prepare("DELETE FROM dedupe WHERE day<?").bind(day),env.DB.prepare("DELETE FROM rate WHERE day<?").bind(day)]));
  return reply(origin,204);
 }
+async function metaCapi(req,env,origin){
+  if(!env.META_ACCESS_TOKEN)return reply(origin,500,{error:"META_ACCESS_TOKEN no configurado"});
+  let b;
+  try{b=await req.json()}catch{return reply(origin,400,{error:"JSON inválido"})}
+  const eventName=String(b?.event_name||"");
+  const eventId=String(b?.event_id||"");
+  const sourceUrl=String(b?.event_source_url||"");
+  if(!/^(PageView|ViewContent|InitiateCheckout)$/.test(eventName)||!eventId||!/^https:\/\//.test(sourceUrl)){
+    return reply(origin,400,{error:"evento inválido"});
+  }
+
+  const cookies=b?.user_data||{};
+  const userData={
+    client_user_agent:req.headers.get("User-Agent")||"",
+    client_ip_address:req.headers.get("CF-Connecting-IP")||""
+  };
+  if(cookies.fbp)userData.fbp=String(cookies.fbp);
+  if(cookies.fbc)userData.fbc=String(cookies.fbc);
+
+  const event={
+    event_name:eventName,
+    event_time:Math.floor(Date.now()/1000),
+    event_id:eventId,
+    event_source_url:sourceUrl,
+    action_source:"website",
+    user_data:userData
+  };
+  if(b?.custom_data&&typeof b.custom_data==="object")event.custom_data=b.custom_data;
+
+  const qs=b?.test_event_code?("?test_event_code="+encodeURIComponent(String(b.test_event_code))):"";
+  const url="https://graph.facebook.com/"+META_GRAPH_VERSION+"/1420061570074591/events"+qs;
+  const r=await fetch(url,{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({data:[event],access_token:env.META_ACCESS_TOKEN})
+  });
+  const out=await r.text();
+  if(!r.ok)return reply(origin,502,{error:"Meta CAPI rechazó el evento",details:out});
+  return reply(origin,200,{ok:true});
+}
+
 async function stats(req,env,origin){
  const auth=req.headers.get("Authorization")||"",want="Bearer "+(env.STATS_TOKEN||"");
  if(!env.STATS_TOKEN||auth.length!==want.length||[...auth].reduce((a,c,i)=>a|(c.charCodeAt(0)^want.charCodeAt(i)),0))return reply(origin,401,{error:"no autorizado"});
@@ -44,6 +86,7 @@ export default{async fetch(req,env,ctx){
  const origin=ORIGINS.has(req.headers.get("Origin"))?req.headers.get("Origin"):"",pathname=new URL(req.url).pathname;
  if(req.method==="OPTIONS")return new Response(null,{status:204,headers:origin?cors(origin):{}});
  if(pathname==="/t"&&req.method==="POST")return origin?track(req,env,ctx,origin):new Response(null,{status:403});
+ if(pathname==="/meta"&&req.method==="POST")return origin?metaCapi(req,env,origin):new Response(null,{status:403});
  if(pathname==="/stats"&&req.method==="GET")return stats(req,env,origin||"null");
  return new Response("IA fácil analytics",{status:200});
 }};
