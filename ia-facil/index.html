@@ -47,8 +47,22 @@ let id=eid();fbq('track','PageView',{}, {eventID:id});capi('PageView',id);
 id=eid();fbq('track','ViewContent',{content_name:'IA fácil — Curso completo',content_category:'curso'},{eventID:id});capi('ViewContent',id);
 document.addEventListener('click',e=>{const a=e.target.closest('a[href*="buy.stripe.com"]');if(a){const id=eid();fbq('track','InitiateCheckout',{content_name:'IA fácil — Curso completo',value:9.90,currency:'EUR'},{eventID:id});capi('InitiateCheckout',id,{value:9.90,currency:'EUR'});}});
 }
+function pinBanner(){
+const b=document.getElementById('cookie-banner');
+if(!b)return;
+if(b.parentElement!==document.body)document.body.appendChild(b);
+b.style.position='fixed';
+b.style.left='50%';
+b.style.right='auto';
+b.style.bottom='calc(12px + env(safe-area-inset-bottom))';
+b.style.top='auto';
+b.style.transform='translateX(-50%) translateZ(0)';
+b.style.zIndex='2147483647';
+b.style.width='min(760px, calc(100vw - 24px))';
+}
 function showBanner(){
-const b=document.getElementById('cookie-banner');if(b)b.hidden=false;
+const b=document.getElementById('cookie-banner');
+if(b){pinBanner();b.hidden=false;}
 }
 function hideBanner(){const b=document.getElementById('cookie-banner');if(b)b.hidden=true;}
 window.iaFacilCookiePreferences=function(){showBanner()};
@@ -56,7 +70,7 @@ window.iaFacilAcceptCookies=function(){setConsent('accepted');hideBanner();loadM
 window.iaFacilRejectCookies=function(){setConsent('rejected');hideBanner()};
 document.addEventListener('DOMContentLoaded',function(){
 const banner=document.getElementById('cookie-banner');
-if(banner&&banner.parentElement!==document.body)document.body.appendChild(banner);
+if(banner){pinBanner();window.addEventListener('resize',pinBanner,{passive:true});window.addEventListener('scroll',pinBanner,{passive:true});}
 const consent=getConsent();
 if(consent==='accepted')loadMeta();
 else if(!consent)showBanner();
