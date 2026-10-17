@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>ChatGPT en el trabajo · Curso</title>
+<style>
+:root{--bg:#f5f6fa;--card:#fff;--ink:#182033;--muted:#667085;--accent:#6c5ce7;--line:#e5e7ef;--ok:#16845b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+header{background:#151a2b;color:#fff;padding:26px 18px}.head{max-width:1100px;margin:auto}.brand{font-weight:800}.brand span{color:#9b8cff}.head h1{font-size:34px;margin:22px 0 8px}.head p{margin:0;color:#cbd0df}
+main{max-width:1100px;margin:auto;padding:24px 18px 60px}.layout{display:grid;grid-template-columns:290px 1fr;gap:20px}
+aside{position:sticky;top:15px;align-self:start;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px}
+.module{display:block;width:100%;border:0;background:transparent;text-align:left;padding:11px 12px;border-radius:11px;cursor:pointer;color:var(--ink)}.module:hover,.module.active{background:#efedff;color:#5544cf}.module small{display:block;color:var(--muted);font-size:11px;margin-bottom:2px}
+.content{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px;min-height:600px}.tag{font-size:12px;font-weight:900;color:var(--accent)}h2{font-size:36px;line-height:1.1;margin:8px 0 15px}h3{margin-top:28px}.intro{font-size:18px;color:var(--muted);line-height:1.6}
+.lesson{padding:18px;background:#f8f8fc;border-radius:15px;margin:15px 0;line-height:1.6}.prompt{background:#151a2b;color:#fff;border-radius:15px;padding:18px;margin:15px 0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap}.tip{border-left:4px solid var(--accent);padding:12px 15px;background:#f1efff;border-radius:0 12px 12px 0}
+.quiz{border-top:1px solid var(--line);margin-top:30px;padding-top:20px}.option{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--line);padding:13px;border-radius:11px;margin:8px 0;cursor:pointer}.option:hover{border-color:var(--accent)}.result{margin-top:12px;font-weight:700}.nav{display:flex;justify-content:space-between;gap:10px;margin-top:30px}.nav button{border:0;border-radius:12px;padding:12px 16px;font-weight:750;cursor:pointer}.next{background:var(--accent);color:#fff}.prev{background:#eef0f5}
+@media(max-width:800px){.layout{grid-template-columns:1fr}aside{position:relative;top:auto;display:grid;grid-template-columns:1fr 1fr;gap:3px}.content{padding:22px}h2{font-size:29px}}
+</style>
+</head>
+<body>
+<header><div class="head"><div class="brand">Study<span>OS</span></div><h1>ChatGPT en el trabajo</h1><p>Aprende haciendo: problema → prompt → resultado → mejora.</p></div></header>
+<main><div class="layout"><aside id="menu"></aside><section class="content" id="content"></section></div></main>
+<script>
+const modules=[
+{t:"ChatGPT como asistente de trabajo",i:"01",intro:"Antes de aprender trucos, necesitas cambiar la forma de plantear el trabajo. ChatGPT funciona mejor cuando le das contexto, objetivo y restricciones.",blocks:[
+["La regla de las 4 piezas","Un buen encargo suele incluir: contexto, tarea, formato y criterios. No necesitas escribir un prompt perfecto: necesitas explicar qué quieres conseguir."],
+["Ejemplo","En lugar de: “Hazme un email”. Prueba: “Trabajo en una pequeña empresa. Necesito avisar a un cliente de que el pedido se retrasará dos días. Redacta un email profesional, breve y empático, sin culpar a nadie.”"],
+["Prompt base","Actúa como mi asistente de trabajo. Contexto: [contexto]. Necesito conseguir: [objetivo]. Haz lo siguiente: [tarea]. Entrégamelo en: [formato]. Ten en cuenta estas restricciones: [restricciones]."]],q:["¿Qué información suele mejorar más una petición a ChatGPT?","Dar contexto y explicar el resultado que necesitas","Escribir solo una palabra","Evitar explicar el objetivo"],a:0},
+{t:"Emails y mensajes profesionales",i:"02",intro:"Una de las aplicaciones más rápidas de ChatGPT es transformar una idea rápida en una comunicación profesional.",blocks:[
+["Redactar desde cero","Puedes darle los hechos y pedirle que adapte el mensaje al destinatario y al tono."],
+["Mejorar un borrador","También puedes pegar un texto propio y pedir claridad, concisión, tono más diplomático o corrección."],
+["Prompt útil","Reescribe este mensaje para que sea profesional, claro y cordial. Mantén exactamente la información y no inventes datos. Destinatario: [persona]. Objetivo: [objetivo]."]],q:["¿Qué conviene indicar al mejorar un email?","El destinatario, objetivo y tono","Solo el número de palabras","Que invente información si falta"],a:0},
+{t:"Crear y mejorar documentos",i:"03",intro:"ChatGPT puede ayudarte a estructurar documentos, convertir ideas desordenadas en texto y revisar una versión existente.",blocks:[
+["Primero la estructura","Pide un índice antes de redactar cuando el documento sea importante. Así puedes corregir la dirección antes de escribir todo."],
+["Trabajar por partes","Para documentos largos, divide el trabajo: estructura → sección → revisión → versión final."],
+["Prompt útil","Crea una estructura para un informe de [tema]. Público: [público]. Objetivo: [objetivo]. Incluye secciones, qué debe contener cada una y qué información me falta."]],q:["¿Qué estrategia es más recomendable para un documento importante?","Definir estructura y revisar por partes","Pedir un documento enorme de una sola vez","No revisar el resultado"],a:0},
+{t:"Resumir reuniones, textos y documentos",i:"04",intro:"Resumir no significa simplemente hacer un texto más corto. El verdadero valor está en convertir información en decisiones y acciones.",blocks:[
+["Tres niveles","Puedes pedir resumen ejecutivo, puntos clave o acciones concretas. El formato depende de para qué necesitas el resumen."],
+["Extraer acciones","Una buena salida puede separar decisiones tomadas, tareas, responsables, fechas y dudas abiertas."],
+["Prompt útil","Resume este contenido para una persona que no estuvo presente. Separa: 1) decisiones, 2) tareas, 3) responsables, 4) fechas, 5) asuntos pendientes. No inventes información."]],q:["¿Qué hace más útil un resumen de una reunión?","Separar decisiones y acciones","Hacerlo siempre lo más largo posible","Eliminar fechas y responsables"],a:0},
+{t:"Organizar tareas y prioridades",i:"05",intro:"ChatGPT puede convertir una lista caótica de pendientes en un plan de trabajo comprensible.",blocks:[
+["De lista a plan","Dale tus tareas, fechas y restricciones. Pídele que detecte dependencias y proponga un orden."],
+["No delegues el criterio final","La IA puede proponer prioridades, pero tú debes validar qué es realmente urgente o importante."],
+["Prompt útil","Organiza estas tareas para hoy. Tengo [X] horas. Prioriza por impacto y urgencia, identifica dependencias y propón bloques de trabajo realistas. Si falta información, indícalo."]],q:["¿Quién debe validar las prioridades finales?","La persona responsable del trabajo","ChatGPT automáticamente","Nadie"],a:0},
+{t:"Preparar reuniones y presentaciones",i:"06",intro:"Llegar preparado cambia el resultado de una reunión. ChatGPT puede ayudarte antes, durante la preparación y después.",blocks:[
+["Antes de la reunión","Pídele objetivos, preguntas clave, posibles objeciones y una agenda."],
+["Presentaciones","Puede transformar un contenido en una estructura de diapositivas, pero los datos y mensajes importantes deben revisarse."],
+["Prompt útil","Voy a reunirme con [persona/equipo] sobre [tema]. Objetivo: [objetivo]. Prepárame agenda, 7 preguntas importantes, posibles objeciones y un cierre con próximos pasos."]],q:["¿Para qué sirve preparar preguntas antes de una reunión?","Para llegar con objetivos y puntos de decisión claros","Para evitar escuchar a los demás","Para que ChatGPT tome las decisiones"],a:0},
+{t:"Analizar información y tomar decisiones",i:"07",intro:"ChatGPT puede ayudarte a comparar alternativas y encontrar argumentos, pero no convierte automáticamente una opinión en un dato verdadero.",blocks:[
+["Comparar opciones","Define criterios antes de comparar: coste, tiempo, riesgo, impacto u otros que importen en tu caso."],
+["Buscar puntos ciegos","Una buena petición también puede pedir argumentos en contra de tu primera idea."],
+["Prompt útil","Compara estas opciones usando los criterios [criterios]. Haz una tabla de ventajas, inconvenientes, riesgos y preguntas que debería resolver antes de decidir. No inventes datos."]],q:["¿Qué aporta definir criterios antes de comparar opciones?","Hace explícito qué significa una buena decisión","Garantiza que ChatGPT tenga razón","Evita revisar los datos"],a:0},
+{t:"Trabajar con archivos y datos",i:"08",intro:"Cuando trabajas con documentos o datos, el objetivo no es solo obtener una respuesta: es hacer preguntas concretas sobre la información disponible.",blocks:[
+["Pregunta concreta","Cuanto más clara sea la pregunta, más útil será la salida. Pide tablas, clasificaciones o anomalías cuando tengan sentido."],
+["Comprobar resultados","Los datos importantes deben contrastarse con el archivo original y con la fuente correspondiente."],
+["Prompt útil","Analiza la información proporcionada. Identifica tendencias, valores atípicos y conclusiones que estén directamente respaldadas por los datos. Separa hechos de interpretaciones."]],q:["¿Qué debes hacer con un dato importante generado por IA?","Comprobarlo contra la fuente original","Aceptarlo automáticamente","Compartirlo sin revisar"],a:0},
+{t:"Automatizar tareas repetitivas",i:"09",intro:"Antes de automatizar, identifica el patrón. Si haces una tarea igual muchas veces, probablemente puedas convertirla en un proceso reutilizable.",blocks:[
+["Detecta patrones","Emails similares, clasificación de información, borradores, listas de comprobación y transformaciones de texto son buenos candidatos."],
+["Crear una plantilla","Convierte una petición puntual en una plantilla con campos variables."],
+["Prompt útil","Esta tarea se repite [frecuencia]. El proceso actual es: [pasos]. Diseña una plantilla reutilizable para hacerla más rápido, indicando qué partes deben cambiar cada vez."]],q:["¿Qué tarea es mejor candidata para una plantilla?","Una tarea repetitiva con un patrón claro","Una decisión excepcional y crítica sin revisión","Una tarea que cambia completamente cada vez"],a:0},
+{t:"Privacidad, errores y uso responsable",i:"10",intro:"Usar IA en el trabajo también significa saber cuándo no usarla y cómo proteger la información.",blocks:[
+["Información sensible","Antes de pegar información en una herramienta de IA, comprueba las políticas de tu organización y evita exponer datos personales, secretos comerciales o credenciales."],
+["Alucinaciones","ChatGPT puede producir respuestas convincentes pero incorrectas. La apariencia profesional no demuestra que un dato sea cierto."],
+["Regla práctica","Para decisiones de alto impacto, utiliza la IA como apoyo y verifica la información relevante con fuentes fiables y criterio profesional."]],q:["¿Qué haces ante una información importante generada por ChatGPT?","La verificas antes de usarla","La das por cierta si suena convincente","La compartes inmediatamente"],a:0},
+{t:"Casos prácticos completos",i:"11",intro:"Ahora combinamos varias técnicas en un mismo flujo de trabajo.",blocks:[
+["Caso: cliente","Recibes un email largo de un cliente. Primero extraes necesidades y urgencias, después preparas una respuesta y finalmente revisas el tono."],
+["Caso: informe","Partes de notas desordenadas, creas una estructura, redactas secciones y haces una revisión final buscando afirmaciones que necesiten verificación."],
+["Método","Divide siempre el problema en pasos. No necesitas conseguir el resultado perfecto en un único prompt."]],q:["¿Qué caracteriza un buen flujo de trabajo con IA?","Dividir el trabajo y revisar cada resultado","Pedirlo todo en una sola instrucción","No comprobar nada"],a:0},
+{t:"Reto final: tu jornada con ChatGPT",i:"12",intro:"El objetivo final es que puedas identificar oportunidades reales en tu propia jornada y construir un pequeño sistema de trabajo.",blocks:[
+["Paso 1","Anota cinco tareas que haces habitualmente."],
+["Paso 2","Marca cuáles son repetitivas, consumen tiempo o requieren transformar información."],
+["Paso 3","Diseña un prompt o plantilla para tres de ellas. Pruébalos, revisa los resultados y mejora las instrucciones."],
+["Resultado final","Crea tu propio “manual de ChatGPT” con las 5 tareas donde más valor te aporta y las reglas que seguirás para revisar resultados."]],q:["¿Cuál es el objetivo del reto final?","Crear un sistema personal de uso de ChatGPT","Aprender de memoria todos los prompts","Dejar que ChatGPT tome todas tus decisiones"],a:0}
+];
+let current=0;
+const menu=document.getElementById("menu"),content=document.getElementById("content");
+function renderMenu(){menu.innerHTML=modules.map((m,i)=>'<button class="module '+(i===current?'active':'')+'" onclick="show('+i+')"><small>MÓDULO '+m.i+'</small>'+m.t+'</button>').join('')}
+function show(i){current=i;renderMenu();const m=modules[i];content.innerHTML='<div class="tag">MÓDULO '+m.i+' · '+(i===11?'RETO FINAL':'LECCIÓN')+'</div><h2>'+m.t+'</h2><p class="intro">'+m.intro+'</p>'+m.blocks.map(b=>'<div class="lesson"><strong>'+b[0]+'</strong><br>'+b[1]+'</div>').join('')+'<div class="quiz"><h3>Comprueba lo aprendido</h3><p>'+m.q[0]+'</p><div>'+m.q.slice(1).map((x,j)=>'<button class="option" onclick="answer('+j+',this)">'+x+'</button>').join('')+'</div><div class="result" id="result"></div></div><div class="nav"><button class="prev" onclick="show('+Math.max(0,i-1)+')">← Anterior</button><button class="next" onclick="show('+Math.min(modules.length-1,i+1)+')">'+(i===modules.length-1?'Volver al reto':'Siguiente →')+'</button></div>'}
+function answer(j,el){const r=document.getElementById('result');if(j===modules[current].a){r.textContent='✓ Correcto';r.style.color='var(--ok)'}else{r.textContent='No exactamente. Revisa la idea principal del módulo.';r.style.color='#b54708'}}
+show(0);
+</script>
+</body>
+</html>
