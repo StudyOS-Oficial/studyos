@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/ia-facil/curso-nuevo/entrar",
+      "destination": "/api/ia-facil-curso-entrar"
+    },
+    {
+      "source": "/ia-facil/curso-nuevo/",
+      "destination": "/ia-facil/curso/index.html"
+    },
+    {
+      "source": "/ia-facil/curso-nuevo/:path*",
+      "destination": "/ia-facil/curso/:path*"
+    }
+  ]
+}
