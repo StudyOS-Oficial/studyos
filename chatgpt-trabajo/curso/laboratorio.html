@@ -15,7 +15,7 @@
 .progress{height:7px;background:#eceef3;border-radius:99px;overflow:hidden;margin:17px 0 24px}.progress i{display:block;height:100%;width:25%;background:var(--purple);transition:.25s}
 .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:18px 0}.sbtn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 8px;cursor:pointer;text-align:left;font-size:12px}.sbtn b{display:block;font-size:10px;color:var(--muted)}.sbtn.active{background:var(--dark);color:#fff;border-color:var(--dark)}.sbtn.active b{color:#bdb5ff}
 .panel{border:1px solid var(--line);border-radius:18px;padding:20px;background:#fafbfc;min-height:260px}.panel h3{margin:0 0 10px;font-size:21px}.panel p{margin:8px 0}.label{font-size:10px;font-weight:900;letter-spacing:.8px;color:var(--purple);margin-bottom:6px}.prompt{background:var(--dark);color:#fff;border-radius:15px;padding:17px;margin:14px 0;position:relative}.prompt pre{white-space:pre-wrap;margin:0;padding-right:70px;font:13px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace}.copy{position:absolute;right:10px;top:10px;border:1px solid #ffffff33;background:#ffffff12;color:#fff;border-radius:8px;padding:6px 9px;cursor:pointer}
-.response{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;margin:12px 0;white-space:pre-wrap}.bad{border-left:4px solid #d37b5f}.good{border-left:4px solid #4a9c7c}.crit{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.crit div{padding:12px;border-radius:11px;background:#fff;border:1px solid var(--line)}.crit b{display:block;font-size:11px;color:var(--purple);margin-bottom:3px}
+.response{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;margin:12px 0;white-space:pre-wrap}.bad{border-left:4px solid #d37b5f}.good{border-left:4px solid #4a9c7c}.crit{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.crit div{padding:12px;border-radius:11px;background:#fff;border:1px solid var(--line)}.crit b{display:block;font-size:11px;color:var(--purple);margin-bottom:3px;writing-mode:horizontal-tb;white-space:normal}.crit div{writing-mode:horizontal-tb;min-width:0;overflow-wrap:anywhere}
 .nextrow{display:flex;justify-content:space-between;gap:10px;margin-top:16px}.nextrow button{border:0;border-radius:12px;padding:11px 16px;cursor:pointer;font-weight:800}.prev{background:#edf0f5}.next{background:var(--purple);color:#fff}
 .exercise{margin-top:22px;background:linear-gradient(135deg,#f0faf6,#f9fffc);border:1px solid #cfe9de;border-radius:18px;padding:20px}.exercise h3{margin:0 0 6px;color:var(--green)}
 .data{overflow:auto;margin:12px 0}.data table{border-collapse:collapse;width:100%;min-width:540px;background:#fff}.data th,.data td{border:1px solid var(--line);padding:9px;text-align:left}.data th{background:#f1f3f7;font-size:12px}
@@ -80,8 +80,8 @@ const cases=[
 title:"Gestionar un cliente de principio a fin",tag:"COMUNICACIÓN · CLIENTE",
 intro:"Recibes un email largo con tres peticiones, una duda y una fecha implícita. El objetivo no es responder rápido: es entender qué se está pidiendo antes de comprometerte.",
 steps:[
-{title:"1 · Leer antes de redactar",body:<><div class="label">SITUACIÓN</div><p>Cliente ficticio: «Hola, necesitamos saber si podéis tener la propuesta el viernes. También queremos comparar el plan estándar con el avanzado y nos gustaría añadir una reunión de 30 minutos. Si el viernes no es posible, decidnos otra fecha.»</p><p><strong>Decisión:</strong> todavía no pidas a ChatGPT que escriba el email. Primero extrae las peticiones.</p><div class="crit"><div><b>PETICIÓN 1</b>Confirmar fecha de propuesta.</div><div><b>PETICIÓN 2</b>Comparar dos planes.</div><div><b>PETICIÓN 3</b>Solicitar una reunión.</div><div><b>CONDICIÓN</b>Si viernes no es posible, proponer alternativa.</div></div></>},
-{title:"2 · Analizar con ChatGPT",body:<><div class="label">PROMPT</div><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Analiza este mensaje de cliente.
+{title:"1 · Leer antes de redactar",body:`<div class="label">SITUACIÓN</div><p>Cliente ficticio: «Hola, necesitamos saber si podéis tener la propuesta el viernes. También queremos comparar el plan estándar con el avanzado y nos gustaría añadir una reunión de 30 minutos. Si el viernes no es posible, decidnos otra fecha.»</p><p><strong>Decisión:</strong> todavía no pidas a ChatGPT que escriba el email. Primero extrae las peticiones.</p><div class="crit"><div><b>PETICIÓN 1</b>Confirmar fecha de propuesta.</div><div><b>PETICIÓN 2</b>Comparar dos planes.</div><div><b>PETICIÓN 3</b>Solicitar una reunión.</div><div><b>CONDICIÓN</b>Si viernes no es posible, proponer alternativa.</div></div>`},
+{title:"2 · Analizar con ChatGPT",body:`<div class="label">PROMPT</div><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Analiza este mensaje de cliente.
 
 1. Extrae cada petición.
 2. Separa hechos de suposiciones.
@@ -90,9 +90,9 @@ steps:[
 5. Señala cualquier compromiso que no debería asumir sin confirmarlo.
 
 Mensaje:
-[pega aquí el mensaje]</pre></div><div class="response"><strong>Resultado esperado:</strong> una lista de peticiones + información faltante + posibles compromisos. La ventaja es que todavía no has convertido una interpretación en una promesa.</div></>},
-{title:"3 · Primer borrador: el error",body:<><div class="label">RESPUESTA MEDIOCRE</div><div class="response bad">Hola, sí, tendremos la propuesta el viernes y os enviaremos también la comparación de planes. Podemos hacer la reunión el viernes por la tarde.</div><p><strong>¿Qué falla?</strong> El texto inventa disponibilidad. El mensaje original no dice que la reunión sea posible ni que la propuesta pueda estar lista.</p><div class="crit"><div><b>HECHO</b>El cliente pregunta si es posible.</div><div><b>NO CONFIRMADO</b>La fecha real de entrega.</div><div><b>NO CONFIRMADO</b>La disponibilidad para la reunión.</div><div><b>RIESGO</b>Crear un compromiso que nadie ha autorizado.</div></div></>},
-{title:"4 · Corregir con criterio",body:<><div class="label">SEGUNDO PROMPT</div><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Redacta una respuesta profesional usando SOLO estos hechos confirmados:
+[pega aquí el mensaje]</pre></div><div class="response"><strong>Resultado esperado:</strong> una lista de peticiones + información faltante + posibles compromisos. La ventaja es que todavía no has convertido una interpretación en una promesa.</div>`},
+{title:"3 · Primer borrador: el error",body:`<div class="label">RESPUESTA MEDIOCRE</div><div class="response bad">Hola, sí, tendremos la propuesta el viernes y os enviaremos también la comparación de planes. Podemos hacer la reunión el viernes por la tarde.</div><p><strong>¿Qué falla?</strong> El texto inventa disponibilidad. El mensaje original no dice que la reunión sea posible ni que la propuesta pueda estar lista.</p><div class="crit"><div><b>HECHO</b>El cliente pregunta si es posible.</div><div><b>NO CONFIRMADO</b>La fecha real de entrega.</div><div><b>NO CONFIRMADO</b>La disponibilidad para la reunión.</div><div><b>RIESGO</b>Crear un compromiso que nadie ha autorizado.</div></div>`},
+{title:"4 · Corregir con criterio",body:`<div class="label">SEGUNDO PROMPT</div><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Redacta una respuesta profesional usando SOLO estos hechos confirmados:
 - [fecha realmente disponible]
 - [qué plan podemos ofrecer]
 - [disponibilidad real para la reunión]
@@ -102,24 +102,24 @@ El cliente ha pedido:
 - comparar dos planes
 - una reunión de 30 minutos
 
-Si falta un dato, formula una pregunta o indica que está pendiente. No inventes compromisos. Termina con el siguiente paso claro.</pre></div><div class="response good"><strong>Resultado mejorado:</strong> responde a las tres peticiones, diferencia lo confirmado de lo pendiente y evita comprometer una fecha o reunión que la persona no haya validado.</div></>},
-{title:"5 · Checklist antes de enviar",body:<><div class="label">CONTROL HUMANO</div><div class="crit"><div>□ ¿Los nombres son correctos?</div><div>□ ¿Las fechas están confirmadas?</div><div>□ ¿He prometido algo sin autorización?</div><div>□ ¿He respondido a todas las peticiones?</div><div>□ ¿El siguiente paso está claro?</div><div>□ ¿Hay información confidencial innecesaria?</div></div><p><strong>Transferencia:</strong> este patrón sirve también para soporte, ventas, administración y gestión de proyectos.</p></>}
+Si falta un dato, formula una pregunta o indica que está pendiente. No inventes compromisos. Termina con el siguiente paso claro.</pre></div><div class="response good"><strong>Resultado mejorado:</strong> responde a las tres peticiones, diferencia lo confirmado de lo pendiente y evita comprometer una fecha o reunión que la persona no haya validado.</div>`},
+{title:"5 · Checklist antes de enviar",body:`<div class="label">CONTROL HUMANO</div><div class="crit"><div>□ ¿Los nombres son correctos?</div><div>□ ¿Las fechas están confirmadas?</div><div>□ ¿He prometido algo sin autorización?</div><div>□ ¿He respondido a todas las peticiones?</div><div>□ ¿El siguiente paso está claro?</div><div>□ ¿Hay información confidencial innecesaria?</div></div><p><strong>Transferencia:</strong> este patrón sirve también para soporte, ventas, administración y gestión de proyectos.</p>`}
 ]},
 {
 title:"De notas desordenadas a un informe profesional",tag:"DOCUMENTACIÓN · INFORME",
 intro:"Tienes notas tomadas durante varias conversaciones. Son útiles, pero están mezcladas. El objetivo es construir un documento sin convertir las notas en afirmaciones que no están respaldadas.",
 steps:[
-{title:"1 · Separar material de estructura",body:<><div class="label">NOTAS FICTICIAS</div><div class="response">Cliente satisfecho con soporte. Dice que tarda mucho en recibir respuesta. Tres incidencias en abril. Una resuelta en 1 día, otra en 4, otra sigue abierta. Quiere saber si podemos mejorar. Reunión próxima semana. Quizá cambiar horario soporte. No sabemos si el problema es volumen o cobertura.</div><p><strong>Primera decisión:</strong> las notas contienen hechos, opiniones e hipótesis. No deben mezclarse.</p></>},
-{title:"2 · Pedir un índice razonado",body:<><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Convierte estas notas en una propuesta de estructura para un informe.
+{title:"1 · Separar material de estructura",body:`<div class="label">NOTAS FICTICIAS</div><div class="response">Cliente satisfecho con soporte. Dice que tarda mucho en recibir respuesta. Tres incidencias en abril. Una resuelta en 1 día, otra en 4, otra sigue abierta. Quiere saber si podemos mejorar. Reunión próxima semana. Quizá cambiar horario soporte. No sabemos si el problema es volumen o cobertura.</div><p><strong>Primera decisión:</strong> las notas contienen hechos, opiniones e hipótesis. No deben mezclarse.</p>`},
+{title:"2 · Pedir un índice razonado",body:`<div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Convierte estas notas en una propuesta de estructura para un informe.
 
 Clasifica cada elemento como:
 HECHO / OPINIÓN / HIPÓTESIS / DATO FALTANTE.
 
 Después propone un índice de 5-7 secciones. Para cada sección explica qué pregunta debe responder.
 
-No redactes el informe todavía.</pre></div><div class="response good"><strong>Idea clave:</strong> primero se diseña la arquitectura. Así puedes detectar que «quizá cambiar horario» es una hipótesis y no una conclusión.</div></>},
-{title:"3 · Redactar por bloques",body:<><div class="label">MÉTODO</div><p>Trabaja sección por sección. Para cada bloque, aporta los datos necesarios y define qué no puede afirmarse.</p><div class="response"><strong>Ejemplo de sección:</strong><br><br><strong>Situación actual</strong><br>Durante abril se registraron tres incidencias. Los tiempos observados fueron 1 día, 4 días y una incidencia aún abierta.<br><br><strong>Lo que NO sabemos</strong><br>Las notas no permiten determinar si la causa es volumen de solicitudes, cobertura horaria u otro factor.</div></>},
-{title:"4 · Revisión adversarial",body:<><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Revisa este borrador como si fueras un responsable que debe aprobarlo.
+No redactes el informe todavía.</pre></div><div class="response good"><strong>Idea clave:</strong> primero se diseña la arquitectura. Así puedes detectar que «quizá cambiar horario» es una hipótesis y no una conclusión.</div>`},
+{title:"3 · Redactar por bloques",body:`<div class="label">MÉTODO</div><p>Trabaja sección por sección. Para cada bloque, aporta los datos necesarios y define qué no puede afirmarse.</p><div class="response"><strong>Ejemplo de sección:</strong><br><br><strong>Situación actual</strong><br>Durante abril se registraron tres incidencias. Los tiempos observados fueron 1 día, 4 días y una incidencia aún abierta.<br><br><strong>Lo que NO sabemos</strong><br>Las notas no permiten determinar si la causa es volumen de solicitudes, cobertura horaria u otro factor.</div>`},
+{title:"4 · Revisión adversarial",body:`<div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Revisa este borrador como si fueras un responsable que debe aprobarlo.
 
 Busca:
 1. afirmaciones sin evidencia,
@@ -128,14 +128,14 @@ Busca:
 4. conclusiones demasiado fuertes,
 5. recomendaciones que necesiten una decisión humana.
 
-Devuelve una tabla: fragmento / problema / corrección propuesta.</pre></div><p>Esta segunda mirada es más útil que pedir simplemente «mejora el informe», porque obliga a revisar criterios concretos.</p></>},
-{title:"5 · Versión final",body:<><div class="label">CRITERIO DE ACEPTACIÓN</div><div class="crit"><div><b>TRAZABILIDAD</b>Cada conclusión puede relacionarse con información disponible.</div><div><b>CLARIDAD</b>El lector entiende el problema sin conocer las notas.</div><div><b>INCERTIDUMBRE</b>Lo que no se sabe aparece como pendiente.</div><div><b>ACCIÓN</b>Las recomendaciones distinguen hechos de decisiones.</div></div></>}
+Devuelve una tabla: fragmento / problema / corrección propuesta.</pre></div><p>Esta segunda mirada es más útil que pedir simplemente «mejora el informe», porque obliga a revisar criterios concretos.</p>`},
+{title:"5 · Versión final",body:`<div class="label">CRITERIO DE ACEPTACIÓN</div><div class="crit"><div><b>TRAZABILIDAD</b>Cada conclusión puede relacionarse con información disponible.</div><div><b>CLARIDAD</b>El lector entiende el problema sin conocer las notas.</div><div><b>INCERTIDUMBRE</b>Lo que no se sabe aparece como pendiente.</div><div><b>ACCIÓN</b>Las recomendaciones distinguen hechos de decisiones.</div></div>`}
 ]},
 {
 title:"Una reunión que termina en acciones",tag:"REUNIONES · SEGUIMIENTO",
 intro:"El trabajo de una reunión no termina al cerrar la videollamada. El objetivo es llegar preparado, capturar decisiones y salir con responsables y próximos pasos claros.",
 steps:[
-{title:"1 · Preparación",body:<><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Voy a tener una reunión sobre [tema].
+{title:"1 · Preparación",body:`<div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Voy a tener una reunión sobre [tema].
 
 Participantes: [roles]
 Objetivo: [qué debemos conseguir]
@@ -148,9 +148,9 @@ Prepárame:
 4. dos posibles objeciones,
 5. qué información debería llevar preparada.
 
-No inventes datos.</pre></div></>},
-{title:"2 · Simular una objeción",body:<><div class="label">ENTRENAMIENTO</div><p>Pide a ChatGPT que interprete a la persona que discrepa. No para aprender a manipularla, sino para descubrir lagunas de tu propuesta.</p><div class="response">«No estoy convencido de cambiar el proceso todavía. ¿Qué evidencia tenemos de que la mejora compensará el esfuerzo de implantación?»</div><p><strong>Tu trabajo:</strong> responde con los datos que realmente tengas. Si no tienes evidencia, dilo.</p></>},
-{title:"3 · Convertir notas en decisiones",body:<><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Estas son mis notas de una reunión.
+No inventes datos.</pre></div>`},
+{title:"2 · Simular una objeción",body:`<div class="label">ENTRENAMIENTO</div><p>Pide a ChatGPT que interprete a la persona que discrepa. No para aprender a manipularla, sino para descubrir lagunas de tu propuesta.</p><div class="response">«No estoy convencido de cambiar el proceso todavía. ¿Qué evidencia tenemos de que la mejora compensará el esfuerzo de implantación?»</div><p><strong>Tu trabajo:</strong> responde con los datos que realmente tengas. Si no tienes evidencia, dilo.</p>`},
+{title:"3 · Convertir notas en decisiones",body:`<div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Estas son mis notas de una reunión.
 
 Separa:
 - decisiones tomadas,
@@ -160,16 +160,16 @@ Separa:
 - preguntas abiertas,
 - puntos que parecen acordados pero necesitan confirmación.
 
-No conviertas una sugerencia en una decisión.</pre></div></>},
-{title:"4 · Seguimiento",body:<><div class="response good"><strong>Resultado profesional:</strong><br>DECISIÓN → qué se acordó<br>TAREA → qué debe hacerse<br>RESPONSABLE → quién la asume<br>FECHA → solo si está confirmada<br>PENDIENTE → qué falta decidir</div><p>El formato reduce el riesgo de que una interpretación de las notas se convierta en un supuesto.</p></>},
-{title:"5 · Checklist",body:<><div class="crit"><div>□ Cada tarea tiene responsable.</div><div>□ Las fechas no inventadas están marcadas.</div><div>□ Las decisiones están separadas de opiniones.</div><div>□ Los puntos abiertos tienen siguiente paso.</div></div></>}
+No conviertas una sugerencia en una decisión.</pre></div>`},
+{title:"4 · Seguimiento",body:`<div class="response good"><strong>Resultado profesional:</strong><br>DECISIÓN → qué se acordó<br>TAREA → qué debe hacerse<br>RESPONSABLE → quién la asume<br>FECHA → solo si está confirmada<br>PENDIENTE → qué falta decidir</div><p>El formato reduce el riesgo de que una interpretación de las notas se convierta en un supuesto.</p>`},
+{title:"5 · Checklist",body:`<div class="crit"><div>□ Cada tarea tiene responsable.</div><div>□ Las fechas no inventadas están marcadas.</div><div>□ Las decisiones están separadas de opiniones.</div><div>□ Los puntos abiertos tienen siguiente paso.</div></div>`}
 ]},
 {
 title:"De una tabla a una decisión defendible",tag:"DATOS · ANÁLISIS",
 intro:"Aquí la IA no debe «adivinar la respuesta». Debe ayudarte a formular preguntas, detectar patrones y explicar qué evidencia respalda una recomendación.",
 steps:[
-{title:"1 · Datos de ejemplo",body:<><div class="data"><table><thead><tr><th>Canal</th><th>Solicitudes</th><th>Tiempo medio (min)</th><th>Satisfacción /10</th></tr></thead><tbody><tr><td>Email</td><td>120</td><td>18</td><td>7,8</td></tr><tr><td>Chat</td><td>210</td><td>8</td><td>8,6</td></tr><tr><td>Teléfono</td><td>70</td><td>25</td><td>7,1</td></tr><tr><td>Formulario</td><td>100</td><td>12</td><td>7,9</td></tr></tbody></table></div><p>Antes de preguntar, define la decisión: <strong>¿qué canal merece atención prioritaria?</strong> La tabla por sí sola no contiene la respuesta.</p></>},
-{title:"2 · Preguntar por hallazgos",body:<><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Analiza esta tabla.
+{title:"1 · Datos de ejemplo",body:`<div class="data"><table><thead><tr><th>Canal</th><th>Solicitudes</th><th>Tiempo medio (min)</th><th>Satisfacción /10</th></tr></thead><tbody><tr><td>Email</td><td>120</td><td>18</td><td>7,8</td></tr><tr><td>Chat</td><td>210</td><td>8</td><td>8,6</td></tr><tr><td>Teléfono</td><td>70</td><td>25</td><td>7,1</td></tr><tr><td>Formulario</td><td>100</td><td>12</td><td>7,9</td></tr></tbody></table></div><p>Antes de preguntar, define la decisión: <strong>¿qué canal merece atención prioritaria?</strong> La tabla por sí sola no contiene la respuesta.</p>`},
+{title:"2 · Preguntar por hallazgos",body:`<div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Analiza esta tabla.
 
 1. Calcula qué canal concentra más solicitudes.
 2. Compara volumen, tiempo medio y satisfacción.
@@ -177,19 +177,20 @@ steps:[
 4. Distingue cálculos de interpretaciones.
 5. Señala qué dato adicional necesitarías antes de recomendar un cambio.
 
-Muestra los cálculos relevantes y no inventes información.</pre></div></>},
-{title:"3 · Evidencia antes de opinión",body:<><div class="response"><strong>Ejemplo de lectura:</strong><br>El chat concentra el mayor volumen (210 solicitudes) y presenta el menor tiempo medio (8 min) junto con la mayor satisfacción (8,6/10). Esto describe los datos.<br><br><strong>Pero:</strong> no demuestra por sí solo que haya que trasladar recursos al chat. Faltan costes, complejidad de casos, capacidad del equipo y otros factores.</div></>},
-{title:"4 · Contraargumento",body:<><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Mi hipótesis es: «deberíamos priorizar el canal chat».
+Muestra los cálculos relevantes y no inventes información.</pre></div>`},
+{title:"3 · Evidencia antes de opinión",body:`<div class="response"><strong>Ejemplo de lectura:</strong><br>El chat concentra el mayor volumen (210 solicitudes) y presenta el menor tiempo medio (8 min) junto con la mayor satisfacción (8,6/10). Esto describe los datos.<br><br><strong>Pero:</strong> no demuestra por sí solo que haya que trasladar recursos al chat. Faltan costes, complejidad de casos, capacidad del equipo y otros factores.</div>`},
+{title:"4 · Contraargumento",body:`<div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Mi hipótesis es: «deberíamos priorizar el canal chat».
 
 Intenta refutarla usando SOLO los datos disponibles.
 Después indica qué información adicional podría confirmar o debilitar la hipótesis.
 
-No inventes cifras.</pre></div><p>Esta fase es importante: obliga a distinguir una señal de una decisión.</p></>},
-{title:"5 · Recomendación",body:<><div class="response good"><strong>Formato recomendado:</strong><br><br><strong>Hallazgo:</strong> qué muestran los datos.<br><strong>Interpretación:</strong> qué podría significar.<br><strong>Limitación:</strong> qué no podemos concluir todavía.<br><strong>Recomendación:</strong> qué probaría y por qué.<br><strong>Medición:</strong> qué indicador usaría para saber si el cambio funciona.</div></>}
+No inventes cifras.</pre></div><p>Esta fase es importante: obliga a distinguir una señal de una decisión.</p>`},
+{title:"5 · Recomendación",body:`<div class="response good"><strong>Formato recomendado:</strong><br><br><strong>Hallazgo:</strong> qué muestran los datos.<br><strong>Interpretación:</strong> qué podría significar.<br><strong>Limitación:</strong> qué no podemos concluir todavía.<br><strong>Recomendación:</strong> qué probaría y por qué.<br><strong>Medición:</strong> qué indicador usaría para saber si el cambio funciona.</div>`}
 ]}
 ];
 
 function renderCases(){
+ if(!Array.isArray(cases)||cases.length!==4) throw new Error("Laboratorio: casos no disponibles");
  cases.forEach((c,ci)=>{
   const el=document.getElementById("case"+ci);
   let h='<div class="case-head"><div><div class="label">'+c.tag+'</div><h2>'+c.title+'</h2><p class="muted">'+c.intro+'</p></div><span class="badge">CASO '+String(ci+1).padStart(2,"0")+'</span></div>';
@@ -205,7 +206,7 @@ function step(ci,si){activeSteps[ci]=Math.max(0,Math.min(cases[ci].steps.length-
 function move(ci,d){step(ci,activeSteps[ci]+d);if(d>0 && activeSteps[ci]===cases[ci].steps.length-1){openCase(Math.min(3,ci+1));}}
 function copyText(btn){const pre=btn.parentElement.querySelector("pre").textContent;navigator.clipboard?.writeText(pre);btn.textContent="✓ Copiado";setTimeout(()=>btn.textContent="Copiar",1200);}
 function calc(){const b=Number(document.getElementById("before").value)||0,a=Number(document.getElementById("after").value)||0,f=Number(document.getElementById("freq").value)||0;const saved=Math.max(0,b-a),weekly=saved*f;document.getElementById("calcResult").innerHTML='<b>'+saved+' min</b> de ahorro estimado por tarea · <b>'+weekly+' min/semana</b> si mantienes esa frecuencia · aproximadamente <b>'+(weekly/60).toFixed(1)+' h/semana</b>.';}
-renderCases();calc();
+try{renderCases();calc();}catch(e){document.querySelectorAll(".case").forEach(el=>el.innerHTML="<p style=\"color:#b42318;font-weight:700\">No se ha podido cargar este caso. Recarga la página.</p>");console.error(e);}
 </script>
 </body>
 </html>
