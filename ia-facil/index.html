@@ -20,6 +20,13 @@ h1{font-size:clamp(48px,7.4vw,88px);line-height:.94;letter-spacing:-4px;max-widt
 .contact{background:#fff;padding:55px 22px;text-align:center;border-top:1px solid #dce4df}.contact-inner{max-width:760px;margin:auto}.contact h2{font-size:34px;line-height:1.1;letter-spacing:-1px;margin:0 0 10px}.contact p{margin:0;color:var(--muted);font-size:18px}.contact a{color:var(--green);font-weight:900;text-decoration:underline}
 footer{padding:25px 22px;text-align:center;background:var(--cream);color:var(--muted);font-size:13px;border-top:1px solid #dce4df}footer a{color:inherit;margin:0 8px}
 @media(max-width:700px){.hero-inner{padding:40px 28px 48px}.brand{font-size:23px;padding:8px 16px 9px 12px;margin-bottom:27px}.brand span{font-size:24px}h1{font-size:clamp(45px,14vw,64px);letter-spacing:-2.8px}.sub{font-size:24px;margin-bottom:30px}.price-row{gap:12px}.price{font-size:27px;padding:9px 17px}.single{font-size:27px}.cta{width:100%;justify-content:center;margin-top:32px}.info{padding:50px 18px}.info h2{font-size:31px}.included{grid-template-columns:1fr 1fr}.review{padding:50px 18px}.review-inner{grid-template-columns:1fr;gap:15px;padding:10px}.review-photo{height:240px}.review-copy{padding:16px 14px 22px}.review-copy blockquote{font-size:26px}}
+
+.science{background:#f1f5f1;padding:72px 22px}.science-inner{max-width:1000px;margin:auto}
+.science-head{text-align:center;max-width:760px;margin:0 auto 30px}.science-kicker{display:inline-block;background:#dcece4;color:var(--green-dark);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:.07em}
+.science h2{font-size:clamp(32px,5vw,46px);line-height:1.05;letter-spacing:-1.8px;margin:14px 0 12px}.science-head p{margin:0;color:var(--muted);font-size:18px;line-height:1.5}
+.carousel{position:relative;background:#fff;border:1px solid #d8e2dc;border-radius:26px;overflow:hidden;box-shadow:0 18px 45px #17312b12}.slides{position:relative}.slide{display:none;grid-template-columns:1fr 1fr;min-height:390px}.slide.active{display:grid}.slide-photo{min-height:390px;position:relative;overflow:hidden}.slide-photo img{width:100%;height:100%;object-fit:cover;display:block}.slide-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#00000005,#00000018)}
+.slide-copy{padding:42px 42px 35px;display:flex;flex-direction:column;justify-content:center}.slide-number{font-size:13px;font-weight:950;color:var(--green);letter-spacing:.1em;text-transform:uppercase}.slide-copy h3{font-size:clamp(29px,4vw,42px);line-height:1.05;letter-spacing:-1.4px;margin:10px 0 15px}.slide-copy p{font-size:18px;line-height:1.55;color:var(--muted);margin:0 0 18px}.evidence{font-size:13px;line-height:1.45;color:#71827c;border-top:1px solid #e1e8e3;padding-top:14px}.evidence a{color:var(--green);font-weight:800;text-decoration:underline}.carousel-controls{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-top:1px solid #e1e8e3;background:#fbfcfa}.carousel-buttons{display:flex;gap:8px}.carousel-btn{width:42px;height:42px;border:1px solid #cfdad4;background:#fff;border-radius:50%;font-size:20px;color:var(--green-dark);cursor:pointer}.carousel-btn:hover{background:#edf4ef}.dots{display:flex;gap:7px;align-items:center}.dot{width:8px;height:8px;border:0;border-radius:50%;background:#c7d3cd;padding:0;cursor:pointer}.dot.active{width:24px;border-radius:999px;background:var(--green)}.science-note{max-width:860px;margin:18px auto 0;text-align:center;color:#74837e;font-size:12px;line-height:1.5}
+@media(max-width:700px){.science{padding:52px 18px}.slide.active{display:flex;flex-direction:column}.slide-photo{min-height:230px;height:230px}.slide-copy{padding:27px 24px 25px}.slide-copy h3{font-size:31px}.slide-copy p{font-size:17px}.carousel-controls{padding:12px 14px}}
 </style>
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -80,9 +87,93 @@ document.addEventListener('click',e=>{const a=e.target.closest('a[href*="buy.str
 </div>
 </div>
 </section>
+
+<section class="science" id="evidencia">
+<div class="science-inner">
+<div class="science-head">
+<span class="science-kicker">Aprender también tiene beneficios</span>
+<h2>Lo que dice la investigación</h2>
+<p>Aprender nuevas habilidades digitales puede aportar mucho más que saber utilizar una herramienta. Estas conclusiones proceden de revisiones y metaanálisis científicos.</p>
+</div>
+<div class="carousel" aria-label="Beneficios respaldados por investigación">
+<div class="slides">
+<article class="slide active">
+<div class="slide-photo"><img src="https://images.pexels.com/photos/7983557/pexels-photo-7983557.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Personas mayores aprendiendo tecnología con ordenadores" loading="lazy"></div>
+<div class="slide-copy">
+<div class="slide-number">01 · Confianza</div>
+<h3>Gana confianza con la tecnología</h3>
+<p>La formación en alfabetización digital se ha asociado con mejoras en <strong>conocimientos y autoeficacia</strong> en adultos mayores.</p>
+<div class="evidence">Revisión y metaanálisis de 7 estudios con 710 adultos mayores. <a href="https://pubmed.ncbi.nlm.nih.gov/37379077/" target="_blank" rel="noopener">Ver estudio en PubMed →</a></div>
+</div>
+</article>
+<article class="slide">
+<div class="slide-photo"><img src="https://images.pexels.com/photos/7983600/pexels-photo-7983600.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Adultos mayores aprendiendo juntos en una clase de tecnología" loading="lazy"></div>
+<div class="slide-copy">
+<div class="slide-number">02 · Aprendizaje</div>
+<h3>Seguir aprendiendo importa</h3>
+<p>La participación en actividades de aprendizaje en etapas posteriores de la vida se ha relacionado con <strong>bienestar, autoconfianza y determinados indicadores cognitivos</strong>.</p>
+<div class="evidence">Revisión sistemática y metaanálisis de 32 estudios en personas de 55 años o más. <a href="https://pubmed.ncbi.nlm.nih.gov/33457462/" target="_blank" rel="noopener">Ver estudio en PubMed →</a></div>
+</div>
+</article>
+<article class="slide">
+<div class="slide-photo"><img src="https://images.pexels.com/photos/7983549/pexels-photo-7983549.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Un instructor ayudando a personas mayores con tecnología" loading="lazy"></div>
+<div class="slide-copy">
+<div class="slide-number">03 · Capacidad digital</div>
+<h3>Entiende mejor el mundo digital</h3>
+<p>La evidencia reciente en adultos de 45 años o más encuentra mejoras frecuentes en <strong>competencias digitales, confianza y autoeficacia</strong> tras intervenciones de alfabetización digital.</p>
+<div class="evidence">Revisión de 24 estudios publicada en 2026. <a href="https://pubmed.ncbi.nlm.nih.gov/42261765/" target="_blank" rel="noopener">Ver estudio en PubMed →</a></div>
+</div>
+</article>
+<article class="slide">
+<div class="slide-photo"><img src="https://images.pexels.com/photos/5231327/pexels-photo-5231327.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Manos de una persona mayor utilizando un ordenador portátil" loading="lazy"></div>
+<div class="slide-copy">
+<div class="slide-number">04 · Estimulación cognitiva</div>
+<h3>La tecnología también puede estimular capacidades cognitivas</h3>
+<p>Un metaanálisis de ensayos aleatorizados encontró mejoras en <strong>función cognitiva global, atención, velocidad de procesamiento, función ejecutiva y memoria de trabajo</strong> con determinadas intervenciones digitales.</p>
+<div class="evidence">23 estudios y 1.454 participantes de 60 años o más. Esto no significa que un curso de ChatGPT produzca por sí solo esos efectos. <a href="https://pubmed.ncbi.nlm.nih.gov/39688787/" target="_blank" rel="noopener">Ver estudio en PubMed →</a></div>
+</div>
+</article>
+</div>
+<div class="carousel-controls">
+<div class="carousel-buttons"><button class="carousel-btn prev" type="button" aria-label="Beneficio anterior">←</button><button class="carousel-btn next" type="button" aria-label="Siguiente beneficio">→</button></div>
+<div class="dots" aria-label="Seleccionar beneficio">
+<button class="dot active" type="button" aria-label="Ir al beneficio 1"></button>
+<button class="dot" type="button" aria-label="Ir al beneficio 2"></button>
+<button class="dot" type="button" aria-label="Ir al beneficio 3"></button>
+<button class="dot" type="button" aria-label="Ir al beneficio 4"></button>
+</div>
+</div>
+</div>
+<p class="science-note">Las investigaciones citadas estudian aprendizaje y alfabetización digital en adultos, no este curso concreto. Las mostramos para contextualizar los posibles beneficios de seguir aprendiendo y desarrollar competencias digitales.</p>
+</div>
+</section>
 </main>
 <section class="contact"><div class="contact-inner"><h2>¿Tienes alguna duda?</h2><p>Escríbenos a <a href="mailto:studyos.oficial.spain@gmail.com">studyos.oficial.spain@gmail.com</a></p></div></section>
 <footer>© 2026 IA fácil · <a href="./aviso-legal.html">Aviso legal</a> · <a href="./terminos.html">Términos</a> · <a href="./privacidad.html">Privacidad y cookies</a> · <a href="./condiciones-compra.html">Condiciones de compra</a></footer>
+
+<script>
+(function(){
+const root=document.querySelector('.carousel');
+if(!root)return;
+const slides=[...root.querySelectorAll('.slide')],dots=[...root.querySelectorAll('.dot')];
+let current=0,timer;
+function show(n){
+ current=(n+slides.length)%slides.length;
+ slides.forEach((s,i)=>s.classList.toggle('active',i===current));
+ dots.forEach((d,i)=>d.classList.toggle('active',i===current));
+}
+function start(){clearInterval(timer);timer=setInterval(()=>show(current+1),6500)}
+root.querySelector('.prev').addEventListener('click',()=>{show(current-1);start()});
+root.querySelector('.next').addEventListener('click',()=>{show(current+1);start()});
+dots.forEach((d,i)=>d.addEventListener('click',()=>{show(i);start()}));
+root.addEventListener('mouseenter',()=>clearInterval(timer));
+root.addEventListener('mouseleave',start);
+root.addEventListener('focusin',()=>clearInterval(timer));
+root.addEventListener('focusout',start);
+start();
+})();
+</script>
+
 <script src="./track.js"></script>
 </body>
 </html>
