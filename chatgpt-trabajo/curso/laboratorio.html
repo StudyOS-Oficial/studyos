@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Laboratorio profesional · ChatGPT en el trabajo</title>
+<style>
+:root{--bg:#f5f6fa;--card:#fff;--ink:#182033;--muted:#667085;--line:#e4e7ee;--purple:#6857e8;--purple2:#f0edff;--green:#17785c;--green2:#eaf8f2;--orange:#b56b12;--orange2:#fff4e5;--dark:#151a2b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}button,input{font:inherit}
+.hero{background:linear-gradient(135deg,#151a2b,#302652);color:#fff;padding:28px 18px 36px}.hero-in,.wrap{max-width:1120px;margin:auto}.brand{font-weight:900;font-size:18px}.brand b{color:#aca2ff}.eyebrow{margin-top:42px;color:#bdb5ff;font-size:11px;font-weight:900;letter-spacing:1.2px}.hero h1{font-size:clamp(34px,6vw,58px);line-height:1.02;margin:8px 0 12px}.hero p{max-width:780px;color:#d9dbe5;font-size:18px;margin:0}
+.wrap{padding:28px 18px 80px}.intro{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin-bottom:22px}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 8px 35px #1820330a}.card h2{margin:0 0 8px;font-size:25px}.muted{color:var(--muted)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:18px}.tab{border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px 12px;text-align:left;cursor:pointer}.tab strong{display:block}.tab small{color:var(--muted)}.tab.active{background:var(--purple2);border-color:#d4ceff;color:#5141cf}
+.case{display:none}.case.active{display:block}.case-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.badge{font-size:10px;font-weight:900;letter-spacing:.8px;color:var(--purple);background:var(--purple2);padding:7px 9px;border-radius:99px;white-space:nowrap}
+.progress{height:7px;background:#eceef3;border-radius:99px;overflow:hidden;margin:17px 0 24px}.progress i{display:block;height:100%;width:25%;background:var(--purple);transition:.25s}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:18px 0}.sbtn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 8px;cursor:pointer;text-align:left;font-size:12px}.sbtn b{display:block;font-size:10px;color:var(--muted)}.sbtn.active{background:var(--dark);color:#fff;border-color:var(--dark)}.sbtn.active b{color:#bdb5ff}
+.panel{border:1px solid var(--line);border-radius:18px;padding:20px;background:#fafbfc;min-height:260px}.panel h3{margin:0 0 10px;font-size:21px}.panel p{margin:8px 0}.label{font-size:10px;font-weight:900;letter-spacing:.8px;color:var(--purple);margin-bottom:6px}.prompt{background:var(--dark);color:#fff;border-radius:15px;padding:17px;margin:14px 0;position:relative}.prompt pre{white-space:pre-wrap;margin:0;padding-right:70px;font:13px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace}.copy{position:absolute;right:10px;top:10px;border:1px solid #ffffff33;background:#ffffff12;color:#fff;border-radius:8px;padding:6px 9px;cursor:pointer}
+.response{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;margin:12px 0;white-space:pre-wrap}.bad{border-left:4px solid #d37b5f}.good{border-left:4px solid #4a9c7c}.crit{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.crit div{padding:12px;border-radius:11px;background:#fff;border:1px solid var(--line)}.crit b{display:block;font-size:11px;color:var(--purple);margin-bottom:3px}
+.nextrow{display:flex;justify-content:space-between;gap:10px;margin-top:16px}.nextrow button{border:0;border-radius:12px;padding:11px 16px;cursor:pointer;font-weight:800}.prev{background:#edf0f5}.next{background:var(--purple);color:#fff}
+.exercise{margin-top:22px;background:linear-gradient(135deg,#f0faf6,#f9fffc);border:1px solid #cfe9de;border-radius:18px;padding:20px}.exercise h3{margin:0 0 6px;color:var(--green)}
+.data{overflow:auto;margin:12px 0}.data table{border-collapse:collapse;width:100%;min-width:540px;background:#fff}.data th,.data td{border:1px solid var(--line);padding:9px;text-align:left}.data th{background:#f1f3f7;font-size:12px}
+.calc{margin-top:24px}.calc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.field label{display:block;font-size:12px;font-weight:800;margin-bottom:5px}.field input{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px}.result{margin-top:16px;padding:17px;border-radius:15px;background:var(--purple2);font-size:18px}.result b{color:#5141cf}.note{font-size:12px;color:var(--muted);margin-top:8px}
+.final{margin-top:24px;background:linear-gradient(135deg,#151a2b,#332657);color:#fff}.final h2{margin-top:0}.workflow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.workflow div{border:1px solid #ffffff1c;background:#ffffff0a;border-radius:13px;padding:15px}.workflow b{display:block;color:#bdb5ff;margin-bottom:4px}
+@media(max-width:800px){.intro{grid-template-columns:1fr}.tabs{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}.calc-grid,.workflow{grid-template-columns:1fr}.case-head{display:block}.badge{display:inline-block;margin-top:10px}}
+@media(max-width:520px){.wrap{padding:20px 12px 60px}.hero{padding:22px 14px 30px}.card{padding:19px}.tabs{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.crit{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="hero-in">
+<div class="brand">Study<b>OS</b></div>
+<div class="eyebrow">LABORATORIO PROFESIONAL · CHATGPT EN EL TRABAJO</div>
+<h1>Ahora vamos a trabajar de verdad.</h1>
+<p>Cuatro situaciones profesionales completas. No estudies el prompt: aprende a pensar el proceso, decidir qué pedir a ChatGPT, revisar lo que devuelve y convertirlo en un workflow reutilizable.</p>
+</div></header>
+
+<main class="wrap">
+<section class="intro">
+<div class="card"><h2>Cómo usar este laboratorio</h2><p class="muted">En cada caso encontrarás una situación, una decisión profesional, una interacción con ChatGPT, un error deliberado, una mejora y una checklist. Avanza paso a paso; no saltes directamente al resultado.</p><p><strong>Regla del laboratorio:</strong> la IA produce borradores y análisis; la persona decide, verifica y asume la responsabilidad.</p></div>
+<div class="card"><h2>Qué vas a practicar</h2><p>✓ Comunicación con clientes<br>✓ Documentación e informes<br>✓ Reuniones y seguimiento<br>✓ Análisis de datos y decisiones</p></div>
+</section>
+
+<div class="tabs" id="tabs">
+<button class="tab active" onclick="openCase(0)"><strong>01 · Cliente</strong><small>Del email a la respuesta</small></button>
+<button class="tab" onclick="openCase(1)"><strong>02 · Informe</strong><small>De notas a documento</small></button>
+<button class="tab" onclick="openCase(2)"><strong>03 · Reunión</strong><small>Antes y después</small></button>
+<button class="tab" onclick="openCase(3)"><strong>04 · Datos</strong><small>De tabla a decisión</small></button>
+</div>
+
+<section class="card case active" id="case0"></section>
+<section class="card case" id="case1"></section>
+<section class="card case" id="case2"></section>
+<section class="card case" id="case3"></section>
+
+<section class="card calc">
+<h2>Calculadora de ahorro de tiempo</h2>
+<p class="muted">Úsala para medir tu propio experimento. No es una promesa de productividad: solo convierte tus tiempos introducidos en una estimación sencilla.</p>
+<div class="calc-grid">
+<div class="field"><label>Minutos antes, por tarea</label><input id="before" type="number" min="0" value="30" oninput="calc()"></div>
+<div class="field"><label>Minutos después, por tarea</label><input id="after" type="number" min="0" value="18" oninput="calc()"></div>
+<div class="field"><label>Veces por semana</label><input id="freq" type="number" min="0" value="5" oninput="calc()"></div>
+</div>
+<div class="result" id="calcResult"></div>
+<div class="note">Consejo: mide también la calidad y el número de correcciones. Ahorrar minutos no compensa si después necesitas rehacer el trabajo.</div>
+</section>
+
+<section class="card final">
+<h2>Tu siguiente paso: convertir casos en workflows</h2>
+<p>El curso termina cuando puedes trasladar este patrón a tu propio puesto. No necesitas veinte prompts. Necesitas tres procesos que realmente vayas a utilizar.</p>
+<div class="workflow">
+<div><b>Workflow 1 · Comunicación</b>Entrada → borrador → revisión de hechos → envío.</div>
+<div><b>Workflow 2 · Documentación</b>Información → estructura → redacción por bloques → revisión.</div>
+<div><b>Workflow 3 · Análisis</b>Datos → criterios → hallazgos → contraargumentos → decisión.</div>
+</div>
+</section>
+</main>
+
+<script>
+const cases=[
+{
+title:"Gestionar un cliente de principio a fin",tag:"COMUNICACIÓN · CLIENTE",
+intro:"Recibes un email largo con tres peticiones, una duda y una fecha implícita. El objetivo no es responder rápido: es entender qué se está pidiendo antes de comprometerte.",
+steps:[
+{title:"1 · Leer antes de redactar",body:<><div class="label">SITUACIÓN</div><p>Cliente ficticio: «Hola, necesitamos saber si podéis tener la propuesta el viernes. También queremos comparar el plan estándar con el avanzado y nos gustaría añadir una reunión de 30 minutos. Si el viernes no es posible, decidnos otra fecha.»</p><p><strong>Decisión:</strong> todavía no pidas a ChatGPT que escriba el email. Primero extrae las peticiones.</p><div class="crit"><div><b>PETICIÓN 1</b>Confirmar fecha de propuesta.</div><div><b>PETICIÓN 2</b>Comparar dos planes.</div><div><b>PETICIÓN 3</b>Solicitar una reunión.</div><div><b>CONDICIÓN</b>Si viernes no es posible, proponer alternativa.</div></div></>},
+{title:"2 · Analizar con ChatGPT",body:<><div class="label">PROMPT</div><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Analiza este mensaje de cliente.
+
+1. Extrae cada petición.
+2. Separa hechos de suposiciones.
+3. Indica qué información me falta para responder.
+4. No redactes todavía.
+5. Señala cualquier compromiso que no debería asumir sin confirmarlo.
+
+Mensaje:
+[pega aquí el mensaje]</pre></div><div class="response"><strong>Resultado esperado:</strong> una lista de peticiones + información faltante + posibles compromisos. La ventaja es que todavía no has convertido una interpretación en una promesa.</div></>},
+{title:"3 · Primer borrador: el error",body:<><div class="label">RESPUESTA MEDIOCRE</div><div class="response bad">Hola, sí, tendremos la propuesta el viernes y os enviaremos también la comparación de planes. Podemos hacer la reunión el viernes por la tarde.</div><p><strong>¿Qué falla?</strong> El texto inventa disponibilidad. El mensaje original no dice que la reunión sea posible ni que la propuesta pueda estar lista.</p><div class="crit"><div><b>HECHO</b>El cliente pregunta si es posible.</div><div><b>NO CONFIRMADO</b>La fecha real de entrega.</div><div><b>NO CONFIRMADO</b>La disponibilidad para la reunión.</div><div><b>RIESGO</b>Crear un compromiso que nadie ha autorizado.</div></div></>},
+{title:"4 · Corregir con criterio",body:<><div class="label">SEGUNDO PROMPT</div><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Redacta una respuesta profesional usando SOLO estos hechos confirmados:
+- [fecha realmente disponible]
+- [qué plan podemos ofrecer]
+- [disponibilidad real para la reunión]
+
+El cliente ha pedido:
+- confirmar fecha de propuesta
+- comparar dos planes
+- una reunión de 30 minutos
+
+Si falta un dato, formula una pregunta o indica que está pendiente. No inventes compromisos. Termina con el siguiente paso claro.</pre></div><div class="response good"><strong>Resultado mejorado:</strong> responde a las tres peticiones, diferencia lo confirmado de lo pendiente y evita comprometer una fecha o reunión que la persona no haya validado.</div></>},
+{title:"5 · Checklist antes de enviar",body:<><div class="label">CONTROL HUMANO</div><div class="crit"><div>□ ¿Los nombres son correctos?</div><div>□ ¿Las fechas están confirmadas?</div><div>□ ¿He prometido algo sin autorización?</div><div>□ ¿He respondido a todas las peticiones?</div><div>□ ¿El siguiente paso está claro?</div><div>□ ¿Hay información confidencial innecesaria?</div></div><p><strong>Transferencia:</strong> este patrón sirve también para soporte, ventas, administración y gestión de proyectos.</p></>}
+]},
+{
+title:"De notas desordenadas a un informe profesional",tag:"DOCUMENTACIÓN · INFORME",
+intro:"Tienes notas tomadas durante varias conversaciones. Son útiles, pero están mezcladas. El objetivo es construir un documento sin convertir las notas en afirmaciones que no están respaldadas.",
+steps:[
+{title:"1 · Separar material de estructura",body:<><div class="label">NOTAS FICTICIAS</div><div class="response">Cliente satisfecho con soporte. Dice que tarda mucho en recibir respuesta. Tres incidencias en abril. Una resuelta en 1 día, otra en 4, otra sigue abierta. Quiere saber si podemos mejorar. Reunión próxima semana. Quizá cambiar horario soporte. No sabemos si el problema es volumen o cobertura.</div><p><strong>Primera decisión:</strong> las notas contienen hechos, opiniones e hipótesis. No deben mezclarse.</p></>},
+{title:"2 · Pedir un índice razonado",body:<><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Convierte estas notas en una propuesta de estructura para un informe.
+
+Clasifica cada elemento como:
+HECHO / OPINIÓN / HIPÓTESIS / DATO FALTANTE.
+
+Después propone un índice de 5-7 secciones. Para cada sección explica qué pregunta debe responder.
+
+No redactes el informe todavía.</pre></div><div class="response good"><strong>Idea clave:</strong> primero se diseña la arquitectura. Así puedes detectar que «quizá cambiar horario» es una hipótesis y no una conclusión.</div></>},
+{title:"3 · Redactar por bloques",body:<><div class="label">MÉTODO</div><p>Trabaja sección por sección. Para cada bloque, aporta los datos necesarios y define qué no puede afirmarse.</p><div class="response"><strong>Ejemplo de sección:</strong><br><br><strong>Situación actual</strong><br>Durante abril se registraron tres incidencias. Los tiempos observados fueron 1 día, 4 días y una incidencia aún abierta.<br><br><strong>Lo que NO sabemos</strong><br>Las notas no permiten determinar si la causa es volumen de solicitudes, cobertura horaria u otro factor.</div></>},
+{title:"4 · Revisión adversarial",body:<><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Revisa este borrador como si fueras un responsable que debe aprobarlo.
+
+Busca:
+1. afirmaciones sin evidencia,
+2. confusión entre opinión y hecho,
+3. datos que falten,
+4. conclusiones demasiado fuertes,
+5. recomendaciones que necesiten una decisión humana.
+
+Devuelve una tabla: fragmento / problema / corrección propuesta.</pre></div><p>Esta segunda mirada es más útil que pedir simplemente «mejora el informe», porque obliga a revisar criterios concretos.</p></>},
+{title:"5 · Versión final",body:<><div class="label">CRITERIO DE ACEPTACIÓN</div><div class="crit"><div><b>TRAZABILIDAD</b>Cada conclusión puede relacionarse con información disponible.</div><div><b>CLARIDAD</b>El lector entiende el problema sin conocer las notas.</div><div><b>INCERTIDUMBRE</b>Lo que no se sabe aparece como pendiente.</div><div><b>ACCIÓN</b>Las recomendaciones distinguen hechos de decisiones.</div></div></>}
+]},
+{
+title:"Una reunión que termina en acciones",tag:"REUNIONES · SEGUIMIENTO",
+intro:"El trabajo de una reunión no termina al cerrar la videollamada. El objetivo es llegar preparado, capturar decisiones y salir con responsables y próximos pasos claros.",
+steps:[
+{title:"1 · Preparación",body:<><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Voy a tener una reunión sobre [tema].
+
+Participantes: [roles]
+Objetivo: [qué debemos conseguir]
+Información disponible: [resumen]
+
+Prepárame:
+1. agenda de 30 minutos,
+2. tres decisiones que deberíamos intentar cerrar,
+3. cinco preguntas,
+4. dos posibles objeciones,
+5. qué información debería llevar preparada.
+
+No inventes datos.</pre></div></>},
+{title:"2 · Simular una objeción",body:<><div class="label">ENTRENAMIENTO</div><p>Pide a ChatGPT que interprete a la persona que discrepa. No para aprender a manipularla, sino para descubrir lagunas de tu propuesta.</p><div class="response">«No estoy convencido de cambiar el proceso todavía. ¿Qué evidencia tenemos de que la mejora compensará el esfuerzo de implantación?»</div><p><strong>Tu trabajo:</strong> responde con los datos que realmente tengas. Si no tienes evidencia, dilo.</p></>},
+{title:"3 · Convertir notas en decisiones",body:<><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Estas son mis notas de una reunión.
+
+Separa:
+- decisiones tomadas,
+- tareas,
+- responsables mencionados,
+- fechas confirmadas,
+- preguntas abiertas,
+- puntos que parecen acordados pero necesitan confirmación.
+
+No conviertas una sugerencia en una decisión.</pre></div></>},
+{title:"4 · Seguimiento",body:<><div class="response good"><strong>Resultado profesional:</strong><br>DECISIÓN → qué se acordó<br>TAREA → qué debe hacerse<br>RESPONSABLE → quién la asume<br>FECHA → solo si está confirmada<br>PENDIENTE → qué falta decidir</div><p>El formato reduce el riesgo de que una interpretación de las notas se convierta en un supuesto.</p></>},
+{title:"5 · Checklist",body:<><div class="crit"><div>□ Cada tarea tiene responsable.</div><div>□ Las fechas no inventadas están marcadas.</div><div>□ Las decisiones están separadas de opiniones.</div><div>□ Los puntos abiertos tienen siguiente paso.</div></div></>}
+]},
+{
+title:"De una tabla a una decisión defendible",tag:"DATOS · ANÁLISIS",
+intro:"Aquí la IA no debe «adivinar la respuesta». Debe ayudarte a formular preguntas, detectar patrones y explicar qué evidencia respalda una recomendación.",
+steps:[
+{title:"1 · Datos de ejemplo",body:<><div class="data"><table><thead><tr><th>Canal</th><th>Solicitudes</th><th>Tiempo medio (min)</th><th>Satisfacción /10</th></tr></thead><tbody><tr><td>Email</td><td>120</td><td>18</td><td>7,8</td></tr><tr><td>Chat</td><td>210</td><td>8</td><td>8,6</td></tr><tr><td>Teléfono</td><td>70</td><td>25</td><td>7,1</td></tr><tr><td>Formulario</td><td>100</td><td>12</td><td>7,9</td></tr></tbody></table></div><p>Antes de preguntar, define la decisión: <strong>¿qué canal merece atención prioritaria?</strong> La tabla por sí sola no contiene la respuesta.</p></>},
+{title:"2 · Preguntar por hallazgos",body:<><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Analiza esta tabla.
+
+1. Calcula qué canal concentra más solicitudes.
+2. Compara volumen, tiempo medio y satisfacción.
+3. Identifica dos patrones relevantes.
+4. Distingue cálculos de interpretaciones.
+5. Señala qué dato adicional necesitarías antes de recomendar un cambio.
+
+Muestra los cálculos relevantes y no inventes información.</pre></div></>},
+{title:"3 · Evidencia antes de opinión",body:<><div class="response"><strong>Ejemplo de lectura:</strong><br>El chat concentra el mayor volumen (210 solicitudes) y presenta el menor tiempo medio (8 min) junto con la mayor satisfacción (8,6/10). Esto describe los datos.<br><br><strong>Pero:</strong> no demuestra por sí solo que haya que trasladar recursos al chat. Faltan costes, complejidad de casos, capacidad del equipo y otros factores.</div></>},
+{title:"4 · Contraargumento",body:<><div class="prompt"><button class="copy" onclick="copyText(this)">Copiar</button><pre>Mi hipótesis es: «deberíamos priorizar el canal chat».
+
+Intenta refutarla usando SOLO los datos disponibles.
+Después indica qué información adicional podría confirmar o debilitar la hipótesis.
+
+No inventes cifras.</pre></div><p>Esta fase es importante: obliga a distinguir una señal de una decisión.</p></>},
+{title:"5 · Recomendación",body:<><div class="response good"><strong>Formato recomendado:</strong><br><br><strong>Hallazgo:</strong> qué muestran los datos.<br><strong>Interpretación:</strong> qué podría significar.<br><strong>Limitación:</strong> qué no podemos concluir todavía.<br><strong>Recomendación:</strong> qué probaría y por qué.<br><strong>Medición:</strong> qué indicador usaría para saber si el cambio funciona.</div></>}
+]}
+];
+
+function renderCases(){
+ cases.forEach((c,ci)=>{
+  const el=document.getElementById("case"+ci);
+  let h='<div class="case-head"><div><div class="label">'+c.tag+'</div><h2>'+c.title+'</h2><p class="muted">'+c.intro+'</p></div><span class="badge">CASO '+String(ci+1).padStart(2,"0")+'</span></div>';
+  h+='<div class="progress"><i id="p'+ci+'"></i></div><div class="steps" id="steps'+ci+'">';
+  c.steps.forEach((s,si)=>h+='<button class="sbtn '+(si===0?"active":"")+'" onclick="step('+ci+','+si+')"><b>PASO '+String(si+1).padStart(2,"0")+'</b>'+s.title.replace(/^\d+ · /,"")+'</button>');
+  h+='</div><div class="panel" id="panel'+ci+'"></div><div class="nextrow"><button class="prev" onclick="move('+ci+',-1)">← Anterior</button><button class="next" onclick="move('+ci+',1)">Siguiente →</button></div>';
+  el.innerHTML=h;step(ci,0);
+ });
+}
+let activeCase=0,activeSteps=[0,0,0,0];
+function openCase(i){activeCase=i;document.querySelectorAll(".case").forEach((x,j)=>x.classList.toggle("active",j===i));document.querySelectorAll(".tab").forEach((x,j)=>x.classList.toggle("active",j===i));}
+function step(ci,si){activeSteps[ci]=Math.max(0,Math.min(cases[ci].steps.length-1,si));const c=cases[ci];document.getElementById("panel"+ci).innerHTML=c.steps[activeSteps[ci]].body;document.querySelectorAll("#steps"+ci+" .sbtn").forEach((b,j)=>b.classList.toggle("active",j===activeSteps[ci]));document.getElementById("p"+ci).style.width=((activeSteps[ci]+1)/c.steps.length*100)+"%";}
+function move(ci,d){step(ci,activeSteps[ci]+d);if(d>0 && activeSteps[ci]===cases[ci].steps.length-1){openCase(Math.min(3,ci+1));}}
+function copyText(btn){const pre=btn.parentElement.querySelector("pre").textContent;navigator.clipboard?.writeText(pre);btn.textContent="✓ Copiado";setTimeout(()=>btn.textContent="Copiar",1200);}
+function calc(){const b=Number(document.getElementById("before").value)||0,a=Number(document.getElementById("after").value)||0,f=Number(document.getElementById("freq").value)||0;const saved=Math.max(0,b-a),weekly=saved*f;document.getElementById("calcResult").innerHTML='<b>'+saved+' min</b> de ahorro estimado por tarea · <b>'+weekly+' min/semana</b> si mantienes esa frecuencia · aproximadamente <b>'+(weekly/60).toFixed(1)+' h/semana</b>.';}
+renderCases();calc();
+</script>
+</body>
+</html>
