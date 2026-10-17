@@ -107,7 +107,8 @@ function showModule(i){
  html+='<h2>'+escapeHtml(m.title)+'</h2>';
  html+='<p class="intro">'+m.intro+'</p>';
  html+='<div class="objective"><strong>🎯 Objetivo:</strong> '+m.objective+'</div>';
- if(m.theory) html+=m.theory;\n html+=renderSections(m);
+ if(m.theory) html+=m.theory;
+ html+=renderSections(m);
  if(m.example){
   html+='<div class="example"><div class="label">'+escapeHtml(m.example[0])+'</div><div class="body before">'+escapeHtml(m.example[1])+'</div><div class="label">'+escapeHtml(m.example[2])+'</div><div class="body after">'+escapeHtml(m.example[3])+'</div></div>';
  }
