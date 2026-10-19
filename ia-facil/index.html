@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>IA fácil — Aprende a usar ChatGPT desde cero</title>
-<meta name="description" content="Aprende a usar ChatGPT desde cero, paso a paso, en español y a tu ritmo. 10 módulos por 9,90 € en un único pago.">
+<meta name="description" content="Aprende a usar ChatGPT desde cero con un curso visual, práctico y sencillo. 10 módulos, ejercicios y cuestionarios por 9,90 € en un único pago.">
 <style>
 :root{--green:#17654f;--green-dark:#10513f;--cream:#f8f5ee;--yellow:#f7cc58;--white:#fff;--ink:#17312b;--muted:#60736d}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
@@ -32,6 +32,14 @@ footer{padding:25px 22px;text-align:center;background:var(--cream);color:var(--m
 
 /* Vista previa del curso */
 .preview{background:#fff;padding:78px 22px}.preview-inner{max-width:1080px;margin:auto}.preview-head{text-align:center;max-width:780px;margin:0 auto 38px}.preview-kicker{display:inline-block;background:#e4efe9;color:var(--green-dark);border-radius:999px;padding:8px 14px;font-size:12px;font-weight:950;letter-spacing:.08em;text-transform:uppercase}.preview h2{font-size:clamp(34px,5vw,50px);line-height:1.02;letter-spacing:-2px;margin:14px 0 12px}.preview-head p{font-size:18px;line-height:1.5;color:var(--muted);margin:0}.preview-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.preview-card{background:#f6f8f6;border:1px solid #d9e3dd;border-radius:22px;padding:12px;box-shadow:0 15px 35px #17312b0d}.preview-screen{background:#fff;border:1px solid #dce4df;border-radius:15px;overflow:hidden;min-height:310px}.preview-top{height:35px;background:#17312b;display:flex;align-items:center;gap:6px;padding:0 12px}.preview-dot{width:7px;height:7px;border-radius:50%;background:#ffffff55}.preview-brand{margin-left:auto;color:#fff;font-size:9px;font-weight:900;letter-spacing:.05em}.preview-body{padding:22px}.preview-label{font-size:10px;color:var(--green);font-weight:950;text-transform:uppercase;letter-spacing:.08em}.preview-body h3{font-size:25px;line-height:1.08;letter-spacing:-.8px;margin:8px 0 12px}.preview-body p{font-size:13px;line-height:1.5;color:var(--muted);margin:0 0 16px}.preview-flow{display:grid;grid-template-columns:1fr auto 1fr;gap:7px;align-items:center}.preview-node{background:#f1f5f2;border:1px solid #dbe5df;border-radius:10px;padding:12px 9px;text-align:center;font-size:11px;font-weight:850}.preview-arrow{color:var(--green);font-weight:950}.preview-prompt{background:#17312b;color:#fff;border-radius:12px;padding:13px;font-size:11px;line-height:1.45}.preview-prompt b{color:#f7cc58}.preview-checks{display:grid;gap:8px}.preview-check{display:flex;gap:9px;align-items:center;background:#f7faf8;border:1px solid #dce7e1;border-radius:10px;padding:10px;font-size:12px;font-weight:750}.preview-check i{font-style:normal;width:20px;height:20px;border-radius:50%;background:#dcece4;color:var(--green);display:grid;place-items:center;font-size:11px}.preview-quiz{display:grid;gap:8px}.preview-answer{border:1px solid #d8e2dc;border-radius:10px;padding:10px 12px;font-size:12px;font-weight:700;background:#fff}.preview-answer.good{border-color:#72b89f;background:#edf8f2}.preview-caption{padding:14px 8px 5px}.preview-caption b{font-size:17px}.preview-caption span{display:block;color:var(--muted);font-size:13px;line-height:1.4;margin-top:3px}@media(max-width:700px){.preview{padding:55px 18px}.preview-grid{grid-template-columns:1fr}.preview-screen{min-height:280px}.preview-body h3{font-size:23px}.preview-head p{font-size:17px}}
+
+/* Identidad compartida con el curso */
+.site-nav{position:absolute;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;max-width:1080px;margin:auto;padding:22px 28px;color:#fff}
+.nav-brand{font-weight:950;font-size:19px;letter-spacing:-.5px;display:flex;gap:8px;align-items:center}
+.nav-links{display:flex;gap:8px;align-items:center}.nav-links a{color:#fff;text-decoration:none;font-size:13px;font-weight:850;padding:9px 12px;border-radius:999px;background:#ffffff12;border:1px solid #ffffff1f}.nav-links a:hover{background:#ffffff20}
+.hero{position:relative;overflow:hidden}.hero-inner{display:grid;grid-template-columns:1.02fr .98fr;gap:48px;align-items:center;padding-top:110px;padding-bottom:75px}
+.hero-copy{min-width:0}.hero-visual{position:relative}.course-window{background:#f8f5ee;border:1px solid #ffffff35;border-radius:24px;padding:10px;box-shadow:0 28px 70px #062d2360;transform:rotate(1deg)}.course-window-bar{height:34px;background:#17312b;border-radius:15px 15px 8px 8px;display:flex;align-items:center;padding:0 13px;gap:6px}.course-window-bar i{width:7px;height:7px;background:#ffffff45;border-radius:50%}.course-window-title{margin-left:auto;color:#fff;font-size:9px;font-weight:900;letter-spacing:.08em}.course-screen{background:#fff;border-radius:8px 8px 16px 16px;padding:24px 22px 20px;color:var(--ink)}.course-screen-kicker{font-size:10px;font-weight:950;color:var(--green);text-transform:uppercase;letter-spacing:.08em}.course-screen h3{font-size:28px;line-height:1.05;letter-spacing:-1px;margin:8px 0 10px}.course-screen p{font-size:13px;color:var(--muted);line-height:1.5;margin:0 0 16px}.course-lesson{display:grid;gap:9px}.course-lesson div{border:1px solid #dce5df;border-radius:11px;padding:11px 12px;font-size:11px;background:#f8faf8}.course-lesson b{color:var(--green-dark)}.course-quote{background:#17312b;color:#fff;border-radius:12px;padding:13px;font-size:11px;line-height:1.45;margin-top:10px}.course-quote strong{color:#f7cc58}.preview-real{background:#f8f5ee;padding:82px 22px}.preview-real-inner{max-width:1060px;margin:auto}.real-head{text-align:center;max-width:760px;margin:0 auto 38px}.real-head h2{font-size:clamp(36px,5vw,52px);line-height:1;letter-spacing:-2px;margin:13px 0}.real-head p{font-size:18px;color:var(--muted);line-height:1.5;margin:0}.real-kicker{display:inline-block;background:#dcece4;color:var(--green-dark);border-radius:999px;padding:8px 13px;font-size:12px;font-weight:950;letter-spacing:.08em;text-transform:uppercase}.real-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}.real-card{background:#fff;border:1px solid #dce4df;border-radius:22px;padding:18px;box-shadow:0 15px 35px #17312b0c}.real-card.large{grid-row:span 2}.real-label{font-size:11px;color:var(--green);font-weight:950;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}.real-card h3{font-size:27px;line-height:1.08;letter-spacing:-1px;margin:0 0 10px}.real-card p{font-size:14px;line-height:1.5;color:var(--muted);margin:0 0 16px}.real-course{background:#fbfcfa;border:1px solid #dce5df;border-radius:15px;padding:18px}.real-course .section-title{font-size:22px;font-weight:950;letter-spacing:-.7px;margin:0 0 9px}.real-course .lead{font-size:13px;color:var(--muted);line-height:1.5;margin:0 0 16px}.real-steps{display:grid;gap:9px}.real-step{display:grid;grid-template-columns:31px 1fr;gap:10px;align-items:start;border:1px solid #dbe5df;background:#fff;border-radius:12px;padding:11px}.real-step .n{width:27px;height:27px;border-radius:50%;background:#e3eee8;color:var(--green-dark);display:grid;place-items:center;font-size:11px;font-weight:950}.real-step b{font-size:12px}.real-step span{display:block;color:var(--muted);font-size:11px;line-height:1.4;margin-top:2px}.real-example{background:#17312b;color:#fff;border-radius:12px;padding:14px;font-size:12px;line-height:1.5;margin-top:12px}.real-example strong{color:#f7cc58}.real-exercise{border:2px dashed #b8cfc4;border-radius:13px;padding:14px;background:#f4f8f5;margin-top:12px}.real-exercise b{font-size:12px;color:var(--green-dark)}.real-exercise p{margin:5px 0 0;font-size:11px}.real-tip{background:#fff6d8;border:1px solid #eadb9f;border-radius:12px;padding:13px;font-size:11px;line-height:1.45;margin-top:12px}.real-tip strong{color:#735b00}
+@media(max-width:800px){.site-nav{padding:16px 18px}.nav-links a:not(:last-child){display:none}.hero-inner{grid-template-columns:1fr;gap:28px;padding-top:105px}.hero-visual{max-width:620px;margin:auto;width:100%}.course-window{transform:none}.real-grid{grid-template-columns:1fr}.real-card.large{grid-row:auto}.preview-real{padding:58px 18px}}
 </style>
 <script>
 (function(){
@@ -84,16 +92,36 @@ else if(!consent)showBanner();
 <body>
 <main>
 <section class="hero">
+<nav class="site-nav" aria-label="Navegación">
+<div class="nav-brand">🎓 IA fácil</div>
+<div class="nav-links"><a href="#dentro-del-curso">Ver el curso</a><a href="#evidencia">Por qué aprender</a></div>
+</nav>
 <div class="hero-inner">
+<div class="hero-copy">
 <div class="brand"><span>🎓</span> IA fácil</div>
 <h1>Aprende a usar<br>ChatGPT desde cero</h1>
-<p class="sub">Paso a paso, en español y a tu ritmo</p>
+<p class="sub">Paso a paso, en español y a tu ritmo.</p>
 <div class="price-row"><div class="price">10 módulos · 9,90 €</div><div class="single">Pago único</div></div>
 <a class="cta" href="https://buy.stripe.com/aFa7sNd4x7nc9fufzu1VK09">Quiero aprender a usar ChatGPT →</a>
 <div class="trust-strip" aria-label="Información de compra">
-<span class="trust-pill">🔒 Pago seguro con Stripe</span>
-<span class="trust-pill">✓ Pago único</span>
-<span class="trust-pill">📩 Instrucciones de acceso tras la compra</span>
+<span class="trust-pill">🔒 Pago seguro con Stripe</span><span class="trust-pill">✓ Pago único</span><span class="trust-pill">📩 Acceso tras la compra</span>
+</div>
+</div>
+<div class="hero-visual">
+<div class="course-window">
+<div class="course-window-bar"><i></i><i></i><i></i><span class="course-window-title">IA FÁCIL · CURSO</span></div>
+<div class="course-screen">
+<div class="course-screen-kicker">Módulo 03 · Cómo hacer buenas preguntas</div>
+<h3>Aprende a pedir exactamente lo que necesitas</h3>
+<p>El curso combina explicaciones sencillas, ejemplos y ejercicios para que aprendas haciendo.</p>
+<div class="course-lesson">
+<div><b>01 · Contexto</b><br>Explica qué necesitas y para qué.</div>
+<div><b>02 · Petición</b><br>Di claramente qué quieres conseguir.</div>
+<div><b>03 · Formato</b><br>Pide la respuesta de la forma que te resulte útil.</div>
+</div>
+<div class="course-quote"><strong>Ejemplo práctico</strong><br>“Ayúdame a escribir un mensaje amable para…”</div>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -136,14 +164,37 @@ else if(!consent)showBanner();
 </section>
 
 
-<section class="preview" id="dentro-del-curso">
-<div class="preview-inner">
-<div class="preview-head"><span class="preview-kicker">Así es por dentro</span><h2>Antes de comprar, mira cómo aprenderás</h2><p>Un curso visual, sencillo y práctico. Sin páginas interminables: entiendes una idea, la pruebas y la aplicas.</p></div>
-<div class="preview-grid">
-<article class="preview-card"><div class="preview-screen"><div class="preview-top"><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-brand">IA FÁCIL · LECCIÓN</span></div><div class="preview-body"><div class="preview-label">01 · Entender</div><h3>¿Qué puedes pedirle a la inteligencia artificial?</h3><p>Aprende la idea con un ejemplo sencillo y visual antes de practicar.</p><div class="preview-flow"><div class="preview-node">Tu necesidad</div><div class="preview-arrow">→</div><div class="preview-node">Tu petición a la IA</div></div></div></div><div class="preview-caption"><b>Explicaciones sencillas</b><span>Conceptos claros y ejemplos cotidianos, sin tecnicismos.</span></div></article>
-<article class="preview-card"><div class="preview-screen"><div class="preview-top"><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-brand">IA FÁCIL · PRACTICA</span></div><div class="preview-body"><div class="preview-label">02 · Practicar</div><h3>Prueba un prompt paso a paso</h3><p>Aprende a dar contexto, explicar lo que quieres y pedir el formato que necesitas.</p><div class="preview-prompt"><b>Prueba esto:</b><br>“Ayúdame a escribir un mensaje amable para…”</div></div></div><div class="preview-caption"><b>Aprendes haciendo</b><span>Ejercicios que puedes repetir después en tu día a día.</span></div></article>
-<article class="preview-card"><div class="preview-screen"><div class="preview-top"><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-brand">IA FÁCIL · COMPRUEBA</span></div><div class="preview-body"><div class="preview-label">03 · Comprueba</div><h3>¿Lo has entendido?</h3><p>Pequeños cuestionarios para comprobar lo aprendido antes de continuar.</p><div class="preview-quiz"><div class="preview-answer good">✓ A. Dar contexto y explicar qué necesitas</div><div class="preview-answer">B. Escribir solamente una palabra</div><div class="preview-answer">C. No decir qué resultado buscas</div></div></div></div><div class="preview-caption"><b>Avanzas con seguridad</b><span>Comprueba lo aprendido y sigue a tu ritmo.</span></div></article>
-<article class="preview-card"><div class="preview-screen"><div class="preview-top"><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-brand">IA FÁCIL · RECURSOS</span></div><div class="preview-body"><div class="preview-label">04 · Aplicar</div><h3>Recursos para seguir utilizándolo</h3><p>Te llevas ideas y plantillas para aplicar la IA a situaciones reales.</p><div class="preview-checks"><div class="preview-check"><i>✓</i> Escribir y mejorar textos</div><div class="preview-check"><i>✓</i> Organizar tareas y planes</div><div class="preview-check"><i>✓</i> Resumir información</div><div class="preview-check"><i>✓</i> Crear ideas y alternativas</div></div></div></div><div class="preview-caption"><b>Lo aplicas a tu vida</b><span>No se trata solo de terminar un curso: se trata de saber utilizarlo.</span></div></article>
+<section class="preview-real" id="dentro-del-curso">
+<div class="preview-real-inner">
+<div class="real-head"><span class="real-kicker">Así es por dentro</span><h2>Esto es lo que vas a encontrar al entrar</h2><p>No te enseñamos una maqueta inventada. La estructura de esta vista previa sigue el mismo estilo de las lecciones reales del curso: explicación, ejemplo, práctica y comprobación.</p></div>
+<div class="real-grid">
+<article class="real-card large">
+<div class="real-label">01 · Una lección real</div><h3>Aprende una idea y aplícala al momento</h3><p>El curso está diseñado para que no tengas que memorizar teoría. Cada bloque te explica algo concreto y después te propone utilizarlo.</p>
+<div class="real-course">
+<div class="section-title">¿Cómo conseguir mejores respuestas?</div>
+<p class="lead">Cuando hablas con ChatGPT, cuanto mejor expliques lo que necesitas, más fácil será obtener una respuesta útil.</p>
+<div class="real-steps">
+<div class="real-step"><div class="n">1</div><div><b>Da contexto</b><span>Explica qué estás intentando hacer.</span></div></div>
+<div class="real-step"><div class="n">2</div><div><b>Haz una petición concreta</b><span>Di exactamente qué quieres que haga.</span></div></div>
+<div class="real-step"><div class="n">3</div><div><b>Indica cómo quieres la respuesta</b><span>Puedes pedir una lista, un mensaje, una tabla o una explicación sencilla.</span></div></div>
+</div>
+<div class="real-example"><strong>💬 Ejemplo</strong><br>“Quiero preparar un viaje de tres días. Organízame un plan sencillo, con horarios y lugares que pueda visitar sin ir con prisas.”</div>
+<div class="real-exercise"><b>🧪 Práctica</b><p>Ahora prueba a escribir una petición para algo que necesites hacer esta semana.</p></div>
+</div>
+</article>
+<article class="real-card">
+<div class="real-label">02 · Ejercicios</div><h3>Aprendes haciendo</h3><p>Los ejercicios están pensados para situaciones cotidianas, no para ejemplos artificiales.</p>
+<div class="real-tip"><strong>💡 Consejo</strong><br>No busques la pregunta perfecta. Empieza hablando con la IA y ve afinando lo que necesitas.</div>
+<div class="real-exercise"><b>Tu turno</b><p>Prueba el mismo ejercicio con una situación real de tu día a día.</p></div>
+</article>
+<article class="real-card">
+<div class="real-label">03 · Cuestionarios</div><h3>Comprueba que lo has entendido</h3><p>Al terminar los módulos encontrarás preguntas para comprobar lo aprendido antes de avanzar.</p>
+<div class="real-course">
+<div style="font-size:12px;font-weight:900;margin-bottom:10px">¿Qué ayuda a conseguir una mejor respuesta?</div>
+<div class="real-step"><div class="n">A</div><div><b>Dar contexto y explicar qué necesitas</b></div></div>
+<div class="real-step"><div class="n">B</div><div><b>Escribir solamente una palabra</b></div></div>
+</div>
+</article>
 </div>
 </div>
 </section>
