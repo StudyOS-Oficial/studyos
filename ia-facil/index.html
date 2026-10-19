@@ -13,7 +13,7 @@
 .brand{display:inline-flex;align-items:center;gap:12px;background:#ffffff19;border-radius:999px;padding:9px 20px 10px 14px;font-size:28px;font-weight:900;letter-spacing:-.7px;margin-bottom:34px}
 .brand span{font-size:29px}
 h1{font-size:clamp(48px,7.4vw,88px);line-height:.94;letter-spacing:-4px;max-width:930px;margin:0 0 25px;font-weight:950}
-.sub{font-size:clamp(24px,3.1vw,38px);line-height:1.15;margin:0 0 40px;color:#f5f1e8;letter-spacing:-1px}
+.sub{font-size:clamp(24px,3.1vw,38px);line-height:1.15;margin:0 0 22px;color:#f5f1e8;letter-spacing:-1px}.daily-examples{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 34px}.daily-examples span{display:inline-flex;align-items:center;background:#ffffff14;border:1px solid #ffffff2b;border-radius:999px;padding:9px 13px;color:#fff;font-size:15px;font-weight:800;line-height:1.15}
 .price-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}.price{display:inline-flex;align-items:center;background:var(--yellow);color:var(--ink);padding:10px 28px;border-radius:12px;font-size:clamp(25px,3.3vw,39px);font-weight:950;letter-spacing:-1px;text-decoration:none;cursor:pointer;transition:.2s}.price:hover{transform:translateY(-2px);box-shadow:0 10px 24px #062d2330}.single{font-size:clamp(25px,3.3vw,39px);font-weight:900}
 .cta{display:inline-flex;margin-top:42px;background:#fff;color:var(--green-dark);padding:18px 30px;border-radius:14px;font-size:21px;font-weight:950;box-shadow:0 12px 30px #062d2340;transition:.2s}.cta:hover{transform:translateY(-2px);box-shadow:0 15px 35px #062d2350}
 .trust-strip{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;color:#eef7f2;font-size:14px;font-weight:750}.trust-pill{display:inline-flex;align-items:center;gap:7px;background:#ffffff12;border:1px solid #ffffff26;border-radius:999px;padding:8px 12px}
@@ -105,8 +105,8 @@ else if(!consent)showBanner();
 <div class="hero-inner">
 <div class="hero-copy">
 <div class="brand"><span>🎓</span> IA fácil</div>
-<h1>Aprende a usar<br>ChatGPT desde cero</h1>
-<p class="sub">Aprende a utilizar ChatGPT desde cero, con ejemplos prácticos y explicados paso a paso.</p>
+<h1>Aprende a usar la IA en tu día a día</h1>
+<p class="sub">Aprende a utilizar ChatGPT desde cero, con ejemplos prácticos y explicados paso a paso.</p><div class="daily-examples" aria-label="Ejemplos de uso"><span>💬 Escribir mensajes</span><span>🍳 Buscar recetas</span><span>✈️ Planificar viajes</span><span>📄 Entender documentos</span><span>📚 Aprender</span><span>🗓️ Organizarte</span></div>
 <div class="price-row"><a class="price" href="#comprar" onclick="event.preventDefault();document.querySelector('.buy-button').click()">10 módulos · 9,90 €</a><div class="single">Pago único</div></div>
 <a class="cta" href="#que-encontraras">Desliza para ver qué aprenderás ↓</a>
 <div class="trust-strip" aria-label="Información de compra">
