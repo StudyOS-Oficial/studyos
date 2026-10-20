@@ -95,6 +95,26 @@ else if(!consent)showBanner();
 .whatsapp-float span{font-size:12px;line-height:1;font-weight:900;position:absolute;right:-2px;bottom:-7px;background:#17312b;color:#fff;padding:4px 7px;border-radius:999px;white-space:nowrap;box-shadow:0 3px 10px rgba(0,0,0,.16)}
 @media(max-width:600px){.whatsapp-float{right:14px;bottom:calc(14px + env(safe-area-inset-bottom));width:54px;height:54px;font-size:28px}}
 </style>
+
+<style id="hero-background-test">
+/* PRUEBA AISLADA: hero con fotografía de fondo + contenido superpuesto */
+.hero{position:relative!important;min-height:780px!important;overflow:hidden!important;background:#123!important;color:#fff!important}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(5,27,57,.88) 0%,rgba(5,27,57,.68) 42%,rgba(5,27,57,.18) 78%,rgba(5,27,57,.08) 100%),url("https://images.pexels.com/photos/3768131/pexels-photo-3768131.jpeg?auto=compress&cs=tinysrgb&w=1800");background-size:cover;background-position:center;z-index:0}
+.hero .site-nav,.hero .hero-inner{position:relative;z-index:2}
+.hero .site-nav{background:rgba(255,255,255,.96)!important;color:#08254f!important;border-radius:0 0 18px 18px}
+.hero .hero-inner{min-height:690px!important;display:flex!important;align-items:center!important;padding:65px 6vw!important}
+.hero .hero-copy{max-width:760px!important;color:#fff!important}
+.hero .brand{display:inline-flex!important;background:rgba(255,255,255,.96)!important;color:#08254f!important;border-radius:999px!important;padding:10px 17px!important;margin-bottom:20px!important}
+.hero h1{color:#fff!important;font-size:clamp(48px,6vw,82px)!important;line-height:.98!important;letter-spacing:-3px!important;text-shadow:0 3px 22px rgba(0,0,0,.22)}
+.hero .sub{color:#fff!important;font-size:clamp(19px,2vw,25px)!important;max-width:670px!important;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.hero .daily-examples{display:flex!important;flex-wrap:wrap!important;gap:9px!important;margin:22px 0!important}
+.hero .daily-examples span{background:rgba(255,255,255,.94)!important;color:#08254f!important;border:0!important;border-radius:14px!important;padding:12px 15px!important;font-weight:800!important;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.hero .price-row{display:none!important}
+.hero .cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;background:#1687f5!important;color:#fff!important;border-radius:30px!important;padding:17px 30px!important;font-size:20px!important;font-weight:900!important;box-shadow:0 12px 28px rgba(0,0,0,.2)!important;text-decoration:none!important}
+.hero .trust-strip{display:flex!important;flex-wrap:wrap!important;gap:9px!important;margin-top:14px!important}.hero .trust-pill{background:rgba(255,255,255,.94)!important;color:#08254f!important;border-radius:22px!important;padding:9px 13px!important}
+.hero .hero-visual{display:none!important}
+@media(max-width:700px){.hero{min-height:850px!important}.hero::before{background-image:linear-gradient(180deg,rgba(5,27,57,.82) 0%,rgba(5,27,57,.68) 48%,rgba(5,27,57,.35) 100%),url("https://images.pexels.com/photos/3768131/pexels-photo-3768131.jpeg?auto=compress&cs=tinysrgb&w=1200");background-position:center top}.hero .site-nav{margin:0!important}.hero .hero-inner{min-height:780px!important;padding:55px 20px 35px!important;align-items:flex-start!important}.hero h1{font-size:45px!important;letter-spacing:-2px!important}.hero .sub{font-size:19px!important}.hero .daily-examples{display:grid!important;grid-template-columns:1fr 1fr!important}.hero .daily-examples span{padding:14px 10px!important}.hero .cta{width:100%!important}.hero .trust-strip{display:grid!important;grid-template-columns:1fr!important}}
+</style>
 </head>
 <body>
 <div class="buy-bar" aria-label="Comprar IA Fácil">
