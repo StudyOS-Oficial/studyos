@@ -188,7 +188,120 @@ html,body{width:100%!important;min-width:0!important;max-width:none!important;ma
   .hero-badges span{font-size:10px}
 }
 </style>
-</head>
+<style id="hero-mobile-correction">
+/* Corrección definitiva de la composición móvil */
+@media (max-width:700px){
+  .test-hero{
+    min-height:0;
+    background:#f5f9fd;
+    overflow:hidden;
+  }
+  .test-hero-content{
+    display:block;
+    position:relative;
+    min-height:980px;
+    padding:32px 18px 34px;
+  }
+  .test-hero-bg{
+    top:285px;
+    right:0;
+    width:56%;
+    height:470px;
+    background-size:cover;
+    background-position:center;
+    z-index:0;
+  }
+  .hero-kicker{
+    position:relative;
+    z-index:4;
+    width:max-content;
+    max-width:100%;
+    margin-bottom:24px;
+  }
+  .test-hero h1{
+    position:relative;
+    z-index:4;
+    width:63%;
+    max-width:310px;
+    margin:0 0 20px;
+    font-size:clamp(42px,11.5vw,54px);
+    line-height:.99;
+    letter-spacing:-2.6px;
+  }
+  .hero-sub{
+    position:relative;
+    z-index:4;
+    width:54%;
+    max-width:290px;
+    margin:0;
+    font-size:18px;
+    line-height:1.3;
+  }
+  .hero-cards{
+    position:relative;
+    z-index:4;
+    width:100%;
+    margin:470px 0 20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+  }
+  .hero-cards>div{
+    width:auto;
+    min-height:108px;
+    border-radius:18px;
+    padding:11px 7px;
+  }
+  .hero-cards>div:nth-child(4){grid-column:1/3}
+  .hero-cards>div:nth-child(5){grid-column:3}
+  .hero-cta{
+    position:relative;
+    z-index:4;
+    width:100%;
+    margin:0 0 15px;
+    font-size:20px;
+    padding:17px 18px;
+  }
+  .hero-badges{
+    position:relative;
+    z-index:4;
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:9px;
+  }
+  .hero-badges span{
+    font-size:10.5px;
+    text-align:center;
+    padding:10px 5px;
+  }
+}
+@media (max-width:560px){
+  .test-hero-content{min-height:940px;padding:28px 16px 30px}
+  .test-hero-bg{
+    top:275px;
+    width:57%;
+    height:445px;
+    background-position:center;
+  }
+  .hero-kicker{font-size:11.5px;padding:9px 12px;margin-bottom:21px}
+  .test-hero h1{
+    width:64%;
+    max-width:295px;
+    font-size:43px;
+    line-height:.99;
+    letter-spacing:-2.3px;
+    margin-bottom:18px;
+  }
+  .hero-sub{
+    width:55%;
+    max-width:275px;
+    font-size:17px;
+  }
+  .hero-cards{margin-top:445px;gap:11px}
+  .hero-cards>div{min-height:104px}
+}
+</style></head>
 <body>
 <header class="test-header">
 <div class="test-header-inner">
