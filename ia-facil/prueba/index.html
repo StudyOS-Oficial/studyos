@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>IA fácil — Aprende a utilizar la IA en tu día a día</title>
+<meta name="description" content="Curso práctico de IA para principiantes. 10 módulos, paso a paso y en español. Acceso de por vida por 9,90 €.">
+<style>
+:root{--navy:#082d68;--blue:#1687f5;--blue2:#0d63d8;--bg:#f4f8ff;--ink:#0b315f;--muted:#31547a;--white:#fff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{text-decoration:none;color:inherit}
+.nav{height:76px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,6vw,72px);position:sticky;top:0;z-index:20;border-bottom:1px solid #e6eef8}
+.logo{font-size:28px;font-weight:950;letter-spacing:-1.5px}.logo span{color:#72d54b;margin-left:6px}
+.navlinks{display:flex;gap:28px;font-size:15px;font-weight:800}
+.navcta{background:var(--blue);color:#fff;border-radius:999px;padding:13px 22px;font-weight:900}
+.menu{display:none;font-size:27px}
+.hero{background:linear-gradient(118deg,#173e91 0%,#1158c8 55%,#0877f4 100%);color:#fff;overflow:hidden}
+.hero-inner{max-width:1200px;margin:auto;padding:78px 7vw 86px;min-height:554px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:40px}
+.kicker{font-size:18px;font-weight:800;opacity:.96;margin-bottom:25px}
+h1{font-size:clamp(52px,7vw,88px);line-height:.94;letter-spacing:-4px;margin:0;max-width:900px;font-weight:950}
+h1 .accent{color:#8cc4ff}
+.lead{font-size:clamp(21px,2.4vw,30px);line-height:1.25;margin:25px 0 28px;max-width:700px;color:#f1f7ff}
+.hero-meta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:27px}
+.pill{background:#fff;color:#1358b7;border-radius:999px;padding:11px 20px;font-size:19px;font-weight:950}
+.hero-btn{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#0e5bc0;border-radius:14px;padding:18px 30px;font-size:22px;font-weight:950;box-shadow:0 12px 35px #00245b55}
+.hero-note{margin-top:14px;font-size:14px;color:#dcecff}
+.hero-side{display:flex;justify-content:flex-end}
+.mock{width:min(390px,100%);border-radius:28px;background:#ffffff18;border:1px solid #ffffff35;padding:28px;backdrop-filter:blur(4px)}
+.mock-title{font-size:18px;font-weight:900;margin-bottom:20px}
+.mock-card{background:#fff;color:var(--ink);border-radius:18px;padding:19px;margin:10px 0;font-weight:900;box-shadow:0 10px 25px #00245b22}
+.section{padding:78px 22px}
+.section-inner{max-width:1060px;margin:auto}
+.section-kicker{text-align:center;color:#1872d8;font-size:13px;font-weight:950;letter-spacing:.1em;text-transform:uppercase}
+h2{text-align:center;font-size:clamp(35px,5vw,52px);line-height:1;letter-spacing:-2px;margin:12px 0 15px}
+.section-intro{text-align:center;max-width:720px;margin:0 auto 42px;color:var(--muted);font-size:19px;line-height:1.5}
+.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.card{background:#fff;border:1px solid #dce8f5;border-radius:18px;padding:22px;min-height:150px;box-shadow:0 8px 25px #0a3c7310}
+.icon{font-size:29px}.card h3{font-size:17px;margin:14px 0 6px}.card p{margin:0;color:#58718e;font-size:14px;line-height:1.4}
+.modules{background:#fff}
+.module-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:900px;margin:auto}
+.module{border:1px solid #dbe6f2;border-radius:16px;padding:20px 22px;background:#f8fbff;display:flex;gap:15px;align-items:center}
+.module b{display:block}.module span{color:#6b829c;font-size:14px}
+.num{width:40px;height:40px;border-radius:50%;background:#e6f2ff;color:#0d68d8;display:grid;place-items:center;font-weight:950;flex:none}
+.buy{background:linear-gradient(135deg,#0c57c7,#1687f5);color:#fff;text-align:center}
+.buy h2{color:#fff}.buy p{color:#e6f2ff}
+.buybtn{display:inline-block;background:#fff;color:#0d61c9;padding:17px 34px;border-radius:14px;font-size:22px;font-weight:950;margin-top:10px}
+.trust{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:22px}.trust span{background:#ffffff20;border:1px solid #ffffff35;border-radius:999px;padding:9px 15px;font-weight:800}
+footer{text-align:center;padding:28px 20px;background:#fff;color:#66809c;font-size:13px}
+@media(max-width:800px){
+.nav{height:68px;padding:0 18px}.logo{font-size:24px}.navlinks{display:none}.menu{display:block}.navcta{font-size:14px;padding:11px 15px}
+.hero-inner{display:block;padding:52px 22px 58px;min-height:auto}.kicker{font-size:15px}.hero-side{display:none}
+h1{font-size:clamp(50px,14vw,70px);letter-spacing:-3px}.lead{font-size:21px}.hero-meta{gap:8px}.pill{font-size:16px;padding:9px 15px}.hero-btn{width:100%;font-size:20px}
+.section{padding:58px 18px}.cards{grid-template-columns:1fr 1fr}.card{padding:17px;min-height:135px}.module-grid{grid-template-columns:1fr}.section-intro{font-size:17px}
+}
+</style>
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="#">StudyOS<span>●</span></a>
+  <nav class="navlinks"><a href="#incluye">¿Qué aprenderás?</a><a href="#modulos">Módulos</a><a href="#precio">Precio</a></nav>
+  <a class="navcta" href="https://buy.stripe.com/aFa7sNd4x7nc9fufzu1VK09">Quiero aprender IA →</a>
+  <button class="menu" aria-label="Menú">☰</button>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="kicker">StudyOS <span style="opacity:.75">●</span> IA fácil</div>
+      <h1>La IA ya está aquí.<br><span class="accent">Aprende a utilizarla.</span></h1>
+      <p class="lead">Curso online · Paso a paso · En español</p>
+      <div class="hero-meta"><span class="pill">10 módulos</span><span class="pill">9,90 €</span></div>
+      <a class="hero-btn" href="https://buy.stripe.com/aFa7sNd4x7nc9fufzu1VK09">Quiero aprender IA&nbsp; →</a>
+      <div class="hero-note">Acceso inmediato · Curso completo · Acceso de por vida</div>
+    </div>
+    <div class="hero-side">
+      <div class="mock">
+        <div class="mock-title">Aprende IA para tu día a día</div>
+        <div class="mock-card">🍳 Recetas e ideas</div>
+        <div class="mock-card">✈️ Viajes y ocio</div>
+        <div class="mock-card">💬 Mensajes y comunicación</div>
+        <div class="mock-card">📅 Organización del día a día</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="incluye">
+<div class="section-inner">
+<div class="section-kicker">Dentro de IA fácil</div>
+<h2>¿Qué vas a encontrar?</h2>
+<p class="section-intro">Todo lo necesario para empezar a utilizar la inteligencia artificial desde cero y llevarla a situaciones reales de tu día a día.</p>
+<div class="cards">
+<div class="card"><div class="icon">🎓</div><h3>10 módulos paso a paso</h3><p>Desde lo más básico hasta utilizar la IA con confianza.</p></div>
+<div class="card"><div class="icon">💬</div><h3>Ejemplos reales</h3><p>Mensajes, viajes, recetas, organización y mucho más.</p></div>
+<div class="card"><div class="icon">🖊️</div><h3>Ejercicios prácticos</h3><p>Aprende haciendo, sin memorizar teoría.</p></div>
+<div class="card"><div class="icon">✓</div><h3>Cuestionarios</h3><p>Comprueba lo que has aprendido mientras avanzas.</p></div>
+<div class="card"><div class="icon">✍️</div><h3>Kit de prompts</h3><p>Ideas y plantillas para empezar a hablar con la IA.</p></div>
+</div>
+</div>
+</section>
+
+<section class="section modules" id="modulos">
+<div class="section-inner">
+<div class="section-kicker">Paso a paso</div><h2>Los 10 módulos del curso</h2>
+<p class="section-intro">Un recorrido pensado para pasar de no saber por dónde empezar a utilizar la IA con seguridad.</p>
+<div class="module-grid">
+<div class="module"><div class="num">1</div><div><b>Conoce la inteligencia artificial</b><span> Aprende paso a paso y con ejemplos.</span></div></div><div class="module"><div class="num">2</div><div><b>Empieza a hablar con la IA</b><span> Aprende paso a paso y con ejemplos.</span></div></div><div class="module"><div class="num">3</div><div><b>Aprende a escribir mejores prompts</b><span> Aprende paso a paso y con ejemplos.</span></div></div><div class="module"><div class="num">4</div><div><b>La IA para tus mensajes</b><span> Aprende paso a paso y con ejemplos.</span></div></div><div class="module"><div class="num">5</div><div><b>Recetas, cocina e ideas</b><span> Aprende paso a paso y con ejemplos.</span></div></div><div class="module"><div class="num">6</div><div><b>Viajes y ocio</b><span> Aprende paso a paso y con ejemplos.</span></div></div><div class="module"><div class="num">7</div><div><b>Organización del día a día</b><span> Aprende paso a paso y con ejemplos.</span></div></div><div class="module"><div class="num">8</div><div><b>Aprender cosas nuevas</b><span> Aprende paso a paso y con ejemplos.</span></div></div><div class="module"><div class="num">9</div><div><b>Documentos y tareas</b><span> Aprende paso a paso y con ejemplos.</span></div></div><div class="module"><div class="num">10</div><div><b>Repaso y reto final</b><span> Aprende paso a paso y con ejemplos.</span></div></div>
+</div>
+</div>
+</section>
+
+<section class="section buy" id="precio">
+<div class="section-inner">
+<div class="section-kicker" style="color:#b9ddff">Empieza hoy</div>
+<h2>Aprende a utilizar la IA en tu día a día.</h2>
+<p class="section-intro">Curso completo por un único pago de 9,90 €. Sin cuotas mensuales.</p>
+<a class="buybtn" href="https://buy.stripe.com/aFa7sNd4x7nc9fufzu1VK09">Quiero aprender IA →</a>
+<div class="trust"><span>✓ Acceso inmediato</span><span>🎁 Curso completo por 9,90 €</span><span>∞ Acceso de por vida</span></div>
+</div>
+</section>
+</main>
+<footer>StudyOS · IA fácil · Curso online en español</footer>
+</body>
+</html>
