@@ -106,6 +106,15 @@ else if(!consent)showBanner();
 .whatsapp-float:hover{transform:translateY(-2px);box-shadow:0 11px 28px rgba(0,0,0,.28)}
 .whatsapp-float span{font-size:12px;line-height:1;font-weight:900;position:absolute;right:-2px;bottom:-7px;background:#17312b;color:#fff;padding:4px 7px;border-radius:999px;white-space:nowrap;box-shadow:0 3px 10px rgba(0,0,0,.16)}
 @media(max-width:600px){.whatsapp-float{right:14px;bottom:calc(14px + env(safe-area-inset-bottom));width:54px;height:54px;font-size:28px}}
+
+/* Hero limpio: sin imagen, pensado para explicar y convertir desde el primer pantallazo */
+.hero-clean{position:relative;background:linear-gradient(180deg,#f7fbff 0%,#eef7ff 100%);color:#08254f;min-height:auto;overflow:hidden}
+.hero-clean:before{content:"";position:absolute;width:560px;height:560px;right:-210px;top:60px;border-radius:50%;background:#dff0ff;opacity:.75}
+.hero-clean:after{content:"";position:absolute;width:480px;height:300px;right:-110px;bottom:0;border-radius:100% 0 0 0;background:#e7f3ff;opacity:.8}
+.hero-clean .site-nav{position:relative;z-index:5;background:#fff;color:#08254f;padding:12px clamp(22px,6vw,92px);min-height:66px;border-bottom:1px solid #edf2f7}
+.hero-clean .nav-brand{font-size:28px;font-weight:900;letter-spacing:-1.5px}.hero-clean .nav-brand span{color:#71c62d;font-size:23px}.hero-clean .nav-links{gap:38px}.hero-clean .nav-links a{color:#08254f;font-size:16px}.hero-clean .nav-cta{background:#1687f5;color:white;padding:15px 25px;border-radius:28px;font-weight:800;box-shadow:0 7px 20px #1687f530}.clean-hero-inner{position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:58px 6vw 34px;display:block}.clean-hero-copy{max-width:900px}.course-kicker{display:inline-flex;align-items:center;padding:11px 19px;border:1px solid #cfe1f5;background:#fff;border-radius:28px;font-weight:700;color:#183761;box-shadow:0 5px 18px #08254f0b;margin-bottom:24px}.hero-clean h1{font-size:clamp(48px,6vw,82px);line-height:.98;letter-spacing:-4px;color:#08254f;margin:0 0 23px}.hero-clean h1 em{font-style:normal;color:#1687f5}.hero-clean .sub{font-size:clamp(19px,2vw,25px);line-height:1.28;color:#17345c;max-width:700px;margin-bottom:25px}.clean-examples{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 22px}.clean-examples span{width:145px;min-height:105px;background:#fff;border:1px solid #edf1f7;border-radius:18px;padding:14px 10px;text-align:center;color:#112d56;font-size:15px;font-weight:700;box-shadow:0 9px 24px #08254f0d}.clean-examples b{display:block;font-size:31px;line-height:1.15;margin-bottom:8px}.clean-examples small{font-size:13px;font-weight:500}.clean-cta{display:flex;justify-content:center;align-items:center;gap:13px;width:510px;max-width:100%;background:#1687f5!important;color:#fff!important;border-radius:32px!important;padding:17px 28px!important;font-size:21px!important;font-weight:900;box-shadow:0 13px 28px #1687f538!important}.clean-cta strong{font-size:27px}.clean-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.clean-badges span{background:#fff;border:1px solid #e4ebf3;border-radius:22px;padding:9px 15px;color:#193a67;font-size:14px;font-weight:700;box-shadow:0 5px 15px #08254f08}.hero-bottom-benefits{position:relative;z-index:3;display:grid;grid-template-columns:repeat(4,1fr);max-width:1400px;margin:0 auto;padding:25px 6vw 27px;background:#ffffffd9;border-radius:28px 28px 0 0;border-top:1px solid #e1ebf5}.hero-bottom-benefits>div{display:flex;align-items:center;justify-content:center;gap:15px;padding:0 28px;border-right:1px solid #d8e5f2;color:#17345c}.hero-bottom-benefits>div:last-child{border-right:0}.hero-bottom-benefits b{font-size:35px;color:#1687f5}.hero-bottom-benefits span{font-size:15px;line-height:1.3}.hero-bottom-benefits strong{font-weight:900}
+@media(max-width:900px){.hero-clean .nav-links{display:none}.hero-clean .site-nav{padding:12px 18px}.clean-hero-inner{padding:40px 20px 28px}.hero-clean h1{font-size:clamp(43px,10.5vw,68px);letter-spacing:-3px}.hero-bottom-benefits{grid-template-columns:repeat(2,1fr);gap:0}.hero-bottom-benefits>div{padding:18px 12px;border-bottom:1px solid #d8e5f2}.hero-bottom-benefits>div:nth-child(2){border-right:0}.hero-bottom-benefits>div:nth-child(3),.hero-bottom-benefits>div:nth-child(4){border-bottom:0}}
+@media(max-width:560px){.hero-clean .nav-brand{font-size:24px}.hero-clean .nav-cta{padding:12px 15px;font-size:14px}.course-kicker{font-size:13px;padding:9px 13px}.hero-clean h1{font-size:43px;line-height:1;letter-spacing:-2.5px}.hero-clean .sub{font-size:18px}.clean-examples{display:grid;grid-template-columns:repeat(2,1fr)}.clean-examples span{width:auto;min-height:96px}.clean-examples span:last-child{grid-column:1/-1}.clean-cta{width:100%;font-size:19px!important}.clean-badges{display:grid;grid-template-columns:1fr}.clean-badges span{text-align:center}.hero-bottom-benefits{grid-template-columns:1fr 1fr;padding:8px 8px}.hero-bottom-benefits>div{gap:8px;padding:15px 7px}.hero-bottom-benefits b{font-size:27px}.hero-bottom-benefits span{font-size:12px}}
 </style>
 </head>
 <body>
@@ -116,33 +125,36 @@ else if(!consent)showBanner();
 </div>
 </div>
 <main>
-<section class="hero">
+<section class="hero hero-clean">
 <nav class="site-nav" aria-label="Navegación">
-<div class="nav-brand">🎓 IA fácil</div>
-<div class="nav-links"><a href="#dentro-del-curso">Ver el curso</a><a href="#evidencia">Por qué aprender</a></div>
+<div class="nav-brand">StudyOS <span>🍃</span></div>
+<div class="nav-links"><a href="#que-encontraras">¿Qué aprenderás?</a><a href="#como-funciona">Cómo funciona</a><a href="#dentro-del-curso">Módulos</a><a href="#opiniones">Opiniones</a><a href="#preguntas">Preguntas</a></div>
+<a class="nav-cta" href="#que-encontraras">Quiero aprender IA <strong>→</strong></a>
 </nav>
-<div class="hero-inner">
-<div class="hero-copy">
-<div class="brand"><span>🎓</span> IA fácil</div>
-<h1>La IA ya está aquí.<br><em>Aprende a usarla.</em></h1>
-<p class="sub">Descubre cómo utilizar ChatGPT en tu día a día, aunque nunca hayas usado inteligencia artificial.</p>
-<div class="daily-examples" aria-label="Ejemplos de uso">
-<span>💬 Mensajes</span><span>🍳 Recetas</span><span>✈️ Viajes</span><span>📚 Aprender</span><span>🗓️ Organizarte</span>
+<div class="clean-hero-inner">
+<div class="clean-hero-copy">
+<div class="course-kicker">🎓 Curso online · Paso a paso · En español</div>
+<h1>La IA ya está aquí.<br><em>Aprende a utilizarla<br>en tu día a día.</em></h1>
+<p class="sub">Un curso práctico, claro y sencillo para personas que quieren ganar confianza con la inteligencia artificial, desde cero.</p>
+<div class="daily-examples clean-examples" aria-label="Ejemplos de uso">
+<span><b>🍳</b>Recetas<br><small>e ideas</small></span>
+<span><b>✈️</b>Viajes<br><small>y ocio</small></span>
+<span><b>💬</b>Mensajes<br><small>y comunicación</small></span>
+<span><b>🗓️</b>Organización<br><small>del día a día</small></span>
+<span><b>💡</b>Aprender<br><small>cosas nuevas</small></span>
 </div>
-<a class="cta" href="#que-encontraras">Quiero aprender IA <strong>→</strong></a>
-<div class="hero-offer"><strong>9,90 €</strong><span>Pago único · 10 módulos · acceso tras la compra</span></div>
-<div class="trust-strip" aria-label="Información de compra">
-<span class="trust-pill">🔒 Pago seguro con Stripe</span><span class="trust-pill">✓ Sin suscripción</span><span class="trust-pill">📩 Acceso tras la compra</span>
-</div>
-</div>
-<div class="hero-visual">
-<div class="hero-photo-wrap">
-<img class="hero-photo" src="./hero-senor.svg" alt="Hombre mayor utilizando su teléfono para aprender a usar la inteligencia artificial" fetchpriority="high">
-<div class="hero-bubble">✨ La IA también<br>puede ser fácil</div>
+<a class="cta clean-cta" href="#que-encontraras">Quiero aprender IA <strong>→</strong></a>
+<div class="clean-badges">
+<span>✓ Acceso inmediato</span><span>🎁 Curso completo por solo 9,90 €</span><span>∞ Acceso de por vida</span>
 </div>
 </div>
 </div>
-<div class="hero-scroll" aria-hidden="true">↓ Descubre lo que puedes hacer con IA</div>
+<div class="hero-bottom-benefits">
+<div><b>♧</b><span><strong>Diseñado para</strong><br>principiantes</span></div>
+<div><b>▣</b><span><strong>100% online</strong><br>y en español</span></div>
+<div><b>◷</b><span><strong>A tu ritmo</strong><br>sin presiones</span></div>
+<div><b>♡</b><span><strong>Con ejemplos reales</strong><br>de la vida cotidiana</span></div>
+</div>
 </section>
 <section class="what-you-get" id="que-encontraras">
 <div class="what-inner">
