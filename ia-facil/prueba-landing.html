@@ -103,10 +103,10 @@ else if(!consent)showBanner();
 .test-nav{display:flex;align-items:center;justify-content:center;gap:34px;flex:1}.test-nav a{font-size:15px;color:#09264e;text-decoration:none;font-weight:600;white-space:nowrap}.test-nav a:hover{color:#1687f5}
 .test-header-cta{background:#1687f5;color:#fff;text-decoration:none;font-weight:800;font-size:15px;padding:14px 25px;border-radius:28px;white-space:nowrap;box-shadow:0 7px 18px rgba(22,135,245,.2)}
 .test-menu{display:none;border:0;background:none;font-size:28px;color:#08254f}
-.test-hero{position:relative;min-height:810px;overflow:hidden;background:#eef5fb;color:#08254f}
-.test-hero-bg{position:absolute;inset:0;background-image:url("https://images.pexels.com/photos/3768131/pexels-photo-3768131.jpeg?auto=compress&cs=tinysrgb&w=1800");background-size:cover;background-position:center 40%;z-index:0}
-.test-hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,250,253,.98) 0%,rgba(246,250,253,.96) 30%,rgba(246,250,253,.60) 48%,rgba(246,250,253,.08) 67%,rgba(246,250,253,0) 100%)}
-.test-hero-content{position:relative;z-index:2;width:min(1440px,100%);min-height:810px;margin:auto;padding:52px 5.2vw 125px;display:flex;flex-direction:column;align-items:flex-start}
+.test-hero{position:relative;min-height:850px;overflow:hidden;background:#eef5fb;color:#08254f}
+.test-hero-bg{position:absolute;inset:0;background-image:url("https://images.pexels.com/photos/3768131/pexels-photo-3768131.jpeg?auto=compress&cs=tinysrgb&w=1800");background-size:cover;background-position:center center;z-index:0}
+.test-hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(246,250,253,.97) 0%,rgba(246,250,253,.92) 27%,rgba(246,250,253,.48) 48%,rgba(246,250,253,.08) 66%,rgba(246,250,253,0) 100%)}
+.test-hero-content{position:relative;z-index:2;width:min(1440px,100%);min-height:850px;margin:auto;padding:52px 5.2vw 125px;display:flex;flex-direction:column;align-items:flex-start}
 .hero-kicker{display:inline-flex;align-items:center;background:rgba(255,255,255,.94);border:1px solid #dfe8f2;border-radius:999px;padding:10px 17px;font-size:15px;font-weight:800;box-shadow:0 8px 22px rgba(8,37,79,.08);margin-bottom:25px}
 .test-hero h1{font-size:clamp(50px,5.6vw,79px);line-height:.98;letter-spacing:-4px;margin:0 0 22px;color:#08254f;max-width:700px}.test-hero h1 span{color:#1687f5}
 .hero-sub{font-size:clamp(19px,1.8vw,25px);line-height:1.28;max-width:590px;margin:0 0 25px;color:#173a66}
@@ -116,7 +116,7 @@ else if(!consent)showBanner();
 .hero-badges{display:flex;gap:9px;flex-wrap:wrap}.hero-badges span{background:rgba(255,255,255,.94);border:1px solid #e0e8f1;border-radius:22px;padding:9px 14px;font-size:13px;font-weight:800;color:#17345c;box-shadow:0 5px 15px rgba(8,37,79,.07)}
 @media(max-width:900px){
 .test-header{height:72px}.test-header-inner{padding:0 18px;gap:10px}.test-logo{font-size:28px}.test-nav{display:none}.test-header-cta{margin-left:auto;padding:13px 19px;font-size:14px}.test-menu{display:block}
-.test-hero{min-height:1180px;background:#f3f8fc}.test-hero-bg{height:610px;bottom:auto;background-position:61% 35%;}.test-hero-bg::after{background:linear-gradient(180deg,rgba(246,250,253,.98) 0%,rgba(246,250,253,.92) 27%,rgba(246,250,253,.28) 57%,rgba(246,250,253,0) 76%,rgba(246,250,253,0) 100%)}
+.test-hero{min-height:1180px;background:#f3f8fc}.test-hero-bg{height:100%;bottom:0;background-position:62% center}.test-hero-bg::after{background:linear-gradient(180deg,rgba(246,250,253,.97) 0%,rgba(246,250,253,.90) 22%,rgba(246,250,253,.32) 43%,rgba(246,250,253,.05) 62%,rgba(246,250,253,.18) 100%)}
 .test-hero-content{min-height:1180px;padding:38px 18px 40px;align-items:flex-start}
 .hero-kicker{font-size:13px;padding:10px 14px;margin-bottom:22px}
 .test-hero h1{font-size:clamp(44px,11vw,61px);letter-spacing:-3px;line-height:.97;margin-bottom:21px;max-width:620px}
@@ -128,7 +128,7 @@ else if(!consent)showBanner();
 }
 @media(max-width:560px){
 .test-header-cta{font-size:13px;padding:12px 15px}.test-logo{font-size:25px}.test-menu{font-size:25px}
-.test-hero-bg{height:575px;background-position:62% 34%}
+.test-hero-bg{height:100%;background-position:62% center}
 .test-hero-content{padding:31px 18px 35px}
 .hero-kicker{font-size:11.5px;padding:9px 12px;margin-bottom:20px}
 .test-hero h1{font-size:44px;letter-spacing:-2.5px}
