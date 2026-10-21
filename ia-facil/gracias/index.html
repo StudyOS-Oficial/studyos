@@ -4,25 +4,70 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
 <title>Compra completada · IA Fácil</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(135deg,#fff8f2,#f5f7ff);color:#182033;min-height:100vh;display:grid;place-items:center;padding:24px}
 .card{width:min(620px,100%);background:#fff;border-radius:24px;padding:36px;box-shadow:0 12px 45px rgba(25,35,60,.12);text-align:center}
-.icon{font-size:52px;margin-bottom:8px}h1{font-size:32px;margin:0 0 12px}p{font-size:18px;line-height:1.6;margin:10px 0}.pass{margin:24px 0;padding:20px;border-radius:16px;background:#f7f2ed;border:1px solid #eadfd5}.pass small{display:block;font-size:14px;margin-bottom:7px;opacity:.75}.password{font-size:28px;font-weight:800;letter-spacing:.5px}.btn{display:inline-block;margin-top:12px;padding:16px 24px;border-radius:14px;background:#e0763b;color:#fff;text-decoration:none;font-weight:800;font-size:18px}.help{margin-top:26px;font-size:15px;opacity:.8}.help a{color:inherit;font-weight:700}
+.icon{font-size:52px;margin-bottom:8px}h1{font-size:32px;margin:0 0 12px}p{font-size:18px;line-height:1.6;margin:10px 0}
+.pass{margin:24px 0;padding:20px;border-radius:16px;background:#f7f2ed;border:1px solid #eadfd5}
+.pass small{display:block;font-size:14px;margin-bottom:7px;opacity:.75}.password{font-size:clamp(22px,6vw,28px);font-weight:800;letter-spacing:.3px;overflow-wrap:anywhere}
+.btn{display:inline-block;margin-top:12px;padding:16px 24px;border-radius:14px;background:#e0763b;color:#fff;text-decoration:none;font-weight:800;font-size:18px;border:0;cursor:pointer}
+.btn[hidden],#access[hidden]{display:none}
+.help{margin-top:26px;font-size:15px;opacity:.8}.help a{color:inherit;font-weight:700}
 </style>
 </head>
 <body>
 <main class="card">
-<div class="icon">🎉</div>
-<h1>¡Compra completada!</h1>
-<p>Gracias por comprar <strong>IA Fácil</strong>. Ya tienes todo lo necesario para empezar el curso.</p>
-<div class="pass">
-<small>🔐 Tu contraseña de acceso</small>
-<div class="password">IAfacil2026</div>
-</div>
-<p>Guarda esta contraseña en un lugar seguro. La necesitarás para acceder al curso.</p>
-<a class="btn" href="../curso/">Entrar al curso →</a>
-<p class="help">Una vez introducida en tu dispositivo, no tendrás que volver a escribirla.<br>¿Tienes algún problema? <a href="mailto:studyos.oficial.spain@gmail.com">Contacta con nosotros</a>.</p>
+<div class="icon" aria-hidden="true">⏳</div>
+<h1 id="title">Comprobando tu compra</h1>
+<p id="status" role="status" aria-live="polite">Stripe está confirmando el pago. No cierres esta página.</p>
+<section id="access" hidden>
+  <p>¡Gracias por comprar <strong>IA Fácil</strong>! Ya tienes todo lo necesario para empezar.</p>
+  <div class="pass"><small>🔐 Tu contraseña de acceso</small><div class="password" id="password"></div></div>
+  <p>Guárdala en un lugar seguro. La necesitarás para abrir el curso.</p>
+  <a class="btn" id="course-link" href="../curso/">Entrar al curso →</a>
+</section>
+<button class="btn" id="retry" type="button" hidden>Comprobar de nuevo</button>
+<p class="help">¿Tienes algún problema? <a href="mailto:studyos.oficial.spain@gmail.com">Contacta con nosotros</a>.</p>
 </main>
+<script>
+(function(){
+  var worker="https://studyos-private-delivery.studyos-oficial-spain.workers.dev/verify-ia-facil-payment";
+  var sessionKey="ia-facil-checkout-session";
+  var params=new URLSearchParams(location.search);
+  var sessionId=params.get("session_id")||"";
+  try{if(sessionId)sessionStorage.setItem(sessionKey,sessionId);else sessionId=sessionStorage.getItem(sessionKey)||""}catch(e){}
+  if(params.has("session_id"))history.replaceState({},document.title,location.pathname);
+  var title=document.getElementById("title"),status=document.getElementById("status");
+  var retry=document.getElementById("retry"),access=document.getElementById("access");
+  var busy=false;
+  function fail(message){title.textContent="No se pudo confirmar todavía";status.textContent=message;retry.hidden=false}
+  async function check(){
+    if(busy)return;busy=true;retry.hidden=true;title.textContent="Comprobando tu compra";status.textContent="Stripe está confirmando el pago. No cierres esta página.";
+    if(!sessionId){fail("No encontramos la sesión de pago. Si acabas de pagar, vuelve a la página que te mostró Stripe o contacta con nosotros.");busy=false;return}
+    for(var attempt=0;attempt<10;attempt++){
+      try{
+        var response=await fetch(worker,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({session_id:sessionId})});
+        var data=await response.json().catch(function(){return{}});
+        if(response.status===202&&data.pending){status.textContent="El pago aún está procesándose. Seguimos comprobándolo…";await new Promise(function(resolve){setTimeout(resolve,2000)});continue}
+        if(!response.ok||data.verified!==true)throw new Error(data.error||"No se pudo verificar el pago.");
+        document.getElementById("password").textContent=data.coursePassword;
+        document.getElementById("course-link").href=data.courseUrl;
+        access.hidden=false;title.textContent="¡Compra completada!";status.textContent="Pago confirmado. Aquí tienes tu contraseña y el acceso al curso.";
+        document.querySelector(".icon").textContent="🎉";
+        try{sessionStorage.removeItem(sessionKey)}catch(e){}
+        busy=false;return
+      }catch(error){
+        fail((error&&error.message?error.message:"No se pudo verificar el pago.")+" Si ya pagaste, vuelve a intentarlo en unos segundos o escríbenos.");
+        busy=false;return
+      }
+    }
+    fail("El pago sigue procesándose. Espera unos segundos y vuelve a comprobarlo.");busy=false
+  }
+  retry.addEventListener("click",check);
+  check();
+})();
+</script>
 </body>
 </html>

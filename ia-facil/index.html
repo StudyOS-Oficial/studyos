@@ -69,9 +69,20 @@ body{padding-bottom:84px}@media(min-width:900px){body{padding-bottom:0}}
 @media(min-width:700px){.sgrid{grid-template-columns:repeat(3,1fr)}.slide{flex-basis:calc(50% - 8px);max-width:none}.panel{padding:30px}}
 @media(min-width:1000px){.slide{flex-basis:calc(33.3% - 10px)}.car .track{margin:0;padding-left:0;padding-right:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+#checkout-dialog{border:0;padding:0;width:min(800px,calc(100% - 24px));max-height:min(92vh,920px);border-radius:24px;background:#fff;color:var(--ink);box-shadow:0 24px 80px #071b4470;overflow:auto}
+#checkout-dialog::backdrop{background:#071b44b8;backdrop-filter:blur(4px)}
+.checkout-modal{position:relative;padding:clamp(22px,5vw,38px)}
+.checkout-close{position:absolute;right:14px;top:12px;border:0;background:#eef4ff;color:var(--navy);border-radius:50%;width:44px;height:44px;font-size:28px;cursor:pointer}
+.checkout-modal h2{font-size:clamp(26px,5vw,38px);margin-right:44px}
+.checkout-modal .checkout-intro{color:var(--mut);margin:8px 0 14px}
+#ia-checkout-status{background:var(--sky);border-radius:12px;padding:12px 14px;color:var(--navy);margin:14px 0}
+#ia-checkout-status.error{background:#fff0f0;color:#9b2020}
+#ia-checkout-retry{display:none;margin:8px 0 18px}
+#ia-facil-checkout{min-height:260px}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Course", "name": "IA fácil", "description": "Curso online en español para aprender a usar la inteligencia artificial en tu día a día, paso a paso y desde cero. 10 módulos por 9,90 €, pago único.", "inLanguage": "es", "provider": {"@type": "Organization", "name": "StudyOS", "url": "https://studyos-oficial.github.io/studyos/ia-facil/"}, "offers": {"@type": "Offer", "price": "9.90", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://studyos-oficial.github.io/studyos/ia-facil/"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Necesito saber mucho de ordenadores?", "acceptedAnswer": {"@type": "Answer", "text": "No. El curso parte de cero y explica cada paso de forma sencilla."}}, {"@type": "Question", "name": "¿Es seguro? ¿Me pedirán muchos datos?", "acceptedAnswer": {"@type": "Answer", "text": "El pago se hace en la página segura de Stripe y nosotros no vemos los datos de tu tarjeta. Para entrar al curso no tienes que crear ninguna cuenta. Más información en la política de privacidad."}}, {"@type": "Question", "name": "¿Cómo entro al curso después de pagar?", "acceptedAnswer": {"@type": "Answer", "text": "Al terminar el pago, Stripe te lleva a una página que te muestra tu contraseña de acceso. Guárdala o haz una captura de pantalla. Con ella entras al curso desde cualquier dispositivo."}}, {"@type": "Question", "name": "¿Tengo que instalar algo?", "acceptedAnswer": {"@type": "Answer", "text": "No. Todo se hace desde el navegador de tu móvil, tableta u ordenador."}}, {"@type": "Question", "name": "¿Necesito pagar ChatGPT?", "acceptedAnswer": {"@type": "Answer", "text": "No necesitas una suscripción de pago concreta para aprender los fundamentos. Algunas funciones pueden variar según el plan que utilices."}}, {"@type": "Question", "name": "¿La IA siempre dice la verdad?", "acceptedAnswer": {"@type": "Answer", "text": "No. Precisamente aprenderás a detectar errores y a saber cuándo comprobar la información."}}, {"@type": "Question", "name": "¿Y si no me convence?", "acceptedAnswer": {"@type": "Answer", "text": "Tienes 14 días naturales para desistir de la compra, sin indicar motivo, escribiendo a studyos.oficial.spain@gmail.com. Todos los detalles están en las condiciones de compra."}}, {"@type": "Question", "name": "¿Cuánto tiempo tengo acceso?", "acceptedAnswer": {"@type": "Answer", "text": "Es un pago único, sin cuotas. El acceso se mantiene mientras el curso siga disponible en línea; puedes consultarlo en las condiciones de compra."}}]}</script>
-</head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<script src="https://js.stripe.com/v3/" defer></script></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <symbol id="i-chef" viewBox="0 0 24 24"><path fill="currentColor" d="M7.2 14.5A3.6 3.6 0 0 1 6.6 7.6 4.6 4.6 0 0 1 12 4.2a4.6 4.6 0 0 1 5.4 3.4 3.6 3.6 0 0 1-.6 6.9z"/><rect fill="currentColor" x="7.4" y="15.6" width="9.2" height="4.4" rx="1.3"/></symbol>
 <symbol id="i-plane" viewBox="0 0 24 24"><path fill="currentColor" d="M3 11.2 21.2 3.5 13.6 21.2l-2.6-7.3z"/></symbol>
 <symbol id="i-chat" viewBox="0 0 24 24"><path fill="currentColor" d="M5.5 4h13A3.5 3.5 0 0 1 22 7.5v6a3.5 3.5 0 0 1-3.5 3.5H12l-4.6 3.6V17H5.5A3.5 3.5 0 0 1 2 13.5v-6A3.5 3.5 0 0 1 5.5 4z"/><g fill="#fff"><circle cx="8" cy="10.5" r="1.1"/><circle cx="12" cy="10.5" r="1.1"/><circle cx="16" cy="10.5" r="1.1"/></g></symbol>
@@ -126,7 +137,7 @@ body{padding-bottom:84px}@media(min-width:900px){body{padding-bottom:0}}
 <div class="center" style="margin-top:26px"><a class="btn" href="#oferta">Quiero aprender IA <svg class="ic"  aria-hidden="true"><use href="#i-arrow"/></svg></a></div></div></section>
 
 <section class="sec" id="como"><div class="wrap"><div class="center"><span class="eyebrow">Cómo funciona</span><h2>Así de fácil</h2></div>
-<div class="grid c3 steps"><div class="card step"><h3>Haz el pago seguro</h3><p>Pagas 9,90 € una sola vez en la página segura de Stripe.</p></div><div class="card step"><h3>Recibe tu contraseña</h3><p>Al terminar el pago verás en pantalla tu contraseña de acceso. Guárdala o haz una captura.</p></div><div class="card step"><h3>Aprende a tu ritmo</h3><p>Entra desde el móvil, la tableta o el ordenador y avanza sin prisas.</p></div></div></div></section>
+<div class="grid c3 steps"><div class="card step"><h3>Haz el pago seguro</h3><p>Completa aquí el pago seguro con Stripe. Es un único pago de 9,90 €.</p></div><div class="card step"><h3>Recibe tu contraseña</h3><p>Al terminar el pago verás en pantalla tu contraseña de acceso. Guárdala o haz una captura.</p></div><div class="card step"><h3>Aprende a tu ritmo</h3><p>Entra desde el móvil, la tableta o el ordenador y avanza sin prisas.</p></div></div></div></section>
 
 <section class="sec" id="modulos"><div class="wrap"><div class="center"><span class="eyebrow">Módulos</span><h2>10 módulos, paso a paso</h2><p class="sec-lead">Un recorrido completo para pasar de no saber por dónde empezar a utilizar ChatGPT con confianza. Toca un módulo para ver qué aprenderás.</p></div>
 <ol class="macc"><li><details><summary><span class="num">01</span><span>Qué es la IA y ChatGPT</span></summary><p>Entiende qué es la inteligencia artificial, cómo funciona ChatGPT y cómo empezar a utilizarlo.</p></details></li><li><details><summary><span class="num">02</span><span>Tu primera conversación</span></summary><p>Aprende a iniciar una conversación y a pedir exactamente lo que necesitas.</p></details></li><li><details><summary><span class="num">03</span><span>Cómo hacer buenas preguntas</span></summary><p>Descubre cómo dar contexto y formular peticiones para conseguir mejores respuestas.</p></details></li><li><details><summary><span class="num">04</span><span>IA para tu vida cotidiana</span></summary><p>Viajes, recetas, mensajes, documentos, compras, organización y otras situaciones reales.</p></details></li><li><details><summary><span class="num">05</span><span>Cómo conseguir mejores respuestas</span></summary><p>Mejora tus resultados utilizando contexto, tono, formato y nuevas instrucciones.</p></details></li><li><details><summary><span class="num">06</span><span>Comprobar la información</span></summary><p>Aprende a detectar errores y a saber cuándo necesitas verificar una respuesta.</p></details></li><li><details><summary><span class="num">07</span><span>Privacidad y seguridad</span></summary><p>Qué información debes proteger, qué no conviene compartir y cómo utilizar la IA con cabeza.</p></details></li><li><details><summary><span class="num">08</span><span>Aprender con IA</span></summary><p>Utiliza ChatGPT para entender temas, practicar, repasar y aprender a tu ritmo.</p></details></li><li><details><summary><span class="num">09</span><span>Organizarte con IA</span></summary><p>Convierte tareas, objetivos y rutinas en planes claros y prácticos.</p></details></li><li><details><summary><span class="num">10</span><span>Crear y comunicar</span></summary><p>Escribe, resume, genera ideas y mejora tus textos con ayuda de la IA.</p></details></li></ol>
@@ -136,7 +147,7 @@ body{padding-bottom:84px}@media(min-width:900px){body{padding-bottom:0}}
 <ul class="ticks"><li><svg class="ic"  aria-hidden="true"><use href="#i-check"/></svg><span>10 módulos y 100 lecciones breves</span></li><li><svg class="ic"  aria-hidden="true"><use href="#i-check"/></svg><span>10 cuestionarios, prácticas y reto final</span></li><li><svg class="ic"  aria-hidden="true"><use href="#i-check"/></svg><span>Kit de frases listas para copiar y certificado</span></li><li><svg class="ic"  aria-hidden="true"><use href="#i-check"/></svg><span>Desde el móvil, la tableta o el ordenador</span></li><li><svg class="ic"  aria-hidden="true"><use href="#i-check"/></svg><span>14 días para desistir de la compra, sin indicar motivo</span></li></ul></div>
 <div class="price-card"><div class="small" style="font-weight:800;color:var(--blue2)">PRECIO DE LANZAMIENTO</div><div class="price">9,90 €</div><div class="small">pago único · sin suscripciones</div>
 <!-- GARANTÍA EXTRA (actívala solo si la ofreces): <p class="small"><strong>Garantía de X días.</strong></p> -->
-<a class="btn" href="https://buy.stripe.com/aFa7sNd4x7nc9fufzu1VK09">Quiero aprender IA <svg class="ic"  aria-hidden="true"><use href="#i-arrow"/></svg></a><div class="small">🔒 Pago seguro con Stripe</div><div class="support">¿Dudas antes de comprar? Escríbenos: <a href="mailto:studyos.oficial.spain@gmail.com">studyos.oficial.spain@gmail.com</a></div></div></div></section>
+<a class="btn" href="#checkout-dialog" data-checkout-trigger>Quiero aprender IA <svg class="ic"  aria-hidden="true"><use href="#i-arrow"/></svg></a><div class="small">🔒 Pago seguro con Stripe</div><div class="support">¿Dudas antes de comprar? Escríbenos: <a href="mailto:studyos.oficial.spain@gmail.com">studyos.oficial.spain@gmail.com</a></div></div></div></section>
 
 <section class="sec alt" id="opiniones"><div class="wrap"><div class="center"><span class="eyebrow">Opiniones</span><h2>La experiencia de una alumna</h2></div><div class="tcard"><div class="shot"><img src="https://images.pexels.com/photos/5239782/pexels-photo-5239782.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1000" width="1000" height="667" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="Persona utilizando un teléfono móvil, sin mostrar el rostro" onerror="this.style.display='none'"></div><div class="tbody"><p class="q">“Me ha encantado el curso y he aprendido mucho.”</p><p class="by"><strong>Paqui</strong><br>Alumna de IA fácil</p></div></div></div></section>
 
@@ -152,10 +163,10 @@ body{padding-bottom:84px}@media(min-width:900px){body{padding-bottom:0}}
 
 <section class="sec" id="preguntas"><div class="wrap"><div class="center"><span class="eyebrow">Preguntas</span><h2>Preguntas frecuentes</h2></div><div class="faq"><details><summary>¿Necesito saber mucho de ordenadores?</summary><p>No. El curso parte de cero y explica cada paso de forma sencilla.</p></details><details><summary>¿Es seguro? ¿Me pedirán muchos datos?</summary><p>El pago se hace en la página segura de Stripe y nosotros no vemos los datos de tu tarjeta. Para entrar al curso no tienes que crear ninguna cuenta. Más información en la <a href="./privacidad.html">política de privacidad</a>.</p></details><details><summary>¿Cómo entro al curso después de pagar?</summary><p>Al terminar el pago, Stripe te lleva a una página que te muestra tu contraseña de acceso. Guárdala o haz una captura de pantalla. Con ella entras al curso desde cualquier dispositivo.</p></details><details><summary>¿Tengo que instalar algo?</summary><p>No. Todo se hace desde el navegador de tu móvil, tableta u ordenador.</p></details><details><summary>¿Necesito pagar ChatGPT?</summary><p>No necesitas una suscripción de pago concreta para aprender los fundamentos. Algunas funciones pueden variar según el plan que utilices.</p></details><details><summary>¿La IA siempre dice la verdad?</summary><p>No. Precisamente aprenderás a detectar errores y a saber cuándo comprobar la información.</p></details><details><summary>¿Y si no me convence?</summary><p>Tienes 14 días naturales para desistir de la compra, sin indicar motivo, escribiendo a <a href="mailto:studyos.oficial.spain@gmail.com">studyos.oficial.spain@gmail.com</a>. Todos los detalles están en las <a href="./condiciones-compra.html">condiciones de compra</a>.</p></details><details><summary>¿Cuánto tiempo tengo acceso?</summary><p>Es un pago único, sin cuotas. El acceso se mantiene mientras el curso siga disponible en línea; puedes consultarlo en las <a href="./condiciones-compra.html">condiciones de compra</a>.</p></details></div><p class="center" style="margin-top:20px">¿Tienes alguna duda? Escríbenos a <a href="mailto:studyos.oficial.spain@gmail.com" style="overflow-wrap:anywhere">studyos.oficial.spain@gmail.com</a></p></div></section>
 
-<section class="final"><div class="wrap"><h2>Empieza hoy, a tu ritmo.</h2><p>Un solo pago de 9,90 €. Aprende a usar la inteligencia artificial sin prisas y sin tecnicismos.</p><a class="btn btn-white" href="https://buy.stripe.com/aFa7sNd4x7nc9fufzu1VK09">Quiero aprender IA <svg class="ic"  aria-hidden="true"><use href="#i-arrow"/></svg></a><div class="micro">🔒 Pago seguro con Stripe · Sin suscripciones</div></div></section>
+<section class="final"><div class="wrap"><h2>Empieza hoy, a tu ritmo.</h2><p>Un solo pago de 9,90 €. Aprende a usar la inteligencia artificial sin prisas y sin tecnicismos.</p><a class="btn btn-white" href="#checkout-dialog" data-checkout-trigger>Quiero aprender IA <svg class="ic"  aria-hidden="true"><use href="#i-arrow"/></svg></a><div class="micro">🔒 Pago seguro con Stripe · Sin suscripciones</div></div></section>
 </main>
 <footer><div class="wrap"><div><a class="logo" href="#inicio">StudyOS<svg class="ic"  aria-hidden="true"><use href="#i-leaf"/></svg></a><div style="margin-top:6px">© 2026 StudyOS · Curso IA fácil</div></div><nav aria-label="Información legal"><a href="./aviso-legal.html">Aviso legal</a><a href="./terminos.html">Términos y condiciones</a><a href="./privacidad.html">Privacidad y cookies</a><a href="./condiciones-compra.html">Condiciones de compra</a><a href="mailto:studyos.oficial.spain@gmail.com">Contacto</a></nav></div></footer>
-<div class="float" id="float"><a class="btn" href="https://buy.stripe.com/aFa7sNd4x7nc9fufzu1VK09">Empezar por 9,90 € <svg class="ic"  aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="ask" href="https://wa.me/34636136394?text=Hola%2C%20he%20visto%20IA%20F%C3%A1cil%20y%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener" aria-label="¿Dudas? Escríbenos por WhatsApp"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg><span>Dudas</span></a></div>
+<div class="float" id="float"><a class="btn" href="#checkout-dialog" data-checkout-trigger>Empezar por 9,90 € <svg class="ic"  aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="ask" href="https://wa.me/34636136394?text=Hola%2C%20he%20visto%20IA%20F%C3%A1cil%20y%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener" aria-label="¿Dudas? Escríbenos por WhatsApp"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg><span>Dudas</span></a></div>
 <script>
 (function(){
 const input=document.getElementById('demoInput'),before=document.getElementById('beforeText'),after=document.getElementById('afterText'),improve=document.getElementById('improveBtn'),example=document.getElementById('exampleBtn');
@@ -177,4 +188,53 @@ var tr=document.getElementById('ctrack');if(tr){var sl=[].slice.call(tr.children
 var f=document.getElementById('float');if(f&&'IntersectionObserver' in window){var v=new Set(),io=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?v.add(e.target):v.delete(e.target)});f.classList.toggle('hide',v.size>0)},{threshold:.15});document.querySelectorAll('#oferta,.final,.hero').forEach(function(el){io.observe(el)})}})();</script>
 
 <script src="./track.js"></script>
+
+<dialog id="checkout-dialog" aria-labelledby="ia-checkout-title">
+  <div class="checkout-modal">
+    <button type="button" class="checkout-close" id="ia-checkout-close" aria-label="Cerrar el pago">×</button>
+    <p class="eyebrow">Pago seguro · Stripe</p>
+    <h2 id="ia-checkout-title">Completa tu compra</h2>
+    <p class="checkout-intro">IA Fácil · pago único de 9,90 €. Al terminar volverás a la página de gracias.</p>
+    <p id="ia-checkout-status" role="status" aria-live="polite">Conectando con el pago seguro…</p>
+    <button class="btn btn-sm" id="ia-checkout-retry" type="button">Volver a intentar</button>
+    <div id="ia-facil-checkout"></div>
+  </div>
+</dialog>
+<script>
+(function(){
+  var dialog=document.getElementById("checkout-dialog");
+  var status=document.getElementById("ia-checkout-status");
+  var retry=document.getElementById("ia-checkout-retry");
+  var container=document.getElementById("ia-facil-checkout");
+  var checkout=null,loading=false;
+  function showError(message){status.className="error";status.textContent=message;retry.style.display="inline-flex"}
+  async function startCheckout(){
+    if(loading||checkout)return;
+    if(typeof window.Stripe!=="function"){showError("No se pudo cargar Stripe. Revisa tu conexión e inténtalo de nuevo.");return}
+    loading=true;retry.style.display="none";status.className="";status.textContent="Preparando el pago seguro…";
+    try{
+      var stripe=window.Stripe("pk_live_51Ty9MHPdiAyvfYF7hGx3y3jGl5ihSgAfXuCvIDYXdAWQ1I27anY0KccFC1NfLG8W7g5weKGb1yx5SbGb3Ii4eXDB003e2GCFjJ");
+      checkout=await stripe.initEmbeddedCheckout({fetchClientSecret:async function(){
+        var response=await fetch("https://studyos-private-delivery.studyos-oficial-spain.workers.dev/create-ia-facil-checkout-session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({product:"ia-facil"})});
+        var data=await response.json().catch(function(){return{}});
+        if(!response.ok||typeof data.clientSecret!=="string")throw new Error(data.error||"No se pudo iniciar el pago.");
+        return data.clientSecret;
+      }});
+      checkout.mount("#ia-facil-checkout");
+      status.textContent="Introduce tus datos en el formulario de Stripe. Al terminar volverás aquí.";
+    }catch(error){checkout=null;showError(error&&error.message?error.message:"No se pudo iniciar el pago. Inténtalo de nuevo.")}
+    finally{loading=false}
+  }
+  document.querySelectorAll("[data-checkout-trigger]").forEach(function(button){
+    button.addEventListener("click",function(event){event.preventDefault();if(!dialog.open)dialog.showModal();startCheckout()})
+  });
+  retry.addEventListener("click",startCheckout);
+  document.getElementById("ia-checkout-close").addEventListener("click",function(){dialog.close()});
+  dialog.addEventListener("click",function(event){if(event.target===dialog)dialog.close()});
+  dialog.addEventListener("close",function(){
+    if(checkout){checkout.destroy();checkout=null}
+    container.replaceChildren();retry.style.display="none";status.className="";status.textContent="Conectando con el pago seguro…"
+  });
+})();
+</script>
 </body></html>
