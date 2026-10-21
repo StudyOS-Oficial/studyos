@@ -29,8 +29,10 @@
   <a class="btn" id="course-link" href="../curso/">Entrar al curso →</a>
 </section>
 <button class="btn" id="retry" type="button" hidden>Comprobar de nuevo</button>
-<p class="help">¿Tienes algún problema? <a href="mailto:studyos.oficial.spain@gmail.com">Contacta con nosotros</a>.</p>
+<p class="help">¿Tienes algún problema? <a href="mailto:studyos.oficial.spain@gmail.com">Contacta con nosotros</a>.<br><a href="#cookie-settings" id="iafacil-cookie-settings">Gestionar cookies</a></p>
 </main>
+<script src="../consent.js"></script>
+<script src="../track.js"></script>
 <script>
 (function(){
   var worker="https://studyos-private-delivery.studyos-oficial-spain.workers.dev/verify-ia-facil-payment";
@@ -56,6 +58,7 @@
         document.getElementById("course-link").href=data.courseUrl;
         access.hidden=false;title.textContent="¡Compra completada!";status.textContent="Pago confirmado. Aquí tienes tu contraseña y el acceso al curso.";
         document.querySelector(".icon").textContent="🎉";
+        window.iaFacilTrack("purchase_verified",{sessionId:sessionId});
         try{sessionStorage.removeItem(sessionKey)}catch(e){}
         busy=false;return
       }catch(error){
