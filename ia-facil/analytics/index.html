@@ -50,8 +50,11 @@ function render(rows,range){
  ["Landing",visits.uniq,"100%"],["Vio la oferta",offer.uniq,pct(offer.uniq,visits.uniq)],["Pulsó comprar",cta.uniq,pct(cta.uniq,visits.uniq)],["Checkout abierto",opened.uniq,pct(opened.uniq,visits.uniq)],["Sesión creada por Stripe",session.uniq,pct(session.uniq,visits.uniq)],["Compra verificada por el servidor",purchase.uniq,pct(purchase.uniq,visits.uniq)]
  ]));
  out.append(el("h2","Profundidad de lectura"),table(["Scroll","Visitantes","% de visitas",""],[25,50,75,90,100].map(n=>{const r=g("scroll","/v2|"+n);return[n+"%",r.uniq,pct(r.uniq,visits.uniq),bar(visits.uniq?r.uniq/visits.uniq*100:0)]})));
+ const clicks=list("click");
+ const engagementPrefix="/v2|v2:engagement:",engagement=clicks.filter(r=>r.key.startsWith(engagementPrefix));
+ if(engagement.length)out.append(el("h2","Tiempo activo desde el consentimiento"),table(["Intervalo","Visitantes por día","% de visitas"],engagement.map(r=>[r.key.slice(engagementPrefix.length),r.uniq,pct(r.uniq,visits.uniq)])));
  const sections=list("section").filter(r=>r.key.startsWith("/v2|"));if(sections.length)out.append(el("h2","Secciones que alcanzan"),table(["Sección","Visitantes","% de visitas"],sections.map(r=>[tail(r.key),r.uniq,pct(r.uniq,visits.uniq)])));
- const clicks=list("click"),slotPrefix="/v2|v2:cta_slot:",slots=clicks.filter(r=>r.key.startsWith(slotPrefix)).map(r=>({...r,key:r.key.slice(slotPrefix.length)}));
+ const slotPrefix="/v2|v2:cta_slot:",slots=clicks.filter(r=>r.key.startsWith(slotPrefix)).map(r=>({...r,key:r.key.slice(slotPrefix.length)}));
  if(slots.length)out.append(el("h2","Dónde pulsan el botón de compra"),table(["Ubicación del CTA","Visitantes diarios","Clics"],slots.map(r=>[r.key,r.uniq,r.total])));
  const activity=[];for(const [kind,label] of [["faq","FAQ abierta"],["demo","Interacción con demo"],["checkout_error","Error al iniciar checkout"]]){const prefix="/v2|v2:"+kind+":";clicks.filter(r=>r.key.startsWith(prefix)).forEach(r=>activity.push([label,r.key.slice(prefix.length),r.uniq,r.total]));}
  if(activity.length)out.append(el("h2","Preguntas, demo y errores"),table(["Actividad","Detalle","Visitantes","Eventos"],activity));
