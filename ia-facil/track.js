@@ -8,7 +8,7 @@ var rawPath=location.pathname.replace(/^(\/studyos)?\/ia-facil/,"").replace(/ind
 if(rawPath.charAt(0)!=="/")rawPath="/"+rawPath;
 var course=/^\/curso(\/|$)/.test(rawPath);
 var path=course?rawPath:(rawPath==="/" ? "/v2" : "/v2"+rawPath), site=course?"course":"landing";
-var seen={}, listenersStarted=false, analyticsPageViewSent=false, metaStarted=false, metaPageViewSent=false;
+var seen={}, listenersStarted=false, analyticsPageViewSent=false, metaStarted=false, metaPageViewSent=false, metaViewContentSent=false, sectionObserver=null;
 function getConsent(){return window.iaFacilGetConsent?window.iaFacilGetConsent():{analytics:false,marketing:false};}
 function permitted(name){var c=getConsent();return name==="meta"?c.marketing===true:c.analytics===true;}
 function keySafe(value){return String(value||"").toLowerCase().replace(/\s+/g,"_").replace(/[^a-z0-9_:.#\/-]/g,"").slice(0,60);}
@@ -24,7 +24,7 @@ function send(type,key,extra){
  try{if(navigator.sendBeacon&&navigator.sendBeacon(E,new Blob([body],{type:"text/plain"})))return;}catch(e){}
  try{fetch(E,{method:"POST",body:body,keepalive:true,mode:"cors",credentials:"omit",referrerPolicy:"no-referrer",headers:{"Content-Type":"text/plain"}}).catch(function(){});}catch(e){}
 }
-function once(type,key){var id=type+"|"+key;if(seen[id])return;seen[id]=1;send(type,key);}
+function once(type,key){if(!permitted("analytics")||navigator.doNotTrack==="1"||navigator.globalPrivacyControl===true)return;var id=type+"|"+key;if(seen[id])return;seen[id]=1;send(type,key);}
 function randomId(){
  var a=new Uint8Array(16);crypto.getRandomValues(a);return Array.from(a).map(function(x){return x.toString(16).padStart(2,"0");}).join("");
 }
@@ -43,7 +43,8 @@ function loadPixel(){
    var t=document.createElement("script");t.async=true;t.src="https://connect.facebook.net/en_US/fbevents.js";
    var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s);
  }
- if(!metaStarted){window.fbq("init","1420061570074591");window.fbq("consent","grant");metaStarted=true;}
+ if(!metaStarted){window.fbq("init","1420061570074591");metaStarted=true;}
+ window.fbq("consent","grant");
  return true;
 }
 function metaEvent(name,data,id,sendServer){
@@ -58,7 +59,7 @@ function startMetaPageView(){
 }
 function cleanDimension(value){
  var v=String(value||"").trim().toLowerCase();
- if(!v||v.length>40||/@|https?:|\d{7,}/.test(v))return "";
+ if(!v||v.length>40||/@|https?:/.test(v)||(v.match(/\d/g)||[]).length>=7)return "";
  v=v.replace(/[^a-z0-9_-]/g,"_").replace(/_+/g,"_").replace(/^_|_$/g,"").slice(0,32);
  return v;
 }
@@ -75,6 +76,12 @@ function startAnalytics(){
  var browser=/edg\//i.test(ua)?"edge":/firefox\//i.test(ua)?"firefox":/chrome\//i.test(ua)?"chrome":/safari\//i.test(ua)?"safari":"other";
  sendDimension("device",device);sendDimension("browser",browser);
 }
+function recordSection(el){
+ if(permitted("analytics"))once("section",el.id);
+ if(el.id==="oferta"&&permitted("meta")&&!metaViewContentSent&&navigator.doNotTrack!=="1"&&navigator.globalPrivacyControl!==true){
+  metaViewContentSent=true;metaEvent("ViewContent",{content_name:"Oferta IA Fácil",content_category:"Curso online",content_type:"product",value:9.90,currency:"EUR"},randomId(),true);
+ }
+}
 function startListeners(){
  if(listenersStarted)return;
  listenersStarted=true;
@@ -82,8 +89,8 @@ function startListeners(){
  function scroll(){ticking=false;var max=document.documentElement.scrollHeight-innerHeight;if(max<=0)return;var pct=scrollY/max*100;marks.forEach(function(n){if(pct>=n-.5)once("scroll",n);});}
  addEventListener("scroll",function(){if(!ticking){ticking=true;requestAnimationFrame(scroll);}},{passive:true});scroll();
  if("IntersectionObserver"in window){
-   var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){once("section",e.target.id);if(e.target.id==="oferta")metaEvent("ViewContent",{content_name:"Oferta IA Fácil",content_category:"Curso online",content_type:"product",value:9.90,currency:"EUR"},randomId(),true);io.unobserve(e.target);}});},{threshold:0,rootMargin:"0px 0px -40% 0px"});
-   document.querySelectorAll("section[id]").forEach(function(el){io.observe(el);});
+   sectionObserver=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){recordSection(e.target);var c=getConsent();if(c.analytics&&(e.target.id!=="oferta"||c.marketing||metaViewContentSent))sectionObserver.unobserve(e.target);}});},{threshold:0,rootMargin:"0px 0px -40% 0px"});
+   document.querySelectorAll("section[id]").forEach(function(el){sectionObserver.observe(el);});
  }
  var last="",lastAt=0;
  document.addEventListener("click",function(e){
@@ -125,9 +132,10 @@ window.iaFacilTrack=function(event,extra){
 };
 window.addEventListener("iafacil:consent",function(e){
  var c=e.detail||{};
- if(c.analytics)startAnalytics();
+ if(c.analytics){startAnalytics();window.dispatchEvent(new Event("scroll"));}
  if(c.marketing)startMetaPageView();
  else if(window.fbq&&metaStarted){window.fbq("consent","revoke");document.cookie="_fbp=; Max-Age=0; path=/; SameSite=Lax; Secure";document.cookie="_fbc=; Max-Age=0; path=/; SameSite=Lax; Secure";}
+ if(sectionObserver&&(c.analytics||c.marketing))document.querySelectorAll("section[id]").forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0){sectionObserver.unobserve(el);sectionObserver.observe(el);}});
 });
 startListeners();startAnalytics();startMetaPageView();
 })();
