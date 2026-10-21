@@ -165,7 +165,7 @@ body{padding-bottom:84px}@media(min-width:900px){body{padding-bottom:0}}
 
 <section class="final"><div class="wrap"><h2>Empieza hoy, a tu ritmo.</h2><p>Un solo pago de 9,90 €. Aprende a usar la inteligencia artificial sin prisas y sin tecnicismos.</p><a class="btn btn-white" href="#checkout-dialog" data-checkout-trigger>Quiero aprender IA <svg class="ic"  aria-hidden="true"><use href="#i-arrow"/></svg></a><div class="micro">🔒 Pago seguro con Stripe · Sin suscripciones</div></div></section>
 </main>
-<footer><div class="wrap"><div><a class="logo" href="#inicio">StudyOS<svg class="ic"  aria-hidden="true"><use href="#i-leaf"/></svg></a><div style="margin-top:6px">© 2026 StudyOS · Curso IA fácil</div></div><nav aria-label="Información legal"><a href="./aviso-legal.html">Aviso legal</a><a href="./terminos.html">Términos y condiciones</a><a href="./privacidad.html">Privacidad y cookies</a><a href="./condiciones-compra.html">Condiciones de compra</a><a href="mailto:studyos.oficial.spain@gmail.com">Contacto</a></nav></div></footer>
+<footer><div class="wrap"><div><a class="logo" href="#inicio">StudyOS<svg class="ic"  aria-hidden="true"><use href="#i-leaf"/></svg></a><div style="margin-top:6px">© 2026 StudyOS · Curso IA fácil</div></div><nav aria-label="Información legal"><a href="./aviso-legal.html">Aviso legal</a><a href="./terminos.html">Términos y condiciones</a><a href="./privacidad.html">Privacidad y cookies</a><a href="./condiciones-compra.html">Condiciones de compra</a><a href="#cookie-settings" id="iafacil-cookie-settings">Gestionar cookies</a><a href="mailto:studyos.oficial.spain@gmail.com">Contacto</a></nav></div></footer>
 <div class="float" id="float"><a class="btn" href="#checkout-dialog" data-checkout-trigger>Empezar por 9,90 € <svg class="ic"  aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="ask" href="https://wa.me/34636136394?text=Hola%2C%20he%20visto%20IA%20F%C3%A1cil%20y%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener" aria-label="¿Dudas? Escríbenos por WhatsApp"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg><span>Dudas</span></a></div>
 <script>
 (function(){
@@ -187,6 +187,7 @@ var tr=document.getElementById('ctrack');if(tr){var sl=[].slice.call(tr.children
 <script>(function(){var b=document.getElementById('burger'),m=document.getElementById('menu');function set(o){m.hidden=!o;b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Cerrar el menú':'Abrir el menú');b.innerHTML='<svg class="ic" aria-hidden="true"><use href="#i-'+(o?'x':'menu')+'"/></svg>'}b.onclick=function(){set(m.hidden)};m.addEventListener('click',function(e){if(e.target.tagName==='A')set(false)});document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)});
 var f=document.getElementById('float');if(f&&'IntersectionObserver' in window){var v=new Set(),io=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?v.add(e.target):v.delete(e.target)});f.classList.toggle('hide',v.size>0)},{threshold:.15});document.querySelectorAll('#oferta,.final,.hero').forEach(function(el){io.observe(el)})}})();</script>
 
+<script src="./consent.js"></script>
 <script src="./track.js"></script>
 
 <dialog id="checkout-dialog" aria-labelledby="ia-checkout-title">
@@ -217,16 +218,16 @@ var f=document.getElementById('float');if(f&&'IntersectionObserver' in window){v
       checkout=await stripe.initEmbeddedCheckout({fetchClientSecret:async function(){
         var response=await fetch("https://studyos-private-delivery.studyos-oficial-spain.workers.dev/create-ia-facil-checkout-session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({product:"ia-facil"})});
         var data=await response.json().catch(function(){return{}});
-        if(!response.ok||typeof data.clientSecret!=="string")throw new Error(data.error||"No se pudo iniciar el pago.");
+        if(!response.ok||typeof data.clientSecret!=="string")throw new Error(data.error||"No se pudo iniciar el pago.");window.iaFacilTrack("checkout_session_created");
         return data.clientSecret;
       }});
       checkout.mount("#ia-facil-checkout");
       status.textContent="Introduce tus datos en el formulario de Stripe. Al terminar volverás aquí.";
-    }catch(error){checkout=null;showError(error&&error.message?error.message:"No se pudo iniciar el pago. Inténtalo de nuevo.")}
+    }catch(error){window.iaFacilTrack("checkout_error");checkout=null;showError(error&&error.message?error.message:"No se pudo iniciar el pago. Inténtalo de nuevo.")}
     finally{loading=false}
   }
   document.querySelectorAll("[data-checkout-trigger]").forEach(function(button){
-    button.addEventListener("click",function(event){event.preventDefault();if(!dialog.open)dialog.showModal();startCheckout()})
+    button.addEventListener("click",function(event){event.preventDefault();if(!dialog.open){dialog.showModal();window.iaFacilTrack("checkout_open")}startCheckout()})
   });
   retry.addEventListener("click",startCheckout);
   document.getElementById("ia-checkout-close").addEventListener("click",function(){dialog.close()});
