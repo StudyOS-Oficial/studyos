@@ -1,56 +1,73 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive"><title>IA fácil · Analítica</title>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive"><title>IA fácil · Analítica de la landing</title>
 <style>
-:root{--bg:#faf7f2;--fg:#222;--card:#fff;--mut:#777;--ac:#e0763b;--ln:#eee}
-@media(prefers-color-scheme:dark){:root{--bg:#161616;--fg:#eee;--card:#212121;--mut:#999;--ln:#333}}
-body{margin:0;font:15px system-ui,sans-serif;background:var(--bg);color:var(--fg);padding:16px;max-width:900px;margin:auto}
-h1{font-size:20px}h2{font-size:17px;margin:26px 0 8px}.card{background:var(--card);border-radius:12px;padding:14px;margin:8px 0;overflow-x:auto}
-.kpi{display:flex;flex-wrap:wrap;gap:8px}.kpi div{flex:1 1 130px;background:var(--card);border-radius:12px;padding:12px}.kpi b{font-size:24px;display:block}
-.mut{color:var(--mut);font-size:13px}table{width:100%;border-collapse:collapse}td,th{padding:6px 4px;border-bottom:1px solid var(--ln);text-align:left}td.n,th.n{text-align:right}
-.bar{background:var(--ln);border-radius:6px;height:10px;min-width:80px}.bar i{display:block;height:10px;border-radius:6px;background:var(--ac)}
-input,select,button{font:inherit;padding:8px;border-radius:8px;border:1px solid var(--ln)}button{background:var(--ac);color:#fff;border:0;cursor:pointer}
+:root{--bg:#f7f9fc;--fg:#15213d;--mut:#5d6b83;--card:#fff;--line:#dfe7f2;--accent:#0a6cff;--green:#21845b;--red:#ae3f38}
+body{margin:0;padding:20px;max-width:1120px;margin-inline:auto;font:15px/1.5 system-ui,sans-serif;background:var(--bg);color:var(--fg)}
+h1{font-size:24px;margin:6px 0}h2{font-size:18px;margin:28px 0 10px}.muted{color:var(--mut);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:10px 0;overflow:auto}
+.filters{display:flex;flex-wrap:wrap;gap:10px;align-items:end}.filters label{display:grid;gap:4px;font-weight:650}
+input,button{font:inherit;border:1px solid var(--line);border-radius:9px;padding:9px 11px}button{background:var(--accent);color:#fff;border:0;font-weight:750;cursor:pointer}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:9px}.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px}.kpi b{display:block;font-size:25px}.kpi span{font-size:13px;color:var(--mut)}
+table{width:100%;border-collapse:collapse;min-width:420px}td,th{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left}td.n,th.n{text-align:right}.bar{height:9px;min-width:80px;background:#e8eef7;border-radius:8px}.bar i{display:block;height:9px;background:var(--accent);border-radius:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px}.error{color:var(--red)}.success{color:var(--green)}
+@media(max-width:540px){body{padding:12px}.filters>*{width:100%}.filters input{box-sizing:border-box;width:100%}}
 </style></head><body>
-<h1>IA fácil · Analítica anónima</h1>
-<p class="mut">Sin cookies ni identificadores. Los «visitantes» son únicos por día (un mismo visitante en dos días cuenta dos veces).</p>
-<div class="card"><input id="tk" type="password" placeholder="Token de acceso"> <select id="dy"><option value="7">7 días</option><option value="30" selected>30 días</option><option value="90">90 días</option></select> <button id="go">Ver</button> <span id="msg" class="mut"></span></div>
+<h1>IA fácil · Analítica de la landing</h1>
+<p class="muted">Solo muestra datos nuevos desde el corte del 21/10/2026. El histórico anterior se conserva en D1, pero queda fuera de este panel. Los visitantes únicos se cuentan por día; una misma persona en varios días vuelve a contarse.</p>
+<div class="card filters">
+<label>Token de acceso<input id="tk" type="password" autocomplete="off" placeholder="Token del panel"></label>
+<label>Desde<input id="from" type="date" value="2026-10-21" min="2026-10-21"></label>
+<label>Hasta<input id="to" type="date"></label>
+<button id="go" type="button">Actualizar</button><span id="msg" class="muted" role="status"></span>
+</div>
 <div id="out"></div>
 <script>
-const API="https://cursoia.studyos-oficial-spain.workers.dev/stats", $=id=>document.getElementById(id);
-function el(t,txt,cls){const e=document.createElement(t);if(txt!=null)e.textContent=txt;if(cls)e.className=cls;return e}
-function build(rows){
-  const M={};for(const r of rows){const k=r.s+"|"+r.kind+"|"+r.key,m=M[k]||(M[k]={total:0,uniq:0});m.total+=r.total;m.uniq+=r.uniq}
-  const g=(s,kind,key)=>M[s+"|"+kind+"|"+key]||{total:0,uniq:0};
-  const list=(s,kind,pre)=>Object.keys(M).filter(k=>k.startsWith(s+"|"+kind+"|"+pre)).map(k=>({key:k.split("|").slice(2).join("|").slice(pre.length),...M[k]})).sort((a,b)=>b.uniq-a.uniq);
-  return {g,list}
-}
-const pct=(a,b)=>b?Math.round(a/b*1000)/10+"%":"–";
+"use strict";
+const API="https://cursoia.studyos-oficial-spain.workers.dev/stats",CUTOVER="2026-10-21", $=id=>document.getElementById(id);
+const madridToday=new Intl.DateTimeFormat("sv-SE",{timeZone:"Europe/Madrid"}).format(new Date());
+$("to").value=madridToday;
+function el(tag,text,cls){const n=document.createElement(tag);if(text!=null)n.textContent=text;if(cls)n.className=cls;return n}
+function pct(a,b){return b?Math.round(a/b*1000)/10+"%":"–"}
 function bar(p){const d=el("div",null,"bar"),i=el("i");i.style.width=Math.min(100,p||0)+"%";d.append(i);return d}
-function table(head,rows){const t=el("table"),h=el("tr");head.forEach((x,i)=>h.append(el("th",x,i?"n":"")));t.append(h);
-  rows.forEach(r=>{const tr=el("tr");r.forEach((c,i)=>{const td=el("td",null,i?"n":"");c instanceof Node?td.append(c):td.textContent=c;tr.append(td)});t.append(tr)});
-  const c=el("div",null,"card");c.append(t);return c}
-function kpis(items){const k=el("div",null,"kpi");items.forEach(([l,v])=>{const d=el("div");d.append(el("b",v),el("span",l,"mut"));k.append(d)});return k}
-function render(rows){
-  const {g,list}=build(rows),o=$("out");o.textContent="";
-  const V=g("landing","pv","/").uniq, buy=g("landing","click","/|buy_stripe");
-  o.append(el("h2","Landing"),kpis([["Visitantes",V],["Visitas a la página",g("landing","pv","/").total],["Clics a Stripe (únicos)",buy.uniq],["% que clica a Stripe",pct(buy.uniq,V)]]));
-  o.append(el("h2","¿Hasta dónde llegan?"),table(["Scroll","Visitantes","% del total",""],[25,50,75,90,100].map(n=>{const u=g("landing","scroll","/|"+n).uniq;return[n+"%",u,pct(u,V),bar(V?u/V*100:0)]})));
-  const sec=list("landing","section","/|");if(sec.length)o.append(el("h2","Secciones vistas"),table(["Sección","Visitantes","% del total",""],sec.map(r=>[r.key,r.uniq,pct(r.uniq,V),bar(V?r.uniq/V*100:0)])));
-  o.append(el("h2","¿Dónde clican?"),table(["Elemento","Visitantes","Clics totales"],list("landing","click","/|").map(r=>[r.key,r.uniq,r.total])));
-  const dim=(t,kind)=>{const x=list("landing",kind,"");return table([t,"Visitantes"],x.map(r=>[r.key,r.uniq]))};
-  o.append(el("h2","Origen, dispositivo y país"),dim("Origen","src"),dim("Dispositivo","dev"),dim("País","cty"));
-  const pages=list("course","pv","");const CV=g("course","pv","/curso/").uniq;
-  o.append(el("h2","Curso"),kpis([["Visitantes al portal",CV],["Páginas vistas",pages.reduce((a,r)=>a+r.total,0)],["Módulos completados",rows.filter(r=>r.s==="course"&&r.kind==="done").reduce((a,r)=>a+r.uniq,0)]]));
-  o.append(table(["Página","Visitantes","Llega al 50%","Llega al 100%","Marca completado","Termina quiz"],pages.map(r=>{
-    const m=(r.key.match(/modulo-(\d+)/)||[])[1],f=(k,kd)=>g("course",kd,r.key+"|"+k).uniq;
-    return[r.key,r.uniq,pct(f(50,"scroll"),r.uniq),pct(f(100,"scroll"),r.uniq),m?pct(f("m"+m,"done"),r.uniq):"–",m?pct(f("m"+m,"quiz"),r.uniq):"–"]})));
-  const mc=list("course","click","/curso/|module_");if(mc.length)o.append(el("h2","Interés por módulo (clics desde el portal)"),table(["Módulo","Visitantes","Clics"],mc.map(r=>["Módulo "+r.key,r.uniq,r.total])));
+function build(rows){
+ const map={};
+ for(const r of rows){const k=r.kind+"|"+r.key,m=map[k]||(map[k]={total:0,uniq:0});m.total+=r.total;m.uniq+=r.uniq}
+ const get=(kind,key)=>map[kind+"|"+key]||{total:0,uniq:0};
+ const list=kind=>Object.keys(map).filter(k=>k.startsWith(kind+"|")).map(k=>({key:k.slice(kind.length+1),...map[k]})).sort((a,b)=>b.uniq-a.uniq);
+ return{get,list};
 }
-$("go").onclick=async()=>{
-  $("msg").textContent="Cargando…";
-  try{const r=await fetch(API+"?days="+$("dy").value,{headers:{Authorization:"Bearer "+$("tk").value.trim()},cache:"no-store"});
-    if(r.status===401)throw Error("Token incorrecto");if(!r.ok){let m="Error "+r.status;try{m=(await r.json()).error||m}catch(e){}throw Error(m)}
-    render((await r.json()).rows||[]);$("msg").textContent="";
-  }catch(e){$("msg").textContent=e.message}
-};
+function table(head,rows){const t=el("table"),h=el("tr");head.forEach((x,i)=>h.append(el("th",x,i?"n":"")));t.append(h);rows.forEach(row=>{const tr=el("tr");row.forEach((x,i)=>{const td=el("td",null,i?"n":"");if(x instanceof Node)td.append(x);else td.textContent=x;tr.append(td)});t.append(tr)});const c=el("div",null,"card");c.append(t);return c}
+function kpis(items){const d=el("div",null,"kpis");items.forEach(([name,value])=>{const c=el("div",null,"kpi");c.append(el("b",value),el("span",name));d.append(c)});return d}
+function labelKey(key){return key.indexOf("|")>=0?key.slice(key.indexOf("|")+1):key}
+function render(rows,range){
+ const {get:g,list}=build(rows),out=$("out");out.textContent="";
+ const visits=g("pv","/"),offer=g("section","/|oferta"),cta=g("cta","/|checkout"),opened=g("checkout_open","/|dialog"),session=g("checkout_session","/|created"),purchase=g("purchase","/gracias/|verified");
+ out.append(el("p","Periodo mostrado: "+range.from+" a "+range.to+" · corte desde "+CUTOVER+".","muted"));
+ out.append(kpis([["Visitantes diarios",visits.uniq],["Vistas de landing",visits.total],["Vieron la oferta",offer.uniq],["Pulsaron un CTA",cta.uniq],["Abrieron el checkout",opened.uniq],["Sesiones Stripe creadas",session.uniq],["Compras verificadas",purchase.uniq],["Conversión visita → compra",pct(purchase.uniq,visits.uniq)]]));
+ out.append(el("h2","Embudo de compra"),table(["Paso","Visitantes únicos diarios","% de visitas"],[
+ ["Landing",visits.uniq,"100%"],["Vio la oferta",offer.uniq,pct(offer.uniq,visits.uniq)],["Pulsó comprar",cta.uniq,pct(cta.uniq,visits.uniq)],["Se abrió el checkout",opened.uniq,pct(opened.uniq,visits.uniq)],["Stripe creó sesión",session.uniq,pct(session.uniq,visits.uniq)],["Compra confirmada por el servidor",purchase.uniq,pct(purchase.uniq,visits.uniq)]
+ ]));
+ out.append(el("h2","Profundidad de lectura"),table(["Scroll","Visitantes","% de visitas",""],[25,50,75,90,100].map(n=>{const r=g("scroll","/|"+n);return[n+"%",r.uniq,pct(r.uniq,visits.uniq),bar(visits.uniq?r.uniq/visits.uniq*100:0)]})));
+ const sections=list("section");if(sections.length)out.append(el("h2","Secciones que alcanzan"),table(["Sección","Visitantes","% de visitas"],sections.map(r=>[labelKey(r.key),r.uniq,pct(r.uniq,visits.uniq)])));
+ const slots=list("cta_slot");if(slots.length)out.append(el("h2","Dónde pulsan el botón de compra"),table(["Ubicación del CTA","Visitantes","Clics"],slots.map(r=>[labelKey(r.key),r.uniq,r.total])));
+ const activity=[];
+ for(const kind of ["faq","demo","checkout_error"]){for(const r of list(kind))activity.push([kind==="faq"?"FAQ abierta":kind==="demo"?"Prueba de demo":"Error al iniciar checkout",labelKey(r.key),r.uniq,r.total]);}
+ if(activity.length)out.append(el("h2","Preguntas, demo y errores"),table(["Actividad","Detalle","Visitantes","Eventos"],activity));
+ const dims=[["Origen","source"],["Medio","medium"],["Campaña","campaign"],["Creatividad","content"],["Dispositivo","device"],["País aproximado","country"],["Idioma del navegador","language"]];
+ const dg=el("div",null,"grid");
+ dims.forEach(([title,kind])=>{const rows=list(kind).map(r=>[r.key,r.uniq]);if(rows.length){const c=el("section");c.append(el("h2",title),table([title,"Visitantes diarios"],rows));dg.append(c);}});
+ if(dg.childElementCount){out.append(el("h2","Atribución y contexto"),dg);}
+ const clicks=list("click").slice(0,20);if(clicks.length)out.append(el("h2","Otros clics más frecuentes"),table(["Elemento","Visitantes","Clics"],clicks.map(r=>[labelKey(r.key),r.uniq,r.total])));
+}
+$("go").addEventListener("click",async function(){
+ const from=$("from").value||CUTOVER,to=$("to").value||madridToday,msg=$("msg");
+ if(from<CUTOVER){msg.textContent="La fecha inicial mínima es "+CUTOVER+".";msg.className="muted error";return}
+ if(from>to){msg.textContent="La fecha inicial no puede ser posterior a la final.";msg.className="muted error";return}
+ msg.textContent="Cargando…";msg.className="muted";$("out").textContent="";
+ try{const url=API+"?from="+encodeURIComponent(from)+"&to="+encodeURIComponent(to),r=await fetch(url,{headers:{Authorization:"Bearer "+$("tk").value.trim()},cache:"no-store"});
+   if(r.status===401)throw Error("Token incorrecto");if(!r.ok){let message="Error "+r.status;try{message=(await r.json()).error||message}catch(e){}throw Error(message)}
+   const data=await r.json();render(data.rows||[],{from:data.from,to:data.to});msg.textContent="Actualizado";msg.className="muted success";
+ }catch(e){msg.textContent=e.message;msg.className="muted error";}
+});
 </script></body></html>
