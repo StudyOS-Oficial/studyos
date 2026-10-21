@@ -14,7 +14,7 @@ table{width:100%;border-collapse:collapse;min-width:420px}td,th{padding:8px 6px;
 @media(max-width:540px){body{padding:12px}.filters>*{width:100%}.filters input{box-sizing:border-box;width:100%}}
 </style></head><body>
 <h1>IA fácil · Analítica de la landing</h1>
-<p class="muted">Solo muestra datos nuevos desde el corte del 21/10/2026. El histórico anterior se conserva en D1, pero queda fuera de este panel. Los visitantes únicos se cuentan por día; una misma persona en varios días vuelve a contarse.</p>
+<p class="muted">Solo se muestran las visitas nuevas a la cohorte de IA Fácil desde el 21/10/2026. El histórico anterior se conserva en D1. El Worker permite consultar como máximo 365 días.</p>
 <div class="card filters">
 <label>Token de acceso<input id="tk" type="password" autocomplete="off" placeholder="Token del panel"></label>
 <label>Desde<input id="from" type="date" value="2026-10-21" min="2026-10-21"></label>
@@ -26,48 +26,52 @@ table{width:100%;border-collapse:collapse;min-width:420px}td,th{padding:8px 6px;
 "use strict";
 const API="https://cursoia.studyos-oficial-spain.workers.dev/stats",CUTOVER="2026-10-21", $=id=>document.getElementById(id);
 const madridToday=new Intl.DateTimeFormat("sv-SE",{timeZone:"Europe/Madrid"}).format(new Date());
-$("to").value=madridToday;
+$("to").value=madridToday;$("to").max=madridToday;$("from").min=CUTOVER;
 function el(tag,text,cls){const n=document.createElement(tag);if(text!=null)n.textContent=text;if(cls)n.className=cls;return n}
 function pct(a,b){return b?Math.round(a/b*1000)/10+"%":"–"}
 function bar(p){const d=el("div",null,"bar"),i=el("i");i.style.width=Math.min(100,p||0)+"%";d.append(i);return d}
 function build(rows){
  const map={};
- for(const r of rows){const k=r.kind+"|"+r.key,m=map[k]||(map[k]={total:0,uniq:0});m.total+=r.total;m.uniq+=r.uniq}
+ for(const r of rows){const k=r.kind+"|"+r.key,m=map[k]||(map[k]={total:0,uniq:0});m.total+=Number(r.total)||0;m.uniq+=Number(r.uniq)||0}
  const get=(kind,key)=>map[kind+"|"+key]||{total:0,uniq:0};
  const list=kind=>Object.keys(map).filter(k=>k.startsWith(kind+"|")).map(k=>({key:k.slice(kind.length+1),...map[k]})).sort((a,b)=>b.uniq-a.uniq);
  return{get,list};
 }
 function table(head,rows){const t=el("table"),h=el("tr");head.forEach((x,i)=>h.append(el("th",x,i?"n":"")));t.append(h);rows.forEach(row=>{const tr=el("tr");row.forEach((x,i)=>{const td=el("td",null,i?"n":"");if(x instanceof Node)td.append(x);else td.textContent=x;tr.append(td)});t.append(tr)});const c=el("div",null,"card");c.append(t);return c}
-function kpis(items){const d=el("div",null,"kpis");items.forEach(([name,value])=>{const c=el("div",null,"kpi");c.append(el("b",value),el("span",name));d.append(c)});return d}
-function labelKey(key){return key.indexOf("|")>=0?key.slice(key.indexOf("|")+1):key}
+function kpis(items){const d=el("div",null,"kpis");items.forEach(([name,value])=>{const c=el("div",null,"kpi");c.append(el("b",String(value)),el("span",name));d.append(c)});return d}
+function tail(key){const i=key.indexOf("|");return i>=0?key.slice(i+1):key}
 function render(rows,range){
  const {get:g,list}=build(rows),out=$("out");out.textContent="";
- const visits=g("pv","/"),offer=g("section","/|oferta"),cta=g("cta","/|checkout"),opened=g("checkout_open","/|dialog"),session=g("checkout_session","/|created"),purchase=g("purchase","/gracias/|verified");
- out.append(el("p","Periodo mostrado: "+range.from+" a "+range.to+" · corte desde "+CUTOVER+".","muted"));
- out.append(kpis([["Visitantes diarios",visits.uniq],["Vistas de landing",visits.total],["Vieron la oferta",offer.uniq],["Pulsaron un CTA",cta.uniq],["Abrieron el checkout",opened.uniq],["Sesiones Stripe creadas",session.uniq],["Compras verificadas",purchase.uniq],["Conversión visita → compra",pct(purchase.uniq,visits.uniq)]]));
- out.append(el("h2","Embudo de compra"),table(["Paso","Visitantes únicos diarios","% de visitas"],[
- ["Landing",visits.uniq,"100%"],["Vio la oferta",offer.uniq,pct(offer.uniq,visits.uniq)],["Pulsó comprar",cta.uniq,pct(cta.uniq,visits.uniq)],["Se abrió el checkout",opened.uniq,pct(opened.uniq,visits.uniq)],["Stripe creó sesión",session.uniq,pct(session.uniq,visits.uniq)],["Compra confirmada por el servidor",purchase.uniq,pct(purchase.uniq,visits.uniq)]
+ const visits=g("pv","/v2"),offer=g("section","/v2|oferta"),cta=g("click","/v2|v2:cta:checkout"),opened=g("click","/v2|v2:checkout_open:dialog"),session=g("click","/v2|v2:checkout_session:created"),purchase=g("click","/v2/gracias/|v2:purchase:verified");
+ out.append(el("p","Periodo: "+range.from+" a "+range.to+" · Solo landing v2 desde "+CUTOVER+". El histórico previo se conserva, pero no entra en este panel.","muted"));
+ out.append(kpis([["Visitantes únicos por día",visits.uniq],["Vistas de landing",visits.total],["Vieron la oferta",offer.uniq],["Pulsaron un CTA de compra",cta.uniq],["Abrieron el checkout",opened.uniq],["Sesiones de Stripe iniciadas",session.uniq],["Compras verificadas",purchase.uniq],["Conversión diaria visita → compra",pct(purchase.uniq,visits.uniq)]]));
+ out.append(el("p","Los únicos se suman por día; una misma persona que vuelve en varios días cuenta una vez por cada día.","muted"));
+ out.append(el("h2","Embudo de compra"),table(["Paso","Visitantes únicos por día","% de visitas"],[
+ ["Landing",visits.uniq,"100%"],["Vio la oferta",offer.uniq,pct(offer.uniq,visits.uniq)],["Pulsó comprar",cta.uniq,pct(cta.uniq,visits.uniq)],["Checkout abierto",opened.uniq,pct(opened.uniq,visits.uniq)],["Sesión creada por Stripe",session.uniq,pct(session.uniq,visits.uniq)],["Compra verificada por el servidor",purchase.uniq,pct(purchase.uniq,visits.uniq)]
  ]));
- out.append(el("h2","Profundidad de lectura"),table(["Scroll","Visitantes","% de visitas",""],[25,50,75,90,100].map(n=>{const r=g("scroll","/|"+n);return[n+"%",r.uniq,pct(r.uniq,visits.uniq),bar(visits.uniq?r.uniq/visits.uniq*100:0)]})));
- const sections=list("section");if(sections.length)out.append(el("h2","Secciones que alcanzan"),table(["Sección","Visitantes","% de visitas"],sections.map(r=>[labelKey(r.key),r.uniq,pct(r.uniq,visits.uniq)])));
- const slots=list("cta_slot");if(slots.length)out.append(el("h2","Dónde pulsan el botón de compra"),table(["Ubicación del CTA","Visitantes","Clics"],slots.map(r=>[labelKey(r.key),r.uniq,r.total])));
- const activity=[];
- for(const kind of ["faq","demo","checkout_error"]){for(const r of list(kind))activity.push([kind==="faq"?"FAQ abierta":kind==="demo"?"Prueba de demo":"Error al iniciar checkout",labelKey(r.key),r.uniq,r.total]);}
+ out.append(el("h2","Profundidad de lectura"),table(["Scroll","Visitantes","% de visitas",""],[25,50,75,90,100].map(n=>{const r=g("scroll","/v2|"+n);return[n+"%",r.uniq,pct(r.uniq,visits.uniq),bar(visits.uniq?r.uniq/visits.uniq*100:0)]})));
+ const sections=list("section").filter(r=>r.key.startsWith("/v2|"));if(sections.length)out.append(el("h2","Secciones que alcanzan"),table(["Sección","Visitantes","% de visitas"],sections.map(r=>[tail(r.key),r.uniq,pct(r.uniq,visits.uniq)])));
+ const clicks=list("click"),slotPrefix="/v2|v2:cta_slot:",slots=clicks.filter(r=>r.key.startsWith(slotPrefix)).map(r=>({...r,key:r.key.slice(slotPrefix.length)}));
+ if(slots.length)out.append(el("h2","Dónde pulsan el botón de compra"),table(["Ubicación del CTA","Visitantes diarios","Clics"],slots.map(r=>[r.key,r.uniq,r.total])));
+ const activity=[];for(const [kind,label] of [["faq","FAQ abierta"],["demo","Interacción con demo"],["checkout_error","Error al iniciar checkout"]]){const prefix="/v2|v2:"+kind+":";clicks.filter(r=>r.key.startsWith(prefix)).forEach(r=>activity.push([label,r.key.slice(prefix.length),r.uniq,r.total]));}
  if(activity.length)out.append(el("h2","Preguntas, demo y errores"),table(["Actividad","Detalle","Visitantes","Eventos"],activity));
- const dims=[["Origen","source"],["Medio","medium"],["Campaña","campaign"],["Creatividad","content"],["Dispositivo","device"],["País aproximado","country"],["Idioma del navegador","language"]];
+ const dims=[["Origen","source"],["Medio","medium"],["Campaña","campaign"],["Contenido de campaña","content"],["Dispositivo","device"],["Navegador","browser"],["Idioma","language"]];
  const dg=el("div",null,"grid");
- dims.forEach(([title,kind])=>{const rows=list(kind).map(r=>[r.key,r.uniq]);if(rows.length){const c=el("section");c.append(el("h2",title),table([title,"Visitantes diarios"],rows));dg.append(c);}});
- if(dg.childElementCount){out.append(el("h2","Atribución y contexto"),dg);}
- const clicks=list("click").slice(0,20);if(clicks.length)out.append(el("h2","Otros clics más frecuentes"),table(["Elemento","Visitantes","Clics"],clicks.map(r=>[labelKey(r.key),r.uniq,r.total])));
+ dims.forEach(([title,name])=>{const prefix="/v2|v2:dim:"+name+":",rows=clicks.filter(r=>r.key.startsWith(prefix)).map(r=>[r.key.slice(prefix.length),r.uniq]);if(rows.length){const c=el("section");c.append(el("h2",title),table([title,"Visitantes por día"],rows));dg.append(c);}});
+ if(dg.childElementCount){out.append(el("h2","Origen y contexto"),dg);}
+ const genericPrefix="/v2|v2:click:",others=clicks.filter(r=>r.key.startsWith(genericPrefix)).slice(0,20);
+ if(others.length)out.append(el("h2","Otros clics más frecuentes"),table(["Elemento","Visitantes","Clics"],others.map(r=>[r.key.slice(genericPrefix.length),r.uniq,r.total])));
 }
 $("go").addEventListener("click",async function(){
  const from=$("from").value||CUTOVER,to=$("to").value||madridToday,msg=$("msg");
  if(from<CUTOVER){msg.textContent="La fecha inicial mínima es "+CUTOVER+".";msg.className="muted error";return}
- if(from>to){msg.textContent="La fecha inicial no puede ser posterior a la final.";msg.className="muted error";return}
+ if(from>to||to>madridToday){msg.textContent="El rango de fechas no es válido.";msg.className="muted error";return}
  msg.textContent="Cargando…";msg.className="muted";$("out").textContent="";
- try{const url=API+"?from="+encodeURIComponent(from)+"&to="+encodeURIComponent(to),r=await fetch(url,{headers:{Authorization:"Bearer "+$("tk").value.trim()},cache:"no-store"});
-   if(r.status===401)throw Error("Token incorrecto");if(!r.ok){let message="Error "+r.status;try{message=(await r.json()).error||message}catch(e){}throw Error(message)}
-   const data=await r.json();render(data.rows||[],{from:data.from,to:data.to});msg.textContent="Actualizado";msg.className="muted success";
+ try{
+  const r=await fetch(API+"?days=365",{headers:{Authorization:"Bearer "+$("tk").value.trim()},cache:"no-store"});
+  if(r.status===401)throw Error("Token incorrecto");if(!r.ok){let message="Error "+r.status;try{message=(await r.json()).error||message}catch(e){}throw Error(message)}
+  const data=await r.json(),rows=(data.rows||[]).filter(x=>x.s==="landing"&&x.day>=from&&x.day<=to&&(x.key==="/v2"||x.key.startsWith("/v2|")));
+  render(rows,{from,to});msg.textContent="Actualizado";msg.className="muted success";
  }catch(e){msg.textContent=e.message;msg.className="muted error";}
 });
 </script></body></html>
