@@ -36,10 +36,14 @@ p{color:var(--mut)}.card{background:#fff;border:1px solid var(--line);border-rad
 <script>
 (async function(){
   const status=document.getElementById('status');
+  if(new URLSearchParams(location.search).has('session_id')){
+    status.textContent='Stripe ha devuelto la sesión a esta página de prueba. No se concede acceso desde esta prueba.';
+    return;
+  }
   try{
-    const stripe=Stripe('pk_live_REPLACE_WITH_PUBLISHABLE_KEY');
+    const stripe=Stripe('pk_test_51Ty9MHPdiAyvfYF790qbVIVMFSNQJov7SMxGP9IdE3cw1Heno5v8KULBYonqtC618aqBdCRGEXaHnTUQGumdWNdM00J3alGcus');
     const fetchClientSecret=async()=>{
-      const res=await fetch('https://studyos-omega-five.vercel.app/api/create-checkout-session',{
+      const res=await fetch('https://studyos-private-delivery-test.studyos-oficial-spain.workers.dev/create-checkout-session',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({source:'ia-facil-stripe-test'})
