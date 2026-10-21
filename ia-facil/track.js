@@ -6,15 +6,18 @@ window.__iaFacilAnalyticsLoaded=true;
 var E="https://cursoia.studyos-oficial-spain.workers.dev/t", M="https://cursoia.studyos-oficial-spain.workers.dev/meta";
 var rawPath=location.pathname.replace(/^(\/studyos)?\/ia-facil/,"").replace(/index\.html$/,"").toLowerCase().replace(/[^a-z0-9_\/-]/g,"").slice(0,60)||"/";
 if(rawPath.charAt(0)!=="/")rawPath="/"+rawPath;
-var path=rawPath, site=/^\/curso(\/|$)/.test(path)?"course":"landing_v2";
+var course=/^\/curso(\/|$)/.test(rawPath);
+var path=course?rawPath:(rawPath==="/" ? "/v2" : "/v2"+rawPath), site=course?"course":"landing";
 var seen={}, listenersStarted=false, analyticsPageViewSent=false, metaStarted=false, metaPageViewSent=false;
 function getConsent(){return window.iaFacilGetConsent?window.iaFacilGetConsent():{analytics:false,marketing:false};}
 function permitted(name){var c=getConsent();return name==="meta"?c.marketing===true:c.analytics===true;}
 function keySafe(value){return String(value||"").toLowerCase().replace(/\s+/g,"_").replace(/[^a-z0-9_:.#\/-]/g,"").slice(0,60);}
 function send(type,key,extra){
  if(!permitted("analytics")||navigator.doNotTrack==="1"||navigator.globalPrivacyControl===true)return;
- var payload={s:site,t:type,p:path};
- if(key)payload.k=keySafe(key);
+ var legacy=(type==="pv"||type==="scroll"||type==="section"||type==="done"||type==="quiz")?type:"click";
+ var normalized=legacy==="click"?"v2:"+type+":"+(key||""):key;
+ var payload={s:site,t:legacy,p:path};
+ if(legacy!=="pv")payload.k=keySafe(normalized);
  extra=extra||{};
  for(var x in extra)payload[x]=extra[x];
  var body=JSON.stringify(payload);
@@ -53,13 +56,24 @@ function startMetaPageView(){
  if(metaPageViewSent||!permitted("meta"))return;
  metaPageViewSent=true;metaEvent("PageView",{},randomId(),true);
 }
+function cleanDimension(value){
+ var v=String(value||"").trim().toLowerCase();
+ if(!v||v.length>40||/@|https?:|\d{7,}/.test(v))return "";
+ v=v.replace(/[^a-z0-9_-]/g,"_").replace(/_+/g,"_").replace(/^_|_$/g,"").slice(0,32);
+ return v;
+}
+function sendDimension(name,value){var v=cleanDimension(value);if(v)once("dim",name+":"+v);}
 function startAnalytics(){
  if(analyticsPageViewSent||!permitted("analytics")||navigator.doNotTrack==="1"||navigator.globalPrivacyControl===true)return;
  analyticsPageViewSent=true;
- var ref="";try{ref=document.referrer?new URL(document.referrer).hostname:"";}catch(e){}
+ var ref="";try{ref=document.referrer?new URL(document.referrer).hostname.toLowerCase().replace(/^www\./,""):"";}catch(e){}
  var q=new URLSearchParams(location.search);
- var source=q.get("utm_source")||(q.has("fbclid")?"meta":q.has("gclid")?"google":"");
- send("pv","",{r:ref,u:source,um:q.get("utm_medium")||"",uc:q.get("utm_campaign")||"",uo:q.get("utm_content")||"",lang:(navigator.language||"").slice(0,16)});
+ var source=q.get("utm_source")||(q.has("fbclid")?"meta":q.has("gclid")?"google":(ref&&ref!==location.hostname?ref:"directo"));
+ send("pv","",{r:ref,u:cleanDimension(source)});
+ [["source",source],["medium",q.get("utm_medium")],["campaign",q.get("utm_campaign")],["content",q.get("utm_content")],["language",(navigator.language||"").slice(0,16)]].forEach(function(x){sendDimension(x[0],x[1]);});
+ var ua=navigator.userAgent||"",device=/ipad|tablet/i.test(ua)?"tablet":/mobi|android/i.test(ua)?"mobile":"desktop";
+ var browser=/edg\//i.test(ua)?"edge":/firefox\//i.test(ua)?"firefox":/chrome\//i.test(ua)?"chrome":/safari\//i.test(ua)?"safari":"other";
+ sendDimension("device",device);sendDimension("browser",browser);
 }
 function startListeners(){
  if(listenersStarted)return;
