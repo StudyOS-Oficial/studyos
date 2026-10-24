@@ -15,10 +15,9 @@
     try {
       var n = (location.pathname.match(/modulo-(\\d+)/) || [])[1];
       if (!n || !window.fetch) return html;
-      var r = await fetch(BASE + "teoria-extra.js", { cache: "no-store" });
+      var r = await fetch(BASE + "teoria-extra.json", { cache: "no-store" });
       if (!r.ok) return html;
-      var src = await r.text(), fn = new Function(src + "; return window.IA_FACIL_THEORY;");
-      var all = fn(), blocks = all && all[n];
+      var all = await r.json(), blocks = all && all[n];
       if (!blocks || !blocks.length) return html;
       var esc = function (s) { return String(s).replace(/[&<>"]/g, function (x) { return ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" })[x]; }); };
       var css = '<style id="iafacil-extra-css">.ia-extra{margin:28px 0;padding:22px;border-radius:18px;background:linear-gradient(135deg,#fff8f1,#fff);border:1px solid rgba(224,118,59,.22);box-shadow:0 8px 30px rgba(0,0,0,.06)}.ia-extra h2{margin:0 0 8px;font-size:25px}.ia-extra-intro{margin:0 0 18px;opacity:.78}.ia-extra-grid{display:grid;gap:14px}.ia-extra-card{padding:17px 18px;border-radius:14px;background:#fff;border:1px solid rgba(0,0,0,.08)}.ia-extra-card h3{margin:0 0 7px;font-size:18px}.ia-extra-card p{margin:0;line-height:1.6}@media(prefers-color-scheme:dark){.ia-extra{background:#202020;border-color:#444}.ia-extra-card{background:#292929;border-color:#444}}</style>';
