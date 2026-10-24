@@ -1,5 +1,3 @@
-# IA Facil · GitHub Pages deployment
-# Keep this workflow intentionally simple: publish the repository as-is.
 name: Deploy IA Facil to GitHub Pages
 
 on:
