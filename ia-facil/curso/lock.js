@@ -11,6 +11,27 @@
     return new TextDecoder().decode(await sub.decrypt({ name: "AES-GCM", iv: d(pay.iv) }, K, d(pay.ct)));
   }
   function render(html) { document.open(); document.write(html); document.close(); }
+  async function addTheory(html) {
+    try {
+      var n = (location.pathname.match(/modulo-(\\d+)/) || [])[1];
+      if (!n || !window.fetch) return html;
+      var r = await fetch(BASE + "teoria-extra.js", { cache: "no-store" });
+      if (!r.ok) return html;
+      var src = await r.text(), fn = new Function(src + "; return window.IA_FACIL_THEORY;");
+      var all = fn(), blocks = all && all[n];
+      if (!blocks || !blocks.length) return html;
+      var esc = function (s) { return String(s).replace(/[&<>"]/g, function (x) { return ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" })[x]; }); };
+      var css = '<style id="iafacil-extra-css">.ia-extra{margin:28px 0;padding:22px;border-radius:18px;background:linear-gradient(135deg,#fff8f1,#fff);border:1px solid rgba(224,118,59,.22);box-shadow:0 8px 30px rgba(0,0,0,.06)}.ia-extra h2{margin:0 0 8px;font-size:25px}.ia-extra-intro{margin:0 0 18px;opacity:.78}.ia-extra-grid{display:grid;gap:14px}.ia-extra-card{padding:17px 18px;border-radius:14px;background:#fff;border:1px solid rgba(0,0,0,.08)}.ia-extra-card h3{margin:0 0 7px;font-size:18px}.ia-extra-card p{margin:0;line-height:1.6}@media(prefers-color-scheme:dark){.ia-extra{background:#202020;border-color:#444}.ia-extra-card{background:#292929;border-color:#444}}</style>';
+      var body = '<section class="ia-extra"><h2>📚 En profundidad</h2><p class="ia-extra-intro">Una ampliación para entender mejor las ideas clave de este módulo.</p><div class="ia-extra-grid">' +
+        blocks.map(function (b) { return '<article class="ia-extra-card"><h3>' + esc(b[0]) + '</h3><p>' + esc(b[1]) + '</p></article>'; }).join("") +
+        '</div></section>';
+      var pos = html.toLowerCase().lastIndexOf("</main>");
+      if (pos >= 0) return html.slice(0,pos) + body + html.slice(pos);
+      pos = html.toLowerCase().lastIndexOf("</body>");
+      if (pos >= 0) return html.slice(0,pos) + css + body + html.slice(pos);
+      return html + css + body;
+    } catch (x) { return html; }
+  }
   async function fromPw(pw) {
     var b = await sub.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
     return sub.deriveKey({ name: "PBKDF2", salt: d(meta.salt), iterations: meta.iter, hash: "SHA-256" }, b, { name: "AES-GCM", length: 256 }, true, ["decrypt"]);
@@ -37,7 +58,7 @@
         var W = await fromPw(v), html;
         try { html = await open(W); } catch (x) { er.textContent = "Contraseña incorrecta. Revisa las mayúsculas y que no haya espacios."; ok.disabled = false; ok.textContent = "Entrar al curso"; return; }
         try { localStorage.setItem(KS, e(new Uint8Array(await sub.exportKey("raw", W)))); } catch (x) {}
-        render(html);
+        html = await addTheory(html); render(html);
       } catch (x) { er.textContent = "Ha habido un problema. Inténtalo de nuevo."; ok.disabled = false; ok.textContent = "Entrar al curso"; }
     };
   }
@@ -46,7 +67,7 @@
     catch (x) { document.body.textContent = "No se ha podido cargar el curso. Revisa tu conexión e inténtalo de nuevo."; return; }
     var s = null; try { s = localStorage.getItem(KS); } catch (x) {}
     if (s) {
-      try { render(await open(await sub.importKey("raw", d(s), "AES-GCM", false, ["decrypt"]))); return; }
+      try { render(await addTheory(await open(await sub.importKey("raw", d(s), "AES-GCM", false, ["decrypt"])))); return; }
       catch (x) { try { localStorage.removeItem(KS); } catch (y) {} }
     }
     gate();
