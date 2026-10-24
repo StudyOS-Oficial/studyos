@@ -10,38 +10,7 @@
     var K = await sub.importKey("raw", kraw, "AES-GCM", false, ["decrypt"]);
     return new TextDecoder().decode(await sub.decrypt({ name: "AES-GCM", iv: d(pay.iv) }, K, d(pay.ct)));
   }
-  function render(html) {
-    // Responsive redesign of the course portal. The portal itself is encrypted,
-    // so apply the visual layer after successful decryption without touching
-    // the course content, progress logic or module links.
-    var css = \`
-      :root{--portal-bg:#f5f7fb;--portal-card:#fff;--portal-ink:#142033;--portal-muted:#64748b;--portal-blue:#1767dc;--portal-line:#dfe6ef}
-      body{background:var(--portal-bg)!important;color:var(--portal-ink)!important}
-      .wrap{max-width:980px!important;padding:18px 16px 52px!important}
-      .hero{padding:42px 34px!important;border-radius:28px!important;margin-bottom:14px!important;box-shadow:0 10px 32px rgba(20,32,51,.06)!important}
-      .hero h1{font-size:clamp(42px,8vw,72px)!important;line-height:.98!important;letter-spacing:-.045em!important;margin:10px 0 16px!important}
-      .hero .muted{font-size:clamp(18px,2.2vw,22px)!important;line-height:1.45!important;max-width:760px}
-      .grid{gap:10px!important}
-      .card{padding:19px 20px!important;border-radius:20px!important;margin-bottom:0!important;box-shadow:0 5px 18px rgba(20,32,51,.045)!important}
-      .card h2{font-size:clamp(21px,3vw,28px)!important;line-height:1.15!important;margin:7px 0 6px!important}
-      .card .muted{font-size:15px!important;line-height:1.45!important;margin:0 0 12px!important}
-      .num{font-size:.78rem!important;letter-spacing:.06em}
-      .btn{padding:9px 13px!important;border-radius:11px!important}
-      @media(max-width:700px){
-        .wrap{padding:10px 12px 38px!important}
-        .hero{padding:30px 22px!important;border-radius:24px!important;margin-bottom:10px!important}
-        .hero h1{font-size:clamp(39px,11vw,58px)!important;margin:8px 0 12px!important}
-        .hero .muted{font-size:17px!important;line-height:1.42!important}
-        .grid{grid-template-columns:1fr!important;gap:8px!important}
-        .card{padding:16px 17px!important;border-radius:18px!important}
-        .card h2{font-size:21px!important;margin:6px 0 4px!important}
-        .card .muted{font-size:14px!important;line-height:1.35!important;margin-bottom:10px!important}
-        .btn{padding:8px 12px!important;font-size:15px!important}
-      }
-    \`;
-    html = html.replace("</head>", "<style id=\"portal-responsive-redesign\">" + css + "</style></head>");
-    document.open(); document.write(html); document.close();
-  }
+  function render(html) { document.open(); document.write(html); document.close(); }
   async function fromPw(pw) {
     var b = await sub.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
     return sub.deriveKey({ name: "PBKDF2", salt: d(meta.salt), iterations: meta.iter, hash: "SHA-256" }, b, { name: "AES-GCM", length: 256 }, true, ["decrypt"]);
