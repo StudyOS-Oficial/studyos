@@ -39,7 +39,27 @@
     var st=doc.createElement("style");st.textContent=".theory-extra{background:#f8fbff!important;border-color:#dce9f8!important}.theory-point{padding:14px 0;border-top:1px solid #dce9f8}.theory-point:first-of-type{border-top:0}.theory-point strong{color:#1767dc}.theory-point p{margin:5px 0 0}.theory-point.resource{background:#eef7ff;border:1px solid #d4e5f7;border-radius:12px;padding:14px 16px;margin-top:12px}.theory-point.resource strong{color:#145bb8}";
     doc.head.appendChild(st); return "<!doctype html>\n"+doc.documentElement.outerHTML;
   }
-  function enhance(html){var n=moduleNumber();if(!n)return html;html=improveQuizzes(html,n);var extra=extraHTML(n);if(extra){var idx=html.indexOf('<section class="card quiz"');if(idx<0)idx=html.indexOf("</main>");if(idx>=0)html=html.slice(0,idx)+extra+html.slice(idx);}return html;}
+  function portalHTML(){return '<section class="card theory-extra portal-extra" data-extra-modules="11-13"><span class="tag">NUEVOS MÓDULOS</span><h2>Continúa aprendiendo con IA</h2><p>Ahora puedes avanzar con tres módulos nuevos para pasar de usar la IA a trabajar con ella de forma más estructurada.</p><div class="extra-module-grid"><a class="extra-module" href="./modulo-11/"><span class="extra-num">11</span><span><b>Pensar en varias etapas</b><small>Convierte una petición en un proceso paso a paso.</small></span><span class="extra-arrow">→</span></a><a class="extra-module" href="./modulo-12/"><span class="extra-num">12</span><span><b>Convertir tareas en procesos prácticos</b><small>Organiza tareas, criterios y revisiones.</small></span><span class="extra-arrow">→</span></a><a class="extra-module" href="./modulo-13/"><span class="extra-num">13</span><span><b>Pensar mejor con IA</b><small>Usa la IA para analizar, cuestionar y decidir mejor.</small></span><span class="extra-arrow">→</span></a></div></section>';}
+  function enhancePortal(html){
+    var parser=new DOMParser(),doc=parser.parseFromString(html,"text/html");
+    if(doc.querySelector('[data-extra-modules="11-13"]')) return html;
+    var st=doc.createElement("style");
+    st.textContent=".portal-extra{margin-top:28px!important;background:linear-gradient(180deg,#f8fbff,#fff)!important;border-color:#d7e7fb!important}.portal-extra>p{color:#64748b;margin:8px 0 18px}.extra-module-grid{display:grid;gap:12px;margin-top:16px}.extra-module{display:grid;grid-template-columns:48px 1fr 24px;align-items:center;gap:12px;text-decoration:none;color:inherit;background:#fff;border:1px solid #dbe7f5;border-radius:16px;padding:13px 14px;box-shadow:0 3px 12px rgba(20,80,140,.06);transition:transform .15s ease,border-color .15s ease}.extra-module:hover{transform:translateY(-1px);border-color:#9fc4f2}.extra-num{width:42px;height:42px;border-radius:12px;background:#eaf2ff;color:#2563d8;display:grid;place-items:center;font-size:19px;font-weight:800}.extra-module b{display:block;font-size:16px;line-height:1.25}.extra-module small{display:block;color:#718096;font-size:13px;line-height:1.35;margin-top:3px}.extra-arrow{color:#2563d8;font-size:22px;font-weight:700;text-align:right}";
+    doc.head.appendChild(st);
+    var holder=doc.createElement("div"); holder.innerHTML=portalHTML();
+    var block=holder.firstElementChild;
+    var target=Array.from(doc.querySelectorAll("h1,h2,h3")).find(function(h){return /herramientas para seguir aprendiendo/i.test(h.textContent||"");});
+    if(target){
+      var parent=target.closest("section,article,.card");
+      if(parent&&parent.parentNode) parent.parentNode.insertBefore(block,parent);
+      else if(target.parentNode) target.parentNode.insertBefore(block,target);
+      else (doc.querySelector("main")||doc.body).appendChild(block);
+    }else{
+      (doc.querySelector("main")||doc.body).appendChild(block);
+    }
+    return "<!doctype html>\n"+doc.documentElement.outerHTML;
+  }
+  function enhance(html){var n=moduleNumber();if(!n)return enhancePortal(html);html=improveQuizzes(html,n);var extra=extraHTML(n);if(extra){var idx=html.indexOf('<section class="card quiz"');if(idx<0)idx=html.indexOf("</main>");if(idx>=0)html=html.slice(0,idx)+extra+html.slice(idx);}return html;}
   function render(html) { document.open(); document.write(enhance(html)); document.close(); }
   async function fromPw(pw) {
     var b = await sub.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
