@@ -45,13 +45,6 @@
     try { var r = await fetch(BASE + "lock.json", { cache: "no-store" }); if (!r.ok) throw 0; meta = await r.json(); }
     catch (x) { document.body.textContent = "No se ha podido cargar el curso. Revisa tu conexión e inténtalo de nuevo."; return; }
     var s = null; try { s = localStorage.getItem(KS); } catch (x) {}
-    /* DEV ONLY: auto-unlock for WORK-ES-DESARROLLO. Production lock.js remains untouched. */
-    var devPassword = "IAfacil2026";
-    try {
-      var Wdev = await fromPw(devPassword);
-      render(await open(Wdev));
-      return;
-    } catch (devErr) {}
     if (s) {
       try { render(await open(await sub.importKey("raw", d(s), "AES-GCM", false, ["decrypt"]))); return; }
       catch (x) { try { localStorage.removeItem(KS); } catch (y) {} }
