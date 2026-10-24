@@ -81,7 +81,7 @@
     catch (x) { document.body.textContent = "No se ha podido cargar el curso. Revisa tu conexión e inténtalo de nuevo."; return; }
     var s = null; try { s = localStorage.getItem(KS); } catch (x) {}
     if (s) {
-      try { render(await open(await sub.importKey("raw", d(s), "AES-GCM", false, ["decrypt"]))); return; }
+      try { render(polishQuiz(await open(await sub.importKey("raw", d(s), "AES-GCM", false, ["decrypt"])))); return; }
       catch (x) { try { localStorage.removeItem(KS); } catch (y) {} }
     }
     gate();
