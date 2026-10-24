@@ -1,0 +1,122 @@
+{
+"1":[
+["La IA no “piensa” como una persona","Un modelo de IA generativa produce respuestas a partir de patrones aprendidos. Puede razonar sobre una tarea y ofrecer explicaciones útiles, pero eso no significa que comprenda la realidad como lo hace una persona."],
+["IA generativa","La IA generativa crea texto, imágenes, ideas, resúmenes o código a partir de una instrucción. Su utilidad depende tanto del modelo como de la calidad del contexto que recibe."],
+["Chatbots y modelos de lenguaje","Un chatbot es una interfaz de conversación; detrás puede haber un modelo de lenguaje. Por eso conviene distinguir la herramienta que usamos de la tecnología que produce la respuesta."],
+["Capacidad no significa fiabilidad","Una IA puede explicar una cuestión difícil y, en la siguiente respuesta, equivocarse en un dato sencillo. La fluidez del lenguaje no es una prueba de exactitud."],
+["El prompt es una instrucción","Un prompt define qué queremos conseguir. Cuanto mejor descritos estén el objetivo, el contexto y el resultado esperado, menos tendrá que adivinar la IA."],
+["Conversar también es trabajar","No siempre hace falta conseguir la respuesta perfecta en el primer mensaje. Una conversación permite corregir, añadir información, pedir ejemplos y ajustar el resultado."],
+["La IA como asistente","La IA funciona especialmente bien como apoyo para redactar, organizar, explicar, comparar, resumir y generar alternativas. La decisión final sigue siendo nuestra."],
+["El contexto cambia la respuesta","La misma pregunta puede producir respuestas distintas si cambiamos el nivel, el público, el objetivo o las restricciones. Dar contexto es una forma de controlar el resultado."],
+["Revisar forma y fondo","Una respuesta puede estar muy bien escrita y ser incorrecta. Conviene revisar por separado la calidad de la redacción y la exactitud de la información."],
+["Principio fundamental","Usar IA bien significa combinar tres cosas: una petición clara, una conversación iterativa y una revisión humana proporcional al riesgo de la tarea."]
+],
+"2":[
+["Objetivo antes que pregunta","Antes de escribir un prompt conviene formular mentalmente qué resultado queremos. Una pregunta vaga suele producir una respuesta genérica."],
+["Contexto mínimo útil","El contexto debe incluir la información que realmente cambia la respuesta. No se trata de escribir mucho, sino de proporcionar los datos relevantes."],
+["Especificidad","Palabras como “breve”, “para principiantes”, “en una tabla” o “con tres opciones” convierten una petición abierta en una tarea concreta."],
+["Formato de salida","Indicar el formato esperado reduce trabajo posterior: lista, pasos, tabla, correo, esquema, explicación o plan son instrucciones diferentes."],
+["Público y nivel","La misma información debe explicarse de forma distinta a un niño, un estudiante universitario o un profesional. Decir para quién es el resultado mejora mucho la respuesta."],
+["Restricciones","Una buena petición puede incluir límites de longitud, presupuesto, tiempo, tono, fuentes o elementos que no deben aparecer. Las restricciones acotan el espacio de soluciones."],
+["Pedir alternativas","Cuando existen varias soluciones razonables, pedir varias opciones permite comparar en vez de aceptar automáticamente la primera propuesta."],
+["Corregir sin empezar de cero","Si la respuesta es parcialmente correcta, es mejor señalar exactamente qué debe cambiar: “mantén X, elimina Y y añade Z”."],
+["Diagnosticar una mala respuesta","Cuando una respuesta no sirve, hay que identificar por qué: falta de contexto, objetivo ambiguo, formato incorrecto, información insuficiente o una suposición errónea."],
+["Prompt útil = resultado verificable","La mejor petición no es necesariamente la más larga. Es la que permite comprobar fácilmente si la respuesta cumple el objetivo."]
+],
+"3":[
+["El objetivo","Todo prompt complejo debería comenzar por el resultado que se quiere conseguir. Esto evita que la conversación se desvíe hacia información interesante pero irrelevante."],
+["El contexto","Explicar situación, conocimientos previos y datos disponibles permite que la IA trabaje sobre el problema real y no sobre una versión imaginada."],
+["El rol","Asignar un papel puede orientar el enfoque: profesor, editor, planificador, entrevistador o analista. El rol no garantiza calidad, pero ayuda a fijar perspectiva."],
+["La tarea","Hay que describir la acción concreta: explicar, comparar, resumir, transformar, crear, revisar o evaluar. Verbos claros producen instrucciones más operativas."],
+["Las restricciones","Las restricciones definen lo que la respuesta debe respetar. Son especialmente útiles cuando hay límites de tiempo, presupuesto, extensión o recursos."],
+["El formato","Una salida estructurada facilita la lectura y la revisión. Pedir títulos, pasos, tablas o criterios concretos puede ahorrar bastante trabajo."],
+["Ejemplos","Un ejemplo de entrada y salida muestra a la IA qué significa para nosotros “hacerlo bien”. Es especialmente útil cuando el estilo o la estructura son difíciles de describir."],
+["Criterios de calidad","Podemos pedir que el resultado sea claro, preciso, práctico, neutral, breve o adaptado a un nivel. Los criterios convierten una preferencia en una condición evaluable."],
+["Dividir tareas","Una tarea grande suele mejorar cuando se separa en fases: entender el problema, proponer opciones, desarrollar una solución y revisar el resultado."],
+["Iterar","Un prompt no es una fórmula mágica. El método más fiable consiste en pedir, observar, corregir y volver a pedir hasta alcanzar un resultado que podamos revisar."]
+],
+"4":[
+["IA para organizar viajes","La IA puede convertir destino, fechas, presupuesto y preferencias en un borrador de itinerario. Los horarios, precios y condiciones reales deben comprobarse con fuentes actualizadas."],
+["Mensajes y correos","Puede adaptar un mensaje a un tono más amable, formal, breve o directo. Es útil conservar nuestra intención y revisar que el texto no diga algo que no queremos."],
+["Recetas","A partir de ingredientes y restricciones puede proponer platos. En alergias, intolerancias o cuestiones médicas, la información debe verificarse y no sustituye asesoramiento profesional."],
+["Compras","Puede crear comparativas y listas de criterios. No conviene confundir una explicación generada con una comprobación de precio, disponibilidad o especificaciones actuales."],
+["Planificación diaria","Una lista de tareas puede convertirse en un plan con prioridades y bloques de tiempo. El valor está en hacer visibles las decisiones y restricciones."],
+["Aprendizaje","La IA puede explicar un concepto, generar preguntas, crear ejercicios y corregir errores. Para aprender de verdad conviene intentar resolver antes de mirar la solución."],
+["Documentos","Puede resumir, estructurar o transformar un documento. Antes de compartir un archivo hay que revisar qué información personal o confidencial contiene."],
+["Creatividad","Puede producir ideas, variantes, títulos y enfoques. La persona aporta criterio, contexto y selección; la IA amplía el espacio de posibilidades."],
+["Revisión","Una IA puede actuar como segunda mirada: detectar contradicciones, repeticiones, huecos o puntos poco claros. Conviene pedirle explícitamente qué debe revisar."],
+["Automatizar con criterio","Que una tarea pueda hacerse con IA no significa que deba automatizarse por completo. Cuanto mayor sea el impacto de un error, mayor debe ser la supervisión humana."]
+],
+"5":[
+["La especificidad reduce ambigüedad","Cuando una petición concreta contiene objetivo, contexto y criterios, disminuye el número de interpretaciones posibles. Eso suele mejorar la utilidad de la primera respuesta."],
+["El contexto relevante","Más información no siempre significa mejor información. Hay que priorizar los datos que cambian la decisión o el resultado."],
+["Descomponer problemas","Dividir una tarea compleja permite detectar errores antes y controlar mejor cada etapa. También facilita pedir a la IA que revise solo una parte."],
+["Audiencia","Definir quién leerá el resultado permite ajustar vocabulario, profundidad, ejemplos y tono. Una respuesta técnicamente correcta puede ser inútil si está dirigida al público equivocado."],
+["Tono","El tono debe describirse con palabras operativas: cercano pero profesional, directo, tranquilizador, académico o divulgativo. “Hazlo bonito” es mucho menos preciso."],
+["Estructura","Si sabemos cómo utilizaremos el resultado, podemos pedir una estructura que encaje directamente con ese uso."],
+["Criterios de calidad","Pedir que el resultado cumpla varios criterios permite evaluar después si realmente lo hace. Esto convierte una preferencia subjetiva en una pequeña lista de comprobación."],
+["Alternativas","Pedir dos o tres enfoques distintos evita quedar atrapado en la primera solución. Después podemos combinar lo mejor de cada propuesta."],
+["Revisión dirigida","En lugar de “mejóralo”, es más eficaz indicar qué aspecto debe mejorar: claridad, precisión, longitud, orden, tono o coherencia."],
+["La segunda versión suele ser mejor","La interacción permite transformar una respuesta genérica en una solución adaptada. La clave está en aportar feedback concreto, no simplemente repetir la misma petición."]
+],
+"6":[
+["Las alucinaciones","Una IA puede generar afirmaciones falsas con apariencia convincente. El término describe una respuesta inventada o incorrecta presentada como si fuera válida."],
+["La precisión aparente","Números, nombres, fechas y citas concretas pueden dar sensación de autoridad aunque sean incorrectos. Cuanto más específica sea una afirmación, más importante es verificarla cuando importe."],
+["Señales de alerta","Citas imposibles de localizar, datos contradictorios, seguridad excesiva ante una cuestión incierta o referencias vagas son señales para detenerse y comprobar."],
+["Preguntar por supuestos","Una buena técnica es pedir: “¿Qué estás suponiendo para llegar a esta conclusión?”. Esto hace visibles partes ocultas del razonamiento."],
+["Fuentes primarias","Cuando una cuestión depende de normativa, resultados científicos, precios o datos oficiales, conviene acudir a la fuente original en lugar de aceptar un resumen."],
+["Información cambiante","La IA puede no tener los datos más recientes o puede mezclarlos. Para noticias, horarios, precios, legislación o productos actuales, hay que comprobar la fecha y la fuente."],
+["Verificación proporcional","No todo necesita el mismo nivel de comprobación. Una idea para una felicitación requiere poca verificación; una decisión médica, legal o económica requiere mucha."],
+["Comparar fuentes","Dos fuentes independientes y fiables pueden ayudar a detectar errores. Repetir la misma afirmación en muchas páginas no demuestra que sea cierta."],
+["Reconocer incertidumbre","Una respuesta responsable puede decir “no lo sé” o presentar varias posibilidades. Pedir explícitamente que marque lo que no puede confirmar mejora la revisión."],
+["La última palabra","La IA propone; la persona valida. En decisiones importantes, la responsabilidad no debe delegarse en una respuesta automática."]
+],
+"7":[
+["Minimización de datos","Antes de introducir información en una IA, preguntémonos si realmente necesita conocerla. Si podemos eliminar un dato personal sin afectar al resultado, es preferible eliminarlo."],
+["Datos personales y sensibles","Nombre, dirección, teléfono, documentos, información financiera, credenciales o datos de salud merecen especial cuidado. No deben compartirse por rutina."],
+["Contraseñas y códigos","Las contraseñas, códigos de recuperación y claves privadas nunca deben pegarse en un chatbot para pedir ayuda."],
+["Seguridad de cuentas","La IA puede explicar cómo activar medidas de seguridad, pero no necesita recibir nuestras credenciales para hacerlo."],
+["Estafas","Puede ayudarnos a analizar un mensaje sospechoso, pero no debemos seguir enlaces o instrucciones peligrosas solo porque una IA los considere plausibles."],
+["Enlaces y archivos","Un documento puede contener información oculta, metadatos o datos de terceros. Antes de subirlo, conviene revisar qué contiene."],
+["Imágenes","Una fotografía puede revelar ubicación, personas, documentos o información del entorno. Compartirla con una IA también requiere criterio."],
+["Políticas de privacidad","Cada servicio tiene sus propias condiciones sobre almacenamiento y uso de datos. Conviene entenderlas antes de utilizar información sensible."],
+["Privacidad por diseño","La mejor protección consiste en pensar antes de compartir: qué dato es, para qué se necesita y quién podría acceder a él."],
+["Regla práctica","Si no entregaríamos un dato a una persona desconocida por la calle, tampoco deberíamos introducirlo automáticamente en una herramienta de IA."]
+],
+"8":[
+["Explicar no es aprender","Leer una explicación puede producir sensación de comprensión sin haber construido realmente el conocimiento. La práctica y la recuperación activa son esenciales."],
+["Adaptar el nivel","Podemos pedir una explicación para principiantes y después aumentar progresivamente la dificultad. Esto permite construir conocimiento por capas."],
+["Preguntar a la IA","La IA puede convertirse en tutor si le pedimos que nos haga preguntas en lugar de darnos siempre las respuestas."],
+["Analogías","Una buena analogía conecta un concepto nuevo con algo conocido. Hay que recordar que toda analogía simplifica y tiene límites."],
+["Dividir conceptos","Los temas difíciles se entienden mejor cuando se separan en unidades pequeñas y después se conectan."],
+["Práctica","Pedir ejercicios de dificultad creciente permite pasar de reconocer una respuesta a producirla por nosotros mismos."],
+["Análisis de errores","Una de las funciones más útiles es explicar por qué una respuesta es incorrecta y qué concepto debemos revisar."],
+["Resumir después","Un resumen propio es una prueba de comprensión. Podemos pedir a la IA que compare nuestro resumen con el concepto original y señale huecos."],
+["Recuperación activa","Intentar recordar sin mirar los apuntes fortalece el aprendizaje. La IA puede generar preguntas rápidas para entrenar este proceso."],
+["Ciclo de aprendizaje","Un buen uso educativo combina explicación, intento propio, feedback, corrección y nueva práctica. La IA debe facilitar ese ciclo, no sustituirlo."]
+],
+"9":[
+["Definir el objetivo","Organizarse empieza por decidir qué queremos conseguir. Un objetivo concreto permite distinguir tareas importantes de tareas simplemente urgentes."],
+["Convertir objetivos en tareas","“Preparar un examen” es demasiado grande para una lista. “Repasar metabolismo”, “resolver cinco problemas” y “corregir errores” son acciones ejecutables."],
+["Priorizar","No todas las tareas tienen el mismo valor. Podemos pedir a la IA que las clasifique por impacto, urgencia, dependencia o esfuerzo."],
+["Estimaciones realistas","La IA puede ayudarnos a estimar tiempos, pero esas estimaciones son hipótesis. Después conviene compararlas con nuestra experiencia real."],
+["Bloques de tiempo","Agrupar tareas compatibles reduce cambios constantes de contexto. La IA puede convertir una lista en bloques, respetando horarios y restricciones."],
+["Rutinas","Una rutina útil debe ser sostenible. Automatizar una planificación demasiado exigente solo crea una lista que nunca se cumple."],
+["Dependencias","Algunas tareas no pueden empezar hasta que otra termine. Hacer visibles estas dependencias evita planificaciones imposibles."],
+["Comparar planes","Podemos pedir un plan conservador, uno equilibrado y uno ambicioso. Compararlos ayuda a elegir según nuestra situación real."],
+["Revisión semanal","Una planificación debe actualizarse con lo que realmente ocurrió. La revisión convierte la experiencia en información para mejorar el siguiente plan."],
+["IA como copiloto","La IA puede ayudar a estructurar y revisar la organización, pero no conoce automáticamente nuestra energía, prioridades o imprevistos. El criterio humano sigue siendo central."]
+],
+"10":[
+["Primer borrador","La IA es especialmente útil para superar la página en blanco. Un primer borrador no tiene que ser perfecto; debe proporcionar material que podamos revisar."],
+["Conservar nuestra voz","Al editar un texto, podemos pedir mejoras sin cambiar nuestra personalidad, intención o vocabulario habitual. Es importante indicar qué debe conservarse."],
+["Tono y audiencia","Un mismo mensaje puede requerir tono formal, cercano, comercial, académico o familiar. La audiencia determina qué información debe aparecer y cómo expresarla."],
+["Resumir","Un buen resumen conserva las ideas esenciales y elimina detalles secundarios. Podemos indicar extensión, público y propósito para hacerlo más útil."],
+["Transformar formatos","Un texto puede convertirse en tabla, esquema, lista de pasos, preguntas frecuentes o presentación. El contenido se mantiene mientras cambia la forma."],
+["Explicar mejor","La IA puede detectar frases ambiguas, conceptos sin definir o saltos lógicos. Pedir una revisión específica suele ser mejor que pedir simplemente “corrige”. "],
+["Generar ideas","Para creatividad conviene pedir cantidad y variedad primero, y seleccionar después. La primera idea no tiene por qué ser la mejor."],
+["Reescribir con límites","Cuando revisamos un texto, podemos pedir que no añada información nueva, que mantenga la longitud o que conserve ejemplos concretos."],
+["Revisión final","Antes de enviar un texto hay que comprobar nombres, fechas, cifras, enlaces, tono y afirmaciones importantes. La revisión automática no sustituye la lectura final."],
+["Comunicar es decidir","Escribir bien no consiste solo en usar palabras bonitas. El objetivo es que el receptor entienda lo que necesitamos transmitir y pueda actuar correctamente."]
+]
+}
