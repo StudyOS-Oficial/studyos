@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Acceso al curso · IA fácil</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:#f5f7fb;color:#172033;font:16px/1.6 system-ui,sans-serif}.card{width:min(780px,100%);padding:clamp(26px,6vw,48px);background:#fff;border-radius:26px;box-shadow:0 18px 55px #14203312}h1{font-size:clamp(2rem,6vw,3rem);line-height:1.1;margin:0 0 18px}p{color:#536176}.contact{display:inline-block;margin-top:12px;padding:12px 18px;border-radius:11px;background:#2d7ff9;color:#fff;text-decoration:none;font-weight:800}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Tu curso te espera</h1>
+    <p>Para entrar, abre el enlace personal que recibiste después de pagar. Si has perdido ese enlace, contacta con el equipo de StudyOS para recuperar el acceso.</p>
+    <p id="notice" hidden>No hemos podido verificar el pago. Comprueba que has usado el enlace correcto o contacta con StudyOS.</p>
+    <a class="contact" href="mailto:studyos.oficial.spain@gmail.com">Contactar con StudyOS</a>
+  </main>
+  <script>
+    if (new URLSearchParams(location.search).get("error") === "verification") {
+      document.getElementById("notice").hidden = false;
+    }
+  </script>
+</body>
+</html>
