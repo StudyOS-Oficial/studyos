@@ -31,6 +31,62 @@
     var body=x.text.map(function(t){var resource=t.indexOf("RECURSO ·")===0;var v=resource?t.replace("RECURSO · ",""):t;return '<div class="theory-point'+(resource?' resource':'')+'"><strong>'+(resource?'Recurso práctico':'Idea clave')+'</strong><p>'+v+'</p></div>';}).join("");
     return '<section class="card theory-extra"><span class="tag">PARA PROFUNDIZAR</span><h2>'+x.title+'</h2>'+body+'</section>';
   }
+  var EXTRA_BONUS = {
+    11:{title:"Ampliación · pensar en varias etapas",text:[
+      "Pensar por etapas significa dejar de tratar una petición compleja como una sola orden. En lugar de pedir “hazme todo”, primero defines el resultado, después separas el trabajo en pasos y finalmente revisas cada paso antes de continuar. Esta forma de trabajar reduce errores porque cada etapa tiene un objetivo concreto.",
+      "Una buena cadena de trabajo suele tener cinco momentos: definir el resultado, preparar la información, construir un primer plan, ejecutar y revisar. No todas las tareas necesitan las cinco etapas con la misma profundidad, pero identificar dónde está cada una ayuda a no saltarse controles importantes.",
+      "El reparto de roles también importa. La IA puede actuar como analista, redactor, organizador, crítico o tutor según la instrucción. Tú sigues siendo quien fija el objetivo, aporta el contexto y decide si el resultado es válido. Cambiar el rol de la IA puede cambiar mucho el tipo de respuesta que obtienes.",
+      "Una técnica especialmente útil es pedir primero un plan y no el resultado final. Si el plan contiene pasos innecesarios, falta información o una conclusión equivocada, corregirlo antes de ejecutar todo ahorra tiempo y evita construir sobre una base defectuosa.",
+      "Cuando una etapa depende de otra, conviene crear puntos de control. Por ejemplo: comprobar los datos antes de analizarlos, revisar el esquema antes de redactar y comprobar las conclusiones antes de publicarlas. Estos controles convierten una conversación con IA en un proceso reproducible.",
+      "También puedes crear alternativas. Si una primera estrategia no funciona, pide dos o tres caminos diferentes y compáralos según criterios concretos: tiempo, dificultad, coste, precisión o riesgo. Así la IA no se limita a reforzar la primera idea que apareció.",
+      "La segunda revisión tiene un objetivo diferente de la primera. La primera comprueba si el resultado cumple la tarea; la segunda intenta encontrar aquello que podría estar mal, incompleto o asumido sin pruebas. Pedir explícitamente una revisión crítica suele descubrir problemas que una simple corrección no detecta.",
+      "Cuando un proceso funciona, conviértelo en una plantilla. Guarda la estructura de instrucciones, los criterios de calidad y los puntos de revisión. La próxima vez no empiezas desde cero: solo adaptas el contexto.",
+      "RECURSO · Plantilla de proceso: Objetivo → Información disponible → Pasos → Rol de la IA → Criterios de calidad → Punto de verificación → Alternativa → Revisión final.",
+      "RECURSO · Ejercicio: elige una tarea real que normalmente haces de una sola vez y divídela en al menos 5 etapas. Para cada etapa escribe qué debe producir, qué información necesita y cómo comprobarás que está bien.",
+      "RECURSO · Prompt reutilizable: “Antes de resolver esta tarea, divídela en etapas. Para cada etapa indica objetivo, información necesaria, resultado esperado y cómo verificarlo. No ejecutes todavía la tarea; primero quiero revisar el plan.”"
+    ]},
+    12:{title:"Ampliación · convertir tareas en procesos prácticos",text:[
+      "Una tarea es algo que quieres hacer; un proceso es una forma organizada de repetirlo con un resultado consistente. La diferencia parece pequeña, pero es fundamental para aprovechar la IA. En vez de pedir una respuesta aislada, defines un procedimiento que puedes reutilizar mañana con otros datos.",
+      "Empieza por describir qué entra y qué debe salir. Si no puedes explicar la entrada y la salida, probablemente todavía no has definido bien el proceso. Por ejemplo, “quiero organizar una semana” es ambiguo; “tengo estas obligaciones, este tiempo disponible y estas prioridades, y necesito un plan semanal revisable” es mucho más operativo.",
+      "Las preguntas previas evitan que la IA rellene huecos con suposiciones. Puedes pedirle que detecte qué información falta y que formule únicamente las preguntas necesarias antes de empezar. Esto es especialmente útil cuando una decisión depende de restricciones que todavía no has explicado.",
+      "Planificar antes de generar separa estrategia y ejecución. Primero decides qué se hará, en qué orden y con qué criterios. Después utilizas la IA para producir documentos, listas, textos, tablas o propuestas. Esta separación facilita corregir el enfoque sin rehacer todo el trabajo.",
+      "Los criterios convierten una opinión en una comprobación. En lugar de decir “hazlo bien”, define qué significa bien: completo, claro, breve, dentro del presupuesto, adecuado al público o coherente con unas reglas concretas. Cuantos más criterios relevantes estén definidos, menos espacio queda para interpretaciones arbitrarias.",
+      "Las tablas son útiles cuando hay que comparar opciones. Una tabla puede incluir alternativa, ventajas, inconvenientes, coste, tiempo, riesgos y una condición de descarte. La IA puede ayudarte a rellenarla, pero los criterios deben venir de la situación real y la decisión final sigue siendo humana.",
+      "Los checklists son una de las formas más sencillas de convertir una conversación en sistema. Un buen checklist no intenta recordar todo; recoge los puntos que sería costoso olvidar. Puedes pedir a la IA que lo revise y lo simplifique después de usarlo varias veces.",
+      "Los puntos de decisión deben estar explícitos. Por ejemplo: si falta información, preguntar; si el riesgo es alto, verificar una fuente oficial; si una opción supera un límite, descartarla; si dos opciones son equivalentes, elegir la más sencilla. Estas reglas hacen que el proceso sea más estable.",
+      "Las plantillas permiten reutilizar el trabajo sin copiar respuestas enteras. Guarda campos variables entre corchetes y conserva las instrucciones que realmente cambian el resultado. Una plantilla buena es corta, clara y fácil de adaptar.",
+      "RECURSO · Constructor de procesos: Entrada → Objetivo → Preguntas necesarias → Pasos → Criterios → Decisiones → Verificaciones → Salida → Plantilla para repetirlo.",
+      "RECURSO · Ejercicio: convierte una tarea repetitiva de tu vida en un procedimiento de 7 pasos. Añade al menos 3 criterios de calidad y 2 puntos donde una persona deba revisar antes de continuar.",
+      "RECURSO · Prompt reutilizable: “Convierte esta tarea en un proceso reutilizable. Primero identifica entradas y resultado final; después crea pasos, criterios de calidad, decisiones y puntos de verificación. Termina con una plantilla que pueda volver a utilizar.”"
+    ]},
+    13:{title:"Ampliación · pensar mejor con IA",text:[
+      "Usar IA para pensar mejor no significa dejar que la herramienta decida por ti. Su valor está en ampliar el espacio de análisis: puede proponer perspectivas, detectar contradicciones, formular preguntas y construir escenarios que quizá no habías considerado.",
+      "Antes de aceptar una conclusión, identifica qué supuestos necesita para ser cierta. Un supuesto puede ser explícito, como un dato proporcionado, o implícito, como asumir que una persona reaccionará de una determinada manera. Pedir a la IA que enumere los supuestos hace visible la parte más frágil del razonamiento.",
+      "Distingue hechos, interpretaciones y opiniones. Un hecho debería poder contrastarse; una interpretación explica qué significado damos a esos hechos; una opinión expresa una valoración. Mezclarlos en una misma frase puede hacer que una conclusión parezca más segura de lo que realmente es.",
+      "Los contraargumentos son una herramienta potente. Después de construir una posición, pide la mejor objeción posible y pregunta qué evidencia podría darle la razón. No se trata de buscar una discusión artificial, sino de intentar falsar una conclusión antes de actuar sobre ella.",
+      "También conviene buscar información ausente. Pregunta: “¿Qué dato importante no tenemos?”. Una respuesta puede ser correcta con la información disponible y, aun así, ser insuficiente para tomar una decisión real. Detectar el vacío de información es parte del razonamiento.",
+      "Los contraejemplos ayudan a comprobar si una regla es demasiado general. Si dices “esta estrategia siempre funciona”, intenta encontrar un caso donde no funcione. Si existe, reformula la afirmación con las condiciones en las que realmente es válida.",
+      "El sesgo de confirmación aparece cuando buscamos principalmente pruebas que apoyen nuestra primera idea. Puedes usar la IA para invertir el proceso: pide primero argumentos a favor, después argumentos en contra y finalmente una comparación neutral de qué evidencias son más sólidas.",
+      "Los escenarios permiten pensar en condiciones cambiantes. Construye, por ejemplo, un escenario favorable, uno intermedio y uno adverso. Después identifica qué señales indicarían que estás pasando de un escenario a otro y qué acción tendría sentido en cada caso.",
+      "Antes de decidir, pide un resumen de la decisión en una estructura fija: objetivo, hechos conocidos, incertidumbres, opciones, riesgos y criterio elegido. Esta estructura obliga a separar lo que sabes de lo que estás suponiendo.",
+      "La última palabra debe seguir siendo tuya cuando la decisión tenga consecuencias personales, económicas, legales, médicas o de seguridad. La IA puede ayudar a analizar, pero no sustituye la responsabilidad de contrastar información ni el criterio de una persona cualificada cuando sea necesario.",
+      "RECURSO · Matriz de decisión: Objetivo → Hechos → Supuestos → Opciones → Argumentos a favor → Contraargumentos → Riesgos → Información que falta → Criterio → Decisión.",
+      "RECURSO · Ejercicio: toma una decisión real no urgente y escribe primero tu conclusión. Después pide a la IA que intente demostrar que estás equivocado, que encuentre tres datos que faltan y que proponga dos escenarios alternativos.",
+      "RECURSO · Prompt reutilizable: “Actúa como un crítico constructivo. No intentes darme la razón. Identifica mis supuestos, separa hechos de opiniones, formula el mejor contraargumento, señala qué información falta y presenta escenarios alternativos. Termina indicando qué tendría que comprobar antes de decidir.”"
+    ]}
+  };
+  function bonusHTML(n) {
+    var x=EXTRA_BONUS[n]; if(!x) return "";
+    var body=x.text.map(function(t){var resource=t.indexOf("RECURSO ·")===0;var v=resource?t.replace("RECURSO · ",""):t;return '<div class="theory-point'+(resource?' resource':'')+'"><strong>'+(resource?'Recurso práctico':'Desarrollo teórico')+'</strong><p>'+v+'</p></div>';}).join("");
+    return '<section class="card theory-extra bonus-theory"><span class="tag">AMPLIACIÓN DE TEORÍA</span><h2>'+x.title+'</h2>'+body+'</section>';
+  }
+  function courseNavHTML(n) {
+    if(n<10 || n>13) return "";
+    var prev=n===10?null:n-1, next=n<13?n+1:null;
+    var prevHTML=prev?'<a class="course-nav-btn secondary" href="../modulo-'+prev+'/">← Módulo anterior</a>':'';
+    var nextHTML=next?'<a class="course-nav-btn primary" href="../modulo-'+next+'/">Módulo '+next+' →</a>':'<a class="course-nav-btn primary" href="../">Finalizar curso →</a>';
+    return '<nav class="course-nav" aria-label="Navegación del curso"><div class="course-nav-line"><span>Continuación del curso</span><b>Módulo '+n+' de 13</b></div><div class="course-nav-actions">'+prevHTML+nextHTML+'</div></nav>';
+  }
   function improveQuizzes(html,n) {
     if(n<1||n>10) return html;
     var order=[["B","A","C"],["C","B","A"],["A","C","B"],["B","C","A"],["C","A","B"],["A","B","C"],["C","B","A"],["B","A","C"],["A","C","B"],["B","C","A"]];
