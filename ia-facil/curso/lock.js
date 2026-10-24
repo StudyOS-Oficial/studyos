@@ -11,6 +11,20 @@
     return new TextDecoder().decode(await sub.decrypt({ name: "AES-GCM", iv: d(pay.iv) }, K, d(pay.ct)));
   }
   function render(html) { document.open(); document.write(html); document.close(); }
+  function polishQuiz(html) {
+    var css = '<style id="quiz-polish">' +
+      '.quiz button,.quiz .option,.quiz .answer,.quiz-option,.quiz-answer{color:#172033!important;background:#fff!important;border:1px solid #d8e0ea!important;border-radius:14px!important;padding:14px 18px!important;text-align:left!important;font:inherit!important;cursor:pointer!important;transition:background .15s,border-color .15s,transform .05s!important}' +
+      '.quiz button:hover,.quiz .option:hover,.quiz .answer:hover,.quiz-option:hover,.quiz-answer:hover{background:#f5f8fc!important}' +
+      '.quiz button.selected,.quiz .option.selected,.quiz .answer.selected,.quiz-option.selected,.quiz-answer.selected{color:#172033!important}' +
+      '.quiz button.correct,.quiz .option.correct,.quiz .answer.correct,.quiz-option.correct,.quiz-answer.correct,[data-correct="true"].selected{background:#dff5e4!important;border-color:#35a853!important;color:#176b2c!important}' +
+      '.quiz button.incorrect,.quiz .option.incorrect,.quiz .answer.incorrect,.quiz-option.incorrect,.quiz-answer.incorrect,[data-correct="false"].selected{background:#fde2e2!important;border-color:#dc4c4c!important;color:#9b1c1c!important}' +
+      '.quiz .answers,.quiz .options,.quiz-options{display:grid!important;gap:10px!important}' +
+      '.quiz .answers>*+*,.quiz .options>*+*,.quiz-options>*+*{margin-top:0!important}' +
+      '.course-nav-actions{display:flex!important;gap:14px!important;flex-wrap:wrap!important}.course-nav-actions>*{flex:1 1 220px!important}' +
+      '</style>';
+    if(html.indexOf('</head>')>=0) html=html.replace('</head>',css+'</head>');
+    return html;
+  }
   async function fromPw(pw) {
     var b = await sub.importKey("raw", new TextEncoder().encode(pw), "PBKDF2", false, ["deriveKey"]);
     return sub.deriveKey({ name: "PBKDF2", salt: d(meta.salt), iterations: meta.iter, hash: "SHA-256" }, b, { name: "AES-GCM", length: 256 }, true, ["decrypt"]);
@@ -37,7 +51,7 @@
         var W = await fromPw(v), html;
         try { html = await open(W); } catch (x) { er.textContent = "Contraseña incorrecta. Revisa las mayúsculas y que no haya espacios."; ok.disabled = false; ok.textContent = "Entrar al curso"; return; }
         try { localStorage.setItem(KS, e(new Uint8Array(await sub.exportKey("raw", W)))); } catch (x) {}
-        render(html);
+        render(polishQuiz(html));
       } catch (x) { er.textContent = "Ha habido un problema. Inténtalo de nuevo."; ok.disabled = false; ok.textContent = "Entrar al curso"; }
     };
   }
