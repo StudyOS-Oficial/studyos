@@ -13,37 +13,85 @@
   function render(html) { document.open(); document.write(html); document.close(); }
   function polishQuiz(html) {
     var css = '<style id="quiz-polish">' +
-      /* Cuestionarios: opciones blancas, letra negra y estados muy claros. */
-      '.quiz button,.quiz .option,.quiz .answer,.quiz-option,.quiz-answer,button[onclick],a[onclick], [role="button"]{color:#172033!important;background:#fff!important;border:1px solid #d8e0ea!important;border-radius:14px!important;padding:14px 18px!important;text-align:left!important;font:inherit!important;cursor:pointer!important;transition:background .15s,border-color .15s,transform .05s!important}' +
-      '.quiz button:hover,.quiz .option:hover,.quiz .answer:hover,.quiz-option:hover,.quiz-answer:hover,button[onclick]:hover,a[onclick]:hover,[role="button"]:hover{background:#f5f8fc!important}' +
-      '.quiz-answer-correct,.quiz button.correct,.quiz .option.correct,.quiz .answer.correct,.quiz-option.correct,.quiz-answer.correct,[data-correct="true"].selected{background:#dff5e4!important;border-color:#35a853!important;color:#176b2c!important}' +
-      '.quiz-answer-incorrect,.quiz button.incorrect,.quiz .option.incorrect,.quiz .answer.incorrect,.quiz-option.incorrect,.quiz-answer.incorrect,[data-correct="false"].selected{background:#fde2e2!important;border-color:#dc4c4c!important;color:#9b1c1c!important}' +
+      '.iaf-quiz-option{color:#172033!important;background:#fff!important;border:1px solid #d8e0ea!important;border-radius:14px!important;padding:14px 18px!important;text-align:left!important;font:inherit!important;cursor:pointer!important;transition:background .15s,border-color .15s,color .15s,transform .05s!important;box-sizing:border-box!important;display:block!important;width:100%!important}' +
+      '.iaf-quiz-option:hover{background:#f5f8fc!important}' +
+      '.iaf-quiz-option.iaf-correct{background:#dff5e4!important;border-color:#35a853!important;color:#176b2c!important}' +
+      '.iaf-quiz-option.iaf-incorrect{background:#fde2e2!important;border-color:#dc4c4c!important;color:#9b1c1c!important}' +
+      '.iaf-quiz-option.iaf-correct,.iaf-quiz-option.iaf-incorrect{font-weight:500!important}' +
+      '.quiz-answer-correct,.quiz button.correct,.quiz .option.correct,.quiz .answer.correct,.quiz-option.correct,.quiz-answer.correct,.correct-answer,.is-correct{background:#dff5e4!important;border-color:#35a853!important;color:#176b2c!important}' +
+      '.quiz-answer-incorrect,.quiz button.incorrect,.quiz .option.incorrect,.quiz .answer.incorrect,.quiz-option.incorrect,.quiz-answer.incorrect,.incorrect-answer,.is-incorrect{background:#fde2e2!important;border-color:#dc4c4c!important;color:#9b1c1c!important}' +
       '.quiz .answers,.quiz .options,.quiz-options{display:grid!important;gap:10px!important}' +
       '.quiz .answers>*+*,.quiz .options>*+*,.quiz-options>*+*{margin-top:0!important}' +
-      '.course-nav-actions{display:flex!important;gap:14px!important;flex-wrap:wrap!important}.course-nav-actions>*{flex:1 1 220px!important}' +
       '</style>';
-    if(html.indexOf('</head>')>=0) html=html.replace('</head>',css+'</head>');
-    if (html.indexOf('</body>')>=0) html=html.replace('</body>','<script>(function(){' +
-      'function isOpt(el){if(!el)return false;var t=(el.textContent||"").trim();return /^[A-D]\\.\\s/.test(t)}' +
+
+    if (html.indexOf('</head>') >= 0) html = html.replace('</head>', css + '</head>');
+
+    if (html.indexOf('</body>') >= 0) html = html.replace('</body>', '<script>(function(){' +
+      'function txt(el){return (el&&el.textContent||"").trim()}' +
+      'function isOpt(el){' +
+        'if(!el||el.nodeType!==1)return false;' +
+        'var t=txt(el);' +
+        'if(!/^[A-D]\\.\\s+/.test(t))return false;' +
+        'return el.matches("button,a,label,[role=button],[onclick],[tabindex]") || !!el.querySelector("input[type=radio],input[type=checkbox],[onclick]");' +
+      '}' +
+      'function options(){' +
+        'var all=Array.from(document.querySelectorAll("button,a,label,[role=button],[onclick],[tabindex]"));' +
+        'return all.filter(isOpt);' +
+      '}' +
+      'function resultEl(){return document.getElementById("result")||document.querySelector(".result,#resultado,.quiz-result");}' +
+      'function moveResult(){' +
+        'var r=resultEl(); if(!r)return;' +
+        'var quiz=r.closest(".quiz")||document.querySelector(".quiz")||r.parentElement;' +
+        'if(!quiz)return;' +
+        'var questions=quiz.querySelectorAll(".q,.question");' +
+        'var last=questions.length?questions[questions.length-1]:null;' +
+        'if(last && last.contains(r)){quiz.appendChild(r);}' +
+        'else if(r.parentElement!==quiz && !quiz.contains(r)){quiz.appendChild(r);}' +
+      '}' +
+      'function truthFrom(el){' +
+        'var d=el.getAttribute("data-correct");' +
+        'if(d==="true")return true;if(d==="false")return false;' +
+        'var c=(el.className||"").toString().toLowerCase();' +
+        'if(/(^|[\\s_-])(correct|correcto|right|acertad|is-correct)([\\s_-]|$)/.test(c))return true;' +
+        'if(/(^|[\\s_-])(incorrect|incorrecto|wrong|fallad|is-incorrect)([\\s_-]|$)/.test(c))return false;' +
+        'var a=(el.getAttribute("aria-label")||"").toLowerCase();' +
+        'if(/correct|correcto|acertad/.test(a))return true;if(/incorrect|incorrecto|wrong|fallad/.test(a))return false;' +
+        'var x=(el.getAttribute("onclick")||"").toLowerCase();' +
+        'if(/(?:^|[,\\s(])true(?:\\s*[,)]|$)/.test(x))return true;' +
+        'if(/(?:^|[,\\s(])false(?:\\s*[,)]|$)/.test(x))return false;' +
+        'if(/["\\']correct["\\']/.test(x))return true;if(/["\\']incorrect["\\']/.test(x))return false;' +
+        'return null;' +
+      '}' +
+      'function score(){' +
+        'var r=resultEl(); if(!r)return null;' +
+        'var m=txt(r).match(/(\\d+)\\s*\\/\\s*(\\d+)/); return m?Number(m[1]):null;' +
+      '}' +
       'function mark(el){' +
         'if(!isOpt(el))return;' +
         'el.classList.add("iaf-quiz-option");' +
         'el.style.setProperty("color","#172033","important");' +
-        'var s=el.getAttribute("onclick")||"";' +
-        'var dc=el.getAttribute("data-correct");' +
-        'if(dc==="true") el.classList.add("quiz-answer-correct");' +
-        'else if(dc==="false") el.classList.add("quiz-answer-incorrect");' +
+        'var state=truthFrom(el);' +
+        'if(state===true)el.classList.add("iaf-correct");' +
+        'if(state===false)el.classList.add("iaf-incorrect");' +
+        'if(el.__iafBound)return; el.__iafBound=true;' +
         'el.addEventListener("click",function(){' +
-          'var x=el.getAttribute("onclick")||"";' +
-          'var d=el.getAttribute("data-correct");' +
-          'el.classList.remove("quiz-answer-correct","quiz-answer-incorrect");' +
-          'if(d==="true" || /(?:,|\\()\\s*true\\s*(?:\\)|,|$)/i.test(x)) el.classList.add("quiz-answer-correct");' +
-          'else if(d==="false" || /(?:,|\\()\\s*false\\s*(?:\\)|,|$)/i.test(x)) el.classList.add("quiz-answer-incorrect");' +
+          'var before=score();' +
+          'setTimeout(function(){' +
+            'var state2=truthFrom(el);' +
+            'if(state2===true){el.classList.remove("iaf-incorrect");el.classList.add("iaf-correct");}' +
+            'else if(state2===false){el.classList.remove("iaf-correct");el.classList.add("iaf-incorrect");}' +
+            'else {' +
+              'var after=score();' +
+              'if(before!==null && after!==null && after>before){el.classList.remove("iaf-incorrect");el.classList.add("iaf-correct");}' +
+            '}' +
+            'moveResult();' +
+          '},80);' +
         '},true);' +
       '}' +
-      'document.querySelectorAll("button,a,[role=button]").forEach(mark);' +
-      'document.addEventListener("click",function(ev){var el=ev.target.closest&&ev.target.closest("button,a,[role=button]");if(el&&isOpt(el))mark(el)},true);' +
-    '})();<\\/script></body>');
+      'function scan(){options().forEach(mark);moveResult();}' +
+      'scan();' +
+      'new MutationObserver(scan).observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:["class","data-correct","aria-label"]});' +
+    '})();<\/script></body>');
     return html;
   }
   async function fromPw(pw) {
