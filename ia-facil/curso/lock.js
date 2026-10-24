@@ -32,7 +32,7 @@
         'if(!el||el.nodeType!==1)return false;' +
         'var t=txt(el);' +
         'if(!/^[A-D]\\.\\s+/.test(t))return false;' +
-        'return el.matches("button,a,label,[role=button],[onclick],[tabindex]") || !!el.querySelector("input[type=radio],input[type=checkbox,[onclick]");' +
+        'return el.matches("button,a,label,[role=button],[onclick],[tabindex]") || !!el.querySelector("input[type=radio],input[type=checkbox],[onclick]");' +
       '}' +
       'function options(){' +
         'var all=Array.from(document.querySelectorAll("button,a,label,[role=button],[onclick],[tabindex]"));' +
