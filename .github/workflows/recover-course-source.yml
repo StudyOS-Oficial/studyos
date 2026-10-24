@@ -21,3 +21,5 @@ jobs:
           name: ia-facil-source-recovery
           path: /tmp/course-source/
           retention-days: 1
+
+# second event to activate this temporary recovery workflow
