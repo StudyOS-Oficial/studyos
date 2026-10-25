@@ -1,350 +1,104 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f8ff">
-  <title>AI Made Easy | Learn to use AI with confidence</title>
-  <meta name="description" content="A practical, beginner-friendly course to help you use ChatGPT in everyday life. Explore 13 modules, 130 lessons and five extra resources.">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="AI Made Easy | Learn to use AI with confidence">
-  <meta property="og:description" content="A practical, beginner-friendly course to help you use ChatGPT in everyday life.">
-  <style>
-    :root{--ink:#172238;--muted:#60718a;--blue:#2879ea;--blue-dark:#1767dc;--blue-soft:#eaf3ff;--line:#dfe7f1;--bg:#f5f8fc;--white:#fff;--navy:#14223b;--green:#15805d;--green-soft:#e9f7f0;--shadow:0 18px 48px rgba(23,34,56,.08)}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:86px}
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
-    a{color:inherit}
-    .wrap{width:min(1160px,calc(100% - 40px));margin:auto}
-    .site-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(223,231,241,.9)}
-    .nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;font-size:19px;letter-spacing:-.035em}
-    .brand-icon{width:36px;height:36px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(145deg,#62a7ff,#2879ea);color:#fff;box-shadow:0 6px 14px rgba(40,121,234,.2)}
-    .nav-links{display:flex;align-items:center;gap:28px}
-    .nav-links a{font-size:14px;font-weight:700;color:#53647d;text-decoration:none}
-    .nav-links a:hover{color:var(--blue-dark)}
-    .button{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:0 19px;border-radius:13px;text-decoration:none;font-weight:850;font-size:15px;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
-    .button:hover{transform:translateY(-2px)}
-    .button-primary{background:var(--blue);color:#fff;box-shadow:0 9px 20px rgba(40,121,234,.2)}
-    .button-primary:hover{background:var(--blue-dark)}
-    .button-secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
-    .hero{padding:70px 0 56px;background:radial-gradient(ellipse at 84% 20%,rgba(198,222,255,.8),transparent 36%),linear-gradient(180deg,#fff 0%,#f5f8fc 100%);overflow:hidden}
-    .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);align-items:center;gap:64px}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--blue-dark);font-size:12px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
-    .eyebrow-mark{width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 5px #2879ea18}
-    h1{max-width:710px;margin:19px 0 19px;font-size:clamp(43px,6.8vw,76px);line-height:.99;letter-spacing:-.065em}
-    h1 span{color:var(--blue)}
-    .hero-copy{max-width:620px;color:var(--muted);font-size:19px;line-height:1.65;margin:0}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:27px}
-    .trust-line{display:flex;flex-wrap:wrap;gap:9px 18px;margin-top:24px;color:#65758a;font-size:13px;font-weight:700}
-    .trust-line span{display:flex;align-items:center;gap:7px}
-    .check{color:var(--green);font-weight:900}
-    .preview-card{position:relative;padding:25px;border:1px solid #dce7f5;border-radius:25px;background:rgba(255,255,255,.92);box-shadow:var(--shadow)}
-    .preview-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}
-    .preview-title{font-size:14px;font-weight:900}
-    .self-paced{padding:6px 10px;border-radius:999px;background:var(--green-soft);color:var(--green);font-size:11px;font-weight:900}
-    .path-list{display:grid;gap:10px}
-    .path-item{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:11px;padding:12px;border:1px solid #e7edf5;border-radius:14px;background:#fff}
-    .path-num{width:30px;height:30px;display:grid;place-items:center;border-radius:10px;background:var(--blue-soft);color:var(--blue-dark);font-size:12px;font-weight:900}
-    .path-name{font-size:13px;font-weight:800}
-    .path-meta{font-size:11px;color:#8090a4}
-    .path-item:nth-child(2) .path-num{background:#f0edff;color:#6855bd}
-    .path-item:nth-child(3) .path-num{background:#e9f7f0;color:#16805d}
-    .preview-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:17px;padding-top:16px;border-top:1px solid var(--line)}
-    .preview-foot strong{font-size:14px}
-    .preview-foot span{color:var(--muted);font-size:12px}
-    .stats{position:relative;margin-top:-1px;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-    .stat{padding:23px 18px;text-align:center;border-right:1px solid var(--line)}
-    .stat:last-child{border-right:0}
-    .stat strong{display:block;color:var(--navy);font-size:22px;letter-spacing:-.04em}
-    .stat span{display:block;margin-top:3px;color:var(--muted);font-size:12px;font-weight:700}
-    section.content{padding:76px 0}
-    .section-heading{max-width:740px;margin:0 auto 34px;text-align:center}
-    .section-heading h2{margin:12px 0 10px;font-size:clamp(32px,4.2vw,48px);line-height:1.08;letter-spacing:-.05em}
-    .section-heading p{margin:0;color:var(--muted);font-size:17px;line-height:1.65}
-    .benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .benefit{padding:23px;border:1px solid var(--line);border-radius:19px;background:#fff;box-shadow:0 7px 24px rgba(23,34,56,.035)}
-    .benefit-icon{width:42px;height:42px;display:grid;place-items:center;margin-bottom:15px;border-radius:13px;background:var(--blue-soft);color:var(--blue-dark);font-size:17px;font-weight:900}
-    .benefit:nth-child(2) .benefit-icon{background:#f0edff;color:#6855bd}
-    .benefit:nth-child(3) .benefit-icon{background:var(--green-soft);color:var(--green)}
-    .benefit h3{margin:0 0 7px;font-size:18px;letter-spacing:-.025em}
-    .benefit p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
-    .curriculum{padding:74px 0 80px;background:#eef4fb;border-top:1px solid #e4ebf5;border-bottom:1px solid #e4ebf5}
-    .curriculum .section-heading{margin-bottom:32px}
-    .module-groups{display:grid;gap:28px}
-    .module-group{display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:start}
-    .group-label{position:sticky;top:92px;padding:15px 0;color:#687b94;font-size:12px;font-weight:900;letter-spacing:.11em;text-transform:uppercase}
-    .group-label span{display:block;margin-top:7px;color:#93a1b3;font-size:12px;font-weight:650;letter-spacing:0;text-transform:none}
-    .module-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-    .module-card{display:grid;grid-template-columns:42px 1fr;gap:13px;padding:18px;border:1px solid #e0e8f2;border-radius:17px;background:#fff;transition:transform .18s ease,box-shadow .18s ease}
-    .module-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(23,34,56,.07)}
-    .module-num{width:39px;height:39px;display:grid;place-items:center;border-radius:12px;background:var(--blue-soft);color:var(--blue-dark);font-size:14px;font-weight:950}
-    .module-card h3{margin:1px 0 5px;font-size:16px;line-height:1.25;letter-spacing:-.02em}
-    .module-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
-    .module-link{display:inline-block;margin-top:9px;color:var(--blue-dark);font-size:12px;font-weight:850;text-decoration:none}
-    .module-link:hover{text-decoration:underline}
-    .extras{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-    .extra{padding:18px 16px;border:1px solid var(--line);border-radius:16px;background:#fff}
-    .extra-label{color:var(--blue-dark);font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
-    .extra h3{margin:9px 0 6px;font-size:15px;line-height:1.25}
-    .extra p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
-    .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;counter-reset:step}
-    .how-step{position:relative;padding:24px;border-radius:18px;background:#fff;border:1px solid var(--line);counter-increment:step}
-    .how-step:before{content:"0" counter(step);display:block;margin-bottom:21px;color:var(--blue);font-size:13px;font-weight:950;letter-spacing:.08em}
-    .how-step h3{margin:0 0 7px;font-size:18px}
-    .how-step p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
-    .faq{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    .faq details{padding:18px 20px;border:1px solid var(--line);border-radius:15px;background:#fff}
-    .faq summary{cursor:pointer;font-size:15px;font-weight:850;list-style:none}
-    .faq summary::-webkit-details-marker{display:none}
-    .faq summary:after{content:"+";float:right;color:var(--blue);font-size:20px;line-height:1}
-    .faq details[open] summary:after{content:"−"}
-    .faq details p{margin:12px 0 0;color:var(--muted);font-size:14px;line-height:1.6}
-    .final-cta{padding:55px 28px;border-radius:28px;background:linear-gradient(135deg,#172b4d,#1b4f90);color:#fff;text-align:center;box-shadow:0 20px 48px rgba(23,48,83,.18)}
-    .final-cta .eyebrow{color:#b9d7ff}
-    .final-cta h2{max-width:700px;margin:13px auto 12px;font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-.05em}
-    .final-cta p{max-width:610px;margin:0 auto;color:#d4e2f4;font-size:16px;line-height:1.6}
-    .final-cta .button{margin-top:22px;background:#fff;color:#174e91}
-    .fine-print{margin:15px 0 0!important;font-size:12px!important;color:#c0d2e6!important}
-    footer{padding:30px 0;color:#73839a;font-size:13px}
-    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:18px}
-    .footer-links{display:flex;flex-wrap:wrap;gap:18px}
-    .footer-links a{color:#5d718c;text-decoration:none;font-weight:700}
-    .footer-links a:hover{color:var(--blue-dark)}
-    @media(max-width:900px){
-      .hero-grid{grid-template-columns:1fr 360px;gap:30px}
-      .extras{grid-template-columns:repeat(3,1fr)}
-      .module-group{grid-template-columns:145px 1fr}
-    }
-    @media(max-width:720px){
-      .wrap{width:min(100% - 30px,560px)}
-      .nav{height:64px}
-      .nav-links>a:not(.button){display:none}
-      .nav-links{gap:0}
-      .hero{padding:48px 0 40px}
-      .hero-grid{grid-template-columns:1fr;gap:31px}
-      .hero-copy{font-size:17px}
-      .preview-card{max-width:500px}
-      .stats-grid{grid-template-columns:repeat(2,1fr)}
-      .stat:nth-child(2){border-right:0}
-      .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
-      section.content{padding:58px 0}
-      .benefit-grid{grid-template-columns:1fr}
-      .curriculum{padding:58px 0}
-      .module-group{grid-template-columns:1fr;gap:4px}
-      .group-label{position:static;padding:0 0 10px}
-      .module-grid{grid-template-columns:1fr}
-      .extras{grid-template-columns:repeat(2,1fr)}
-      .how-grid{grid-template-columns:1fr}
-      .how-step{padding:20px}
-      .how-step:before{margin-bottom:14px}
-      .faq{grid-template-columns:1fr}
-      .footer-inner{align-items:flex-start;flex-direction:column}
-    }
-    @media(max-width:390px){
-      .wrap{width:min(100% - 24px,560px)}
-      .brand{font-size:17px}
-      .brand-icon{width:33px;height:33px}
-      .hero-actions{display:grid}
-      .button{width:100%}
-      .extras{grid-template-columns:1fr}
-      .path-item{grid-template-columns:32px 1fr}
-      .path-meta{display:none}
-    }
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button,.module-card{transition:none}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a6cff">
+<title>AI Made Easy | Learn to use AI in everyday life</title>
+<meta name="description" content="A practical, beginner-friendly course to use ChatGPT with confidence. 13 modules, 130 lessons and five extra resources. One-time purchase.">
+<link rel="canonical" href="https://studyos-oficial.github.io/studyos/ia-facil-en/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="StudyOS">
+<meta property="og:title" content="AI Made Easy | Learn to use AI with confidence">
+<meta property="og:description" content="A practical course for using ChatGPT in everyday life. 13 modules, 130 lessons and five extra resources.">
+<meta property="og:url" content="https://studyos-oficial.github.io/studyos/ia-facil-en/">
+<style>
+:root{--navy:#0b1f4d;--blue:#0a6cff;--blue2:#0857d6;--sky:#f0f6ff;--ink:#14213d;--mut:#51607d;--line:#dbe6f7;--green:#147b58;--green-soft:#e9f7f0;--radius:22px;--shadow:0 16px 44px rgba(11,31,77,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:82px}body{margin:0;font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:#fff;-webkit-text-size-adjust:100%}
+a{color:var(--blue2)}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #ffbf3c;outline-offset:3px}
+h1,h2,h3{margin:0;color:var(--navy);line-height:1.12;letter-spacing:-.025em}p{margin:0}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--blue2);font-size:12px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 5px #0a6cff16}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:12px 23px;border:0;border-radius:999px;background:var(--blue);color:#fff;text-decoration:none;font-weight:850;font-size:17px;box-shadow:0 8px 22px #0a6cff38;transition:transform .15s,background .15s}.btn:hover{background:var(--blue2);transform:translateY(-1px)}.btn-white{background:#fff;color:var(--blue2)}.btn-white:hover{background:#eef5ff}
+header{position:sticky;top:0;z-index:20;background:#ffffffed;backdrop-filter:blur(12px);border-bottom:1px solid #e9f0fb}.nav{height:70px;display:flex;align-items:center;gap:22px}.logo{display:flex;align-items:center;gap:9px;color:var(--navy);font-weight:950;font-size:22px;letter-spacing:-.04em;text-decoration:none;white-space:nowrap}.logo-mark{width:35px;height:35px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(145deg,#62a7ff,#2879ea);color:white}.nav-links{display:flex;align-items:center;gap:24px;margin-left:auto}.nav-links>a:not(.btn){color:var(--navy);font-size:14px;font-weight:700;text-decoration:none}.nav .btn{min-height:44px;padding:9px 17px;font-size:14px}
+.hero{padding:68px 0 58px;background:radial-gradient(ellipse at 84% 20%,#d8eaff 0,transparent 35%),linear-gradient(180deg,#fff,#f5f8ff)}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:54px}.hero h1{font-size:clamp(44px,6.7vw,74px);line-height:.99;letter-spacing:-.06em;margin:18px 0}.hero h1 span{color:var(--blue)}.lead{max-width:640px;color:var(--mut);font-size:19px;line-height:1.65}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.micro-trust{display:flex;flex-wrap:wrap;gap:9px 18px;margin-top:22px;color:#5c6d86;font-size:13px;font-weight:750}.micro-trust span{display:flex;align-items:center;gap:7px}.tick{color:var(--green);font-weight:950}
+.preview{padding:24px;border:1px solid #dce7f5;border-radius:26px;background:#ffffffed;box-shadow:var(--shadow)}.preview-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}.preview-head strong{font-size:15px}.pill{padding:6px 10px;border-radius:999px;background:var(--green-soft);color:var(--green);font-size:11px;font-weight:900}.path{display:grid;gap:9px}.path-item{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:11px;padding:11px;border:1px solid #e7edf5;border-radius:14px;background:#fff}.path-num{width:31px;height:31px;display:grid;place-items:center;border-radius:10px;background:#eaf3ff;color:var(--blue2);font-size:12px;font-weight:950}.path-item:nth-child(2) .path-num{background:#f0edff;color:#6855bd}.path-item:nth-child(3) .path-num{background:#e9f7f0;color:#147b58}.path-name{font-size:13px;font-weight:850}.path-meta{font-size:11px;color:#8190a3}.preview-foot{display:flex;justify-content:space-between;gap:12px;margin-top:15px;padding-top:14px;border-top:1px solid var(--line);font-size:13px}.preview-foot span{color:var(--mut)}
+.stats{background:#fff;border-block:1px solid var(--line)}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr)}.stat{padding:20px 12px;text-align:center;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat strong{display:block;color:var(--navy);font-size:21px;letter-spacing:-.04em}.stat span{display:block;color:var(--mut);font-size:12px;font-weight:750}
+section.content{padding:74px 0}.alt{background:#f5f8fc;border-block:1px solid #e7edf5}.section-head{max-width:760px;margin:0 auto 34px;text-align:center}.section-head h2{font-size:clamp(31px,4.5vw,46px);letter-spacing:-.05em;margin:11px 0}.section-head p{color:var(--mut);font-size:17px;line-height:1.65}
+.grid{display:grid;gap:15px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}.card{padding:23px;border:1px solid var(--line);border-radius:19px;background:#fff;box-shadow:0 7px 24px #17223808}.icon{width:43px;height:43px;display:grid;place-items:center;margin-bottom:14px;border-radius:14px;background:#eaf3ff;color:var(--blue2);font-size:19px;font-weight:900}.card:nth-child(3n+2) .icon{background:#f0edff;color:#6855bd}.card:nth-child(3n) .icon{background:var(--green-soft);color:var(--green)}.card h3{font-size:18px;margin-bottom:7px}.card p{color:var(--mut);font-size:14px;line-height:1.6}
+.steps{counter-reset:step}.step{counter-increment:step}.step:before{content:"0" counter(step);display:block;margin-bottom:18px;color:var(--blue);font-weight:950;letter-spacing:.1em;font-size:13px}.step h3{font-size:19px}
+.module-groups{display:grid;gap:24px}.module-group{display:grid;grid-template-columns:205px 1fr;gap:18px;align-items:start}.group-label{padding:14px 0;color:#667a95;font-size:12px;font-weight:950;letter-spacing:.1em;text-transform:uppercase}.group-label span{display:block;margin-top:6px;color:#8a99ad;font-size:12px;font-weight:650;letter-spacing:0;text-transform:none}.module-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.module{display:grid;grid-template-columns:42px 1fr;gap:13px;padding:17px;border:1px solid #dfe7f1;border-radius:17px;background:#fff}.module-num{width:39px;height:39px;display:grid;place-items:center;border-radius:12px;background:#eaf3ff;color:var(--blue2);font-weight:950;font-size:14px}.module:nth-child(2n) .module-num{background:#f0edff;color:#6855bd}.module h3{font-size:16px;line-height:1.25;margin:1px 0 5px}.module p{font-size:13px;line-height:1.5;color:var(--mut)}.bonus-tag{display:inline-block;margin-top:7px;padding:3px 8px;border-radius:999px;background:#fff4d9;color:#885b0a;font-size:10px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
+.include{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center}.include-list{display:grid;gap:12px}.include-item{display:flex;gap:11px;align-items:flex-start;padding:13px 15px;border-radius:14px;background:#fff;border:1px solid var(--line)}.include-item .tick{font-size:18px}.include-item p{font-size:14px;color:var(--mut)}.include-item strong{color:var(--navy)}.callout{padding:25px;border-radius:22px;background:linear-gradient(135deg,#172b4d,#1b4f90);color:#fff}.callout h3{color:#fff;font-size:23px;margin-bottom:9px}.callout p{color:#d7e4f4;font-size:15px}.callout .btn{margin-top:18px}
+.price-wrap{display:grid;grid-template-columns:1fr 390px;gap:30px;align-items:center}.price-card{padding:28px;border:1px solid #d5e4f8;border-radius:22px;background:#fff;box-shadow:var(--shadow);text-align:center}.price-kicker{color:var(--blue2);font-size:12px;font-weight:950;letter-spacing:.1em;text-transform:uppercase}.price{margin:6px 0;font-size:48px;line-height:1.1;font-weight:950;color:var(--navy);letter-spacing:-.055em}.price-note{color:var(--mut);font-size:13px}.price-card .btn{width:100%;margin-top:18px}.secure{margin-top:12px;color:#64758e;font-size:12px}.support{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);color:var(--mut);font-size:12px}.support a{font-weight:800}
+.faq{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.faq details{padding:17px 19px;border:1px solid var(--line);border-radius:15px;background:#fff}.faq summary{cursor:pointer;list-style:none;font-size:15px;font-weight:850}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";float:right;color:var(--blue);font-size:20px}.faq details[open] summary:after{content:"−"}.faq details p{margin-top:11px;color:var(--mut);font-size:14px;line-height:1.6}
+.final{padding:53px 26px;border-radius:27px;background:linear-gradient(135deg,#172b4d,#1b4f90);text-align:center;color:#fff}.final .eyebrow{color:#c2dcff}.final .eyebrow:before{background:#c2dcff}.final h2{max-width:700px;margin:13px auto;font-size:clamp(31px,4.2vw,46px);color:#fff;letter-spacing:-.05em}.final p{max-width:620px;margin:auto;color:#d7e4f4}.final .btn{margin-top:22px;background:#fff;color:#174e91}.fine{margin-top:12px!important;font-size:12px;color:#c5d5e7!important}footer{padding:28px 0;color:#75859c;font-size:13px}.footer{display:flex;align-items:center;justify-content:space-between;gap:16px}.footer a{color:#5d718c;font-weight:700;text-decoration:none}.foot-links{display:flex;flex-wrap:wrap;gap:16px}
+@media(max-width:920px){.hero-grid{grid-template-columns:1fr 360px;gap:28px}.module-group{grid-template-columns:160px 1fr}.price-wrap{grid-template-columns:1fr 340px}.include{grid-template-columns:1fr 350px}}
+@media(max-width:720px){.wrap{width:min(100% - 30px,560px)}.nav{height:62px}.nav-links>a:not(.btn){display:none}.nav-links{margin-left:auto}.nav .btn{font-size:13px;min-height:42px;padding:8px 13px}.hero{padding:43px 0 38px}.hero-grid{grid-template-columns:1fr;gap:26px}.hero h1{font-size:clamp(43px,13vw,62px)}.lead{font-size:17px}.stats-grid{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}section.content{padding:56px 0}.g3,.g2,.faq{grid-template-columns:1fr}.module-group{grid-template-columns:1fr;gap:4px}.group-label{padding:8px 0 3px}.module-grid{grid-template-columns:1fr}.include,.price-wrap{grid-template-columns:1fr}.price-wrap{gap:20px}.price-card{max-width:440px;width:100%;margin:auto}.footer{display:block}.foot-links{margin-top:10px}.final{padding:38px 21px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="AI Made Easy home"><span class="brand-icon" aria-hidden="true">✦</span><span>AI Made Easy</span></a>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#learn">What you’ll learn</a>
-        <a href="#modules">Modules</a>
-        <a class="button button-primary" href="mailto:studyos.oficial.spain@gmail.com?subject=AI%20Made%20Easy%20English%20course"><span>Ask about the course</span> <span aria-hidden="true">→</span></a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow"><span class="eyebrow-mark"></span>A practical course for everyday life</div>
-          <h1>Use AI with confidence, <span>one useful step at a time.</span></h1>
-          <p class="hero-copy">Learn to use ChatGPT from zero. Get clearer answers, solve everyday tasks and make thoughtful use of AI—without needing a technical background.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="mailto:studyos.oficial.spain@gmail.com?subject=AI%20Made%20Easy%20English%20course"><span>Ask about the course</span> <span aria-hidden="true">→</span></a>
-            <a class="button button-secondary" href="#modules">See what’s covered</a>
-          </div>
-          <div class="trust-line">
-            <span><b class="check" aria-hidden="true">✓</b> Start with the basics</span>
-            <span><b class="check" aria-hidden="true">✓</b> Learn at your own pace</span>
-            <span><b class="check" aria-hidden="true">✓</b> Practice as you go</span>
-          </div>
-        </div>
-        <aside class="preview-card" aria-label="A preview of the learning path">
-          <div class="preview-top"><div class="preview-title">Your learning path</div><span class="self-paced">SELF-PACED</span></div>
-          <div class="path-list">
-            <div class="path-item"><span class="path-num">01</span><span class="path-name">Understand the basics</span><span class="path-meta">Start here</span></div>
-            <div class="path-item"><span class="path-num">02</span><span class="path-name">Ask for what you need</span><span class="path-meta">Build a skill</span></div>
-            <div class="path-item"><span class="path-num">03</span><span class="path-name">Use AI thoughtfully</span><span class="path-meta">Keep control</span></div>
-          </div>
-          <div class="preview-foot"><strong>From first prompt to practical use</strong><span>13 modules</span></div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="stats" aria-label="Course at a glance">
-      <div class="wrap stats-grid">
-        <div class="stat"><strong>13</strong><span>step-by-step modules</span></div>
-        <div class="stat"><strong>130</strong><span>short lessons</span></div>
-        <div class="stat"><strong>5–7 hours</strong><span>approximate, at your pace</span></div>
-        <div class="stat"><strong>5 extras</strong><span>tools to keep practising</span></div>
-      </div>
-    </section>
-
-    <section class="content" id="learn">
-      <div class="wrap">
-        <div class="section-heading">
-          <div class="eyebrow"><span class="eyebrow-mark"></span>Simple, useful and hands-on</div>
-          <h2>Build skills you can use in real life.</h2>
-          <p>Start with the essentials, practise with realistic situations and learn how to stay in control of the answers AI gives you.</p>
-        </div>
-        <div class="benefit-grid">
-          <article class="benefit"><div class="benefit-icon" aria-hidden="true">01</div><h3>Understand the basics</h3><p>Learn what AI can help with, where it can fall short and how to begin a useful conversation.</p></article>
-          <article class="benefit"><div class="benefit-icon" aria-hidden="true">02</div><h3>Use it for everyday tasks</h3><p>Explore practical ways to ask questions, plan, learn, write and organise your ideas.</p></article>
-          <article class="benefit"><div class="benefit-icon" aria-hidden="true">03</div><h3>Keep your judgement</h3><p>Check important information, protect private details and make your own decisions.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="content" id="example">
-      <div class="wrap">
-        <div class="section-heading">
-          <div class="eyebrow"><span class="eyebrow-mark"></span>Small changes, clearer prompts</div>
-          <h2>Give AI enough context to help.</h2>
-          <p>A specific request gives the conversation direction. You stay in control of the goal and decide whether the answer is useful.</p>
-        </div>
-        <div class="benefit-grid">
-          <article class="benefit"><div class="benefit-icon" aria-hidden="true">01</div><h3>Start with a topic</h3><p>“Plan a trip to Italy.”</p></article>
-          <article class="benefit"><div class="benefit-icon" aria-hidden="true">02</div><h3>Add what matters</h3><p>“Plan a five-day trip to Italy for two people, with a moderate budget and a relaxed pace.”</p></article>
-          <article class="benefit"><div class="benefit-icon" aria-hidden="true">03</div><h3>Review the result</h3><p>Check the suggestions, add missing details and ask for changes until the plan fits your needs.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="curriculum" id="modules">
-      <div class="wrap">
-        <div class="section-heading">
-          <div class="eyebrow"><span class="eyebrow-mark"></span>The full learning path</div>
-          <h2>13 modules, from first steps to confident use.</h2>
-          <p>Follow the sequence or open the topic you need. Each module includes lessons and a quiz; practical activities help you apply what you learn.</p>
-        </div>
-        <div class="module-groups">
-          <div class="module-group">
-            <div class="group-label">01 · Get started<span>Build a strong foundation</span></div>
-            <div class="module-grid">
-              <article class="module-card"><span class="module-num">01</span><div><h3>Getting started with AI</h3><p>Understand what AI is, what ChatGPT can do and how to begin with confidence.</p><span class="module-link">Included in the course</span></div></article>
-              <article class="module-card"><span class="module-num">02</span><div><h3>Your first conversation with ChatGPT</h3><p>Give context, ask follow-up questions and guide a conversation towards a useful result.</p><span class="module-link">Included in the course</span></div></article>
-              <article class="module-card"><span class="module-num">03</span><div><h3>Ask better questions</h3><p>Use goals, context, constraints and formats to shape more useful answers.</p><span class="module-link">Included in the course</span></div></article>
-            </div>
-          </div>
-          <div class="module-group">
-            <div class="group-label">02 · Everyday AI<span>Use it with care and purpose</span></div>
-            <div class="module-grid">
-              <article class="module-card"><span class="module-num">04</span><div><h3>AI in everyday life</h3><p>Try practical uses for planning, cooking, travel, messages and everyday decisions.</p><span class="module-link">Included in the course</span></div></article>
-              <article class="module-card"><span class="module-num">05</span><div><h3>Get better answers</h3><p>Refine results, correct mistakes, adjust tone and get closer to what you need.</p><span class="module-link">Included in the course</span></div></article>
-              <article class="module-card"><span class="module-num">06</span><div><h3>Check information</h3><p>Recognise uncertainty and verify important facts before relying on an answer.</p><span class="module-link">Included in the course</span></div></article>
-              <article class="module-card"><span class="module-num">07</span><div><h3>Privacy and safety</h3><p>Protect personal information and recognise situations that need extra care.</p><span class="module-link">Included in the course</span></div></article>
-            </div>
-          </div>
-          <div class="module-group">
-            <div class="group-label">03 · Make it useful<span>Learn, organise and create</span></div>
-            <div class="module-grid">
-              <article class="module-card"><span class="module-num">08</span><div><h3>Learn with AI</h3><p>Use ChatGPT as a tutor that explains, asks questions and helps you practise.</p><span class="module-link">Included in the course</span></div></article>
-              <article class="module-card"><span class="module-num">09</span><div><h3>Organise your life with AI</h3><p>Structure tasks, plan ahead and turn everyday problems into next steps.</p><span class="module-link">Included in the course</span></div></article>
-              <article class="module-card"><span class="module-num">10</span><div><h3>Create and communicate</h3><p>Write, summarise, brainstorm and communicate while keeping your own voice.</p><span class="module-link">Included in the course</span></div></article>
-            </div>
-          </div>
-          <div class="module-group">
-            <div class="group-label">04 · Go further<span>Build thoughtful AI habits</span></div>
-            <div class="module-grid">
-              <article class="module-card"><span class="module-num">11</span><div><h3>Beyond chat</h3><p>Use AI as a flexible thinking partner for more complex tasks.</p><span class="module-link">Included in the course</span></div></article>
-              <article class="module-card"><span class="module-num">12</span><div><h3>Practical AI workflows</h3><p>Turn useful techniques into repeatable workflows for projects and daily life.</p><span class="module-link">Included in the course</span></div></article>
-              <article class="module-card"><span class="module-num">13</span><div><h3>Think smarter with AI</h3><p>Challenge assumptions, explore alternatives and strengthen your reasoning.</p><span class="module-link">Included in the course</span></div></article>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="content" id="extras">
-      <div class="wrap">
-        <div class="section-heading">
-          <div class="eyebrow"><span class="eyebrow-mark"></span>Keep learning by doing</div>
-          <h2>Five extra resources for real practice.</h2>
-          <p>Use these companions alongside the modules or return to them whenever you want a quick refresher.</p>
-        </div>
-        <div class="extras">
-          <article class="extra"><div class="extra-label">Extra 01</div><h3>Prompt Kit</h3><p>Ready-to-use prompts for everyday tasks.</p></article>
-          <article class="extra"><div class="extra-label">Extra 02</div><h3>Practice Lab</h3><p>Five realistic challenges to build useful habits.</p></article>
-          <article class="extra"><div class="extra-label">Extra 03</div><h3>Final Challenge</h3><p>Take a real situation from prompt to result.</p></article>
-          <article class="extra"><div class="extra-label">Extra 04</div><h3>AI Toolbox</h3><p>A searchable quick reference to revisit.</p></article>
-          <article class="extra"><div class="extra-label">Extra 05</div><h3>What now?</h3><p>A four-week path to keep learning.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="content" style="padding-top:0">
-      <div class="wrap">
-        <div class="section-heading">
-          <div class="eyebrow"><span class="eyebrow-mark"></span>Start where you are</div>
-          <h2>A simple way to get going.</h2>
-        </div>
-        <div class="how-grid">
-          <article class="how-step"><h3>Start with a question</h3><p>Open Module 1 and learn the basic ideas in clear, everyday language.</p></article>
-          <article class="how-step"><h3>Try the techniques</h3><p>Use the examples and activities with a low-risk task from your own life.</p></article>
-          <article class="how-step"><h3>Keep what works</h3><p>Review the answers, practise at your own pace and return to useful lessons.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="content" id="questions" style="padding-top:10px">
-      <div class="wrap">
-        <div class="section-heading">
-          <div class="eyebrow"><span class="eyebrow-mark"></span>A few useful details</div>
-          <h2>Questions before you start?</h2>
-        </div>
-        <div class="faq">
-          <details><summary>Is this course suitable for beginners?</summary><p>Yes. It starts with the essentials and builds step by step. You do not need a technical background.</p></details>
-          <details><summary>How long does it take?</summary><p>Allow approximately 5–7 hours for the course. The actual time depends on how much you practise and how often you pause to explore examples.</p></details>
-          <details><summary>Do I have to follow the modules in order?</summary><p>The sequence is designed to build skills gradually, but you can also open a module directly when you need that topic.</p></details>
-          <details><summary>How do I get access?</summary><p>Contact us for the current purchase and access details. Already enrolled? Use the course portal link below.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <section class="content" style="padding-top:0">
-      <div class="wrap">
-        <div class="final-cta">
-          <div class="eyebrow"><span class="eyebrow-mark"></span>Your next useful step</div>
-          <h2>Feel more confident using AI in everyday life.</h2>
-          <p>Start with the basics, learn one skill at a time and practise whenever you are ready.</p>
-          <a class="button" href="mailto:studyos.oficial.spain@gmail.com?subject=AI%20Made%20Easy%20English%20course"><span>Ask about course access</span> <span aria-hidden="true">→</span></a>
-          <p class="fine-print">13 modules · 130 lessons · Approx. 5–7 hours at your own pace · Purchase details available by email</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap footer-inner">
-      <a class="brand" href="#top"><span class="brand-icon" aria-hidden="true">✦</span><span>AI Made Easy</span></a>
-      <div class="footer-links"><a href="#learn">What you’ll learn</a><a href="#modules">Modules</a><a href="curso/">Already enrolled? Enter the course</a></div>
-      <span>Learn, practise and stay in control.</span>
-    </div>
-  </footer>
-</body>
-</html>
+<header><div class="wrap nav">
+<a class="logo" href="./"><span class="logo-mark">✦</span>AI Made Easy</a>
+<nav class="nav-links" aria-label="Main navigation"><a href="#course">The course</a><a href="#how">How it works</a><a href="#faq">FAQ</a><a class="btn" href="#enrol">Get the course</a></nav>
+</div></header>
+<main>
+<section class="hero"><div class="wrap hero-grid">
+<div><span class="eyebrow">A friendly learning path · Start from zero</span><h1>Learn <span>AI</span> without fear.</h1><p class="lead">A practical, step-by-step course to help you use ChatGPT in everyday life, ask for what you need and make the most of AI while keeping your own judgement.</p>
+<div class="hero-actions"><a class="btn" href="#enrol">Get instant course access <span aria-hidden="true">→</span></a><a class="btn btn-white" href="#course">See what you’ll learn</a></div>
+<div class="micro-trust"><span><b class="tick">✓</b> One-time payment</span><span><b class="tick">✓</b> Learn at your own pace</span><span><b class="tick">✓</b> Phone, tablet or computer</span></div></div>
+<aside class="preview" aria-label="Course preview"><div class="preview-head"><strong>Your learning path</strong><span class="pill">STEP BY STEP</span></div><div class="path">
+<div class="path-item"><span class="path-num">01</span><span class="path-name">Start with the essentials</span><span class="path-meta">Modules 1–3</span></div>
+<div class="path-item"><span class="path-num">02</span><span class="path-name">Use AI in everyday life</span><span class="path-meta">Modules 4–7</span></div>
+<div class="path-item"><span class="path-num">03</span><span class="path-name">Build practical skills</span><span class="path-meta">Modules 8–10</span></div>
+<div class="path-item"><span class="path-num">✦</span><span class="path-name">Go further with the bonus modules</span><span class="path-meta">Modules 11–13</span></div></div>
+<div class="preview-foot"><strong>13 modules · 130 lessons</strong><span>About 5–7 hours</span></div></aside>
+</div></section>
+<section class="stats"><div class="wrap stats-grid"><div class="stat"><strong>13</strong><span>guided modules</span></div><div class="stat"><strong>130</strong><span>short lessons</span></div><div class="stat"><strong>5–7 h</strong><span>at your own pace</span></div><div class="stat"><strong>5</strong><span>extra resources</span></div></div></section>
+<section class="content"><div class="wrap"><div class="section-head"><span class="eyebrow">Made for real life</span><h2>Use AI for the things that matter to you</h2><p>Start with simple requests and build confidence through familiar situations. No technical background needed.</p></div>
+<div class="grid g3"><article class="card"><div class="icon">✦</div><h3>Everyday ideas</h3><p>Explore recipes, plan a trip, find a thoughtful gift or get unstuck when you do not know where to begin.</p></article><article class="card"><div class="icon">↗</div><h3>Clearer communication</h3><p>Draft a message, adjust its tone, organise your thoughts or make a long explanation easier to follow.</p></article><article class="card"><div class="icon">▦</div><h3>More organised days</h3><p>Turn a list of tasks into a workable plan, prepare for a busy week and break a large job into small steps.</p></article><article class="card"><div class="icon">◇</div><h3>Learning something new</h3><p>Ask for a plain-language explanation, examples, practice questions or a patient step-by-step guide.</p></article><article class="card"><div class="icon">✓</div><h3>Better answers</h3><p>Give useful context, refine the result and ask follow-up questions until it fits your needs.</p></article><article class="card"><div class="icon">⌕</div><h3>Safer use</h3><p>Learn what to double-check, what information to keep private and when a human expert matters.</p></article></div></div></section>
+<section class="content alt" id="how"><div class="wrap"><div class="section-head"><span class="eyebrow">How it works</span><h2>Small steps. Practical progress.</h2><p>Each lesson gives you a clear idea to try, so you can learn by doing instead of memorising technical terms.</p></div>
+<div class="grid g3 steps"><article class="card step"><h3>Understand one useful idea</h3><p>Short explanations introduce AI, prompts, context, privacy and the limits of generated answers.</p></article><article class="card step"><h3>Try it in a real situation</h3><p>Examples and guided practice show how to use each technique in daily life.</p></article><article class="card step"><h3>Check what you learned</h3><p>Quick quizzes and challenges help you review, practise and build habits at your own pace.</p></article></div></div></section>
+<section class="content" id="course"><div class="wrap"><div class="section-head"><span class="eyebrow">The curriculum</span><h2>13 modules, from the basics to confident use</h2><p>Follow the learning path from your first conversation to practical workflows, critical thinking and five tools you can keep using.</p></div>
+<div class="module-groups">
+<div class="module-group"><div class="group-label">01 · GETTING STARTED<span>Build the foundations</span></div><div class="module-grid">
+<article class="module"><span class="module-num">01</span><div><h3>Getting started with AI</h3><p>Understand what AI is, what ChatGPT can do, what it cannot guarantee and how to begin with confidence.</p></div></article>
+<article class="module"><span class="module-num">02</span><div><h3>Your first conversation with ChatGPT</h3><p>Make clear requests, give context, ask follow-up questions and guide a conversation towards a useful result.</p></div></article>
+<article class="module"><span class="module-num">03</span><div><h3>Ask better questions</h3><p>Set a goal, provide context, add constraints and choose a format that makes the answer more useful.</p></div></article></div></div>
+<div class="module-group"><div class="group-label">02 · EVERYDAY AI<span>Apply it to daily life</span></div><div class="module-grid">
+<article class="module"><span class="module-num">04</span><div><h3>AI in everyday life</h3><p>Explore practical ideas for planning, cooking, travel, messages, organisation and everyday decisions.</p></div></article>
+<article class="module"><span class="module-num">05</span><div><h3>Get better answers</h3><p>Refine a response, correct misunderstandings, change the tone and move closer to what you need.</p></div></article>
+<article class="module"><span class="module-num">06</span><div><h3>Check information</h3><p>Recognise when AI may be wrong and learn ways to verify important facts before relying on them.</p></div></article>
+<article class="module"><span class="module-num">07</span><div><h3>Privacy and safety</h3><p>Protect personal information, use AI responsibly and recognise when extra care is needed.</p></div></article></div></div>
+<div class="module-group"><div class="group-label">03 · MAKE IT A HABIT<span>Keep building your skills</span></div><div class="module-grid">
+<article class="module"><span class="module-num">08</span><div><h3>Learn with AI</h3><p>Use ChatGPT as a patient tutor that explains ideas, gives examples, asks questions and helps you practise.</p></div></article>
+<article class="module"><span class="module-num">09</span><div><h3>Organise your life with AI</h3><p>Plan tasks, structure information and turn everyday problems into manageable next steps.</p></div></article>
+<article class="module"><span class="module-num">10</span><div><h3>Create and communicate</h3><p>Write, summarise, explain and generate ideas while keeping your own voice and judgement.</p></div></article></div></div>
+<div class="module-group"><div class="group-label">04 · GO FURTHER<span>Three bonus modules</span></div><div class="module-grid">
+<article class="module"><span class="module-num">11</span><div><h3>Beyond chat</h3><p>Move beyond one-off questions and use AI as a flexible partner for more involved tasks.</p><span class="bonus-tag">Bonus module</span></div></article>
+<article class="module"><span class="module-num">12</span><div><h3>Practical AI workflows</h3><p>Turn useful techniques into repeatable workflows for planning, research and everyday projects.</p><span class="bonus-tag">Bonus module</span></div></article>
+<article class="module"><span class="module-num">13</span><div><h3>Think smarter with AI</h3><p>Challenge assumptions, explore alternatives and use AI to strengthen your reasoning.</p><span class="bonus-tag">Bonus module</span></div></article></div></div>
+</div></div></section>
+<section class="content alt"><div class="wrap"><div class="section-head"><span class="eyebrow">Included with the course</span><h2>Everything you need to practise beyond the lessons</h2><p>Study at your own pace and revisit the material whenever you want a refresher.</p></div>
+<div class="include"><div class="include-list">
+<div class="include-item"><span class="tick">✓</span><p><strong>13 modules and 130 lessons</strong><br>From the essentials to bonus topics and practical workflows.</p></div>
+<div class="include-item"><span class="tick">✓</span><p><strong>Quizzes, practice and challenges</strong><br>Check your understanding and put the ideas to work.</p></div>
+<div class="include-item"><span class="tick">✓</span><p><strong>Five extra resources</strong><br>Prompt Kit, Practice Lab, Final Challenge, AI Toolbox and a four-week follow-up path.</p></div>
+<div class="include-item"><span class="tick">✓</span><p><strong>About 5–7 hours of learning</strong><br>Short lessons you can complete at a pace that suits you.</p></div>
+<div class="include-item"><span class="tick">✓</span><p><strong>Works on your phone, tablet or computer</strong><br>Learn in your browser, wherever it is convenient.</p></div></div>
+<aside class="callout"><h3>Learn by doing, not by memorising</h3><p>Use familiar examples, guided exercises and quick reviews to turn each new idea into something practical.</p><a class="btn btn-white" href="#enrol">See the one-time price →</a></aside></div></div></section>
+<section class="content" id="enrol"><div class="wrap price-wrap"><div><span class="eyebrow">Your next step</span><h2 style="font-size:clamp(31px,4.5vw,46px);margin:12px 0">Start learning at your own pace</h2><p style="color:var(--mut);max-width:600px">Get the complete AI Made Easy course: 13 modules, 130 lessons and five extra resources. Secure checkout is handled by Stripe.</p><div class="micro-trust"><span><b class="tick">✓</b> One-time purchase</span><span><b class="tick">✓</b> No subscription</span><span><b class="tick">✓</b> Secure Stripe checkout</span></div></div>
+<div class="price-card"><div class="price-kicker">Complete course · One-time payment</div><div class="price">$14.90</div><div class="price-note">USD · no recurring charges</div><a class="btn" href="https://buy.stripe.com/aFa9AVaWp22SgHW4UQ1VK0c">Continue to secure checkout <span aria-hidden="true">→</span></a><div class="secure">🔒 Payment processed securely by Stripe</div><div class="support">Questions about payment or access? <a href="mailto:studyos.oficial.spain@gmail.com">Contact StudyOS support</a>.</div></div></div></section>
+<section class="content alt" id="faq"><div class="wrap"><div class="section-head"><span class="eyebrow">Questions</span><h2>Frequently asked questions</h2></div>
+<div class="faq">
+<details><summary>Do I need technical experience?</summary><p>No. The course starts with the basics and explains each idea in plain language.</p></details>
+<details><summary>How long does the course take?</summary><p>There are 13 modules and 130 short lessons. Most learners can work through the material in about 5–7 hours, at their own pace.</p></details>
+<details><summary>Do I need a paid ChatGPT subscription?</summary><p>No specific paid plan is required to learn the core skills. Available features can vary by service and plan.</p></details>
+<details><summary>Does AI always get things right?</summary><p>No. You will learn why AI can make mistakes and how to check important information before relying on it.</p></details>
+<details><summary>How do I access the course after paying?</summary><p>After checkout, Stripe returns you to the secure purchase confirmation page with the next steps for accessing the course. If anything goes wrong, contact StudyOS support and include your purchase confirmation.</p></details>
+<details><summary>Is this a subscription?</summary><p>No. The Stripe checkout is a one-time payment of $14.90 USD, with no recurring charges.</p></details>
+<details><summary>Can I study on my phone?</summary><p>Yes. The course is designed to work in a web browser on a phone, tablet or computer.</p></details>
+<details><summary>What if I need help?</summary><p>Write to <a href="mailto:studyos.oficial.spain@gmail.com">StudyOS support</a> and we will help with your purchase or course access.</p></details>
+</div></div></section>
+<section class="content"><div class="wrap final"><span class="eyebrow">A practical course for everyday life</span><h2>Take your first step with AI today.</h2><p>Build useful skills one small lesson at a time. Start from zero and learn at a pace that works for you.</p><a class="btn" href="#enrol">Get AI Made Easy →</a><p class="fine">13 modules · approx. 5–7 hours · one-time purchase</p></div></section>
+</main>
+<footer><div class="wrap footer"><span>© StudyOS · AI Made Easy</span><div class="foot-links"><a href="../ia-facil/">Español</a><a href="mailto:studyos.oficial.spain@gmail.com">Contact</a></div></div></footer>
+</body></html>

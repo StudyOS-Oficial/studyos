@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer"><title>Purchase confirmation · AI Made Easy</title>
+<style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px;background:linear-gradient(135deg,#f5f8ff,#eff5ff);color:#172238;font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}.card{width:min(620px,100%);padding:clamp(25px,6vw,42px);border:1px solid #dfe7f1;border-radius:24px;background:#fff;box-shadow:0 15px 48px #17223814;text-align:center}.icon{font-size:48px}h1{font-size:clamp(28px,6vw,38px);line-height:1.1;margin:8px 0 13px;color:#14213d}p{margin:9px 0;color:#52617a}.status{margin:18px 0;padding:13px 16px;border-radius:13px;background:#eef5ff;color:#174d91}.password{overflow-wrap:anywhere;margin:19px 0;padding:18px;border:1px solid #dbe6f7;border-radius:15px;background:#f5f8fc;font-size:25px;font-weight:900}.btn{display:inline-flex;justify-content:center;align-items:center;min-height:50px;margin-top:12px;padding:11px 22px;border-radius:999px;background:#0a6cff;color:white;text-decoration:none;font-weight:850}.btn[hidden],#access[hidden]{display:none}.help{margin-top:22px;font-size:14px}.help a{font-weight:800;color:#0857d6}</style></head><body>
+<main class="card"><div class="icon" id="icon" aria-hidden="true">⏳</div><h1 id="title">Confirming your purchase</h1><p id="status" class="status" role="status" aria-live="polite">Stripe is confirming your payment. Please keep this page open.</p>
+<section id="access" hidden><p>Your payment is confirmed. Here are your course access details:</p><div class="password" id="password"></div><a class="btn" id="course-link" href="../curso/">Open AI Made Easy →</a></section>
+<button class="btn" id="retry" type="button" hidden>Check again</button>
+<p class="help">Need help? <a href="mailto:studyos.oficial.spain@gmail.com">Contact StudyOS support</a>.</p></main>
+<script>
+(function(){
+ var worker="https://studyos-private-delivery.studyos-oficial-spain.workers.dev/verify-ia-facil-payment";
+ var key="ia-facil-en-checkout-session";
+ var params=new URLSearchParams(location.search),sessionId=params.get("session_id")||"";
+ try{if(sessionId)sessionStorage.setItem(key,sessionId);else sessionId=sessionStorage.getItem(key)||""}catch(e){}
+ if(params.has("session_id"))history.replaceState({},document.title,location.pathname);
+ var title=document.getElementById("title"),status=document.getElementById("status"),retry=document.getElementById("retry"),access=document.getElementById("access"),busy=false;
+ function fail(message){title.textContent="We could not confirm your access yet";status.textContent=message;retry.hidden=false}
+ async function check(){
+  if(busy)return;busy=true;retry.hidden=true;title.textContent="Confirming your purchase";status.textContent="Stripe is confirming your payment. Please keep this page open.";
+  if(!sessionId){fail("We could not find the Stripe checkout session. If you have just paid, check your Stripe receipt and contact support so we can help.");busy=false;return}
+  try{
+   for(var attempt=0;attempt<10;attempt++){
+    var response=await fetch(worker,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({session_id:sessionId})});
+    var data=await response.json().catch(function(){return{}});
+    if(response.status===202&&data.pending){status.textContent="Your payment is still processing. We are checking again…";await new Promise(function(resolve){setTimeout(resolve,2000)});continue}
+    if(!response.ok||data.verified!==true)throw new Error(data.error||"Payment verification is not complete yet.");
+    if(!data.coursePassword||!data.courseUrl||!data.courseUrl.includes("/ia-facil-en/curso/"))throw new Error("Your payment is confirmed, but English course access needs support. Please contact us and include your Stripe receipt.");
+    document.getElementById("password").textContent=data.coursePassword;
+    document.getElementById("course-link").href=data.courseUrl;
+    access.hidden=false;title.textContent="You’re in!";status.textContent="Payment confirmed. Your English course access is ready.";document.getElementById("icon").textContent="🎉";
+    try{sessionStorage.removeItem(key)}catch(e){}busy=false;return
+   }
+   fail("Your payment is still processing. Wait a moment, then check again.");
+  }catch(error){fail((error&&error.message?error.message:"We could not verify your payment.")+" If you have already paid, contact StudyOS support with your Stripe receipt.")}
+  busy=false
+ }
+ retry.addEventListener("click",check);check();
+})();
+</script></body></html>
