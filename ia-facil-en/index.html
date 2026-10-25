@@ -60,12 +60,16 @@ footer{padding:42px 0;background:#0e214d;color:#c6d5f0}footer .logo{color:#fff}f
 @media(max-width:360px){.logo{font-size:20px}.nav{gap:9px}.nav .btn{padding:8px 10px;font-size:12px}.use-grid{gap:7px}.use-card{min-height:119px}.use-card h3{font-size:13px}.float-cta .buy{font-size:16px}.float-cta .questions{width:54px;height:54px}}
 .use-card .icon{border-radius:0;background:transparent!important;color:var(--blue);box-shadow:none}.use-card:nth-child(3n+1) .icon{color:#5bc236}.use-card:nth-child(3n+2) .icon{color:#2879ea}.use-card:nth-child(3n) .icon{color:#803df0}.incl{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:28px 0 0}.incl li{padding:10px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--navy);font-size:14px;font-weight:750}.ticks{display:grid;gap:13px;list-style:none;padding:0;margin:26px 0 0}.ticks li{display:flex;align-items:flex-start;gap:12px;color:#fff;font-size:18px;line-height:1.5}.ticks .tick{flex:0 0 24px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#65dba6;color:#fff;font-size:16px}.module .module-title{font-size:18px;line-height:1.25;font-weight:850}.module summary .bonus-tag{margin-left:5px;flex:none}.center{text-align:center}
 </style>
+
+<style>
+#checkout-dialog{width:min(760px,calc(100% - 28px));max-width:none;max-height:min(92dvh,900px);padding:0;border:1px solid #dbe6f7;border-radius:24px;background:#fff;color:#102452;box-shadow:0 24px 80px #071a3c55;overflow:auto}#checkout-dialog::backdrop{background:#071a3c99;backdrop-filter:blur(4px)}.checkout-modal{position:relative;padding:clamp(22px,5vw,36px)}.checkout-close{position:absolute;top:15px;right:17px;width:42px;height:42px;border:0;border-radius:50%;background:#eef5ff;color:#102452;font-size:28px;line-height:1;cursor:pointer}.checkout-modal .eyebrow{padding-right:45px}.checkout-modal h2{margin:9px 45px 8px 0;font-size:clamp(26px,5vw,34px)}.checkout-intro{margin-bottom:17px;color:#52627f;font-size:15px}.checkout-status{margin:14px 0;padding:12px 14px;border-radius:12px;background:#eef5ff;color:#174d91;font-size:14px}.checkout-status.error{background:#fff0ef;color:#9c3028}.checkout-retry{display:none;margin:8px 0 15px}.checkout-retry[hidden]{display:none}#ai-made-easy-checkout{min-height:180px;width:100%}@media(max-width:520px){#checkout-dialog{width:calc(100% - 16px);max-height:94dvh;border-radius:18px}.checkout-modal{padding:22px 16px}.checkout-close{top:10px;right:10px}}
+</style>
 </head>
 <body>
 <header><div class="wrap nav">
 <a class="logo" href="#home"><span class="logo-mark" aria-hidden="true"><svg class="leaf-mark" viewBox="0 0 24 24"><path fill="#62bf42" d="M20.5 3.5C11 3.2 4.5 7.6 4.5 14.6c0 1.2.3 2.4.9 3.4C7 16 9.5 14.4 12.5 13.4c-2.7 1.3-5 3.4-6.4 6.1 1.4.8 3 1.3 4.6 1.3 6.2 0 10.8-6.5 9.8-17.3z"/></svg></span><span>StudyOS</span></a>
 <nav class="nav-links" aria-label="Main navigation"><a href="#learn">What you’ll learn</a><a href="#course">Course modules</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a></nav>
-<a class="btn" href="https://buy.stripe.com/aFa9AVaWp22SgHW4UQ1VK0c">I want to learn AI</a>
+<a class="btn" href="#checkout-dialog" data-checkout-trigger>I want to learn AI</a>
 <button class="burger" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></svg></button>
 </div></header>
 <nav class="mobile-menu" id="mobileMenu" hidden aria-label="Mobile navigation"><a href="#learn">What you’ll learn</a><a href="#course">Course modules</a><a href="#how">How it works</a><a href="#reviews">Reviews</a><a href="#faq">Frequently asked questions</a></nav>
@@ -84,7 +88,7 @@ footer{padding:42px 0;background:#0e214d;color:#c6d5f0}footer .logo{color:#fff}f
 <article class="use-card"><div class="icon">▦</div><h3>Organization<br>in everyday life</h3><p>Plan tasks, routines and your time with help from AI.</p></article>
 <article class="use-card"><div class="icon">☼</div><h3>Learning<br>new things</h3><p>Explore new topics with clear explanations and practice.</p></article>
 </div>
-<div class="learn-cta"><a class="btn" href="https://buy.stripe.com/aFa9AVaWp22SgHW4UQ1VK0c">I want to learn AI <span aria-hidden="true">→</span></a></div>
+<div class="learn-cta"><a class="btn" href="#checkout-dialog" data-checkout-trigger>I want to learn AI <span aria-hidden="true">→</span></a></div>
 <div class="benefit-pills"><div class="benefit-pill"><b>✓</b> Immediate access after payment</div><div class="benefit-pill"><b>🎁</b> Full course for just $14.90</div><div class="benefit-pill"><b>▤</b> One-time payment, no recurring fees</div></div>
 </div></section>
 <section class="quick-points"><div class="wrap">
@@ -125,7 +129,7 @@ footer{padding:42px 0;background:#0e214d;color:#c6d5f0}footer .logo{color:#fff}f
 </div></section>
 <section class="content" id="enrol"><div class="wrap price-wrap"><div><span class="eyebrow">Launch price</span><h2 style="font-size:clamp(31px,4.5vw,46px);margin:12px 0">The full course for $14.90. One-time payment.</h2>
 <ul class="ticks"><li><span class="tick">✓</span><span>13 modules and 100 short lessons</span></li><li><span class="tick">✓</span><span>10 quizzes, practice exercises and a final challenge</span></li><li><span class="tick">✓</span><span>Ready-to-copy prompt kit and certificate</span></li><li><span class="tick">✓</span><span>Learn on your phone, tablet or computer</span></li><li><span class="tick">✓</span><span>14 days to withdraw from your purchase without giving a reason</span></li></ul></div>
-<div class="price-card"><div class="price-kicker">Launch price</div><div class="price">$14.90</div><div class="price-note">one-time payment · no subscriptions</div><a class="btn" href="https://buy.stripe.com/aFa9AVaWp22SgHW4UQ1VK0c">I want to learn AI <span aria-hidden="true">→</span></a><div class="secure">🔒 Secure payment with Stripe</div><div class="support">Questions before buying? <a href="https://wa.me/34636136394?text=Hello%2C%20I%27d%20like%20to%20know%20more%20about%20AI%20Made%20Easy" target="_blank" rel="noopener">Message StudyOS</a>.</div></div></div></section>
+<div class="price-card"><div class="price-kicker">Launch price</div><div class="price">$14.90</div><div class="price-note">one-time payment · no subscriptions</div><a class="btn" href="#checkout-dialog" data-checkout-trigger>I want to learn AI <span aria-hidden="true">→</span></a><div class="secure">🔒 Secure payment with Stripe</div><div class="support">Questions before buying? <a href="https://wa.me/34636136394?text=Hello%2C%20I%27d%20like%20to%20know%20more%20about%20AI%20Made%20Easy" target="_blank" rel="noopener">Message StudyOS</a>.</div></div></div></section>
 <section class="content alt" id="reviews"><div class="wrap"><div class="section-head"><span class="eyebrow">Reviews</span><h2>A student’s experience</h2></div><article class="review"><img src="https://images.pexels.com/photos/5239782/pexels-photo-5239782.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1000" width="1000" height="667" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="A person using a mobile phone"><div class="review-body"><p class="review-quote">“I loved the course and learned a lot.”</p><p class="review-by"><strong>Paqui</strong><br>AI Made Easy student</p></div></article></div></section>
 <section class="content" id="research"><div class="wrap"><div class="section-head"><span class="eyebrow">Learning has lasting value</span><h2>What research tells us</h2><p>Digital learning can offer more than familiarity with a tool. These findings come from scientific reviews and meta-analyses.</p></div><div class="research-grid">
 <article class="research-card"><span class="eyebrow">01 · Confidence</span><h3>Build confidence with technology</h3><p>Digital health literacy programmes have been associated with improved knowledge and self-efficacy among older adults.</p><a href="https://pubmed.ncbi.nlm.nih.gov/37379077/" target="_blank" rel="noopener noreferrer">Read the study on PubMed →</a></article>
@@ -146,10 +150,10 @@ footer{padding:42px 0;background:#0e214d;color:#c6d5f0}footer .logo{color:#fff}f
 <details><summary>Can I withdraw from the purchase?</summary><p>You have 14 calendar days to withdraw from your purchase without giving a reason. Contact <a href="mailto:studyos.oficial.spain@gmail.com">StudyOS support</a> for help.</p></details>
 <details><summary>Is this a subscription?</summary><p>No. It is a one-time payment of $14.90 USD, with no recurring fees.</p></details>
 </div><p class="center" style="margin-top:20px">Still have a question? <a href="mailto:studyos.oficial.spain@gmail.com">Contact StudyOS support</a>.</p></div></section>
-<section class="final"><div class="wrap"><h2>Start today, at your own pace.</h2><p>One payment of $14.90. Learn to use artificial intelligence at your own pace, without jargon.</p><a class="btn btn-white" href="https://buy.stripe.com/aFa9AVaWp22SgHW4UQ1VK0c">I want to learn AI →</a><div class="micro">🔒 Secure payment with Stripe · No subscriptions</div></div></section>
+<section class="final"><div class="wrap"><h2>Start today, at your own pace.</h2><p>One payment of $14.90. Learn to use artificial intelligence at your own pace, without jargon.</p><a class="btn btn-white" href="#checkout-dialog" data-checkout-trigger>I want to learn AI →</a><div class="micro">🔒 Secure payment with Stripe · No subscriptions</div></div></section>
 </main>
 <footer><div class="wrap"><div><a class="logo" href="#home"><span>StudyOS</span><svg class="leaf-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="#62bf42" d="M20.5 3.5C11 3.2 4.5 7.6 4.5 14.6c0 1.2.3 2.4.9 3.4C7 16 9.5 14.4 12.5 13.4c-2.7 1.3-5 3.4-6.4 6.1 1.4.8 3 1.3 4.6 1.3 6.2 0 10.8-6.5 9.8-17.3z"/></svg></a><div style="margin-top:6px">© 2026 StudyOS · AI Made Easy Course</div></div><nav aria-label="Legal information"><a href="../ia-facil/aviso-legal.html">Legal notice (Spanish)</a><a href="../ia-facil/terminos.html">Terms (Spanish)</a><a href="../ia-facil/privacidad.html">Privacy and cookies (Spanish)</a><a href="../ia-facil/condiciones-compra.html">Purchase terms (Spanish)</a><a href="mailto:studyos.oficial.spain@gmail.com">Contact</a></nav></div></footer>
-<div class="float-cta" id="floatCta"><a class="buy" href="https://buy.stripe.com/aFa9AVaWp22SgHW4UQ1VK0c">Start for $14.90 <span aria-hidden="true">→</span></a><a class="questions" href="https://wa.me/34636136394?text=Hello%2C%20I%27d%20like%20to%20know%20more%20about%20AI%20Made%20Easy" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H11l-4.7 3.6V16h-.8A2.5 2.5 0 0 1 3 13.5v-8A2.5 2.5 0 0 1 4 5.5Z" fill="white"/></svg><span>Questions</span></a></div>
+<div class="float-cta" id="floatCta"><a class="buy" href="#checkout-dialog" data-checkout-trigger>Start for $14.90 <span aria-hidden="true">→</span></a><a class="questions" href="https://wa.me/34636136394?text=Hello%2C%20I%27d%20like%20to%20know%20more%20about%20AI%20Made%20Easy" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H11l-4.7 3.6V16h-.8A2.5 2.5 0 0 1 3 13.5v-8A2.5 2.5 0 0 1 4 5.5Z" fill="white"/></svg><span>Questions</span></a></div>
 <script>
 (function(){
  const toggle=document.getElementById("menuToggle"),menu=document.getElementById("mobileMenu");
@@ -162,6 +166,46 @@ footer{padding:42px 0;background:#0e214d;color:#c6d5f0}footer .logo{color:#fff}f
  const tabs=[...document.querySelectorAll('[role="tab"]')];tabs.forEach(function(tab,index){tab.addEventListener("click",function(){tabs.forEach(function(other){other.setAttribute("aria-selected",other===tab?"true":"false");other.tabIndex=other===tab?0:-1;document.getElementById(other.getAttribute("aria-controls")).hidden=other!==tab})});tab.addEventListener("keydown",function(e){if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();const next=(index+(e.key==="ArrowRight"?1:tabs.length-1))%tabs.length;tabs[next].focus();tabs[next].click()}})});
  const cta=document.getElementById("floatCta"),observeTargets=[document.querySelector(".hero"),document.getElementById("enrol"),document.querySelector(".final")].filter(Boolean);let visible=new Set();
  if("IntersectionObserver"in window){const io=new IntersectionObserver(entries=>{entries.forEach(entry=>entry.isIntersecting?visible.add(entry.target):visible.delete(entry.target);cta.classList.toggle("hide",visible.size>0)},{threshold:.14});observeTargets.forEach(el=>io.observe(el))}
+})();
+</script>
+
+<dialog id="checkout-dialog" aria-labelledby="checkout-title">
+  <div class="checkout-modal">
+    <button type="button" class="checkout-close" id="checkout-close" aria-label="Close checkout">×</button>
+    <p class="eyebrow">Secure payment · Stripe</p>
+    <h2 id="checkout-title">Complete your purchase</h2>
+    <p class="checkout-intro">AI Made Easy · one-time payment of $14.90 USD. Your English course access will be confirmed after payment.</p>
+    <p class="checkout-status" id="checkout-status" role="status" aria-live="polite">Connecting to secure checkout…</p>
+    <button class="btn checkout-retry" id="checkout-retry" type="button">Try again</button>
+    <div id="ai-made-easy-checkout"></div>
+  </div>
+</dialog>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+(function(){
+  var dialog=document.getElementById("checkout-dialog"),status=document.getElementById("checkout-status"),retry=document.getElementById("checkout-retry"),container=document.getElementById("ai-made-easy-checkout"),checkout=null,loading=false;
+  function showError(message){status.className="checkout-status error";status.textContent=message;retry.style.display="inline-flex";retry.hidden=false}
+  async function startCheckout(){
+    if(loading||checkout)return;
+    if(typeof window.Stripe!=="function"){showError("Stripe could not load. Check your connection and try again.");return}
+    loading=true;retry.style.display="none";retry.hidden=true;status.className="checkout-status";status.textContent="Preparing secure checkout…";
+    try{
+      var stripe=window.Stripe("pk_live_51Ty9MHPdiAyvfYF7hGx3y3jGl5ihSgAfXuCvIDYXdAWQ1I27anY0KccFC1NfLG8W7g5weKGb1yx5SbGb3Ii4eXDB003e2GCFjJ");
+      checkout=await stripe.initEmbeddedCheckout({fetchClientSecret:async function(){
+        var response=await fetch("https://studyos-private-delivery.studyos-oficial-spain.workers.dev/create-ia-facil-checkout-session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({product:"ia-facil-en"})});
+        var data=await response.json().catch(function(){return{}});
+        if(!response.ok||typeof data.clientSecret!=="string")throw new Error(data.error||"Secure checkout could not be started.");
+        return data.clientSecret;
+      }});
+      checkout.mount("#ai-made-easy-checkout");status.textContent="Enter your payment details in the secure form below. You will return to the English confirmation page after payment.";
+    }catch(error){checkout=null;showError(error&&error.message?error.message:"Secure checkout could not be started. Please try again.")}
+    finally{loading=false}
+  }
+  document.querySelectorAll("[data-checkout-trigger]").forEach(function(button){button.addEventListener("click",function(event){event.preventDefault();if(!dialog.open)dialog.showModal();startCheckout()})});
+  retry.addEventListener("click",startCheckout);
+  document.getElementById("checkout-close").addEventListener("click",function(){dialog.close()});
+  dialog.addEventListener("click",function(event){if(event.target===dialog)dialog.close()});
+  dialog.addEventListener("close",function(){if(checkout){checkout.destroy();checkout=null}container.replaceChildren();retry.style.display="none";retry.hidden=true;status.className="checkout-status";status.textContent="Connecting to secure checkout…"});
 })();
 </script>
 </body></html>
