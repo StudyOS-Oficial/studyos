@@ -1,96 +1,148 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Made Easy · Module 8</title><style>:root{--bg:#f5f7fb;--card:#fff;--ink:#142033;--muted:#64748b;--blue:#1767dc;--line:#e2e8f0;--soft:#eef4ff;--ok:#eef8ef;--warn:#fff8e8}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.7}.wrap{max-width:980px;margin:auto;padding:22px 16px 70px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.brand{font-weight:900}.btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;padding:11px 15px;border-radius:12px;font-weight:800}.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}.hero,.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px;margin-bottom:16px;box-shadow:0 8px 28px #14203308}.eyebrow{color:var(--blue);font-weight:900;font-size:.82rem;text-transform:uppercase;letter-spacing:.08em}.hero h1{font-size:clamp(34px,7vw,58px);line-height:1.02;margin:8px 0 12px}.muted{color:var(--muted)}h2{line-height:1.15;margin-top:8px}.lesson{border-top:1px solid var(--line);padding:28px 0}.lesson:first-child{border-top:0}.tag{display:inline-block;background:var(--soft);color:var(--blue);border-radius:999px;padding:4px 9px;font-size:.78rem;font-weight:800}.example{background:#f8fafc;border-left:4px solid var(--blue);padding:14px 16px;margin:16px 0;border-radius:8px}.task{background:var(--ok);border:1px solid #cfe6cf;padding:16px;border-radius:12px}.quiz{background:var(--warn)}.q{padding:18px 0;border-top:1px solid #eadfbf}.q:first-of-type{border-top:0}.answer{margin:8px 0}.answer label{display:block;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:#fff;margin:7px 0;cursor:pointer}.result{margin-top:18px;font-weight:800}.quiz button{border:0;background:var(--blue);color:#fff;padding:12px 16px;border-radius:10px;font-weight:800;cursor:pointer}@media(max-width:700px){.top{align-items:flex-start;flex-direction:column}}.answer label.correct{border-color:#2e9b57!important;background:#eaf8ef!important;color:#176b38}.answer label.wrong{border-color:#d94b4b!important;background:#fff0f0!important;color:#a52b2b}.q-result{font-weight:800;margin-top:7px}.q-result.ok{color:#208044}.q-result.bad{color:#c0392b} .theory{background:#f8fbff;border:1px solid #dce9f8;border-radius:14px;padding:16px 18px;margin:18px 0;color:#33445d}.theory strong{color:#1767dc} </style><style id="english-theory-visuals-v1">
-/* Visual theory layer — English course only. Adds diagrams without changing lesson text. */
-.visual-map{margin:18px 0 20px;padding:16px;background:linear-gradient(135deg,#f7faff,#fff);border:1px solid #dbe7f5;border-radius:18px}
-.visual-map__label{font-size:11px;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:#2879ea;margin-bottom:11px}
-.visual-map__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.visual-map__item{background:#fff;border:1px solid #dfe7f1;border-radius:14px;padding:13px 14px;min-height:64px}
-.visual-map__item b{display:block;color:#172238;font-size:14px;line-height:1.3;margin-bottom:4px}
-.visual-map__item span{display:block;color:#657892;font-size:13px;line-height:1.45}
-.visual-map.flow .visual-map__grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-.visual-map.flow .visual-map__item{position:relative}
-.visual-map.flow .visual-map__item:not(:last-child)::after{content:"→";position:absolute;right:-9px;top:50%;transform:translateY(-50%);color:#2879ea;font-weight:900;z-index:2}
-.visual-map.split .visual-map__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.visual-map.split .visual-map__item:first-child{border-left:4px solid #2879ea}
-.visual-map.split .visual-map__item:nth-child(2){border-left:4px solid #22a06b}
-.visual-map.check .visual-map__item{background:#f8fbff}
-.visual-map.compare .visual-map__item:nth-child(1){border-top:3px solid #2879ea}
-.visual-map.compare .visual-map__item:nth-child(2){border-top:3px solid #22a06b}
-.visual-map.compare .visual-map__item:nth-child(3){border-top:3px solid #f0a04b}
-@media(max-width:700px){
- .visual-map{padding:14px;margin:15px 0 18px}
- .visual-map__grid,.visual-map.flow .visual-map__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .visual-map.split .visual-map__grid{grid-template-columns:1fr}
- .visual-map.flow .visual-map__item:not(:last-child)::after{display:none}
- .visual-map__item{padding:11px 12px;min-height:0}
- .visual-map__item b{font-size:13px}.visual-map__item span{font-size:12.5px}
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>AI Made Easy · Module 8</title><style>:root{--bg:#f5f7fb;--card:#fff;--ink:#142033;--muted:#64748b;--blue:#1767dc;--line:#e2e8f0;--soft:#eef4ff;--ok:#eef8ef;--warn:#fff8e8}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.7}.wrap{max-width:980px;margin:auto;padding:22px 16px 70px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.brand{font-weight:900}.btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;padding:11px 15px;border-radius:12px;font-weight:800}.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}.hero,.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px;margin-bottom:16px;box-shadow:0 8px 28px #14203308}.eyebrow{color:var(--blue);font-weight:900;font-size:.82rem;text-transform:uppercase;letter-spacing:.08em}.hero h1{font-size:clamp(34px,7vw,58px);line-height:1.02;margin:8px 0 12px}.muted{color:var(--muted)}h2{line-height:1.15;margin-top:8px}.lesson{border-top:1px solid var(--line);padding:28px 0}.lesson:first-child{border-top:0}.tag{display:inline-block;background:var(--soft);color:var(--blue);border-radius:999px;padding:4px 9px;font-size:.78rem;font-weight:800}.example{background:#f8fafc;border-left:4px solid var(--blue);padding:14px 16px;margin:16px 0;border-radius:8px}.task{background:var(--ok);border:1px solid #cfe6cf;padding:16px;border-radius:12px}.quiz{background:var(--warn)}.q{padding:18px 0;border-top:1px solid #eadfbf}.q:first-of-type{border-top:0}.answer{margin:8px 0}.answer label{display:block;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:#fff;margin:7px 0;cursor:pointer}.result{margin-top:18px;font-weight:800}.quiz button{border:0;background:var(--blue);color:#fff;padding:12px 16px;border-radius:10px;font-weight:800;cursor:pointer}@media(max-width:700px){.top{align-items:flex-start;flex-direction:column}}.answer label.correct{border-color:#2e9b57!important;background:#eaf8ef!important;color:#176b38}.answer label.wrong{border-color:#d94b4b!important;background:#fff0f0!important;color:#a52b2b}.q-result{font-weight:800;margin-top:7px}.q-result.ok{color:#208044}.q-result.bad{color:#c0392b} .theory{background:#f8fbff;border:1px solid #dce9f8;border-radius:14px;padding:16px 18px;margin:18px 0;color:#33445d}.theory strong{color:#1767dc} </style>  <style id="dynamic-course-layout">
+:root{--bg:#f5f7fb;--card:#fff;--ink:#172238;--muted:#64748b;--blue:#2879ea;--blue-dark:#1767dc;--line:#dfe7f1;--soft:#edf4ff;--green:#198b63;--green-soft:#e5f7ef}
+body{background:var(--bg)!important;color:var(--ink)!important}
+.wrap{max-width:1060px!important;margin:0 auto!important;padding:28px 24px 80px!important}
+.course-side{position:fixed;left:0;top:0;width:270px;height:100vh;background:#fff;border-right:1px solid var(--line);padding:30px 22px;z-index:20;overflow:auto}
+.course-side-brand{font-size:24px;font-weight:900;margin-bottom:34px;display:flex;align-items:center;gap:10px}
+.course-side-brand span{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#5da6ff,#2879ea);color:#fff;display:grid;place-items:center}
+.course-side-module{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#718198;margin-bottom:18px}
+.course-side-list{display:flex;flex-direction:column;gap:4px}
+.course-side a{color:#5f7088;text-decoration:none;padding:9px 10px;border-radius:10px;font-size:15px;line-height:1.35}
+.course-side a:hover{background:#f1f6fd;color:var(--blue-dark)}
+.course-side a.active{background:#eaf3ff;color:var(--blue-dark);font-weight:800}
+body.has-course-side .wrap{margin-left:290px!important;margin-right:20px!important}
+.hero{border-radius:28px!important;padding:40px 44px!important;margin-bottom:24px!important;background:linear-gradient(135deg,#fff 0%,#f4f9ff 100%)!important;box-shadow:0 8px 30px rgba(23,34,56,.045)!important}
+.hero h1{font-size:clamp(42px,6vw,68px)!important;letter-spacing:-.045em!important}
+.hero .eyebrow{color:var(--blue-dark)!important}
+.lesson-stack{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important}
+.lesson{background:#fff;border:1px solid var(--line)!important;border-radius:24px!important;padding:30px 34px!important;margin:0 0 18px!important;box-shadow:0 8px 28px rgba(23,34,56,.045)!important}
+.lesson .tag{background:#eaf3ff!important;color:var(--blue-dark)!important;padding:6px 11px!important;border-radius:999px!important}
+.lesson h2{font-size:clamp(28px,4vw,40px)!important;letter-spacing:-.035em!important;margin:12px 0 12px!important}
+.lesson>p{color:#667891!important;font-size:18px!important;line-height:1.6!important}
+.theory{background:#f6faff!important;border:1px solid #d9e8fb!important;border-left:4px solid #2879ea!important;border-radius:16px!important;padding:18px 20px!important;margin:20px 0!important;color:#53657d!important}
+.example{background:#fff!important;border:1px solid #dfe7f1!important;border-left:4px solid #2879ea!important;border-radius:16px!important;padding:18px 20px!important;margin:20px 0!important}
+.prompt{border-radius:16px!important}
+.task{background:#edf9f2!important;border:1px solid #ccebd9!important;border-radius:16px!important;padding:18px 20px!important}
+.check{border-radius:24px!important;padding:30px 34px!important;box-shadow:0 8px 28px rgba(23,34,56,.045)!important}
+.quiz{border-radius:24px!important;padding:30px 34px!important;box-shadow:0 8px 28px rgba(23,34,56,.045)!important}
+.quiz .q{padding:20px 0;border-top:1px solid var(--line)}
+.quiz .q:first-of-type{border-top:0}
+.answer label{color:#172238!important;background:#fff!important;border:1px solid #dfe7f1!important;border-radius:14px!important;padding:14px 16px!important}
+.answer label:hover{background:#f5f8fc!important}
+.answer label.correct{background:#e5f7ef!important;border-color:#2e9b57!important;color:#176b38!important}
+.answer label.wrong{background:#fff0f0!important;border-color:#d94b4b!important;color:#a52b2b!important}
+.quiz .top{display:flex!important;gap:14px!important;flex-wrap:wrap!important}
+.quiz .top .btn{flex:1 1 220px!important;text-align:center!important}
+@media(max-width:900px){
+ body.has-course-side .wrap{margin-left:0!important;margin-right:0!important}
+ .course-side{position:sticky;top:0;width:100%;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:12px 14px;z-index:30}
+ .course-side-brand{margin:0 0 8px;font-size:20px}.course-side-brand span{width:34px;height:34px;border-radius:10px}
+ .course-side-module{display:none}.course-side-list{flex-direction:row;overflow-x:auto;gap:4px;padding-bottom:2px}.course-side a{white-space:nowrap;font-size:14px;padding:8px 10px}
+ .wrap{padding:18px 14px 60px!important}.hero{padding:30px 24px!important;border-radius:24px!important}.lesson{padding:26px 24px!important;border-radius:22px!important}
 }
-</style><script id="english-theory-visuals-v1" defer>
+</style>
+<style id="english-dynamic-v3">
+/* IA Made Easy · visual reorganisation only. Existing wording is preserved. */
+:root{
+ --bg:#f5f7fb;--card:#fff;--ink:#172238;--muted:#657892;
+ --blue:#2879ea;--blue-soft:#edf4ff;--line:#dfe7f1;
+ --green-soft:#eaf8f1;--green-line:#bfe8d3;--orange-soft:#fff4e8;--orange-line:#ffd4ad;
+}
+body{font-size:16px!important;line-height:1.55!important}
+.wrap{max-width:1060px!important;padding:24px 28px 80px!important}
+.hero{padding:30px 34px!important;border-radius:24px!important}
+.hero h1{font-size:clamp(34px,5vw,54px)!important;line-height:1.08!important}
+.hero p{font-size:16px!important;line-height:1.55!important}
+.lesson{
+ background:#fff!important;border:1px solid var(--line)!important;border-radius:24px!important;
+ padding:28px 32px!important;margin:0 0 18px!important;
+ box-shadow:0 7px 24px rgba(23,34,56,.045)!important;
+}
+.lesson h2{font-size:clamp(27px,3.3vw,38px)!important;line-height:1.14!important;letter-spacing:-.025em!important;margin:12px 0 12px!important}
+.lesson>p:first-of-type{
+ background:#f7faff!important;border:1px solid #dce8f6!important;border-radius:16px!important;
+ padding:17px 19px!important;margin:14px 0 18px!important;
+ color:#536780!important;font-size:16px!important;line-height:1.58!important;
+}
+.lesson .theory{
+ position:relative;background:#f6faff!important;border:1px solid #d7e7fa!important;
+ border-left:4px solid var(--blue)!important;border-radius:16px!important;
+ padding:19px 20px 18px!important;margin:14px 0!important;
+ color:#40536c!important;font-size:15.5px!important;line-height:1.58!important;
+}
+.lesson .theory:before{
+ content:"💡  IN DEPTH";display:block;color:#1767dc;font-weight:900;font-size:12px;
+ letter-spacing:.06em;margin-bottom:8px;
+}
+.lesson .theory strong{color:#1767dc!important;font-size:0!important}
+.lesson .example{
+ background:#fff!important;border:1px solid #dce5ef!important;border-radius:16px!important;
+ padding:18px 20px!important;margin:14px 0!important;
+ color:#25364e!important;font-size:15.5px!important;line-height:1.58!important;
+}
+.lesson .example:before{
+ content:"PRACTICAL IDEA";display:block;color:#1767dc;font-weight:900;font-size:12px;
+ letter-spacing:.06em;margin-bottom:8px;
+}
+.lesson .example strong{font-size:0!important}
+.lesson .task{
+ background:var(--green-soft)!important;border:1px solid var(--green-line)!important;
+ border-radius:16px!important;padding:18px 20px!important;
+ font-size:15.5px!important;line-height:1.58!important;
+}
+.lesson ul,.lesson ol{margin:14px 0;padding-left:26px}
+.lesson li{margin:7px 0}
+.lesson .prompt{
+ background:#f8fafc!important;color:var(--ink)!important;border:1px solid var(--line)!important;
+ border-radius:16px!important;padding:18px 20px!important;
+}
+.lesson .prompt ul,.lesson .prompt ol{margin-bottom:0}
+.check{background:var(--orange-soft)!important;border:1px solid var(--orange-line)!important;border-radius:18px!important}
+.quiz{border-radius:24px!important}
+.quiz .q{padding:18px 0!important}
+.answer label{font-size:15px!important;line-height:1.5!important}
+@media(max-width:900px){
+ body.has-course-side .wrap{margin:0!important}
+ .wrap{padding:18px 14px 60px!important}
+ .lesson{padding:22px 18px!important;border-radius:21px!important}
+ .lesson h2{font-size:29px!important}
+ .lesson>p:first-of-type{font-size:15.5px!important;padding:15px 16px!important}
+ .lesson .theory,.lesson .example,.lesson .task,.lesson .prompt{font-size:15px!important;line-height:1.55!important;padding:16px 17px!important}
+}
+</style>
+<link rel="stylesheet" href="../theory-visuals.css">
+  <script src="../theory-visuals.js" defer></script>
+
+
+</head><body><main class="wrap"><nav class="top"><div class="brand">✦ AI Made Easy</div><a class="btn ghost" href="../">Course home</a></nav><section class="hero"><div class="eyebrow">MODULE 08 · 10 LESSONS</div><h1>Learn with AI</h1><p class="muted">Turn ChatGPT into a study companion for understanding, practising, reviewing and learning at your own pace.</p></section><section class="card"><article class="lesson"><span class="tag">LESSON 1</span><h2>AI as a tutor, not an answer machine</h2><p>The best learning use is often interaction: explanation, practice, feedback and correction. Simply asking for the answer can remove the part of learning that matters.</p><div class="theory"><strong>In depth:</strong> A tutor helps you understand why an answer works, not only what the answer is. Ask AI to explain, question you and adapt its difficulty instead of immediately solving every exercise. This keeps you involved in the learning process and makes the interaction more useful over time.</div><div class="example"><strong>Try it:</strong> Tell AI: 'Do not give me the answer immediately. Ask me questions and guide me to it.'</div></article><article class="lesson"><span class="tag">LESSON 2</span><h2>Start at your level</h2><p>A beginner and an expert need different explanations. Tell AI what you already know and where you are struggling.</p><div class="theory"><strong>In depth:</strong> Learning is most effective when the explanation matches what you already know. Tell AI your level, what you understand and where you are confused. A beginner may need definitions and analogies, while an advanced learner may need exceptions, mechanisms and challenging problems.</div><div class="example"><strong>Try it:</strong> Prompt: 'I understand the basic idea but I get confused by these two concepts. Explain the difference using one analogy and one example.'</div></article><article class="lesson"><span class="tag">LESSON 3</span><h2>Ask for a lesson</h2><p>You can request a short lesson with a clear sequence: explanation, example, practice and recap.</p><div class="theory"><strong>In depth:</strong> You can turn a vague topic into a structured mini-lesson. Ask for a short explanation, key concepts, an example, a question to check understanding and a small exercise. This creates a learning sequence instead of a wall of information.</div><div class="example"><strong>Try it:</strong> Try: 'Teach me this topic in 15 minutes. Explain one idea at a time, then give me a question before moving on.'</div></article><article class="lesson"><span class="tag">LESSON 4</span><h2>Use active recall</h2><p>Learning improves when you try to retrieve information rather than only reread it. Ask AI to quiz you without showing the answers first.</p><div class="theory"><strong>In depth:</strong> Active recall means trying to retrieve information from memory rather than simply rereading it. Ask AI to quiz you without immediately showing the answer. After you respond, request feedback and an explanation of mistakes. This makes the learner perform part of the cognitive work.</div><div class="example"><strong>Try it:</strong> Prompt: 'Give me five questions from easy to difficult. Wait for my answer to each one and explain my mistakes.'</div></article><article class="lesson"><span class="tag">LESSON 5</span><h2>Ask for feedback</h2><p>Good feedback explains what was correct, what needs improvement and how to improve it. Tell AI what kind of feedback you want.</p><div class="theory"><strong>In depth:</strong> Useful feedback identifies what was correct, what was missing and how to improve. Ask AI to explain the reason for an error rather than simply giving the correct answer. For important subjects, compare the feedback with trusted course material because AI can also make mistakes.</div><div class="example"><strong>Try it:</strong> For writing: 'Correct the three most important mistakes first. Explain why each matters, then let me try again.'</div></article><article class="lesson"><span class="tag">LESSON 6</span><h2>Change the explanation</h2><p>If an explanation does not work, change the representation: analogy, diagram description, example, simpler language or step-by-step reasoning.</p><div class="theory"><strong>In depth:</strong> When one explanation does not work, change the representation. Ask for an analogy, a simpler version, a concrete example, a diagram description or a step-by-step explanation. Difficulty understanding a concept does not always mean you need more information; sometimes you need a different explanation.</div><div class="example"><strong>Try it:</strong> You can say: 'I still do not understand. Explain it as if I were 12, then give me a real-world example.'</div></article><article class="lesson"><span class="tag">LESSON 7</span><h2>Practise progressively</h2><p>Ask for exercises that become harder as you improve. This creates a learning path instead of random questions.</p><div class="theory"><strong>In depth:</strong> Progressive practice moves from simple examples to more demanding problems. Start with guided exercises, then remove some of the support and finally attempt a problem independently. AI can generate this progression and adjust it according to your performance.</div><div class="example"><strong>Try it:</strong> Prompt: 'Give me one problem. If I solve it correctly, increase the difficulty slightly. If I make a mistake, give me a hint rather than the answer.'</div></article><article class="lesson"><span class="tag">LESSON 8</span><h2>Use AI to organise study</h2><p>AI can turn a syllabus or notes into a revision plan, checklist or set of questions. Check that the plan covers what your teacher or course actually requires.</p><div class="theory"><strong>In depth:</strong> AI can help turn notes into outlines, flashcards, question banks, revision plans or topic checklists. Organisation is useful, but it should not replace actual study. Always compare generated summaries with your original material when accuracy matters.</div><div class="example"><strong>Try it:</strong> Give it your topics and deadline, then ask for a realistic schedule with review sessions.</div></article><article class="lesson"><span class="tag">LESSON 9</span><h2>Do not outsource your thinking</h2><p>For school or professional work, use AI to learn and improve rather than submit work you do not understand. Your own reasoning matters.</p><div class="theory"><strong>In depth:</strong> If AI performs every step, you may finish the task without learning the underlying skill. Use it strategically: attempt the problem first, ask for hints when stuck, then compare your reasoning with the explanation. The objective is greater independence, not permanent dependence on the tool.</div><div class="example"><strong>Try it:</strong> Ask AI to critique your answer after you have attempted it. That preserves the useful struggle that creates learning.</div></article><article class="lesson"><span class="tag">LESSON 10</span><h2>Final challenge</h2><p>Choose a topic you genuinely want to learn. Ask AI to teach it interactively, answer its questions yourself and request feedback.</p><div class="theory"><strong>In depth:</strong> Choose one topic you are learning. Ask AI to teach it at your level, quiz you, review your answers and then give you a harder exercise. Notice which parts you solved yourself and which parts you delegated. That distinction is important for real learning.</div><div class="example"><strong>Try it:</strong> At the end, explain the topic back in your own words. If you cannot, ask for one more explanation and try again.</div><div class="task"><strong>Do it now:</strong> Apply this module to one real, low-risk situation in your life. Finish the task rather than just reading about it.</div></article></section><section class="card quiz"><span class="tag">MODULE QUIZ</span><h2>Check what you learned</h2><p>Choose the best answer, then press <strong>Finish the quiz</strong>. Each answer will be marked in green or red.</p><div class="q"><strong>1. What is AI useful for when learning?</strong><div class="answer"><label><input type="radio" name="q0" value="A"> A. Explaining concepts and giving practice.</label><label><input type="radio" name="q0" value="B"> B. Replacing all thinking.</label><label><input type="radio" name="q0" value="C"> C. Guaranteeing exam answers.</label></div><div class="q-result" id="qr0"></div></div><div class="q"><strong>2. What is active learning?</strong><div class="answer"><label><input type="radio" name="q1" value="A"> A. Reading without checking understanding.</label><label><input type="radio" name="q1" value="B"> B. Trying to recall, explain and apply what you learned.</label><label><input type="radio" name="q1" value="C"> C. Copying every answer.</label></div><div class="q-result" id="qr1"></div></div><div class="q"><strong>3. How can AI act as a tutor?</strong><div class="answer"><label><input type="radio" name="q2" value="A"> A. By asking questions and giving feedback.</label><label><input type="radio" name="q2" value="B"> B. By taking the exam for you.</label><label><input type="radio" name="q2" value="C"> C. By deciding what you believe.</label></div><div class="q-result" id="qr2"></div></div><div class="q"><strong>4. What should you do if AI gives an explanation you do not understand?</strong><div class="answer"><label><input type="radio" name="q3" value="A"> A. Ask it to explain in a simpler way or give an example.</label><label><input type="radio" name="q3" value="B"> B. Pretend you understand.</label><label><input type="radio" name="q3" value="C"> C. Stop learning.</label></div><div class="q-result" id="qr3"></div></div><div class="q"><strong>5. What is a good learning habit?</strong><div class="answer"><label><input type="radio" name="q4" value="A"> A. Use AI to support your thinking, then do the task yourself.</label><label><input type="radio" name="q4" value="B"> B. Let AI complete everything.</label><label><input type="radio" name="q4" value="C"> C. Never review its explanation.</label></div><div class="q-result" id="qr4"></div></div><button onclick="checkQuiz()">Finish the quiz</button><div id="result" class="result"></div></section><script>function checkQuiz(){const correct=["A","B","C","A","B"];let answered=0;correct.forEach((a,i)=>{document.querySelectorAll('input[name="q'+i+'"]').forEach(x=>x.parentElement.classList.remove('correct','wrong'));const x=document.querySelector('input[name="q'+i+'"]:checked');const res=document.getElementById('qr'+i);if(x){answered++;if(x.value===a){x.parentElement.classList.add('correct');res.textContent='✓ Correct';res.className='q-result ok'}else{x.parentElement.classList.add('wrong');const good=document.querySelector('input[name="q'+i+'"][value="'+a+'"]');if(good)good.parentElement.classList.add('correct');res.textContent='✗ Incorrect — the correct answer is '+a+'.';res.className='q-result bad'}}else{res.textContent='Please choose an answer.';res.className='q-result bad'}});document.getElementById('result').textContent=answered===correct.length?'Quiz reviewed — check the green and red answers above.':'Please answer all five questions before finishing the quiz.'}</script><div class="top"><a class="btn ghost" href="../modulo-7/">← Module 7</a><a class="btn" href="../modulo-9/">Module 9 →</a></div></main><script>function checkQuiz(){const correct=["B","A","B","C","B"];let answered=0;correct.forEach((a,i)=>{document.querySelectorAll('input[name="q'+i+'"]').forEach(x=>x.parentElement.classList.remove('correct','wrong'));const x=document.querySelector('input[name="q'+i+'"]:checked');const res=document.getElementById('qr'+i);if(x){answered++;if(x.value===a){x.parentElement.classList.add('correct');res.textContent='✓ Correct';res.className='q-result ok'}else{x.parentElement.classList.add('wrong');const good=document.querySelector('input[name="q'+i+'"][value="'+a+'"]');if(good)good.parentElement.classList.add('correct');res.textContent='✗ Incorrect — the correct answer is '+a+'.';res.className='q-result bad'}}else{res.textContent='Please choose an answer.';res.className='q-result bad'}});document.getElementById('result').textContent=answered===correct.length?'Quiz reviewed — check the green and red answers above.':'Please answer all five questions before finishing the quiz.'}</script><script id="dynamic-course-nav">
 (function(){
-  const maps = {
-    process:{label:"A SIMPLE WAY TO THINK ABOUT IT",type:"flow",items:[
-      ["1 · Start","Know what you want to achieve."],["2 · Add context","Give the information that matters."],["3 · Ask","Tell AI the task clearly."],["4 · Review","Check and improve the result."]
-    ]},
-    prompt:{label:"THE BASIC PROMPT MAP",type:"flow",items:[
-      ["Goal","What do I need?"],["Context","What should AI know?"],["Constraints","What must it respect?"],["Output","What should I receive?"]
-    ]},
-    check:{label:"QUICK CHECK",type:"check",items:[
-      ["Pause","Do not accept the first answer automatically."],["Check","Look for missing facts, assumptions or warning signs."],["Decide","Use your own judgement before acting."]
-    ]},
-    compare:{label:"LOOK AT BOTH SIDES",type:"compare",items:[
-      ["Option A","What supports this view?"],["Option B","What challenges it?"],["What matters","Which evidence changes the picture?"]
-    ]},
-    split:{label:"KEEP THESE APART",type:"split",items:[
-      ["FACT","Something that can be checked against evidence."],["INTERPRETATION","What the information may mean."],["PREFERENCE","What you personally want or value."]
-    ]},
-    privacy:{label:"BEFORE YOU SHARE",type:"check",items:[
-      ["1 · Identify","Is the information private or sensitive?"],["2 · Remove","Use placeholders instead of real secrets."],["3 · Decide","Only share what is genuinely needed."]
-    ]},
-    learning:{label:"LEARNING LOOP",type:"flow",items:[
-      ["Understand","Get an explanation at your level."],["Practise","Try it yourself."],["Feedback","Ask what could improve."],["Repeat","Practise again with a little more difficulty."]
-    ]},
-    create:{label:"FROM IDEA TO RESULT",type:"flow",items:[
-      ["Idea","Start with your own purpose."],["Draft","Let AI help create a first version."],["Edit","Keep your voice and choices."],["Publish","Review before sharing."]
-    ]},
-    options:{label:"CHOOSE THE RIGHT FORMAT",type:"compare",items:[
-      ["List","Best for quick options."],["Table","Best for comparison."],["Steps","Best for a process."]
-    ]}
-  };
-
-  function choose(title, n, mod){
-    const t=title.toLowerCase();
-    if(/final/.test(t)) return "create";
-    if(/privacy|paste|password|code|document|sensitive|sender|urgency/.test(t)) return "privacy";
-    if(/verify|verification|check|warning|wrong|uncertain|uncertainty|review|critique|source/.test(t)) return "check";
-    if(/fact|opinion|assumption/.test(t)) return "split";
-    if(/both sides|alternatives|compare|comparison/.test(t)) return "compare";
-    if(/learn|tutor|recall|practice|practise|feedback|study/.test(t)) return "learning";
-    if(/write|message|translate|creative|idea|brainstorm|publish/.test(t)) return "create";
-    if(/format|structure|tone|output/.test(t)) return "options";
-    if(/goal|task|context|constraint|prompt|specific|result|role/.test(t)) return "prompt";
-    if(/plan|routine|organ|workflow|stages|steps|project|checklist|decision/.test(t)) return "process";
-    if(/ask|question|conversation|chat|follow-up|correction/.test(t)) return "process";
-    if(/day|cooking|meal|travel|shopping|everyday/.test(t)) return "options";
-    return (n%3===0)?"process":(n%3===1?"check":"compare");
-  }
-
-  function add(lesson,n,mod){
-    if(lesson.querySelector(".visual-map")) return;
-    const h=lesson.querySelector("h2"); const p=lesson.querySelector(":scope > p");
-    if(!h||!p) return;
-    const key=choose(h.textContent.trim(),n,mod), data=maps[key];
-    if(!data) return;
-    const box=document.createElement("div");
-    box.className="visual-map "+data.type;
-    box.setAttribute("aria-label",data.label);
-    box.innerHTML='<div class="visual-map__label">'+data.label+'</div><div class="visual-map__grid">'+
-      data.items.map(x=>'<div class="visual-map__item"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join("")+
-      '</div>';
-    p.insertAdjacentElement("afterend",box);
-  }
-
-  document.querySelectorAll(".lesson").forEach((lesson,i)=>{
-    const mod=(document.querySelector(".hero .eyebrow")?.textContent.match(/MODULE\s+(\d+)/i)||[])[1]||"";
-    add(lesson,i+1,Number(mod));
+  var lessons=[].slice.call(document.querySelectorAll('.lesson'));
+  if(!lessons.length)return;
+  document.body.classList.add('has-course-side');
+  lessons.forEach(function(lesson,i){lesson.id='lesson-'+(i+1);});
+  var side=document.createElement('aside');
+  side.className='course-side';
+  side.innerHTML='<div class="course-side-brand"><span>✦</span> AI Made Easy</div><div class="course-side-module"></div><nav class="course-side-list"></nav>';
+  var eyebrow=document.querySelector('.hero .eyebrow');
+  side.querySelector('.course-side-module').textContent=eyebrow?eyebrow.textContent:'COURSE MODULE';
+  var list=side.querySelector('.course-side-list');
+  lessons.forEach(function(lesson,i){
+    var h=lesson.querySelector('h2'),tag=lesson.querySelector('.tag');
+    var a=document.createElement('a');
+    var num=(tag&&/LESSON/i.test(tag.textContent))?tag.textContent.replace(/[^0-9]/g,''):(i+1);
+    a.href='#lesson-'+(i+1);
+    a.textContent=num+' · '+(h?h.textContent:'Lesson '+(i+1));
+    a.addEventListener('click',function(){document.getElementById('lesson-'+(i+1)).scrollIntoView({behavior:'smooth',block:'start'});});
+    list.appendChild(a);
   });
+  document.body.insertBefore(side,document.body.firstChild);
+  var links=[].slice.call(list.querySelectorAll('a'));
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){var i=lessons.indexOf(e.target);links.forEach(function(x){x.classList.remove('active')});if(i>=0)links[i].classList.add('active');}});
+    },{rootMargin:'-15% 0px -70% 0px'});
+    lessons.forEach(function(l){obs.observe(l);});
+  }
 })();
-</script></head><body><main class="wrap"><nav class="top"><div class="brand">✦ AI Made Easy</div><a class="btn ghost" href="../">Course home</a></nav><section class="hero"><div class="eyebrow">MODULE 08 · 10 LESSONS</div><h1>Learn with AI</h1><p class="muted">Turn ChatGPT into a study companion for understanding, practising, reviewing and learning at your own pace.</p></section><section class="card"><article class="lesson"><span class="tag">LESSON 1</span><h2>AI as a tutor, not an answer machine</h2><p>The best learning use is often interaction: explanation, practice, feedback and correction. Simply asking for the answer can remove the part of learning that matters.</p><div class="theory"><strong>In depth:</strong> A tutor helps you understand why an answer works, not only what the answer is. Ask AI to explain, question you and adapt its difficulty instead of immediately solving every exercise. This keeps you involved in the learning process and makes the interaction more useful over time.</div><div class="example"><strong>Try it:</strong> Tell AI: 'Do not give me the answer immediately. Ask me questions and guide me to it.'</div></article><article class="lesson"><span class="tag">LESSON 2</span><h2>Start at your level</h2><p>A beginner and an expert need different explanations. Tell AI what you already know and where you are struggling.</p><div class="theory"><strong>In depth:</strong> Learning is most effective when the explanation matches what you already know. Tell AI your level, what you understand and where you are confused. A beginner may need definitions and analogies, while an advanced learner may need exceptions, mechanisms and challenging problems.</div><div class="example"><strong>Try it:</strong> Prompt: 'I understand the basic idea but I get confused by these two concepts. Explain the difference using one analogy and one example.'</div></article><article class="lesson"><span class="tag">LESSON 3</span><h2>Ask for a lesson</h2><p>You can request a short lesson with a clear sequence: explanation, example, practice and recap.</p><div class="theory"><strong>In depth:</strong> You can turn a vague topic into a structured mini-lesson. Ask for a short explanation, key concepts, an example, a question to check understanding and a small exercise. This creates a learning sequence instead of a wall of information.</div><div class="example"><strong>Try it:</strong> Try: 'Teach me this topic in 15 minutes. Explain one idea at a time, then give me a question before moving on.'</div></article><article class="lesson"><span class="tag">LESSON 4</span><h2>Use active recall</h2><p>Learning improves when you try to retrieve information rather than only reread it. Ask AI to quiz you without showing the answers first.</p><div class="theory"><strong>In depth:</strong> Active recall means trying to retrieve information from memory rather than simply rereading it. Ask AI to quiz you without immediately showing the answer. After you respond, request feedback and an explanation of mistakes. This makes the learner perform part of the cognitive work.</div><div class="example"><strong>Try it:</strong> Prompt: 'Give me five questions from easy to difficult. Wait for my answer to each one and explain my mistakes.'</div></article><article class="lesson"><span class="tag">LESSON 5</span><h2>Ask for feedback</h2><p>Good feedback explains what was correct, what needs improvement and how to improve it. Tell AI what kind of feedback you want.</p><div class="theory"><strong>In depth:</strong> Useful feedback identifies what was correct, what was missing and how to improve. Ask AI to explain the reason for an error rather than simply giving the correct answer. For important subjects, compare the feedback with trusted course material because AI can also make mistakes.</div><div class="example"><strong>Try it:</strong> For writing: 'Correct the three most important mistakes first. Explain why each matters, then let me try again.'</div></article><article class="lesson"><span class="tag">LESSON 6</span><h2>Change the explanation</h2><p>If an explanation does not work, change the representation: analogy, diagram description, example, simpler language or step-by-step reasoning.</p><div class="theory"><strong>In depth:</strong> When one explanation does not work, change the representation. Ask for an analogy, a simpler version, a concrete example, a diagram description or a step-by-step explanation. Difficulty understanding a concept does not always mean you need more information; sometimes you need a different explanation.</div><div class="example"><strong>Try it:</strong> You can say: 'I still do not understand. Explain it as if I were 12, then give me a real-world example.'</div></article><article class="lesson"><span class="tag">LESSON 7</span><h2>Practise progressively</h2><p>Ask for exercises that become harder as you improve. This creates a learning path instead of random questions.</p><div class="theory"><strong>In depth:</strong> Progressive practice moves from simple examples to more demanding problems. Start with guided exercises, then remove some of the support and finally attempt a problem independently. AI can generate this progression and adjust it according to your performance.</div><div class="example"><strong>Try it:</strong> Prompt: 'Give me one problem. If I solve it correctly, increase the difficulty slightly. If I make a mistake, give me a hint rather than the answer.'</div></article><article class="lesson"><span class="tag">LESSON 8</span><h2>Use AI to organise study</h2><p>AI can turn a syllabus or notes into a revision plan, checklist or set of questions. Check that the plan covers what your teacher or course actually requires.</p><div class="theory"><strong>In depth:</strong> AI can help turn notes into outlines, flashcards, question banks, revision plans or topic checklists. Organisation is useful, but it should not replace actual study. Always compare generated summaries with your original material when accuracy matters.</div><div class="example"><strong>Try it:</strong> Give it your topics and deadline, then ask for a realistic schedule with review sessions.</div></article><article class="lesson"><span class="tag">LESSON 9</span><h2>Do not outsource your thinking</h2><p>For school or professional work, use AI to learn and improve rather than submit work you do not understand. Your own reasoning matters.</p><div class="theory"><strong>In depth:</strong> If AI performs every step, you may finish the task without learning the underlying skill. Use it strategically: attempt the problem first, ask for hints when stuck, then compare your reasoning with the explanation. The objective is greater independence, not permanent dependence on the tool.</div><div class="example"><strong>Try it:</strong> Ask AI to critique your answer after you have attempted it. That preserves the useful struggle that creates learning.</div></article><article class="lesson"><span class="tag">LESSON 10</span><h2>Final challenge</h2><p>Choose a topic you genuinely want to learn. Ask AI to teach it interactively, answer its questions yourself and request feedback.</p><div class="theory"><strong>In depth:</strong> Choose one topic you are learning. Ask AI to teach it at your level, quiz you, review your answers and then give you a harder exercise. Notice which parts you solved yourself and which parts you delegated. That distinction is important for real learning.</div><div class="example"><strong>Try it:</strong> At the end, explain the topic back in your own words. If you cannot, ask for one more explanation and try again.</div><div class="task"><strong>Do it now:</strong> Apply this module to one real, low-risk situation in your life. Finish the task rather than just reading about it.</div></article></section><section class="card quiz"><span class="tag">MODULE QUIZ</span><h2>Check what you learned</h2><p>Choose the best answer, then press <strong>Finish the quiz</strong>. Each answer will be marked in green or red.</p><div class="q"><strong>1. What is AI useful for when learning?</strong><div class="answer"><label><input type="radio" name="q0" value="A"> A. Explaining concepts and giving practice.</label><label><input type="radio" name="q0" value="B"> B. Replacing all thinking.</label><label><input type="radio" name="q0" value="C"> C. Guaranteeing exam answers.</label></div><div class="q-result" id="qr0"></div></div><div class="q"><strong>2. What is active learning?</strong><div class="answer"><label><input type="radio" name="q1" value="A"> A. Reading without checking understanding.</label><label><input type="radio" name="q1" value="B"> B. Trying to recall, explain and apply what you learned.</label><label><input type="radio" name="q1" value="C"> C. Copying every answer.</label></div><div class="q-result" id="qr1"></div></div><div class="q"><strong>3. How can AI act as a tutor?</strong><div class="answer"><label><input type="radio" name="q2" value="A"> A. By asking questions and giving feedback.</label><label><input type="radio" name="q2" value="B"> B. By taking the exam for you.</label><label><input type="radio" name="q2" value="C"> C. By deciding what you believe.</label></div><div class="q-result" id="qr2"></div></div><div class="q"><strong>4. What should you do if AI gives an explanation you do not understand?</strong><div class="answer"><label><input type="radio" name="q3" value="A"> A. Ask it to explain in a simpler way or give an example.</label><label><input type="radio" name="q3" value="B"> B. Pretend you understand.</label><label><input type="radio" name="q3" value="C"> C. Stop learning.</label></div><div class="q-result" id="qr3"></div></div><div class="q"><strong>5. What is a good learning habit?</strong><div class="answer"><label><input type="radio" name="q4" value="A"> A. Use AI to support your thinking, then do the task yourself.</label><label><input type="radio" name="q4" value="B"> B. Let AI complete everything.</label><label><input type="radio" name="q4" value="C"> C. Never review its explanation.</label></div><div class="q-result" id="qr4"></div></div><button onclick="checkQuiz()">Finish the quiz</button><div id="result" class="result"></div></section><script>function checkQuiz(){const correct=["A","B","C","A","B"];let answered=0;correct.forEach((a,i)=>{document.querySelectorAll('input[name="q'+i+'"]').forEach(x=>x.parentElement.classList.remove('correct','wrong'));const x=document.querySelector('input[name="q'+i+'"]:checked');const res=document.getElementById('qr'+i);if(x){answered++;if(x.value===a){x.parentElement.classList.add('correct');res.textContent='✓ Correct';res.className='q-result ok'}else{x.parentElement.classList.add('wrong');const good=document.querySelector('input[name="q'+i+'"][value="'+a+'"]');if(good)good.parentElement.classList.add('correct');res.textContent='✗ Incorrect — the correct answer is '+a+'.';res.className='q-result bad'}}else{res.textContent='Please choose an answer.';res.className='q-result bad'}});document.getElementById('result').textContent=answered===correct.length?'Quiz reviewed — check the green and red answers above.':'Please answer all five questions before finishing the quiz.'}</script><div class="top"><a class="btn ghost" href="../modulo-7/">← Module 7</a><a class="btn" href="../modulo-9/">Module 9 →</a></div></main><script>function checkQuiz(){const correct=["B","A","B","C","B"];let answered=0;correct.forEach((a,i)=>{document.querySelectorAll('input[name="q'+i+'"]').forEach(x=>x.parentElement.classList.remove('correct','wrong'));const x=document.querySelector('input[name="q'+i+'"]:checked');const res=document.getElementById('qr'+i);if(x){answered++;if(x.value===a){x.parentElement.classList.add('correct');res.textContent='✓ Correct';res.className='q-result ok'}else{x.parentElement.classList.add('wrong');const good=document.querySelector('input[name="q'+i+'"][value="'+a+'"]');if(good)good.parentElement.classList.add('correct');res.textContent='✗ Incorrect — the correct answer is '+a+'.';res.className='q-result bad'}}else{res.textContent='Please choose an answer.';res.className='q-result bad'}});document.getElementById('result').textContent=answered===correct.length?'Quiz reviewed — check the green and red answers above.':'Please answer all five questions before finishing the quiz.'}</script></body></html>
+</script>
+</body></html>
