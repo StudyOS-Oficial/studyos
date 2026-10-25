@@ -269,7 +269,15 @@ footer{padding:42px 0;background:#0e214d;color:#c6d5f0}footer .logo{color:#fff}f
  document.getElementById("examplePrompt").addEventListener("click",function(){input.value="Plan a 7-day trip to Italy for two people on a medium budget";improve()});
  const tabs=[...document.querySelectorAll('[role="tab"]')];tabs.forEach(function(tab,index){tab.addEventListener("click",function(){tabs.forEach(function(other){other.setAttribute("aria-selected",other===tab?"true":"false");other.tabIndex=other===tab?0:-1;document.getElementById(other.getAttribute("aria-controls")).hidden=other!==tab})});tab.addEventListener("keydown",function(e){if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();const next=(index+(e.key==="ArrowRight"?1:tabs.length-1))%tabs.length;tabs[next].focus();tabs[next].click()}})});
  const cta=document.getElementById("floatCta"),mobileReadingSections=[...document.querySelectorAll("#try,#course,#reviews,#research,.story,#faq")],observeTargets=[document.querySelector(".hero"),document.getElementById("enrol"),document.querySelector(".final"),...(window.matchMedia("(max-width:720px)").matches?mobileReadingSections:[])].filter(Boolean);let visible=new Set();
- if("IntersectionObserver"in window){const io=new IntersectionObserver(entries=>{entries.forEach(entry=>entry.isIntersecting?visible.add(entry.target):visible.delete(entry.target);cta.classList.toggle("hide",visible.size>0)},{threshold:.14});observeTargets.forEach(el=>io.observe(el))}
+ if("IntersectionObserver"in window){
+   const io=new IntersectionObserver(entries=>{
+     entries.forEach(entry=>{
+       if(entry.isIntersecting)visible.add(entry.target);else visible.delete(entry.target);
+     });
+     cta.classList.toggle("hide",visible.size>0);
+   },{threshold:.14});
+   observeTargets.forEach(el=>io.observe(el));
+ }
 })();
 </script>
 
