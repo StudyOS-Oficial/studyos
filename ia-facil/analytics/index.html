@@ -13,7 +13,7 @@ input,select,button{font:inherit;padding:8px;border-radius:8px;border:1px solid 
 </style></head><body>
 <h1>IA fácil · Analítica anónima</h1>
 <p class="mut">Sin cookies ni identificadores. Los «visitantes» son únicos por día (un mismo visitante en dos días cuenta dos veces).</p>
-<div class="card"><input id="tk" type="password" placeholder="Token de acceso"> <select id="dy"><option value="7">7 días</option><option value="30" selected>30 días</option><option value="90">90 días</option></select> <button id="go">Ver</button> <span id="msg" class="mut"></span></div>
+<div class="card"><input id="tk" type="password" placeholder="Token de acceso"> <select id="dy"><option value="7">7 días</option><option value="30" selected>30 días</option><option value="90">90 días</option></select> <label for="dt" class="mut">Día concreto:</label> <input id="dt" type="date" aria-label="Filtrar por día concreto"> <button id="go">Ver</button> <span id="msg" class="mut"></span></div>
 <div id="out"></div>
 <script>
 const API="https://cursoia.studyos-oficial-spain.workers.dev/stats", $=id=>document.getElementById(id);
@@ -48,9 +48,13 @@ function render(rows){
 }
 $("go").onclick=async()=>{
   $("msg").textContent="Cargando…";
-  try{const r=await fetch(API+"?days="+$("dy").value,{headers:{Authorization:"Bearer "+$("tk").value.trim()},cache:"no-store"});
+  try{
+    const day=$("dt").value,days=day?365:$("dy").value;
+    const r=await fetch(API+"?days="+days,{headers:{Authorization:"Bearer "+$("tk").value.trim()},cache:"no-store"});
     if(r.status===401)throw Error("Token incorrecto");if(!r.ok){let m="Error "+r.status;try{m=(await r.json()).error||m}catch(e){}throw Error(m)}
-    render((await r.json()).rows||[]);$("msg").textContent="";
+    const rows=(await r.json()).rows||[];
+    render(day?rows.filter(row=>row.day===day):rows);$("msg").textContent="";
   }catch(e){$("msg").textContent=e.message}
 };
+$("dt").onchange=()=>{if($("dt").value)$("dy").value="30"};
 </script></body></html>
