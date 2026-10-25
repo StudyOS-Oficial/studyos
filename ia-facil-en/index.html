@@ -59,6 +59,86 @@ footer{padding:42px 0;background:#0e214d;color:#c6d5f0}footer .logo{color:#fff}f
 @media(max-width:720px){.wrap{width:min(100% - 30px,560px)}.nav{height:64px}.nav-links{gap:8px}.nav-links>a:not(.btn){display:none}.nav .btn{font-size:13px;min-height:42px;padding:8px 13px}.burger{margin-left:0}.hero{padding:38px 0 26px}.hero-badge{font-size:14px;padding:10px 14px}.hero h1{font-size:clamp(36px,10.4vw,52px);margin:23px 0 17px}.hero .lead{font-size:18px;line-height:1.55}.use-grid{gap:10px}.use-card{min-height:128px;border-radius:25px;padding:14px 8px}.use-card h3{font-size:15px}.use-card .icon{font-size:25px;margin-bottom:9px}.learn-cta .btn{min-height:68px;font-size:21px}.benefit-pill{font-size:16px}.quick-points{padding:33px 14px;border-radius:28px}.quick-points .wrap{gap:30px 12px}.quick-point strong{font-size:16px}.module summary{font-size:16px}.research-grid,.story-grid{grid-template-columns:1fr}.review img{height:220px}.review-body{padding:22px}.float-cta{left:3%;right:3%;bottom:8px}.float-cta .buy{min-height:58px;font-size:19px}.float-cta .questions{width:60px;height:60px}#enrol .price-wrap{width:min(100% - 30px,560px);padding:48px 0}#enrol .price-wrap>div:first-child>p{font-size:18px}#enrol .price-wrap .micro-trust{font-size:17px}}
 @media(max-width:360px){.logo{font-size:20px}.nav{gap:9px}.nav .btn{padding:8px 10px;font-size:12px}.use-grid{gap:7px}.use-card{min-height:119px}.use-card h3{font-size:13px}.float-cta .buy{font-size:16px}.float-cta .questions{width:54px;height:54px}}
 .use-card .icon{border-radius:0;background:transparent!important;color:var(--blue);box-shadow:none}.use-card:nth-child(3n+1) .icon{color:#5bc236}.use-card:nth-child(3n+2) .icon{color:#2879ea}.use-card:nth-child(3n) .icon{color:#803df0}.incl{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:28px 0 0}.incl li{padding:10px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--navy);font-size:14px;font-weight:750}.ticks{display:grid;gap:13px;list-style:none;padding:0;margin:26px 0 0}.ticks li{display:flex;align-items:flex-start;gap:12px;color:#fff;font-size:18px;line-height:1.5}.ticks .tick{flex:0 0 24px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#65dba6;color:#fff;font-size:16px}.module .module-title{font-size:18px;line-height:1.25;font-weight:850}.module summary .bonus-tag{margin-left:5px;flex:none}.center{text-align:center}
+
+/* Mobile-first refinements for small phones */
+@media(max-width:520px){
+  html{scroll-padding-top:72px;scroll-padding-bottom:88px}
+  body{font-size:17px}
+  .wrap{width:calc(100% - 32px)}
+  .nav{height:64px;gap:8px}
+  .nav-links{gap:7px}
+  .nav .btn{min-height:44px;padding:8px 11px;font-size:12px}
+  .burger{width:42px;height:44px}
+  .hero{padding:32px 0 24px}
+  .hero-badge{max-width:100%;flex-wrap:wrap;white-space:normal;font-size:13px;line-height:1.35;padding:10px 13px}
+  .hero-badge b{font-size:19px}
+  .hero h1{font-size:clamp(35px,10vw,48px);line-height:1.04;margin:20px 0 15px}
+  .hero .lead{font-size:17px;line-height:1.55}
+  .use-cases{padding:10px 0 20px!important}
+  .use-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .use-card,.use-card:nth-child(4),.use-card:nth-child(5){grid-column:span 1;min-height:126px;padding:13px 9px;border-radius:22px}
+  .use-card:last-child{grid-column:1/-1;min-height:106px}
+  .use-card h3{font-size:16px;overflow-wrap:anywhere}
+  .learn-cta{margin-top:17px}
+  .learn-cta .btn{min-height:58px;font-size:19px}
+  .benefit-pills{margin-top:13px}
+  .benefit-pill{width:100%;font-size:15px;padding:12px 15px}
+  .quick-points{margin-top:19px;padding:28px 12px;border-radius:24px}
+  .quick-points .wrap{gap:24px 10px}
+  section.content{padding:48px 0}
+  .section-head{margin-bottom:23px}
+  .section-head h2{font-size:clamp(28px,8vw,36px)}
+  .try-card{padding:19px;border-radius:22px}
+  .demo-input{min-height:112px;font-size:16px}
+  .demo-actions{display:grid;grid-template-columns:1fr}
+  .demo-actions button{width:100%;min-height:50px;font-size:16px}
+  .tab{min-height:48px;padding:10px 15px}
+  .module summary{min-height:56px;padding:15px 16px;font-size:16px}
+  .module .module-body{padding:0 16px 16px}
+  .incl{gap:8px;margin-top:20px}
+  .incl li{font-size:13px;padding:9px 12px}
+  #enrol .price-wrap{width:calc(100% - 32px);padding:42px 0;gap:21px}
+  #enrol .price-wrap>div:first-child>p{font-size:17px}
+  #enrol .price-wrap .micro-trust{font-size:16px}
+  .ticks li{font-size:16px;gap:10px}
+  #enrol .price-card{padding:24px 18px;border-radius:23px}
+  #enrol .price{font-size:46px}
+  #enrol .price-card .btn{min-height:56px;font-size:18px}
+  .review{border-radius:23px}
+  .review img{height:190px}
+  .review-body{padding:19px}
+  .story{padding:46px 0;border-radius:24px}
+  .story-grid{gap:10px}
+  .story-card{padding:17px}
+  #faq .faq{gap:9px}
+  #faq .faq details{padding:16px}
+  #faq .faq summary{font-size:16px}
+  .final{padding:48px 0}
+  .final p{font-size:18px}
+  .final .btn{min-height:56px;padding:12px 22px;font-size:19px}
+  footer{padding:32px 0 44px}
+  footer nav{gap:12px 16px}
+  .float-cta{left:12px;right:12px;bottom:calc(8px + env(safe-area-inset-bottom));gap:8px}
+  .float-cta .buy{min-height:54px;padding:9px 12px;font-size:17px;gap:8px}
+  .float-cta .questions{width:54px;height:54px;border-radius:18px;font-size:10px}
+  #checkout-dialog{width:calc(100% - 16px);max-height:calc(94dvh - env(safe-area-inset-top));border-radius:18px}
+  .checkout-modal{padding:22px 16px}
+  .checkout-close{top:10px;right:10px}
+  .checkout-modal h2{font-size:26px}
+  .checkout-intro{font-size:14px}
+}
+@media(max-width:380px){
+  .wrap{width:calc(100% - 28px)}
+  .nav{gap:6px}
+  .logo{font-size:19px}
+  .nav .btn{padding:7px 8px;font-size:11px}
+  .burger{width:38px}
+  .hero h1{font-size:clamp(33px,9.6vw,40px)}
+  .use-card h3{font-size:15px}
+  .float-cta{left:9px;right:9px}
+  .float-cta .buy{font-size:16px}
+}
+
 </style>
 
 <style>
