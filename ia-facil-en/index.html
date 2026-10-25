@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0a6cff">
 <title>AI Made Easy | Learn to use AI in everyday life</title>
-<meta name="description" content="Learn to use artificial intelligence from scratch, without jargon and at your own pace. 13 modules, practical lessons and five extra resources.">
+<meta name="description" content="Learn artificial intelligence from scratch, without jargon. Explore 13 modules, 100 short lessons, 10 quizzes and three bonus modules.">
 <link rel="canonical" href="https://studyos-oficial.github.io/studyos/ia-facil-en/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="StudyOS">
 <meta property="og:title" content="AI Made Easy | Learn to use AI with confidence">
-<meta property="og:description" content="A practical course for using ChatGPT in everyday life. 13 modules, 130 lessons and five extra resources.">
+<meta property="og:description" content="A practical course for using ChatGPT in everyday life. Explore 13 modules, 100 short lessons, 10 quizzes and three bonus modules.">
 <meta property="og:url" content="https://studyos-oficial.github.io/studyos/ia-facil-en/">
 <style>
 :root{--navy:#0b1f4d;--blue:#0a6cff;--blue2:#0857d6;--sky:#f0f6ff;--ink:#14213d;--mut:#51607d;--line:#dbe6f7;--green:#147b58;--green-soft:#e9f7f0;--radius:22px;--shadow:0 16px 44px rgba(11,31,77,.09)}
@@ -139,6 +139,30 @@ footer{padding:42px 0;background:#0e214d;color:#c6d5f0}footer .logo{color:#fff}f
   .float-cta .buy{font-size:16px}
 }
 
+
+/* Mobile readability and course outline */
+.module-group .group-label{display:block;padding:14px 3px 2px;color:var(--blue2);font-size:12px;line-height:1.4}
+.module-group .group-label span{margin-top:3px;color:var(--mut);font-size:12px;font-weight:650;letter-spacing:0;text-transform:none}
+.module-includes{margin-top:12px;padding:12px 14px;border:1px solid #e3ecf8;border-radius:14px;background:#f5f8fd;color:var(--mut);font-size:14px;line-height:1.55}
+.module-includes strong{display:block;margin-bottom:5px;color:var(--navy);font-size:13px}
+.module-includes ul{display:grid;gap:4px;margin:0;padding-left:19px}
+.nav-cta-short{display:none}
+@media(max-width:520px){
+  body{padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+  .nav-cta{font-size:13px!important}
+  .nav-cta-short{display:inline}
+  .nav-cta-full{display:none}
+  .module-group .group-label{padding:15px 4px 3px;font-size:11px}
+  .module-includes{font-size:13px;padding:11px 12px}
+  .module-includes strong{font-size:12px}
+  .float-cta{padding:5px;border:1px solid #dbe6f7;border-radius:999px;background:#fff;box-shadow:0 7px 26px #10245224}
+}
+@media(max-width:380px){
+  .nav-cta{font-size:13px!important;padding:7px 10px!important}
+  .float-cta{left:12px;right:12px;gap:0}
+  .float-cta .questions{display:none}
+  .float-cta .buy{min-height:48px;font-size:16px}
+}
 </style>
 
 <style>
@@ -149,7 +173,7 @@ footer{padding:42px 0;background:#0e214d;color:#c6d5f0}footer .logo{color:#fff}f
 <header><div class="wrap nav">
 <a class="logo" href="#home"><span class="logo-mark" aria-hidden="true"><svg class="leaf-mark" viewBox="0 0 24 24"><path fill="#62bf42" d="M20.5 3.5C11 3.2 4.5 7.6 4.5 14.6c0 1.2.3 2.4.9 3.4C7 16 9.5 14.4 12.5 13.4c-2.7 1.3-5 3.4-6.4 6.1 1.4.8 3 1.3 4.6 1.3 6.2 0 10.8-6.5 9.8-17.3z"/></svg></span><span>StudyOS</span></a>
 <nav class="nav-links" aria-label="Main navigation"><a href="#learn">What you’ll learn</a><a href="#course">Course modules</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a></nav>
-<a class="btn" href="#checkout-dialog" data-checkout-trigger>I want to learn AI</a>
+<a class="btn nav-cta" href="#checkout-dialog" data-checkout-trigger aria-label="I want to learn AI"><span class="nav-cta-full">I want to learn AI</span><span class="nav-cta-short" aria-hidden="true">Learn AI</span></a>
 <button class="burger" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></svg></button>
 </div></header>
 <nav class="mobile-menu" id="mobileMenu" hidden aria-label="Mobile navigation"><a href="#learn">What you’ll learn</a><a href="#course">Course modules</a><a href="#how">How it works</a><a href="#reviews">Reviews</a><a href="#faq">Frequently asked questions</a></nav>
@@ -188,22 +212,22 @@ footer{padding:42px 0;background:#0e214d;color:#c6d5f0}footer .logo{color:#fff}f
 <section class="content alt" id="course"><div class="wrap"><div class="section-head"><span class="eyebrow">Course modules</span><h2>13 modules, step by step</h2><p>A complete journey from your first AI conversation to practical workflows and smarter thinking.</p></div>
 <div class="module-groups">
 <div class="module-group"><div class="group-label">01 · GETTING STARTED<span>Build the foundations</span></div><div class="module-grid">
-<article class="module"><details><summary><span class="module-title">01 · Getting started with AI</span></summary><div class="module-body"><p>Understand what AI is, what ChatGPT can do, what it cannot guarantee and how to begin with confidence.</p></div></details></article>
-<article class="module"><details><summary><span class="module-title">02 · Your first conversation with ChatGPT</span></summary><div class="module-body"><p>Make clear requests, give context, ask follow-up questions and guide a conversation towards a useful result.</p></div></details></article>
-<article class="module"><details><summary><span class="module-title">03 · Ask better questions</span></summary><div class="module-body"><p>Set a goal, provide context, add constraints and choose a format that makes an answer more useful.</p></div></details></article></div></div>
+<article class="module"><details><summary><span class="module-title">01 · Getting started with AI</span></summary><div class="module-body"><p>Get a clear picture of what AI is and how ChatGPT behaves before you rely on it. You will see where it helps, where it can be wrong, and how to start a useful conversation while staying in control.</p><div class="module-includes"><strong>Inside this module</strong><ul><li>What AI is</li><li>what ChatGPT can and cannot do</li><li>first conversations</li><li>giving AI a role</li><li>adding context</li><li>asking for a format</li><li>improving a reply</li><li>keeping control.</li></ul></div></div></details></article>
+<article class="module"><details><summary><span class="module-title">02 · Your first conversation with ChatGPT</span></summary><div class="module-body"><p>Learn how to guide ChatGPT through a conversation instead of sending one vague question. The lessons build from a clear goal to useful follow-ups and corrections.</p><div class="module-includes"><strong>Inside this module</strong><ul><li>Setting a goal</li><li>choosing who the answer is for</li><li>adding constraints</li><li>splitting tasks</li><li>follow-up questions</li><li>correcting misunderstandings</li><li>asking clarifying questions</li><li>deciding when to start a new chat.</li></ul></div></div></details></article>
+<article class="module"><details><summary><span class="module-title">03 · Ask better questions</span></summary><div class="module-body"><p>Take a prompt apart and see how each detail changes the answer. You will practise shaping the task, context and output, then improving it through examples and revision.</p><div class="module-includes"><strong>Inside this module</strong><ul><li>Task, context, boundaries and format</li><li>examples for style</li><li>alternatives</li><li>asking for a critique</li><li>systematic iteration.</li></ul></div></div></details></article></div></div>
 <div class="module-group"><div class="group-label">02 · EVERYDAY AI<span>Apply it to daily life</span></div><div class="module-grid">
-<article class="module"><details><summary><span class="module-title">04 · AI in everyday life</span></summary><div class="module-body"><p>Explore practical ideas for planning, cooking, travel, messages, organisation and everyday decisions.</p></div></details></article>
-<article class="module"><details><summary><span class="module-title">05 · Get better answers</span></summary><div class="module-body"><p>Refine a response, correct misunderstandings, change the tone and move closer to what you need.</p></div></details></article>
-<article class="module"><details><summary><span class="module-title">06 · Check information</span></summary><div class="module-body"><p>Recognise when AI may be wrong and learn ways to verify important facts before relying on them.</p></div></details></article>
-<article class="module"><details><summary><span class="module-title">07 · Privacy and safety</span></summary><div class="module-body"><p>Protect personal information, use AI responsibly and recognise when extra care is needed.</p></div></details></article></div></div>
+<article class="module"><details><summary><span class="module-title">04 · AI in everyday life</span></summary><div class="module-body"><p>See how the same AI skills apply to familiar everyday tasks, from planning a day to comparing options. Each example starts with a real need and turns it into a manageable request.</p><div class="module-includes"><strong>Inside this module</strong><ul><li>Daily plans</li><li>meal ideas</li><li>travel</li><li>messages</li><li>shopping comparisons</li><li>learning</li><li>decisions</li><li>organising information</li><li>creative ideas.</li></ul></div></div></details></article>
+<article class="module"><details><summary><span class="module-title">05 · Get better answers</span></summary><div class="module-body"><p>Learn a repeatable way to improve an answer when the first draft is not quite right. You will control detail, voice and structure, and ask for a review before using the result.</p><div class="module-includes"><strong>Inside this module</strong><ul><li>Be specific about the result</li><li>break a complex task into steps</li><li>set detail and tone</li><li>choose a structure</li><li>use examples</li><li>request a review</li><li>handle uncertainty</li><li>save reusable prompts.</li></ul></div></div></details></article>
+<article class="module"><details><summary><span class="module-title">06 · Check information</span></summary><div class="module-body"><p>AI can sound certain even when it is mistaken. This module shows how to notice warning signs and check important information before acting on it.</p><div class="module-includes"><strong>Inside this module</strong><ul><li>Confidence versus evidence</li><li>warning signs</li><li>careful source requests</li><li>facts versus assumptions</li><li>current information</li><li>two-step checks</li><li>extra care with health, money and legal topics.</li></ul></div></div></details></article>
+<article class="module"><details><summary><span class="module-title">07 · Privacy and safety</span></summary><div class="module-body"><p>Build safer habits for what you share with AI and for messages that use urgency or pressure. You will leave with a simple personal rule for handling private information.</p><div class="module-includes"><strong>Inside this module</strong><ul><li>Think before pasting</li><li>use placeholders</li><li>protect passwords and codes</li><li>handle documents carefully</li><li>spot pressure tactics</li><li>check senders independently</li><li>identify sensitive information.</li></ul></div></div></details></article></div></div>
 <div class="module-group"><div class="group-label">03 · MAKE IT A HABIT<span>Keep building your skills</span></div><div class="module-grid">
-<article class="module"><details><summary><span class="module-title">08 · Learn with AI</span></summary><div class="module-body"><p>Use ChatGPT as a patient tutor that explains ideas, gives examples, asks questions and helps you practise.</p></div></details></article>
-<article class="module"><details><summary><span class="module-title">09 · Organise your life with AI</span></summary><div class="module-body"><p>Plan tasks, structure information and turn everyday problems into manageable next steps.</p></div></details></article>
-<article class="module"><details><summary><span class="module-title">10 · Create and communicate</span></summary><div class="module-body"><p>Write, summarise, explain and generate ideas while keeping your own voice and judgement.</p></div></details></article></div></div>
+<article class="module"><details><summary><span class="module-title">08 · Learn with AI</span></summary><div class="module-body"><p>Use AI to support learning while keeping your own thinking active. The lessons move from explanations at your level to recall, feedback and progressively harder practice.</p><div class="module-includes"><strong>Inside this module</strong><ul><li>Start at your level</li><li>ask for a lesson</li><li>practise active recall</li><li>request feedback</li><li>try a different explanation</li><li>increase difficulty</li><li>organise study</li><li>avoid outsourcing your thinking.</li></ul></div></div></details></article>
+<article class="module"><details><summary><span class="module-title">09 · Organize your life with AI</span></summary><div class="module-body"><p>Turn a busy mind into a realistic plan, then review it as life changes. Examples cover routines, projects, checklists and preparing for conversations.</p><div class="module-includes"><strong>Inside this module</strong><ul><li>Capture tasks</li><li>prioritise realistically</li><li>build routines</li><li>plan projects and busy weeks</li><li>create checklists</li><li>reduce decision fatigue</li><li>prepare meetings</li><li>review and adapt.</li></ul></div></div></details></article>
+<article class="module"><details><summary><span class="module-title">10 · Create and communicate</span></summary><div class="module-body"><p>Use AI to create a first draft or explore ideas, then shape the result so it still sounds like you. The module covers common formats and a final review before sharing.</p><div class="module-includes"><strong>Inside this module</strong><ul><li>Start from your idea</li><li>draft messages</li><li>rewrite in your voice</li><li>summarise</li><li>brainstorm</li><li>prepare documents and presentations</li><li>translate</li><li>create</li><li>review before publishing.</li></ul></div></div></details></article></div></div>
 <div class="module-group"><div class="group-label">04 · BONUS MODULES<span>Go further</span></div><div class="module-grid">
-<article class="module"><details><summary><span class="module-title">11 · Beyond chat</span><span class="bonus-tag">Bonus</span></summary><div class="module-body"><p>Move beyond one-off questions and use AI as a flexible partner for more involved tasks.</p></div></details></article>
-<article class="module"><details><summary><span class="module-title">12 · Practical AI workflows</span><span class="bonus-tag">Bonus</span></summary><div class="module-body"><p>Turn useful techniques into repeatable workflows for planning, research and everyday projects.</p></div></details></article>
-<article class="module"><details><summary><span class="module-title">13 · Think smarter with AI</span><span class="bonus-tag">Bonus</span></summary><div class="module-body"><p>Challenge assumptions, explore alternatives and use AI to strengthen your reasoning.</p></div></details></article></div></div>
+<article class="module"><details><summary><span class="module-title">11 · Beyond chat</span><span class="bonus-tag">Bonus</span></summary><div class="module-body"><p>Combine prompt techniques into a deliberate conversation. You will practise setting a role and constraints, comparing alternatives and improving drafts in stages.</p><div class="module-includes"><strong>Inside this module</strong><ul><li>Work in stages</li><li>assign a role</li><li>set constraints</li><li>use examples</li><li>compare alternatives</li><li>request a critique</li><li>reuse prompt patterns</li><li>plan conversations</li><li>choose when to start a new chat.</li></ul></div></div></details></article>
+<article class="module"><details><summary><span class="module-title">12 · Practical AI workflows</span><span class="bonus-tag">Bonus</span></summary><div class="module-body"><p>Build a workflow that has clear steps and checkpoints, so a useful result is easier to repeat and review.</p><div class="module-includes"><strong>Inside this module</strong><ul><li>Define the task</li><li>plan before generating</li><li>research with questions</li><li>compare options</li><li>make checklists</li><li>create decision frameworks</li><li>review</li><li>use templates</li><li>add verification points.</li></ul></div></div></details></article>
+<article class="module"><details><summary><span class="module-title">13 · Think smarter with AI</span><span class="bonus-tag">Bonus</span></summary><div class="module-body"><p>Use AI to examine an idea from several angles before making your own judgement. The focus is on finding gaps and reducing the pull of confirmation bias.</p><div class="module-includes"><strong>Inside this module</strong><ul><li>Find hidden assumptions</li><li>argue both sides</li><li>separate facts from opinions</li><li>identify missing information</li><li>test counterexamples</li><li>question confirmation bias</li><li>review summaries</li><li>make a final judgement.</li></ul></div></div></details></article></div></div>
 </div>
 <ul class="incl"><li>🎯 10 quizzes</li><li>✍️ Ready-to-copy prompt kit</li><li>🧪 Practice exercises</li><li>🏆 Final challenge</li><li>🎓 Certificate</li><li>📱 Phone, tablet and computer</li></ul>
 </div></section>
@@ -244,7 +268,7 @@ footer{padding:42px 0;background:#0e214d;color:#c6d5f0}footer .logo{color:#fff}f
  document.getElementById("improvePrompt").addEventListener("click",improve);
  document.getElementById("examplePrompt").addEventListener("click",function(){input.value="Plan a 7-day trip to Italy for two people on a medium budget";improve()});
  const tabs=[...document.querySelectorAll('[role="tab"]')];tabs.forEach(function(tab,index){tab.addEventListener("click",function(){tabs.forEach(function(other){other.setAttribute("aria-selected",other===tab?"true":"false");other.tabIndex=other===tab?0:-1;document.getElementById(other.getAttribute("aria-controls")).hidden=other!==tab})});tab.addEventListener("keydown",function(e){if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();const next=(index+(e.key==="ArrowRight"?1:tabs.length-1))%tabs.length;tabs[next].focus();tabs[next].click()}})});
- const cta=document.getElementById("floatCta"),observeTargets=[document.querySelector(".hero"),document.getElementById("enrol"),document.querySelector(".final")].filter(Boolean);let visible=new Set();
+ const cta=document.getElementById("floatCta"),mobileReadingSections=[...document.querySelectorAll("#try,#course,#reviews,#research,.story,#faq")],observeTargets=[document.querySelector(".hero"),document.getElementById("enrol"),document.querySelector(".final"),...(window.matchMedia("(max-width:720px)").matches?mobileReadingSections:[])].filter(Boolean);let visible=new Set();
  if("IntersectionObserver"in window){const io=new IntersectionObserver(entries=>{entries.forEach(entry=>entry.isIntersecting?visible.add(entry.target):visible.delete(entry.target);cta.classList.toggle("hide",visible.size>0)},{threshold:.14});observeTargets.forEach(el=>io.observe(el))}
 })();
 </script>
