@@ -272,7 +272,7 @@ footer{padding:42px 0;background:#0e214d;color:#c6d5f0}footer .logo{color:#fff}f
     try{
       var stripe=window.Stripe("pk_live_51Ty9MHPdiAyvfYF7hGx3y3jGl5ihSgAfXuCvIDYXdAWQ1I27anY0KccFC1NfLG8W7g5weKGb1yx5SbGb3Ii4eXDB003e2GCFjJ");
       checkout=await stripe.initEmbeddedCheckout({fetchClientSecret:async function(){
-        var response=await fetch("https://studyos-private-delivery.studyos-oficial-spain.workers.dev/create-ia-facil-checkout-session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({product:"ai-made-easy"})});
+        var response=await fetch("https://studyos-private-delivery.studyos-oficial-spain.workers.dev/create-ia-facil-checkout-session?product=ai-made-easy",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({product:"ai-made-easy"})});
         var data=await response.json().catch(function(){return{}});
         if(!response.ok||typeof data.clientSecret!=="string")throw new Error(data.error||"Secure checkout could not be started.");
         return data.clientSecret;
