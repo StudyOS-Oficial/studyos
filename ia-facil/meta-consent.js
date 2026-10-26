@@ -55,5 +55,6 @@
     var c = getC();
     if (c === "granted") loadPixel(); else if (c !== "denied") show();
   }
+  if (getC() === "granted") loadPixel();
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();
