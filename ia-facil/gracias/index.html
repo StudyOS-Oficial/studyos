@@ -16,6 +16,7 @@
 .btn[hidden],#access[hidden]{display:none}
 .help{margin-top:26px;font-size:15px;opacity:.8}.help a{color:inherit;font-weight:700}
 </style>
+<script src="../meta-consent.js"></script>
 </head>
 <body>
 <main class="card">
@@ -56,6 +57,7 @@
         document.getElementById("course-link").href=data.courseUrl;
         access.hidden=false;title.textContent="¡Compra completada!";status.textContent="Pago confirmado. Aquí tienes tu contraseña y el acceso al curso.";
         document.querySelector(".icon").textContent="🎉";
+        try{window.iaMetaPurchase&&window.iaMetaPurchase(sessionId)}catch(e){}
         try{sessionStorage.removeItem(sessionKey)}catch(e){}
         busy=false;return
       }catch(error){

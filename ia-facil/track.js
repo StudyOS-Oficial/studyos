@@ -26,7 +26,7 @@ var last="",lastT=0;
 addEventListener("click",function(e){
  var a=e.target.closest&&e.target.closest("a,button");if(!a)return;var l="";
  if(a.tagName==="A"){var h=a.getAttribute("href")||"";
-  if(/buy\.stripe\.com/.test(a.href))l="buy_stripe";
+  if(a.hasAttribute("data-checkout-trigger")||/buy\.stripe\.com/.test(a.href))l="buy_stripe";
   else if(h.charAt(0)==="#")l="anchor:"+h.slice(1);
   else if(/modulo-(\d+)/.test(h))l="module_"+h.match(/modulo-(\d+)/)[1];
   else if(a.protocol==="mailto:")l="mail";
