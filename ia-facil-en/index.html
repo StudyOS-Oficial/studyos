@@ -200,10 +200,12 @@ footer{padding:42px 0;background:#0e214d;color:#c6d5f0}footer .logo{color:#fff}f
 <script src="../ia-facil/meta-consent.js"></script><script src="../ia-facil/track.js"></script>
 
 <style>
-/* Mobile viewport width fix */
-html, body { width:100%; max-width:none; min-width:0; }
-body { overflow-x:hidden; }
+/* Keep the document within the phone viewport; carousels scroll inside their own track. */
+html, body { width:100%; max-width:100%; min-width:0; overflow-x:hidden; }
+body { position:relative; }
 header, main, footer { width:100%; max-width:none; }
+main { min-width:0; }
+main > * { min-width:0; }
 </style>
 
 <style>
@@ -335,7 +337,7 @@ header, main, footer { width:100%; max-width:none; }
  document.getElementById("improvePrompt").addEventListener("click",improve);
  document.getElementById("examplePrompt").addEventListener("click",function(){input.value="Plan a 7-day trip to Italy for two people on a medium budget";improve()});
  const tabs=[...document.querySelectorAll('[role="tab"]')];tabs.forEach(function(tab,index){tab.addEventListener("click",function(){tabs.forEach(function(other){other.setAttribute("aria-selected",other===tab?"true":"false");other.tabIndex=other===tab?0:-1;document.getElementById(other.getAttribute("aria-controls")).hidden=other!==tab})});tab.addEventListener("keydown",function(e){if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();const next=(index+(e.key==="ArrowRight"?1:tabs.length-1))%tabs.length;tabs[next].focus();tabs[next].click()}})});
- const cta=document.getElementById("floatCta"),mobileReadingSections=[...document.querySelectorAll("#try,#course,#reviews,#research,.story,#faq")],observeTargets=[document.querySelector(".hero"),document.getElementById("enrol"),document.querySelector(".final"),...(window.matchMedia("(max-width:720px)").matches?mobileReadingSections:[])].filter(Boolean);let visible=new Set();
+ const cta=document.getElementById("floatCta"),observeTargets=[document.querySelector(".hero"),document.getElementById("enrol"),document.querySelector(".final")].filter(Boolean);let visible=new Set();
  if("IntersectionObserver"in window){
    const io=new IntersectionObserver(entries=>{
      entries.forEach(entry=>{
