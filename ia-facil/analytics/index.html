@@ -16,7 +16,7 @@ button,input,select{font:inherit}button{cursor:pointer}
 .live{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #cfe9df;border-radius:999px;color:#167c60;background:#f0fbf6;font-size:12px;font-weight:800}.live i{width:7px;height:7px;border-radius:50%;background:#1eb980;box-shadow:0 0 0 4px #1eb9801f}
 .intro{margin:0 0 18px}.intro .eyebrow{color:var(--blue);font-weight:850;letter-spacing:.1em;text-transform:uppercase;font-size:11px}.intro h2{margin:5px 0 7px;font-size:clamp(25px,4vw,36px);letter-spacing:-.045em;line-height:1.12}.intro p{max-width:760px;margin:0;color:var(--muted)}
 .panel,.card{background:var(--surface);border:1px solid #e9eef6;border-radius:18px;box-shadow:var(--shadow)}
-.filters{padding:16px;display:grid;grid-template-columns:minmax(180px,1.4fr) repeat(3,minmax(130px,.7fr)) auto;align-items:end;gap:11px;margin:20px 0 10px}
+.filters{padding:16px;display:grid;grid-template-columns:minmax(180px,1.4fr) repeat(5,minmax(110px,.65fr)) auto;align-items:end;gap:11px;margin:20px 0 10px}
 .field{display:grid;gap:5px;color:#68758e;font-size:11px;font-weight:750;letter-spacing:.02em}.field input,.field select{width:100%;min-height:42px;padding:9px 11px;color:var(--ink);border:1px solid var(--line);border-radius:10px;background:#fbfcfe;outline:none}.field input:focus,.field select:focus{border-color:#769cff;box-shadow:0 0 0 3px #356df31c}
 .primary{min-height:42px;padding:0 18px;background:var(--navy);border:0;border-radius:10px;color:#fff;font-weight:800;white-space:nowrap;box-shadow:0 6px 16px #101a3320}.primary:hover{background:#23365d}
 .filter-bottom{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:0 2px 25px;color:var(--muted);font-size:11px}.filter-bottom span:last-child{text-align:right}
@@ -52,10 +52,12 @@ footer{margin:32px 0 0;padding-top:18px;border-top:1px solid #e2e8f2;color:#8490
     <label class="field">Token de acceso<input id="tk" type="password" placeholder="Introduce el token" autocomplete="off"></label>
     <label class="field">Desde<input id="from" type="date"></label>
     <label class="field">Hasta<input id="to" type="date"></label>
+    <label class="field">Desde la hora<select id="hourFrom"></select></label>
+    <label class="field">Hasta la hora<select id="hourTo"></select></label>
     <label class="field">Landing<select id="landing"><option value="all">Española e inglesa</option><option value="es">Española</option><option value="en">Inglesa</option></select></label>
     <button class="primary" id="go">Actualizar datos</button>
   </section>
-  <div class="filter-bottom"><span>Intervalo máximo: 365 días. Los visitantes se expresan como visitantes-día porque no se guardan identificadores personales.</span><span id="status" class="status" role="status" aria-live="polite"></span></div>
+  <div class="filter-bottom"><span>Intervalo máximo: 365 días. En horas parciales se muestran eventos agregados por hora; el histórico horario empieza con esta versión.</span><span id="status" class="status" role="status" aria-live="polite"></span></div>
 
   <section id="overview">
     <div class="section-head"><div><h3>Resumen del periodo</h3><p id="period">Elige un intervalo y carga los datos.</p></div></div>
@@ -272,11 +274,26 @@ function renderOther(rows){
 }
 function render(rows,from,to){
   const selected=$("landing").value,langs=selected==="all"?["es","en"]:[selected];
-  $("period").textContent=from+" — "+to+" · "+(selected==="all"?"ambas landings":selected==="en"?"landing inglesa":"landing española");
+  const hours=$("hourFrom").value+":00–"+$("hourTo").value+":59";
+  $("period").textContent=from+" — "+to+" · "+hours+" · "+(selected==="all"?"ambas landings":selected==="en"?"landing inglesa":"landing española");
   buildKpis(rows,langs);renderCompare(rows,langs);renderChart(rows,langs,from,to);renderFunnel(rows,langs);
   renderAds(rows,langs);renderSources(rows,langs);renderEngagement(rows,langs);renderContext(rows);renderOther(rows);
 }
 const today=dateYmd(new Date());
+for(let h=0;h<24;h++){const v=String(h).padStart(2,"0");$("hourFrom").append(new Option(v+":00",v));$("hourTo").append(new Option(v+":00",v))}
+$("hourFrom").value="00";$("hourTo").value="23";
+function rowsForSelection(from,to){
+  const raw=allRows.filter(x=>x.day>=from&&x.day<=to),start=Number($("hourFrom").value),end=Number($("hourTo").value);
+  if(start===0&&end===23)return raw.filter(x=>x.kind!=="hr");
+  const grouped=new Map();
+  raw.filter(x=>x.kind==="hr").forEach(x=>{
+    const bits=String(x.key||"").split("|");if(bits.length<3)return;
+    const hour=Number(bits.shift()),kind=bits.shift(),key=bits.join("|");if(hour<start||hour>end)return;
+    const id=x.day+"|"+kind+"|"+key;let a=grouped.get(id);if(!a){a={day:x.day,s:x.s,kind,key,total:0,uniq:0};grouped.set(id,a)}
+    a.total+=Number(x.total)||0;a.uniq+=Number(x.uniq)||0;
+  });
+  return Array.from(grouped.values());
+}
 $("from").max=today;$("to").max=today;$("from").min=shift(today,-364);$("to").min=shift(today,-364);
 $("to").value=today;$("from").value=shift(today,-29);
 $("go").onclick=async()=>{
@@ -284,6 +301,7 @@ $("go").onclick=async()=>{
   try{
     const from=$("from").value,to=$("to").value;
     if(!from||!to)throw Error("Selecciona las fechas de inicio y fin.");
+    if(Number($("hourFrom").value)>Number($("hourTo").value))throw Error("La hora inicial debe ser anterior a la hora final.");
     if(from>to)throw Error("La fecha inicial debe ser anterior a la fecha final.");
     if(to>today)throw Error("La fecha final no puede estar en el futuro.");
     const span=Math.floor((Date.parse(today+"T12:00:00")-Date.parse(from+"T12:00:00"))/864e5)+1;
@@ -292,12 +310,13 @@ $("go").onclick=async()=>{
     if(res.status===401)throw Error("Token de acceso incorrecto.");
     if(!res.ok)throw Error("Cloudflare devolvió un error ("+res.status+").");
     const payload=await res.json();allRows=Array.isArray(payload.rows)?payload.rows:[];
-    const rows=allRows.filter(x=>x.day>=from&&x.day<=to);
+    const rows=rowsForSelection(from,to);
     render(rows,from,to);$("status").textContent="Actualizado · "+fmt(rows.length)+" grupos de datos";
   }catch(e){$("status").textContent=e.message}
   finally{$("go").disabled=false}
 };
-$("landing").onchange=()=>{if(allRows.length)render(allRows.filter(x=>x.day>=$("from").value&&x.day<=$("to").value),$("from").value,$("to").value)};
+function rerenderLocal(){if(allRows.length)render(rowsForSelection($("from").value,$("to").value),$("from").value,$("to").value)}
+$("landing").onchange=rerenderLocal;$("hourFrom").onchange=rerenderLocal;$("hourTo").onchange=rerenderLocal;
 </script>
 </body>
 </html>
