@@ -1,122 +1,303 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive"><title>IA fácil · Analítica</title>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#101a33">
+<title>IA Fácil · Analytics</title>
 <style>
-:root{--bg:#faf7f2;--fg:#222;--card:#fff;--mut:#777;--ac:#e0763b;--ln:#eee}
-@media(prefers-color-scheme:dark){:root{--bg:#161616;--fg:#eee;--card:#212121;--mut:#999;--ln:#333}}
-body{margin:0;font:15px system-ui,sans-serif;background:var(--bg);color:var(--fg);padding:16px;max-width:900px;margin:auto}
-h1{font-size:20px}h2{font-size:17px;margin:26px 0 8px}.card{background:var(--card);border-radius:12px;padding:14px;margin:8px 0;overflow-x:auto}
-.kpi{display:flex;flex-wrap:wrap;gap:8px}.kpi div{flex:1 1 130px;background:var(--card);border-radius:12px;padding:12px}.kpi b{font-size:24px;display:block}
-.mut{color:var(--mut);font-size:13px}table{width:100%;border-collapse:collapse}td,th{padding:6px 4px;border-bottom:1px solid var(--ln);text-align:left}td.n,th.n{text-align:right}
-.bar{background:var(--ln);border-radius:6px;height:10px;min-width:80px}.bar i{display:block;height:10px;border-radius:6px;background:var(--ac)}
-input,select,button{font:inherit;padding:8px;border-radius:8px;border:1px solid var(--ln)}button{background:var(--ac);color:#fff;border:0;cursor:pointer}
-.filters{display:flex;flex-wrap:wrap;align-items:end;gap:10px}.field{display:grid;gap:4px;font-size:13px;color:var(--mut)}.field input,.field select{min-width:145px;background:var(--card);color:var(--fg)}.filters button{min-height:39px}.filters #msg{flex:1 1 100%}code{font:inherit;font-weight:700;color:var(--fg)}
-</style></head><body>
-<h1>IA fácil · Analítica anónima</h1>
-<p class="mut">Sin cookies ni identificadores. Los «visitantes» son únicos por día (un mismo visitante en dos días cuenta dos veces).</p>
-<div class="card filters">
-  <label class="field">Token de acceso<input id="tk" type="password" placeholder="Token de acceso" autocomplete="off"></label>
-  <label class="field">Desde<input id="from" type="date"></label>
-  <label class="field">Hasta<input id="to" type="date"></label>
-  <label class="field">Intervalo rápido<select id="preset"><option value="7">7 días</option><option value="30" selected>30 días</option><option value="90">90 días</option><option value="365">365 días</option><option value="custom">Personalizado</option></select></label>
-  <button id="go">Ver estadísticas</button><span id="msg" class="mut" role="status" aria-live="polite"></span>
-</div>
-<p class="mut">El intervalo admite hasta 365 días. Los visitantes se cuentan como visitantes-día. Para separar dos anuncios, usa el mismo <code>utm_campaign</code> y un <code>utm_content</code> distinto para cada uno, por ejemplo <code>anuncio_1</code> y <code>anuncio_2</code>.</p>
-<div id="out"></div>
+:root{color-scheme:light;--ink:#14213d;--muted:#66738d;--line:#e2e8f2;--surface:#fff;--bg:#f4f7fc;--navy:#101a33;--blue:#356df3;--blue2:#739cff;--green:#20a781;--amber:#f2a844;--shadow:0 14px 42px #233a6510}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#eef3fc 0,#f7f9fd 310px,var(--bg) 100%);color:var(--ink);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}
+.shell{width:min(1240px,calc(100% - 36px));margin:0 auto;padding:28px 0 56px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 24px}
+.brand{display:flex;align-items:center;gap:13px}.brand-mark{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;background:linear-gradient(145deg,#4f83ff,#2754d8);box-shadow:0 10px 24px #356df342;color:#fff;font-size:20px;font-weight:900}
+.brand h1{font-size:21px;line-height:1.15;margin:0;letter-spacing:-.03em}.brand p{margin:4px 0 0;color:var(--muted);font-size:12px}
+.live{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #cfe9df;border-radius:999px;color:#167c60;background:#f0fbf6;font-size:12px;font-weight:800}.live i{width:7px;height:7px;border-radius:50%;background:#1eb980;box-shadow:0 0 0 4px #1eb9801f}
+.intro{margin:0 0 18px}.intro .eyebrow{color:var(--blue);font-weight:850;letter-spacing:.1em;text-transform:uppercase;font-size:11px}.intro h2{margin:5px 0 7px;font-size:clamp(25px,4vw,36px);letter-spacing:-.045em;line-height:1.12}.intro p{max-width:760px;margin:0;color:var(--muted)}
+.panel,.card{background:var(--surface);border:1px solid #e9eef6;border-radius:18px;box-shadow:var(--shadow)}
+.filters{padding:16px;display:grid;grid-template-columns:minmax(180px,1.4fr) repeat(3,minmax(130px,.7fr)) auto;align-items:end;gap:11px;margin:20px 0 10px}
+.field{display:grid;gap:5px;color:#68758e;font-size:11px;font-weight:750;letter-spacing:.02em}.field input,.field select{width:100%;min-height:42px;padding:9px 11px;color:var(--ink);border:1px solid var(--line);border-radius:10px;background:#fbfcfe;outline:none}.field input:focus,.field select:focus{border-color:#769cff;box-shadow:0 0 0 3px #356df31c}
+.primary{min-height:42px;padding:0 18px;background:var(--navy);border:0;border-radius:10px;color:#fff;font-weight:800;white-space:nowrap;box-shadow:0 6px 16px #101a3320}.primary:hover{background:#23365d}
+.filter-bottom{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:0 2px 25px;color:var(--muted);font-size:11px}.filter-bottom span:last-child{text-align:right}
+.status{font-weight:750;color:var(--blue)}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 0 11px}.section-head h3{font-size:16px;letter-spacing:-.02em;margin:0}.section-head p{margin:3px 0 0;color:var(--muted);font-size:12px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.kpi{padding:16px 17px;position:relative;overflow:hidden}.kpi:after{content:"";position:absolute;width:76px;height:76px;right:-24px;top:-31px;border-radius:50%;background:#edf3ff}.kpi .label{font-size:11px;color:var(--muted);font-weight:750;position:relative;z-index:1}.kpi .value{font-size:29px;font-weight:900;letter-spacing:-.05em;line-height:1.2;margin:9px 0 4px;position:relative;z-index:1}.kpi .hint{font-size:11px;color:var(--muted)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px}.landing-card{padding:18px}.landing-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.landing-title h4{font-size:14px;margin:0}.tag{font-size:10px;font-weight:850;padding:4px 8px;border-radius:999px;color:#345fc5;background:#edf3ff}.mini-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.mini-kpis div{padding:10px;background:#f7f9fd;border-radius:11px}.mini-kpis b{display:block;font-size:20px;letter-spacing:-.04em}.mini-kpis span{color:var(--muted);font-size:10px}
+.twocol{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,.9fr);gap:14px}
+.chart-card{padding:18px 20px}.legend{display:flex;gap:16px;align-items:center;color:var(--muted);font-size:11px}.legend span{display:inline-flex;align-items:center;gap:6px}.legend i{width:9px;height:9px;border-radius:50%;background:var(--blue)}.legend i.amber{background:var(--amber)}
+.chart{width:100%;height:230px;display:block;overflow:visible}.gridline{stroke:#e9eef6;stroke-width:1}.axis{fill:#8490a6;font:10px system-ui,sans-serif}.area{fill:url(#viewsGrad);opacity:.26}.views-line{fill:none;stroke:var(--blue);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.buy-bar{fill:var(--amber);opacity:.8}
+.funnel{padding:18px}.funnel-row{margin:14px 0}.funnel-meta{display:flex;justify-content:space-between;gap:12px;font-size:12px}.funnel-meta strong{font-size:12px}.funnel-meta span{color:var(--muted)}.track{height:9px;background:#edf1f7;border-radius:99px;margin-top:7px;overflow:hidden}.track i{height:100%;display:block;border-radius:99px;background:linear-gradient(90deg,#3971f5,#7aa1ff)}
+.tables{display:grid;grid-template-columns:1fr 1fr;gap:14px}.table-card{padding:16px;min-width:0}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:520px;font-size:12px}th{color:#76829a;font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:800}th,td{padding:10px 8px;text-align:left;border-bottom:1px solid #edf0f5;white-space:nowrap}td.num,th.num{text-align:right}.empty{padding:17px;border:1px dashed #dbe3f0;border-radius:12px;color:var(--muted);font-size:12px;text-align:center}
+.data-note{padding:13px 15px;margin-top:14px;color:#596681;background:#eef3fc;border-radius:12px;font-size:11px}.path{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#253859}
+footer{margin:32px 0 0;padding-top:18px;border-top:1px solid #e2e8f2;color:#8490a6;font-size:11px;display:flex;justify-content:space-between;gap:12px}
+@media(max-width:900px){.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.filters .primary{width:100%}.twocol{grid-template-columns:1fr}.tables{grid-template-columns:1fr}}
+@media(max-width:620px){.shell{width:min(100% - 22px,1240px);padding-top:18px}.top{align-items:flex-start}.live{font-size:10px;padding:7px 9px}.brand-mark{width:40px;height:40px}.brand h1{font-size:18px}.intro h2{font-size:27px}.filters{padding:12px;grid-template-columns:1fr 1fr;gap:9px}.filters .field:first-child{grid-column:1/-1}.filters .primary{grid-column:1/-1}.filter-bottom{display:block}.filter-bottom span:last-child{display:block;margin-top:5px;text-align:left}.kpis{grid-template-columns:1fr 1fr;gap:9px}.kpi{padding:13px}.kpi .value{font-size:25px}.split{grid-template-columns:1fr}.chart-card,.funnel{padding:14px}.chart{height:190px}.mini-kpis b{font-size:18px}footer{flex-direction:column}}
+</style>
+</head>
+<body>
+<main class="shell">
+  <header class="top">
+    <div class="brand"><div class="brand-mark" aria-hidden="true">IA</div><div><h1>IA Fácil Analytics</h1><p>Rendimiento de tus landings y anuncios</p></div></div>
+    <div class="live"><i></i> DATOS DE CLOUDFLARE</div>
+  </header>
+  <section class="intro">
+    <div class="eyebrow">Panel de rendimiento</div>
+    <h2>Entiende qué atrae visitas y qué las convierte.</h2>
+    <p>Compara la landing española y la inglesa, revisa las fuentes reales de entrada y mide cada anuncio con sus etiquetas UTM.</p>
+  </section>
+
+  <section class="panel filters" aria-label="Filtros del panel">
+    <label class="field">Token de acceso<input id="tk" type="password" placeholder="Introduce el token" autocomplete="off"></label>
+    <label class="field">Desde<input id="from" type="date"></label>
+    <label class="field">Hasta<input id="to" type="date"></label>
+    <label class="field">Landing<select id="landing"><option value="all">Española e inglesa</option><option value="es">Española</option><option value="en">Inglesa</option></select></label>
+    <button class="primary" id="go">Actualizar datos</button>
+  </section>
+  <div class="filter-bottom"><span>Intervalo máximo: 365 días. Los visitantes se expresan como visitantes-día porque no se guardan identificadores personales.</span><span id="status" class="status" role="status" aria-live="polite"></span></div>
+
+  <section id="overview">
+    <div class="section-head"><div><h3>Resumen del periodo</h3><p id="period">Elige un intervalo y carga los datos.</p></div></div>
+    <div class="kpis" id="kpis"></div>
+  </section>
+
+  <section id="compare-section">
+    <div class="section-head"><div><h3>Comparación de landings</h3><p>Mismas fechas, métricas separadas por página de entrada.</p></div></div>
+    <div class="split" id="compare"></div>
+  </section>
+
+  <section class="twocol">
+    <div>
+      <div class="section-head"><div><h3>Evolución diaria</h3><p>Visitas y clics en Stripe por día.</p></div><div class="legend"><span><i></i>Visitas</span><span><i class="amber"></i>Clics</span></div></div>
+      <div class="card chart-card" id="chart"></div>
+    </div>
+    <div>
+      <div class="section-head"><div><h3>Embudo de interés</h3><p>Hasta el inicio del pago; no representa compras confirmadas.</p></div></div>
+      <div class="card funnel" id="funnel"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><div><h3>Rendimiento de anuncios</h3><p>Campaña y creatividad detectadas en cada URL de entrada.</p></div></div>
+    <div class="tables" id="ads"></div>
+  </section>
+
+  <section>
+    <div class="section-head"><div><h3>¿De dónde vienen?</h3><p>URL de referencia sin parámetros de consulta ni fragmentos; también se muestran UTMs cuando existen.</p></div></div>
+    <div class="tables" id="sources"></div>
+  </section>
+
+  <section>
+    <div class="section-head"><div><h3>Interacción con la página</h3><p>Secciones vistas y elementos pulsados.</p></div></div>
+    <div class="tables" id="engagement"></div>
+  </section>
+
+  <section>
+    <div class="section-head"><div><h3>Contexto general</h3><p>Dispositivo y país proceden de agregados de Cloudflare y no se atribuyen a una landing concreta.</p></div></div>
+    <div class="tables" id="context"></div>
+  </section>
+
+  <div class="data-note" id="other"></div>
+  <footer><span>IA Fácil · Analítica agregada en Cloudflare D1.</span><span>Las etiquetas de anuncio nuevas empiezan a contar desde que se instala esta versión del rastreador.</span></footer>
+</main>
 <script>
-const API="https://cursoia.studyos-oficial-spain.workers.dev/stats", $=id=>document.getElementById(id);
-function el(t,txt,cls){const e=document.createElement(t);if(txt!=null)e.textContent=txt;if(cls)e.className=cls;return e}
-function build(rows){
-  const M={};for(const r of rows){const k=r.s+"|"+r.kind+"|"+r.key,m=M[k]||(M[k]={total:0,uniq:0});m.total+=r.total;m.uniq+=r.uniq}
-  const g=(s,kind,key)=>M[s+"|"+kind+"|"+key]||{total:0,uniq:0};
-  const list=(s,kind,pre)=>Object.keys(M).filter(k=>k.startsWith(s+"|"+kind+"|"+pre)).map(k=>({key:k.split("|").slice(2).join("|").slice(pre.length),...M[k]})).sort((a,b)=>b.uniq-a.uniq);
-  return {g,list}
-}
-const pct=(a,b)=>b?Math.round(a/b*1000)/10+"%":"–";
-function bar(p){const d=el("div",null,"bar"),i=el("i");i.style.width=Math.min(100,p||0)+"%";d.append(i);return d}
-function table(head,rows){const t=el("table"),h=el("tr");head.forEach((x,i)=>h.append(el("th",x,i?"n":"")));t.append(h);
-  rows.forEach(r=>{const tr=el("tr");r.forEach((c,i)=>{const td=el("td",null,i?"n":"");c instanceof Node?td.append(c):td.textContent=c;tr.append(td)});t.append(tr)});
-  const c=el("div",null,"card");c.append(t);return c}
-function kpis(items){const k=el("div",null,"kpi");items.forEach(([l,v])=>{const d=el("div");d.append(el("b",v),el("span",l,"mut"));k.append(d)});return k}
+const API="https://cursoia.studyos-oficial-spain.workers.dev/stats";
+const $=id=>document.getElementById(id);
+const NS="http://www.w3.org/2000/svg";
+let allRows=[];
+function elem(tag,text,cls){const e=document.createElement(tag);if(text!==undefined&&text!==null)e.textContent=text;if(cls)e.className=cls;return e}
+function clear(id){$(id).replaceChildren()}
+function dateYmd(d){return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-")}
+function shift(ymd,n){const d=new Date(ymd+"T12:00:00");d.setDate(d.getDate()+n);return dateYmd(d)}
 function routeOf(key){return String(key||"").split("|",1)[0]}
-function routeLang(path){
+function languageFor(path){
   if(path==="/en"||path==="/en/"||path==="/-en"||path==="/-en/")return "en";
   if(path==="/")return "es";
   return "";
 }
-function normalizeLandingRows(rows,lang){
-  return rows.filter(r=>r.s==="landing"&&routeLang(routeOf(r.key))===lang).map(r=>{
-    if(lang!=="en")return r;
-    const p=routeOf(r.key),suffix=String(r.key||"").slice(p.length);
-    const normalized=p.replace(/^\/-en(?=\/|$)/,"/en");
-    return {...r,key:normalized+suffix};
+function pageRows(rows,lang){return rows.filter(r=>r.s==="landing"&&languageFor(routeOf(r.key))===lang).map(r=>{
+  if(lang!=="en")return r;
+  const p=routeOf(r.key);if(p!=="/-en"&&p!=="/-en/")return r;
+  const suffix=String(r.key||"").slice(p.length);return {...r,key:"/en/"+suffix};
+})}
+function eventOf(r){const i=String(r.key||"").indexOf("|");return i<0?"":r.key.slice(i+1)}
+function aggregate(rows){
+  const m=new Map();
+  rows.forEach(r=>{const id=r.s+"|"+r.kind+"|"+r.key;let x=m.get(id);if(!x){x={total:0,uniq:0};m.set(id,x)}x.total+=Number(r.total)||0;x.uniq+=Number(r.uniq)||0});
+  const get=(s,k,key)=>m.get(s+"|"+k+"|"+key)||{total:0,uniq:0};
+  return {get,all:m};
+}
+function sum(rows,kind,key){return rows.filter(r=>r.kind===kind&&r.key===key).reduce((a,r)=>({total:a.total+(Number(r.total)||0),uniq:a.uniq+(Number(r.uniq)||0)}),{total:0,uniq:0})}
+function pct(a,b){return b?Math.round(a/b*1000)/10+"%":"—"}
+function fmt(n){return (Number(n)||0).toLocaleString("es-ES")}
+function box(label,value,hint){const d=elem("div",null,"card kpi");d.append(elem("div",label,"label"),elem("div",fmt(value),"value"),elem("div",hint||"","hint"));return d}
+function buildKpis(rows,langs){
+  clear("kpis");
+  const data=langs.map(x=>({lang:x,rows:pageRows(rows,x)}));
+  const views=data.reduce((a,x)=>a+sum(x.rows,"pv",x.lang==="en"?"/en/":"/").total,0);
+  const visitors=data.reduce((a,x)=>a+sum(x.rows,"pv",x.lang==="en"?"/en/":"/").uniq,0);
+  const buys=data.reduce((a,x)=>a+sum(x.rows,"click",(x.lang==="en"?"/en/":"/")+"|buy_stripe").total,0);
+  const uniqueBuys=data.reduce((a,x)=>a+sum(x.rows,"click",(x.lang==="en"?"/en/":"/")+"|buy_stripe").uniq,0);
+  $("kpis").append(box("Visitas a la landing",views,"Vistas registradas en el periodo"),box("Visitantes-día",visitors,"Una persona en varios días cuenta por día"),box("Clics en Stripe",buys,fmt(uniqueBuys)+" visitantes-día con clic"),box("Tasa de clic a Stripe",pct(uniqueBuys,visitors),"Intención de compra, no compra confirmada"));
+}
+function landingCard(rows,lang,label){
+  const root=lang==="en"?"/en/":"/",v=sum(rows,"pv",root),b=sum(rows,"click",root+"|buy_stripe");
+  const d=elem("div",null,"card landing-card"),head=elem("div",null,"landing-title");
+  head.append(elem("h4",label),elem("span","LANDING "+(lang==="en"?"EN":"ES"),"tag"));
+  const m=elem("div",null,"mini-kpis");
+  [[v.total,"Visitas"],[v.uniq,"Visitantes-día"],[b.uniq,"Clics Stripe · únicos"]].forEach(x=>{const a=elem("div");a.append(elem("b",fmt(x[0])),elem("span",x[1]));m.append(a)});
+  d.append(head,m,elem("div","Tasa de clic en Stripe: "+pct(b.uniq,v.uniq),"data-note"));return d;
+}
+function renderCompare(rows,langs){
+  clear("compare");$("compare-section").hidden=langs.length<2;
+  if(langs.length<2)return;
+  $("compare").append(landingCard(rows,"es","Landing española"),landingCard(rows,"en","Landing inglesa"));
+}
+function seriesFor(rows,langs,from,to){
+  const days={},buyKey=(lang)=>lang==="en"?"/en/|buy_stripe":"/|buy_stripe";
+  for(let day=from;day<=to;day=shift(day,1))days[day]={views:0,buys:0};
+  langs.forEach(lang=>pageRows(rows,lang).forEach(r=>{
+    const path=routeOf(r.key);
+    if(r.kind==="pv"&&(path===(lang==="en"?"/en/":"/")))days[r.day]=(days[r.day]||{views:0,buys:0}),days[r.day].views+=Number(r.total)||0;
+    if(r.kind==="click"&&r.key===buyKey(lang))days[r.day]=(days[r.day]||{views:0,buys:0}),days[r.day].buys+=Number(r.total)||0;
+  }));
+  return Object.keys(days).sort().map(day=>({day,...days[day]}));
+}
+function renderChart(rows,langs,from,to){
+  const host=$("chart");host.replaceChildren();const s=seriesFor(rows,langs,from,to);
+  if(!s.length){host.append(elem("div","No hay visitas para este periodo.","empty"));return}
+  const w=740,h=230,p={l:38,r:16,t:14,b:30},iw=w-p.l-p.r,ih=h-p.t-p.b,maxV=Math.max(1,...s.map(x=>x.views)),maxB=Math.max(1,...s.map(x=>x.buys));
+  const svg=document.createElementNS(NS,"svg");svg.setAttribute("viewBox","0 0 "+w+" "+h);svg.setAttribute("class","chart");svg.setAttribute("role","img");svg.setAttribute("aria-label","Visitas y clics de Stripe por día");
+  const defs=document.createElementNS(NS,"defs"),grad=document.createElementNS(NS,"linearGradient");grad.setAttribute("id","viewsGrad");grad.setAttribute("x1","0");grad.setAttribute("x2","0");grad.setAttribute("y1","0");grad.setAttribute("y2","1");
+  const st1=document.createElementNS(NS,"stop");st1.setAttribute("offset","0%");st1.setAttribute("stop-color","#356df3");st1.setAttribute("stop-opacity",".35");
+  const st2=document.createElementNS(NS,"stop");st2.setAttribute("offset","100%");st2.setAttribute("stop-color","#356df3");st2.setAttribute("stop-opacity","0");
+  grad.append(st1,st2);defs.append(grad);svg.append(defs);
+  for(let i=0;i<4;i++){const y=p.t+ih*i/3,line=document.createElementNS(NS,"line");line.setAttribute("x1",p.l);line.setAttribute("x2",w-p.r);line.setAttribute("y1",y);line.setAttribute("y2",y);line.setAttribute("class","gridline");svg.append(line);const tx=document.createElementNS(NS,"text");tx.setAttribute("x",p.l-8);tx.setAttribute("y",y+3);tx.setAttribute("text-anchor","end");tx.setAttribute("class","axis");tx.textContent=String(Math.round(maxV*(1-i/3)));svg.append(tx)}
+  const pts=s.map((x,i)=>({x:p.l+(s.length===1?iw/2:i*iw/(s.length-1)),y:p.t+ih-(x.views/maxV)*ih,datum:x}));
+  const d=pts.map((q,i)=>(i?"L":"M")+q.x+" "+q.y).join(" "),area=d+" L "+pts[pts.length-1].x+" "+(p.t+ih)+" L "+pts[0].x+" "+(p.t+ih)+" Z";
+  const a=document.createElementNS(NS,"path");a.setAttribute("d",area);a.setAttribute("class","area");svg.append(a);
+  s.forEach((x,i)=>{const q=pts[i],bar=document.createElementNS(NS,"rect"),bh=(x.buys/maxB)*22;bar.setAttribute("x",q.x-3);bar.setAttribute("y",p.t+ih-bh);bar.setAttribute("width",Math.max(2,Math.min(6,iw/Math.max(s.length,1)*.55)));bar.setAttribute("height",bh);bar.setAttribute("rx",3);bar.setAttribute("class","buy-bar");svg.append(bar)});
+  const line=document.createElementNS(NS,"path");line.setAttribute("d",d);line.setAttribute("class","views-line");svg.append(line);
+  pts.forEach((q,i)=>{if(i===0||i===pts.length-1||i===Math.floor(pts.length/2)){const tx=document.createElementNS(NS,"text");tx.setAttribute("x",q.x);tx.setAttribute("y",h-8);tx.setAttribute("text-anchor","middle");tx.setAttribute("class","axis");tx.textContent=q.datum.day.slice(5);svg.append(tx)}});
+  host.append(svg,elem("div","Barras ámbar: clics diarios en escala secundaria para comparar su tendencia.","hint"));
+}
+function renderFunnel(rows,langs){
+  const f=$("funnel");f.replaceChildren();
+  const steps=[["Vistas de landing","pv",null],["Llega al 50%","scroll",50],["Ve la oferta","section","oferta"],["Clic en Stripe","click","buy_stripe"]];
+  const vals=steps.map(step=>langs.reduce((n,lang)=>{
+    const root=lang==="en"?"/en/":"/",r=pageRows(rows,lang);
+    if(step[1]==="pv")return n+sum(r,"pv",root).uniq;
+    if(step[1]==="scroll")return n+sum(r,"scroll",root+"|"+step[2]).uniq;
+    if(step[1]==="section")return n+sum(r,"section",root+"|"+(lang==="en"?"enrol":"oferta")).uniq;
+    return n+sum(r,"click",root+"|"+step[2]).uniq;
+  },0));
+  const peak=Math.max(1,vals[0]||0);
+  steps.forEach((step,i)=>{const row=elem("div",null,"funnel-row"),meta=elem("div",null,"funnel-meta");meta.append(elem("strong",step[0]),elem("span",fmt(vals[i])+" · "+pct(vals[i],peak)));const tr=elem("div",null,"track"),fill=elem("i");fill.style.width=Math.min(100,vals[i]/peak*100)+"%";tr.append(fill);row.append(meta,tr);f.append(row)});
+}
+function parseAdEvent(e){
+  const p=e.slice(3).split(":");
+  if(p.length>=3)return {campaign:p.shift(),content:p.shift(),event:p.join(":")};
+  return {campaign:"(sin campaña)",content:p.shift()||"sin_anuncio",event:p.join(":")||"legacy"};
+}
+function adStats(rows,lang){
+  const r=pageRows(rows,lang),root=lang==="en"?"/en/":"/",m=new Map();
+  r.filter(x=>x.kind==="click"&&eventOf(x).startsWith("ad:")).forEach(x=>{
+    const p=parseAdEvent(eventOf(x)),id=p.campaign+"|"+p.content;let a=m.get(id);
+    if(!a){a={campaign:p.campaign,content:p.content,view:0,visitor:0,buy:0,buyer:0,scroll25:0,scroll50:0,scroll75:0,scroll90:0,scroll100:0};m.set(id,a)}
+    const event=p.event;if(event==="view"){a.view+=Number(x.total)||0;a.visitor+=Number(x.uniq)||0}
+    else if(event==="buy"){a.buy+=Number(x.total)||0;a.buyer+=Number(x.uniq)||0}
+    else if(event.startsWith("scroll")){const k=event;if(Object.prototype.hasOwnProperty.call(a,k))a[k]+=Number(x.uniq)||0}
+    else if(event==="s25")a.scroll25+=Number(x.uniq)||0;else if(event==="s90")a.scroll90+=Number(x.uniq)||0;
+  });
+  return Array.from(m.values()).sort((a,b)=>b.visitor-a.visitor||a.content.localeCompare(b.content));
+}
+function tableCard(title,rows,headers,emptyText){
+  const card=elem("div",null,"card table-card");card.append(elem("h4",title));
+  if(!rows.length){card.append(elem("div",emptyText,"empty"));return card}
+  const wrap=elem("div",null,"table-wrap"),table=document.createElement("table"),thead=document.createElement("thead"),tr=document.createElement("tr");
+  headers.forEach((h,i)=>{const th=elem("th",h,i>0?"num":"");tr.append(th)});thead.append(tr);table.append(thead);
+  const tbody=document.createElement("tbody");
+  rows.forEach(row=>{const tr=elem("tr");row.forEach((v,i)=>tr.append(elem("td",String(v),i>0?"num":"")));tbody.append(tr)});
+  table.append(tbody);wrap.append(table);card.append(wrap);return card;
+}
+function renderAds(rows,langs){
+  const out=$("ads");out.replaceChildren();
+  langs.forEach(lang=>{
+    const data=adStats(rows,lang).map(a=>[a.campaign,a.content,fmt(a.view),fmt(a.visitor),fmt(a.buy),fmt(a.buyer),pct(a.buyer,a.visitor),fmt(a.scroll25),fmt(a.scroll50),fmt(a.scroll75),fmt(a.scroll90),fmt(a.scroll100)]);
+    out.append(tableCard("Landing "+(lang==="en"?"inglesa":"española"),data,["Campaña","Creatividad","Visitas atribuidas","Visitantes-día","Clics Stripe","Visitantes con clic","Tasa de clic","Scroll 25%","50%","75%","90%","100%"],"Todavía no hay visitas etiquetadas por anuncio. Usa un utm_content diferente para cada creatividad."));
   });
 }
-function renderAdBreakdown(rows,label,root){
-  const events=build(rows).list("landing","click",root+"|ad:"),ads={};
-  for(const r of events){
-    const parts=r.key.split(":"),recognized=new Set(["view","buy","scroll25","scroll50","scroll75","scroll90","scroll100","s25","s90"]);
-    let campaign,content,event;
-    if(parts.length>=3){campaign=parts.shift();content=parts.shift();event=parts.join(":")}
-    else{campaign="(sin campaña)";content=parts.shift()||"sin_anuncio";event=parts.join(":")||"tag"}
-    if(event==="s25")event="scroll25";if(event==="s90")event="scroll90";
-    const key=campaign+"|"+content,m=ads[key]||(ads[key]={campaign,content,view:{total:0,uniq:0},buy:{total:0,uniq:0},scroll25:{total:0,uniq:0},scroll50:{total:0,uniq:0},scroll75:{total:0,uniq:0},scroll90:{total:0,uniq:0},scroll100:{total:0,uniq:0},legacy:{total:0,uniq:0}});
-    const slot=recognized.has(event)?event:"legacy";m[slot].total+=r.total;m[slot].uniq+=r.uniq;
-  }
-  const rowsOut=Object.values(ads).map(a=>[a.campaign,a.content,a.view.total,a.view.uniq,a.buy.total,a.buy.uniq,pct(a.buy.uniq,a.view.uniq),a.scroll25.uniq,a.scroll50.uniq,a.scroll75.uniq,a.scroll90.uniq,a.scroll100.uniq]);
-  const o=$("out");o.append(el("h2","Rendimiento por anuncio · landing "+label));
-  if(rowsOut.length)o.append(table(["Campaña · utm_campaign","Anuncio · utm_content","Visitas atribuidas","Visitantes-día","Clics Stripe · total","Visitantes que hicieron clic","Conversión a clic Stripe","Scroll 25%","Scroll 50%","Scroll 75%","Scroll 90%","Scroll 100%"],rowsOut));
-  else o.append(el("p","Sin visitas etiquetadas por anuncio en este intervalo. Asigna un utm_content distinto a cada creatividad."));
+function sourceStats(rows,lang){
+  const r=pageRows(rows,lang),m=new Map();
+  r.filter(x=>x.kind==="click").forEach(x=>{
+    const e=eventOf(x);let label,type;
+    if(e.startsWith("ref:")){type="URL de referencia";label=e.slice(4)}
+    else if(e.startsWith("source:")){type="Fuente";label=e.slice(7)}
+    else return;
+    const id=type+"|"+label;let v=m.get(id);if(!v){v={type,label,total:0,uniq:0};m.set(id,v)}v.total+=Number(x.total)||0;v.uniq+=Number(x.uniq)||0;
+  });
+  return Array.from(m.values()).sort((a,b)=>b.uniq-a.uniq);
 }
-function renderLanding(rows,label,root){
-  const {g,list}=build(rows),o=$("out"),V=g("landing","pv",root).uniq,buy=g("landing","click",root+"|buy_stripe");
-  o.append(el("h2","Landing "+label),kpis([["Visitantes · visitante-día",V],["Visitas a la página",g("landing","pv",root).total],["Clics a Stripe · únicos",buy.uniq],["Conversión a clic en Stripe",pct(buy.uniq,V)]]));
-  o.append(el("h2","Profundidad de lectura · "+label),table(["Scroll","Visitantes","% de visitantes",""],[25,50,75,90,100].map(n=>{const u=g("landing","scroll",root+"|"+n).uniq;return[n+"%",u,pct(u,V),bar(V?u/V*100:0)]})));
-  const sec=list("landing","section",root+"|");if(sec.length)o.append(el("h2","Secciones vistas · "+label),table(["Sección","Visitantes","% de visitantes",""],sec.map(r=>[r.key,r.uniq,pct(r.uniq,V),bar(V?r.uniq/V*100:0)])));
-  o.append(el("h2","Clics · "+label),table(["Elemento","Visitantes","Clics"],list("landing","click",root+"|").filter(r=>!r.key.startsWith("ad:")).map(r=>[r.key,r.uniq,r.total])));
-  renderAdBreakdown(rows,label,root);
+function renderSources(rows,langs){
+  const out=$("sources");out.replaceChildren();
+  langs.forEach(lang=>{
+    const data=sourceStats(rows,lang).map(x=>[x.label,fmt(x.uniq),fmt(x.total),x.type]);
+    out.append(tableCard("Landing "+(lang==="en"?"inglesa":"española"),data,["Origen detectado","Visitantes-día","Eventos","Tipo"],"No hay URLs de referencia ni fuentes etiquetadas en este intervalo."));
+  });
 }
-function render(rows){
-  const o=$("out");o.textContent="";
-  const esRows=normalizeLandingRows(rows,"es"),enRows=normalizeLandingRows(rows,"en");
-  renderLanding(esRows,"española","/");
-  renderLanding(enRows,"inglesa","/en/");
-  const {g,list}=build(rows);
-  const known=new Set(["/","/en/","/-en/"]);
-  const other=rows.filter(r=>r.s==="landing"&&r.kind==="pv"&&!known.has(r.key));
-  if(other.length)o.append(el("h2","Otras rutas registradas (sin asignar a una landing)"),table(["Ruta","Visitas","Visitantes"],other.map(r=>[r.key,r.total,r.uniq])));
-  const dim=(title,kind)=>{const x=list("landing",kind,"");return table([title,"Visitantes-dia"],x.map(r=>[r.key,r.uniq]))};
-  o.append(el("h2","Contexto general de Cloudflare (compartido por ambas landings)"),el("p","Origen, dispositivo y país se agregan sin identificar la ruta de origen. Por eso se muestran como totales generales y no se atribuyen a ninguna landing."));
-  o.append(dim("Origen","src"),dim("Dispositivo","dev"),dim("País","cty"));
-  const pages=list("course","pv","");const CV=g("course","pv","/curso/").uniq;
-  o.append(el("h2","Curso"),kpis([["Visitantes al portal",CV],["Páginas vistas",pages.reduce((a,r)=>a+r.total,0)],["Módulos completados",rows.filter(r=>r.s==="course"&&r.kind==="done").reduce((a,r)=>a+r.uniq,0)]]));
-  o.append(table(["Página","Visitantes","Llega al 50%","Llega al 100%","Marca completado","Termina quiz"],pages.map(r=>{
-    const m=(r.key.match(/modulo-(\d+)/)||[])[1],f=(k,kd)=>g("course",kd,r.key+"|"+k).uniq;
-    return[r.key,r.uniq,pct(f(50,"scroll"),r.uniq),pct(f(100,"scroll"),r.uniq),m?pct(f("m"+m,"done"),r.uniq):"–",m?pct(f("m"+m,"quiz"),r.uniq):"–"]})));
-  const mc=list("course","click","/curso/|module_");if(mc.length)o.append(el("h2","Interés por módulo (clics desde el portal)"),table(["Módulo","Visitantes","Clics"],mc.map(r=>["Módulo "+r.key,r.uniq,r.total])));
+function renderEngagement(rows,langs){
+  const out=$("engagement");out.replaceChildren();
+  langs.forEach(lang=>{
+    const r=pageRows(rows,lang),root=lang==="en"?"/en/":"/";
+    const sections=r.filter(x=>x.kind==="section"&&x.key.startsWith(root+"|")).map(x=>[x.key.slice(root.length+1),fmt(x.uniq),fmt(x.total)]).sort((a,b)=>Number(b[1].replace(/\./g,""))-Number(a[1].replace(/\./g,"")));
+    const clicks=r.filter(x=>x.kind==="click"&&x.key.startsWith(root+"|")&&!eventOf(x).startsWith("ad:")&&!eventOf(x).startsWith("source:")&&!eventOf(x).startsWith("ref:")).map(x=>[eventOf(x),fmt(x.uniq),fmt(x.total)]).sort((a,b)=>Number(b[1].replace(/\./g,""))-Number(a[1].replace(/\./g,"")));
+    out.append(tableCard("Secciones · "+(lang==="en"?"inglesa":"española"),sections,["Sección","Visitantes-día","Eventos"],"No hay secciones medidas."));
+    out.append(tableCard("Clics · "+(lang==="en"?"inglesa":"española"),clicks,["Elemento","Visitantes-día","Clics"],"No hay clics registrados."));
+  });
 }
-function dateString(date){return [date.getFullYear(),String(date.getMonth()+1).padStart(2,"0"),String(date.getDate()).padStart(2,"0")].join("-")}
-function shiftDate(value,days){const date=new Date(value+"T12:00:00");date.setDate(date.getDate()+days);return dateString(date)}
-const today=dateString(new Date());
-$("from").max=today;$("to").max=today;$("from").min=shiftDate(today,-364);$("to").min=shiftDate(today,-364);
-function setRange(days){$("to").value=today;$("from").value=shiftDate(today,-(Number(days)-1))}
-setRange(30);
-$("preset").onchange=()=>{if($("preset").value!=="custom")setRange($("preset").value)};
-$("from").onchange=()=>{$("preset").value="custom"};
-$("to").onchange=()=>{$("preset").value="custom"};
+function renderContext(rows){
+  const out=$("context");out.replaceChildren();
+  [["Dispositivos","dev"],["Países","cty"]].forEach(([label,kind])=>{
+    const m=new Map();rows.filter(x=>x.s==="landing"&&x.kind===kind).forEach(x=>{const a=m.get(x.key)||{total:0,uniq:0};a.total+=Number(x.total)||0;a.uniq+=Number(x.uniq)||0;m.set(x.key,a)});
+    const data=Array.from(m.entries()).sort((a,b)=>b[1].uniq-a[1].uniq).map(([key,a])=>[key,fmt(a.uniq),fmt(a.total)]);
+    out.append(tableCard(label,data,["Valor","Visitantes-día","Eventos"],"Sin datos"));
+  });
+}
+function renderOther(rows){
+  const box=$("other"),m=new Map();
+  rows.filter(x=>x.s==="landing"&&x.kind==="pv"&&!languageFor(routeOf(x.key))).forEach(x=>{const a=m.get(x.key)||{total:0,uniq:0};a.total+=Number(x.total)||0;a.uniq+=Number(x.uniq)||0;m.set(x.key,a)});
+  const other=Array.from(m.entries()).map(([k,v])=>k+" ("+fmt(v.total)+" vistas; "+fmt(v.uniq)+" visitantes-día)");
+  box.textContent=other.length?"Hay otras rutas o pruebas en Cloudflare que se mantienen fuera de las dos landings: "+other.join(", ")+".":"Solo se muestran las dos rutas principales.";
+}
+function render(rows,from,to){
+  const selected=$("landing").value,langs=selected==="all"?["es","en"]:[selected];
+  $("period").textContent=from+" — "+to+" · "+(selected==="all"?"ambas landings":selected==="en"?"landing inglesa":"landing española");
+  buildKpis(rows,langs);renderCompare(rows,langs);renderChart(rows,langs,from,to);renderFunnel(rows,langs);
+  renderAds(rows,langs);renderSources(rows,langs);renderEngagement(rows,langs);renderContext(rows);renderOther(rows);
+}
+const today=dateYmd(new Date());
+$("from").max=today;$("to").max=today;$("from").min=shift(today,-364);$("to").min=shift(today,-364);
+$("to").value=today;$("from").value=shift(today,-29);
 $("go").onclick=async()=>{
-  $("msg").textContent="Cargando desde Cloudflare…";
+  $("status").textContent="Consultando Cloudflare…";$("go").disabled=true;
   try{
     const from=$("from").value,to=$("to").value;
-    if(!from||!to)throw Error("Selecciona las dos fechas");
-    if(from>to)throw Error("La fecha inicial debe ser anterior a la fecha final");
-    if(to>today)throw Error("La fecha final no puede estar en el futuro");
-    const distance=Math.floor((Date.parse(today+"T12:00:00")-Date.parse(from+"T12:00:00"))/864e5)+1;
-    if(distance>365)throw Error("El panel permite consultar hasta 365 días");
-    const r=await fetch(API+"?days="+Math.min(365,distance+1),{headers:{Authorization:"Bearer "+$("tk").value.trim()},cache:"no-store"});
-    if(r.status===401)throw Error("Token incorrecto");if(!r.ok){let m="Error "+r.status;try{m=(await r.json()).error||m}catch(e){}throw Error(m)}
-    const rows=(await r.json()).rows||[];
-    render(rows.filter(row=>row.day>=from&&row.day<=to));$("msg").textContent="Datos de Cloudflare · "+from+" a "+to;
-  }catch(e){$("msg").textContent=e.message}
+    if(!from||!to)throw Error("Selecciona las fechas de inicio y fin.");
+    if(from>to)throw Error("La fecha inicial debe ser anterior a la fecha final.");
+    if(to>today)throw Error("La fecha final no puede estar en el futuro.");
+    const span=Math.floor((Date.parse(today+"T12:00:00")-Date.parse(from+"T12:00:00"))/864e5)+1;
+    if(span>365)throw Error("El panel permite consultar hasta 365 días.");
+    const res=await fetch(API+"?days="+Math.min(365,span+1),{headers:{Authorization:"Bearer "+$("tk").value.trim()},cache:"no-store"});
+    if(res.status===401)throw Error("Token de acceso incorrecto.");
+    if(!res.ok)throw Error("Cloudflare devolvió un error ("+res.status+").");
+    const payload=await res.json();allRows=Array.isArray(payload.rows)?payload.rows:[];
+    const rows=allRows.filter(x=>x.day>=from&&x.day<=to);
+    render(rows,from,to);$("status").textContent="Actualizado · "+fmt(rows.length)+" grupos de datos";
+  }catch(e){$("status").textContent=e.message}
+  finally{$("go").disabled=false}
 };
-</script></body></html>
+$("landing").onchange=()=>{if(allRows.length)render(allRows.filter(x=>x.day>=$("from").value&&x.day<=$("to").value),$("from").value,$("to").value)};
+</script>
+</body>
+</html>
