@@ -19,15 +19,21 @@ async function track(req,env,ctx,origin){
  const {s,t,k="",p="/",r="",u=""}=b||{};
  if(!["landing","course"].includes(s)||!KINDS.has(t)||!PATH.test(p))return reply(origin,400);
  if(t!=="pv"&&!KEY.test(k))return reply(origin,400);
- const day=madridDay(),ua=req.headers.get("User-Agent")||"";
- const h=await hash((env.HASH_SECRET||"")+day+(req.headers.get("CF-Connecting-IP")||"")+ua);
+ const day=madridDay(),ua=req.headers.get("User-Agent")||"",ip=req.headers.get("CF-Connecting-IP")||"";
+ const excluded=(env.EXCLUDED_IPS||"").split(",").map(x=>x.trim()).filter(Boolean);
+ if(ip&&excluded.includes(ip))return reply(origin,204);
+ const hour=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Madrid",hour:"2-digit",hourCycle:"h23"}).format(new Date());
+ const h=await hash((env.HASH_SECRET||"")+day+ip+ua);
  const rate=await env.DB.prepare("INSERT INTO rate(day,h,n) VALUES(?,?,1) ON CONFLICT(day,h) DO UPDATE SET n=n+1 RETURNING n").bind(day,h).first();
  if(rate&&rate.n>MAX_PER_DAY)return reply(origin,429);
- let st=bump(env.DB,day,s,h,t,t==="pv"?p:p+"|"+k);
+ const eventKey=t==="pv"?p:p+"|"+k;
+ let st=bump(env.DB,day,s,h,t,eventKey);
+ st=st.concat(bump(env.DB,day,s,h,"hr",hour+"|"+t+"|"+eventKey));
  if(t==="pv"){
   const clean=v=>String(v).toLowerCase().replace(/^www\./,"");
   const src=KEY.test(clean(u))?clean(u):HOST.test(r)&&r&&r!=="studyos-oficial.github.io"?clean(r):"directo";
-  st=st.concat(bump(env.DB,day,s,h,"src",src),bump(env.DB,day,s,h,"dev",device(ua)),bump(env.DB,day,s,h,"cty",(req.headers.get("CF-IPCountry")||"??").slice(0,2)));
+  const extras=[["src",src],["dev",device(ua)],["cty",(req.headers.get("CF-IPCountry")||"??").slice(0,2)]];
+  extras.forEach(([kind,key])=>{st=st.concat(bump(env.DB,day,s,h,kind,key),bump(env.DB,day,s,h,"hr",hour+"|"+kind+"|"+key))});
  }
  await env.DB.batch(st);
  if(Math.random()<0.02)ctx.waitUntil(env.DB.batch([env.DB.prepare("DELETE FROM dedupe WHERE day<?").bind(day),env.DB.prepare("DELETE FROM rate WHERE day<?").bind(day)]));
