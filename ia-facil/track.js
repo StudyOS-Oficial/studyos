@@ -5,9 +5,12 @@ if(window.__iaFacilAnalyticsLoaded)return;
 window.__iaFacilAnalyticsLoaded=true;
 if(navigator.doNotTrack==="1")return;
 var E="https://cursoia.studyos-oficial-spain.workers.dev/t";
-var path=location.pathname.replace(/^(\/studyos)?\/ia-facil/,"").replace(/index\.html$/,"").toLowerCase().replace(/[^a-z0-9_\/-]/g,"").slice(0,60)||"/";
+var en=/^(\/studyos)?\/ia-facil-en(\/|$)/i.test(location.pathname);
+var base=en?/^(\/studyos)?\/ia-facil-en/i:/^(\/studyos)?\/ia-facil/i;
+var path=location.pathname.replace(base,"").replace(/index\.html$/,"").toLowerCase().replace(/[^a-z0-9_\/-]/g,"").slice(0,60)||"/";
 if(path.charAt(0)!=="/")path="/"+path;
 var site=/^\/curso(\/|$)/.test(path)?"course":"landing";
+if(en&&site==="landing"&&path==="/")path="/en/";
 var mod=(path.match(/\/modulo-(\d+)/)||[])[1],seen={};
 function send(t,k,extra){
  var o={s:site,t:t,p:path};if(k)o.k=String(k).toLowerCase().replace(/[^a-z0-9_:.#\/-]/g,"").slice(0,60);
@@ -23,7 +26,7 @@ if(ad)once("click","ad:"+ad);
 var marks=[25,50,75,90,100],ticking=false;
 function scroll(){ticking=false;var max=document.documentElement.scrollHeight-innerHeight;if(max<=0)return;var pct=scrollY/max*100;marks.forEach(function(n){if(pct>=n-.5){once("scroll",n);if(ad&&(n===25||n===90))once("click","ad:"+ad+":s"+n)}})}
 addEventListener("scroll",function(){if(!ticking){ticking=true;requestAnimationFrame(scroll)}},{passive:true});scroll();
-if("IntersectionObserver"in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){once("section",e.target.id);io.unobserve(e.target)}})},{threshold:0,rootMargin:"0px 0px -40% 0px"});document.querySelectorAll("section[id]").forEach(function(el){io.observe(el})}
+if("IntersectionObserver"in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){once("section",e.target.id);io.unobserve(e.target)}})},{threshold:0,rootMargin:"0px 0px -40% 0px"});document.querySelectorAll("section[id]").forEach(function(el){io.observe(el)});}
 var last="",lastT=0;
 addEventListener("click",function(e){
  var a=e.target.closest&&e.target.closest("a,button");if(!a)return;var l="";
