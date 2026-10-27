@@ -30,15 +30,39 @@ function table(head,rows){const t=el("table"),h=el("tr");head.forEach((x,i)=>h.a
   rows.forEach(r=>{const tr=el("tr");r.forEach((c,i)=>{const td=el("td",null,i?"n":"");c instanceof Node?td.append(c):td.textContent=c;tr.append(td)});t.append(tr)});
   const c=el("div",null,"card");c.append(t);return c}
 function kpis(items){const k=el("div",null,"kpi");items.forEach(([l,v])=>{const d=el("div");d.append(el("b",v),el("span",l,"mut"));k.append(d)});return k}
+function routeOf(key){return String(key||"").split("|",1)[0]}
+function routeLang(path){
+  if(path==="/en"||path==="/en/"||path==="/-en"||path==="/-en/")return "en";
+  if(path==="/")return "es";
+  return "";
+}
+function normalizeLandingRows(rows,lang){
+  return rows.filter(r=>r.s==="landing"&&routeLang(routeOf(r.key))===lang).map(r=>{
+    if(lang!=="en")return r;
+    const p=routeOf(r.key),suffix=String(r.key||"").slice(p.length);
+    const normalized=p.replace(/^\/-en(?=\/|$)/,"/en");
+    return {...r,key:normalized+suffix};
+  });
+}
+function renderLanding(rows,label,root){
+  const {g,list}=build(rows),o=$("out"),V=g("landing","pv",root).uniq,buy=g("landing","click",root+"|buy_stripe");
+  o.append(el("h2","Landing "+label),kpis([["Visitantes · visitante-día",V],["Visitas a la página",g("landing","pv",root).total],["Clics a Stripe · únicos",buy.uniq],["Conversión a clic en Stripe",pct(buy.uniq,V)]]));
+  o.append(el("h2","Profundidad de lectura · "+label),table(["Scroll","Visitantes","% de visitantes",""],[25,50,75,90,100].map(n=>{const u=g("landing","scroll",root+"|"+n).uniq;return[n+"%",u,pct(u,V),bar(V?u/V*100:0)]})));
+  const sec=list("landing","section",root+"|");if(sec.length)o.append(el("h2","Secciones vistas · "+label),table(["Sección","Visitantes","% de visitantes",""],sec.map(r=>[r.key,r.uniq,pct(r.uniq,V),bar(V?r.uniq/V*100:0)])));
+  o.append(el("h2","Clics · "+label),table(["Elemento","Visitantes","Clics"],list("landing","click",root+"|").map(r=>[r.key,r.uniq,r.total])));
+}
 function render(rows){
-  const {g,list}=build(rows),o=$("out");o.textContent="";
-  const V=g("landing","pv","/").uniq, buy=g("landing","click","/|buy_stripe");
-  o.append(el("h2","Landing"),kpis([["Visitantes",V],["Visitas a la página",g("landing","pv","/").total],["Clics a Stripe (únicos)",buy.uniq],["% que clica a Stripe",pct(buy.uniq,V)]]));
-  o.append(el("h2","¿Hasta dónde llegan?"),table(["Scroll","Visitantes","% del total",""],[25,50,75,90,100].map(n=>{const u=g("landing","scroll","/|"+n).uniq;return[n+"%",u,pct(u,V),bar(V?u/V*100:0)]})));
-  const sec=list("landing","section","/|");if(sec.length)o.append(el("h2","Secciones vistas"),table(["Sección","Visitantes","% del total",""],sec.map(r=>[r.key,r.uniq,pct(r.uniq,V),bar(V?r.uniq/V*100:0)])));
-  o.append(el("h2","¿Dónde clican?"),table(["Elemento","Visitantes","Clics totales"],list("landing","click","/|").map(r=>[r.key,r.uniq,r.total])));
-  const dim=(t,kind)=>{const x=list("landing",kind,"");return table([t,"Visitantes"],x.map(r=>[r.key,r.uniq]))};
-  o.append(el("h2","Origen, dispositivo y país"),dim("Origen","src"),dim("Dispositivo","dev"),dim("País","cty"));
+  const o=$("out");o.textContent="";
+  const esRows=normalizeLandingRows(rows,"es"),enRows=normalizeLandingRows(rows,"en");
+  renderLanding(esRows,"española","/");
+  renderLanding(enRows,"inglesa","/en/");
+  const {g,list}=build(rows);
+  const known=new Set(["/","/en/","/-en/"]);
+  const other=rows.filter(r=>r.s==="landing"&&r.kind==="pv"&&!known.has(r.key));
+  if(other.length)o.append(el("h2","Otras rutas registradas (sin asignar a una landing)"),table(["Ruta","Visitas","Visitantes"],other.map(r=>[r.key,r.total,r.uniq])));
+  const dim=(title,kind)=>{const x=list("landing",kind,"");return table([title,"Visitantes-dia"],x.map(r=>[r.key,r.uniq]))};
+  o.append(el("h2","Contexto general de Cloudflare (histórico sin separación fiable por landing)"),el("p","Origen, dispositivo y país son dimensiones agregadas por el Worker. Los registros históricos no indican a cuál de las dos landings pertenecen."));
+  o.append(dim("Origen","src"),dim("Dispositivo","dev"),dim("País","cty"));
   const pages=list("course","pv","");const CV=g("course","pv","/curso/").uniq;
   o.append(el("h2","Curso"),kpis([["Visitantes al portal",CV],["Páginas vistas",pages.reduce((a,r)=>a+r.total,0)],["Módulos completados",rows.filter(r=>r.s==="course"&&r.kind==="done").reduce((a,r)=>a+r.uniq,0)]]));
   o.append(table(["Página","Visitantes","Llega al 50%","Llega al 100%","Marca completado","Termina quiz"],pages.map(r=>{
