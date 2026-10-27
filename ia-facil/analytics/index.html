@@ -311,7 +311,7 @@ $("go").onclick=async()=>{
     if(!res.ok)throw Error("Cloudflare devolvió un error ("+res.status+").");
     const payload=await res.json();allRows=Array.isArray(payload.rows)?payload.rows:[];
     const rows=rowsForSelection(from,to);
-    render(rows,from,to);$("status").textContent="Actualizado · "+fmt(rows.length)+" grupos de datos";
+    render(rows,from,to);const needsHours=Number($("hourFrom").value)>0||Number($("hourTo").value)<23;$("status").textContent=needsHours&&!allRows.some(x=>x.kind==="hr")?"Falta activar el registro horario en el worker de Cloudflare.":"Actualizado · "+fmt(rows.length)+" grupos de datos";
   }catch(e){$("status").textContent=e.message}
   finally{$("go").disabled=false}
 };
