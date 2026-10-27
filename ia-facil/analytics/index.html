@@ -10,10 +10,18 @@ h1{font-size:20px}h2{font-size:17px;margin:26px 0 8px}.card{background:var(--car
 .mut{color:var(--mut);font-size:13px}table{width:100%;border-collapse:collapse}td,th{padding:6px 4px;border-bottom:1px solid var(--ln);text-align:left}td.n,th.n{text-align:right}
 .bar{background:var(--ln);border-radius:6px;height:10px;min-width:80px}.bar i{display:block;height:10px;border-radius:6px;background:var(--ac)}
 input,select,button{font:inherit;padding:8px;border-radius:8px;border:1px solid var(--ln)}button{background:var(--ac);color:#fff;border:0;cursor:pointer}
+.filters{display:flex;flex-wrap:wrap;align-items:end;gap:10px}.field{display:grid;gap:4px;font-size:13px;color:var(--mut)}.field input,.field select{min-width:145px;background:var(--card);color:var(--fg)}.filters button{min-height:39px}.filters #msg{flex:1 1 100%}code{font:inherit;font-weight:700;color:var(--fg)}
 </style></head><body>
 <h1>IA fácil · Analítica anónima</h1>
 <p class="mut">Sin cookies ni identificadores. Los «visitantes» son únicos por día (un mismo visitante en dos días cuenta dos veces).</p>
-<div class="card"><input id="tk" type="password" placeholder="Token de acceso"> <select id="dy"><option value="7">7 días</option><option value="30" selected>30 días</option><option value="90">90 días</option></select> <label for="dt" class="mut">Día concreto:</label> <input id="dt" type="date" aria-label="Filtrar por día concreto"> <button id="go">Ver</button> <span id="msg" class="mut"></span></div>
+<div class="card filters">
+  <label class="field">Token de acceso<input id="tk" type="password" placeholder="Token de acceso" autocomplete="off"></label>
+  <label class="field">Desde<input id="from" type="date"></label>
+  <label class="field">Hasta<input id="to" type="date"></label>
+  <label class="field">Intervalo rápido<select id="preset"><option value="7">7 días</option><option value="30" selected>30 días</option><option value="90">90 días</option><option value="365">365 días</option><option value="custom">Personalizado</option></select></label>
+  <button id="go">Ver estadísticas</button><span id="msg" class="mut" role="status" aria-live="polite"></span>
+</div>
+<p class="mut">El intervalo admite hasta 365 días. Los visitantes se cuentan como visitantes-día. Para separar dos anuncios, usa el mismo <code>utm_campaign</code> y un <code>utm_content</code> distinto para cada uno, por ejemplo <code>anuncio_1</code> y <code>anuncio_2</code>.</p>
 <div id="out"></div>
 <script>
 const API="https://cursoia.studyos-oficial-spain.workers.dev/stats", $=id=>document.getElementById(id);
@@ -44,12 +52,29 @@ function normalizeLandingRows(rows,lang){
     return {...r,key:normalized+suffix};
   });
 }
+function renderAdBreakdown(rows,label,root){
+  const events=build(rows).list("landing","click",root+"|ad:"),ads={};
+  for(const r of events){
+    const parts=r.key.split(":"),recognized=new Set(["view","buy","scroll25","scroll50","scroll75","scroll90","scroll100","s25","s90"]);
+    let campaign,content,event;
+    if(parts.length>=3){campaign=parts.shift();content=parts.shift();event=parts.join(":")}
+    else{campaign="(sin campaña)";content=parts.shift()||"sin_anuncio";event=parts.join(":")||"tag"}
+    if(event==="s25")event="scroll25";if(event==="s90")event="scroll90";
+    const key=campaign+"|"+content,m=ads[key]||(ads[key]={campaign,content,view:{total:0,uniq:0},buy:{total:0,uniq:0},scroll25:{total:0,uniq:0},scroll50:{total:0,uniq:0},scroll75:{total:0,uniq:0},scroll90:{total:0,uniq:0},scroll100:{total:0,uniq:0},legacy:{total:0,uniq:0}});
+    const slot=recognized.has(event)?event:"legacy";m[slot].total+=r.total;m[slot].uniq+=r.uniq;
+  }
+  const rowsOut=Object.values(ads).map(a=>[a.campaign,a.content,a.view.total,a.view.uniq,a.buy.total,a.buy.uniq,pct(a.buy.uniq,a.view.uniq),a.scroll25.uniq,a.scroll50.uniq,a.scroll75.uniq,a.scroll90.uniq,a.scroll100.uniq]);
+  const o=$("out");o.append(el("h2","Rendimiento por anuncio · landing "+label));
+  if(rowsOut.length)o.append(table(["Campaña · utm_campaign","Anuncio · utm_content","Visitas atribuidas","Visitantes-día","Clics Stripe · total","Visitantes que hicieron clic","Conversión a clic Stripe","Scroll 25%","Scroll 50%","Scroll 75%","Scroll 90%","Scroll 100%"],rowsOut));
+  else o.append(el("p","Sin visitas etiquetadas por anuncio en este intervalo. Asigna un utm_content distinto a cada creatividad."));
+}
 function renderLanding(rows,label,root){
   const {g,list}=build(rows),o=$("out"),V=g("landing","pv",root).uniq,buy=g("landing","click",root+"|buy_stripe");
   o.append(el("h2","Landing "+label),kpis([["Visitantes · visitante-día",V],["Visitas a la página",g("landing","pv",root).total],["Clics a Stripe · únicos",buy.uniq],["Conversión a clic en Stripe",pct(buy.uniq,V)]]));
   o.append(el("h2","Profundidad de lectura · "+label),table(["Scroll","Visitantes","% de visitantes",""],[25,50,75,90,100].map(n=>{const u=g("landing","scroll",root+"|"+n).uniq;return[n+"%",u,pct(u,V),bar(V?u/V*100:0)]})));
   const sec=list("landing","section",root+"|");if(sec.length)o.append(el("h2","Secciones vistas · "+label),table(["Sección","Visitantes","% de visitantes",""],sec.map(r=>[r.key,r.uniq,pct(r.uniq,V),bar(V?r.uniq/V*100:0)])));
-  o.append(el("h2","Clics · "+label),table(["Elemento","Visitantes","Clics"],list("landing","click",root+"|").map(r=>[r.key,r.uniq,r.total])));
+  o.append(el("h2","Clics · "+label),table(["Elemento","Visitantes","Clics"],list("landing","click",root+"|").filter(r=>!r.key.startsWith("ad:")).map(r=>[r.key,r.uniq,r.total])));
+  renderAdBreakdown(rows,label,root);
 }
 function render(rows){
   const o=$("out");o.textContent="";
@@ -70,15 +95,28 @@ function render(rows){
     return[r.key,r.uniq,pct(f(50,"scroll"),r.uniq),pct(f(100,"scroll"),r.uniq),m?pct(f("m"+m,"done"),r.uniq):"–",m?pct(f("m"+m,"quiz"),r.uniq):"–"]})));
   const mc=list("course","click","/curso/|module_");if(mc.length)o.append(el("h2","Interés por módulo (clics desde el portal)"),table(["Módulo","Visitantes","Clics"],mc.map(r=>["Módulo "+r.key,r.uniq,r.total])));
 }
+function dateString(date){return [date.getFullYear(),String(date.getMonth()+1).padStart(2,"0"),String(date.getDate()).padStart(2,"0")].join("-")}
+function shiftDate(value,days){const date=new Date(value+"T12:00:00");date.setDate(date.getDate()+days);return dateString(date)}
+const today=dateString(new Date());
+$("from").max=today;$("to").max=today;$("from").min=shiftDate(today,-364);$("to").min=shiftDate(today,-364);
+function setRange(days){$("to").value=today;$("from").value=shiftDate(today,-(Number(days)-1))}
+setRange(30);
+$("preset").onchange=()=>{if($("preset").value!=="custom")setRange($("preset").value)};
+$("from").onchange=()=>{$("preset").value="custom"};
+$("to").onchange=()=>{$("preset").value="custom"};
 $("go").onclick=async()=>{
-  $("msg").textContent="Cargando…";
+  $("msg").textContent="Cargando desde Cloudflare…";
   try{
-    const day=$("dt").value,days=day?365:$("dy").value;
-    const r=await fetch(API+"?days="+days,{headers:{Authorization:"Bearer "+$("tk").value.trim()},cache:"no-store"});
+    const from=$("from").value,to=$("to").value;
+    if(!from||!to)throw Error("Selecciona las dos fechas");
+    if(from>to)throw Error("La fecha inicial debe ser anterior a la fecha final");
+    if(to>today)throw Error("La fecha final no puede estar en el futuro");
+    const distance=Math.floor((Date.parse(today+"T12:00:00")-Date.parse(from+"T12:00:00"))/864e5)+1;
+    if(distance>365)throw Error("El panel permite consultar hasta 365 días");
+    const r=await fetch(API+"?days="+Math.min(365,distance+1),{headers:{Authorization:"Bearer "+$("tk").value.trim()},cache:"no-store"});
     if(r.status===401)throw Error("Token incorrecto");if(!r.ok){let m="Error "+r.status;try{m=(await r.json()).error||m}catch(e){}throw Error(m)}
     const rows=(await r.json()).rows||[];
-    render(day?rows.filter(row=>row.day===day):rows);$("msg").textContent="";
+    render(rows.filter(row=>row.day>=from&&row.day<=to));$("msg").textContent="Datos de Cloudflare · "+from+" a "+to;
   }catch(e){$("msg").textContent=e.message}
 };
-$("dt").onchange=()=>{if($("dt").value)$("dy").value="30"};
 </script></body></html>
