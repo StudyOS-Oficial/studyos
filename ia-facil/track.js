@@ -21,10 +21,11 @@ function send(t,k,extra){
 function once(t,k){var id=t+"|"+k;if(seen[id])return;seen[id]=1;send(t,k)}
 var ref="";try{ref=document.referrer?new URL(document.referrer).hostname:""}catch(e){}
 var q=new URLSearchParams(location.search);var src=q.get("utm_source")||(q.has("fbclid")?"meta":q.has("gclid")?"google":"");send("pv","",{r:ref,u:src});
-var ad=(q.get("utm_content")||"").toLowerCase().replace(/[^a-z0-9_-]/g,"").slice(0,24);
-if(ad)once("click","ad:"+ad);
+function cleanTag(value,max){return String(value||"").toLowerCase().replace(/[^a-z0-9_-]/g,"").slice(0,max)}
+var campaign=cleanTag(q.get("utm_campaign")||"sin_campana",18),content=cleanTag(q.get("utm_content"),24),ad=content?campaign+":"+content:"";
+if(ad)once("click","ad:"+ad+":view");
 var marks=[25,50,75,90,100],ticking=false;
-function scroll(){ticking=false;var max=document.documentElement.scrollHeight-innerHeight;if(max<=0)return;var pct=scrollY/max*100;marks.forEach(function(n){if(pct>=n-.5){once("scroll",n);if(ad&&(n===25||n===90))once("click","ad:"+ad+":s"+n)}})}
+function scroll(){ticking=false;var max=document.documentElement.scrollHeight-innerHeight;if(max<=0)return;var pct=scrollY/max*100;marks.forEach(function(n){if(pct>=n-.5){once("scroll",n);if(ad)once("click","ad:"+ad+":scroll"+n)}})}
 addEventListener("scroll",function(){if(!ticking){ticking=true;requestAnimationFrame(scroll)}},{passive:true});scroll();
 if("IntersectionObserver"in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){once("section",e.target.id);io.unobserve(e.target)}})},{threshold:0,rootMargin:"0px 0px -40% 0px"});document.querySelectorAll("section[id]").forEach(function(el){io.observe(el)});}
 var last="",lastT=0;
