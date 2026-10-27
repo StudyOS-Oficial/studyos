@@ -61,7 +61,7 @@ function render(rows){
   const other=rows.filter(r=>r.s==="landing"&&r.kind==="pv"&&!known.has(r.key));
   if(other.length)o.append(el("h2","Otras rutas registradas (sin asignar a una landing)"),table(["Ruta","Visitas","Visitantes"],other.map(r=>[r.key,r.total,r.uniq])));
   const dim=(title,kind)=>{const x=list("landing",kind,"");return table([title,"Visitantes-dia"],x.map(r=>[r.key,r.uniq]))};
-  o.append(el("h2","Contexto general de Cloudflare (histórico sin separación fiable por landing)"),el("p","Origen, dispositivo y país son dimensiones agregadas por el Worker. Los registros históricos no indican a cuál de las dos landings pertenecen."));
+  o.append(el("h2","Contexto general de Cloudflare (compartido por ambas landings)"),el("p","Origen, dispositivo y país se agregan sin identificar la ruta de origen. Por eso se muestran como totales generales y no se atribuyen a ninguna landing."));
   o.append(dim("Origen","src"),dim("Dispositivo","dev"),dim("País","cty"));
   const pages=list("course","pv","");const CV=g("course","pv","/curso/").uniq;
   o.append(el("h2","Curso"),kpis([["Visitantes al portal",CV],["Páginas vistas",pages.reduce((a,r)=>a+r.total,0)],["Módulos completados",rows.filter(r=>r.s==="course"&&r.kind==="done").reduce((a,r)=>a+r.uniq,0)]]));
