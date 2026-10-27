@@ -171,12 +171,33 @@ footer{padding:42px 0;background:#0e214d;color:#c6d5f0}footer .logo{color:#fff}f
 .final{border-radius:0!important;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
 @media(max-width:720px){.hero-badge{gap:9px;padding:11px 15px;font-size:13px}.hero-badge b{font-size:20px}.research-viewport{border-radius:24px}.research-slide{border-radius:24px}.research-slide>img{height:190px}.research-card-body{padding:21px}.research-card-body h3{font-size:21px}.research-card-body p{font-size:15px}.research-controls{margin-top:13px}}
 @media(prefers-reduced-motion:reduce){.research-track{transition:none}}
-</style>
+<style>
+.story-hero-en{position:relative;overflow:hidden;padding:54px 0 82px;background:linear-gradient(135deg,#f7fbff 0%,#eaf3ff 100%)}
+.story-hero-en:after{content:"";position:absolute;width:390px;height:390px;border-radius:50%;background:#cfe5ff80;right:-115px;top:115px;z-index:0;pointer-events:none}
+.story-hero-en .hero-copy{position:relative;z-index:1;max-width:850px}
+.me-row-en{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.me-en{width:84px;height:84px;border-radius:50%;object-fit:cover;object-position:50% 30%;border:3px solid #fff;box-shadow:0 6px 18px #0b1f4d33;background:#eaf3ff;flex:none}
+.story-pill-en{margin:0;padding:10px 17px;border:1px solid #e3ecf9;border-radius:999px;background:#fff;color:#243454;box-shadow:0 8px 24px #0b1f4d0d;font-size:15px;line-height:1.35}
+.story-hero-en h1{position:relative;z-index:1;max-width:850px;font-size:clamp(42px,6.5vw,72px);line-height:.99;letter-spacing:-.055em;margin:18px 0 25px}
+.story-hero-en h1 span{color:var(--blue)}
+.story-lead-en{position:relative;z-index:1;max-width:760px!important;background:#fff;border:1px solid #e3ecf9;border-radius:22px;padding:18px 22px;color:#243454!important;font-family:Georgia,"Times New Roman",serif!important;font-size:clamp(18px,4.2vw,22px)!important;line-height:1.55!important;box-shadow:0 10px 30px #0b1f4d10}
+.story-offer-en{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:22px}
+.story-offer-en span,.story-offer-en b{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border-radius:999px;border:1px solid #dce8f8;background:#fff;color:var(--navy);font-weight:850}
+.story-offer-en b{background:var(--blue);border-color:var(--blue);color:#fff;font-size:20px}
+.me-lg-en{width:112px;height:112px;display:block;margin:0 0 18px;border-radius:50%;object-fit:cover;object-position:50% 30%;border:3px solid #fff;box-shadow:0 6px 18px #0b1f4d33}
+.story-en .lead{max-width:760px}
+@media(min-width:900px){
+ .story-hero-en{padding:74px 0 110px}
+ .me-en{width:96px;height:96px}
+ .me-lg-en{width:132px;height:132px}
+ .story-lead-en{padding:22px 26px}
+}
+</style></style>
 
 <style>
 #checkout-dialog{width:min(760px,calc(100% - 28px));max-width:none;max-height:min(92dvh,900px);padding:0;border:1px solid #dbe6f7;border-radius:24px;background:#fff;color:#102452;box-shadow:0 24px 80px #071a3c55;overflow:auto}#checkout-dialog::backdrop{background:#071a3c99;backdrop-filter:blur(4px)}.checkout-modal{position:relative;padding:clamp(22px,5vw,36px)}.checkout-close{position:absolute;top:15px;right:17px;width:42px;height:42px;border:0;border-radius:50%;background:#eef5ff;color:#102452;font-size:28px;line-height:1;cursor:pointer}.checkout-modal .eyebrow{padding-right:45px}.checkout-modal h2{margin:9px 45px 8px 0;font-size:clamp(26px,5vw,34px)}.checkout-intro{margin-bottom:17px;color:#52627f;font-size:15px}.checkout-status{margin:14px 0;padding:12px 14px;border-radius:12px;background:#eef5ff;color:#174d91;font-size:14px}.checkout-status.error{background:#fff0ef;color:#9c3028}.checkout-retry{display:none;margin:8px 0 15px}.checkout-retry[hidden]{display:none}#ai-made-easy-checkout{min-height:180px;width:100%}@media(max-width:520px){#checkout-dialog{width:calc(100% - 16px);max-height:94dvh;border-radius:18px}.checkout-modal{padding:22px 16px}.checkout-close{top:10px;right:10px}}
 </style>
-<script src="../ia-facil/meta-consent.js"></script>
+<script src="../ia-facil/meta-consent.js"></script><script src="../ia-facil/track.js"></script>
 </head>
 <body>
 <header><div class="wrap nav">
@@ -187,10 +208,11 @@ footer{padding:42px 0;background:#0e214d;color:#c6d5f0}footer .logo{color:#fff}f
 </div></header>
 <nav class="mobile-menu" id="mobileMenu" hidden aria-label="Mobile navigation"><a href="#learn">What you’ll learn</a><a href="#course">Course modules</a><a href="#how">How it works</a><a href="#reviews">Reviews</a><a href="#faq">Frequently asked questions</a></nav>
 <main id="home">
-<section class="hero"><div class="wrap hero-copy">
-<div class="hero-badge"><b aria-hidden="true">🎓</b><span>100% online · 5–7 hours · in English</span></div>
-<h1>If your child asks you tomorrow what AI is… <span>Would you know how to explain it?</span></h1>
-<p class="lead">Learn to use artificial intelligence from scratch, without jargon and at your own pace.</p>
+<section class="hero story-hero-en"><div class="wrap hero-copy">
+<div class="me-row-en"><img class="me-en" src="../ia-facil/img/yo.png" width="96" height="96" alt="Photo of the course creator" decoding="async"><p class="story-pill-en">A real story · A course created from scratch</p></div>
+<h1>I’m 20, and I created this course <span>after teaching my grandparents how to use AI.</span></h1>
+<p class="lead story-lead-en">I realised that artificial intelligence could help them enormously, but they needed someone to explain it simply, without jargon and without fear.</p>
+<div class="story-offer-en"><span>100% online</span><b>$14.90</b><span>One-time payment</span></div>
 </div></section>
 <section class="content use-cases" id="learn"><div class="wrap">
 <div class="section-head"><span class="eyebrow">What you’ll learn</span><h2>Use AI in everyday life</h2><p>Simple examples, practical skills and a calm place to start.</p></div>
@@ -254,9 +276,17 @@ footer{padding:42px 0;background:#0e214d;color:#c6d5f0}footer .logo{color:#fff}f
 </div></div>
 <div class="research-controls"><button type="button" class="research-arrow" data-research-prev aria-label="Previous study">←</button><div class="research-dots" role="tablist" aria-label="Choose a research study"><button type="button" class="research-dot is-active" role="tab" aria-selected="true" aria-label="Study 1" data-research-dot="0"></button><button type="button" class="research-dot" role="tab" aria-selected="false" aria-label="Study 2" data-research-dot="1"></button><button type="button" class="research-dot" role="tab" aria-selected="false" aria-label="Study 3" data-research-dot="2"></button><button type="button" class="research-dot" role="tab" aria-selected="false" aria-label="Study 4" data-research-dot="3"></button></div><button type="button" class="research-arrow" data-research-next aria-label="Next study">→</button></div>
 </div></div></section>
-<section class="content story"><div class="wrap"><span class="eyebrow">The StudyOS story</span><h2 style="font-size:clamp(31px,4.5vw,46px);margin:12px 0">It started one afternoon with our grandparents.</h2><p class="lead">We sat down with our grandparents and showed them, step by step and without jargon, how they could use artificial intelligence. One afternoon together grew into something bigger.</p>
-<div class="story-grid"><article class="story-card"><strong>❤️ More connected</strong><p>They found new ways to communicate, learn and use technology in everyday life.</p></article><article class="story-card"><strong>💡 One idea</strong><p>We saw that learning AI did not have to be complicated or reserved for technology experts.</p></article><article class="story-card"><strong>🌱 A purpose</strong><p>That inspired us to create a simple, accessible course so more people can benefit from technology.</p></article></div>
-<p class="story-end"><strong>We want technology to bring people closer, not further apart.</strong> AI Made Easy helps more people learn to use AI and feel more connected to those around them.</p></div></section>
+<section class="content story story-en"><div class="wrap">
+<img class="me-lg-en" src="../ia-facil/img/yo.png" width="132" height="132" alt="Photo of the course creator" loading="lazy" decoding="async">
+<span class="eyebrow">How it started</span>
+<h2>It started one afternoon with my grandparents.</h2>
+<p class="lead story-lead-en2">I showed them, step by step, how they could use artificial intelligence for simple things like answering a question, writing a message, finding a recipe or learning something new.</p>
+<div class="story-grid">
+<article class="story-card"><strong>❤️ I loved helping them</strong><p>Seeing something that initially felt complicated become genuinely useful made me realise this could help many more people.</p></article>
+<article class="story-card"><strong>💡 Then I had an idea</strong><p>What if I created a course that explained AI in exactly the same way: from scratch, with everyday examples and without complications?</p></article>
+<article class="story-card"><strong>🌱 So I built it</strong><p>I spent part of the summer creating a practical learning journey so anyone could learn to use AI with confidence.</p></article>
+</div>
+<p class="story-end"><strong>That’s how AI Made Easy was born.</strong> It isn’t designed to turn you into a technology expert. It’s designed to help you start using AI for real.</p></div></section>
 <section class="content" id="faq"><div class="wrap"><div class="section-head"><span class="eyebrow">Questions</span><h2>Frequently asked questions</h2></div><div class="faq">
 <details><summary>Do I need technical experience?</summary><p>No. The course starts from the basics and explains each step in plain language.</p></details>
 <details><summary>Is payment secure?</summary><p>Payment is processed by Stripe. Your card details are handled securely by Stripe.</p></details>
