@@ -12,20 +12,12 @@ if(path.charAt(0)!=="/")path="/"+path;
 var site=/^\/curso(\/|$)/.test(path)?"course":"landing";
 if(en&&site==="landing"&&path==="/")path="/en/";
 var mod=(path.match(/\/modulo-(\d+)/)||[])[1],seen={};
-var pending=[],flushTimer=0;
-function flush(){
- if(flushTimer){clearTimeout(flushTimer);flushTimer=0}
- if(!pending.length)return;
- var events=pending.splice(0),body=JSON.stringify({events:events});
+function send(t,k,extra){
+ var o={s:site,t:t,p:path};if(k)o.k=String(k).toLowerCase().replace(/[^a-z0-9_:.#\/-]/g,"").slice(0,60);
+ extra=extra||{};for(var x in extra)o[x]=extra[x];var body=JSON.stringify(o);
  try{if(navigator.sendBeacon&&navigator.sendBeacon(E,new Blob([body],{type:"text/plain"})))return}catch(e){}
  try{fetch(E,{method:"POST",body:body,keepalive:true,mode:"cors",credentials:"omit",referrerPolicy:"no-referrer",headers:{"Content-Type":"text/plain"}}).catch(function(){})}catch(e){}
 }
-function send(t,k,extra){
- var o={s:site,t:t,p:path};if(k)o.k=String(k).toLowerCase().replace(/[^a-z0-9_:.#\\/-]/g,"").slice(0,60);
- extra=extra||{};for(var x in extra)o[x]=extra[x];pending.push(o);
- if(!flushTimer)flushTimer=setTimeout(flush,40);
-}
-addEventListener("pagehide",flush);
 function once(t,k){var id=t+"|"+k;if(seen[id])return;seen[id]=1;send(t,k)}
 function cleanTag(value,max){return String(value||"").toLowerCase().replace(/[^a-z0-9_-]/g,"").slice(0,max)}
 var ref="",refUrl="";
