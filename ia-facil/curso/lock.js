@@ -10,6 +10,16 @@
     var K = await sub.importKey("raw", kraw, "AES-GCM", false, ["decrypt"]);
     return new TextDecoder().decode(await sub.decrypt({ name: "AES-GCM", iv: d(pay.iv) }, K, d(pay.ct)));
   }
+  function addExtraLink(html) {
+    var extraUrl = new URL(
+      (location.pathname.split("/ia-facil/")[0] || "") + "/ia-facil/curso-extra/",
+      location.origin
+    ).href;
+    var block = '<div class="course-extra-link" style="max-width:960px;margin:24px auto;padding:18px 22px;background:#eef6ff;border:1px solid #d8e8ff;border-radius:16px;box-sizing:border-box;font:16px/1.5 system-ui,sans-serif;color:#172033;text-align:center"><strong style="display:block;font-size:18px;margin-bottom:6px">✨ ¿Quieres seguir aprendiendo?</strong><span style="display:block;margin-bottom:12px;opacity:.8">Accede a los 4 módulos extra de IA Fácil, con nuevas prácticas y cuestionarios.</span><a href="' + extraUrl + '" style="display:inline-block;padding:11px 18px;border-radius:12px;background:#2f7df6;color:#fff;text-decoration:none;font-weight:700">Ver módulos extra →</a></div>';
+    if (html.indexOf("</body>") >= 0) html = html.replace("</body>", block + "</body>");
+    else html += block;
+    return html;
+  }
   function render(html) { document.open(); document.write(html); document.close(); }
   function polishQuiz(html) {
     var css = '<style id="quiz-polish">' +
@@ -51,7 +61,7 @@
         var W = await fromPw(v), html;
         try { html = await open(W); } catch (x) { er.textContent = "Contraseña incorrecta. Revisa las mayúsculas y que no haya espacios."; ok.disabled = false; ok.textContent = "Entrar al curso"; return; }
         try { localStorage.setItem(KS, e(new Uint8Array(await sub.exportKey("raw", W)))); } catch (x) {}
-        render(polishQuiz(html));
+        render(addExtraLink(polishQuiz(html)));
       } catch (x) { er.textContent = "Ha habido un problema. Inténtalo de nuevo."; ok.disabled = false; ok.textContent = "Entrar al curso"; }
     };
   }
