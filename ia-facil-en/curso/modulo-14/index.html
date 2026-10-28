@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AI Made Easy · Bonus 4</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--ink:#172238;--muted:#64748b;--blue:#2879ea;--blue-dark:#1767dc;--line:#dfe7f1;--soft:#edf4ff;--green:#198b63;--green-soft:#e5f7ef;--orange-soft:#fff4e8;--orange-line:#ffd4ad}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+.wrap{max-width:1060px;margin:0 auto;padding:24px 28px 80px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.brand{font-weight:900}
+.btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;padding:11px 15px;border-radius:12px;font-weight:800}.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.hero,.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px 32px;margin-bottom:18px;box-shadow:0 7px 24px rgba(23,34,56,.045)}
+.hero{background:linear-gradient(135deg,#fff 0%,#f4f9ff 100%)}.eyebrow{color:var(--blue-dark);font-weight:900;font-size:.82rem;text-transform:uppercase;letter-spacing:.08em}
+.hero h1{font-size:clamp(34px,5vw,54px);line-height:1.08;letter-spacing:-.025em;margin:12px 0}.muted{color:var(--muted);font-size:16px;line-height:1.58}
+.lesson{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px 32px;margin:0 0 18px;box-shadow:0 7px 24px rgba(23,34,56,.045)}
+.lesson h2{font-size:clamp(27px,3.3vw,38px);line-height:1.14;letter-spacing:-.025em;margin:12px 0}
+.tag{display:inline-block;background:#eaf3ff;color:var(--blue-dark);border-radius:999px;padding:6px 11px;font-size:.78rem;font-weight:900}
+.lesson>p:first-of-type{background:#f7faff;border:1px solid #dce8f6;border-radius:16px;padding:17px 19px;margin:14px 0 18px;color:#536780;font-size:16px;line-height:1.58}
+.theory{background:#f6faff;border:1px solid #d7e7fa;border-left:4px solid var(--blue);border-radius:16px;padding:19px 20px;margin:14px 0;color:#40536c;font-size:15.5px;line-height:1.58}
+.theory:before{content:"💡  IN DEPTH";display:block;color:#1767dc;font-weight:900;font-size:12px;letter-spacing:.06em;margin-bottom:8px}
+.theory strong,.example strong{font-size:0}.example{background:#fff;border:1px solid #dce5ef;border-radius:16px;padding:18px 20px;margin:14px 0;color:#25364e;font-size:15.5px;line-height:1.58}
+.example:before{content:"PRACTICAL IDEA";display:block;color:#1767dc;font-weight:900;font-size:12px;letter-spacing:.06em;margin-bottom:8px}
+.task{background:var(--green-soft);border:1px solid #bfe8d3;border-radius:16px;padding:18px 20px;font-size:15.5px;line-height:1.58}
+.prompt{background:#f8fafc;color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.lesson ul,.lesson ol{margin:14px 0;padding-left:26px}.lesson li{margin:7px 0}
+.quiz{background:#fff}.quiz .q{padding:18px 0;border-top:1px solid var(--line)}.quiz .q:first-of-type{border-top:0}
+.answer label{display:block;color:#172238;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:7px 0;cursor:pointer}
+.answer label.correct{background:#e5f7ef;border-color:#2e9b57;color:#176b38}.answer label.wrong{background:#fff0f0;border-color:#d94b4b;color:#a52b2b}
+.q-result{font-weight:800;margin-top:7px}.q-result.ok{color:#208044}.q-result.bad{color:#c0392b}
+.quiz button{border:0;background:var(--blue);color:#fff;padding:12px 16px;border-radius:10px;font-weight:800;cursor:pointer}.result{margin-top:18px;font-weight:800}
+.course-side{position:fixed;left:0;top:0;width:270px;height:100vh;background:#fff;border-right:1px solid var(--line);padding:30px 22px;z-index:20;overflow:auto}
+.course-side-brand{font-size:24px;font-weight:900;margin-bottom:34px;display:flex;align-items:center;gap:10px}.course-side-brand span{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#5da6ff,#2879ea);color:#fff;display:grid;place-items:center}
+.course-side-module{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#718198;margin-bottom:18px}.course-side-list{display:flex;flex-direction:column;gap:4px}
+.course-side a{color:#5f7088;text-decoration:none;padding:9px 10px;border-radius:10px;font-size:15px;line-height:1.35}.course-side a:hover{background:#f1f6fd;color:var(--blue-dark)}.course-side a.active{background:#eaf3ff;color:var(--blue-dark);font-weight:800}
+body.has-course-side .wrap{margin-left:290px;margin-right:20px}
+@media(max-width:900px){body.has-course-side .wrap{margin:0}.course-side{position:sticky;top:0;width:100%;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:12px 14px;z-index:30}.course-side-brand{margin:0 0 8px;font-size:20px}.course-side-brand span{width:34px;height:34px;border-radius:10px}.course-side-module{display:none}.course-side-list{flex-direction:row;overflow-x:auto;gap:4px;padding-bottom:2px}.course-side a{white-space:nowrap;font-size:14px;padding:8px 10px}.wrap{padding:18px 14px 60px}.lesson{padding:22px 18px;border-radius:21px}.lesson h2{font-size:29px}.lesson>p:first-of-type{font-size:15.5px;padding:15px 16px}.theory,.example,.task,.prompt{font-size:15px;line-height:1.55;padding:16px 17px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<nav class="top"><div class="brand">✦ AI Made Easy</div><a class="btn ghost" href="../">Course home</a></nav>
+<section class="hero">
+<div class="eyebrow">BONUS MODULE 4 · 10 LESSONS</div>
+<h1>Work with images, files and voice</h1>
+<p class="muted">Go beyond text. Learn how to use AI with photos, screenshots, PDFs, documents and voice while understanding what AI can and cannot reliably interpret.</p>
+</section>
+
+<section class="card">
+<article class="lesson"><span class="tag">LESSON 1</span><h2>AI can understand more than text</h2>
+<p>Modern AI tools can work with images and many types of files, not only written prompts.</p>
+<div class="theory"><strong>In depth:</strong> ChatGPT can accept image inputs and can work with documents, spreadsheets, presentations and supported audio files. This changes the way you can ask for help: instead of describing everything yourself, you can sometimes provide the original material and ask AI to analyse it. Availability and limits depend on the plan, model, platform and account, so a feature you see in one context may not appear in another.</div>
+<div class="example"><strong>Try it:</strong> Take a non-sensitive photo of something you want help understanding and ask: “What can you identify here, and what are you uncertain about?”</div></article>
+
+<article class="lesson"><span class="tag">LESSON 2</span><h2>Ask questions about a photo</h2>
+<p>A photo can provide useful context for practical questions, from identifying objects to understanding what is visible.</p>
+<div class="theory"><strong>In depth:</strong> Image input is useful when the visual information itself matters. You can ask about objects, visible text, layout, diagrams or other visual details. Be specific about the part you want analysed. If the image is blurry, poorly lit or ambiguous, the answer may be less reliable. Ask AI to state uncertainty instead of assuming that a confident description is necessarily correct.</div>
+<div class="example"><strong>Try it:</strong> Upload a photo of a household object and ask: “Describe what you can see. Which details are clear and which are uncertain?”</div></article>
+
+<article class="lesson"><span class="tag">LESSON 3</span><h2>Use screenshots to get help</h2>
+<p>A screenshot can show AI exactly what you are seeing instead of forcing you to describe every button or message.</p>
+<div class="theory"><strong>In depth:</strong> Screenshots are especially useful for troubleshooting, explaining interfaces and understanding error messages. Crop or mark the relevant area when the screen contains distracting or private information. Ask one concrete question at a time. If the answer depends on a setting that is not visible, AI should tell you what additional information is needed rather than inventing it.</div>
+<div class="example"><strong>Try it:</strong> Upload a harmless screenshot and ask: “What does this message mean, and what should I check next?”</div></article>
+
+<article class="lesson"><span class="tag">LESSON 4</span><h2>Work with PDFs and documents</h2>
+<p>You can upload supported documents and ask AI to summarise, explain, compare or extract information from them.</p>
+<div class="theory"><strong>In depth:</strong> File analysis is useful for turning long material into questions and structured information. You can ask for a summary, a list of key points, a comparison between documents or an explanation of a difficult section. For important work, check the result against the original because extraction and interpretation can contain errors. Ask AI to point to the relevant section when accuracy matters.</div>
+<div class="example"><strong>Try it:</strong> Upload a non-sensitive PDF and ask: “Give me five key points, then tell me which page or section supports each one.”</div></article>
+
+<article class="lesson"><span class="tag">LESSON 5</span><h2>Turn a document into something useful</h2>
+<p>AI can transform information from a file into a checklist, table, summary, study guide or draft.</p>
+<div class="theory"><strong>In depth:</strong> Transformation is often more useful than simple summarisation. Tell AI what the output is for, who will use it and what must be preserved. If the source contains important wording, numbers or conditions, explicitly ask AI not to omit them. Treat the transformed version as a working aid and keep the original available for verification.</div>
+<div class="example"><strong>Try it:</strong> Ask: “Turn this document into a one-page checklist. Keep all deadlines and requirements exactly as written.”</div></article>
+
+<article class="lesson"><span class="tag">LESSON 6</span><h2>Use spreadsheets without losing control</h2>
+<p>AI can help understand tables and organise data, but important numbers should still be checked.</p>
+<div class="theory"><strong>In depth:</strong> Spreadsheet analysis can help identify patterns, summarise columns, explain formulas or organise information. Before sharing a file, remove data that AI does not need. When numbers affect money, work or important decisions, inspect the source data and calculations yourself. Ask AI to explain its method so you can see what it used and what assumptions it made.</div>
+<div class="example"><strong>Try it:</strong> With a simple practice spreadsheet, ask: “Summarise the main patterns and show me how you reached each conclusion.”</div></article>
+
+<article class="lesson"><span class="tag">LESSON 7</span><h2>Talk instead of typing</h2>
+<p>Voice can make AI easier to use when speaking is more natural than writing.</p>
+<div class="theory"><strong>In depth:</strong> Voice conversations can be useful for brainstorming, asking quick questions or practising explanations. Availability and capabilities vary by account and platform. Spoken conversations can also create misunderstandings, especially with names, numbers or accents. For important information, slow down, confirm key details and switch to text when you need a precise record.</div>
+<div class="example"><strong>Try it:</strong> Ask a simple question by voice, then ask AI to repeat the key details in a short written list.</div></article>
+
+<article class="lesson"><span class="tag">LESSON 8</span><h2>Give AI the right material</h2>
+<p>The quality of the input matters. Good results usually begin with a clear file, image or recording and a specific goal.</p>
+<div class="theory"><strong>In depth:</strong> Before uploading anything, ask yourself: What does AI actually need? Remove irrelevant pages, private information and unnecessary personal details when possible. Tell AI what to focus on and what output you want. If the material is incomplete, say so. AI should work from the evidence you provide rather than filling missing information with guesses.</div>
+<div class="example"><strong>Try it:</strong> Use this pattern: “Here is [material]. Focus on [specific part]. I want [specific output]. Tell me what you cannot determine.”</div></article>
+
+<article class="lesson"><span class="tag">LESSON 9</span><h2>Know the limits of visual and file analysis</h2>
+<p>AI can misunderstand images, extract information incorrectly or miss important details.</p>
+<div class="theory"><strong>In depth:</strong> Image and file analysis is powerful but not infallible. Blurry images, ambiguous layouts, missing context and complex material can reduce accuracy. Some domains require specialist interpretation and should not be delegated to AI. For high-stakes medical, legal, financial or safety decisions, use qualified sources or professionals and treat AI as an assistant for questions and organisation rather than as the final authority.</div>
+<div class="example"><strong>Try it:</strong> Ask: “What parts of your answer are uncertain, and what should I verify in the original source?”</div></article>
+
+<article class="lesson"><span class="tag">LESSON 10</span><h2>Build a multimodal habit</h2>
+<p>Choose the input that contains the information you need: text, image, file or voice. Then ask for a result you can check.</p>
+<div class="theory"><strong>In depth:</strong> The most useful habit is not learning a particular button. It is recognising which form of information will make the task easier. Use a photo when the visual details matter, a document when the source material matters, a spreadsheet when the numbers matter and voice when speaking is more convenient. Keep the human review step, especially when an error could have meaningful consequences.</div>
+<div class="example"><strong>Try it:</strong> Choose one low-risk task this week and complete it using an image, file or voice input. Note what was easier and what still needed your judgement.</div>
+</article>
+</section>
+
+<section class="card quiz">
+<span class="tag">MODULE QUIZ</span><h2>Check what you learned</h2>
+<p>Choose the best answer, then press <strong>Finish the quiz</strong>. Each answer will be marked in green or red.</p>
+<div class="q"><strong>1. What is one useful reason to upload an image?</strong><div class="answer"><label><input type="radio" name="q0" value="A"> A. It gives AI visual information that text alone may not contain.</label><label><input type="radio" name="q0" value="B"> B. It guarantees a correct answer.</label><label><input type="radio" name="q0" value="C"> C. It removes the need for human judgement.</label></div><div class="q-result" id="qr0"></div></div>
+<div class="q"><strong>2. What is a good practice when analysing an important PDF?</strong><div class="answer"><label><input type="radio" name="q1" value="A"> A. Trust every extracted number.</label><label><input type="radio" name="q1" value="B"> B. Check important information against the original.</label><label><input type="radio" name="q1" value="C"> C. Delete the original after uploading it.</label></div><div class="q-result" id="qr1"></div></div>
+<div class="q"><strong>3. What should you do before uploading a file?</strong><div class="answer"><label><input type="radio" name="q2" value="A"> A. Include every private detail just in case.</label><label><input type="radio" name="q2" value="B"> B. Remove information AI does not need when possible.</label><label><input type="radio" name="q2" value="C"> C. Upload it without deciding what you want.</label></div><div class="q-result" id="qr2"></div></div>
+<div class="q"><strong>4. When can voice be especially useful?</strong><div class="answer"><label><input type="radio" name="q3" value="A"> A. When speaking is more convenient than typing.</label><label><input type="radio" name="q3" value="B"> B. When exact numbers never matter.</label><label><input type="radio" name="q3" value="C"> C. When you want to avoid checking important details.</label></div><div class="q-result" id="qr3"></div></div>
+<div class="q"><strong>5. What should you do when an AI interpretation could have serious consequences?</strong><div class="answer"><label><input type="radio" name="q4" value="A"> A. Rely on confidence in the wording.</label><label><input type="radio" name="q4" value="B"> B. Use appropriate authoritative or professional sources and verify important details.</label><label><input type="radio" name="q4" value="C"> C. Ask for a longer answer and accept it automatically.</label></div><div class="q-result" id="qr4"></div></div>
+<button onclick="checkQuiz()">Finish the quiz</button><div id="result" class="result"></div>
+</section>
+
+<div class="top"><a class="btn ghost" href="../extra-3/">← Bonus 3</a><a class="btn" href="../">Course home →</a></div>
+</main>
+
+<script>
+function checkQuiz(){
+ const correct=["A","B","B","A","B"];let answered=0;
+ correct.forEach((a,i)=>{
+  document.querySelectorAll('input[name="q'+i+'"]').forEach(x=>x.parentElement.classList.remove('correct','wrong'));
+  const x=document.querySelector('input[name="q'+i+'"]:checked'),r=document.getElementById('qr'+i);
+  if(x){answered++;if(x.value===a){x.parentElement.classList.add('correct');r.textContent='✓ Correct';r.className='q-result ok'}
+  else{x.parentElement.classList.add('wrong');const good=document.querySelector('input[name="q'+i+'"][value="'+a+'"]');if(good)good.parentElement.classList.add('correct');r.textContent='✗ Incorrect — the correct answer is '+a+'.';r.className='q-result bad'}}
+  else{r.textContent='Please choose an answer.';r.className='q-result bad'}
+ });
+ document.getElementById('result').textContent=answered===correct.length?'Quiz reviewed — check the green and red answers above.':'Please answer all five questions before finishing the quiz.';
+}
+</script>
+<script id="dynamic-course-nav">
+(function(){
+ var lessons=[].slice.call(document.querySelectorAll('.lesson'));if(!lessons.length)return;
+ document.body.classList.add('has-course-side');
+ lessons.forEach(function(lesson,i){lesson.id='lesson-'+(i+1)});
+ var side=document.createElement('aside');side.className='course-side';
+ side.innerHTML='<div class="course-side-brand"><span>✦</span> AI Made Easy</div><div class="course-side-module"></div><nav class="course-side-list"></nav>';
+ var eyebrow=document.querySelector('.hero .eyebrow');side.querySelector('.course-side-module').textContent=eyebrow?eyebrow.textContent:'COURSE MODULE';
+ var list=side.querySelector('.course-side-list');
+ lessons.forEach(function(lesson,i){var h=lesson.querySelector('h2'),tag=lesson.querySelector('.tag'),a=document.createElement('a');
+ var num=(tag&&/LESSON/i.test(tag.textContent))?tag.textContent.replace(/[^0-9]/g,''):(i+1);a.href='#lesson-'+(i+1);a.textContent=num+' · '+(h?h.textContent:'Lesson '+(i+1));
+ a.addEventListener('click',function(){document.getElementById('lesson-'+(i+1)).scrollIntoView({behavior:'smooth',block:'start'})});list.appendChild(a)});
+ document.body.insertBefore(side,document.body.firstChild);
+ var links=[].slice.call(list.querySelectorAll('a'));
+ if('IntersectionObserver' in window){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var i=lessons.indexOf(e.target);links.forEach(function(x){x.classList.remove('active')});if(i>=0)links[i].classList.add('active')}})},{rootMargin:'-15% 0px -70% 0px'});lessons.forEach(function(l){obs.observe(l)})}
+})();
+</script>
+</body></html>
