@@ -18,7 +18,7 @@
         var wrap = document.createElement("div");
         wrap.id = "iafacil-extra-link";
         wrap.style.cssText = "max-width:900px;margin:24px auto;padding:0 20px;box-sizing:border-box;text-align:center;";
-        wrap.innerHTML = '<a href="../curso-extra/" style="display:inline-block;padding:14px 20px;border-radius:14px;background:#172033;color:#fff;text-decoration:none;font-weight:700;font:inherit;box-shadow:0 6px 18px rgba(0,0,0,.08)">✨ Entrar a los módulos extra →</a>';
+        wrap.innerHTML = '<a href="/studyos/ia-facil/curso-extra/" style="display:inline-block;padding:14px 20px;border-radius:14px;background:#172033;color:#fff;text-decoration:none;font-weight:700;font:inherit;box-shadow:0 6px 18px rgba(0,0,0,.08)">✨ Entrar a los módulos extra →</a>';
         document.body.insertBefore(wrap, document.body.firstChild);
       } catch (x) {}
     }, 0);
