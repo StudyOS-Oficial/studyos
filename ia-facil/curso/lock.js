@@ -10,7 +10,19 @@
     var K = await sub.importKey("raw", kraw, "AES-GCM", false, ["decrypt"]);
     return new TextDecoder().decode(await sub.decrypt({ name: "AES-GCM", iv: d(pay.iv) }, K, d(pay.ct)));
   }
-  function render(html) { document.open(); document.write(html); document.close(); }
+  function render(html) {
+    document.open(); document.write(html); document.close();
+    setTimeout(function () {
+      try {
+        if (!document.body || document.getElementById("iafacil-extra-link")) return;
+        var wrap = document.createElement("div");
+        wrap.id = "iafacil-extra-link";
+        wrap.style.cssText = "max-width:900px;margin:24px auto;padding:0 20px;box-sizing:border-box;text-align:center;";
+        wrap.innerHTML = '<a href="../curso-extra/" style="display:inline-block;padding:14px 20px;border-radius:14px;background:#172033;color:#fff;text-decoration:none;font-weight:700;font:inherit;box-shadow:0 6px 18px rgba(0,0,0,.08)">✨ Entrar a los módulos extra →</a>';
+        document.body.appendChild(wrap);
+      } catch (x) {}
+    }, 0);
+  }
   function polishQuiz(html) {
     var css = '<style id="quiz-polish">' +
       '.quiz button,.quiz .option,.quiz .answer,.quiz-option,.quiz-answer{color:#172033!important;background:#fff!important;border:1px solid #d8e0ea!important;border-radius:14px!important;padding:14px 18px!important;text-align:left!important;font:inherit!important;cursor:pointer!important;transition:background .15s,border-color .15s,transform .05s!important}' +
