@@ -1,0 +1,37 @@
+<div class="tag">SEMANA 2 · LECCIÓN 10</div>
+<h2>Técnicas avanzadas de prompting</h2>
+<p class="lead">Cuando una tarea es compleja, pedir “una respuesta” puede ser demasiado ambiguo. Podemos estructurar el trabajo para que ChatGPT analice, compruebe y entregue un resultado más consistente.</p>
+<div class="goal"><b>Objetivo:</b> aprender técnicas prácticas para tareas complejas sin convertir el prompting en una colección de trucos.</div>
+<div class="outcomes"><div class="outcome"><b>Descomponer</b>Tareas complejas</div><div class="outcome"><b>Guiar</b>El proceso</div><div class="outcome"><b>Controlar</b>La salida</div></div>
+<div class="section"><h3>1. APRENDER · Cuatro técnicas útiles</h3><div class="steps">
+<div class="step"><div class="step-label">DESCOMPOSICIÓN</div><h4>Divide el problema</h4><p>En lugar de “analiza estos clientes y dime qué hacer”, separa extracción de datos, clasificación, análisis y recomendación.</p></div>
+<div class="step"><div class="step-label">EJEMPLOS</div><h4>Enséñale el patrón</h4><p>Proporciona uno o dos ejemplos de entrada → salida cuando el formato esperado sea difícil de describir.</p></div>
+<div class="step"><div class="step-label">CRITERIOS EXPLÍCITOS</div><h4>Define cómo evaluar</h4><p>Indica qué condiciones debe cumplir el resultado y qué debe hacer ante incertidumbre.</p></div>
+<div class="step"><div class="step-label">SALIDA ESTRUCTURADA</div><h4>Fija el formato</h4><p>Usa tablas, campos o secciones cuando necesites resultados comparables y reutilizables.</p></div></div></div>
+<div class="section"><h3>2. VER · Ejemplo profesional</h3>
+<div class="concept"><div class="concept-label">PROBLEMA</div>“Analiza estos 20 candidatos y dime cuál contratar.”</div>
+<div class="concept"><div class="concept-label">MEJOR DISEÑO</div>“Extrae experiencia, competencias y requisitos demostrados. Compara cada candidato con estos criterios. Señala evidencia a favor y en contra. Identifica información que falta. No tomes la decisión final; prepara una matriz para revisión humana.”</div>
+<p>El segundo enfoque separa análisis de decisión y hace visible la evidencia.</p></div>
+<div class="section"><h3>3. HACER · Diseñar una tarea compleja</h3><div class="flow"><div class="node">ENTRADA</div><div class="node">EXTRACCIÓN</div><div class="node">ANÁLISIS</div><div class="node">CONTROL</div><div class="node">SALIDA</div></div>
+<p>Si una tarea tiene varios pasos, define explícitamente cada etapa. Esto facilita detectar dónde se produce un error.</p></div>
+<div class="section"><h3>4. PLANTILLA · Prompt por etapas</h3><div class="prompt"><button class="copy" data-copy>Copiar</button><pre>Trabajaremos en 4 etapas.
+
+ETAPA 1 — EXTRAER
+Identifica únicamente los datos relevantes.
+
+ETAPA 2 — ANALIZAR
+Aplica estos criterios:
+[CRITERIOS]
+
+ETAPA 3 — COMPROBAR
+Señala datos faltantes, contradicciones e inferencias.
+
+ETAPA 4 — PRESENTAR
+Entrega una tabla con:
+[ESTRUCTURA]
+
+No pases a la siguiente etapa si falta información crítica. No inventes datos.</pre></div></div>
+<div class="exercise"><h3>5. EXPERIMENTAR · ¿Una instrucción o varias?</h3><p>Elige una tarea compleja y prueba dos enfoques: pedir el resultado completo de una vez y dividirlo en etapas.</p><p>Compara precisión, facilidad de revisión y tiempo total.</p><p><b>Conclusión:</b> no siempre gana el prompt más largo. Gana el diseño que produce un proceso controlable.</p></div>
+<div class="tip">💡 Las técnicas avanzadas tienen sentido cuando resuelven un problema concreto. No añadas complejidad solo porque “suene a prompting avanzado”.</div>
+<div class="quiz"><h3>6. COMPROBAR</h3><p><b>¿Cuándo tiene sentido dividir una tarea en etapas?</b></p><button class="option" data-answer="wrong">Siempre, independientemente de la tarea.</button><button class="option" data-answer="correct">Cuando separar extracción, análisis, comprobación y salida hace el proceso más claro y revisable.</button><button class="option" data-answer="wrong">Solo cuando queremos que el prompt sea más largo.</button><div class="feedback" data-feedback></div></div>
+<div class="nav"><button class="prev" data-prev>← Anterior</button><button class="next" data-next>Siguiente →</button></div>
