@@ -31,26 +31,29 @@
 <script>
 const modules = [
 {
-title:"La mentalidad: de preguntar a trabajar con IA",
-intro:"Antes de aprender prompts, aprende a identificar qué parte de tu trabajo puede mejorar con IA y qué parte debe seguir bajo tu control.",
-goal:"Entender el papel de ChatGPT dentro de un proceso de trabajo y elegir tareas con buen potencial de mejora.",
-outcomes:["Detectar tareas repetitivas","Separar IA y criterio humano","Definir un resultado útil"],
+title:"La IA está cambiando la forma de trabajar",
+intro:"La IA no llega para hacer todo por ti. Llega para cambiar cómo repartes tu tiempo, tu atención y tu criterio. En este primer módulo aprenderás a detectar qué partes de tu trabajo puede mejorar la IA y cuáles deben seguir bajo tu control.",
+goal:"Entender cómo encaja ChatGPT en un proceso de trabajo real y aprender a identificar tareas con potencial de mejora.",
+outcomes:["Detectar oportunidades de IA","Separar IA y criterio humano","Diseñar un primer caso de uso"],
 theory:[
-"ChatGPT no es simplemente un buscador ni un sustituto de un profesional. En un entorno laboral puede funcionar como redactor, editor, sintetizador, analista, simulador o compañero de lluvia de ideas. Su utilidad depende de cómo se incorpora al proceso.",
-"Una buena regla inicial es buscar tareas con una entrada clara y una salida revisable. Redactar un borrador, resumir información, estructurar un documento o preparar preguntas suele ser más controlable que delegar una decisión crítica.",
-"El objetivo de este curso no es que uses IA para todo. Es que aprendas a localizar los puntos donde te ahorra trabajo sin eliminar el conocimiento, la responsabilidad o la revisión que necesita tu puesto."
+"El cambio importante no es aprender a escribir prompts. Es aprender a mirar tu trabajo de otra manera. Muchas tareas profesionales mezclan información, redacción, análisis, organización y toma de decisiones. La IA puede acelerar algunas de esas piezas, pero no todas deben delegarse.",
+"Puedes pensar en ChatGPT como un colaborador digital capaz de CREAR, TRANSFORMAR, ANALIZAR, PENSAR o SIMULAR y SISTEMATIZAR información. Su valor aparece cuando lo incorporas a una tarea concreta y defines qué resultado necesitas.",
+"Una regla fundamental del curso será esta: la IA propone, transforma o acelera; el profesional revisa, decide y responde por el resultado. El objetivo no es sustituir tu criterio, sino liberar tiempo para utilizarlo donde aporta más valor."
 ],
-visual:["Un flujo de trabajo profesional","Tarea real","→","Contexto + instrucciones","→","Borrador / análisis","→","Revisión humana","→","Resultado"],
+visual:["El nuevo flujo de trabajo","PROBLEMA","→","CONTEXTO","→","IA","→","REVISIÓN","→","DECISIÓN","→","RESULTADO"],
 steps:[
-["Haz un inventario","Apunta cinco tareas que haces cada semana. Marca cuáles se repiten, cuáles consumen tiempo y cuáles generan mucho texto o información."],
-["Clasifica el riesgo","Bajo: ideas, estilo, borradores. Medio: información de clientes o decisiones internas. Alto: legal, financiero, seguridad, credenciales o acciones irreversibles."],
-["Elige una primera victoria","Empieza por una tarea frecuente, de riesgo bajo o medio y cuyo resultado puedas revisar rápidamente."]
+["1. Identifica el problema","Antes de abrir ChatGPT, define qué tarea quieres mejorar. No empieces por la herramienta; empieza por el trabajo real."],
+["2. Decide qué parte puede hacer la IA","Busca tareas repetitivas, con entradas relativamente claras y un resultado que puedas revisar."],
+["3. Mantén el criterio humano","Las decisiones importantes, los datos sensibles y las acciones de alto impacto necesitan el nivel de control adecuado."],
+["4. Mide el resultado","Una mejora real debe poder observarse: menos tiempo, mejor calidad, menos errores, más consistencia o mayor capacidad."]
 ],
-prompt:"Tengo estas tareas habituales en mi trabajo:\n[lista]\n\nPara cada una, indica: 1) si ChatGPT puede aportar valor, 2) qué parte podría ayudar a realizar, 3) qué debería seguir haciendo yo, 4) riesgo de error y 5) una primera forma de probarlo. No inventes detalles sobre mi trabajo.",
-exercise:"Elige una tarea que hagas al menos una vez por semana. Escribe cuánto tardas actualmente, qué información utilizas y qué resultado necesitas. Todavía no intentes automatizarla.",
-tip:"La primera mejora no tiene que ser espectacular. Si una tarea pasa de 20 minutos a 12 y mantiene la calidad, ya has creado un flujo útil.",
-question:"¿Cuál es el mejor punto de partida para aprender a usar IA en el trabajo?",
-options:["Una tarea frecuente, revisable y de riesgo controlado","La decisión profesional más importante que tengas","Automatizar todas tus tareas de golpe"],answer:0
+prompt:"Estas son 5 tareas que realizo habitualmente en mi trabajo:\n[lista de tareas]\n\nPara cada una analiza:\n1. Qué parte podría mejorar ChatGPT.\n2. Qué parte debería seguir haciendo una persona.\n3. Qué información necesitaría la IA.\n4. Qué riesgo tendría un error.\n5. Cómo podría medir si realmente ahorro tiempo o mejoro el resultado.\n\nNo inventes detalles sobre mi trabajo y, si falta información, indícalo.",
+exercise:"Haz una lista de 5 tareas reales que realizas durante una semana. Para cada una anota: frecuencia, tiempo aproximado, información que utilizas, resultado que produces y cuánto criterio profesional requiere. Después elige una tarea que sea frecuente, revisable y de riesgo controlado.",
+tip:"No busques automatizar lo más espectacular. Busca primero lo que haces muchas veces. Una tarea de 30 minutos que repites cuatro veces por semana puede tener más valor que una tarea compleja que haces una vez al mes.",
+risk:"No introduzcas datos confidenciales, credenciales, secretos empresariales o información personal en una herramienta de IA si no estás autorizado a hacerlo. El nivel de control debe aumentar con el riesgo.",
+question:"¿Cuál es el mejor punto de partida para aplicar IA al trabajo?",
+options:["Una tarea frecuente, con resultado revisable y riesgo controlado","La decisión más crítica de tu puesto para delegarla completamente","Automatizar todas las tareas repetitivas de golpe"],
+answer:0
 },
 {
 title:"El método de un buen prompt",
