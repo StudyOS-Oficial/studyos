@@ -30,31 +30,62 @@
 <main class="wrap"><div class="grid"><aside class="sidebar" id="menu"></aside><section class="card" id="content"></section></div></main>
 <script>
 const modules = [
-{
+{ 
 title:"La IA está cambiando la forma de trabajar",
-intro:"La IA no llega para hacer todo por ti. Llega para cambiar cómo repartes tu tiempo, tu atención y tu criterio. En este primer módulo aprenderás a detectar qué partes de tu trabajo puede mejorar la IA y cuáles deben seguir bajo tu control.",
-goal:"Entender cómo encaja ChatGPT en un proceso de trabajo real y aprender a identificar tareas con potencial de mejora.",
-outcomes:["Detectar oportunidades de IA","Separar IA y criterio humano","Diseñar un primer caso de uso"],
+intro:"La IA no consiste simplemente en pedirle a ChatGPT que escriba por ti. El cambio profesional aparece cuando empiezas a analizar tu trabajo como un conjunto de procesos y decides qué partes puede acelerar, transformar o analizar la IA, y qué partes necesitan seguir bajo tu criterio.",
+goal:"Aprender a detectar oportunidades reales de IA en tu trabajo y convertir una tarea cotidiana en un primer caso de uso profesional, medible y controlado.",
+outcomes:["Entender qué cambia con la IA en el trabajo","Analizar tareas como procesos y no como prompts aislados","Separar lo que puede hacer la IA de lo que debe decidir una persona","Priorizar oportunidades según valor, riesgo y facilidad de revisión","Diseñar un primer caso de uso con entradas, salida, revisión y métrica"],
 theory:[
-"El cambio importante no es aprender a escribir prompts. Es aprender a mirar tu trabajo de otra manera. Muchas tareas profesionales mezclan información, redacción, análisis, organización y toma de decisiones. La IA puede acelerar algunas de esas piezas, pero no todas deben delegarse.",
-"Puedes pensar en ChatGPT como un colaborador digital capaz de CREAR, TRANSFORMAR, ANALIZAR, PENSAR o SIMULAR y SISTEMATIZAR información. Su valor aparece cuando lo incorporas a una tarea concreta y defines qué resultado necesitas.",
-"Una regla fundamental del curso será esta: la IA propone, transforma o acelera; el profesional revisa, decide y responde por el resultado. El objetivo no es sustituir tu criterio, sino liberar tiempo para utilizarlo donde aporta más valor."
+"Durante años, las herramientas digitales ayudaron a ejecutar instrucciones: un procesador de textos escribe, una hoja de cálculo calcula y un software de gestión almacena información. La IA generativa añade una capacidad diferente: puede trabajar con lenguaje y contenido ambiguo. Puede crear, transformar, clasificar, resumir, comparar, analizar, proponer alternativas y simular diferentes escenarios.",
+"Por eso la pregunta profesional ya no debería ser solamente «¿qué prompt puedo escribir?». La pregunta útil es «¿en qué parte de mi trabajo existe un problema repetitivo o costoso que la IA podría ayudarme a resolver?». Pensar así cambia el enfoque: primero analizamos el trabajo y después elegimos cómo utilizar la herramienta.",
+"Una tarea profesional rara vez es una sola acción. Por ejemplo, preparar un informe puede implicar recopilar información, limpiarla, clasificarla, detectar cambios, interpretar resultados, redactar conclusiones, revisar datos y preparar una versión para otra persona. Algunas de esas piezas son excelentes candidatas para IA; otras requieren conocimiento del contexto, responsabilidad profesional o una decisión humana.",
+"Podemos agrupar las capacidades de IA que utilizaremos durante el curso en cinco grandes funciones: CREAR contenido nuevo; TRANSFORMAR información existente; ANALIZAR información y encontrar patrones; PENSAR o SIMULAR alternativas para preparar una decisión; y SISTEMATIZAR pasos que se repiten. Una misma tarea puede utilizar varias funciones a la vez.",
+"El verdadero valor aparece cuando combinamos esas capacidades con un proceso de trabajo. Un buen sistema no es «IA → resultado». Es «problema → contexto → IA → revisión → decisión → resultado». La revisión no es un trámite añadido al final: forma parte del diseño del proceso desde el principio.",
+"También cambia cómo utilizamos nuestro tiempo. Si la IA reduce el trabajo mecánico de recopilar, ordenar, resumir o preparar un primer borrador, el tiempo liberado puede dedicarse a comprobar información, interpretar resultados, decidir, hablar con clientes, resolver excepciones o mejorar el proceso. La productividad no consiste únicamente en hacer más rápido lo mismo.",
+"Una regla acompañará todo el curso: IA + criterio humano. La IA puede proponer, transformar y acelerar; la persona debe determinar cuándo el resultado es suficientemente fiable para utilizarlo. Cuanto mayor sea el impacto de un error, mayor debe ser el nivel de revisión y control.",
+"Para priorizar oportunidades podemos valorar cinco factores: frecuencia de la tarea, tiempo que consume, claridad de las entradas y del resultado, facilidad para revisar la salida y riesgo de equivocarse. Una tarea muy frecuente, relativamente estructurada y fácil de revisar suele ser un mejor primer proyecto que una decisión excepcional de alto impacto."
 ],
 visual:["El nuevo flujo de trabajo","PROBLEMA","→","CONTEXTO","→","IA","→","REVISIÓN","→","DECISIÓN","→","RESULTADO"],
 steps:[
-["1. Identifica el problema","Antes de abrir ChatGPT, define qué tarea quieres mejorar. No empieces por la herramienta; empieza por el trabajo real."],
-["2. Decide qué parte puede hacer la IA","Busca tareas repetitivas, con entradas relativamente claras y un resultado que puedas revisar."],
-["3. Mantén el criterio humano","Las decisiones importantes, los datos sensibles y las acciones de alto impacto necesitan el nivel de control adecuado."],
-["4. Mide el resultado","Una mejora real debe poder observarse: menos tiempo, mejor calidad, menos errores, más consistencia o mayor capacidad."]
+["1. Empieza por una tarea real","No abras ChatGPT buscando una idea abstracta. Escribe una tarea concreta que haces en tu trabajo: preparar informes, responder consultas, analizar documentos, organizar información, preparar reuniones, etc."],
+["2. Descompón la tarea","Pregunta qué pasos contiene. Separar recopilar, clasificar, analizar, redactar, revisar y decidir permite ver dónde puede aportar la IA y dónde no."],
+["3. Identifica la función de IA","Decide si la oportunidad consiste principalmente en crear, transformar, analizar, simular/pensar o sistematizar. Puede haber más de una."],
+["4. Define las entradas","Especifica qué información necesita el proceso: documentos, datos, instrucciones, ejemplos, criterios, contexto del cliente o información interna autorizada."],
+["5. Define la salida","Describe qué debe producir el sistema y en qué formato. Un resultado concreto es mucho más fácil de evaluar que «ayúdame con esto»."],
+["6. Conserva un punto de control humano","Decide exactamente qué revisará una persona antes de utilizar el resultado. Si no puedes explicar cómo revisarías la salida, probablemente todavía no tienes un caso de uso bien diseñado."],
+["7. Define una métrica","Mide algo antes y después: minutos empleados, errores detectados, número de revisiones, tiempo de respuesta, volumen procesado o consistencia del resultado."]
 ],
-prompt:"Estas son 5 tareas que realizo habitualmente en mi trabajo:\n[lista de tareas]\n\nPara cada una analiza:\n1. Qué parte podría mejorar ChatGPT.\n2. Qué parte debería seguir haciendo una persona.\n3. Qué información necesitaría la IA.\n4. Qué riesgo tendría un error.\n5. Cómo podría medir si realmente ahorro tiempo o mejoro el resultado.\n\nNo inventes detalles sobre mi trabajo y, si falta información, indícalo.",
-exercise:"Haz una lista de 5 tareas reales que realizas durante una semana. Para cada una anota: frecuencia, tiempo aproximado, información que utilizas, resultado que produces y cuánto criterio profesional requiere. Después elige una tarea que sea frecuente, revisable y de riesgo controlado.",
-tip:"No busques automatizar lo más espectacular. Busca primero lo que haces muchas veces. Una tarea de 30 minutos que repites cuatro veces por semana puede tener más valor que una tarea compleja que haces una vez al mes.",
-risk:"No introduzcas datos confidenciales, credenciales, secretos empresariales o información personal en una herramienta de IA si no estás autorizado a hacerlo. El nivel de control debe aumentar con el riesgo.",
-question:"¿Cuál es el mejor punto de partida para aplicar IA al trabajo?",
-options:["Una tarea frecuente, con resultado revisable y riesgo controlado","La decisión más crítica de tu puesto para delegarla completamente","Automatizar todas las tareas repetitivas de golpe"],
+prompt:"Quiero encontrar oportunidades de IA en mi trabajo.
+
+Estas son mis tareas habituales:
+[LISTA DE TAREAS]
+
+Para cada tarea analiza:
+1. Qué problema o coste tiene actualmente.
+2. Qué pasos la componen.
+3. Qué función de IA podría aportar valor: crear, transformar, analizar, simular/pensar o sistematizar.
+4. Qué información necesitaría como entrada.
+5. Qué salida debería producir.
+6. Qué parte debe seguir bajo control humano.
+7. Qué riesgo tendría un error.
+8. Qué métrica permitiría comprobar si la solución mejora el proceso.
+
+Después, puntúa cada oportunidad de 1 a 5 en impacto, frecuencia, facilidad de implementación, facilidad de revisión y riesgo. Prioriza las oportunidades con buen potencial y riesgo controlable.
+
+No inventes detalles sobre mi trabajo. Si falta información, indícalo y hazme preguntas antes de sacar conclusiones.",
+exercise:"Haz ahora tu propio mapa de oportunidades. Elige entre 8 y 10 tareas reales que hayas realizado recientemente. Para cada una anota: frecuencia, tiempo aproximado, información utilizada, resultado producido, pasos principales y cuánto criterio profesional requiere.
+
+Después selecciona 3 oportunidades siguiendo esta regla: alto valor potencial + resultado revisable + riesgo controlado. Para la mejor de las tres, escribe el proceso completo como:
+PROBLEMA → ENTRADAS → IA → REVISIÓN HUMANA → SALIDA → RIESGO → MÉTRICA.
+
+No busques todavía construir una automatización perfecta. El objetivo es aprender a diseñar correctamente el caso de uso.",
+tip:"No empieces por la tarea más espectacular. Empieza por una tarea frecuente que puedas revisar. Si una actividad tarda 30 minutos y la haces cuatro veces por semana, puede tener más valor que una tarea compleja que realizas una vez al mes.",
+risk:"Nunca introduzcas información confidencial, credenciales, secretos empresariales o datos personales en una herramienta de IA si no estás autorizado a hacerlo. Y no delegues automáticamente decisiones críticas solo porque técnicamente puedas hacerlo. La capacidad de la herramienta no determina por sí sola si debe utilizarse.",
+question:"¿Qué caso de uso representa mejor un buen primer proyecto de IA profesional?",
+options:["Una tarea frecuente, con entradas relativamente claras, resultado revisable, riesgo controlado y una métrica que permita comparar el antes y el después","La decisión más crítica del puesto para intentar que la IA la tome completamente sin revisión humana","Una tarea excepcional y compleja cuyo resultado es difícil de verificar, pero que parece innovadora"],
 answer:0
 },
+
 {
 title:"Qué es realmente ChatGPT",
 intro:"Antes de aprender a sacarle partido en el trabajo, necesitas entender qué estás utilizando. ChatGPT no es un buscador ni conoce automáticamente tu empresa: genera respuestas a partir de las instrucciones y del contexto que le proporcionas.",
