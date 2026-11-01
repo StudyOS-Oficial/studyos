@@ -1,1 +1,78 @@
-PLACEHOLDER
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f4f7fb">
+<title>IA Fácil · Aula</title>
+<style>
+:root{--bg:#f4f7fb;--s:#fff;--ink:#14233d;--muted:#667895;--line:#dce5f0;--blue:#2f7df6;--soft:#eaf2ff;--green:#20b486;--r:24px;--shadow:0 16px 45px rgba(27,52,89,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}button{font:inherit}
+.top{height:72px;background:#ffffffeb;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:20}.brand{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:850}.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#448fff,#69b8ff);color:#fff;display:grid;place-items:center}.badge,.pill{background:var(--soft);color:#1764d6;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:800}
+.layout{max-width:1500px;margin:auto;display:grid;grid-template-columns:255px 1fr}.side{padding:26px 16px;border-right:1px solid var(--line);position:sticky;top:72px;height:calc(100vh - 72px);overflow:auto}.label{font-size:12px;text-transform:uppercase;letter-spacing:.09em;font-weight:850;color:#6280aa;margin:6px 10px 12px}.nav{display:grid;gap:4px}.nav button{border:0;background:transparent;text-align:left;color:#58708f;padding:11px 12px;border-radius:12px;cursor:pointer}.nav button.active{background:var(--soft);color:#1764d6;font-weight:800}.prog{margin-top:22px;padding:16px;border:1px solid var(--line);background:#fff;border-radius:18px}.bar{height:8px;background:#e5ecf5;border-radius:99px;overflow:hidden;margin:10px 0 7px}.fill{height:100%;width:0;background:linear-gradient(90deg,#2f7df6,#69aaff);transition:.35s}.main{padding:34px;min-width:0}.hero,.lesson-head{background:linear-gradient(135deg,#fff,#edf6ff);border:1px solid var(--line);border-radius:30px;padding:44px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;right:-130px;top:-130px;background:#ddecff}.eyebrow{font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#1764d6}.hero h1,.lesson-head h1{font-size:clamp(40px,6vw,70px);line-height:.98;letter-spacing:-.055em;margin:13px 0 18px;max-width:800px}.hero p,.lesson-head p{font-size:18px;color:var(--muted);max-width:780px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.btn{border:0;border-radius:13px;padding:13px 18px;background:var(--blue);color:#fff;font-weight:850;cursor:pointer;box-shadow:0 8px 20px #2f7df633}.btn.alt{background:#fff;color:#1764d6;border:1px solid var(--line);box-shadow:none}.section{margin-top:34px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:16px}.section h2{margin:0;font-size:29px;letter-spacing:-.03em}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.module{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;cursor:pointer;position:relative;transition:.2s}.module:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.module.done{border-color:#b9e6d8}.num{width:42px;height:42px;border-radius:14px;background:var(--soft);color:#1764d6;display:grid;place-items:center;font-weight:900;margin-bottom:17px}.module.done .num{background:#e8f8f2;color:#168a68}.module h3{font-size:20px;margin:0 0 7px}.module p{color:var(--muted);margin:0 0 17px}.meta{font-size:13px;color:#6a7e9c}.arrow{position:absolute;right:20px;bottom:19px;color:#1764d6;font-weight:900}.screen{display:none}.screen.on{display:block}.content{max-width:1100px}.cards{display:grid;gap:16px;margin-top:18px}.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:25px}.card h2{font-size:23px;margin:7px 0 10px}.key{margin-top:15px;background:#eaf9f4;border:1px solid #b9e8da;border-radius:17px;padding:16px}.example{margin-top:15px;background:#f7f9fc;border:1px dashed #cbd7e6;border-radius:17px;padding:16px}.prompt{margin-top:15px;background:#101b2d;color:#eef5ff;border-radius:17px;padding:16px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.choices{display:grid;gap:10px;margin-top:14px}.choice{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px;text-align:left;cursor:pointer}.choice.correct{background:#eaf9f4;border-color:#65cbaa}.choice.wrong{background:#fff0f0;border-color:#e9a0a0}.feedback{margin-top:11px;font-weight:800}.footnav{display:flex;justify-content:space-between;gap:10px;margin:22px 0 50px}.toast{position:fixed;right:20px;bottom:20px;background:#14233d;color:#fff;padding:13px 16px;border-radius:14px;opacity:0;transform:translateY(12px);transition:.25s;z-index:40}.toast.show{opacity:1;transform:none}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.side{top:72px;height:auto;min-height:0;padding:10px 12px;border-right:0;border-bottom:1px solid var(--line);background:#f4f7fbea;backdrop-filter:blur(12px);z-index:10}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap}.prog{display:none}.main{padding:20px 14px}.grid{grid-template-columns:1fr}.hero,.lesson-head{padding:30px 23px;border-radius:24px}.badge{display:none}}
+@media(max-width:560px){.top{height:64px;padding:0 15px}.side{top:64px}.hero h1,.lesson-head h1{font-size:43px}.hero p,.lesson-head p{font-size:16px}.card{padding:20px}.footnav{position:sticky;bottom:10px;background:#f4f7fbea;padding:9px;border-radius:16px;backdrop-filter:blur(10px)}}
+</style>
+</head>
+<body>
+<header class="top"><div class="brand"><span class="logo">✦</span><span>IA fácil</span></div><span class="badge">Tu aula online · 10 módulos · 4–5 h</span></header>
+<div class="layout">
+<aside class="side"><div class="label">Tu recorrido</div><nav class="nav" id="nav"></nav><div class="prog"><strong>Tu progreso</strong><div class="bar"><div class="fill" id="fill"></div></div><span class="muted" id="pct">0% completado</span></div></aside>
+<main class="main">
+<section id="home" class="screen on">
+<div class="hero"><div class="eyebrow">Nuevo IA Fácil</div><h1>Aprende IA.<br>Úsala de verdad.</h1><p>Un recorrido práctico para pasar de “no sé por dónde empezar” a utilizar la inteligencia artificial con confianza, criterio y resultados.</p><div class="actions"><button class="btn" onclick="openM(0)">Empezar el curso →</button><button class="btn alt" onclick="document.getElementById('modules').scrollIntoView()">Ver módulos</button></div></div>
+<div class="section"><div class="section-head"><div><h2>Tu recorrido</h2><div class="muted">Aprende → practica → comprueba → avanza.</div></div><span class="pill" id="count">0 de 10 completados</span></div><div class="grid" id="modules"></div></div>
+</section>
+<section id="course" class="screen"><div class="content" id="courseContent"></div></section>
+</main></div><div class="toast" id="toast"></div>
+<script>
+const M=[
+["Entender la inteligencia artificial","Qué es, cómo funciona a grandes rasgos y cómo pensar sobre ella sin tecnicismos."],
+["Tu primera conversación","Aprende a pedir, corregir y continuar hasta obtener algo realmente útil."],
+["El método para conseguir mejores respuestas","Una estructura sencilla para pedir casi cualquier cosa con claridad."],
+["IA para tu vida diaria","Convierte pequeñas tareas cotidianas en oportunidades para ahorrar tiempo."],
+["IA para estudiar","Utiliza la IA como tutor, entrenador y compañero de práctica."],
+["IA para trabajar","Aplica la IA a tareas profesionales sin perder criterio ni control."],
+["Archivos, imágenes y datos","Pasa de conversar a trabajar con materiales reales."],
+["Crear con inteligencia artificial","Pasa de una idea a un resultado y aprende a iterarlo."],
+["Investigar y verificar con IA","Aprende a no confundir una respuesta convincente con una fuente fiable."],
+["Construir tu sistema personal de IA","Integra lo aprendido y crea un método que puedas seguir usando."]
+];
+const L=[
+["La IA sin tecnicismos","La inteligencia artificial permite a los sistemas realizar tareas que asociamos con capacidades humanas: comprender lenguaje, reconocer patrones, analizar información o generar contenido.","No necesitas saber programar para empezar.","Prueba a pedir una explicación de un concepto que ya conozcas y comprueba el resultado."],
+["Qué es un modelo de IA","Un modelo aprende patrones a partir de muchos ejemplos y genera una salida a partir del contexto que recibe.","Una respuesta bien escrita puede estar equivocada.","Pide a la IA que explique algo y después pregúntale qué parte deberías verificar."],
+["Qué puede hacer","Puede explicar, resumir, comparar, redactar, idear, organizar y analizar información.","La IA es una herramienta, no un sustituto de tu criterio.","Elige una tarea pequeña de hoy y pídele ayuda."],
+["Sus límites","Puede inventar datos, interpretar mal una pregunta o quedarse desactualizada.","Cuanto más importante sea una decisión, más debes comprobar.","Haz una lista de tres cosas que nunca aceptarías sin verificar."]
+];
+const PROMPTS=[
+"Explícame esto con palabras sencillas y dame un ejemplo cotidiano.",
+"Tengo esta tarea. Hazme primero tres preguntas para entender el contexto.",
+"Convierte mi petición en una respuesta clara, práctica y estructurada.",
+"Dame tres opciones y explícame las ventajas y desventajas de cada una.",
+"Actúa como tutor: no me des directamente la solución; guíame con preguntas.",
+"Resume este contenido y después conviértelo en una lista de acciones.",
+"Separa en esta información: hechos, dudas y afirmaciones que debería verificar.",
+"Dame una primera versión y después tres formas de mejorarla.",
+"Indica qué partes de tu respuesta deberían comprobarse con fuentes fiables.",
+"Diseña un workflow sencillo: entrada → IA → revisión → resultado."
+];
+let state=JSON.parse(localStorage.getItem("iafacil-v2")||"{}"),cur=0;
+function renderNav(){document.getElementById("nav").innerHTML=M.map((m,i)=>'<button class="'+(cur===i?"active":"")+'" onclick="openM('+i+')">'+(state[i]?'✓ ':'')+(i+1)+' · '+m[0]+'</button>').join("")}
+function renderHome(){document.getElementById("modules").innerHTML=M.map((m,i)=>'<article class="module '+(state[i]?"done":"")+'" onclick="openM('+i+')"><div class="num">'+(state[i]?"✓":i+1)+'</div><h3>'+m[0]+'</h3><p>'+m[1]+'</p><div class="meta">8 lecciones · práctica · reto</div><span class="arrow">Abrir →</span></article>').join("");let n=Object.keys(state).length,p=Math.round(n/10*100);document.getElementById("fill").style.width=p+"%";document.getElementById("pct").textContent=p+"% completado";document.getElementById("count").textContent=n+" de 10 completados"}
+function openM(i){cur=i;document.getElementById("home").classList.remove("on");document.getElementById("course").classList.add("on");renderCourse();renderNav();scrollTo({top:0,behavior:"smooth"})}
+function goHome(){document.getElementById("course").classList.remove("on");document.getElementById("home").classList.add("on");renderNav();scrollTo({top:0,behavior:"smooth"})}
+function renderCourse(){
+let m=M[cur],done=!!state[cur],lessons=L.map((x,i)=>[x[0],x[1],x[2],x[3]]);
+if(cur>0) lessons=lessons.map((x,i)=>[["El problema real","Contexto antes que magia","El resultado importa","Iterar es trabajar","Pide alternativas","Corrige con precisión","Comprueba lo importante","Reto práctico"][i],x[1],x[2],x[3]]);
+let q=["¿Cuál es la idea clave al empezar?","¿Qué suele mejorar una petición?","¿Qué define cómo quieres recibir la respuesta?","¿Por dónde conviene empezar?","¿Qué enfoque ayuda más a aprender?","¿Qué haces antes de enviar un texto generado?","¿Qué debes valorar antes de subir un archivo?","¿Qué importa antes de generar contenido?","¿Qué significa alucinar?","¿Cuál es el objetivo final?"][cur];
+let opts=[["La IA decide por ti","Tú decides y verificas el resultado","La IA siempre tiene razón"],["Dar contexto y especificar el resultado","Escribir cuanto más mejor","Usar palabras técnicas"],["El formato","La contraseña","El navegador"],["Una tarea pequeña y repetitiva","Una decisión crítica sin verificar","Datos sensibles"],["Pedir pistas y practicar","Copiar la solución","No comprobar nada"],["Revisarlo y adaptarlo","Enviarlo sin leer","Dejar que lo envíe solo"],["Si contiene información sensible","El color del archivo","Nada"],["La intención y el mensaje","El número de emojis","No revisar"],["Puede generar información falsa con apariencia convincente","Siempre cita fuentes","Solo responde con imágenes"],["Crear un sistema propio útil","Memorizar prompts","Dejar que la IA decida todo"]][cur];
+let correct=[1,0,0,0,0,0,0,0,0,0][cur];
+document.getElementById("courseContent").innerHTML='<div class="lesson-head"><div class="eyebrow">MÓDULO '+(cur+1)+' · '+(done?"COMPLETADO ✓":"EN PROGRESO")+'</div><h1>'+m[0]+'</h1><p>'+m[1]+'</p><div class="actions"><button class="btn alt" onclick="goHome()">← Volver al recorrido</button><span class="pill">'+(done?"Completado":"8 lecciones · 1 reto")+'</span></div></div><div class="cards">'+lessons.map((x,i)=>'<article class="card"><div class="eyebrow">'+String(i+1).padStart(2,"0")+' · LECCIÓN</div><h2>'+x[0]+'</h2><p>'+x[1]+'</p><div class="'+(i%2?"example":"key")+'"><strong>'+(i%2?"Ejemplo":"Idea clave")+':</strong> '+x[2]+'</div>'+(i===1||i===4?'<div class="prompt">'+PROMPTS[cur]+'</div>':'')+'</article>').join("")+'<article class="card"><div class="eyebrow">COMPRUEBA LO APRENDIDO</div><h2>'+q+'</h2><div class="choices">'+opts.map((o,i)=>'<button class="choice" onclick="answer(this,'+(i===correct)+')">'+String.fromCharCode(65+i)+' · '+o+'</button>').join("")+'</div><div class="feedback" id="feedback"></div></article><article class="card"><div class="eyebrow">RETO</div><h2>Ahora hazlo tú</h2><p>'+lessons[7][3]+'</p><div class="key"><strong>Objetivo:</strong> aplica lo aprendido a una situación real antes de marcar el módulo como completado.</div></article><div class="footnav"><button class="btn alt" onclick="'+(cur?"openM("+(cur-1)+")":"goHome()")+'">← Anterior</button><button class="btn" onclick="complete()">Marcar módulo como completado ✓</button><button class="btn alt" onclick="'+(cur<9?"openM("+(cur+1)+")":"goHome()")+'">'+(cur<9?"Siguiente →":"Finalizar curso")+'</button></div></div>';
+}
+function answer(el,ok){document.querySelectorAll(".choice").forEach(x=>x.disabled=true);el.classList.add(ok?"correct":"wrong");document.getElementById("feedback").textContent=ok?"✓ Correcto.":"No exactamente. Vuelve a la idea clave y revisa la lección.";document.getElementById("feedback").style.color=ok?"#168a68":"#b13a3a"}
+function complete(){state[cur]=true;localStorage.setItem("iafacil-v2",JSON.stringify(state));renderHome();toast("Módulo completado ✓");setTimeout(()=>cur<9?openM(cur+1):goHome(),450)}
+function toast(t){let x=document.getElementById("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),1800)}
+renderHome();renderNav();
+</script>
+</body>
+</html>
