@@ -13,7 +13,7 @@ const lessonEl=document.getElementById("lesson"),weeksEl=document.getElementById
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function allIds(){return weeks.flatMap(w=>w.lessons);}
 function idAt(i){return allIds()[i];}
-const available=new Set(["01","02","03","04","05","06","07","08","09","10","11","12"]);
+const available=new Set(["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19"]);
 function renderWeeks(){
  let n=0,html="";
  weeks.forEach((w,wi)=>{html+=`<div class="week"><div class="week-title">${escapeHTML(w.name)}</div>`;
@@ -21,7 +21,7 @@ function renderWeeks(){
  html+="</div>";});
  weeksEl.innerHTML=html;
 }
-const lessonNames={"01":"La IA está cambiando la forma de trabajar","02":"Qué es realmente ChatGPT","03":"Iterar para mejorar resultados","04":"Qué puede hacer la IA y qué no deberías delegar","05":"Encontrar oportunidades de IA en tu trabajo","06":"Diseñar tu primer caso de uso de IA","07":"Cómo dar contexto a ChatGPT","08":"Anatomía de una instrucción profesional","09":"Iterar correctamente","10":"Técnicas avanzadas de prompting","11":"Haz que ChatGPT pregunte antes de responder","12":"Crear tu sistema personal de instrucciones"};
+const lessonNames={"01":"La IA está cambiando la forma de trabajar","02":"Qué es realmente ChatGPT","03":"Iterar para mejorar resultados","04":"Qué puede hacer la IA y qué no deberías delegar","05":"Encontrar oportunidades de IA en tu trabajo","06":"Diseñar tu primer caso de uso de IA","07":"Cómo dar contexto a ChatGPT","08":"Anatomía de una instrucción profesional","09":"Iterar correctamente","10":"Técnicas avanzadas de prompting","11":"Haz que ChatGPT pregunte antes de responder","12":"Crear tu sistema personal de instrucciones","13":"Emails profesionales con IA","14":"Responder mensajes sin perder tiempo","15":"Trabajar con documentos","16":"Crear informes con IA","17":"Resumir información sin perder lo importante","18":"Adaptar el mismo contenido a públicos diferentes","19":"Construir un workflow profesional de comunicación"};
 async function getLesson(id){
  const res=await fetch(`./lessons/${id}.html`,{cache:"no-store"});
  if(!res.ok) throw new Error("No se pudo cargar la lección "+id);
