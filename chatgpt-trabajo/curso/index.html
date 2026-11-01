@@ -56,28 +56,30 @@ options:["Una tarea frecuente, con resultado revisable y riesgo controlado","La 
 answer:0
 },
 {
-title:"El método de un buen prompt",
-intro:"Un prompt profesional no es una frase mágica. Es una especificación suficientemente clara para que otra persona pudiera entender qué resultado esperas.",
-goal:"Construir instrucciones fiables usando contexto, tarea, formato, criterios y restricciones.",
-outcomes:["Escribir prompts estructurados","Reducir respuestas genéricas","Iterar sin empezar de cero"],
+title:"Qué es realmente ChatGPT",
+intro:"Antes de aprender a sacarle partido en el trabajo, necesitas entender qué estás utilizando. ChatGPT no es un buscador ni conoce automáticamente tu empresa: genera respuestas a partir de las instrucciones y del contexto que le proporcionas.",
+goal:"Construir un modelo mental práctico de ChatGPT para utilizarlo con criterio y saber cuándo confiar, revisar o detenerse.",
+outcomes:["Entender cómo se construye una respuesta","Aprender a dar contexto útil","Detectar cuándo una respuesta necesita verificación"],
 theory:[
-"Puedes pensar en un prompt como un pequeño briefing. Cuanto más ambiguo sea el encargo, más decisiones tendrá que tomar el modelo por su cuenta. No siempre necesitas escribir mucho: necesitas incluir la información que cambia el resultado.",
-"Cinco componentes son especialmente útiles: contexto, objetivo, tarea, formato y criterios. Un sexto componente, las restricciones, sirve para decir qué no debe hacer: no inventar datos, respetar una longitud, mantener los hechos o señalar incertidumbres.",
-"Un prompt tampoco tiene por qué ser perfecto a la primera. En trabajo real suele ser más eficiente obtener una primera versión y después corregir una variable concreta que intentar construir una instrucción enorme desde el principio."
+"ChatGPT genera una respuesta a partir de tu petición y del contexto disponible. No conoce automáticamente los procedimientos internos, los clientes, los datos o las decisiones de tu empresa.",
+"La calidad de la respuesta depende en gran medida de la información que recibe. Una petición ambigua deja demasiadas decisiones abiertas; una petición con objetivo, contexto y restricciones reduce esa ambigüedad.",
+"Una respuesta puede sonar clara y profesional y aun así contener errores. Por eso debemos separar dos conceptos: calidad de redacción y fiabilidad de la información.",
+"En el trabajo, el nivel de revisión debe aumentar con el impacto de un posible error. Una lluvia de ideas puede requerir poca comprobación; un informe que influye en una decisión importante requiere mucha más."
 ],
-visual:["La anatomía de una instrucción","CONTEXTO","→","OBJETIVO","→","TAREA","→","FORMATO","→","CRITERIOS"],
+visual:["Cómo trabajar con ChatGPT","PETICIÓN","→","CONTEXTO","→","RESPUESTA","→","REVISIÓN","→","DECISIÓN"],
 steps:[
-["Contexto","¿Qué necesita saber para entender la situación?"],
-["Objetivo","¿Qué quieres conseguir con la respuesta?"],
-["Tarea","¿Qué acción concreta debe realizar?"],
-["Salida","¿Quieres email, tabla, lista, esquema, pasos o texto?"],
-["Criterios","Define tono, extensión, audiencia, restricciones y qué debe comprobar."]
+["1. Explica qué necesitas","No empieces solo con «hazme un informe». Explica qué quieres conseguir y para quién."],
+["2. Aporta contexto","Incluye la situación, información disponible y cualquier condición relevante."],
+["3. Define límites","Indica qué no debe asumir, qué información no puede inventar y qué formato necesitas."],
+["4. Revisa la respuesta","Comprueba datos, omisiones, interpretaciones y cualquier elemento que pueda tener consecuencias."],
+["5. Decide","La IA puede acelerar el trabajo, pero la responsabilidad sobre el uso del resultado sigue siendo humana."]
 ],
-before:["PROMPT VAGO","Hazme una propuesta para un cliente.","RESULTADO MÁS CONTROLADO","Trabajo en una pequeña consultora. El cliente está comparando dos opciones de servicio. Redacta una propuesta de una página que explique diferencias, ventajas, limitaciones y próximos pasos. Tono profesional y claro. No inventes precios ni prestaciones que no aparezcan en los datos proporcionados."],
-prompt:"Contexto: [situación]\nObjetivo: [resultado]\nTarea: [acción concreta]\nAudiencia: [quién lo leerá]\nFormato: [salida]\nCriterios: [tono, extensión, estructura]\nRestricciones: [qué debe evitar o respetar]",
-exercise:"Toma la tarea del módulo 1 y escribe dos versiones del prompt: una de 2 líneas y otra estructurada. Compara si la segunda reduce ambigüedad.",
-question:"¿Qué hace que un prompt sea profesional?",
-options:["Explica el resultado esperado y las condiciones relevantes","Utiliza muchas palabras técnicas","Incluye siempre más de 500 palabras"],answer:0
+prompt:"Quiero utilizar ChatGPT para esta tarea:\n[TAREA]\n\nContexto:\n[SITUACIÓN]\n\nInformación disponible:\n[DATOS]\n\nObjetivo:\n[QUÉ QUIERO CONSEGUIR]\n\nAntes de resolverla, indica qué información importante falta y qué partes del resultado deberían verificarse. Si puedes continuar con la información disponible, hazlo sin inventar datos.",
+exercise:"Haz una misma petición dos veces. Primero, escribe solo la tarea en una frase. Después añade contexto, objetivo, información disponible y restricciones. Compara las respuestas: ¿qué decisiones dejó de tener que asumir ChatGPT?, ¿qué parte del resultado mejoró?, ¿qué seguirías verificando?",
+tip:"Cuando una respuesta no te convence, no pienses inmediatamente que necesitas un prompt enorme. Primero pregunta: ¿qué contexto, dato o criterio falta?",
+risk:"No confundas una respuesta bien escrita con una respuesta correcta. En tareas importantes, verifica los hechos y conserva el control humano.",
+question:"¿Cuál es una forma profesional de trabajar con ChatGPT?",
+options:["Aceptar las respuestas porque están bien redactadas","Dar contexto, revisar la salida y aumentar la verificación cuando el riesgo sea mayor","Escribir siempre prompts muy largos para evitar cualquier error"],answer:1
 },
 {
 title:"Iterar: cómo pasar de una respuesta mediocre a una buena",
