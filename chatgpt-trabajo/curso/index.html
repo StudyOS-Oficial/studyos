@@ -83,25 +83,29 @@ options:["Aceptar las respuestas porque están bien redactadas","Dar contexto, r
 },
 {
 title:"Iterar: cómo pasar de una respuesta mediocre a una buena",
-intro:"La productividad no está en acertar a la primera. Está en saber diagnosticar qué falla y dar una segunda instrucción que lo corrija.",
-goal:"Aprender un ciclo de mejora que puedas reutilizar en cualquier tarea.",
-outcomes:["Detectar fallos","Dar feedback concreto","Mejorar por iteraciones"],
+intro:"La primera respuesta de ChatGPT no tiene que ser perfecta. Una de las habilidades más importantes en el trabajo es saber detectar qué falla, explicárselo a la IA y mejorar el resultado de forma controlada.",
+goal:"Aprender a iterar sobre una respuesta de ChatGPT para mejorarla sin empezar de cero cada vez.",
+outcomes:["Detectar qué falla en una respuesta","Dar feedback concreto","Mejorar resultados por iteraciones"],
 theory:[
-"Una primera respuesta suele revelar qué información faltaba. En lugar de rehacer el prompt entero, identifica el problema: demasiado largo, tono incorrecto, estructura confusa, falta de datos, criterios incompatibles o conclusión sin evidencia.",
-"Las instrucciones de mejora funcionan mejor cuando son observables. «Hazlo mejor» es ambiguo. «Reduce a 120 palabras, conserva las tres ideas principales y termina con una llamada a la acción» define cambios comprobables.",
-"Puedes usar una segunda fase de crítica: pedir a ChatGPT que evalúe su propia propuesta según una lista de criterios y después rehacerla. La evaluación sigue necesitando criterio humano, pero ayuda a sistematizar la revisión."
+"Una respuesta mediocre no significa necesariamente que ChatGPT no pueda hacer la tarea. Muchas veces falta contexto, el objetivo no está bien definido o el formato no encaja con lo que necesitas.",
+"Iterar significa trabajar por ciclos: generar, revisar, identificar un problema, corregir la instrucción y volver a generar. Cada iteración debe tener un motivo concreto.",
+"El feedback útil describe qué debe cambiar. «Hazlo mejor» aporta poca información. «Reduce la introducción, utiliza un tono más directo y separa las acciones en una tabla» convierte la crítica en instrucciones accionables.",
+"En un entorno profesional interesa conservar lo que ya funciona. Si una parte de la respuesta es correcta, indícalo y modifica únicamente aquello que necesita mejora."
 ],
-visual:["Ciclo de mejora","1. PEDIR","→","2. REVISAR","→","3. DIAGNOSTICAR","→","4. AJUSTAR","→","5. VALIDAR"],
+visual:["Ciclo de mejora","RESPUESTA","→","REVISIÓN","→","FEEDBACK","→","NUEVA RESPUESTA","↺"],
 steps:[
-["Diagnostica","Escribe qué no funciona en una frase concreta."],
-["Corrige una variable","Cambia longitud, tono, estructura, datos o criterio. Evita cambiarlo todo a la vez."],
-["Valida","Comprueba si la nueva versión resuelve exactamente el problema."]
+["1. Evalúa","Lee la respuesta completa y localiza los problemas concretos."],
+["2. Clasifica el problema","Puede faltar información, sobrar contenido, existir un error, no encajar el tono o no respetarse el formato."],
+["3. Da feedback específico","Explica qué debe mantenerse, qué debe cambiar y por qué."],
+["4. Vuelve a probar","Pide una nueva versión aplicando únicamente los cambios necesarios."],
+["5. Compara","Comprueba si realmente ha mejorado y si ha introducido nuevos problemas."]
 ],
-prompt:"La respuesta anterior no cumple estos criterios:\n- [problema 1]\n- [problema 2]\n\nMantén lo que sí funciona y modifica solo esos puntos. Devuelve primero una versión corregida y después una lista breve de cambios realizados.",
-exercise:"Genera un email con cualquier prompt. Después escribe tres críticas concretas y pide una segunda versión que las corrija. Guarda ambas y compara.",
-tip:"Aprender a dar feedback a la IA es tan importante como aprender a pedirle algo.",
-question:"¿Qué feedback es más útil?",
-options:["Hazlo mejor y más profesional","Reduce a 100 palabras, conserva los hechos y termina con una petición clara","Escribe algo diferente"],answer:1
+prompt:"Revisa tu respuesta anterior y mejórala siguiendo estas indicaciones:\n\nMantén: [LO QUE YA FUNCIONA]\nCambia: [QUÉ NO FUNCIONA]\nObjetivo de la mejora: [RESULTADO QUE BUSCO]\nRestricciones: [LÍMITES]\n\nAntes de dar la nueva versión, identifica brevemente qué cambios vas a realizar. No añadas información que no esté disponible.",
+exercise:"Pide a ChatGPT que resuelva una tarea real de bajo riesgo. Después evalúa la respuesta en tres criterios: utilidad, precisión y formato. Elige solo uno de ellos para mejorar en la siguiente iteración. Repite el proceso dos veces y compara la primera y la última versión.",
+tip:"No cambies diez variables a la vez. Si sabes qué quieres mejorar, cambia una cosa y comprueba el efecto.",
+risk:"Iterar no significa aceptar progresivamente una respuesta solo porque cada versión suena mejor. Sigue verificando los datos y el contenido importante en cada versión.",
+question:"¿Cuál es el feedback más útil para mejorar una respuesta de ChatGPT?",
+options:["«No me gusta, hazlo mejor»","«Hazlo mucho más profesional»","Indicar qué funciona, qué debe cambiar y qué resultado concreto buscas"],answer:2
 },
 {
 title:"Emails y comunicación: ganar tiempo sin sonar artificial",
