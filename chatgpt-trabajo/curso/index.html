@@ -162,26 +162,32 @@ options:["Una decisión crítica que puede afectar económicamente a la empresa"
 }
 
 {
-title:"Reuniones: antes, durante y después",
-intro:"Una reunión genera tres tipos de trabajo: preparación, gestión de la conversación y seguimiento. ChatGPT puede ayudar en los tres.",
-goal:"Convertir reuniones en decisiones y acciones más claras.",
-outcomes:["Agendas útiles","Preguntas difíciles","Seguimiento accionable"],
+title:"Diseñar nuestro primer caso de uso de IA",
+intro:"Ya has aprendido a detectar oportunidades. Ahora toca convertir una de ellas en un proceso concreto. Un buen caso de uso no es «usar ChatGPT», sino definir qué problema resolvemos, qué entra, qué hace la IA, qué revisa una persona y cómo sabremos si ha funcionado.",
+goal:"Diseñar un primer caso de uso de IA completo, medible y suficientemente seguro para probarlo en una tarea real.",
+outcomes:["Definir un caso de uso","Repartir IA y criterio humano","Crear una métrica de mejora"],
 theory:[
-"Una agenda no es una lista de temas: es un diseño de tiempo. Cada punto debería tener un propósito: informar, debatir, decidir o asignar una acción.",
-"Antes de una reunión puedes simular perspectivas. Pide preguntas que podría hacer un cliente, una persona financiera o alguien que discrepe. No predice el futuro, pero amplía tu preparación.",
-"Después, el mayor valor suele estar en transformar notas en decisiones, tareas, responsables, fechas y asuntos pendientes. Esto convierte una conversación en trabajo ejecutable."
+"Un caso de uso empieza por un problema, no por una herramienta. Por ejemplo: «Tardo 90 minutos cada semana preparando el resumen de incidencias» es un problema concreto. «Quiero utilizar ChatGPT» todavía no lo es.",
+"El proceso debe tener una entrada clara y un resultado definido. Entre ambos puedes decidir qué parte realiza la IA: clasificar, resumir, redactar, comparar, generar alternativas o preparar una estructura.",
+"La persona mantiene el control sobre lo que requiere contexto profesional, autorización, comprobación de hechos o toma de decisiones. El objetivo es diseñar una colaboración, no una sustitución total.",
+"Finalmente necesitas una métrica. Puede ser tiempo, número de revisiones, errores detectados, consistencia o capacidad. Si no puedes comparar el antes y el después, será difícil saber si realmente has mejorado el proceso."
 ],
-visual:["Ciclo de reunión","PREPARAR","→","REUNIÓN","→","NOTAS","→","DECISIONES","→","TAREAS + RESPONSABLES"],
-prompt:"Reunión sobre: [tema]\nObjetivo: [resultado]\nParticipantes: [roles]\nContexto: [información]\n\nPrepárame: agenda con tiempos, 6 preguntas clave, 5 objeciones posibles, información que debería llevar y una propuesta de cierre.",
+visual:["Diseño de un caso de uso","PROBLEMA","→","ENTRADA","→","IA","→","REVISIÓN HUMANA","→","RESULTADO","→","MÉTRICA"],
 steps:[
-["Antes","Define qué debe estar resuelto al terminar."],
-["Durante","Toma notas orientadas a decisiones y acciones, no una transcripción perfecta."],
-["Después","Convierte notas en tareas con responsable y fecha cuando esos datos existan."]
+["1. Define el problema","Describe qué tarea quieres mejorar y qué ocurre actualmente. Incluye tiempo aproximado y frecuencia cuando sea posible."],
+["2. Diseña la entrada","Especifica qué información necesita la IA para trabajar. Si faltan datos importantes, el proceso debe detectarlo en lugar de inventarlos."],
+["3. Reparte el trabajo","Define exactamente qué hará ChatGPT y qué seguirá haciendo una persona. Evita frases vagas como «la IA se encargará»."],
+["4. Diseña el control","Establece qué debe comprobarse antes de aceptar el resultado y qué situaciones obligan a detener el proceso."],
+["5. Define el éxito","Elige una métrica sencilla. Por ejemplo: pasar de 90 a 45 minutos, reducir de 5 a 2 iteraciones o disminuir errores detectados."]
 ],
-exercise:"Prepara con ChatGPT una reunión real o simulada. Después de la reunión, usa tus notas para generar una lista de acciones y comprueba manualmente que no haya inferencias presentadas como decisiones.",
-question:"¿Qué convierte mejor unas notas en seguimiento?",
-options:["Separar decisiones, tareas, responsables, fechas y pendientes","Hacer un resumen narrativo muy largo","Eliminar los desacuerdos"],answer:0
-},
+prompt:"Quiero diseñar un caso de uso de IA para esta tarea:\n\nTarea actual: [TAREA]\nProblema: [PROBLEMA]\nFrecuencia: [FRECUENCIA]\nTiempo actual: [TIEMPO]\nInformación disponible: [ENTRADAS]\nResultado esperado: [RESULTADO]\n\nDiseña un flujo profesional que incluya:\n1. Qué hace la persona antes de utilizar IA.\n2. Qué hace ChatGPT.\n3. Qué debe revisar la persona.\n4. Qué casos deben detener el proceso.\n5. Qué resultado final se obtiene.\n6. Una métrica sencilla para comparar el proceso actual con el nuevo.\n\nNo inventes datos ni elimines controles necesarios.",
+exercise:"Elige una de las tres oportunidades que detectaste en la lección anterior. Completa esta ficha: Problema → Entrada → Proceso actual → Papel de ChatGPT → Papel de la persona → Riesgos → Resultado → Métrica. Después diseña una primera prueba con un caso real de bajo riesgo o con datos ficticios.",
+tip:"No intentes construir el sistema definitivo en el primer intento. Diseña una versión 1 pequeña, pruébala, mide el resultado y mejora el proceso.",
+risk:"Una métrica de tiempo no es suficiente si la calidad cae. Compara siempre velocidad con calidad y control: ahorrar 30 minutos no es una mejora si después necesitas rehacer todo el trabajo.",
+question:"¿Qué define mejor un buen caso de uso de IA?",
+options:["Una herramienta que hace muchas cosas aunque no exista un problema concreto","Un proceso con problema, entrada, papel de la IA, revisión humana, resultado y una forma de medir la mejora","Un prompt muy largo que intenta automatizar todo el puesto"],answer:1
+}
+
 {
 title:"Resumir información sin perder lo importante",
 intro:"Resumir bien no significa hacer un texto más corto: significa conservar lo que importa para un propósito concreto.",
