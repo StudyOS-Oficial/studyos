@@ -135,27 +135,32 @@ options:["Dejar que ChatGPT envíe directamente la respuesta porque ahorra más 
 }
 
 {
-title:"Documentos: del caos a un documento profesional",
-intro:"La IA aporta mucho más cuando la utilizas como parte de un proceso de documentación que cuando le pides directamente «hazme un informe».",
-goal:"Planificar, redactar y revisar documentos por etapas.",
-outcomes:["Mejores estructuras","Redacción por bloques","Revisión sistemática"],
+title:"Encontrar oportunidades de IA en tu propio trabajo",
+intro:"La mejor forma de aprender IA aplicada no es empezar con herramientas. Es observar tu trabajo y detectar dónde se repite el esfuerzo, dónde se pierde tiempo y dónde una ayuda parcial tendría un impacto real.",
+goal:"Aprender a convertir tu trabajo diario en un mapa de oportunidades de IA y elegir qué merece la pena mejorar primero.",
+outcomes:["Mapear tareas reales","Priorizar oportunidades","Elegir un primer caso de uso"],
 theory:[
-"Un documento tiene arquitectura. Antes de redactar conviene decidir quién lo leerá, qué decisión debe facilitar y qué información necesita. El índice es una herramienta de pensamiento, no solo de formato.",
-"Trabajar por bloques permite mantener control sobre las fuentes y corregir antes de que un error se propague. Puedes utilizar ChatGPT para proponer títulos, ordenar ideas, detectar huecos y redactar una sección concreta.",
-"En la revisión conviene utilizar varias pasadas: claridad, coherencia, datos, redundancias y adecuación al lector. Un único «mejora este documento» mezcla demasiados objetivos."
+"Empieza por el trabajo real. Durante una semana aparecen decenas de pequeñas tareas: responder mensajes, preparar documentos, buscar información, resumir reuniones, revisar datos, actualizar listas o preparar decisiones. Algunas parecen demasiado pequeñas para automatizarlas, pero juntas consumen mucho tiempo.",
+"Una buena oportunidad de IA suele tener cinco características: se repite, tiene una entrada relativamente clara, produce un resultado reconocible, puede revisarse y el riesgo de error está controlado. No necesitas que cumpla las cinco perfectamente, pero cuanto más se acerque, mejor candidata será.",
+"Para priorizar, piensa en impacto frente a dificultad. Una tarea que haces cuatro veces por semana durante 30 minutos puede ser más interesante que un proceso espectacular que solo utilizas una vez al trimestre.",
+"El objetivo de este módulo no es automatizar nada todavía. Es aprender a mirar tu puesto con ojos de diseñador de procesos y encontrar dónde la IA podría aportar valor."
 ],
-visual:["Proceso de documento","OBJETIVO","→","ÍNDICE","→","INFORMACIÓN","→","BORRADOR","→","REVISIÓN","→","VERSIÓN FINAL"],
-prompt:"Voy a crear un documento sobre [tema].\nLector: [audiencia]\nObjetivo: [decisión o acción que debe facilitar]\nInformación disponible: [resumen]\n\nPrimero crea un índice razonado. Para cada sección indica qué pregunta debe responder y qué información falta. No redactes todavía.",
+visual:["Mapa de oportunidades","TAREAS","→","FRECUENCIA","→","TIEMPO","→","RIESGO","→","POTENCIAL IA","→","PRIORIDAD"],
 steps:[
-["Primero el índice","Corrige estructura antes de invertir tiempo en redacción."],
-["Después los bloques","Aporta la información necesaria para cada sección y redacta una por una."],
-["Finalmente revisa","Haz pasadas separadas para claridad, coherencia, hechos y estilo."]
+["1. Haz inventario","Escribe entre 8 y 10 tareas que realizas realmente. No pienses todavía si la IA puede hacerlas."],
+["2. Mide el esfuerzo","Para cada tarea estima frecuencia, minutos aproximados y qué información necesitas para realizarla."],
+["3. Evalúa el potencial","Pregunta si la tarea es repetitiva, si la entrada está clara, si el resultado puede revisarse y si el riesgo está controlado."],
+["4. Ordena tus oportunidades","Prioriza las tareas con bastante frecuencia, tiempo ahorrable y bajo o medio riesgo. Deja las tareas críticas para una fase posterior."],
+["5. Elige una","Tu primera oportunidad debe ser suficientemente útil para notar una mejora y suficientemente segura para poder experimentar."]
 ],
-exercise:"Crea un índice para un informe de tu trabajo. No hace falta que utilices información confidencial. Después revisa manualmente si cada sección responde a una necesidad real del lector.",
-tip:"La IA puede acelerar la escritura; la arquitectura del documento sigue siendo responsabilidad tuya.",
-question:"¿Qué conviene hacer antes de redactar un informe importante?",
-options:["Definir lector, objetivo y estructura","Pedir un texto completo sin contexto","Elegir primero la tipografía"],answer:0
-},
+prompt:"Quiero encontrar oportunidades de IA en mi trabajo.\n\nEstas son mis tareas:\n[LISTA DE 8-10 TAREAS]\n\nPara cada tarea crea una tabla con:\n- frecuencia aproximada\n- tiempo que consume\n- tipo de información utilizada\n- si es repetitiva\n- si el resultado es fácil de revisar\n- riesgo de un error\n- posible función de ChatGPT\n- potencial de ahorro o mejora\n\nDespués ordénalas de mayor a menor prioridad para experimentar con IA. No inventes datos que no te haya proporcionado.",
+exercise:"Haz tu propio mapa con 8-10 tareas reales. Puntúa cada una del 1 al 5 en frecuencia, tiempo consumido, facilidad de revisión y potencial de mejora. Marca aparte el riesgo. Elige las tres mejores oportunidades y justifica cuál probarías primero.",
+tip:"No busques una tarea perfecta. Busca una tarea suficientemente frecuente, suficientemente controlable y suficientemente valiosa como para aprender con ella.",
+risk:"Una tarea puede parecer repetitiva y seguir siendo inadecuada para IA si contiene información sensible o si un error tiene consecuencias importantes. El potencial de automatización nunca sustituye al análisis de riesgo.",
+question:"¿Cuál de estas tareas sería normalmente una mejor primera oportunidad para aplicar IA?",
+options:["Una decisión crítica que puede afectar económicamente a la empresa","Una tarea semanal de 30 minutos con entrada clara, resultado revisable y riesgo bajo","Una tarea que ocurre una vez al año y cuyo resultado no puede revisarse"],answer:1
+}
+
 {
 title:"Reuniones: antes, durante y después",
 intro:"Una reunión genera tres tipos de trabajo: preparación, gestión de la conversación y seguimiento. ChatGPT puede ayudar en los tres.",
