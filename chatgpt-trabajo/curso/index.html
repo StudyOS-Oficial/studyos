@@ -108,27 +108,32 @@ options:["Pedir únicamente ideas nuevas para la reunión","Transformar la infor
 }
 
 {
-title:"Emails y comunicación: ganar tiempo sin sonar artificial",
-intro:"El objetivo no es llenar tu bandeja de textos generados. Es reducir el tiempo de redacción y mejorar claridad, tono y consistencia.",
-goal:"Redactar, reescribir, resumir y adaptar comunicaciones manteniendo los hechos.",
-outcomes:["Borradores rápidos","Tono adecuado","Mensajes accionables"],
+title:"Qué NO debemos delegar a la IA",
+intro:"Usar IA profesionalmente no significa delegar todo lo que sea posible. La habilidad importante es reconocer qué tareas puede acelerar ChatGPT y dónde el criterio, la responsabilidad o la autorización humana deben seguir en el centro.",
+goal:"Aprender a decidir qué tareas delegar, cuáles revisar de forma estricta y cuáles no deben delegarse sin controles específicos.",
+outcomes:["Detectar tareas de alto riesgo","Aplicar un criterio de supervisión","Separar asistencia de decisión"],
 theory:[
-"Un email profesional suele resolver cuatro preguntas: por qué escribes, qué necesita saber la otra persona, qué necesitas de ella y cuál es el siguiente paso. Si falta una de estas piezas, el mensaje puede ser correcto pero poco útil.",
-"ChatGPT puede cambiar el registro sin cambiar el contenido. Puedes pasar de un borrador brusco a uno diplomático, convertir un email largo en cinco líneas o adaptar un mismo mensaje para cliente, compañero y responsable.",
-"El control de hechos es fundamental. Nunca dejes que el modelo rellene fechas, precios, compromisos o causas que no le hayas proporcionado."
+"No todas las tareas tienen el mismo coste si la IA se equivoca. Un borrador de ideas y una decisión que afecta a una persona pueden utilizar la misma tecnología, pero necesitan niveles de control completamente distintos.",
+"Una regla práctica del curso será el semáforo. VERDE: tareas de bajo riesgo y fácilmente revisables, como ideas, borradores o reorganización de información no sensible. AMARILLO: tareas que pueden utilizar IA pero requieren revisión profesional, como comunicaciones con clientes, informes internos o análisis que influyen en decisiones. ROJO: tareas críticas o sensibles que no deben delegarse sin autorización, controles específicos y supervisión competente.",
+"También debes distinguir entre ayudar y decidir. ChatGPT puede preparar una comparación, señalar argumentos, detectar inconsistencias o proponer opciones. Eso no significa que deba tomar por ti una decisión legal, médica, laboral, financiera o estratégica de alto impacto.",
+"El principio es sencillo: cuanto mayor sea el impacto de un posible error, mayor debe ser la supervisión humana. La IA puede acelerar el proceso; la responsabilidad no desaparece."
 ],
-visual:["De idea a email","IDEAS / DATOS","→","BORRADOR","→","TONO + ESTRUCTURA","→","REVISIÓN DE HECHOS","→","ENVIAR"],
-before:["ANTES","Hola, no llegamos a la fecha. Ya te diremos algo.","DESPUÉS","Hola Marta,\n\nQuería avisarte de que finalmente no podremos tener preparado el material para la fecha prevista. Te confirmaré la nueva fecha en cuanto la tengamos.\n\nGracias por la comprensión."],
-prompt:"Redacta un email para [destinatario].\nObjetivo: [qué quiero conseguir]\nHechos que debes respetar: [datos]\nTono: [profesional/cercano/diplomático]\nMáximo: [número] palabras.\nNo inventes información. Termina indicando claramente el siguiente paso.",
+visual:["Semáforo de supervisión","VERDE","→","AMARILLO","→","ROJO","↓","BAJO RIESGO","→","REVISIÓN","→","CONTROL ESPECIALIZADO"],
 steps:[
-["Genera","Dale hechos y objetivo, no solo el tema."],
-["Adapta","Pide una versión formal y otra más cercana si estás dudando del tono."],
-["Comprueba","Revisa nombres, fechas, cifras, adjuntos y compromisos antes de enviar."]
+["1. Pregunta qué ocurre si se equivoca","Si el error solo obliga a corregir un borrador, el riesgo es bajo. Si puede causar una pérdida económica, un problema legal o perjudicar a una persona, el riesgo cambia radicalmente."],
+["2. Comprueba si el resultado es revisable","Una salida que puedes comprobar fácilmente es mejor candidata para utilizar IA que una conclusión que no sabes validar."],
+["3. Separa preparación y decisión","Utiliza ChatGPT para preparar información, alternativas o preguntas cuando sea útil. Mantén la decisión final bajo el control de quien tiene la responsabilidad."],
+["4. Protege la información","Antes de introducir datos, comprueba si puedes compartirlos y si existe una política o herramienta aprobada por tu organización."],
+["5. Define un punto de parada","Si faltan datos, aparece una contradicción o el caso supera tu nivel de autorización, el proceso debe detenerse y pasar a una persona competente."]
 ],
-exercise:"Coge un email real que hayas escrito recientemente, elimina datos personales y pídele a ChatGPT que lo haga 30% más corto manteniendo exactamente los hechos. Compara el tiempo invertido.",
-question:"¿Qué debe comprobarse siempre antes de enviar un email generado?",
-options:["Hechos, destinatario, fechas y compromisos","Solo si está bien escrito","Nada, si el tono parece profesional"],answer:0
-},
+prompt:"Quiero utilizar IA para esta tarea:\n[TAREA]\n\nContexto:\n[CONTEXTO]\n\nAnaliza el caso y clasifícalo como VERDE, AMARILLO o ROJO según el riesgo de delegar parte del trabajo.\n\nExplica:\n1. Qué podría hacer ChatGPT.\n2. Qué debería hacer una persona.\n3. Qué información no debería introducirse sin autorización.\n4. Qué tendría que verificarse antes de utilizar el resultado.\n5. En qué situación debería detenerse el proceso y pasar a una persona competente.\n\nNo asumas que una tarea es segura solo porque sea técnicamente posible.",
+exercise:"Piensa en 6 tareas de tu trabajo. Clasifica cada una como VERDE, AMARILLO o ROJO y explica por qué. Después elige una amarilla y diseña el punto exacto en el que debe intervenir una persona.",
+tip:"No preguntes solamente «¿puede hacerlo la IA?». Pregunta «¿qué pasaría si se equivoca y quién debe responder por ese error?». Esa segunda pregunta cambia la calidad de tus decisiones.",
+risk:"Nunca introduzcas credenciales, contraseñas, secretos empresariales o datos personales/sensibles en una herramienta de IA sin autorización. En tareas reguladas o de alto impacto, sigue siempre las políticas y controles de tu organización.",
+question:"Una empresa quiere utilizar ChatGPT para preparar un primer borrador de una respuesta a un cliente. ¿Cuál es el enfoque más adecuado?",
+options:["Dejar que ChatGPT envíe directamente la respuesta porque ahorra más tiempo","Utilizar ChatGPT para preparar el borrador y revisar hechos, tono y compromisos antes de enviarlo","No utilizar IA nunca en comunicaciones profesionales"],answer:1
+}
+
 {
 title:"Documentos: del caos a un documento profesional",
 intro:"La IA aporta mucho más cuando la utilizas como parte de un proceso de documentación que cuando le pides directamente «hazme un informe».",
