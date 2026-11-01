@@ -1,0 +1,46 @@
+<div class="tag">SEMANA 2 · LECCIÓN 8</div>
+<h2>Anatomía de una instrucción profesional</h2>
+<p class="lead">Una buena instrucción no es necesariamente larga. Es una instrucción que reduce ambigüedad y deja claro qué debe producir la IA.</p>
+<div class="goal"><b>Objetivo:</b> aprender a construir instrucciones reproducibles separando objetivo, contexto, tarea, criterios y formato de salida.</div>
+<div class="outcomes"><div class="outcome"><b>Descomponer</b>Una petición</div><div class="outcome"><b>Especificar</b>La salida</div><div class="outcome"><b>Reutilizar</b>La estructura</div></div>
+<div class="section"><h3>1. APRENDER · De petición a especificación</h3>
+<p>En el trabajo, “hazlo bien” no es un criterio operativo. Una instrucción profesional transforma una intención humana en condiciones observables.</p>
+<div class="flow"><div class="node">CONTEXTO</div><div class="node">TAREA</div><div class="node">CRITERIOS</div><div class="node">FORMATO</div><div class="node">CONTROL</div></div>
+<div class="concept"><div class="concept-label">CONTEXTO</div>Lo que la IA necesita saber antes de actuar.</div>
+<div class="concept"><div class="concept-label">TAREA</div>La operación concreta que debe realizar.</div>
+<div class="concept"><div class="concept-label">CRITERIOS</div>Las condiciones que debe cumplir el resultado.</div>
+<div class="concept"><div class="concept-label">FORMATO</div>Cómo quieres recibir la respuesta.</div>
+<div class="concept"><div class="concept-label">CONTROL</div>Qué debe hacer cuando no tenga suficiente información o detecte una excepción.</div></div>
+<div class="section"><h3>2. VER · Antes y después</h3>
+<div class="step"><div class="step-label">ANTES</div><h4>“Resume este documento.”</h4><p>¿Para quién? ¿Con qué extensión? ¿Qué debe conservar? ¿Qué información importa?</p></div>
+<div class="step"><div class="step-label">DESPUÉS</div><h4>“Resume el documento para un directivo que no conoce el proyecto. Máximo 250 palabras. Separa hechos, decisiones pendientes, riesgos y próximos pasos. No añadas información que no aparezca en el documento.”</h4><p>La segunda instrucción convierte una petición ambigua en una especificación comprobable.</p></div></div>
+<div class="section"><h3>3. HACER · Construye la instrucción</h3><div class="steps">
+<div class="step"><div class="step-label">PASO 1</div><h4>Escribe el resultado final</h4><p>¿Qué debe existir al terminar?</p></div>
+<div class="step"><div class="step-label">PASO 2</div><h4>Define el destinatario</h4><p>La misma información cambia según quién la reciba.</p></div>
+<div class="step"><div class="step-label">PASO 3</div><h4>Fija criterios</h4><p>Incluye precisión, extensión, tono, estructura o cualquier condición importante.</p></div>
+<div class="step"><div class="step-label">PASO 4</div><h4>Define excepciones</h4><p>Indica qué debe hacer si faltan datos, hay contradicciones o no puede verificar algo.</p></div></div></div>
+<div class="section"><h3>4. PLANTILLA · Instrucción profesional</h3><div class="prompt"><button class="copy" data-copy>Copiar</button><pre>CONTEXTO:
+[Quién soy / situación / información disponible]
+
+OBJETIVO:
+[Resultado que necesito]
+
+TAREA:
+[Qué debe hacer exactamente]
+
+CRITERIOS:
+- [Criterio 1]
+- [Criterio 2]
+- [Criterio 3]
+
+FORMATO DE SALIDA:
+[Tabla / lista / email / informe / pasos...]
+
+CONTROL:
+Si falta información, indícala.
+Si haces una inferencia, sepárala de los hechos.
+No inventes datos.</pre></div></div>
+<div class="exercise"><h3>5. APLICAR · Convierte una petición mediocre</h3><p>Escribe una petición que utilizas habitualmente en el trabajo. Después reescríbela usando las cinco piezas.</p><p><b>Objetivo:</b> que otra persona pueda leer tu instrucción y saber exactamente qué resultado esperas.</p></div>
+<div class="tip">💡 Guarda las instrucciones que funcionan. Una buena instrucción repetida muchas veces deja de ser un prompt aislado y empieza a convertirse en un activo de trabajo.</div>
+<div class="quiz"><h3>6. COMPROBAR</h3><p><b>¿Qué elemento convierte “haz un informe” en una instrucción más profesional?</b></p><button class="option" data-answer="wrong">Añadir muchas palabras técnicas.</button><button class="option" data-answer="correct">Definir objetivo, criterios de calidad y formato de salida.</button><button class="option" data-answer="wrong">Pedir que la IA actúe como “el mejor experto del mundo”.</button><div class="feedback" data-feedback></div></div>
+<div class="nav"><button class="prev" data-prev>← Anterior</button><button class="next" data-next>Siguiente →</button></div>
