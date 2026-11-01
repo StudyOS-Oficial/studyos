@@ -13,7 +13,8 @@ const lessonEl=document.getElementById("lesson"),weeksEl=document.getElementById
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function allIds(){return weeks.flatMap(w=>w.lessons);}
 function idAt(i){return allIds()[i];}
-const available=new Set(["01","02","03","04","05","06"]);\nfunction renderWeeks(){
+const available=new Set(["01","02","03","04","05","06"]);
+function renderWeeks(){
  let n=0,html="";
  weeks.forEach((w,wi)=>{html+=`<div class="week"><div class="week-title">${escapeHTML(w.name)}</div>`;
  w.lessons.forEach(id=>{const active=Number(id)===current+1;const done=completed.has(id);if(available.has(id)){html+=`<button class="lesson-btn ${active?"active":""}" onclick="openLesson('${id}')"><small>LECCIÓN ${id}${done?" · ✓":""}</small>${escapeHTML(lessonNames[id]||"Próxima lección")}</button>`;}else{html+=`<div class="lesson-btn" style="opacity:.42;cursor:default"><small>LECCIÓN ${id}</small>Próximamente</div>`;}n++;});
