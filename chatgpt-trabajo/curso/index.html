@@ -189,26 +189,32 @@ options:["Una herramienta que hace muchas cosas aunque no exista un problema con
 }
 
 {
-title:"Resumir información sin perder lo importante",
-intro:"Resumir bien no significa hacer un texto más corto: significa conservar lo que importa para un propósito concreto.",
-goal:"Crear resúmenes orientados a personas, decisiones y acciones.",
-outcomes:["Resúmenes ejecutivos","Extracción de acciones","Control de inferencias"],
+title:"Convertir un caso de uso en un proceso de trabajo",
+intro:"Ya has diseñado tu primer caso de uso. Ahora toca dar un paso más: convertir esa idea en un proceso que puedas repetir. La diferencia entre probar ChatGPT una vez y utilizar IA profesionalmente está en la consistencia del proceso.",
+goal:"Transformar un caso de uso en un flujo de trabajo repetible, con entradas, instrucciones, revisión y resultado definidos.",
+outcomes:["Diseñar un flujo repetible","Definir criterios de calidad","Preparar una primera versión reutilizable"],
 theory:[
-"Un mismo documento puede necesitar varios resúmenes. Un ejecutivo quiere conclusiones y riesgos; una persona que no asistió a una reunión necesita contexto y acciones; un compañero técnico puede necesitar detalles.",
-"Define primero el uso del resumen. Después pide una estructura que haga visibles las piezas relevantes. Para reuniones, por ejemplo: decisiones, tareas, responsables, fechas, riesgos y pendientes.",
-"El modelo puede inferir una relación que no aparece explícitamente en la fuente. Por eso conviene exigir que marque información ausente o incierta en lugar de completar huecos."
+"Un experimento demuestra que algo puede funcionar. Un proceso define cómo repetirlo. Para trabajar con IA necesitamos pasar de respuestas aisladas a procedimientos que otras veces podamos ejecutar de forma parecida.",
+"Un flujo profesional suele tener cinco partes: entrada, preparación, interacción con IA, revisión y salida. Si una de ellas depende de improvisar cada vez, todavía tenemos margen para mejorar el sistema.",
+"Los criterios de calidad son especialmente importantes. No basta con pedir «hazlo bien»: debemos especificar qué debe contener el resultado, qué no puede ocurrir y qué debe comprobar una persona.",
+"Empieza con una versión sencilla. Cuando el proceso funcione, podrás crear plantillas, instrucciones reutilizables o herramientas especializadas. Primero demuestra el valor; después optimiza."
 ],
-visual:["Texto largo → información accionable","FUENTE","→","HECHOS","→","DECISIONES","→","ACCIONES","→","PENDIENTES"],
-prompt:"Resume el contenido para [audiencia] con el objetivo de [uso].\nSepara: hechos, decisiones, tareas, responsables, fechas, riesgos y asuntos pendientes.\nNo inventes. Si algo no aparece, indícalo como «no indicado».\n\nContenido:\n[pegar]",
+visual:["Flujo de trabajo con IA","ENTRADA","→","PREPARACIÓN","→","CHATGPT","→","REVISIÓN","→","SALIDA"],
 steps:[
-["Define el lector","La audiencia determina qué conservar."],
-["Define la salida","Pide categorías concretas, no solo «un resumen»."],
-["Comprueba","Contrasta decisiones y cifras con la fuente original."]
+["1. Define la entrada","Determina exactamente qué información recibe el proceso y en qué formato debe estar."],
+["2. Prepara el contexto","Añade objetivo, audiencia, restricciones, criterios y cualquier información necesaria para interpretar correctamente la tarea."],
+["3. Ejecuta la IA","Utiliza una instrucción estable y concreta. Si el proceso necesita varias interacciones, define qué ocurre en cada paso."],
+["4. Revisa","Comprueba hechos, omisiones, tono, formato y cualquier criterio específico del trabajo."],
+["5. Entrega el resultado","Define cómo debe quedar preparado para utilizarlo: documento, tabla, correo, lista, informe o siguiente acción."]
 ],
-exercise:"Toma un texto público o un documento propio no confidencial de unas 1.000 palabras y crea dos resúmenes: uno ejecutivo de 120 palabras y otro operativo con acciones.",
-question:"¿Por qué importa el propósito del resumen?",
-options:["Porque determina qué información es relevante conservar","Porque cambia la verdad de la fuente","Porque permite inventar información secundaria"],answer:0
-},
+prompt:"Quiero convertir este caso de uso en un proceso de trabajo repetible:\n\nCaso de uso: [CASO DE USO]\nEntrada: [INFORMACIÓN QUE RECIBIRÁ LA IA]\nResultado esperado: [RESULTADO]\n\nDiseña un flujo de 5 pasos como máximo que incluya:\n1. Preparación de la información.\n2. Instrucción para ChatGPT.\n3. Formato de salida.\n4. Checklist de revisión humana.\n5. Criterio para considerar el resultado terminado.\n\nSeñala también qué parte del proceso podría convertirse posteriormente en una plantilla reutilizable. No inventes información.",
+exercise:"Recupera el caso de uso que diseñaste en la lección anterior. Escribe el proceso completo en cinco pasos. Después ejecútalo una vez con un caso real de bajo riesgo. Anota qué parte te ha obligado a improvisar y qué parte debería convertirse en una instrucción o plantilla.",
+tip:"Si cada ejecución requiere volver a explicar desde cero qué quieres, todavía no tienes un proceso suficientemente definido.",
+risk:"No conviertas una plantilla en una garantía de calidad. Aunque utilices siempre las mismas instrucciones, cada entrada puede ser diferente y necesita revisión.",
+question:"¿Qué diferencia principalmente un uso puntual de IA de un proceso profesional?",
+options:["Utilizar prompts mucho más largos","Repetir exactamente la misma conversación","Definir entradas, pasos, controles y resultado para poder repetir el proceso con consistencia"],answer:2
+}
+
 {
 title:"Organización personal: tareas, prioridades y planificación",
 intro:"ChatGPT puede ser una segunda opinión para ordenar trabajo, pero no conoce automáticamente tus verdaderas prioridades.",
