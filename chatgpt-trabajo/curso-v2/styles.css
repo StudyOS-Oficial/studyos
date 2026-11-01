@@ -12,7 +12,7 @@ button{font:inherit}
 .progress-row{display:flex;align-items:center;gap:12px;margin-top:24px;color:#d9dbe5;font-size:13px}
 .progress{height:8px;flex:1;background:#ffffff1f;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;width:0;background:#aaa0ff;transition:.3s}
 .layout{max-width:1240px;margin:auto;padding:24px 20px 80px;display:grid;grid-template-columns:285px minmax(0,1fr);gap:22px}
-.sidebar{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:20px;padding:10px}
+.sidebar{position:sticky;top:16px;align-self:start;background:#fff;border:1px solid var(--line);border-radius:20px;padding:10px}
 .side-title{padding:10px 12px 13px;border-bottom:1px solid var(--line);margin-bottom:7px}.side-title strong{display:block}.side-title small{color:var(--muted)}
 .week{margin:10px 0}.week-title{padding:8px 12px;font-size:11px;letter-spacing:.7px;font-weight:900;color:var(--muted)}
 .lesson-btn{display:block;width:100%;border:0;background:none;text-align:left;color:var(--ink);padding:10px 12px;border-radius:11px;cursor:pointer;font-size:13px}
