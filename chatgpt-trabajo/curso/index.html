@@ -81,27 +81,32 @@ options:["Aceptar la respuesta si está bien redactada","Dar contexto, revisar l
 answer:1
 },
 {
-title:"Iterar: cómo pasar de una respuesta mediocre a una buena",
-intro:"La productividad no está en acertar a la primera. Está en saber diagnosticar qué falla y dar una segunda instrucción que lo corrija.",
-goal:"Aprender un ciclo de mejora que puedas reutilizar en cualquier tarea.",
-outcomes:["Detectar fallos","Dar feedback concreto","Mejorar por iteraciones"],
+title:"Qué puede hacer ChatGPT",
+intro:"Ahora que entiendes qué es ChatGPT y por qué necesita contexto, toca aprender a reconocer dónde aporta valor. No se trata de memorizar cientos de prompts, sino de identificar qué función de IA necesitas en cada tarea.",
+goal:"Aprender a clasificar tareas profesionales y elegir la función de ChatGPT que puede aportar más valor.",
+outcomes:["Crear contenido útil","Transformar información","Analizar y estructurar"],
 theory:[
-"Una primera respuesta suele revelar qué información faltaba. En lugar de rehacer el prompt entero, identifica el problema: demasiado largo, tono incorrecto, estructura confusa, falta de datos, criterios incompatibles o conclusión sin evidencia.",
-"Las instrucciones de mejora funcionan mejor cuando son observables. «Hazlo mejor» es ambiguo. «Reduce a 120 palabras, conserva las tres ideas principales y termina con una llamada a la acción» define cambios comprobables.",
-"Puedes usar una segunda fase de crítica: pedir a ChatGPT que evalúe su propia propuesta según una lista de criterios y después rehacerla. La evaluación sigue necesitando criterio humano, pero ayuda a sistematizar la revisión."
+"En el trabajo, la mayoría de usos de ChatGPT se pueden entender con cinco funciones: CREAR, TRANSFORMAR, ANALIZAR, PENSAR o SIMULAR y SISTEMATIZAR. Una misma tarea puede combinar varias.",
+"CREAR sirve para producir algo desde cero: un borrador, ideas, preguntas, alternativas o una propuesta inicial. TRANSFORMAR sirve para trabajar sobre algo que ya existe: resumir, reescribir, ordenar, adaptar, convertir o extraer.",
+"ANALIZAR ayuda a comparar información, detectar patrones, clasificar datos o encontrar inconsistencias. PENSAR o SIMULAR permite explorar escenarios, objeciones o perspectivas. SISTEMATIZAR convierte una tarea repetida en una plantilla, procedimiento o workflow reutilizable.",
+"El valor no está en pedirle a ChatGPT que haga «algo con IA». Está en conectar una función con una tarea concreta, definir qué información entra, qué resultado quieres y cómo comprobarás que es correcto."
 ],
-visual:["Ciclo de mejora","1. PEDIR","→","2. REVISAR","→","3. DIAGNOSTICAR","→","4. AJUSTAR","→","5. VALIDAR"],
+visual:["Mapa de capacidades","INFORMACIÓN","→","CREAR / TRANSFORMAR","→","ANALIZAR / SIMULAR","→","SISTEMATIZAR","→","RESULTADO"],
 steps:[
-["Diagnostica","Escribe qué no funciona en una frase concreta."],
-["Corrige una variable","Cambia longitud, tono, estructura, datos o criterio. Evita cambiarlo todo a la vez."],
-["Valida","Comprueba si la nueva versión resuelve exactamente el problema."]
+["1. Identifica el tipo de tarea","Pregunta qué necesitas conseguir: producir algo nuevo, modificar algo existente, entender información, explorar una decisión o repetir un proceso."],
+["2. Elige la función principal","Selecciona la función que mejor describe el trabajo. Si necesitas resumir unas notas y convertirlas en tareas, probablemente combinarás TRANSFORMAR y SISTEMATIZAR."],
+["3. Define la entrada","Indica qué información tiene ChatGPT para trabajar: texto, datos, criterios, contexto o ejemplos. Si la entrada es incompleta, la salida también puede serlo."],
+["4. Define la salida","Especifica qué quieres recibir y en qué formato: tabla, email, lista, informe, matriz, checklist o propuesta."],
+["5. Añade revisión","Define qué debe comprobar una persona antes de utilizar el resultado. La función de IA no elimina la responsabilidad profesional."]
 ],
-prompt:"La respuesta anterior no cumple estos criterios:\n- [problema 1]\n- [problema 2]\n\nMantén lo que sí funciona y modifica solo esos puntos. Devuelve primero una versión corregida y después una lista breve de cambios realizados.",
-exercise:"Genera un email con cualquier prompt. Después escribe tres críticas concretas y pide una segunda versión que las corrija. Guarda ambas y compara.",
-tip:"Aprender a dar feedback a la IA es tan importante como aprender a pedirle algo.",
-question:"¿Qué feedback es más útil?",
-options:["Hazlo mejor y más profesional","Reduce a 100 palabras, conserva los hechos y termina con una petición clara","Escribe algo diferente"],answer:1
-},
+prompt:"Tengo esta tarea profesional:\n[TAREA]\n\nContexto:\n[CONTEXTO]\n\nInformación disponible:\n[DATOS]\n\nQuiero que:\n1. Clasifiques la tarea según estas funciones: CREAR, TRANSFORMAR, ANALIZAR, PENSAR/SIMULAR o SISTEMATIZAR.\n2. Indiques qué función debería ser la principal y por qué.\n3. Propongas un flujo de trabajo de 3-5 pasos.\n4. Definas qué debería revisar una persona antes de utilizar el resultado.\n\nNo inventes información que no esté disponible.",
+exercise:"Elige 5 tareas reales de tu trabajo. Para cada una indica: qué haces ahora, qué información utilizas, qué resultado produces y qué función de IA podría ayudarte. Después elige una tarea y diseña un flujo completo de entrada → IA → revisión → resultado.",
+tip:"La mayoría de tareas reales combinan funciones. Por ejemplo: analizar unos datos → crear una recomendación → transformar esa recomendación en un email → sistematizar el proceso para repetirlo.",
+risk:"Analizar no significa tener razón. Si los datos son incompletos, incorrectos o están mal interpretados, ChatGPT puede producir una conclusión aparentemente lógica pero equivocada. La calidad del análisis depende también de la calidad de la información.",
+question:"Tienes unas notas desordenadas de una reunión y quieres convertirlas en tareas con responsables y fechas. ¿Qué enfoque encaja mejor?",
+options:["Pedir únicamente ideas nuevas para la reunión","Transformar la información y sistematizarla en una estructura accionable","Pedir una opinión general sobre la reunión"],answer:1
+}
+
 {
 title:"Emails y comunicación: ganar tiempo sin sonar artificial",
 intro:"El objetivo no es llenar tu bandeja de textos generados. Es reducir el tiempo de redacción y mejorar claridad, tono y consistencia.",
