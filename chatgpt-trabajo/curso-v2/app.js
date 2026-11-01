@@ -21,7 +21,7 @@ function renderWeeks(){
  html+="</div>";});
  weeksEl.innerHTML=html;
 }
-const lessonNames={};
+const lessonNames={"01":"La IA está cambiando la forma de trabajar","02":"Qué es realmente ChatGPT","03":"Iterar para mejorar resultados","04":"Qué puede hacer la IA y qué no deberías delegar","05":"Encontrar oportunidades de IA en tu trabajo","06":"Diseñar tu primer caso de uso de IA"};
 async function getLesson(id){
  const res=await fetch(`./lessons/${id}.html`,{cache:"no-store"});
  if(!res.ok) throw new Error("No se pudo cargar la lección "+id);
@@ -51,5 +51,5 @@ function checkAnswer(btn,id){
 }
 function nextLesson(){const ids=allIds();if(current<ids.length-1)openLesson(ids[current+1]);}
 function prevLesson(){const ids=allIds();if(current>0)openLesson(ids[current-1]);}
-function updateProgress(){const total=allIds().length;document.getElementById("progress-bar").style.width=((current+1)/total*100)+"%";document.getElementById("progress-label").textContent="Semana "+(Math.floor(current/6)+1)+" · Lección "+(current+1);document.getElementById("completed-label").textContent=completed.size+" completadas";}
+function updateProgress(){const total=allIds().length;document.getElementById("progress-bar").style.width=((current+1)/total*100)+"%";const weekIndex=weeks.findIndex(w=>w.lessons.includes(idAt(current)));document.getElementById("progress-label").textContent="Semana "+(weekIndex+1)+" · Lección "+(current+1);document.getElementById("completed-label").textContent=completed.size+" completadas";}
 renderWeeks();openLesson("01");
