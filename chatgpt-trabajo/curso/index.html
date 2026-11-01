@@ -232,23 +232,7 @@ steps:[
 ["4. Restricciones","Indica límites de extensión, tono, alcance, fuentes, decisiones que no debe tomar o información que no debe inventar."],
 ["5. Formato y control","Define cómo quieres recibir el resultado y qué comprobaciones debe realizar antes de entregarlo."]
 ],
-prompt:"Actúa como diseñador de instrucciones para mi trabajo.
-
-Tarea: [TAREA]
-Contexto: [CONTEXTO]
-Información disponible: [DATOS]
-Resultado que necesito: [OBJETIVO]
-Restricciones: [LÍMITES]
-
-Construye una instrucción profesional que incluya:
-- contexto relevante
-- objetivo concreto
-- información de entrada
-- restricciones
-- formato de salida
-- criterios de calidad
-
-Después explica brevemente qué parte de la instrucción evita cada ambigüedad. No añadas información que no te haya proporcionado.",
+prompt:"Actúa como diseñador de instrucciones para mi trabajo.\n\nTarea: [TAREA]\nContexto: [CONTEXTO]\nInformación disponible: [DATOS]\nResultado que necesito: [OBJETIVO]\nRestricciones: [LÍMITES]\n\nConstruye una instrucción profesional que incluya:\n- contexto relevante\n- objetivo concreto\n- información de entrada\n- restricciones\n- formato de salida\n- criterios de calidad\n\nDespués explica brevemente qué parte de la instrucción evita cada ambigüedad. No añadas información que no te haya proporcionado.",
 exercise:"Coge una instrucción que hayas utilizado anteriormente y crea dos versiones: una básica y otra estructurada con contexto, objetivo, datos, restricciones, formato y criterios de calidad. Ejecuta ambas sobre la misma tarea y compara la utilidad del resultado.",
 tip:"Cuando una respuesta sale mal, no cambies veinte cosas a la vez. Identifica qué información o restricción faltaba y mejora solo esa parte.",
 risk:"Una instrucción detallada no convierte una respuesta en verdadera. Los hechos importantes siguen necesitando verificación y el profesional mantiene la responsabilidad sobre el resultado.",
