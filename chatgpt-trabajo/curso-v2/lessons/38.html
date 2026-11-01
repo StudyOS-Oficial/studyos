@@ -1,0 +1,19 @@
+<div class="tag">SEMANA 6 · LECCIÓN 38</div><h2>Inputs y outputs: diseñar los límites del sistema</h2><p class="lead">La calidad de una herramienta depende en gran parte de lo que permite entrar y de cómo obliga a estructurar lo que sale.</p><div class="goal"><b>Objetivo:</b> definir contratos claros entre usuario, herramienta e IA.</div><div class="section"><h3>1. APRENDER · El contrato de datos</h3><div class="flow"><div class="node">INPUT VÁLIDO</div><div class="node">PROCESAMIENTO</div><div class="node">OUTPUT</div><div class="node">VALIDACIÓN</div></div><p>Un input puede necesitar formato, longitud, campos obligatorios o límites. Un output puede necesitar secciones obligatorias, etiquetas o valores permitidos.</p></div><div class="section"><h3>2. HACER · Especificación</h3><div class="prompt"><button class="copy" data-copy>Copiar</button><pre>Define el contrato de entrada y salida de esta herramienta:
+
+OBJETIVO:
+[...]
+
+Para cada INPUT indica:
+- Nombre
+- Tipo
+- Obligatorio/opcional
+- Ejemplo válido
+- Ejemplo inválido
+- Validación necesaria
+
+Para el OUTPUT indica:
+- Campos obligatorios
+- Formato
+- Longitud aproximada
+- Qué hacer si falta información
+- Qué debe revisar una persona</pre></div></div><div class="section"><h3>3. VER · Evitar el “texto libre” cuando no hace falta</h3><p>Si necesitas una fecha, pide una fecha. Si necesitas una categoría, define las categorías. Cuanto más claro sea el contrato, menos ambigüedad tendrá el sistema.</p></div><div class="exercise"><h3>4. EXPERIMENTAR</h3><p>Define cinco inputs de tu herramienta y escribe un ejemplo válido y uno inválido para cada uno. Después decide qué debería ocurrir cuando el usuario introduce un valor incorrecto.</p></div><div class="tip">💡 Diseñar inputs es también diseñar prevención de errores.</div><div class="quiz"><h3>5. COMPROBAR</h3><p><b>¿Por qué son importantes los límites de entrada y salida?</b></p><button class="option" data-answer="wrong">Porque hacen que la herramienta parezca más técnica.</button><button class="option" data-answer="correct">Porque reducen ambigüedad y hacen el comportamiento más predecible y verificable.</button><button class="option" data-answer="wrong">Porque eliminan cualquier posibilidad de error.</button><div class="feedback" data-feedback></div></div><div class="nav"><button class="prev" data-prev>← Anterior</button><button class="next" data-next>Siguiente →</button></div>
