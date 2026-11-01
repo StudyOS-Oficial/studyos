@@ -214,25 +214,46 @@ question:"¿Qué diferencia principalmente un uso puntual de IA de un proceso pr
 options:["Utilizar prompts mucho más largos","Repetir exactamente la misma conversación","Definir entradas, pasos, controles y resultado para poder repetir el proceso con consistencia"],answer:2
 },
 {
-title:"Organización personal: tareas, prioridades y planificación",
-intro:"ChatGPT puede ser una segunda opinión para ordenar trabajo, pero no conoce automáticamente tus verdaderas prioridades.",
-goal:"Crear planes realistas considerando tiempo, impacto, urgencia y dependencias.",
-outcomes:["Priorización","Bloques de trabajo","Detección de dependencias"],
+title:"Crear instrucciones que produzcan resultados consistentes",
+intro:"Un proceso repetible necesita instrucciones que también sean repetibles. En esta lección aprenderás a construir instrucciones profesionales: no para escribir prompts más largos, sino para reducir ambigüedad y conseguir resultados más consistentes.",
+goal:"Aprender a estructurar instrucciones de IA con contexto, objetivo, restricciones, formato y criterios de calidad.",
+outcomes:["Estructurar instrucciones profesionales","Reducir ambigüedad","Definir formatos y criterios de calidad"],
 theory:[
-"Urgencia e importancia no son lo mismo. Una tarea puede ser urgente pero tener poco impacto; otra puede ser importante y necesitar tiempo de concentración. Añadir esfuerzo y dependencia mejora la planificación.",
-"Una lista de tareas sin capacidad disponible produce planes ficticios. Si solo tienes cuatro horas, el plan debe caber en cuatro horas. Las restricciones son parte del problema.",
-"Una técnica segura es usar la IA como contrapunto: crea primero tu propia prioridad y después pide que busque contradicciones, dependencias y riesgos de retraso."
+"Una buena instrucción responde a cinco preguntas: ¿qué quiero conseguir?, ¿qué contexto debe conocer la IA?, ¿qué información tiene?, ¿qué límites debe respetar? y ¿cómo debe entregarme el resultado?",
+"El contexto explica la situación. El objetivo define qué queremos conseguir. Las restricciones evitan respuestas que no encajan. El formato convierte una respuesta genérica en un resultado directamente utilizable.",
+"Los criterios de calidad son especialmente útiles en el trabajo. Puedes pedir que compruebe que no faltan datos, que marque incertidumbres, que separe hechos de propuestas o que siga una estructura determinada.",
+"Más texto no significa mejor instrucción. Una instrucción profesional debe contener la información relevante y eliminar lo que solo añade ruido."
 ],
-visual:["Prioridad práctica","IMPACTO ↑","IMPORTANTE","→","URGENTE","→","DEPENDENCIAS","→","TIEMPO DISPONIBLE"],
-prompt:"Tareas:\n[lista]\nTiempo disponible: [horas]\nFechas límite: [fechas]\nDependencias: [si existen]\n\nPropón una prioridad basada en impacto, urgencia, esfuerzo y dependencia. Explica el razonamiento y señala qué información falta. No tomes decisiones irreversibles.",
+visual:["Anatomía de una instrucción","CONTEXTO","→","OBJETIVO","→","DATOS","→","RESTRICCIONES","→","FORMATO","→","CONTROL"],
 steps:[
-["Vacía la cabeza","Pon todas las tareas relevantes en una lista."],
-["Añade restricciones","Tiempo, fechas, reuniones y dependencias."],
-["Decide","Utiliza la propuesta como segunda opinión y ajusta según tu contexto."]
+["1. Contexto","Explica qué está ocurriendo y quién utilizará el resultado."],
+["2. Objetivo","Describe exactamente qué necesitas conseguir, no solo la acción que quieres que realice ChatGPT."],
+["3. Datos","Proporciona la información necesaria y deja claro qué información no está disponible."],
+["4. Restricciones","Indica límites de extensión, tono, alcance, fuentes, decisiones que no debe tomar o información que no debe inventar."],
+["5. Formato y control","Define cómo quieres recibir el resultado y qué comprobaciones debe realizar antes de entregarlo."]
 ],
-exercise:"Haz una planificación para mañana con tus tareas reales. Al final del día compara plan y realidad. ¿Qué restricción faltó?",
-question:"¿Qué debe incluir un plan realista además de las tareas?",
-options:["Tiempo disponible, fechas y dependencias","Solo una lista ordenada","El mayor número posible de tareas"],answer:0
+prompt:"Actúa como diseñador de instrucciones para mi trabajo.
+
+Tarea: [TAREA]
+Contexto: [CONTEXTO]
+Información disponible: [DATOS]
+Resultado que necesito: [OBJETIVO]
+Restricciones: [LÍMITES]
+
+Construye una instrucción profesional que incluya:
+- contexto relevante
+- objetivo concreto
+- información de entrada
+- restricciones
+- formato de salida
+- criterios de calidad
+
+Después explica brevemente qué parte de la instrucción evita cada ambigüedad. No añadas información que no te haya proporcionado.",
+exercise:"Coge una instrucción que hayas utilizado anteriormente y crea dos versiones: una básica y otra estructurada con contexto, objetivo, datos, restricciones, formato y criterios de calidad. Ejecuta ambas sobre la misma tarea y compara la utilidad del resultado.",
+tip:"Cuando una respuesta sale mal, no cambies veinte cosas a la vez. Identifica qué información o restricción faltaba y mejora solo esa parte.",
+risk:"Una instrucción detallada no convierte una respuesta en verdadera. Los hechos importantes siguen necesitando verificación y el profesional mantiene la responsabilidad sobre el resultado.",
+question:"¿Qué elemento ayuda especialmente a que una respuesta sea utilizable de forma consistente?",
+options:["Pedir siempre una respuesta muy larga","Definir contexto, objetivo, restricciones, formato y criterios de calidad","Utilizar palabras técnicas para que el prompt parezca más profesional"],answer:1
 },
 {
 title:"Analizar información y comparar opciones",
