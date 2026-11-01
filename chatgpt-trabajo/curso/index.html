@@ -32,27 +32,35 @@
 const modules = [
 {
 title:"La IA está cambiando la forma de trabajar",
-intro:"La IA no llega para hacer todo por ti. Llega para cambiar cómo repartes tu tiempo, tu atención y tu criterio. En este primer módulo aprenderás a detectar qué partes de tu trabajo puede mejorar la IA y cuáles deben seguir bajo tu control.",
-goal:"Entender cómo encaja ChatGPT en un proceso de trabajo real y aprender a identificar tareas con potencial de mejora.",
-outcomes:["Detectar oportunidades de IA","Separar IA y criterio humano","Diseñar un primer caso de uso"],
+intro:"La IA no consiste simplemente en pedirle a ChatGPT que escriba por ti. El cambio profesional aparece cuando analizas tu trabajo como procesos y decides qué partes puede acelerar, transformar o analizar la IA, y cuáles necesitan seguir bajo tu criterio.",
+goal:"Aprender a detectar oportunidades reales de IA en tu trabajo y convertir una tarea cotidiana en un primer caso de uso profesional, medible y controlado.",
+outcomes:["Entender qué cambia con la IA en el trabajo","Analizar tareas como procesos y no como prompts aislados","Separar lo que puede hacer la IA de lo que debe decidir una persona","Priorizar oportunidades según valor, riesgo y facilidad de revisión","Diseñar un primer caso de uso con entradas, salida, revisión y métrica"],
 theory:[
-"El cambio importante no es aprender a escribir prompts. Es aprender a mirar tu trabajo de otra manera. Muchas tareas profesionales mezclan información, redacción, análisis, organización y toma de decisiones. La IA puede acelerar algunas de esas piezas, pero no todas deben delegarse.",
-"Puedes pensar en ChatGPT como un colaborador digital capaz de CREAR, TRANSFORMAR, ANALIZAR, PENSAR o SIMULAR y SISTEMATIZAR información. Su valor aparece cuando lo incorporas a una tarea concreta y defines qué resultado necesitas.",
-"Una regla fundamental del curso será esta: la IA propone, transforma o acelera; el profesional revisa, decide y responde por el resultado. El objetivo no es sustituir tu criterio, sino liberar tiempo para utilizarlo donde aporta más valor."
+"Durante años, las herramientas digitales ayudaron a ejecutar instrucciones. La IA generativa añade una capacidad diferente: puede trabajar con lenguaje y contenido ambiguo. Puede crear, transformar, clasificar, resumir, comparar, analizar y proponer alternativas.",
+"Por eso la pregunta profesional ya no debería ser solamente «¿qué prompt puedo escribir?». La pregunta útil es «¿en qué parte de mi trabajo existe un problema repetitivo o costoso que la IA podría ayudarme a resolver?». Primero analizamos el trabajo y después elegimos cómo utilizar la herramienta.",
+"Una tarea profesional rara vez es una sola acción. Preparar un informe puede implicar recopilar información, clasificarla, detectar cambios, interpretar resultados, redactar conclusiones y revisar datos. Algunas piezas son buenas candidatas para IA; otras requieren contexto, responsabilidad profesional o una decisión humana.",
+"Podemos agrupar las capacidades en cinco funciones: CREAR, TRANSFORMAR, ANALIZAR, PENSAR/SIMULAR y SISTEMATIZAR. Una misma tarea puede utilizar varias.",
+"El verdadero valor aparece cuando combinamos estas capacidades con un proceso: «problema → contexto → IA → revisión → decisión → resultado». La revisión forma parte del diseño desde el principio.",
+"Si la IA reduce el trabajo mecánico, el tiempo liberado puede dedicarse a comprobar información, interpretar resultados, decidir, resolver excepciones o mejorar el proceso.",
+"Regla del curso: IA + criterio humano. Cuanto mayor sea el impacto de un error, mayor debe ser el nivel de revisión.",
+"Para priorizar oportunidades podemos valorar frecuencia, tiempo consumido, claridad de entradas y salida, facilidad de revisión y riesgo. Una tarea frecuente, estructurada y fácil de revisar suele ser un mejor primer proyecto."
 ],
 visual:["El nuevo flujo de trabajo","PROBLEMA","→","CONTEXTO","→","IA","→","REVISIÓN","→","DECISIÓN","→","RESULTADO"],
 steps:[
-["1. Identifica el problema","Antes de abrir ChatGPT, define qué tarea quieres mejorar. No empieces por la herramienta; empieza por el trabajo real."],
-["2. Decide qué parte puede hacer la IA","Busca tareas repetitivas, con entradas relativamente claras y un resultado que puedas revisar."],
-["3. Mantén el criterio humano","Las decisiones importantes, los datos sensibles y las acciones de alto impacto necesitan el nivel de control adecuado."],
-["4. Mide el resultado","Una mejora real debe poder observarse: menos tiempo, mejor calidad, menos errores, más consistencia o mayor capacidad."]
+["1. Empieza por una tarea real","Escribe una tarea concreta que haces en tu trabajo. No empieces por la herramienta; empieza por el trabajo real."],
+["2. Descompón la tarea","Separa recopilar, clasificar, analizar, redactar, revisar y decidir."],
+["3. Identifica la función de IA","Decide si la oportunidad consiste en crear, transformar, analizar, simular/pensar o sistematizar."],
+["4. Define las entradas","Especifica qué información necesita el proceso."],
+["5. Define la salida","Describe qué debe producir el sistema y en qué formato."],
+["6. Conserva un punto de control humano","Decide exactamente qué revisará una persona antes de utilizar el resultado."],
+["7. Define una métrica","Mide minutos, errores, revisiones, tiempo de respuesta, volumen o consistencia."]
 ],
-prompt:"Estas son 5 tareas que realizo habitualmente en mi trabajo:\n[lista de tareas]\n\nPara cada una analiza:\n1. Qué parte podría mejorar ChatGPT.\n2. Qué parte debería seguir haciendo una persona.\n3. Qué información necesitaría la IA.\n4. Qué riesgo tendría un error.\n5. Cómo podría medir si realmente ahorro tiempo o mejoro el resultado.\n\nNo inventes detalles sobre mi trabajo y, si falta información, indícalo.",
-exercise:"Haz una lista de 5 tareas reales que realizas durante una semana. Para cada una anota: frecuencia, tiempo aproximado, información que utilizas, resultado que produces y cuánto criterio profesional requiere. Después elige una tarea que sea frecuente, revisable y de riesgo controlado.",
-tip:"No busques automatizar lo más espectacular. Busca primero lo que haces muchas veces. Una tarea de 30 minutos que repites cuatro veces por semana puede tener más valor que una tarea compleja que haces una vez al mes.",
-risk:"No introduzcas datos confidenciales, credenciales, secretos empresariales o información personal en una herramienta de IA si no estás autorizado a hacerlo. El nivel de control debe aumentar con el riesgo.",
-question:"¿Cuál es el mejor punto de partida para aplicar IA al trabajo?",
-options:["Una tarea frecuente, con resultado revisable y riesgo controlado","La decisión más crítica de tu puesto para delegarla completamente","Automatizar todas las tareas repetitivas de golpe"],
+prompt:"Quiero encontrar oportunidades de IA en mi trabajo.\n\nEstas son mis tareas habituales:\n[LISTA DE TAREAS]\n\nPara cada tarea analiza: problema, pasos, función de IA, entradas, salida, control humano, riesgo y métrica. Después puntúa cada oportunidad de 1 a 5 en impacto, frecuencia, facilidad de implementación, facilidad de revisión y riesgo. Prioriza las oportunidades con buen potencial y riesgo controlable. No inventes detalles sobre mi trabajo.",
+exercise:"Elige entre 8 y 10 tareas reales. Para cada una anota frecuencia, tiempo, información utilizada, resultado, pasos y cuánto criterio requiere. Selecciona 3 oportunidades. Para la mejor escribe: PROBLEMA → ENTRADAS → IA → REVISIÓN HUMANA → SALIDA → RIESGO → MÉTRICA.",
+tip:"No empieces por la tarea más espectacular. Empieza por una tarea frecuente que puedas revisar.",
+risk:"No introduzcas información confidencial, credenciales, secretos empresariales o datos personales en una herramienta de IA si no estás autorizado. No delegues automáticamente decisiones críticas.",
+question:"¿Qué caso de uso representa mejor un buen primer proyecto de IA profesional?",
+options:["Una tarea frecuente, con entradas claras, resultado revisable, riesgo controlado y una métrica","La decisión más crítica del puesto para delegarla completamente","Una tarea excepcional cuyo resultado es difícil de verificar"],
 answer:0
 },
 {
