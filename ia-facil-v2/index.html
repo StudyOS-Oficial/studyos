@@ -39,10 +39,14 @@ const M=[
 ["Construir tu sistema personal de IA","Integra lo aprendido y crea un método que puedas seguir usando."]
 ];
 const L=[
-["La IA sin tecnicismos","La inteligencia artificial permite a los sistemas realizar tareas que asociamos con capacidades humanas: comprender lenguaje, reconocer patrones, analizar información o generar contenido.","No necesitas saber programar para empezar.","Prueba a pedir una explicación de un concepto que ya conozcas y comprueba el resultado."],
-["Qué es un modelo de IA","Un modelo aprende patrones a partir de muchos ejemplos y genera una salida a partir del contexto que recibe.","Una respuesta bien escrita puede estar equivocada.","Pide a la IA que explique algo y después pregúntale qué parte deberías verificar."],
-["Qué puede hacer","Puede explicar, resumir, comparar, redactar, idear, organizar y analizar información.","La IA es una herramienta, no un sustituto de tu criterio.","Elige una tarea pequeña de hoy y pídele ayuda."],
-["Sus límites","Puede inventar datos, interpretar mal una pregunta o quedarse desactualizada.","Cuanto más importante sea una decisión, más debes comprobar.","Haz una lista de tres cosas que nunca aceptarías sin verificar."]
+["La IA sin tecnicismos","La inteligencia artificial es una tecnología capaz de realizar tareas que asociamos con capacidades humanas: interpretar lenguaje, reconocer patrones, analizar información y generar contenido.","No necesitas entender cómo está construida una IA para empezar a sacarle partido.","Pídele que explique un concepto que ya conozcas y comprueba si realmente lo ha entendido."],
+["Qué es un modelo de IA","Un modelo aprende patrones a partir de grandes cantidades de ejemplos y utiliza el contexto que recibe para producir una respuesta. No está pensando exactamente como una persona.","Que una respuesta suene segura no significa que sea verdadera.","Pregunta: “¿Qué partes de tu respuesta podrían ser incorrectas o necesitar verificación?”."],
+["ChatGPT y los asistentes conversacionales","ChatGPT es una interfaz para conversar con modelos de IA. Puedes pedirle que explique, escriba, transforme, compare, organice o razone sobre información.","La conversación es acumulativa: puedes corregir una respuesta y continuar desde ella.","Escribe una petición sencilla y, después, añade una segunda instrucción para mejorar el resultado."],
+["Qué puede hacer realmente por ti","La IA puede ahorrar tiempo en tareas de redacción, organización, aprendizaje, planificación, ideación y análisis. El valor aparece cuando la conectas con una tarea concreta.","No pienses “¿qué puede hacer la IA?”. Piensa “¿qué tarea me gustaría hacer más rápido o mejor?”","Elige una tarea de esta semana y describe qué parte te gustaría delegar en la IA."],
+["Sus límites: cuándo no debes confiar a ciegas","Puede inventar datos, confundir fechas, interpretar mal una petición o presentar una conclusión dudosa con mucha seguridad. También puede carecer del contexto necesario.","Cuanto más importante sea una decisión, más importante es verificar la información.","Haz una lista de tres situaciones en las que siempre comprobarías una respuesta antes de actuar."],
+["La regla de oro: tú tienes el control","La IA propone; tú decides. Tú aportas el objetivo, el contexto y el criterio, y revisas el resultado antes de utilizarlo.","La mejor relación con la IA no es obedecerla: es dirigirla.","Pide una respuesta, detecta un punto mejorable y escribe una instrucción para corregirlo."],
+["Primera práctica: convierte una tarea real en una petición","Una buena primera práctica es elegir algo pequeño y real: redactar un mensaje, preparar una lista, entender un concepto o comparar dos opciones.","No necesitas crear el prompt perfecto. Empieza, observa el resultado y mejora la petición.","Pide a la IA que explique una tarea que tengas hoy y que te proponga una forma de abordarla paso a paso."],
+["Reto del módulo: tu primera interacción útil","Ahora utiliza la IA para resolver una tarea real de tu día. No busques impresionar: busca utilidad. Después revisa el resultado y decide qué cambiarías.","Si la primera respuesta no sirve, no has fallado: has obtenido información para mejorar tu siguiente petición.","Escribe una petición, revisa la respuesta, pide una mejora y guarda el resultado que realmente te sea útil."]
 ];
 const PROMPTS=[
 "Explícame esto con palabras sencillas y dame un ejemplo cotidiano.",
@@ -62,8 +66,13 @@ function renderHome(){document.getElementById("modules").innerHTML=M.map((m,i)=>
 function openM(i){cur=i;document.getElementById("home").classList.remove("on");document.getElementById("course").classList.add("on");renderCourse();renderNav();scrollTo({top:0,behavior:"smooth"})}
 function goHome(){document.getElementById("course").classList.remove("on");document.getElementById("home").classList.add("on");renderNav();scrollTo({top:0,behavior:"smooth"})}
 function renderCourse(){
-let m=M[cur],done=!!state[cur],lessons=L.map((x,i)=>[x[0],x[1],x[2],x[3]]);
-if(cur>0) lessons=lessons.map((x,i)=>[["El problema real","Contexto antes que magia","El resultado importa","Iterar es trabajar","Pide alternativas","Corrige con precisión","Comprueba lo importante","Reto práctico"][i],x[1],x[2],x[3]]);
+let m=M[cur],done=!!state[cur];
+let lessons=cur===0?L.map((x,i)=>[x[0],x[1],x[2],x[3]]):Array.from({length:8},(_,i)=>[
+["El problema real","Contexto antes que magia","El resultado importa","Iterar es trabajar","Pide alternativas","Corrige con precisión","Comprueba lo importante","Reto práctico"][i],
+"En esta lección aprenderás una habilidad concreta y aplicable.",
+"Una buena interacción con IA empieza por definir qué quieres conseguir.",
+PROMPTS[cur]
+]);
 let q=["¿Cuál es la idea clave al empezar?","¿Qué suele mejorar una petición?","¿Qué define cómo quieres recibir la respuesta?","¿Por dónde conviene empezar?","¿Qué enfoque ayuda más a aprender?","¿Qué haces antes de enviar un texto generado?","¿Qué debes valorar antes de subir un archivo?","¿Qué importa antes de generar contenido?","¿Qué significa alucinar?","¿Cuál es el objetivo final?"][cur];
 let opts=[["La IA decide por ti","Tú decides y verificas el resultado","La IA siempre tiene razón"],["Dar contexto y especificar el resultado","Escribir cuanto más mejor","Usar palabras técnicas"],["El formato","La contraseña","El navegador"],["Una tarea pequeña y repetitiva","Una decisión crítica sin verificar","Datos sensibles"],["Pedir pistas y practicar","Copiar la solución","No comprobar nada"],["Revisarlo y adaptarlo","Enviarlo sin leer","Dejar que lo envíe solo"],["Si contiene información sensible","El color del archivo","Nada"],["La intención y el mensaje","El número de emojis","No revisar"],["Puede generar información falsa con apariencia convincente","Siempre cita fuentes","Solo responde con imágenes"],["Crear un sistema propio útil","Memorizar prompts","Dejar que la IA decida todo"]][cur];
 let correct=[1,0,0,0,0,0,0,0,0,0][cur];
