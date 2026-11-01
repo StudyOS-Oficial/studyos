@@ -12,7 +12,7 @@ button{font:inherit}
 .progress-row{display:flex;align-items:center;gap:12px;margin-top:24px;color:#d9dbe5;font-size:13px}
 .progress{height:8px;flex:1;background:#ffffff1f;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;width:0;background:#aaa0ff;transition:.3s}
 .layout{max-width:1240px;margin:auto;padding:24px 20px 80px;display:grid;grid-template-columns:285px minmax(0,1fr);gap:22px}
-.sidebar{position:sticky;top:16px;align-self:start;background:#fff;border:1px solid var(--line);border-radius:20px;padding:10px}
+.sidebar{position:sticky;top:16px;align-self:start;background:#fff;border:1px solid var(--line);border-radius:20px;padding:10px;min-width:0}
 .side-title{padding:10px 12px 13px;border-bottom:1px solid var(--line);margin-bottom:7px}.side-title strong{display:block}.side-title small{color:var(--muted)}
 .week{margin:10px 0}.week-title{padding:8px 12px;font-size:11px;letter-spacing:.7px;font-weight:900;color:var(--muted)}
 .lesson-btn{display:block;width:100%;border:0;background:none;text-align:left;color:var(--ink);padding:10px 12px;border-radius:11px;cursor:pointer;font-size:13px}
@@ -32,5 +32,5 @@ h2{font-size:clamp(31px,4vw,48px);line-height:1.04;margin:8px 0 13px}h3{font-siz
 .nav{display:flex;justify-content:space-between;gap:10px;margin-top:35px}.nav button{border:0;border-radius:12px;padding:12px 17px;font-weight:850;cursor:pointer}.prev{background:#edf0f5}.next{background:var(--purple);color:#fff}
 .done{margin-top:18px;padding:15px;border-radius:13px;background:var(--green2);color:var(--green);font-weight:800}
 .loading{padding:70px 20px;text-align:center;color:var(--muted)}
-@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:relative;top:auto;max-height:none}.outcomes{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:relative;top:auto;max-height:none;overflow:visible}.outcomes{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr 1fr}}.sidebar{position:relative;top:auto;max-height:none}.outcomes{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.layout{padding:14px 12px 60px}.top{padding:22px 16px}.outcomes,.flow{grid-template-columns:1fr}.lesson-card{padding:22px;border-radius:19px}.progress-row{flex-wrap:wrap}.progress{order:3;flex-basis:100%}}
