@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Compara apps de encuestas remuneradas y calcula una estimación orientativa de tus posibles ingresos extra.">
+<title>Ingresos Extra — Compara apps y calcula tu potencial</title>
+<style>
+:root{--bg:#f7f8fc;--card:#fff;--ink:#111827;--muted:#667085;--p:#3157d5;--p2:#7548d8;--line:#e7e9f0;--ok:#087f5b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}a{text-decoration:none;color:inherit}.wrap{width:min(1120px,calc(100% - 28px));margin:auto}
+nav{position:sticky;top:0;z-index:10;background:#f7f8f8e8;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.nav{height:66px;display:flex;align-items:center;justify-content:space-between}.logo{font-weight:900;font-size:20px;letter-spacing:-.04em}.logo i{color:var(--p);font-style:normal}.nav a:last-child{background:#111827;color:#fff;padding:10px 15px;border-radius:999px;font-size:13px;font-weight:800}
+.hero{padding:70px 0 45px}.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:45px;align-items:center}.badge{display:inline-block;padding:8px 12px;border-radius:999px;background:#eef1ff;color:#2849b5;font-size:12px;font-weight:900}h1{font-size:clamp(42px,6vw,68px);line-height:1;letter-spacing:-.055em;margin:18px 0}h2{line-height:1.08;letter-spacing:-.04em}p{color:var(--muted)}.lead{font-size:18px;max-width:650px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:14px;padding:13px 18px;font-weight:850;font-size:14px}.primary{color:#fff;background:linear-gradient(110deg,var(--p),var(--p2));box-shadow:0 12px 25px #3157d533}.secondary{background:#fff;border:1px solid var(--line)}.trust{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px;font-size:12px;font-weight:700;color:#596273}
+.card{background:var(--card);border:1px solid var(--line);border-radius:25px;box-shadow:0 18px 55px #18203e17}.calc{padding:25px}.calc h2{margin:0 0 4px;font-size:24px}.sub{font-size:13px}.field{margin:18px 0}.field label{display:flex;justify-content:space-between;font-weight:800;font-size:13px;margin-bottom:7px}.val{color:var(--p)}input[type=range]{width:100%;accent-color:var(--p)}.result{margin-top:20px;padding:19px;border-radius:19px;background:linear-gradient(135deg,#eef2ff,#f7efff)}.big{font-size:40px;font-weight:950;letter-spacing:-.05em}.small{font-size:11px;color:var(--muted)}.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:15px}.rbox{background:#ffffffb3;border-radius:12px;padding:10px}.rbox b{display:block}.rbox span{font-size:10px;color:var(--muted)}.note{font-size:10px!important;margin-bottom:0}
+section{padding:65px 0}.eyebrow{text-transform:uppercase;letter-spacing:.12em;color:var(--p);font-size:11px;font-weight:900}.section-title{font-size:clamp(30px,4vw,45px);margin:7px 0 10px}.apps{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.app{padding:22px;display:flex;flex-direction:column}.top{display:flex;justify-content:space-between}.icon{width:47px;height:47px;border-radius:14px;background:#edf1ff;display:grid;place-items:center;font-size:23px}.rank{font-size:11px;font-weight:900;color:var(--muted)}.app h3{margin:14px 0 2px;font-size:20px}.tag{font-size:11px;font-weight:800;color:var(--ok)}.facts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0 18px}.fact{background:#f7f8fc;border-radius:11px;padding:9px}.fact b{display:block;font-size:12px}.fact span{font-size:10px;color:var(--muted)}.app .btn{margin-top:auto}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}.method{padding:24px}.step{display:flex;gap:13px;margin:15px 0}.num{min-width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#eef1ff;color:var(--p);font-weight:900}.step b{display:block}.step span{font-size:13px;color:var(--muted)}.dark{padding:34px;border-radius:28px;background:#101828;color:#fff}.dark p{color:#c7cfdd}.faq{max-width:850px;display:grid;gap:10px}.faq details{background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px 17px}.faq summary{font-weight:800;cursor:pointer}.faq p{font-size:13px}footer{padding:35px 0 55px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+@media(max-width:850px){.grid,.two{grid-template-columns:1fr}.apps{grid-template-columns:1fr 1fr}.hero{padding-top:45px}}
+@media(max-width:560px){.wrap{width:calc(100% - 20px)}h1{font-size:43px}.hero{padding:38px 0 25px}section{padding:52px 0}.apps{grid-template-columns:1fr}.calc{padding:19px}.rgrid{grid-template-columns:1fr 1fr}.dark{padding:24px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap nav"><a class="logo" href="#">Ingresos<i>Extra</i></a><a href="#apps">Ver aplicaciones</a></div></nav>
+
+<header class="hero"><div class="wrap grid">
+<div><span class="badge">🔎 Probamos, comparamos y explicamos</span><h1>¿Cuánto podrías ganar con encuestas desde el móvil?</h1><p class="lead">Descubre aplicaciones de encuestas remuneradas, compara cómo funcionan y hazte una idea de cuánto tiempo necesitarías para conseguir unos ingresos extra.</p><div class="actions"><a class="btn primary" href="#calculadora">Calcular mi potencial →</a><a class="btn secondary" href="#apps">Comparar apps</a></div><div class="trust"><span>✓ Sin promesas de dinero fácil</span><span>✓ Resultados orientativos</span><span>✓ Enlaces transparentes</span></div></div>
+<div class="card calc" id="calculadora"><h2>🧮 Tu estimación</h2><p class="sub">Ajusta el tiempo y el rendimiento observado. La cifra no es una garantía.</p>
+<div class="field"><label>Tiempo al día <span class="val" id="mv">30 min</span></label><input id="m" type="range" min="10" max="180" step="5" value="30"></div>
+<div class="field"><label>Días por semana <span class="val" id="dv">5 días</span></label><input id="d" type="range" min="1" max="7" value="5"></div>
+<div class="field"><label>Rendimiento observado <span class="val" id="rv">2,50 €/h</span></label><input id="r" type="range" min=".5" max="8" step=".25" value="2.5"></div>
+<div class="result"><div class="big" id="mo">≈ 16,25 €</div><div class="small">estimación mensual</div><div class="rgrid"><div class="rbox"><b id="hr">2,50 €</b><span>por hora</span></div><div class="rbox"><b id="wk">3,75 €</b><span>por semana</span></div><div class="rbox"><b id="dy">1,25 €</b><span>por día</span></div></div></div>
+<p class="note">Estimación orientativa. Los resultados reales dependen del perfil, país, disponibilidad de encuestas, descartes y tiempo empleado.</p></div>
+</div></header>
+
+<section id="apps"><div class="wrap"><div class="eyebrow">Comparador</div><h2 class="section-title">Varias apps. Una decisión más informada.</h2><p>Comparamos distintas plataformas y añadimos datos reales a medida que las probamos.</p>
+<div class="apps">
+<article class="card app"><div class="top"><div class="icon">🏆</div><span class="rank">#1 · Candidata</span></div><h3>Prime Opinion</h3><span class="tag">Disponible en España</span><p>Plataforma de encuestas con sistema de recomendaciones. Añadiremos nuestras cifras reales de tiempo y rendimiento.</p><div class="facts"><div class="fact"><b>10%</b><span>referido según tu cuenta</span></div><div class="fact"><b>España</b><span>mercado disponible</span></div></div><a class="btn primary" href="#" onclick="alert('Añade aquí tu enlace real de Prime Opinion.');return false">Probar Prime Opinion →</a></article>
+<article class="card app"><div class="top"><div class="icon">📊</div><span class="rank">#2 · En prueba</span></div><h3>TopSurveys</h3><span class="tag">Disponible en España</span><p>Otra opción para comparar. Verificaremos sus condiciones de afiliación y resultados antes de promocionarla.</p><div class="facts"><div class="fact"><b>En prueba</b><span>datos pendientes</span></div><div class="fact"><b>España</b><span>mercado disponible</span></div></div><a class="btn secondary" href="#" onclick="alert('Añade aquí tu enlace real de TopSurveys.');return false">Ver TopSurveys →</a></article>
+<article class="card app"><div class="top"><div class="icon">📱</div><span class="rank">#3 · En prueba</span></div><h3>AttaPoll</h3><span class="tag">Condiciones por verificar</span><p>La incluimos para comparar, pero revisaremos las condiciones de promoción antes de usar tráfico de pago.</p><div class="facts"><div class="fact"><b>Comparativa</b><span>tiempo / recompensa</span></div><div class="fact"><b>Condiciones</b><span>revisar antes</span></div></div><a class="btn secondary" href="#" onclick="alert('Añade el enlace solo después de verificar las condiciones.');return false">Ver aplicación →</a></article>
+</div></div></section>
+
+<section><div class="wrap"><div class="eyebrow">Metodología</div><h2 class="section-title">Menos promesas. Más datos.</h2><div class="two"><div class="card method"><div class="step"><div class="num">1</div><div><b>Probamos las plataformas</b><span>Registramos tiempo, encuestas, descartes y recompensas.</span></div></div><div class="step"><div class="num">2</div><div><b>Calculamos el rendimiento</b><span>Comparamos el dinero obtenido con el tiempo realmente empleado.</span></div></div><div class="step"><div class="num">3</div><div><b>Actualizamos el ranking</b><span>Si una plataforma empeora, baja; si funciona mejor, sube.</span></div></div></div>
+<div class="card method"><h3>¿Qué medimos?</h3><p>⏱️ Tiempo por encuesta</p><p>💶 Recompensa efectiva</p><p>🎯 Tasa de descarte</p><p>💳 Métodos y mínimos de cobro</p><p>📱 Experiencia de uso</p><p>🇪🇸 Disponibilidad en España</p></div></div></div></section>
+
+<section><div class="wrap"><div class="dark"><div class="eyebrow" style="color:#9fb3ff">Transparencia</div><h2 style="color:#fff">¿Cómo ganamos dinero?</h2><p>Algunos enlaces pueden ser de afiliado o referido. Si te registras mediante uno y cumples las condiciones de la plataforma, podemos recibir una comisión. Esto no aumenta tu coste.</p><p>Las posiciones no deberían depender únicamente de la comisión: también importan el rendimiento y la experiencia de uso.</p></div></div></section>
+
+<section id="faq"><div class="wrap"><div class="eyebrow">FAQ</div><h2 class="section-title">Antes de empezar</h2><div class="faq">
+<details><summary>¿Cuánto dinero puedo ganar?</summary><p>No existe una cantidad garantizada. Depende de tu perfil, país, encuestas disponibles, descartes y tiempo dedicado.</p></details>
+<details><summary>¿Tengo que pagar para registrarme?</summary><p>Las plataformas recomendadas deben explicar claramente sus condiciones de acceso. No recomendamos pagar para acceder a encuestas remuneradas sin verificar antes qué se está contratando.</p></details>
+<details><summary>¿Por qué recomendamos varias aplicaciones?</summary><p>La disponibilidad de encuestas cambia. Varias plataformas permiten comparar cuál aprovecha mejor tu tiempo.</p></details>
+<details><summary>¿Vosotros recibís dinero?</summary><p>En algunos casos sí. Podemos recibir una comisión mediante enlaces de afiliado o referido, y lo indicaremos claramente.</p></details>
+<details><summary>¿La calculadora garantiza esos ingresos?</summary><p>No. Es una herramienta orientativa basada en el tiempo y rendimiento que introduzcas.</p></details>
+</div></div></section>
+
+<footer><div class="wrap">© 2026 Ingresos Extra · Contenido informativo · Enlaces de afiliación claramente identificados</div></footer>
+<script>
+const eur=n=>n.toLocaleString('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:2});
+const m=document.querySelector('#m'),d=document.querySelector('#d'),r=document.querySelector('#r');
+function calc(){let M=+m.value,D=+d.value,R=+r.value,day=M/60*R,week=day*D,month=week*4.345;
+document.querySelector('#mv').textContent=M+' min';document.querySelector('#dv').textContent=D+(D===1?' día':' días');document.querySelector('#rv').textContent=eur(R)+'/h';
+document.querySelector('#hr').textContent=eur(R);document.querySelector('#dy').textContent=eur(day);document.querySelector('#wk').textContent=eur(week);document.querySelector('#mo').textContent='≈ '+eur(month)}
+[m,d,r].forEach(x=>x.addEventListener('input',calc));calc();
+</script>
+</body></html>
